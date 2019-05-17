@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title>翰维前端框架</title>
+
+	<!-- CSS文件 -->
+	<link href="../../base_ui/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../base_ui/css/font-awesome.css" rel="stylesheet">
+	<link href="../../base_ui/css/animate.css" rel="stylesheet">
+	<link href="../../base_ui/css/style.css" rel="stylesheet">
+
+	<link href="../../base_ui/css/codemirror.css" rel="stylesheet">
+</head>
+<body>
+<div id="page-center" class="wrapper wrapper-content animated fadeInRight">
+	<div class="row">
+		<div class="col-lg-12">
+			<div id="box"></div>
+		</div>
+	</div>
+</div>
+
+<script src="../../base_ui/js/jquery-1.11.1.min.js"></script>
+<script src="../../base_ui/js/bootstrap.min.js"></script>
+<script src="../../base_ui/js/jquery.validate.js"></script>
+<script src="../../base_ui/js/hitworth.form.js"></script>
+<script src="../../base_ui/js/hitworth.grid.js"></script>
+<script src="../../base_ui/js/hitworth.box.js"></script>
+<script src="../../base_ui/js/hitworth.modal.js"></script>
+
+<script src="../../base_ui/js/codemirror/codemirror.js"></script>
+<script src="../../base_ui/js/codemirror/javascript.js"></script>
+<script src="../../base_ui/js/hitworth.bootbox.js"> </script>
+
+<link href="../../base_ui/css/zTreeStyle.css" rel="stylesheet">
+
+<script src="../../base_ui/js/jquery.ztree.core-3.5.min.js"> </script>
+<script src="../../base_ui/js/jquery.ztree.excheck-3.5.min.js"> </script>
+<script src="../../base_ui/js/hitworth.tree.js"> </script>
+<script>
+	// ***********js写在这里****************************
+	//第一步 生成grid所在的表格
+	var box = $("#box").HwBox({
+		title : "功能列表",
+		close : false,
+		collapse : false
+	});
+
+	//grid的参数设置
+	var options = {
+		url : '../../function/list.do', // ajax地址
+		pageNum : 1,//当前页码
+		pageSize : 15,//每页显示条数
+		id_filed : "id",//id域指定
+		show_check : true,//是否显示checkbox
+		cloums :[
+			{title : "功能名称",	filed : "functionName"},
+			{title : "父ID",	filed : "parentId"},
+			{title : "请求路径",  	filed : "action"},
+			{title : "排序",	    filed : "desc"},
+			{title : "状态",	filed : "state", format:stateFormatData},
+			{title : "菜单栏显示",	filed : "display", format:displayFormatData}
+		],
+		//操作栏
+		actionCloumText : "操作",
+		actionCloums : [
+		{
+			text : "删除",
+			cls:"mgr-3",
+			handle : function(index, data) {
+				bootbox.confirm("确定删除吗？",function(result){
+					if(result){
+						url="../../function/delete.do";
+						$.post(url,{
+							id : data.id
+						}, function(res) {
+							if(res.result==true){
+								bootbox.alert("刪除成功!!");
+								grid1.reload();
+							}else{
+								bootbox.alert("删除失败:"+res.err);
+								;
+							}
+						});
+
+					}
+				});
+			}
+		},{
+				text : "编辑",
+				cls:"mgr-3",
+				handle : function(index, data) {
+					form.reset();
+					$('.alert').remove();
+					$("#functionTree").HwSetTreeUrl("../../function/rootList.do?id="+data.id);
+					form.loadLocal(data);
+					form._form_action="../../function/update.do?id=" + data.id;
+					modal.setTitle("修改功能");
+					$('#modal1').modal('show');
+				}
+			},{
+				text : "关闭",
+				cls:"mgr-3",
+				textHandle : function(index,data){
+					if(data.state==1){
+						return "关闭";
+					}else{
+						return "开启";
+					}
+				},
+				handle : function(index, data) {
+					url="../../function/frozen.do";
+					$.post(url,{
+						id : data.id,
+						state:data.state
+					}, function(res) {
+						if(res.result==true){
+							bootbox.alert("操作成功");
+							grid1.reload();
+						}else{
+							bootbox.alert("操作失败");
+						}
+					});
+				}
+			}],
+		//第一行的工具栏
+		tools : [
+			//工具属性
+			{
+				text : "添加",
+				cls : "btn-primary",//按钮样式
+				handle : function() {
+					form.reset();
+					form._form_action="../../function/add.do";
+					modal.setTitle("新增功能");
+					$("#functionTree").HwSetTreeUrl("../../function/rootList.do");
+					$('.alert').remove();
+					$('#modal1').modal('show');
+				}
+			},{
+				text : "刷新",
+				cls : "btn-danger",//按钮样式
+				handle : function() {
+					grid1.reload({
+						pageNum : 1
+					});
+				}
+			}
+		],
+		//搜索栏定义
+		search : {
+			//搜索栏元素
+			items : [ {
+				type : "text",
+				label : "功能名称",
+				name : "functionName"
+			}, {
+				type : "text",
+				label : "请求路径",
+				name : "action"
+			} ]
+		}
+	};
+	//生成grid代码
+	var grid1 = box.$content.HwGrid(options);
+	//form设置
+	var formOpts = {
+		id : "function_form",//表单id
+		name : "function_form",//表单名
+		method : "post",//表单method
+		action : "../../function/add.do",//表单action
+		ajaxSubmit : true,//是否使用ajax提交表单
+		ajaxSuccess : function(data){
+			if(data.result){
+				bootbox.alert("保存成功");
+				//grid1.reload();
+				grid1._refresh();
+				$('#modal1').modal('hide');
+			}else{
+				form.alertText("warning",data.err,2000);
+				//alert(data.err);
+			}
+		}, //如果用ajax，则该项为必须
+		submitText : "保存",//保存按钮的文本
+		//showReset : true,//是否显示重置按钮
+		//resetText : "重置",//重置按钮文本,
+		//表单元素
+		isValidate : true,//开启验证
+		items : [
+			{
+			type : 'text',
+			name : 'functionName',
+			id : 'functionName',
+			label : '功能名称',
+			span : '4',
+			rule: {
+				required : "true",
+				maxlength:"50"
+			},
+			msg : {
+				required : "功能名称不能为空",
+				maxlength:"最大长度50位"
+			}
+		},{
+			type : 'tree',
+			name : 'tree',
+			id : 'tree',
+			hiddenName : "parentId",
+			hiddenId : "parentId",
+			label : '父节点',
+			treeId : "functionTree",
+			checkMode : "radio",
+			url : '../../function/rootList.do',
+			rule: {
+				required : "true"
+			},
+			msg : {
+				required : "父节点不能为空"
+			}
+		}, {
+			type : 'text',
+			name : 'action',
+			id : 'action',
+			label : '请求路径',
+			span : '8',
+			rule: {
+				required : "true",
+				maxlength:"255"
+			},
+			msg : {
+				required : "请求路径不能为空",
+				maxlength:"最大长度255位"
+			}
+		},{
+			type : 'text',
+			name : 'desc',
+			id : 'desc',
+			label : '显示顺序',
+			span : '4',
+			rule: {
+				required : "true",
+				digits:"true",
+				maxlength:"4"
+			},
+			msg : {
+				required : "排序不能为空",
+				digits : "必须输入整数",
+				maxlength:"最大长度4位"
+			}
+		},{
+			type : 'radioGroup',
+			name : 'state',
+			id : 'state',
+			label : '是否启用',
+			span : '4',
+			items : [ {
+				name : 'state',
+				value : '1',
+				text : '启用',
+				checked : true
+			}, {
+				name : 'state',
+				value : '0',
+				text : '关闭'
+			} ]
+		},{
+			type : 'radioGroup',
+			name : 'display',
+			id : 'display',
+			label : '是否显示到菜单栏',
+			span : '4',
+			items : [ {
+				name : 'display',
+				value : '1',
+				text : '显示',
+				checked : true
+			}, {
+				name : 'display',
+				value : '0',
+				text : '不显示'
+			} ]
+		}]
+	};
+	//生成弹出层
+	var modal = $("body").HwModal({
+		id : "modal1",
+		title : "表单"
+	});
+	//生成表单并插入弹出层
+	var form = modal.$body.HwForm(formOpts);
+
+	function stateFormatData(index,content){
+		if(content.state==1){
+			return "已开启";
+		}else{
+			return "已关闭";
+		}
+	}
+
+	function displayFormatData(index,content){
+		if(content.display==1){
+			return "显示";
+		}else{
+			return "不显示";
+		}
+	}
+</script>
+</body>
+</html>

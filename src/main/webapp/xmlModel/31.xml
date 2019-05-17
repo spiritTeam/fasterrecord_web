@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <Item ControlType="Decimalbox" Value="" editBianGeng="true" editKuoZhan="true" Length="100" Computer="" MaxChars="20" MustSet="true" Name="C202">3C认证</Item>
+  <Item ControlType="Decimalbox" Value="" editBianGeng="true" editKuoZhan="true" Length="100" Computer="" MaxChars="20" MustSet="true" Name="C201">接受协议</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="false" editKuoZhan="false" Value="" Length="200" Computer="GS" MaxChars="200" MustSet="true" Name="C1">生产者名称</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="false" editKuoZhan="true" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C2">规格型号</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="true" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C3">制造单位</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="true" Value="" Length="100" Computer="PP" MaxChars="100" MustSet="false" Name="C4">商标</Item> 
+  <Item ControlType="Combobox" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="5;4;3;2;1;" Length="50" Computer="" MaxChars="50" MustSet="true" Name="C6">能源效率等级</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C7">耗电量（千瓦时/工作周期）</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C8">耗电量实测值</Item>
+  <!--
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C60">半载容量下一个工作周期测试耗电量实测值</Item>
+  -->
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C37">耗电量备注</Item>
+  <Item ControlType="Intbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C9">用水量（升/工作周期）</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C10">用水量实测值</Item>
+  <!--
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C61">半载容量下一个工作周期测试用水量实测值</Item>
+  -->
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="true" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C38">用水量备注</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C11">洗净比</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C12">洗净比实测值</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C39">洗净比备注</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="50" Computer="" MaxChars="50" MustSet="true" Name="C29">额定洗涤容量</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="50" Computer="" MaxChars="50" MustSet="true" Name="C43">额定洗涤容量备注</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="50" Computer="" MaxChars="50" MustSet="true" Name="C30">额定脱水容量</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="50" Computer="" MaxChars="50" MustSet="true" Name="C44">额定脱水容量备注</Item>
+  <Item ControlType="DateIpnut" Example="" editBianGeng="true" editKuoZhan="true" Value="" Length="" Computer="BEGINDATE" MustSet="true" Name="C15">初始使用日期</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="电子;机械;" Length="" MustSet="true" Name="C25">洗衣机控制方式</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="普通型洗衣机;半自动型洗衣机;全自动型洗衣机;" Length="" MustSet="true" Name="C26">洗衣机类型</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="其它;搅拌式;滚筒式;波轮式;" Length="" MustSet="true" Name="C27">洗衣机结构</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="50" Computer="" MaxChars="50" MustSet="true" Name="C59">洗衣机结构其它</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="双桶;单桶;套桶;" Length="" MustSet="true" Name="C40">类型</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="单相;三相;" Length="" MustSet="true" Name="C41">电源类型</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="无;有;" Length="" MustSet="true" Name="C28">加热功能</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="无;有;" Length="" MustSet="true" Name="C45">电容器</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="电容电动机;直流无刷电动机;串励电动机;交流变频电动机;" Length="" MustSet="true" Name="C46">电动机</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="无;有;" Length="" MustSet="true" Name="C47">进水阀</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="排水牵引器;排水泵;其它;" Length="" MustSet="true" Name="C48">排水方式</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C49">排水方式 其它</Item>
+  <Item ControlType="RadioButton" Example="" editBianGeng="true" editKuoZhan="false" Value="" OptionsValue="无;有;" Length="" MustSet="true" Name="C50">定时器</Item>
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C31">波轮直径</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C32">波轮材料</Item>
+  <Item ControlType="TextIpnut" Value="" editBianGeng="false" editKuoZhan="false" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C33">内桶尺寸(长)</Item>
+  <Item ControlType="Intbox" Value="" editBianGeng="false" editKuoZhan="false" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C57">内桶尺寸(宽)</Item>
+  <Item ControlType="Intbox" Value="" editBianGeng="false" editKuoZhan="false" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C58">内桶尺寸(高)</Item>		
+  <Item ControlType="Decimalbox" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C51">内桶直径</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C34">内桶材料</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C52">额定电压（V）</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="true" Name="C53">额定频率（Hz）</Item>
+  
+  <Item ControlType="TextIpnut" Value="" editBianGeng="true" editKuoZhan="false" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C35">外形尺寸(长)</Item>
+  <Item ControlType="Intbox" Value="" editBianGeng="true" editKuoZhan="false" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C55">外形尺寸(宽)</Item>
+  <Item ControlType="Intbox" Value="" editBianGeng="true" editKuoZhan="false" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C56">外形尺寸(高)</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C62">额定洗涤功率（W）</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C63">额定脱水功率（W）</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C64">额定烘干功率（W）</Item>	
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C65">额定洗涤加热功率（W）</Item>	
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="100" Computer="" MaxChars="100" MustSet="false" Name="C66">额定功率（W）</Item>	
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C36">备案方</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C67">电1-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C68">电1-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C69">电1-3</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C70">电1-4</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C71">电1-5</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C72">电2-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C73">电2-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C74">电2-3</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C75">电2-4</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C76">电2-5</Item>
+
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C77">定1-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C78">定1-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C79">定1-3</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C80">定2-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C81">定2-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C82">定2-3</Item>
+
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C83">程1-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C84">程1-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C85">程1-3</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C86">程2-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C87">程2-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C88">程2-3</Item>
+
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C89">板1-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C90">板1-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C91">板1-3</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C92">板2-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C93">板2-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C94">板2-3</Item>
+
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C95">管1-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C96">管1-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C97">管1-3</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C98">管2-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C99">管2-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C100">管2-3</Item>
+
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C101">泵1-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C102">泵1-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C103">泵1-3</Item>
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C104">泵2-1</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C105">泵2-2</Item>
+  <Item ControlType="TextIpnut" Example="" editBianGeng="true" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="true" Name="C106">泵2-3</Item>
+
+
+
+  <Item ControlType="TextIpnut" Example="" editBianGeng="false" editKuoZhan="false" Value="" Length="200" Computer="" MaxChars="200" MustSet="false" Name="C200">依据国家标准</Item>
+  <!--<Item ControlType="Combobox" Value="" editBianGeng="false" editKuoZhan="false" OptionsValue="GB12021.4-2013;" Length="" MustSet="false" Name="C200">依据国家标准</Item>
+--></root>

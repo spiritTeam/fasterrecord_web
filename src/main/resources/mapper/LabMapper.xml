@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.energylabel.lab.dao.LabDAO">
+    <resultMap id="ReportParamValueMap" type="com.energylabel.lab.model.ReportParamValue">
+        <result column="recId" property="recId" jdbcType="VARCHAR"/>
+        <result column="recName" property="recName" jdbcType="VARCHAR"/>
+        <result column="labValue" property="labValue" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="ReporMap" type="com.energylabel.lab.model.Report">
+        <id column="rid" property="rid" jdbcType="DECIMAL"/>
+        <result column="barcode" property="barcode" jdbcType="VARCHAR"/>
+        <result column="modelNo" property="modelNo" jdbcType="DECIMAL"/>
+        <result column="labName" property="labName" jdbcType="VARCHAR"/>
+        <result column="upddate" property="upddate" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getReportParamValues" resultMap="ReportParamValueMap">
+        select
+          lower(t.rec_id) as recId
+          , t1.lab_value as labValue
+          , t.rec_name as recName
+        from
+          sync_lab_report_param t
+        left join sync_xml t1 on t1.lab_id = t.lab_id
+        left join sync_lab_report t2 on t2.rid = t1.rid
+        where
+          t.rec_name is not null
+          and t.categoryid = #{categoryid}
+          and t2.barcode = #{barcode}
+    </select>
+
+    <select id="getReport" resultMap="ReporMap">
+        select
+          t.rid as rid
+          , t.barcode as barcode
+          , t.model_no as modelNo
+          , t.cnname as labName
+          , t.upddate as upddate
+        from
+          sync_lab_report t
+        where t.barcode = #{barcode, jdbcType=VARCHAR}
+    </select>
+
+    <select id="count1" resultType="java.lang.Integer">
+      select count(t.ec_marking_id) from ec_marking t
+      left join ec_master t1 on t1.ec_master_id = t.ec_master_id
+      where t.ec_labreport_no = #{barcode, jdbcType=VARCHAR} and t1.ec_master_chang = '0' 
+      and t.state > 1
+    </select>
+
+</mapper>
