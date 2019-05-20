@@ -26,26 +26,26 @@ public class UserUtil {
 	 *         String 返回类型 @throws
 	 */
 	public static String getLoginName() {
-		String loginName = "beian";
-//		String loginName = null;
-//		SecurityContext springSecurityContext = SecurityContextHolder.getContext();
-//		if (springSecurityContext != null) {
-//			Object principal = springSecurityContext.getAuthentication().getPrincipal();
-//			if (principal instanceof SecurityUser) {
-//				SecurityUser securityUser = ((SecurityUser) principal);
-//				return securityUser.getUsername();
-//			}
-//		}
+//		String loginName = "beian";
+		String loginName = null;
+		SecurityContext springSecurityContext = SecurityContextHolder.getContext();
+		if (springSecurityContext != null) {
+			Object principal = springSecurityContext.getAuthentication().getPrincipal();
+			if (principal instanceof SecurityUser) {
+				SecurityUser securityUser = ((SecurityUser) principal);
+				return securityUser.getUsername();
+			}
+		}
 		return loginName;
 	}
 
 	public static String getUserId() {
-//		SecurityUser securityUser = getSecurityUser();
-//		if (securityUser != null) {
-//			return String.valueOf(securityUser.getId());
-//		}
-//		return null;
-		return "2";
+		SecurityUser securityUser = getSecurityUser();
+		if (securityUser != null) {
+			return String.valueOf(securityUser.getId());
+		}
+		return null;
+//		return "2";
 	}
 
 	/**

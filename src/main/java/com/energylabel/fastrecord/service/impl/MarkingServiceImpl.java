@@ -481,7 +481,7 @@ public class MarkingServiceImpl implements MarkingService {
 			json.put("k", ecMaster.getEc_master_parentid());
 		}
 		json.put("data", getPubData(ecMarking, ecMarkingXmlItem));
-		log.error("同步公告请求数据：" + json.toJSONString());
+		log.info("同步公告请求数据：" + json.toJSONString());
 
 		String strCode = "updatePubData" + ecMarking.getEc_enterprise_id() + "nengxiaobiaoshiwang123456";
 		strCode = Encrypt.md5AndSha(strCode);
@@ -490,7 +490,7 @@ public class MarkingServiceImpl implements MarkingService {
 		params.put("a", URLEncoder.encode(json.toJSONString(), "UTF-8"));
 		params.put("e", strCode);
 		String result = InvokeInterfaceUtils.sendHttpPost(url, params);
-		log.error("同步公告请求数据结果：" + result);
+		log.info("同步公告请求数据结果：" + result);
 		if (!StringUtils.isNullOrEmpty(result) && result.equals("1")) {
 			EcMarking bean = ecMarkingDAO.getEcMarkingById(ecMarking.getId());
 			bean.setHas_html(1);// 已生成html
@@ -526,6 +526,130 @@ public class MarkingServiceImpl implements MarkingService {
 		}
 		return null;
 	}
+	
+//    public static String[] getModelnoStr(String modelNo) {
+//        String modelnoString = "";
+//        if ("1".equals(modelNo)) {
+//            modelnoString = "C1:,C10:,C8:,C14:,C6:,C12:";
+//        } else if ("2".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C6:,C10:";
+//        } else if ("3".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C9:,C11:,C13:";
+//        } else if ("5".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C7:,C6:";
+//        } else if ("10".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C6:,C7:";
+//        } else if ("11".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C6:,C200:";
+//        } else if ("13".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C6:,C200:";
+//        } else if ("14".equals(modelNo)) {
+//            modelnoString = "C1:,C31:,C7:,C9:,C200:";
+//        } else if ("16".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C9:,C7:,C22:,C200:";
+//        } else if ("17".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C200:";
+//        } else if ("20".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C9:,C12:,C39:,C15:,C43:,C18:,C47:,C21:,C51:,C24:,C55:,C27:,C59:,C30:,C76:,C200:";
+//        } else if ("23".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C9:,C12:,C200:";
+//        } else if ("24".equals(modelNo)) {
+//            modelnoString = "C1:,C16:,C7:,C5:";
+//        } else if ("25".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C9:,C11:,C200:";
+//        } else if ("26".equals(modelNo)) {
+//            modelnoString = "C1:,C76:,C8:,C200:";
+//        } else if ("31".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C9:,C11:,C29:,C30:,C200:";
+//        } else if ("33".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C25:,C6:,C37:,C7:,C42:,C200:";
+//        } else if ("34".equals(modelNo)) {
+//            modelnoString = "C1:,C16:,C5:,C7:,C9:,C11:,C200:";
+//        } else if ("37".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C10:,C13:,C200:";
+//        } else if ("39".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C9:,C12:,C15:,C18:,C200:";
+//        } else if ("40".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C6:,C200:";
+//        } else if ("38_1".equals(modelNo) || "38_2".equals(modelNo) || "38_3".equals(modelNo) || "38_4".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C11:,C200:";
+//        } /*else if ("38_2".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C17:,C200:";
+//        } else if ("38_3".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C23:,C200:";
+//        } else if ("38_4".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C29:,C200:";
+//        } */ else if ("38_5".equals(modelNo) || "38_6".equals(modelNo) || "38_7".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C35:,C38:,C41:,C44:,C200:";
+//        } /*else if ("38_6".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C50:,C53:,C56:,C59:,C200:";
+//        } else if ("38_7".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C65:,C68:,C71:,C74:,C200:";
+//        } */ else if ("41".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C11:,C200:";
+//        } else if ("42".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C11:,C18:,C200:";
+//        } else if ("43".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C11:,C14:,C17:,C20:,C23:,C200:";
+//        } else if ("44".equals(modelNo)) {
+//            modelnoString = "C1:,C9:,C12:,C15:,C18:,C21:,C49:,C200:";
+//        } else if ("45".equals(modelNo)) {
+//            //新16类产品添加二维码
+//            modelnoString = "C1:,C9:,C10:,C11:,C13:,C200:";
+//        } else if ("46".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C9:,C11:,C12:,C200:";
+//        } else if ("47".equals(modelNo)) {
+//            modelnoString = "C1:,C14:,C25:,C27:,C8:,C29:,C30:,C34:,C35:,C39:,C40:,C124:,C126:,C200:";
+//        } else if ("48".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C14:,C17:,C11:,C20:,C23:,C200:";
+//        } else if ("49".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C11:,C15:,C200:";
+//        } else if ("4".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C8:,C10:,C200:";
+//        } else if ("6".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C7:,C200:";
+//        } else if ("8".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C5:,C6:,C200:";
+//        } else if ("9".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C7:,C12:,C10:,C13:,C11:,C200:";
+//        } else if ("12".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C6:,C5:,C200:";
+//        } else if ("15".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C6:,C200:";
+//        } else if ("19".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C200:";
+//        } else if ("27".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C8:,C11:,C200:";
+//        } else if ("30".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C15:,C200:";
+//        } else if ("29".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C200:";
+//        } else if ("28".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C9:,C13:,C200:";
+//        } else if ("7".equals(modelNo)) {
+//            modelnoString = "C1:,C19:,C12:,C14:,C200:";
+//        } else if ("21".equals(modelNo)) {
+//            modelnoString = "C1:,C11:,C13:,C200:";
+//        } else if ("18".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C200:";
+//        } else if ("22".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C200:";
+//        } else if ("32".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C6:,C8:,C200:";
+//        } else if ("50".equals(modelNo)) {
+//            modelnoString = "C1:,C8:,C7:,C5:,C6:,C200:";
+//        } else if ("51".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C9:,C22:,C200:";
+//        } else if ("52".equals(modelNo)) {
+//            modelnoString = "C1:,C5:,C7:,C9:,C11:,C200:";
+//        } else if ("53".equals(modelNo)) {
+//            modelnoString = "C1:,C7:,C10:,C13:,C200:";
+//        } else if ("54".equals(modelNo)) {
+//            modelnoString = "C1:,C6:,C9:,C12:,C32:,C36:,C200:";
+//        }
+//        String[] modelNoSTR = modelnoString.split(",", -1);
+//        return modelNoSTR;
+//    }
 
 	/**
 	 * 获取用户能效信息
@@ -567,7 +691,7 @@ public class MarkingServiceImpl implements MarkingService {
 	private String getUid(EcMarkingXmlItem ecMarkingXmlItem, EcMarking ecMarking, String ecMasterChang,
 			EnergyLabelUser user) throws Exception {
 		String re = getTemplateItems(ecMarking.getPtid(), ecMarking.getPltId());
-		log.error("模板信息:" + re);
+		log.info("模板信息:" + re);
 		if (!StringUtils.isNullOrEmpty(re)) {
 			Map<String, String> valueMap = new HashMap<String, String>();
 			JSONArray array = JSONArray.parseArray(re);
@@ -602,7 +726,7 @@ public class MarkingServiceImpl implements MarkingService {
 			valueMap.put("preNum", ecMarking.getEc_prelimno());
 			String url = this.qrcodeDomain + "energyLabel/insertRecordAndReturnUid.json";
 			re = InvokeInterfaceUtils.sendHttpPost(url, valueMap);
-			log.error("UID=" + re);
+			log.info("UID=" + re);
 			if (!StringUtils.isNullOrEmpty(re) && re.length() == 5) {
 				return re;
 			}
@@ -684,7 +808,7 @@ public class MarkingServiceImpl implements MarkingService {
 					} else if (bean.getType().equals(MakingConstants.Making_Type_Change)) {
 						bean.setType_name("变更");
 					} else if (bean.getType().equals(MakingConstants.Making_Type_Expand_Change)) {
-						bean.setType_name("扩展变更");
+						bean.setType_name("变更");
 					} else {
 						bean.setType_name("新备案");
 					}
