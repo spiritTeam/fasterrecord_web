@@ -302,9 +302,9 @@ export default {
       })
     },
     updateHandle(id){
-        this.$router.push({name:'addRecord'});
-        this.$store.commit('setPageType', 'update')
-        this.$store.commit('setUpdateId',id)
+        this.$router.push({name:'addRecord',params:{type:'update',id:id}});
+        //this.$store.commit('setPageType', 'update')
+        //this.$store.commit('setUpdateId',id)
     },
     extendHandle(id){
       axios.get('/marking/getInfoWithoutAttach.do', {
@@ -312,11 +312,8 @@ export default {
           id: id
         }
       }).then(res => {
-        
           if(res.data.result_code==='1'){
-            this.$router.push({name:'addRecord',params:{step:3,extendData:res.data}})
-            this.$store.commit('setPageType', 'extend')
-            this.$store.commit('setUpdateId',id)
+            this.$router.push({name:'addRecord',params:{step:3,type:'extend',id:id,extendData:res.data}})
             this.$store.commit('setModelNo',res.data.marking.ec_model_no)
           }
       })

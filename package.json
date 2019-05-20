@@ -10,6 +10,7 @@
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
   },
+
   "dependencies": {
     "axios": "^0.18.0",
     "clipboard": "^2.0.0",

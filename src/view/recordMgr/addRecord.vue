@@ -59,19 +59,25 @@ export default {
     Html23
   },
   mounted () {
+    if(this.$route.params.type){
+      if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
+          this.$store.commit('setPageType', this.$route.params.type)
+          this.$store.commit('setUpdateId',this.$route.params.id)
+      }
+    }else{
+          this.$store.commit('setPageType', '')
+          this.$store.commit('setUpdateId','')
+    };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
         //this.modal1 = true
       }
       if(this.$route.params.draftData){
-        
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
       }else if(this.$route.params.extendData){
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }
-      
-      
     }
   },
   methods: {
