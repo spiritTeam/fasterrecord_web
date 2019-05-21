@@ -2135,7 +2135,8 @@ export default {
           }
         })
       }else{
-        
+        console.log(_this.formRecord);
+        _this.formRecord.id=0;
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -2162,6 +2163,7 @@ export default {
               }
             })
           } else {
+            console.log(res)
             _this.$Message.warning(res.data.message)
             _this.submitDisabled = false
           }
