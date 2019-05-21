@@ -1269,6 +1269,7 @@ export default {
       modal4: false,
       modal5: false,
       templatePic: '',
+      disabledoff:true,
       uploadPic:'',
       modal2: false,
       currentValue: '',
@@ -1452,8 +1453,8 @@ export default {
     }
   },
   mounted () {
-    //console.log(this.$store.state.app.pageType)
-   
+    
+    this.disabledoff= this.$store.state.app.pageType=="extend"? true : false
   },
   methods: {
     showTemplate () {
@@ -2102,6 +2103,8 @@ export default {
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id=_this.$store.state.app.updateId
+      
+      _this.formRecord.id=0;
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -2113,6 +2116,7 @@ export default {
             for (let it in data) {
               ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
             }
+           
             return ret
           }],
           headers: {
@@ -2187,6 +2191,7 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
+      _this.formRecord.id=0;
 
       axios({
         url: '/marking/saveDraft.do',
@@ -2200,6 +2205,7 @@ export default {
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
           }
+          
           return ret
         }],
         headers: {
@@ -2258,9 +2264,6 @@ export default {
     }
   },
   computed: {
-    disabledoff(){
-      return  this.$store.state.app.pageType==='extend';
-    },
     pltId () {
       return this.$store.state.app.pltId
     },
