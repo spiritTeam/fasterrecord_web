@@ -11,6 +11,7 @@
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
+          <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
@@ -38,6 +39,7 @@ import Html47 from './energyIndicators/html47'
 import Html33 from './energyIndicators/html33'
 import Html31 from './energyIndicators/html31'
 import Html23 from './energyIndicators/html23'
+import Html46 from './energyIndicators/html46'
 
 export default {
   data () {
@@ -56,9 +58,10 @@ export default {
     Html47,
     Html33,
     Html31,
-    Html23
+    Html23,
+    Html46
   },
-  mounted () {
+ mounted () {
     if(this.$route.params.type){
       if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
           this.$store.commit('setPageType', this.$route.params.type)

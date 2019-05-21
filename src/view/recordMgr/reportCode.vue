@@ -24,6 +24,8 @@ export default {
         }
       }).then(res => {
         if (res.data.result === true) {
+          console.log(res.data.msg);
+          
           this.$store.commit('setDefaultData', res.data.msg.params)
           this.$store.commit('setRid', res.data.msg.rid)
           this.$store.commit('setDateInit', res.data.msg.upddate)
