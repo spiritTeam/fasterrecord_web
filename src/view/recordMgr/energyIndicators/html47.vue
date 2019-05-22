@@ -38,7 +38,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly ></Input>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly width="88%"></Input>
 
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:1000px;" :label-width="180">

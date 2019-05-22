@@ -146,13 +146,13 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-                <td>12345678909876543</td>
+                <td>屏幕尺寸（长 × 宽）（mm × mm）</td>
                 <td>
-                  <b>长</b>
+                  <label style="margin-top:2px">长</label>
                   <FormItem prop="c19">
                    <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
                   </FormItem>
-                  <b>×宽</b>
+                  <label>×宽</label>
                   <FormItem prop="c20">
                    <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                   </FormItem>
@@ -180,24 +180,24 @@
                       <Checkbox label="无线接收" :disabled='disabledoff'>无线接收</Checkbox>
                       <Checkbox label="摄像头" :disabled='disabledoff'>摄像头</Checkbox>
                       <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
-                      <FormItem prop="c24">
-                        <Input type="text" v-model="formRecord.c24" :disabled='disabledoff'/>
-                      </FormItem>
                     </CheckboxGroup>
+                  </FormItem>
+                  <FormItem prop="c24">
+                    <Input type="text" v-model="formRecord.c24" :disabled='forbidden.c24'/>
                   </FormItem>
                 </td>
             </tr>
             <tr>
                 <td>供电方式</td>
                 <td>
-                  <FormItem prop="c25" style="width:1000px;" :label-width="180">
+                  <FormItem prop="c25">
                     <RadioGroup v-model="formRecord.c25">
                       <Radio label="1" :disabled='disabledoff'>内置电源</Radio>
                       <Radio label="2" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
-                      <FormItem prop="c26">
-                        <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
-                      </FormItem>
                     </RadioGroup>
+                  </FormItem>
+                  <FormItem prop="c26">
+                    <Input type="text" v-model="formRecord.c26" :disabled='forbidden.c26'/>
                   </FormItem>
                 </td>
             </tr>
@@ -205,7 +205,7 @@
                 <td>额定功率（W）</td>
                 <td>
                    <FormItem prop="c27">
-                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
+                   <Input type="text" style="width: 440px" v-model="formRecord.c27" :disabled='disabledoff' width="100px"/>
                   </FormItem>
                 </td>
             </tr>
@@ -213,7 +213,7 @@
                 <td>额定电压（V）</td>
                  <td>
                    <FormItem prop="c28">
-                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
+                   <Input type="text" style="width: 440px" v-model="formRecord.c28" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -221,7 +221,7 @@
                 <td>额定电流（A）</td>
                  <td>
                    <FormItem prop="c29">
-                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
+                   <Input type="text" style="width: 440px" v-model="formRecord.c29" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -229,7 +229,7 @@
                 <td>额定频率（Hz）</td>
                  <td>
                    <FormItem prop="c30">
-                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
+                   <Input type="text" style="width: 440px" v-model="formRecord.c30" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -258,7 +258,7 @@
                      <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
-                <td width="230">
+                <td width="330">
                     <div>
                         <label class="mb7">
                           <span class="w70">分辨力：</span>
@@ -1062,6 +1062,10 @@ export default {
         c202: '',
         ec_model_no: 46,
         attach_list: ''
+      },
+      forbidden: {
+        c24: true,
+        c26: true,
       }
     }
   },
@@ -1479,13 +1483,12 @@ export default {
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
       for(let i in data) {
-          // if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
-          //   that.formRecord[i] = []
-          //   data[i].split(';').forEach((v) => {
-          //     that.formRecord[i].push(v)
-          //   })
-          // }else 
-          if(i==='c18'){
+          if (i === 'c23') {
+            that.formRecord[i] = []
+            data[i].split(';').forEach((v) => {
+              that.formRecord[i].push(v)
+            })
+          }else if(i==='c18'){
               //this.$store.commit('setDateInit', data[i])
               if(data[i] != undefined) that.formRecord[i] = that.formatDate(data[i]);
           } else {
@@ -1506,7 +1509,7 @@ export default {
           that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
       })
-      console.log(params.lab.upddate);
+     
       that.$store.commit('setDefaultData', params.lab.params)
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
@@ -1515,13 +1518,12 @@ export default {
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
       for(let i in data) {
-          // if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
-          //   that.formRecord[i] = []
-          //   data[i].split(';').forEach((v) => {
-          //     that.formRecord[i].push(v)
-          //   })
-          // } else 
-          if(i==='c18'){
+          if (i === 'c23') {
+            that.formRecord[i] = []
+            data[i].split(';').forEach((v) => {
+              that.formRecord[i].push(v)
+            })
+          } else if(i==='c18'){
               //this.$store.commit('setDateInit', data[i])
             if(data[i] != undefined) that.formRecord[i]= that.formatDate(data[i]);
           }else {
@@ -1539,20 +1541,14 @@ export default {
       that.formRecord.c200 = that.$store.state.app.gb
       //console.log();
       that.$store.state.app.defaultData.forEach((e) => {
-        // if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
-        //   that.formRecord[e.recId] = []
-        //   if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
-        //     return
-        //   }
-        //   that.formRecord[e.recId]=e.labValue.replace(/\s+/g,'').split(';')
+        if (e.recId === 'c23') {
+          that.formRecord[e.recId] = []
+          if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
+            return
+          }
+          that.formRecord[e.recId]=e.labValue.replace(/\s+/g,'').split(';')
 
-        // } else if (e.recId === 'c24' || e.recId === 'c26' || e.recId === 'c28' || e.recId === 'c33' || e.recId === 'c38' || e.recId === 'c125') {
-        //   if (e.labValue !== '有霜' || e.labValue !== '无霜') {
-        //     that.formRecord[e.recId] = e.labValue;
-        //   } else {
-
-        //   }
-        // } else {
+        } else {
           if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
             that.formRecord[e.recId] = ''
           } else {
@@ -1569,7 +1565,7 @@ export default {
             }else {
               that.formRecord[e.recId] = labVal
             }
-          // }
+          }
         }
       })
     },
@@ -1942,6 +1938,20 @@ export default {
       const significantDigits33=(rule, vaule, callback)=>{
         significantDigits3.test(vaule)? callback(): callback('三位有效数字');
       }
+
+      if(this.formRecord.c23.join('').indexOf('其他') > -1) {
+        this.formRecord.c24 = ''
+        this.forbidden.c24 = false
+      }else {
+        this.forbidden.c24 = true
+      }
+
+      if(this.formRecord.c25 === '2') {
+        this.formRecord.c26 = ''
+        this.forbidden.c26 = false
+      }else {
+        this.forbidden.c26 = true
+      }
      
       // const checkc17 = (rule, value, callback) => {
       //   // 能效等级校验
@@ -2133,7 +2143,7 @@ export default {
         ],
         c24: [
           {
-            required: true,
+            required: this.formRecord.c23.join('').indexOf('其他') > -1,
             message: '附加功能其他不能为空'
           }
         ],
