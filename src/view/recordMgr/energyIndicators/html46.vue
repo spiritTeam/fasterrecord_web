@@ -183,7 +183,7 @@
                     </CheckboxGroup>
                   </FormItem>
                   <FormItem prop="c24">
-                    <Input type="text" v-model="formRecord.c24" :disabled='forbidden.c24'/>
+                    <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c24'/>
                   </FormItem>
                 </td>
             </tr>
@@ -197,7 +197,7 @@
                     </RadioGroup>
                   </FormItem>
                   <FormItem prop="c26">
-                    <Input type="text" v-model="formRecord.c26" :disabled='forbidden.c26'/>
+                    <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c26'/>
                   </FormItem>
                 </td>
             </tr>
@@ -1713,7 +1713,7 @@ export default {
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id=_this.$store.state.app.updateId || 0
-      
+
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
