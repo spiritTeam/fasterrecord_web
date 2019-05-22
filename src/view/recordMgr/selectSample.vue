@@ -67,7 +67,6 @@ export default {
         //let res = {}
         //res.data = [{"id":241,"pt_id":49,"name":"模板1","pic1":"http://zip.el.bbqkimg.cn/templates/sample/47/1.png","pic2":"http://zip.el.bbqkimg.cn/templates/sample/47/1s.png"},{"id":242,"pt_id":49,"name":"模板2","pic1":"http://zip.el.bbqkimg.cn/templates/sample/47/2.png","pic2":"http://zip.el.bbqkimg.cn/templates/sample/47/2s.png"},{"id":245,"pt_id":49,"name":"模板4","pic1":"http://zip.el.bbqkimg.cn/templates/sample/47/4.png","pic2":"http://zip.el.bbqkimg.cn/templates/sample/47/4s.png"},{"id":246,"pt_id":49,"name":"模板5","pic1":"http://zip.el.bbqkimg.cn/templates/sample/47/5.png","pic2":"http://zip.el.bbqkimg.cn/templates/sample/47/5s.png"},{"id":244,"pt_id":49,"name":"模板3","pic1":null,"pic2":null}]
         if (res.data.length > 0) {
-          console.log(this.$store.state.app.templates);
           this.sampleList = res.data
           this.template=this.$store.state.app.templates;
           this.$store.commit('setPtId', res.data[0].pt_id)

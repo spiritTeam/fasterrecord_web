@@ -1865,7 +1865,6 @@ export default {
       that.$store.commit('setBarcode', mark.ec_labreport_no)
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
-      
       for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
@@ -1894,7 +1893,6 @@ export default {
           that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
       })
-      console.log(params.lab.upddate);
       that.$store.commit('setDefaultData', params.lab.params)
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
@@ -1924,7 +1922,6 @@ export default {
     fillDefaultData () {
       let that = this;
       that.formRecord.c200 = that.$store.state.app.gb
-      //console.log();
       that.$store.state.app.defaultData.forEach((e) => {
         if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
           that.formRecord[e.recId] = []
@@ -2103,8 +2100,7 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId
-      //  || 0
+      _this.formRecord.id=_this.$store.state.app.updateId || 0
 
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';

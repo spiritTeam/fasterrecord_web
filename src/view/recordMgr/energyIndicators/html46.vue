@@ -183,7 +183,7 @@
                     </CheckboxGroup>
                   </FormItem>
                   <FormItem prop="c24">
-                    <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c24'/>
+                    <Input type="text" v-model="formRecord.c24" :disabled='forbidden.c24'/>
                   </FormItem>
                 </td>
             </tr>
@@ -197,7 +197,7 @@
                     </RadioGroup>
                   </FormItem>
                   <FormItem prop="c26">
-                    <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c26'/>
+                    <Input type="text" v-model="formRecord.c26" :disabled='forbidden.c26'/>
                   </FormItem>
                 </td>
             </tr>
@@ -253,7 +253,7 @@
             <tr>
                 <td width="80">1</td>
                 <td>显示器</td>
-                <td>   
+                <td>
                   <FormItem prop="c31">
                      <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                   </FormItem>
@@ -511,17 +511,17 @@
                 </td>
                 <td>
                   <FormItem prop="c70">
-                    <Input type="text" v-model="formRecord.c70" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c71">
-                    <Input type="text" v-model="formRecord.c71" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c72">
-                    <Input type="text" v-model="formRecord.c72" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -532,17 +532,17 @@
                 </td>
                 <td>
                   <FormItem prop="c73">
-                    <Input type="text" v-model="formRecord.c73" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c74">
-                    <Input type="text" v-model="formRecord.c74" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c75">
-                    <Input type="text" v-model="formRecord.c75" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -574,17 +574,17 @@
                 </td>
                 <td>
                   <FormItem prop="c76">
-                    <Input type="text" v-model="formRecord.c76" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c77">
-                    <Input type="text" v-model="formRecord.c77" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c78">
-                    <Input type="text" v-model="formRecord.c78" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -595,17 +595,17 @@
                 </td>
                 <td>
                   <FormItem prop="c79">
-                    <Input type="text" v-model="formRecord.c79" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c80">
-                    <Input type="text" v-model="formRecord.c80" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
                 <td>
                   <FormItem prop="c81">
-                    <Input type="text" v-model="formRecord.c81" :disabled='disabled'/>
+                    <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
                   </FormItem>
                 </td>
             </tr>
@@ -889,7 +889,7 @@
           </dd>
           <dd>
               特提出免检备案申请，扩展型号的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord.c18)}}</span>
+              <span class="f-date">{{formatDate(formRecord.c20)}}</span>
           </dd>
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -901,14 +901,14 @@
           </dd>
           <dd>
               该型号的相关信息变更后的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord.c18)}}</span>
+              <span class="f-date">{{formatDate(formRecord.c20)}}</span>
           </dd>
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-  
+
 </template>
 <script>
 import axios from 'axios'
@@ -1069,8 +1069,7 @@ export default {
       }
     }
   },
-  mounted () { 
-    console.log("pageType:"+this.$store.state.app.pageType)
+  mounted () {
     this.disabledoff= this.$store.state.app.pageType=="extend"? true : false
   },
   methods: {
@@ -1509,7 +1508,7 @@ export default {
           that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
       })
-     
+
       that.$store.commit('setDefaultData', params.lab.params)
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
@@ -1539,7 +1538,6 @@ export default {
     fillDefaultData () {
       let that = this;
       that.formRecord.c200 = that.$store.state.app.gb
-      //console.log();
       that.$store.state.app.defaultData.forEach((e) => {
         if (e.recId === 'c23') {
           that.formRecord[e.recId] = []
@@ -1560,7 +1558,7 @@ export default {
               } else {
                 that.formRecord[e.recId] = parseInt(labVal).toString();
               }
-            } else if (e.recId === 'c18' && isNaN(labVal)) {
+            } else if (e.recId === 'c20' && isNaN(labVal)) {
               that.formRecord[e.recId] = new Date()
             }else {
               that.formRecord[e.recId] = labVal
@@ -1569,55 +1567,7 @@ export default {
         }
       })
     },
-    count43 () {
-      // let count_b = 0
-      // let vv = Math.pow(10,1)
-      // if (!isNaN(this.formRecord.c25)) {
-      //   count_b += Number(this.formRecord.c25)
-      // }
-      // if (!isNaN(this.formRecord.c27)) {
-      //   count_b += Number(this.formRecord.c27)
-      // }
-      // if (!isNaN(this.formRecord.c30)) {
-      //   count_b += Number(this.formRecord.c30)
-      // }
-      // if (!isNaN(this.formRecord.c35)) {
-      //   count_b += Number(this.formRecord.c35)
-      // }
-      // if (!isNaN(this.formRecord.c40)) {
-      //   count_b += Number(this.formRecord.c40)
-      // }
-      // if (!isNaN(this.formRecord.c126)) {
-      //   count_b += Number(this.formRecord.c126)
-      // }
-      // count_b = Math.round(count_b*vv)/vv
-      // this.formRecord.c43 = count_b
-    },
-    count123 () {
-      // let count_s = 0
-      // let vv = Math.pow(10,1)
-      // if (!isNaN(this.formRecord.c82)) {
-      //   count_s += Number(this.formRecord.c82)
-      // }
-      // if (!isNaN(this.formRecord.c84)) {
-      //   count_s += Number(this.formRecord.c84)
-      // }
-      // if (!isNaN(this.formRecord.c86)) {
-      //   count_s += Number(this.formRecord.c86)
-      // }
-      // if (!isNaN(this.formRecord.c88)) {
-      //   count_s += Number(this.formRecord.c88)
-      // }
-      // if (!isNaN(this.formRecord.c90)) {
-      //   count_s += Number(this.formRecord.c90)
-      // }
-      // if (!isNaN(this.formRecord.c127)) {
-      //   count_s += Number(this.formRecord.c127)
-      // }
-      // count_s = Math.round(count_s * vv) / vv;
-      // this.formRecord.c123 = count_s
-    },
-    
+
     showConfirm () {
       let _this = this
       let pageType=_this.$store.state.app.pageType;
@@ -1638,10 +1588,10 @@ export default {
           }
           return;
       }
-     
-      _this.count43()
-      _this.count123()
-      
+
+      // _this.count43()
+      // _this.count123()
+
       this.$refs['formRecord'].validate((valid) => {
         if (valid) {
           if (_this.confirmData.join('') == 1) {
@@ -1689,7 +1639,7 @@ export default {
     submitRecord () {
       let _this = this
       let pageType=_this.$store.state.app.pageType;
-      _this.formRecord.c18 = _this.formatDate(this.formRecord.c18)
+      _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
       _this.formRecord.ptid = _this.$store.state.app.ptId
       _this.formRecord.pltId = _this.$store.state.app.pltId
       _this.formRecord.record_type = 0
@@ -1713,7 +1663,6 @@ export default {
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id=_this.$store.state.app.updateId || 0
-
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -1747,7 +1696,7 @@ export default {
           }
         })
       }else{
-        
+
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -1784,7 +1733,7 @@ export default {
     saveRecord () {
       let _this = this
       _this.saveDisabled = true
-      _this.formRecord.c18 = _this.formatDate(this.formRecord.c18)
+      _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
       _this.formRecord.ptid = _this.$store.state.app.ptId
       _this.formRecord.pltId = _this.$store.state.app.pltId
       _this.formRecord.record_type = 0
@@ -1804,10 +1753,10 @@ export default {
         url: '/marking/saveDraft.do',
         method: 'POST',
         data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest` 
+        // 只适用于 POST,PUT,PATCH，transformRequest`
         //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
         //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) { 
+        transformRequest: [function (data) {
           let ret = ''
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
@@ -1951,7 +1900,7 @@ export default {
       }else {
         this.forbidden.c26 = true
       }
-     
+
       // const checkc17 = (rule, value, callback) => {
       //   // 能效等级校验
       //   let nxdj = ""
