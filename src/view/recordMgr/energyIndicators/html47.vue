@@ -2102,9 +2102,8 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId
+      _this.formRecord.id=_this.$store.state.app.updateId || 0
       
-      _this.formRecord.id=0;
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -2191,7 +2190,6 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=0;
 
       axios({
         url: '/marking/saveDraft.do',

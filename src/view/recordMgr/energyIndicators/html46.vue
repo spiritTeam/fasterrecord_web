@@ -889,7 +889,7 @@
           </dd>
           <dd>
               特提出免检备案申请，扩展型号的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord.c20)}}</span>
+              <span class="f-date">{{formatDate(formRecord.c18)}}</span>
           </dd>
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -901,7 +901,7 @@
           </dd>
           <dd>
               该型号的相关信息变更后的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord.c20)}}</span>
+              <span class="f-date">{{formatDate(formRecord.c18)}}</span>
           </dd>
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -1560,7 +1560,7 @@ export default {
               } else {
                 that.formRecord[e.recId] = parseInt(labVal).toString();
               }
-            } else if (e.recId === 'c20' && isNaN(labVal)) {
+            } else if (e.recId === 'c18' && isNaN(labVal)) {
               that.formRecord[e.recId] = new Date()
             }else {
               that.formRecord[e.recId] = labVal
@@ -1689,7 +1689,7 @@ export default {
     submitRecord () {
       let _this = this
       let pageType=_this.$store.state.app.pageType;
-      _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
+      _this.formRecord.c18 = _this.formatDate(this.formRecord.c18)
       _this.formRecord.ptid = _this.$store.state.app.ptId
       _this.formRecord.pltId = _this.$store.state.app.pltId
       _this.formRecord.record_type = 0
@@ -1712,8 +1712,8 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId
-      _this.formRecord.id=0;
+      _this.formRecord.id=_this.$store.state.app.updateId || 0
+      
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -1784,7 +1784,7 @@ export default {
     saveRecord () {
       let _this = this
       _this.saveDisabled = true
-      _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
+      _this.formRecord.c18 = _this.formatDate(this.formRecord.c18)
       _this.formRecord.ptid = _this.$store.state.app.ptId
       _this.formRecord.pltId = _this.$store.state.app.pltId
       _this.formRecord.record_type = 0
@@ -1799,7 +1799,6 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=0;
 
       axios({
         url: '/marking/saveDraft.do',
