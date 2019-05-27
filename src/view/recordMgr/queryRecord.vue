@@ -41,9 +41,7 @@
 </template>
 <script>
 import axios from 'axios'
-
 export default {
-
   data () {
     const downLoadCode = (h,params) => h('Button', {
             props: {

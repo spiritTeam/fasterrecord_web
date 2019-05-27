@@ -38,7 +38,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly width="88%"></Input>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly ></Input>
 
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:1000px;" :label-width="180">
@@ -448,7 +448,6 @@
                     <Radio label="有霜" :disabled='disabledoff'>有霜</Radio>
                     <Radio label="无霜" :disabled='disabledoff'>无霜</Radio>
                   </RadioGroup>
-
                 </FormItem>
               </td>
               <td>
@@ -990,9 +989,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload24"
+                    :before-upload="file=>fileHandleBeforeUpload(file,24)"
                     :data="uploadParam.fileData24"
-                    :on-success="getFile24"
+                    :on-success="(res,file)=>getFile(res,file,24)"
+                    :on-format-error="file=>handleFormatError(file,24)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1015,9 +1015,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload26"
+                    :before-upload="file=>fileHandleBeforeUpload(file,26)"
                     :data="uploadParam.fileData26"
-                    :on-success="getFile26"
+                    :on-success="(res,file)=>getFile(res,file,26)"
+                    :on-format-error="file=>handleFormatError(file,26)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1033,11 +1034,13 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload27"
+                    :before-upload="file=>fileHandleBeforeUpload(file,27)"
                     :data="uploadParam.fileData27"
-                    :on-success="getFile27"
+                    :on-success="(res,file)=>getFile(res,file,27)"
+                    :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
+                    
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1053,9 +1056,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload28"
+                    :before-upload="file=>fileHandleBeforeUpload(file,28)"
                     :data="uploadParam.fileData28"
-                    :on-success="getFile28"
+                    :on-success="(res,file)=>getFile(res,file, 28)"
+                    :on-format-error="file=>handleFormatError(file,28)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1071,9 +1075,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload29"
+                    :before-upload="file=>fileHandleBeforeUpload(file,29)"
                     :data="uploadParam.fileData29"
-                    :on-success="getFile29"
+                    :on-success="(res,file)=>getFile(res,file, 29)"
+                    :on-format-error="file=>handleFormatError(file,29)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1091,9 +1096,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload30"
+                    :before-upload="file=>fileHandleBeforeUpload(file,30)"
                     :data="uploadParam.fileData30"
-                    :on-success="getFile30"
+                    :on-success="(res,file)=>getFile(res,file, 30)"
+                    :on-format-error="file=>handleFormatError(file,30)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1109,9 +1115,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload31"
+                    :before-upload="file=>fileHandleBeforeUpload(file,31)"
                     :data="uploadParam.fileData31"
-                    :on-success="getFile31"
+                    :on-success="(res,file)=>getFile(res,file, 31)"
+                    :on-format-error="file=>handleFormatError(file,31)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1129,9 +1136,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload32"
+                    :before-upload="file=>fileHandleBeforeUpload(file,32)"
                     :data="uploadParam.fileData32"
-                    :on-success="getFile32"
+                    :on-success="(res,file)=>getFile(res,file, 32)"
+                    :on-format-error="file=>handleFormatError(file,32)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1148,9 +1156,10 @@
                     id=76
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload76"
+                    :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
-                    :on-success="getFile76"
+                    :on-success="(res,file)=>getFile(res,file, 76)"
+                    :on-format-error="file=>handleFormatError(file,76)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1256,7 +1265,7 @@
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-
+  
 </template>
 <script>
 import axios from 'axios'
@@ -1269,7 +1278,6 @@ export default {
       modal4: false,
       modal5: false,
       templatePic: '',
-      disabledoff:true,
       uploadPic:'',
       modal2: false,
       currentValue: '',
@@ -1453,8 +1461,8 @@ export default {
     }
   },
   mounted () {
-
-    this.disabledoff= this.$store.state.app.pageType=="extend"? true : false
+    //console.log(this.$store.state.app.pageType)
+   
   },
   methods: {
     showTemplate () {
@@ -1476,66 +1484,33 @@ export default {
       imgDir += year + '/' + month + '/' + date + '/'
       this.dir = imgDir
     },
-    fileHandleBeforeUpload24 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList24 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '24'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList24.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList24.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData24['key'] = _this.dir + file.name
-          _this.uploadParam.fileData24['policy'] = res.data.policy
-          _this.uploadParam.fileData24['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData24['success_action_status'] = '200'
-          _this.uploadParam.fileData24['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath24= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
+    handleFormatError (file,id) {
+        this.uploadParam['filePath'+id]=''
+        this.filesArr.splice(this.filesArr.indexOf(id),1)
+        this.$Notice.warning({
+            title: '上传文件，类型错误',
+            desc: '请选择正确的类型文件'
+        });
     },
-    fileHandleBeforeUpload26 (file) {
+    fileHandleBeforeUpload (file,id) {
+      console.log(id)
       let _this = this
       let fileObj = {}
-      this.uploadParam.uploadFileList26 = []
+      _this.uploadParam['uploadFileList'+id] = []
       const Fname = file.name
       const seat = Fname.lastIndexOf('.')
       const extension = Fname.substring(seat).toLowerCase()
       const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '26'
+      fileObj.ec_attach_id = id
       fileObj.ec_attach_originalname = file.name
       fileObj.ec_attach_file = gname
       Object.defineProperty(file, 'name', {
         writable: true,
         value: gname
-      })
+      })      
       return new Promise(function (resolve, reject) {
         axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList26.length > 0) {
+          if (_this.uploadParam['uploadFileList'+id].length > 0) {
             _this.$Notice.warning({
               title: '最多上传1个附件'
             })
@@ -1545,310 +1520,17 @@ export default {
           reader.readAsDataURL(file)
           reader.onloadend = (e) => {
             file.url = reader.result
-            _this.uploadParam.uploadFileList26.push(file)
+            //console.log(_this.uploadParam['uploadFileList'+id])
+            _this.uploadParam['uploadFileList'+id].push(file)
           }
           _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData26['key'] = _this.dir + file.name
-          _this.uploadParam.fileData26['policy'] = res.data.policy
-          _this.uploadParam.fileData26['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData26['success_action_status'] = '200'
-          _this.uploadParam.fileData26['signature'] = res.data.signature
+          _this.uploadParam['fileData'+id]['key'] = _this.dir + file.name
+          _this.uploadParam['fileData'+id]['policy'] = res.data.policy
+          _this.uploadParam['fileData'+id]['OSSAccessKeyId'] = res.data.accessid
+          _this.uploadParam['fileData'+id]['success_action_status'] = '200'
+          _this.uploadParam['fileData'+id]['signature'] = res.data.signature
           _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath26= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload27 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList27 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '27'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList27.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList27.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData27['key'] = _this.dir + file.name
-          _this.uploadParam.fileData27['policy'] = res.data.policy
-          _this.uploadParam.fileData27['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData27['success_action_status'] = '200'
-          _this.uploadParam.fileData27['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath27= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload28 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList28 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '28'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList28.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList28.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData28['key'] = _this.dir + file.name
-          _this.uploadParam.fileData28['policy'] = res.data.policy
-          _this.uploadParam.fileData28['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData28['success_action_status'] = '200'
-          _this.uploadParam.fileData28['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath28= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload29 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList29 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '29'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList29.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList29.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData29['key'] = _this.dir + file.name
-          _this.uploadParam.fileData29['policy'] = res.data.policy
-          _this.uploadParam.fileData29['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData29['success_action_status'] = '200'
-          _this.uploadParam.fileData29['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath29= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload30 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList30 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '30'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList30.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList30.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData30['key'] = _this.dir + file.name
-          _this.uploadParam.fileData30['policy'] = res.data.policy
-          _this.uploadParam.fileData30['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData30['success_action_status'] = '200'
-          _this.uploadParam.fileData30['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath30= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload31 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList31 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '31'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList31.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList31.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData31['key'] = _this.dir + file.name
-          _this.uploadParam.fileData31['policy'] = res.data.policy
-          _this.uploadParam.fileData31['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData31['success_action_status'] = '200'
-          _this.uploadParam.fileData31['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-        fileObj.ec_attach_path = _this.uploadParam.filePath31= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload32 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList32 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '32'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList32.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList32.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData32['key'] = _this.dir + file.name
-          _this.uploadParam.fileData32['policy'] = res.data.policy
-          _this.uploadParam.fileData32['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData32['success_action_status'] = '200'
-          _this.uploadParam.fileData32['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-        fileObj.ec_attach_path = _this.uploadParam.filePath32= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload76 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList76 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '76'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList76.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList76.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData76['key'] = _this.dir + file.name
-          _this.uploadParam.fileData76['policy'] = res.data.policy
-          _this.uploadParam.fileData76['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData76['success_action_status'] = '200'
-          _this.uploadParam.fileData76['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath76= res.data.host + _this.dir + file.name
+          fileObj.ec_attach_path = _this.uploadParam['filePath'+id]= res.data.host + _this.dir + file.name
           _this.filesArr.push(fileObj)
           resolve()
         })
@@ -1866,7 +1548,6 @@ export default {
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
       for(let i in data) {
-        if (that.formRecord[i] = [])
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
             data[i].split(';').forEach((v) => {
@@ -1894,6 +1575,7 @@ export default {
           that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
       })
+      console.log(params.lab.upddate);
       that.$store.commit('setDefaultData', params.lab.params)
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
@@ -1923,6 +1605,7 @@ export default {
     fillDefaultData () {
       let that = this;
       that.formRecord.c200 = that.$store.state.app.gb
+      //console.log();
       that.$store.state.app.defaultData.forEach((e) => {
         if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
           that.formRecord[e.recId] = []
@@ -2006,7 +1689,7 @@ export default {
       count_s = Math.round(count_s * vv) / vv;
       this.formRecord.c123 = count_s
     },
-
+    
     showConfirm () {
       let _this = this
       let pageType=_this.$store.state.app.pageType;
@@ -2027,10 +1710,10 @@ export default {
           }
           return;
       }
-
+     
       _this.count43()
       _this.count123()
-
+      
       this.$refs['formRecord'].validate((valid) => {
         if (valid) {
           if (_this.confirmData.join('') == 1) {
@@ -2102,7 +1785,6 @@ export default {
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id=_this.$store.state.app.updateId || 0
-
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -2136,7 +1818,7 @@ export default {
           }
         })
       }else{
-
+        
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -2193,15 +1875,14 @@ export default {
         url: '/marking/saveDraft.do',
         method: 'POST',
         data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest`
+        // 只适用于 POST,PUT,PATCH，transformRequest` 
         //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
         //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) {
+        transformRequest: [function (data) { 
           let ret = ''
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
           }
-
           return ret
         }],
         headers: {
@@ -2231,35 +1912,14 @@ export default {
       let day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
       return year + '-' + month + '-' + day
     },
-    getFile24 (res, file) {
-      this.checkmark24 = true
+    getFile (res, file,id) {
+      this['checkmark'+id] = true
     },
-    getFile26 (res, file) {
-      this.checkmark26 = true
-    },
-    getFile27 (res, file) {
-      this.checkmark27 = true
-    },
-    getFile28 (res, file) {
-      this.checkmark28 = true
-    },
-    getFile29 (res, file) {
-      this.checkmark29 = true
-    },
-    getFile30 (res, file) {
-      this.checkmark30 = true
-    },
-    getFile31 (res, file) {
-      this.checkmark31 = true
-    },
-    getFile32 (res, file) {
-      this.checkmark32 = true
-    },
-    getFile76 (res, file) {
-      this.checkmark76 = true
-    }
   },
   computed: {
+    disabledoff(){
+      return  this.$store.state.app.pageType==='extend';
+    },
     pltId () {
       return this.$store.state.app.pltId
     },
