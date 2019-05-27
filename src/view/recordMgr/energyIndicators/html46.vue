@@ -941,12 +941,13 @@
   import axios from 'axios'
 
   export default {
-
     data() {
       const timeDate = this.$store.state.app.dateinit;
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV : "c18",
+        // 当前能效等级 对应的C值
+        thisLevelCV : "c7",
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1512,7 +1513,7 @@
         that.$store.commit('setLabName', mark.ec_labname)
         that.formRecord.id = mark.id
         for (let i in data) {
-          if (i === 'c23') {
+          if(that.formRecord[i] != null && that.formRecord[i].constructor === Array){
             that.formRecord[i] = []
             data[i].split(';').forEach((v) => {
               that.formRecord[i].push(v)
@@ -1547,7 +1548,7 @@
         that.$store.commit('setLabName', mark.ec_labname)
         that.formRecord.id = mark.id
         for (let i in data) {
-          if (i === 'c23') {
+          if(that.formRecord[i] != null && that.formRecord[i].constructor === Array){
             that.formRecord[i] = []
             data[i].split(';').forEach((v) => {
               that.formRecord[i].push(v)
@@ -1569,20 +1570,19 @@
         let that = this;
         that.formRecord.c200 = that.$store.state.app.gb
         that.$store.state.app.defaultData.forEach((e) => {
-          if (e.recId === 'c23') {
+          if(that.formRecord[i] != null && that.formRecord[i].constructor === Array){
             that.formRecord[e.recId] = []
             if (e.labValue === '/' || e.labValue == null || e.labValue == '') {
               return
             }
             that.formRecord[e.recId] = e.labValue.replace(/\s+/g, '').split(';')
-
           } else {
             if (e.labValue === '/' || e.labValue == null || e.labValue == '') {
               that.formRecord[e.recId] = ''
             } else {
 
               let labVal = e.labValue.replace(/（/g, '(').replace(/）/g, ')')
-              if (e.recId === 'c7') {
+              if (e.recId === this.thisLevelCV) {
                 if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
                   that.formRecord[e.recId] = '1'
                 } else {
@@ -1618,7 +1618,6 @@
           }
           return;
         }
-
         this.$refs['formRecord'].validate((valid) => {
           if (valid) {
             if (_this.confirmData.join('') == 1) {
@@ -1644,7 +1643,7 @@
               }
             } else {
               if (v.labValue != target[v.recId]) {
-                if (v.recId == 'c7') {
+                if (v.recId == this.thisLevelCV) {
                   if (parseInt(v.labValue) != target[v.recId]) {
                     v.updateVal = target[v.recId] + '级';
                     newArr.push(v);

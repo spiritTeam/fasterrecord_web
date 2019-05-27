@@ -1866,6 +1866,7 @@ export default {
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
       for(let i in data) {
+        if (that.formRecord[i] = [])
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
             data[i].split(';').forEach((v) => {
@@ -2113,7 +2114,6 @@ export default {
             for (let it in data) {
               ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
             }
-
             return ret
           }],
           headers: {
