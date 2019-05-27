@@ -79,7 +79,7 @@ export default {
       if(this.$route.params.draftData){
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
       }else if(this.$route.params.extendData){
-        
+
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }
     }
@@ -87,7 +87,6 @@ export default {
   methods: {
     setNoTips () {
       setCookie('noTips',this.noTips.join(''),1)
-      console.log(this.noTips)
     },
     showTemple () {
       this.$refs.selectSample.getSampleList()

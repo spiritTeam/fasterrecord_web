@@ -41,9 +41,7 @@
 </template>
 <script>
 import axios from 'axios'
-    
 export default {
-  
   data () {
     const downLoadCode = (h,params) => h('Button', {
             props: {
@@ -266,7 +264,6 @@ export default {
             _this.uploadParam.uploadFileList.push(file)
           }
           _this.getImgPath(res.data.dir)
-          console.log(_this.dir + file.name)
           _this.uploadParam.fileData['key'] = _this.dir + file.name
           _this.uploadParam.fileData['policy'] = res.data.policy
           _this.uploadParam.fileData['OSSAccessKeyId'] = res.data.accessid
@@ -302,9 +299,9 @@ export default {
       })
     },
     updateHandle(id){
-        this.$router.push({name:'addRecord'});
-        this.$store.commit('setPageType', 'update')
-        this.$store.commit('setUpdateId',id)
+        this.$router.push({name:'addRecord',params:{type:'update',id:id}});
+        //this.$store.commit('setPageType', 'update')
+        //this.$store.commit('setUpdateId',id)
     },
     extendHandle(id){
       axios.get('/marking/getInfoWithoutAttach.do', {
@@ -312,11 +309,8 @@ export default {
           id: id
         }
       }).then(res => {
-        
           if(res.data.result_code==='1'){
-            this.$router.push({name:'addRecord',params:{step:3,extendData:res.data}})
-            this.$store.commit('setPageType', 'extend')
-            this.$store.commit('setUpdateId',id)
+            this.$router.push({name:'addRecord',params:{step:3,type:'extend',id:id,extendData:res.data}})
             this.$store.commit('setModelNo',res.data.marking.ec_model_no)
           }
       })
