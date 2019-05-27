@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.energylabel.fastrecord.dao.EcMarkingAttachDAO">
+	<resultMap id="EcMarkingAttachMap" type="EcMarkingAttach">
+		<result column="ec_marking_attach_id" property="ec_marking_attach_id" jdbcType="INTEGER" />
+		<result column="ec_marking_id" property="ec_marking_id" jdbcType="INTEGER" />
+		<result column="ec_attach_id" property="ec_attach_id" jdbcType="INTEGER" />
+		<result column="ec_attach_file" property="ec_attach_file" jdbcType="VARCHAR" />
+		<result column="ec_attach_originalname" property="ec_attach_originalname" jdbcType="VARCHAR" />
+		<result column="ec_attach_uploaduserid" property="ec_attach_uploaduserid" jdbcType="INTEGER" />
+		<result column="ec_attach_path" property="ec_attach_path" jdbcType="VARCHAR" />
+		<result column="ec_attach_uploadtime" property="ec_attach_uploadtime" jdbcType="DATE" />
+		<result column="ec_attach_active" property="ec_attach_active" jdbcType="VARCHAR" />
+		<result column="labNameTextbox" property="labNameTextbox" jdbcType="VARCHAR" />
+		<result column="reportNoTextbox" property="reportNoTextbox" jdbcType="VARCHAR" />
+		<result column="labReportId" property="labReportId" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="getEcMarkingAttachById" resultMap="EcMarkingAttachMap" parameterType="map">
+		select * from ec_marking_attach t 
+		where t.ec_marking_attach_id=#{ec_marking_attach_id}
+	</select>
+	
+	<select id="getEcMarkingAttach25" resultMap="EcMarkingAttachMap" parameterType="map">
+		select * from ec_marking_attach t 
+		where t.ec_marking_id=#{ec_marking_id} and t.ec_attach_id=25 limit 1
+	</select>
+	
+	<select id="getEcMarkingAttachList" resultMap="EcMarkingAttachMap" parameterType="map">
+		select * from ec_marking_attach t 
+		where t.ec_marking_id=#{ec_marking_id}
+	</select>
+	
+	<update id="updateEcMarkingAttach" parameterType="EcMarkingAttach">
+		update ec_marking_attach set 
+		ec_attach_file=#{ec_attach_file},
+		ec_attach_originalname=#{ec_attach_originalname},
+		ec_attach_path=#{ec_attach_path},
+		ec_attach_uploadtime=#{ec_attach_uploadtime}
+		where ec_marking_attach_id=#{ec_marking_attach_id}
+	</update>
+
+	<insert id="insertEcMarkingAttach" parameterType="EcMarkingAttach">
+		insert
+		into ec_marking_attach(
+		ec_marking_attach_id,ec_marking_id,ec_attach_id,ec_attach_file,ec_attach_originalname,ec_attach_uploaduserid,
+		ec_attach_path,ec_attach_uploadtime,ec_attach_active
+		)values(
+		#{ec_marking_attach_id},#{ec_marking_id,jdbcType=INTEGER},#{ec_attach_id,jdbcType=INTEGER},
+		#{ec_attach_file,jdbcType=VARCHAR},#{ec_attach_originalname,jdbcType=VARCHAR},#{ec_attach_uploaduserid,jdbcType=INTEGER},
+		#{ec_attach_path,jdbcType=VARCHAR},#{ec_attach_uploadtime,jdbcType=DATE},#{ec_attach_active,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<delete id="delByEcMarkingId" parameterType="map">
+		delete from ec_marking_attach 
+		where ec_marking_id=#{ec_marking_id}
+	</delete>
+
+</mapper>
