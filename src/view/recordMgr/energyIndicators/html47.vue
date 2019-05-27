@@ -38,7 +38,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly ></Input>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly width="88%"></Input>
 
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:1000px;" :label-width="180">
@@ -2102,9 +2102,8 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId
+      _this.formRecord.id=_this.$store.state.app.updateId || 0
       
-      _this.formRecord.id=0;
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -2193,7 +2192,6 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=0;
 
       axios({
         url: '/marking/saveDraft.do',

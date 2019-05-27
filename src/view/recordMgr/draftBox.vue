@@ -42,6 +42,9 @@ export default {
         {
           ec_model_no: '47',
           ec_model_title: '家用电冰箱 2015版'
+        },{
+          ec_model_no: '46',
+          ec_model_title: '计算机显示器 2015版'
         }
       ],
       columns1: [
