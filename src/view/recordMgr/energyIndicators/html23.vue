@@ -636,9 +636,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload24"
+                    :before-upload="file=>fileHandleBeforeUpload(file,24)"
                     :data="uploadParam.fileData24"
-                    :on-success="getFile24"
+                    :on-success="(res,file)=>getFile(res,file,24)"
+                    :on-format-error="file=>handleFormatError(file,24)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -663,9 +664,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload26"
+                    :before-upload="file=>fileHandleBeforeUpload(file,26)"
                     :data="uploadParam.fileData26"
-                    :on-success="getFile26"
+                    :on-success="(res,file)=>getFile(res,file,26)"
+                    :on-format-error="file=>handleFormatError(file,26)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -683,11 +685,13 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload27"
+                    :before-upload="file=>fileHandleBeforeUpload(file,27)"
                     :data="uploadParam.fileData27"
-                    :on-success="getFile27"
+                    :on-success="(res,file)=>getFile(res,file,27)"
+                    :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27"/>
                   </Upload>
@@ -705,9 +709,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload28"
+                    :before-upload="file=>fileHandleBeforeUpload(file,28)"
                     :data="uploadParam.fileData28"
-                    :on-success="getFile28"
+                    :on-success="(res,file)=>getFile(res,file, 28)"
+                    :on-format-error="file=>handleFormatError(file,28)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -725,9 +730,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload29"
+                    :before-upload="file=>fileHandleBeforeUpload(file,29)"
                     :data="uploadParam.fileData29"
-                    :on-success="getFile29"
+                    :on-success="(res,file)=>getFile(res,file, 29)"
+                    :on-format-error="file=>handleFormatError(file,29)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -747,9 +753,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload30"
+                    :before-upload="file=>fileHandleBeforeUpload(file,30)"
                     :data="uploadParam.fileData30"
-                    :on-success="getFile30"
+                    :on-success="(res,file)=>getFile(res,file, 30)"
+                    :on-format-error="file=>handleFormatError(file,30)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -767,9 +774,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload31"
+                    :before-upload="file=>fileHandleBeforeUpload(file,31)"
                     :data="uploadParam.fileData31"
-                    :on-success="getFile31"
+                    :on-success="(res,file)=>getFile(res,file, 31)"
+                    :on-format-error="file=>handleFormatError(file,31)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -789,9 +797,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload32"
+                    :before-upload="file=>fileHandleBeforeUpload(file,32)"
                     :data="uploadParam.fileData32"
-                    :on-success="getFile32"
+                    :on-success="(res,file)=>getFile(res,file, 32)"
+                    :on-format-error="file=>handleFormatError(file,32)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -810,9 +819,10 @@
                     id=76
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload76"
+                    :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
-                    :on-success="getFile76"
+                    :on-success="(res,file)=>getFile(res,file, 76)"
+                    :on-format-error="file=>handleFormatError(file,76)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1163,138 +1173,7 @@ export default {
       return this.$store.state.app.requiredStr
     },
     ruleRecord () {
-     
-
-      // 能效等级
-      var nxdj = this.formRecord.c7
-      // 类型
-      var lx = this.formRecord.c8
-      // 能源效率（cd/W）标注值
-      var energyVal = parseFloat(this.formRecord.c9)
-      // 能源效率（cd/W）实测值
-      var energyValsh = parseFloat(this.formRecord.c12)
-      // 关闭状态功率(W)标注值
-      var closeVal = parseFloat(this.formRecord.c10)
-      // 关闭状态功率(W)实测值
-      var closeValsh = parseFloat(this.formRecord.c13)
-      // 睡眠状态功率(W)标注值
-      var sleepVal = parseFloat(this.formRecord.c11)
-      // 睡眠状态功率(W)实测值
-      var sleepValsh = parseFloat(this.formRecord.c14)
-      var nxdjst = ''
-
-      if (this.formRecord.c23.join('').indexOf('其他') > -1) {
-        this.forbidden.c24 = false
-      } else {
-        this.formRecord.c24 = ''
-        this.forbidden.c24 = true
-      }
-
-      if (this.formRecord.c25 === '2') {
-        this.forbidden.c26 = false
-      } else {
-        this.formRecord.c26 = ''
-        this.forbidden.c26 = true
-      }
-
-      const checkc9 = (rule, value, callback) => {
-        if (energyVal > energyValsh) {
-          callback('能源效率标注值应小于等于实测值')
-        } else {
-          callback()
-        }
-      }
-      const checkc10 = (rule, value, callback) => {
-        if (closeValsh > closeVal) {
-          callback('关闭状态功率标注值应大于等于实测值')
-        } else {
-          callback()
-        }
-      }
-      const checkc11 = (rule, value, callback) => {
-        if (sleepValsh > sleepVal) {
-          callback('睡眠状态功率标注值应大于等于实测值')
-        } else {
-          callback()
-        }
-      }
-
-      var checkc10a
-      var checkc10b
-      var checkc10c
-      var checkc11a
-      if (lx != '') {
-        if (lx == '标准显示器') {
-          checkc10a = (rule, value, callback) => {
-            if (closeVal > 0.5) {
-              callback('关闭状态功率(W)标注值应小于等于0.50W')
-            } else {
-              callback()
-            }
-          }
-          checkc10b = (rule, value, callback) => {
-            if (sleepVal > 0.5) {
-              callback('关闭状态功率(W)标注值应小于等于0.50W')
-            } else {
-              callback()
-            }
-          }
-          if (energyVal != '') {
-            if (energyVal >= 2.0) {
-              nxdjst = '1'
-            }
-            if (energyVal >= 1.5 && energyVal < 2.0) {
-              nxdjst = '2'
-            }
-            if (energyVal >= 1.0 && energyVal < 1.5) {
-              nxdjst = '3'
-            }
-          }
-        } else if (lx == '高性能显示器') {
-          checkc10c = (rule, value, callback) => {
-            if (closeVal > 0.5) {
-              callback('关闭状态功率(W)标注值应小于等于0.50W')
-            } else {
-              callback()
-            }
-          }
-          checkc11a = (rule, value, callback) => {
-            if (sleepVal > 1.2) {
-              callback('睡眠状态功率(W)标注值应小于等于1.20W')
-            } else {
-              callback()
-            }
-          }
-          if (energyVal != '') {
-            if (energyVal >= 1.5) {
-              nxdjst = '1'
-            }
-            if (energyVal >= 1.0 && energyVal < 1.5) {
-              nxdjst = '2'
-            }
-            if (energyVal >= 0.50 && energyVal < 1.0) {
-              nxdjst = '3'
-            }
-          }
-        } else {
-          nxdjst = ''
-        }
-      }
-
-      const checkc7a = (rule, value, callback) => {
-        if (nxdjst == '') {
-          callback('能效数据不在备案范围')
-        } else {
-          callback()
-        }
-      }
-      const checkc7b = (rule, value, callback) => {
-        if (nxdjst != nxdj) {
-          callback('所选能效等级与计算结果不符！')
-        } else {
-          callback()
-        }
-      }
+  
 
       return {
         c2: [
@@ -1319,102 +1198,42 @@ export default {
           {
             required: true,
             message: '请选择能效等级'
-          },
-          {
-            validator: checkc7a,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc7a,
-            trigger: 'blur'
           }
         ],
         c9: [
           {
             required: true,
             message: '能源效率（cd/W）标注值不能为空'
-          },
-          {
-            validator: significantDigits22,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc9,
-            trigger: 'blur'
           }
         ],
         c10: [
           {
             required: true,
             message: '关闭状态功率(W)标注值不能为空'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc10,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc10a,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc10b,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc10c,
-            trigger: 'blur'
           }
         ],
         c11: [
           {
             required: true,
             message: '睡眠状态功率(W)标注值不能为空'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc11a,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc11,
-            trigger: 'blur'
           }
         ],
         c12: [
           {
             required: true,
             message: '能源效率（cd/W）实测值不能为空'
-          },
-          {
-            validator: significantDigits33,
-            trigger: 'blur'
           }
         ],
         c13: [
           {
             required: true,
             message: '关闭状态功率(W)实测值不能为空'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'blur'
           }
         ],
         c14: [
           {
             required: true,
             message: '睡眠状态功率(W)实测值不能为空'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'blur'
           }
         ],
         c19: [
@@ -1445,12 +1264,6 @@ export default {
           {
             required: true,
             message: '附加功能不能为空'
-          }
-        ],
-        c24: [
-          {
-            required: this.formRecord.c23.join('').indexOf('其他') > -1,
-            message: '附加功能其他不能为空'
           }
         ],
         c25: [
