@@ -1040,7 +1040,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1506,7 +1506,7 @@ export default {
       Object.defineProperty(file, 'name', {
         writable: true,
         value: gname
-      })      
+      })
       return new Promise(function (resolve, reject) {
         axios.get('/oss/token.do').then(res => {
           if (_this.uploadParam['uploadFileList'+id].length > 0) {
@@ -1546,6 +1546,7 @@ export default {
       that.$store.commit('setBarcode', mark.ec_labreport_no)
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
+
       for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
@@ -1574,6 +1575,7 @@ export default {
           that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
       })
+      console.log(params.lab.upddate);
       that.$store.commit('setDefaultData', params.lab.params)
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
@@ -1603,6 +1605,7 @@ export default {
     fillDefaultData () {
       let that = this;
       that.formRecord.c200 = that.$store.state.app.gb
+      //console.log();
       that.$store.state.app.defaultData.forEach((e) => {
         if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
           that.formRecord[e.recId] = []
