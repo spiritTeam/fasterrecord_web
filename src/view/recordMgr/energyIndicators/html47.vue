@@ -1265,7 +1265,7 @@
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-  
+
 </template>
 <script>
 import axios from 'axios'
@@ -1461,8 +1461,7 @@ export default {
     }
   },
   mounted () {
-    //console.log(this.$store.state.app.pageType)
-   
+    this.disabledoff= this.$store.state.app.pageType=="extend"? true : false
   },
   methods: {
     showTemplate () {
@@ -1547,6 +1546,7 @@ export default {
       that.$store.commit('setBarcode', mark.ec_labreport_no)
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
+      
       for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
@@ -1689,7 +1689,7 @@ export default {
       count_s = Math.round(count_s * vv) / vv;
       this.formRecord.c123 = count_s
     },
-    
+
     showConfirm () {
       let _this = this
       let pageType=_this.$store.state.app.pageType;
@@ -1710,10 +1710,10 @@ export default {
           }
           return;
       }
-     
+
       _this.count43()
       _this.count123()
-      
+
       this.$refs['formRecord'].validate((valid) => {
         if (valid) {
           if (_this.confirmData.join('') == 1) {
@@ -1818,7 +1818,7 @@ export default {
           }
         })
       }else{
-        
+
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -1875,10 +1875,10 @@ export default {
         url: '/marking/saveDraft.do',
         method: 'POST',
         data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest` 
+        // 只适用于 POST,PUT,PATCH，transformRequest`
         //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
         //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) { 
+        transformRequest: [function (data) {
           let ret = ''
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
