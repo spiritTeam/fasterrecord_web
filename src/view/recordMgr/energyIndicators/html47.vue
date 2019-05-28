@@ -1575,7 +1575,6 @@ export default {
           that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
       })
-      console.log(params.lab.upddate);
       that.$store.commit('setDefaultData', params.lab.params)
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
@@ -1605,7 +1604,6 @@ export default {
     fillDefaultData () {
       let that = this;
       that.formRecord.c200 = that.$store.state.app.gb
-      //console.log();
       that.$store.state.app.defaultData.forEach((e) => {
         if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
           that.formRecord[e.recId] = []
