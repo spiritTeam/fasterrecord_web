@@ -1543,19 +1543,6 @@ export default {
       that.$store.commit('setBarcode', mark.ec_labreport_no)
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
-
-      for (let i in data) {
-        if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
-          that.formRecord[i] = []
-          data[i].split(';').forEach((v) => {
-            that.formRecord[i].push(v)
-          })
-        } else if (i === 'c20') {
-          // this.$store.commit('setDateInit', data[i])
-          if (data[i] != undefined) that.formRecord[i] = that.formatDate(data[i])
-        } else {
-          that.formRecord[i] = data[i]
-        }
       }
     },
     /* 数据来源 草稿箱 */
