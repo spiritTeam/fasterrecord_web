@@ -11,9 +11,9 @@
         <Card :bordered="false">
           <h2>一、备案方声明</h2>
           <p>本组织保证如下：</p>
-          <p>使用的能效合格标志与备案信息一致；</p>
+          <p>使用的能源效率标识信息与备案信息一致；</p>
           <p>本型号产品变更能源效率标识时，向授权机构重新备案；</p>
-          <p>确保该型号产品始终符合能效合格标志使用的相关要求。</p>
+          <p>确保该型号产品始终符合能源效率标识使用的相关要求。</p>
         </Card>
       </div>
       <div class="part part2">
@@ -43,7 +43,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly/>
+            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" readonly disabled/>
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位"/>
@@ -52,7 +52,7 @@
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方"/>
           </FormItem>
           <FormItem prop="c4" label="规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号" readonly/>
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:100%" :label-width="180">
             <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
@@ -60,77 +60,168 @@
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
           </FormItem>
-          <FormItem prop="c7" label="能效等级" style="width:100%;" :label-width="180">
-            <RadioGroup v-model="formRecord.c7">
+          <FormItem prop="c30" label="能效等级" style="width:100%;" :label-width="180">
+            <RadioGroup v-model="formRecord.c30">
               <Radio label="1" :disabled='disabledoff'>1级</Radio>
               <Radio label="2" :disabled='disabledoff'>2级</Radio>
               <Radio label="3" :disabled='disabledoff'>3级</Radio>
-            </RadioGroup>
-          </FormItem>
-          <FormItem prop="c8" label="产品类型" :label-width="180">
-            <RadioGroup v-model="formRecord.c8">
-              <Radio :disabled='disabledoff' label="标准显示器">标准显示器</Radio>
-              <Radio :disabled='disabledoff' label="高性能显示器">高性能显示器</Radio>
+              <Radio label="4" :disabled='disabledoff'>4级</Radio>
+              <Radio label="5" :disabled='disabledoff'>5级</Radio>
             </RadioGroup>
           </FormItem>
           <table id="table1">
             <tr>
-              <th>项目</th>
-              <th>额定值</th>
-              <th>实测值</th>
-              <th>备注</th>
+              <td colspan="2">总能量消耗(kWh/24h)</td>
+              <td><span class="red">*</span>标称值:
+                <FormItem prop="c6">
+                  <Input type="text" v-model="formRecord.c6" :disabled='disabledoff' placeholder="两位小数"/>
+                </FormItem>
+              </td>
+              <td><span class="red">*</span>实测值:
+                <FormItem prop="c7">
+                  <Input type="text" v-model="formRecord.c7" :disabled='disabledoff' placeholder="至少三位小数"/>
+                </FormItem>
+              </td>
+              <td>备注:
+                <FormItem prop="c8">
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
             </tr>
             <tr>
-              <td>能源效率（cd/W）</td>
-              <td>
+              <td colspan="2">总展示面积(m²)</td>
+              <td>标称值:
                 <FormItem prop="c9">
-                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff' placeholder="两位有效数字"/>
+                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff' placeholder="两位小数"/>
                 </FormItem>
               </td>
-              <td>
-                <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' :required="formRecord.c21!==''" placeholder="三位有效数字"/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c15">
-                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>关闭状态功率（W）</td>
-              <td>
+              <td>实测值:
                 <FormItem prop="c10">
-                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff' placeholder="两位小数"/>
+                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff' placeholder="至少三位小数"/>
                 </FormItem>
               </td>
-              <td>
-                <FormItem prop="c13">
-                  <Input type="text" v-model="formRecord.c13" :disabled='disabledoff' placeholder="三位小数"/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c16">
-                  <Input type="text" v-model="formRecord.c16" :disabled='disabledoff'/>
+              <td>备注:
+                <FormItem prop="c11">
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td>睡眠状态功率（W）</td>
-              <td>
-                <FormItem prop="c11">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff' placeholder="两位小数"/>
+              <td rowspan="4">净容积（总有效容积）</td>
+              <td><span class="red">*</span>间室1净容积（有效容积）
+                <RadioGroup v-model="formRecord.c214">
+                  <Radio label="（m³）" :disabled='disabledoff'></Radio>
+                  <Radio label="（L）" :disabled='disabledoff'></Radio>
+                </RadioGroup>
+              </td>
+              <td><span class="red">*</span>标称值:
+                <FormItem prop="c15">
+                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff' placeholder="(m³)三位小数,(L)整数"/>
                 </FormItem>
               </td>
-              <td>
-                <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff' placeholder="三位小数"/>
+              <td><span class="red">*</span>实测值:
+                <FormItem prop="c16">
+                  <Input type="text" v-model="formRecord.c16" :disabled='disabledoff' placeholder="(m³)四位小数,(L)一位小数"/>
                 </FormItem>
               </td>
-              <td>
+              <td>备注:
                 <FormItem prop="c17">
                   <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>间室2净容积（有效容积）
+                <RadioGroup v-model="formRecord.c215">
+                  <Radio label="（m³）" :disabled='disabledoff'></Radio>
+                  <Radio label="（L）" :disabled='disabledoff'></Radio>
+                </RadioGroup>
+              </td>
+              <td>标称值:
+                <FormItem prop="c18">
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff' placeholder="(m³)三位小数,(L)整数"/>
+                </FormItem>
+              </td>
+              <td>实测值:
+                <FormItem prop="c19">
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff' placeholder="(m³)四位小数,(L)一位小数"/>
+                </FormItem>
+              </td>
+              <td>备注:
+                <FormItem prop="c20">
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>间室3净容积（有效容积）
+                <RadioGroup v-model="formRecord.c216">
+                  <Radio label="（m³）" :disabled='disabledoff'></Radio>
+                  <Radio label="（L）" :disabled='disabledoff'></Radio>
+                </RadioGroup>
+              </td>
+              <td>标称值:
+                <FormItem prop="c21">
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff' placeholder="(m³)三位小数,(L)整数"/>
+                </FormItem>
+              </td>
+              <td>实测值:
+                <FormItem prop="c22">
+                  <Input type="text" v-model="formRecord.c22" :disabled='disabledoff' placeholder="(m³)四位小数,(L)一位小数"/>
+                </FormItem>
+              </td>
+              <td>备注:
+                <FormItem prop="c23">
+                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>间室4净容积（有效容积）
+                <RadioGroup v-model="formRecord.c217">
+                  <Radio label="（m³）" :disabled='disabledoff'></Radio>
+                  <Radio label="（L）" :disabled='disabledoff'></Radio>
+                </RadioGroup>
+              </td>
+              <td>标称值:
+                <FormItem prop="c24">
+                  <Input type="text" v-model="formRecord.c24" :disabled='disabledoff' placeholder="(m³)三位小数,(L)整数"/>
+                </FormItem>
+              </td>
+              <td>实测值:
+                <FormItem prop="c25">
+                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff' placeholder="(m³)四位小数,(L)一位小数"/>
+                </FormItem>
+              </td>
+              <td>备注:
+                <FormItem prop="c26">
+                  <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">能效指数（%）</td>
+              <td><span class="red">*</span>标称值:
+                <FormItem prop="c27">
+                  <Input type="text" v-model="formRecord.c27" :disabled='disabledoff' placeholder="整数"/>
+                </FormItem>
+              </td>
+              <td><span class="red">*</span>实测值:
+                <FormItem prop="c28">
+                  <Input type="text" v-model="formRecord.c28" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+              <td>备注:
+                <FormItem prop="c29">
+                  <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">总能量消耗的标准规定值（耗电量限定值）TECmax（kWh/24h）</td>
+              <td colspan="3">
+                <FormItem prop="c37">
+                  <Input type="text" v-model="formRecord.c37" :disabled='disabledoff' placeholder="整数"/>
                 </FormItem>
               </td>
             </tr>
@@ -140,27 +231,27 @@
       <div class="part part4">
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
-          <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
-          <FormItem prop="c18" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18"
-                        :disabled='disabledoff'></DatePicker>
+          <FormItem prop="c31" label="备案标识开始使用日期" style="width:100%;">
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c31" :disabled='disabledoff'></DatePicker>
           </FormItem>
         </Card>
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、样品描述</h2>
+          <h2>五、其他信息</h2>
           <table id="table3">
             <tr>
-              <td>屏幕尺寸（长 × 宽）（mm × mm）</td>
-              <td>
-                <FormItem><b>长</b></FormItem>
-                <FormItem prop="c19">
-                  <Input style="vertical-align:top" type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
-                </FormItem>
-                <FormItem><b>宽</b></FormItem>
-                <FormItem prop="c20">
-                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
+              <td><span class="red">*</span>产品类型</td>
+              <td colspan="3">
+                <RadioGroup v-model="formRecord.c32">
+                  <Radio label="陈列式商用冷柜" :disabled='disabledoff'></Radio>
+                  <Radio label="饮料冷藏陈列柜" :disabled='disabledoff'></Radio>
+                  <Radio label="实体门商用冷柜" :disabled='disabledoff'></Radio>
+                  <Radio label="组合型商用冷柜" :disabled='disabledoff'></Radio>
+                  <Radio label="其它" :disabled='disabledoff'></Radio>
+                </RadioGroup>
+                <FormItem prop="c33">
+                  <Input type="text" v-model="formRecord.c33" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -211,8 +302,7 @@
               <td>额定功率（W）</td>
               <td>
                 <FormItem prop="c27">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c27" :disabled='disabledoff'
-                         width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c27" :disabled='disabledoff' width="100px"/>
                 </FormItem>
               </td>
             </tr>
