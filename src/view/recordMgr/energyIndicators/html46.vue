@@ -1,3 +1,6 @@
+<!--计算机显示器2015版-->
+<!--创建日期:2019年5月27日-->
+<!--创建人:YCL-->
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
@@ -185,7 +188,7 @@
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c24">
-                  <Input type="text" v-model="formRecord.c24" :disabled='forbidden.c24'/>
+                  <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c24'/>
                 </FormItem>
               </td>
             </tr>
@@ -199,7 +202,7 @@
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c26">
-                  <Input type="text" v-model="formRecord.c26" :disabled='forbidden.c26'/>
+                  <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c26'/>
                 </FormItem>
               </td>
             </tr>
