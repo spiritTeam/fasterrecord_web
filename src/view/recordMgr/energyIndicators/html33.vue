@@ -1673,9 +1673,5 @@
   }
 </script>
 <style>
-  @import '../../../libs/comm.css';
-
-  Input {
-    width: 100%;
-  }
+  @import '../../../css/comm.css';
 </style>

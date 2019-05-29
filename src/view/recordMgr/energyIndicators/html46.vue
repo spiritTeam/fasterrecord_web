@@ -1206,7 +1206,7 @@
       ruleRecord() {
         if (this.$store.state.app.requiredStr){
           this.$store.state.app.requiredStr.split(",").forEach((e) => {
-            if (this.formRecord[e]) {
+            if (!e && !this.formRecord[e]) {
               console.log(e + " 不能为空" + this.formRecord[e])
             }
           })
@@ -1645,5 +1645,5 @@
   }
 </script>
 <style>
-  @import '../../../libs/comm.css';
+  @import '../../../css/comm.css';
 </style>
