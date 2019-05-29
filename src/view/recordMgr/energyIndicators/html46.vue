@@ -1207,7 +1207,7 @@
         if (this.$store.state.app.requiredStr){
           this.$store.state.app.requiredStr.split(",").forEach((e) => {
             if (this.formRecord[e]) {
-              console.log(e + " 不能为空")
+              console.log(e + " 不能为空" + this.formRecord[e])
             }
           })
         }
