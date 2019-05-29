@@ -1645,5 +1645,5 @@
   }
 </script>
 <style>
-  @import '../../../libs/comm.css';
+  @import '../../../css/comm.css';
 </style>
