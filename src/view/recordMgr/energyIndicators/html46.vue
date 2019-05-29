@@ -1192,9 +1192,6 @@
     },
     computed: {
       pltId() {
-        console.log(this.$store.state.app.pltId)
-        console.log(this.$store.state.app.pltPic)
-        console.log(this.$store.state.app.requiredStr)
         return this.$store.state.app.pltId
       },
       pltPic() {
@@ -1204,14 +1201,6 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.$store.state.app.requiredStr){
-          this.$store.state.app.requiredStr.split(",").forEach((e) => {
-            if (!e && !this.formRecord[e]) {
-              console.log(e + " 不能为空" + this.formRecord[e])
-            }
-          })
-        }
-
         //能效等级
         var nxdj = this.formRecord.c7
         //类型
