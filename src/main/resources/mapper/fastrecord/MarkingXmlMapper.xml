@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.energylabel.fastrecord.dao.EcMarkingXmlDAO">
+	<resultMap id="EcMarkingXmlMap" type="EcMarkingXml">
+		<result column="ec_marking_id" property="ec_marking_id"
+			jdbcType="INTEGER" />
+		<result column="ec_marking_xml" property="ec_marking_xml"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="insertXml" parameterType="EcMarkingXml">
+		replace
+		into
+		ec_marking_xml(ec_marking_id,ec_marking_xml)values(
+		#{ec_marking_id},#{ec_marking_xml})
+	</insert>
+
+	<select id="getMarkingXml" resultType="java.lang.String"
+		parameterType="map">
+		select ec_marking_xml from ec_marking_xml where
+		ec_marking_id=#{ec_marking_id}
+	</select>
+</mapper>

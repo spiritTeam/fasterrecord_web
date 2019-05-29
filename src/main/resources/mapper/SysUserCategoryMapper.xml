@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper
+	namespace="com.energylabel.fastrecord.dao.SysUserCategoryDAO">
+	<resultMap id="sysUserCategoryVOMap"
+		type="com.hitworth.framework.base.vo.SysUserCategoryVO">
+		<result column="userid" property="userId" jdbcType="INTEGER" />
+		<result column="ec_model_no" property="ecModelNo"
+			jdbcType="INTEGER" />
+		<result column="ec_model_title" property="ecModelTitle"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<insert id="batchInsertSysUserCategory">
+		INSERT INTO sysusercategory (
+		userid,
+		ec_model_no,
+		ec_model_title
+		)VALUES
+		<foreach collection="sysUserCategoryList" item="item"
+			index="index" separator=",">
+			(#{item.userId}, #{item.ecModelNo}, #{item.ecModelTitle})
+		</foreach>
+	</insert>
+
+	<delete id="deleteSysUserCategory">
+		delete from sysusercategory where userid=#{userid}
+	</delete>
+
+	<select id="findSysUserCategoryByUserId"
+		resultMap="sysUserCategoryVOMap">
+		select a.userid,a.ec_model_no,a.ec_model_title from
+		sysusercategory a
+		where
+		a.userid=#{userid} order by a.ec_model_no
+	</select>
+</mapper>

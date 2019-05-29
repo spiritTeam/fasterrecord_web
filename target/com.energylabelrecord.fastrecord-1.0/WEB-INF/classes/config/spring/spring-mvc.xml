@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+	<!-- 引入配置文件 -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:config/properties/jdbc.properties</value>
+				<value>classpath:config/properties/sys_config.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 扫描controller（controller层注入） -->
+	<context:component-scan
+		base-package="com.hitworth.framework.base.controller" />
+	<context:component-scan
+		base-package="com.hitworth.framework.base.filter" />
+	<context:component-scan
+		base-package="com.energylabel.fastrecord.controller" />
+	<context:component-scan
+		base-package="com.energylabel.lab.controller" />
+	<!-- 开启事务注解驱动 -->
+	<context:annotation-config />
+	<!-- 开启事务注解驱动 -->
+	<mvc:annotation-driven>
+	</mvc:annotation-driven>
+	<!-- 避免IE在ajax请求时，返回json出现下载 -->
+	<bean id="jacksonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 上传附件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="104857600" />
+		<property name="maxInMemorySize" value="4096" />
+	</bean>
+
+	<!-- <mvc:cors> <mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" 
+		allowed-methods="GET,POST,PUT,DELETE,OPTIONS" max-age="3600" /> </mvc:cors> -->
+
+</beans>

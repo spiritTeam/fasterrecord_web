@@ -24,10 +24,10 @@
             <tbody>
               <tr>
                 <td width="40%">
-                  <Input type="text" :value="$store.state.app.labName" readonly></Input>
+                  <Input type="text" :value="$store.state.app.labName" readonly> 
                 </td>
                 <td>
-                  <Input type="text" :value="$store.state.app.barcode" readonly></Input>
+                  <Input type="text" :value="$store.state.app.barcode" readonly> 
                 </td>
               </tr>
             </tbody>
@@ -38,26 +38,26 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly ></Input>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly > 
 
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位" ></Input>
+            <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位" > 
 
           </FormItem>
           <FormItem prop="c3" label="备案方" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方" ></Input>
+            <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方" > 
           </FormItem>
           <FormItem prop="c4" label="规格型号" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff'  placeholder="规格型号"  ></Input>
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff'  placeholder="规格型号"  > 
 
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标" ></Input>
+            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标" > 
 
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled></Input>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled> 
 
           </FormItem>
           <FormItem prop="c7" label="能效等级" style="width:1000px;" :label-width="180">
@@ -96,19 +96,19 @@
               <td>标准耗电量 （kW·h/24h）</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff' placeholder="两位小数"></Input>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff' placeholder="两位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c9">
-                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff' :required="formRecord.c21!==''" placeholder="三位小数"></Input>
+                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff' :required="formRecord.c21!==''" placeholder="三位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c10">
-                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -117,19 +117,19 @@
               <td>标准能效指数（%）</td>
               <td>
                 <FormItem prop="c11">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'  placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'  placeholder="一位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff'  placeholder="三位小数"></Input>
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff'  placeholder="三位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c13">
-                  <Input type="text" v-model="formRecord.c13" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c13" :disabled='disabledoff' > 
                 </FormItem>
               </td>
             </tr>
@@ -137,19 +137,19 @@
               <td>综合耗电量 （kW·h/24h）</td>
               <td>
                 <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14"  :disabled='disabledoff' placeholder="两位小数"></Input>
+                  <Input type="text" v-model="formRecord.c14"  :disabled='disabledoff' placeholder="两位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c15">
-                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'  placeholder="三位小数"></Input>
+                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'  placeholder="三位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c16">
-                  <Input type="text" v-model="formRecord.c16" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c16" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -158,19 +158,19 @@
               <td>综合能效指数（%）</td>
               <td>
                 <FormItem prop="c17">
-                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff' placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff' placeholder="一位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c18">
-                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'  placeholder="三位小数"></Input>
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'  placeholder="三位小数"> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c19">
-                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -198,13 +198,13 @@
               </td>
               <td>
                 <FormItem prop="c25">
-                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c82">
-                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff' placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff' placeholder="一位小数"> 
 
                 </FormItem>
               </td>
@@ -212,13 +212,13 @@
               <td>/</td>
               <td>
                 <FormItem prop="c62">
-                  <Input type="text" v-model="formRecord.c62" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c62" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c83">
-                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -234,13 +234,13 @@
               </td>
               <td>
                 <FormItem prop="c27">
-                  <Input type="text" v-model="formRecord.c27" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c27" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c84">
-                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'  placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'  placeholder="一位小数"> 
 
                 </FormItem>
               </td>
@@ -248,19 +248,19 @@
               <td>/</td>
               <td>
                 <FormItem prop="c63">
-                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c85">
-                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td>其他间室1<br /><Input type="text" v-model="formRecord.c29" :disabled='disabledoff' ></Input></td>
+              <td>其他间室1<br /><Input type="text" v-model="formRecord.c29" :disabled='disabledoff' > </td>
               <td>
                 <FormItem prop="c28">
                   <RadioGroup v-model="formRecord.c28">
@@ -272,13 +272,13 @@
               </td>
               <td>
                 <FormItem prop="c30">
-                  <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c86">
-                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff' placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff' placeholder="一位小数"> 
 
                 </FormItem>
               </td>
@@ -286,39 +286,39 @@
                 <label style="display:block;margin-bottom:5px;">
                   <span>低：</span>
                   <FormItem prop="c32">
-                    <Input type="text" v-model="formRecord.c32" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c32" :disabled='disabledoff' style="width:50px;" > 
 
                   </FormItem>
                 </label>
                 <label>
                   <span>高：</span>
                   <FormItem prop="c120">
-                    <Input type="text" v-model="formRecord.c120" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c120" :disabled='disabledoff' style="width:50px;" > 
 
                   </FormItem>
                 </label>
               </td>
               <td>
                 <FormItem prop="c31">
-                  <Input type="text" v-model="formRecord.c31" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c31" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c64">
-                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c87" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c87" :disabled='disabledoff' > 
 
               </td>
             </tr>
             <tr>
               <td>其他间室2<br />
                 <FormItem prop="c34">
-                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -333,13 +333,13 @@
               </td>
               <td>
                 <FormItem prop="c35">
-                  <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c88">
-                  <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'  placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'  placeholder="一位小数"> 
 
                 </FormItem>
               </td>
@@ -347,39 +347,39 @@
                 <label style="display:block;margin-bottom:5px;">
                   <span>低：</span>
                   <FormItem prop="c37">
-                    <Input type="text" v-model="formRecord.c37" style="width:50px;" :disabled='disabledoff'></Input>
+                    <Input type="text" v-model="formRecord.c37" style="width:50px;" :disabled='disabledoff'> 
 
                   </FormItem>
                 </label>
                 <label>
                   <span>高：</span>
                   <FormItem prop="c121">
-                    <Input type="text" v-model="formRecord.c121" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c121" :disabled='disabledoff' style="width:50px;" > 
 
                   </FormItem>
                 </label>
               </td>
               <td>
                 <FormItem prop="c36">
-                  <Input type="text" v-model="formRecord.c36" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c36" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c65">
-                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'></Input>
+                <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'> 
 
               </td>
             </tr>
             <tr>
               <td>其他间室3<br />
                 <FormItem prop="c39">
-                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -393,52 +393,51 @@
               </td>
               <td>
                 <FormItem prop="c40">
-                  <Input type="text" v-model="formRecord.c40" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c40" :disabled='disabledoff'> 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c90">
-                  <Input type="text" v-model="formRecord.c90" :disabled='disabledoff' placeholder="一位小数"></Input>
-
+                  <Input type="text" v-model="formRecord.c90" :disabled='disabledoff' placeholder="一位小数"/>
                 </FormItem>
               </td>
               <td>
                 <label style="display:block;margin-bottom:5px;">
                   <span>低：</span>
                   <FormItem prop="c42">
-                    <Input type="text" v-model="formRecord.c42" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c42" :disabled='disabledoff' style="width:50px;" >
 
                   </FormItem>
                 </label>
                 <label>
                   <span>高：</span>
                   <FormItem prop="c122">
-                    <Input type="text" v-model="formRecord.c122" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c122" :disabled='disabledoff' style="width:50px;" >
 
                   </FormItem>
                 </label>
               </td>
               <td>
                 <FormItem prop="c41">
-                  <Input type="text" v-model="formRecord.c41" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c41" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c66">
-                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c91" :disabled='disabledoff'></Input>
+                <Input type="text" v-model="formRecord.c91" :disabled='disabledoff'> 
 
               </td>
             </tr>
             <tr>
               <td>其他间室4<br />
                 <FormItem prop="c124">
-                  <Input type="text" v-model="formRecord.c124" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c124" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -452,13 +451,13 @@
               </td>
               <td>
                 <FormItem prop="c126">
-                  <Input type="text" v-model="formRecord.c126" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c126" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c127">
-                  <Input type="text" v-model="formRecord.c127" :disabled='disabledoff' placeholder="一位小数"></Input>
+                  <Input type="text" v-model="formRecord.c127" :disabled='disabledoff' placeholder="一位小数"> 
 
                 </FormItem>
               </td>
@@ -466,33 +465,33 @@
                 <label style="display:block;margin-bottom:5px;">
                   <span>低：</span>
                   <FormItem prop="c128">
-                    <Input type="text" v-model="formRecord.c128" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c128" :disabled='disabledoff' style="width:50px;" > 
 
                   </FormItem>
                 </label>
                 <label>
                   <span>高：</span>
                   <FormItem prop="c129">
-                    <Input type="text" v-model="formRecord.c129" :disabled='disabledoff' style="width:50px;" ></Input>
+                    <Input type="text" v-model="formRecord.c129" :disabled='disabledoff' style="width:50px;" > 
 
                   </FormItem>
                 </label>
               </td>
               <td>
                 <FormItem prop="c130">
-                  <Input type="text" v-model="formRecord.c130" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c130" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c131">
-                  <Input type="text" v-model="formRecord.c131" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c131" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c132">
-                  <Input type="text" v-model="formRecord.c132" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c132" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -504,12 +503,12 @@
               <td>
                 <Button type="info" @click="count43">计算标称值</Button>
                 <FormItem prop="c43">
-                  <Input type="text" v-model="formRecord.c43" style="width:150px;" readonly ></Input>
+                  <Input type="text" v-model="formRecord.c43" style="width:150px;" readonly > 
 
                 </FormItem>
                 <Button type="info" @click="count123">计算实测值</Button>
                 <FormItem prop="c123">
-                  <Input type="text" v-model="formRecord.c123" style="width:150px;" readonly ></Input>
+                  <Input type="text" v-model="formRecord.c123" style="width:150px;" readonly > 
 
                 </FormItem>
               </td>
@@ -653,7 +652,7 @@
 
                 </FormItem>
                 <FormItem prop="c52">
-                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff' style="width:80px;" ></Input>
+                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff' style="width:80px;" > 
 
                 </FormItem>
               </td>
@@ -683,7 +682,7 @@
 
                 </FormItem>
                 <FormItem prop="c55">
-                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff' style="width:80px;" ></Input>
+                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff' style="width:80px;" > 
 
                 </FormItem>
               </td>
@@ -700,7 +699,7 @@
 
                 </FormItem>
                 <FormItem prop="c57">
-                  <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -717,7 +716,7 @@
 
                 </FormItem>
                 <FormItem prop="c59">
-                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff' style="width:80px;" ></Input>
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff' style="width:80px;" > 
 
                 </FormItem>
               </td>
@@ -726,7 +725,7 @@
               <td>照明灯额定输入功率（W）</td>
               <td>
                 <FormItem prop="c60">
-                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -735,7 +734,7 @@
               <td>输入总功率（W）</td>
               <td>
                 <FormItem prop="c61">
-                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -744,7 +743,7 @@
               <td>冷冻能力（kg/12h）</td>
               <td>
                 <FormItem prop="c67">
-                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'></Input>
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'> 
 
                 </FormItem>
               </td>
@@ -754,17 +753,17 @@
               <td>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">长</span>
                 <FormItem prop="c68">
-                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff' style="width:80px;" ></Input>
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff' style="width:80px;" > 
 
                 </FormItem>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">宽</span>
                 <FormItem prop="c69">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff' style="width:80px;" ></Input>
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff' style="width:80px;" > 
 
                 </FormItem>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">高</span>
                 <FormItem prop="c70">
-                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff' style="width:80px;" ></Input>
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff' style="width:80px;" > 
 
                 </FormItem>
               </td>
@@ -795,54 +794,54 @@
             <tr>
               <td>
                 <FormItem prop="c71">
-                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72">
-                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c73">
-                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c74">
-                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75">
-                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
-                <Input type="text" v-model="formRecord.c94" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c94" :disabled='disabledoff' > 
 
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c95" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c95" :disabled='disabledoff' > 
 
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c96" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c96" :disabled='disabledoff' > 
 
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c97" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c97" :disabled='disabledoff' > 
 
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c98" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c98" :disabled='disabledoff' > 
 
               </td>
             </tr>
@@ -851,7 +850,7 @@
               <td>制冷剂</td>
               <td>
                 <FormItem prop="c76">
-                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -859,19 +858,19 @@
                 <div style="margin-bottom:25px">
                   <span>主要成分：</span>
                   <FormItem prop="c77">
-                    <Input type="text" v-model="formRecord.c77" :disabled='disabledoff' style="width:300px;" ></Input>
+                    <Input type="text" v-model="formRecord.c77" :disabled='disabledoff' style="width:300px;" > 
 
                   </FormItem>
                 </div>
                 <div>
                   <span>重量：</span>
-                  <Input type="text" v-model="formRecord.c92" :disabled='disabledoff' style="width:300px;" ></Input>
+                  <Input type="text" v-model="formRecord.c92" :disabled='disabledoff' style="width:300px;" > 
 
                 </div>
               </td>
               <td>
                 <FormItem prop="c78">
-                  <Input type="text" v-model="formRecord.c78" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c78" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -880,23 +879,23 @@
               <td class="tc">3</td>
               <td>制冷剂</td>
               <td>
-                <Input type="text" v-model="formRecord.c104" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c104" :disabled='disabledoff' > 
 
               </td>
               <td colspan="3">
                 <div>
                   <span>主要成分：</span>
-                  <Input type="text" v-model="formRecord.c105" :disabled='disabledoff' style="width:300px;" ></Input>
+                  <Input type="text" v-model="formRecord.c105" :disabled='disabledoff' style="width:300px;" > 
 
                 </div>
                 <div>
                   <span>重量：</span>
-                  <Input type="text" v-model="formRecord.c106" :disabled='disabledoff' style="width:300px;" ></Input>
+                  <Input type="text" v-model="formRecord.c106" :disabled='disabledoff' style="width:300px;" > 
 
                 </div>
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c107" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c107" :disabled='disabledoff' > 
 
               </td>
             </tr>
@@ -905,7 +904,7 @@
               <td>发泡材料</td>
               <td>
                 <FormItem prop="c79">
-                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -913,19 +912,19 @@
                 <div style="margin-bottom:25px">
                   <span>主要成分：</span>
                   <FormItem prop="c80">
-                    <Input type="text" v-model="formRecord.c80" :disabled='disabledoff' style="width:300px;" ></Input>
+                    <Input type="text" v-model="formRecord.c80" :disabled='disabledoff' style="width:300px;" > 
 
                   </FormItem>
                 </div>
                 <div>
                   <span>比例：</span>
-                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff' style="width:300px;" ></Input>
+                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff' style="width:300px;" > 
 
                 </div>
               </td>
               <td>
                 <FormItem prop="c81">
-                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff' ></Input>
+                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff' > 
 
                 </FormItem>
               </td>
@@ -934,23 +933,23 @@
               <td class="tc">5</td>
               <td>发泡材料</td>
               <td>
-                <Input type="text" v-model="formRecord.c112" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c112" :disabled='disabledoff' > 
 
               </td>
               <td colspan="3">
                 <div>
                   <span>主要成分：</span>
-                  <Input type="text" v-model="formRecord.c113" :disabled='disabledoff' style="width:300px;" ></Input>
+                  <Input type="text" v-model="formRecord.c113" :disabled='disabledoff' style="width:300px;" > 
 
                 </div>
                 <div>
                   <span>比例：</span>
-                  <Input type="text" v-model="formRecord.c114" :disabled='disabledoff' style="width:300px;" ></Input>
+                  <Input type="text" v-model="formRecord.c114" :disabled='disabledoff' style="width:300px;" > 
 
                 </div>
               </td>
               <td>
-                <Input type="text" v-model="formRecord.c115" :disabled='disabledoff' ></Input>
+                <Input type="text" v-model="formRecord.c115" :disabled='disabledoff' > 
 
               </td>
             </tr>
@@ -966,7 +965,7 @@
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
-              <td><Input type="text" v-model="formRecord.c202" :disabled='disabledoff'></Input></td>
+              <td><Input type="text" v-model="formRecord.c202" :disabled='disabledoff'> </td>
             </tr>
           </table>
         </Card>
@@ -1040,7 +1039,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1215,7 +1214,7 @@
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
-      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
+      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"> 
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
       <img :src="templatePic" />
@@ -1241,7 +1240,7 @@
           <dd>b) 其整机结构与基础型号基本相同；</dd>
           <dd>c) 其产品的能效性能与基础型号一致；</dd>
           <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"> 
               <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
           </dd>
           <dd>
@@ -1253,7 +1252,7 @@
       <dl v-if="$store.state.app.pageType==='update'">
           <dd>现申请该幸好申请的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"> 
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
           </dd>
           <dd>
@@ -1506,7 +1505,7 @@ export default {
       Object.defineProperty(file, 'name', {
         writable: true,
         value: gname
-      })      
+      })
       return new Promise(function (resolve, reject) {
         axios.get('/oss/token.do').then(res => {
           if (_this.uploadParam['uploadFileList'+id].length > 0) {
@@ -1546,7 +1545,7 @@ export default {
       that.$store.commit('setBarcode', mark.ec_labreport_no)
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
-      
+
       for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []

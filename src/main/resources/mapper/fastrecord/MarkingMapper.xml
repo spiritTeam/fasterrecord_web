@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.energylabel.fastrecord.dao.EcMarkingDAO">
+
+	<resultMap id="MarkingMap" type="Marking">
+		<result column="ec_marking_id" property="id" jdbcType="INTEGER" />
+		<result column="uid" property="uid" jdbcType="VARCHAR" />
+		<result column="record_no" property="record_no"
+			jdbcType="VARCHAR" />
+		<result column="bar_code" property="bar_code"
+			jdbcType="VARCHAR" />
+		<result column="model_name" property="model_name"
+			jdbcType="VARCHAR" />
+		<result column="category_id" property="category_id"
+			jdbcType="INTEGER" />
+		<result column="category_name" property="category_name"
+			jdbcType="VARCHAR" />
+		<result column="type" property="type" jdbcType="VARCHAR" />
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="create_time" property="create_time"
+			jdbcType="TIMESTAMP" />
+	</resultMap>
+
+	<resultMap id="EcMarkingMap" type="ecMarking">
+		<result column="state" property="state" jdbcType="INTEGER" />
+		<result column="ptid" property="ptid" jdbcType="INTEGER" />
+		<result column="pltId" property="pltId" jdbcType="INTEGER" />
+		<result column="ec_marking_id" property="id" jdbcType="INTEGER" />
+		<result column="ec_marking_recordno"
+			property="ec_marking_recordno" jdbcType="VARCHAR" />
+		<result column="ec_marking_nopassreason"
+			property="ec_marking_nopassreason" jdbcType="VARCHAR" />
+		<result column="ec_marking_nopassmemo"
+			property="ec_marking_nopassmemo" jdbcType="VARCHAR" />
+		<result column="ec_marking_userid" property="ec_marking_userid"
+			jdbcType="INTEGER" />
+		<result column="ec_marking_title" property="ec_marking_title"
+			jdbcType="VARCHAR" />
+		<result column="ec_model_no" property="ec_model_no"
+			jdbcType="INTEGER" />
+		<result column="ec_marking_old" property="ec_marking_old"
+			jdbcType="VARCHAR" />
+		<result column="ec_marking_level" property="ec_marking_level"
+			jdbcType="INTEGER" />
+		<result column="ec_tingchan" property="ec_tingchan"
+			jdbcType="INTEGER" />
+		<result column="ec_tingchandate" property="ec_tingchandate"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+		<result column="ec_master_id" property="ec_master_id"
+			jdbcType="INTEGER" />
+		<result column="ec_marking_ispass" property="ec_marking_ispass"
+			jdbcType="VARCHAR" />
+		<result column="ec_marking_passman"
+			property="ec_marking_passman" jdbcType="VARCHAR" />
+		<result column="ec_marking_passtime"
+			property="ec_marking_passtime" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_marking_bulletin"
+			property="ec_marking_bulletin" jdbcType="INTEGER" />
+		<result column="ec_marking_bulletintime"
+			property="ec_marking_bulletintime" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_marking_bulletinuserid"
+			property="ec_marking_bulletinuserid" jdbcType="INTEGER" />
+		<result column="ec_marking_ishidden"
+			property="ec_marking_ishidden" jdbcType="VARCHAR" />
+		<result column="ec_marking_ishiddentime"
+			property="ec_marking_ishiddentime" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_marking_ishiddenuserid"
+			property="ec_marking_ishiddenuserid" jdbcType="INTEGER" />
+		<result column="ec_marking_isdeleted"
+			property="ec_marking_isdeleted" jdbcType="VARCHAR" />
+		<result column="ec_marking_isdeletedtime"
+			property="ec_marking_isdeletedtime" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_marking_isdeleteduserid"
+			property="ec_marking_isdeleteduserid" jdbcType="INTEGER" />
+		<result column="ec_marking_fileno" property="ec_marking_fileno"
+			jdbcType="VARCHAR" />
+		<result column="ec_marking_filenotime"
+			property="ec_marking_filenotime" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_marking_filenouserid"
+			property="ec_marking_filenouserid" jdbcType="INTEGER" />
+		<result column="ec_marking_addtime"
+			property="ec_marking_addtime" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_unit_ismaster" property="ec_unit_ismaster"
+			jdbcType="VARCHAR" />
+		<result column="ec_labname" property="ec_labname"
+			jdbcType="VARCHAR" />
+		<result column="ec_labreport_no" property="ec_labreport_no"
+			jdbcType="VARCHAR" />
+		<result column="ec_labreport_id" property="ec_labreport_id"
+			jdbcType="VARCHAR" />
+		<result column="ec_marking_receive_date"
+			property="ec_marking_receive_date" javaType="java.sql.Timestamp"
+			jdbcType="TIMESTAMP" />
+		<result column="ec_marking_receive_userid"
+			property="ec_marking_receive_userid" jdbcType="INTEGER" />
+		<result column="ec_marking_hmgc_lock"
+			property="ec_marking_hmgc_lock" jdbcType="VARCHAR" />
+		<result column="ec_qycode_key" property="ec_qycode_key"
+			jdbcType="VARCHAR" />
+		<result column="ec_is_move_state" property="ec_is_move_state"
+			jdbcType="VARCHAR" />
+		<result column="ec_model_labcid" property="ec_model_labcid"
+			jdbcType="INTEGER" />
+		<result column="ec_marking_pacemaker"
+			property="ec_marking_pacemaker" jdbcType="VARCHAR" />
+		<!--新预审号 -->
+		<result column="ec_prelimno" property="ec_prelimno"
+			jdbcType="VARCHAR" />
+		<!--复审字段 -->
+		<result column="ec_marking_ispass_review"
+			property="ec_marking_ispass_review" jdbcType="VARCHAR" />
+		<result column="ec_marking_passman_review"
+			property="ec_marking_passman_review" jdbcType="VARCHAR" />
+		<result column="ec_marking_review_datastate"
+			property="ec_marking_review_datastate" jdbcType="VARCHAR" />
+		<result column="ec_marking_passtime_review"
+			property="ec_marking_passtime_review" jdbcType="TIMESTAMP"
+			javaType="java.sql.Timestamp" />
+		<result column="username" property="username"
+			jdbcType="VARCHAR" />
+		<!-- 附加 -->
+		<result column="ec_master_name" property="ec_master_name"
+			jdbcType="VARCHAR" />
+		<result column="ec_model_name" property="ec_model_name"
+			jdbcType="VARCHAR" />
+		<result column="ec_master_chang" property="ec_master_chang"
+			jdbcType="VARCHAR" />
+		<result column="ec_master_chang_style"
+			property="ec_master_chang_style" jdbcType="VARCHAR" />
+		<result column="ec_master_parentid"
+			property="ec_master_parentid" jdbcType="VARCHAR" />
+		<result column="ec_master_kuozhan_text"
+			property="ec_master_kuozhan_text" jdbcType="VARCHAR" />
+		<result column="ec_master_biangeng_text"
+			property="ec_master_biangeng_text" jdbcType="VARCHAR" />
+		<result column="ec_master_kuozhan_text_value"
+			property="ec_master_kuozhan_text_value" jdbcType="VARCHAR" />
+		<result column="ec_master_biangeng_text_value"
+			property="ec_master_biangeng_text_value" jdbcType="VARCHAR" />
+		<result column="startTime" property="startTime"
+			jdbcType="VARCHAR" />
+		<result column="endTime" property="endTime" jdbcType="VARCHAR" />
+		<result column="startBullTime" property="startBullTime"
+			jdbcType="VARCHAR" />
+		<result column="endBullTime" property="endBullTime"
+			jdbcType="VARCHAR" />
+		<result column="ec_model_isunit" property="ec_model_isunit"
+			jdbcType="VARCHAR" />
+		<result column="ec_enterprise_id" property="ec_enterprise_id"
+			jdbcType="VARCHAR" />
+
+		<result column="ec_marking_kz_title"
+			property="ec_marking_kz_title" jdbcType="VARCHAR" />
+
+		<!-- ec_task数据字段 -->
+		<result column="ec_task_id" property="ec_task_id"
+			jdbcType="VARCHAR" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+		<result column="ec_task_type" property="ec_task_type"
+			jdbcType="VARCHAR" />
+		<result column="ec_task_addtime" property="ec_task_addtime"
+			javaType="java.sql.Timestamp" jdbcType="TIMESTAMP" />
+		<result column="distribute_userid" property="distribute_userid"
+			jdbcType="VARCHAR" />
+		<result column="ec_task_status" property="ec_task_status"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<!-- 新增备案表Ec_marking的数据存储 -->
+	<insert id="insertEcMarking" parameterType="EcMarking">
+		insert
+		into
+		ec_marking(
+		state,ptid,pltId,ec_marking_id,ec_marking_ispass,ec_marking_userid,ec_marking_title,ec_model_no,ec_marking_isdeleted,
+		ec_marking_old,ec_marking_level,ec_marking_bulletin,ec_marking_bulletintime,ec_tingchan,ec_master_id,ec_marking_ishidden,
+		ec_marking_addtime,ec_labname,ec_labreport_no,ec_labreport_id,ec_marking_hmgc_lock,ec_qycode_key,
+		ec_unit_ismaster,ec_prelimno,ec_marking_review_datastate,ec_marking_passman,ec_marking_passtime,
+		ec_marking_ispass_review,ec_marking_passtime_review,ec_marking_passman_review,ec_marking_recordno
+		)values(
+		#{state},#{ptid},#{pltId},#{id},#{ec_marking_ispass},#{ec_marking_userid},#{ec_marking_title},#{ec_model_no},#{ec_marking_isdeleted},
+		#{ec_marking_old},#{ec_marking_level},#{ec_marking_bulletin},#{ec_marking_bulletintime},#{ec_tingchan},#{ec_master_id},#{ec_marking_ishidden},
+		#{ec_marking_addtime},#{ec_labname},#{ec_labreport_no},#{ec_labreport_id},#{ec_marking_hmgc_lock},#{ec_qycode_key},
+		#{ec_unit_ismaster},#{ec_prelimno},#{ec_marking_review_datastate},#{ec_marking_passman},#{ec_marking_passtime},
+		#{ec_marking_ispass_review},#{ec_marking_passtime_review},#{ec_marking_passman_review},#{ec_marking_recordno})
+	</insert>
+
+	<update id="updateEcMarking" parameterType="EcMarking">
+		update ec_marking set
+		state = #{state},
+		ec_qycode_key = #{ec_qycode_key},
+		ec_marking_recordno
+		=#{ec_marking_recordno},
+		ec_marking_title =#{ec_marking_title},
+		ec_model_no = #{ec_model_no},
+		ec_marking_level =#{ec_marking_level},
+		ec_labname = #{ec_labname},
+		ec_labreport_no =#{ec_labreport_no},
+		ec_labreport_id = #{ec_labreport_id},
+		has_html = #{has_html}
+		where ec_marking_id = #{id}
+	</update>
+
+	<select id="getEcMarkingById" parameterType="map"
+		resultMap="EcMarkingMap">
+		select * from
+		ec_marking where ec_marking_id=#{ec_marking_id}
+	</select>
+
+	<select id="draftList" parameterType="map"
+		resultMap="MarkingMap">
+		SELECT
+		t.ec_marking_id,
+		t.ec_qycode_key AS uid,
+		t.ec_labreport_no AS
+		bar_code,
+		t.ec_marking_title AS model_name,
+		t.ec_model_no AS
+		category_id,
+		c.ec_model_title AS category_name,
+		m.ec_master_chang AS
+		type,
+		t.state,
+		t.ec_marking_addtime AS create_time
+		FROM
+		ec_marking t
+		LEFT
+		JOIN syscategory c ON c.ec_model_no = t.ec_model_no
+		LEFT JOIN
+		ec_master
+		m ON m.ec_master_id = t.ec_master_id
+		WHERE
+		t.state = 1
+		AND
+		t.ec_marking_userid = #{user_id}
+		AND t.ec_model_no = 47
+		<!-- 
+		<if test="category_id != null and category_id != 0">
+			AND t.ec_model_no = #{category_id}
+		</if> -->
+		<if test="model_name != null and model_name != ''">
+			AND t.ec_marking_title LIKE '%${model_name}%'
+		</if>
+		<if test="bar_code != null and bar_code != ''">
+			AND t.ec_labreport_no LIKE '%${bar_code}%'
+		</if>
+		order by t.ec_marking_id desc
+	</select>
+
+	<select id="list" parameterType="map" resultMap="MarkingMap">
+		SELECT
+		t.ec_marking_id,
+		t.ec_qycode_key AS uid,
+		t.ec_labreport_no AS
+		bar_code,
+		t.ec_marking_title AS model_name,
+		t.ec_model_no AS
+		category_id,
+		t.ec_marking_recordno AS record_no,
+		c.ec_model_title AS
+		category_name,
+		m.ec_master_chang AS type,
+		t.state,
+		t.ec_marking_addtime
+		AS create_time
+		FROM
+		ec_marking t
+		LEFT JOIN syscategory c ON c.ec_model_no
+		= t.ec_model_no
+		LEFT JOIN
+		ec_master m ON m.ec_master_id = t.ec_master_id
+		WHERE
+		t.state > 1
+		AND t.ec_marking_userid = #{user_id}
+		AND t.ec_model_no = 47
+		<!-- 
+		<if test="category_id != null and category_id != 0">
+			AND t.ec_model_no = #{category_id}
+		</if> -->
+		<if test="model_name != null and model_name != ''">
+			AND t.ec_marking_title LIKE '%${model_name}%'
+		</if>
+		<if test="bar_code != null and bar_code != ''">
+			AND t.ec_labreport_no LIKE '%${bar_code}%'
+		</if>
+		order by t.ec_marking_id desc
+	</select>
+</mapper>
