@@ -1,8 +1,8 @@
-/*
- * 5、自携冷凝机组商用冷柜2015版
- * 创建日期:2019年5月27日
- * 创建人:WH
- */
+<!--/*-->
+ <!--* 5、自携冷凝机组商用冷柜2015版-->
+ <!--* 创建日期:2019年5月27日-->
+ <!--* 创建人:WH-->
+ <!--*/-->
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
@@ -2308,3 +2308,6 @@ export default {
     }
   }
 </script>
+<style>
+@import '../../../libs/comm.css';
+</style>

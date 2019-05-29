@@ -197,8 +197,8 @@
               <td>
                 <FormItem prop="c25">
                   <RadioGroup v-model="formRecord.c25">
-                    <Radio label="1" :disabled='disabledoff'>内置电源</Radio>
-                    <Radio label="2" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
+                    <Radio label="内置电源" :disabled='disabledoff'>内置电源</Radio>
+                    <Radio label="外部电源，输出功率（W）" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c26">
@@ -951,7 +951,6 @@
 
 </template>
 <script>
-  import axios from 'axios'
   import {
     getImgPath,
     XfillExtendData,
@@ -968,8 +967,12 @@
     twoDecimals,
     oneDecimals,
     significantDigits22,
-    significantDigits33
-  } from '@/libs/utilEst'
+    significantDigits33,
+    atLeastOneDecimals,
+    atLeastTwoDecimals,
+    isInteger,
+    isNumber
+  } from '@/libs/utilExt'
 
   export default {
     data() {
@@ -1189,6 +1192,9 @@
     },
     computed: {
       pltId() {
+        console.log(this.$store.state.app.pltId)
+        console.log(this.$store.state.app.pltPic)
+        console.log(this.$store.state.app.requiredStr)
         return this.$store.state.app.pltId
       },
       pltPic() {
@@ -1198,6 +1204,14 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        if (this.$store.state.app.requiredStr){
+          this.$store.state.app.requiredStr.split(",").forEach((e) => {
+            if (this.formRecord[e]) {
+              console.log(e + " 不能为空")
+            }
+          })
+        }
+
         //能效等级
         var nxdj = this.formRecord.c7
         //类型
@@ -1223,13 +1237,12 @@
           this.forbidden.c24 = true
         }
 
-        if (this.formRecord.c25 === '2') {
+        if (this.formRecord.c25 === '外部电源，输出功率（W）') {
           this.forbidden.c26 = false
         } else {
           this.formRecord.c26 = ''
           this.forbidden.c26 = true
         }
-
         const checkc9 = (rule, value, callback) => {
           if (energyVal > energyValsh) {
             callback('能源效率标注值应小于等于实测值')
@@ -1328,6 +1341,8 @@
             callback()
           }
         }
+
+
 
         return {
           c2: [
@@ -1494,7 +1509,7 @@
           ],
           c26: [
             {
-              required: this.formRecord.c25 === '2',
+              required: this.formRecord.c25 === '外部电源，输出功率（W）',
               message: '外部电源,输出功率(W)的值不能为空'
             }
           ],
@@ -1629,133 +1644,6 @@
     }
   }
 </script>
-<style lang="less" scoped>
-  h1 {
-    font-size: 20px;
-  }
-
-  h2 {
-    font-size: 18px;
-    margin: 10px 0;
-  }
-
-  .part {
-    background: #eee;
-    padding: 15px;
-    margin: 15px 0;
-  }
-
-  .part1 p {
-    text-indent: 2em;
-    font-size: 16px;
-    line-height: 36px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 10px;
-  }
-
-  table th {
-    background-color: rgb(245, 245, 246);
-  }
-
-  table td, table th {
-    border: 1px solid #dddee1;
-    padding: 10px;
-  }
-
-  .part6 td > div {
-    margin-bottom: 5px;
-  }
-
-  .part6 td span {
-    display: inline-block;
-    width: 100px;
-    text-align: center;
-  }
-
-  .tc {
-    text-align: center;
-  }
-
-  .part8 td {
-    text-align: center;
-  }
-
-  .red {
-    color: red;
-  }
-
-  #table1 td, #table2 td, #table3 td, #table4 td {
-    padding: 20px 10px;
-  }
-
-  #table1 .ivu-form-item, #table2 .ivu-form-item, #table3 .ivu-form-item, #table4 .ivu-form-item, #table5 .ivu-form-item {
-    margin-bottom: 0 !important;
-  }
-
-  #table2 .ivu-form-item, #table3 .ivu-form-item, #table4 .ivu-form-item, #table5 .ivu-form-item {
-    display: inline-block;
-  }
-
-  .ivu-icon-ios-help-circle-outline {
-    position: absolute;
-    top: -8px;
-    right: -2px;
-    display: none;
-  }
-
-  .ivu-icon-ios-help-circle-outline:before {
-    content: "\F446";
-  }
-
-  .diffList {
-    margin: 20px 0;
-  }
-
-  .diffList table {
-    width: 100%;
-  }
-
-  .lookOver {
-    margin-bottom: 10px;
-  }
-
-  .org, .basic-info dl {
-    font-size: 16px;
-  }
-
-  .basic-info .valid {
-    width: 100%;
-    margin: 10px 0;
-  }
-
-  .textarea-annotation, .color-red {
-    font-weight: normal;
-    font-size: 14px;
-  }
-
-  .color-red {
-    color: red;
-  }
-
-  .pro-info, .basic-info .record-number {
-    height: auto;
-    line-height: 40px;
-  }
-
-  .basic-info span[class^="f-"], .pro-info span[class^="f-"] {
-    font-weight: bold;
-    padding: 0px 5px;
-  }
-
-  .application {
-    margin: 10px 0;
-  }
-
-  .w70 {
-    height: 52px;
-  }
+<style>
+  @import '../../../libs/comm.css';
 </style>
