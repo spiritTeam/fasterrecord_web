@@ -197,8 +197,8 @@
               <td>
                 <FormItem prop="c25">
                   <RadioGroup v-model="formRecord.c25">
-                    <Radio label="1" :disabled='disabledoff'>内置电源</Radio>
-                    <Radio label="2" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
+                    <Radio label="内置电源" :disabled='disabledoff'>内置电源</Radio>
+                    <Radio label="外部电源，输出功率（W）" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c26">
@@ -951,7 +951,6 @@
 
 </template>
 <script>
-  import axios from 'axios'
   import {
     getImgPath,
     XfillExtendData,
@@ -968,7 +967,11 @@
     twoDecimals,
     oneDecimals,
     significantDigits22,
-    significantDigits33
+    significantDigits33,
+    atLeastOneDecimals,
+    atLeastTwoDecimals,
+    isInteger,
+    isNumber
   } from '@/libs/utilExt'
 
   export default {
@@ -1189,6 +1192,9 @@
     },
     computed: {
       pltId() {
+        console.log(this.$store.state.app.pltId)
+        console.log(this.$store.state.app.pltPic)
+        console.log(this.$store.state.app.requiredStr)
         return this.$store.state.app.pltId
       },
       pltPic() {
@@ -1198,6 +1204,10 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        if (this.$store.state.app.requiredStr){
+          this.$store.state.app.requiredStr.split(",")
+        }
+
         //能效等级
         var nxdj = this.formRecord.c7
         //类型
@@ -1223,13 +1233,12 @@
           this.forbidden.c24 = true
         }
 
-        if (this.formRecord.c25 === '2') {
+        if (this.formRecord.c25 === '外部电源，输出功率（W）') {
           this.forbidden.c26 = false
         } else {
           this.formRecord.c26 = ''
           this.forbidden.c26 = true
         }
-
         const checkc9 = (rule, value, callback) => {
           if (energyVal > energyValsh) {
             callback('能源效率标注值应小于等于实测值')
@@ -1328,6 +1337,8 @@
             callback()
           }
         }
+
+
 
         return {
           c2: [
@@ -1494,7 +1505,7 @@
           ],
           c26: [
             {
-              required: this.formRecord.c25 === '2',
+              required: this.formRecord.c25 === '外部电源，输出功率（W）',
               message: '外部电源,输出功率(W)的值不能为空'
             }
           ],
