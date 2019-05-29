@@ -1205,7 +1205,11 @@
       },
       ruleRecord() {
         if (this.$store.state.app.requiredStr){
-          this.$store.state.app.requiredStr.split(",")
+          this.$store.state.app.requiredStr.split(",").forEach((e) => {
+            if (this.formRecord[e]) {
+              console.log(e + " 不能为空")
+            }
+          })
         }
 
         //能效等级
