@@ -291,7 +291,7 @@
                     </RadioGroup>
                   </FormItem>
                   <FormItem prop="c20">
-                    <Input type="text" v-model="formRecord.c20" :disabled='forbidden.c20'/>
+                    <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20'/>
                   </FormItem>
                 </label>
               </td>
@@ -2003,6 +2003,14 @@ export default {
       return this.$store.state.app.requiredStr
     },
     ruleRecord () {
+      if (this.formRecord.c25 === '2') {
+          this.forbidden.c26 = false
+        } else {
+          this.formRecord.c26 = ''
+          this.forbidden.c26 = true
+        }
+
+
       // let decimal1 =/^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
       let decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
       let decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
