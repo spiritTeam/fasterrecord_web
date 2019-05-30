@@ -85,13 +85,12 @@
               <td>额定热水热负荷</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff' placeholder="两位有效数字"/>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c9">
-                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff' :required="formRecord.c21!==''"
-                         placeholder="三位有效数字"/>
+                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
@@ -104,12 +103,12 @@
               <td>额定供暖热负荷</td>
               <td>
                 <FormItem prop="c11">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff' placeholder="两位小数"/>
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' placeholder="三位小数"/>
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
@@ -122,12 +121,12 @@
               <td>额定热负荷热水热效率</td>
               <td>
                 <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff' placeholder="两位小数"/>
+                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c15">
-                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff' placeholder="三位小数"/>
+                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
@@ -140,12 +139,12 @@
               <td>50%额定热负荷热水热效率</td>
               <td>
                 <FormItem prop="c17">
-                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff' placeholder="两位小数"/>
+                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c18">
-                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff' placeholder="三位小数"/>
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
@@ -158,12 +157,12 @@
               <td>额定热负荷供暖热效率</td>
               <td>
                 <FormItem prop="c20">
-                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff' placeholder="两位小数"/>
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c21">
-                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff' placeholder="三位小数"/>
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff' />
                 </FormItem>
               </td>
               <td>
@@ -176,12 +175,12 @@
               <td>30%额定热负荷供暖热效率	</td>
               <td>
                 <FormItem prop="c23">
-                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff' placeholder="两位小数"/>
+                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c24">
-                  <Input type="text" v-model="formRecord.c24" :disabled='disabledoff' placeholder="三位小数"/>
+                  <Input type="text" v-model="formRecord.c24" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
@@ -212,8 +211,8 @@
               <td>
                 <FormItem prop="c28">
                   <RadioGroup v-model="formRecord.c28">
-                    <Radio label="1" :disabled='disabledoff'>是</Radio>
-                    <Radio label="2" :disabled='disabledoff'>否</Radio>
+                    <Radio label="是" :disabled='disabledoff'>是</Radio>
+                    <Radio label="否" :disabled='disabledoff'>否</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -223,31 +222,31 @@
               <td>
                 <FormItem prop="c29">
                   <RadioGroup v-model="formRecord.c29">
-                    <Radio label="1" :disabled='disabledoff'>人工煤气</Radio>（
+                    <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>（
                       <FormItem prop="c30">
                         <RadioGroup v-model="formRecord.c30">
-                          <Radio label="1" :disabled='disabledoff'>5R</Radio>
-                          <Radio label="2" :disabled='disabledoff'>6R</Radio>
-                          <Radio label="3" :disabled='disabledoff'>7R</Radio>
+                          <Radio label="5R" :disabled='disabledoff'>5R</Radio>
+                          <Radio label="6R" :disabled='disabledoff'>6R</Radio>
+                          <Radio label="7R" :disabled='disabledoff'>7R</Radio>
                         </RadioGroup>
-                      </FormItem>）<br>
-                    <Radio label="2" :disabled='disabledoff'> 天然气</Radio>（
+                      </FormItem>）<br><br>
+                    <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>（
                       <FormItem prop="c31">
                         <RadioGroup v-model="formRecord.c31">
-                          <Radio label="1" :disabled='disabledoff'>4T</Radio>
-                          <Radio label="2" :disabled='disabledoff'>6T</Radio>
-                          <Radio label="3" :disabled='disabledoff'>10T</Radio>
-                          <Radio label="4" :disabled='disabledoff'>12T</Radio>
+                          <Radio label="4T" :disabled='disabledoff'>4T</Radio>
+                          <Radio label="6T" :disabled='disabledoff'>6T</Radio>
+                          <Radio label="10T" :disabled='disabledoff'>10T</Radio>
+                          <Radio label="12T" :disabled='disabledoff'>12T</Radio>
                         </RadioGroup>
-                      </FormItem>）<br>
-                    <Radio label="3" :disabled='disabledoff'>液化石油气</Radio>（
+                      </FormItem>）<br><br>
+                    <Radio label="液化石油气" :disabled='disabledoff'>液化石油气</Radio>（
                       <FormItem prop="c32">
                         <RadioGroup v-model="formRecord.c32">
-                        <Radio label="1" :disabled='disabledoff'>19Y</Radio>
-                        <Radio label="2" :disabled='disabledoff'>20Y</Radio>
-                        <Radio label="3" :disabled='disabledoff'>22Y</Radio>
+                        <Radio label="19Y" :disabled='disabledoff'>19Y</Radio>
+                        <Radio label="20Y" :disabled='disabledoff'>20Y</Radio>
+                        <Radio label="22Y" :disabled='disabledoff'>22Y</Radio>
                       </RadioGroup>
-                    </FormItem>）<br>
+                    </FormItem>）<br><br>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -290,8 +289,8 @@
               <td>
                 <FormItem prop="c38">
                   <RadioGroup v-model="formRecord.c38">
-                    <Radio label="1" :disabled='disabledoff'>封闭式</Radio>
-                    <Radio label="2" :disabled='disabledoff'>敞开式</Radio>
+                    <Radio label="封闭式" :disabled='disabledoff'>封闭式</Radio>
+                    <Radio label="敞开式" :disabled='disabledoff'>敞开式</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -317,11 +316,11 @@
               <td>
                 <FormItem prop="c41">
                   <CheckboxGroup v-model="formRecord.c41" style="display:inline-block;">
-                    <Checkbox label="1" :disabled='disabledoff'>热水</Checkbox>
+                    <Checkbox label="热水" :disabled='disabledoff'>热水</Checkbox>
                     <FormItem prop="c42">
                       <Input type="text" v-model="formRecord.c42" :disabled='disabledoff' style="width:80px;" />（kW）
                     </FormItem>
-                    <Checkbox label="2" :disabled='disabledoff'>供暖</Checkbox>
+                    <Checkbox label="供暖" :disabled='disabledoff'>供暖</Checkbox>
                     <FormItem prop="c43">
                       <Input type="text" v-model="formRecord.c43" :disabled='disabledoff' style="width:80px;" />（kW）
                     </FormItem>
@@ -350,8 +349,8 @@
               <td>
                 <FormItem prop="c46">
                   <RadioGroup v-model="formRecord.c46">
-                    <Radio label="1" :disabled='disabledoff'>室内型</Radio>
-                    <Radio label="2" :disabled='disabledoff'>室外型</Radio>
+                    <Radio label="室内型" :disabled='disabledoff'>室内型</Radio>
+                    <Radio label="室外型" :disabled='disabledoff'>室外型</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -361,10 +360,10 @@
               <td>
                 <FormItem prop="c47">
                   <RadioGroup v-model="formRecord.c47">
-                    <Radio label="1" :disabled='disabledoff'>自然给排气</Radio>
-                    <Radio label="2" :disabled='disabledoff'>自然排气</Radio>
-                    <Radio label="3" :disabled='disabledoff'>强制给排气</Radio>
-                    <Radio label="4" :disabled='disabledoff'>强制排气</Radio>
+                    <Radio label="自然给排气" :disabled='disabledoff'>自然给排气</Radio>
+                    <Radio label="自然排气" :disabled='disabledoff'>自然排气</Radio>
+                    <Radio label="强制给排气" :disabled='disabledoff'>强制给排气</Radio>
+                    <Radio label="强制排气" :disabled='disabledoff'>强制排气</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -374,8 +373,8 @@
               <td>
                 <FormItem prop="c48">
                   <RadioGroup v-model="formRecord.c48">
-                    <Radio label="1" :disabled='disabledoff'>有</Radio>
-                    <Radio label="2" :disabled='disabledoff'>无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -385,8 +384,8 @@
               <td>
                 <FormItem prop="c49">
                   <RadioGroup v-model="formRecord.c49">
-                    <Radio label="1" :disabled='disabledoff'>有</Radio>
-                    <Radio label="2" :disabled='disabledoff'>无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -396,8 +395,8 @@
               <td>
                 <FormItem prop="c50">
                   <RadioGroup v-model="formRecord.c50">
-                    <Radio label="1" :disabled='disabledoff'>有</Radio>
-                    <Radio label="2" :disabled='disabledoff'>无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -407,8 +406,8 @@
               <td>
                 <FormItem prop="c51">
                   <RadioGroup v-model="formRecord.c51">
-                    <Radio label="1" :disabled='disabledoff'>有</Radio>
-                    <Radio label="2" :disabled='disabledoff'>无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -418,8 +417,8 @@
               <td>
                 <FormItem prop="c52">
                   <RadioGroup v-model="formRecord.c52">
-                    <Radio label="1" :disabled='disabledoff'>有</Radio>
-                    <Radio label="2" :disabled='disabledoff'>无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -429,8 +428,8 @@
               <td>
                 <FormItem prop="c53">
                   <RadioGroup v-model="formRecord.c53">
-                    <Radio label="1" :disabled='disabledoff'>机械</Radio>
-                    <Radio label="2" :disabled='disabledoff'>电子</Radio>
+                    <Radio label="机械" :disabled='disabledoff'>机械</Radio>
+                    <Radio label="电子" :disabled='disabledoff'>电子</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -440,8 +439,8 @@
               <td>
                 <FormItem prop="c54">
                   <RadioGroup v-model="formRecord.c54">
-                    <Radio label="1" :disabled='disabledoff'>有</Radio>
-                    <Radio label="2" :disabled='disabledoff'>无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -451,8 +450,8 @@
               <td>
                 <FormItem prop="c55">
                   <RadioGroup v-model="formRecord.c55">
-                    <Radio label="1" :disabled='disabledoff'>正</Radio>
-                    <Radio label="2" :disabled='disabledoff'>负</Radio>
+                    <Radio label="正" :disabled='disabledoff'>正</Radio>
+                    <Radio label="负" :disabled='disabledoff'>负</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -462,16 +461,16 @@
               <td>
                 <FormItem prop="c56">
                   <CheckboxGroup v-model="formRecord.c56" style="display:inline-block;">
-                    <Checkbox label="1" :disabled='disabledoff'>熄火保护装置</Checkbox>
-                    <Checkbox label="2" :disabled='disabledoff'>烟道堵塞安全装置</Checkbox>
-                    <Checkbox label="3" :disabled='disabledoff'>再点火安全装置</Checkbox><br>
-                    <Checkbox label="4" :disabled='disabledoff'>防过热安全装置</Checkbox>
-                    <Checkbox label="5" :disabled='disabledoff'>泄压安全装置</Checkbox>
-                    <Checkbox label="6" :disabled='disabledoff'>风压过大安全装置</Checkbox><br>
-                    <Checkbox label="7" :disabled='disabledoff'>自动排气装置</Checkbox>
-                    <Checkbox label="8" :disabled='disabledoff'>燃烧室损伤安全装置</Checkbox>
-                    <Checkbox label="9" :disabled='disabledoff'>自动防冻安全装置</Checkbox><br>
-                    <Checkbox label="10" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="熄火保护装置" :disabled='disabledoff'>熄火保护装置</Checkbox>
+                    <Checkbox label="烟道堵塞安全装置" :disabled='disabledoff'>烟道堵塞安全装置</Checkbox>
+                    <Checkbox label="再点火安全装置" :disabled='disabledoff'>再点火安全装置</Checkbox><br>
+                    <Checkbox label="防过热安全装置" :disabled='disabledoff'>防过热安全装置</Checkbox>
+                    <Checkbox label="泄压安全装置" :disabled='disabledoff'>泄压安全装置</Checkbox>
+                    <Checkbox label="风压过大安全装置" :disabled='disabledoff'>风压过大安全装置</Checkbox><br>
+                    <Checkbox label="自动排气装置" :disabled='disabledoff'>自动排气装置</Checkbox>
+                    <Checkbox label="燃烧室损伤安全装置" :disabled='disabledoff'>燃烧室损伤安全装置</Checkbox>
+                    <Checkbox label="自动防冻安全装置" :disabled='disabledoff'>自动防冻安全装置</Checkbox><br>
+                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
                     <FormItem prop="c57">
                       <Input type="text" v-model="formRecord.c57" :disabled='disabledoff' style="width:80px;" />
                     </FormItem>
@@ -1295,7 +1294,13 @@ export default {
       } else {
         this.formRecord.c36 = ''
         this.forbidden.c36 = true
-      }  
+      }
+      if (this.formRecord.c56.join('').indexOf('其他') > -1) {
+        this.forbidden.c57 = false
+      } else {
+        this.formRecord.c57 = ''
+        this.forbidden.c57 = true
+      }       
       var nxdj = "";
       var n1 = "";
       var n2 = "";
@@ -1471,14 +1476,14 @@ export default {
     }
   }
        const checkc7a = (rule, value, callback) => {
-         if (nxdjst == "") {
+         if (nxdj == "") {
           callback('能效数据不在备案范围')
          } else {
            callback()
          }
       }
       const checkc7b = (rule, value, callback) => {
-        if (nxdjst != nxdj) {
+        if (nxdj != nxdjch) {
            callback('所选能效等级与计算结果不符！')
         } else {
           callback()
@@ -1621,19 +1626,19 @@ export default {
         ],
         c30: [
           {
-            required: true,
+            required: this.formRecord.c29 === '人工煤气',
             message: '人工煤气不能为空'
           }
         ],
         c31: [
           {
-            required: true,
+            required: this.formRecord.c29 === '天然气',
             message: '天然气不能为空'
           }
         ],
         c32: [
           {
-            required: true,
+            required: this.formRecord.c29 === '液化石油气',
             message: '液化石油气不能为空'
           }
         ],
@@ -1747,7 +1752,7 @@ export default {
         ],
         c57: [
           {
-            required: true,
+            required: this.formRecord.c56.join('').indexOf('其他') > -1,
             message: '安全装置其他值不能为空'
           }
         ],
