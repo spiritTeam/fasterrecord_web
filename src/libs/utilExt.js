@@ -199,6 +199,7 @@ export const XshowConfirm = (that) => {
       }
     }
   })
+  console.log(_this.$refs['formRecord'].validate());
 }
 export const XdiffRecord = (orgin, target, that) => {
   let newArr = []

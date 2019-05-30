@@ -1087,7 +1087,7 @@
           c39: true,
           c6: true,
           c13: true,
-          c48: true,
+          c48: true
         }
       }
     },
@@ -1160,6 +1160,12 @@
       ruleRecord() {
         //能效等级
         var nxdj = this.formRecord.c8
+        var c5 = parseFloat(parseFloat(this.formRecord.c5))
+        var c8 = this.formRecord.c8
+        var c6 = parseFloat(this.formRecord.c6)
+        var c37 = parseFloat(this.formRecord.c37)
+        var c57 = this.formRecord.c57
+
         if (this.formRecord.c57 === '热泵型') {
           this.forbidden.c25 = false
           this.forbidden.c33 = false
@@ -1211,72 +1217,71 @@
           this.forbidden.c48 = true
         }
 
-        let checkc5 = (rule, value, callback) => {
-          let c5 = parseFloat(this.formRecord.c5)
+        const checkc5 = (rule, value, callback) => {
           if (c5 > 14000) {
             callback("额定制冷量数据错误")
           } else {
             callback()
           }
         }
-        if (this.formRecord.c57 === "单冷式") {
-          if (parseFloat(parseFloat(this.formRecord.c5)) <= 4500) {
-            if (parseFloat(this.formRecord.c6) >= 5.40) {
+        if (c57 === "单冷式") {
+          if (c5 <= 4500) {
+            if (c6 >= 5.40) {
               nxdj = "1";
-            } else if (parseFloat(this.formRecord.c6) >= 5.00) {
+            } else if (c6 >= 5.00) {
               nxdj = "2";
-            } else if (parseFloat(this.formRecord.c6) >= 4.30) {
+            } else if (c6 >= 4.30) {
               nxdj = "3";
             }
-          } else if (parseFloat(parseFloat(this.formRecord.c5)) <= 7100) {
-            if (parseFloat(this.formRecord.c6) >= 5.10) {
+          } else if (c5 <= 7100) {
+            if (c6 >= 5.10) {
               nxdj = "1";
-            } else if (parseFloat(this.formRecord.c6) >= 4.40) {
+            } else if (c6 >= 4.40) {
               nxdj = "2";
-            } else if (parseFloat(this.formRecord.c6) >= 3.90) {
+            } else if (c6 >= 3.90) {
               nxdj = "3";
             }
           } else {
-            if (parseFloat(this.formRecord.c6) >= 4.70) {
+            if (c6 >= 4.70) {
               nxdj = "1";
-            } else if (parseFloat(this.formRecord.c6) >= 4.00) {
+            } else if (c6 >= 4.00) {
               nxdj = "2";
-            } else if (parseFloat(this.formRecord.c6) >= 3.50) {
+            } else if (c6 >= 3.50) {
               nxdj = "3";
             }
           }
-        } else if (this.formRecord.c57 === "热泵型") {
-          if (parseFloat(parseFloat(this.formRecord.c5)) <= 4500) {
-            if (parseFloat(this.formRecord.c37) >= 4.50) {
+        } else if (c57 === "热泵型") {
+          if (c5 <= 4500) {
+            if (c37 >= 4.50) {
               nxdj = "1";
-            } else if (parseFloat(this.formRecord.c37) >= 4.00) {
+            } else if (c37 >= 4.00) {
               nxdj = "2";
-            } else if (parseFloat(this.formRecord.c37) >= 3.50) {
+            } else if (c37 >= 3.50) {
               nxdj = "3";
             }
-          } else if (parseFloat(this.formRecord.c5) <= 7100) {
-            if (parseFloat(this.formRecord.c37) >= 4.00) {
+          } else if (c5 <= 7100) {
+            if (c37 >= 4.00) {
               nxdj = "1";
-            } else if (parseFloat(this.formRecord.c37) >= 3.50) {
+            } else if (c37 >= 3.50) {
               nxdj = "2";
-            } else if (parseFloat(this.formRecord.c37) >= 3.30) {
+            } else if (c37 >= 3.30) {
               nxdj = "3";
             }
           } else {
-            if (parseFloat(this.formRecord.c37) >= 3.70) {
+            if (c37 >= 3.70) {
               nxdj = "1";
-            } else if (parseFloat(this.formRecord.c37) >= 3.30) {
+            } else if (c37 >= 3.30) {
               nxdj = "2";
-            } else if (parseFloat(this.formRecord.c37) >= 3.10) {
+            } else if (c37 >= 3.10) {
               nxdj = "3";
             }
           }
         }
-        let checkc8 = (rule, value, callback) => {
+        const checkc8 = (rule, value, callback) => {
           if (!nxdj) {
             callback("能效数据不在备案范围")
           }
-          if (nxdj != this.formRecord.c8) {
+          if (nxdj != c8) {
             callback("所选能效等级与计算结果不符")
           }
         }
