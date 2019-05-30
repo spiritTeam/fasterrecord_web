@@ -522,7 +522,7 @@
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
             <FormItem prop="c20" label="备案标识开始使用日期" style="width:1000px;">
-              <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c20" :disabled='disabledoff'></DatePicker>
+              <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c20" ></DatePicker>
             </FormItem>
         </Card>
       </div>
