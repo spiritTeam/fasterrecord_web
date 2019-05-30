@@ -318,11 +318,11 @@
                   <CheckboxGroup v-model="formRecord.c41" style="display:inline-block;">
                     <Checkbox label="热水" :disabled='disabledoff'>热水</Checkbox>
                     <FormItem prop="c42">
-                      <Input type="text" v-model="formRecord.c42" :disabled='disabledoff' style="width:80px;" />（kW）
+                      <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.c42' style="width:80px;" />（kW）
                     </FormItem>
                     <Checkbox label="供暖" :disabled='disabledoff'>供暖</Checkbox>
                     <FormItem prop="c43">
-                      <Input type="text" v-model="formRecord.c43" :disabled='disabledoff' style="width:80px;" />（kW）
+                      <Input type="text" v-model="formRecord.c43" :disabled='disabledoff || forbidden.c43' style="width:80px;" />（kW）
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
@@ -472,7 +472,7 @@
                     <Checkbox label="自动防冻安全装置" :disabled='disabledoff'>自动防冻安全装置</Checkbox><br>
                     <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
                     <FormItem prop="c57">
-                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff' style="width:80px;" />
+                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57' style="width:80px;" />
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
@@ -1288,19 +1288,31 @@ export default {
       } else {
         this.formRecord.c35 = ''
         this.forbidden.c35 = true
-      }            
+      }
       if (this.formRecord.c34.join('').indexOf('供暖') > -1) {
         this.forbidden.c36 = false
       } else {
         this.formRecord.c36 = ''
         this.forbidden.c36 = true
       }
+      if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
+        this.forbidden.c43 = false
+      } else {
+        this.formRecord.c43 = ''
+        this.forbidden.c43 = true
+      }
+      if (this.formRecord.c41.join('').indexOf('热水') > -1) {
+        this.forbidden.c42 = false
+      } else {
+        this.formRecord.c42 = ''
+        this.forbidden.c42 = true
+      }
       if (this.formRecord.c56.join('').indexOf('其他') > -1) {
         this.forbidden.c57 = false
       } else {
         this.formRecord.c57 = ''
         this.forbidden.c57 = true
-      }       
+      }
       var nxdj = "";
       var n1 = "";
       var n2 = "";
@@ -1403,7 +1415,7 @@ export default {
                 n1 = value50;
                 n2 = valueers;
             }
-            //能效等级1 
+            //能效等级1
             if (n1 >= 96) {
                 nxdj1 = "1";
             } else if (n1 >= 89 && n1 < 96) {
@@ -1495,7 +1507,7 @@ export default {
             required: true,
             message: '生产者名称不能为空'
           }
-        ],        
+        ],
         c2: [
           {
             required: true,
@@ -1513,7 +1525,7 @@ export default {
             required: true,
             message: '规格型号不能为空'
           }
-        ],        
+        ],
         c7: [
           {
             required: true,
@@ -1686,13 +1698,13 @@ export default {
         ],
         c42: [
           {
-            required: true,
+            required: this.formRecord.c41.join('').indexOf('热水') > -1,
             message: '系统适用水压(MPa)热水值不能为空'
           }
         ],
         c43: [
           {
-            required: true,
+            required: this.formRecord.c41.join('').indexOf('供暖') > -1,
             message: '系统适用水压(MPa)供暖值不能为空'
           }
         ],
@@ -1827,7 +1839,7 @@ export default {
             required: true,
             message: '燃气比例阀生产者(全称)1不能为空'
           }
-        ]             
+        ]
       }
     }
   }
