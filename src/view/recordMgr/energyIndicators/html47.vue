@@ -522,7 +522,7 @@
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
             <FormItem prop="c20" label="备案标识开始使用日期" style="width:1000px;">
-              <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c20" :disabled='disabledoff'></DatePicker>
+              <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c20" ></DatePicker>
             </FormItem>
         </Card>
       </div>
@@ -974,7 +974,7 @@
       <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
-          <div class="application" v-if='$store.state.app.pageType'>
+          <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
             <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
             <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
@@ -985,7 +985,7 @@
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -1002,16 +1002,16 @@
               </td>
               <td colspan="3" v-if="pltId != 244">
                 根据企业提交的相关能效指标，系统直接生成能效表示样本
-                <Button type="primary" @click="showTemplate">查看模板</Button>
+                <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
             <tr>
-              <td>OEM声明</td>
+              <td><span v-if='$store.state.app.oem' class="red">*</span>OEM声明</td>
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -1030,7 +1030,7 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1052,7 +1052,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1071,7 +1071,7 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1092,7 +1092,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1111,7 +1111,7 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1132,7 +1132,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1151,7 +1151,7 @@
               <td>（PDF/JPG/PNG）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     id=76
                     :show-upload-list=false
@@ -1177,11 +1177,14 @@
           <Checkbox label="1"><span style="color:red;font-weight:bold;">我已确认以上数据填写无误！</span></Checkbox>
         </CheckboxGroup>
       </div>
-      <div class="tc">
+      <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿</Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+      </div>
+      <div class="tc" v-else>
+        <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
@@ -1265,14 +1268,14 @@
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-
+  
 </template>
 <script>
 import axios from 'axios'
 export default {
 
   data () {
-    const timeDate=this.$store.state.app.dateinit;
+    const timeDate=parseInt(this.$store.state.app.dateinit);
     return {
       modal3: false,
       modal4: false,
@@ -1461,7 +1464,8 @@ export default {
     }
   },
   mounted () {
-    this.disabledoff= this.$store.state.app.pageType=="extend"? true : false
+    //console.log(this.$store.state.app.pageType)
+   
   },
   methods: {
     showTemplate () {
@@ -1535,6 +1539,11 @@ export default {
         })
       })
     },
+    viewClose(){
+      this.$router.replace({
+        name:'queryRecord'
+      })
+    },
     /* 数据来源  扩展备案 */
     fillExtendData(params){
       let that = this
@@ -1546,7 +1555,6 @@ export default {
       that.$store.commit('setBarcode', mark.ec_labreport_no)
       that.$store.commit('setLabName', mark.ec_labname)
       that.formRecord.id = mark.id
-
       for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
@@ -1555,7 +1563,7 @@ export default {
             })
           }else if(i==='c20'){
               //this.$store.commit('setDateInit', data[i])
-              if(data[i] != undefined) that.formRecord[i] = that.formatDate(data[i]);
+              if(data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]));
           } else {
             that.formRecord[i] = data[i]
           }
@@ -1567,16 +1575,20 @@ export default {
       let data=params.data;
       let mark= params.marking;
       let attachList=this.filesArr=params.attachList;
-      attachList.forEach((item,idx)=>{
-        if(item.ec_attach_id==25){
-          this.$store.commit('setPltPic',item.ec_attach_path)
+      if(  attachList && attachList.length>0){
+        attachList.forEach((item,idx)=>{
+          if(item.ec_attach_id==25){
+            this.$store.commit('setPltPic',item.ec_attach_path)
 
-        }else{
-          that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
-        }
-      })
-      console.log(params.lab.upddate);
-      that.$store.commit('setDefaultData', params.lab.params)
+          }else{
+            that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
+          }
+        })
+      }
+      
+      if(params.lab){
+        that.$store.commit('setDefaultData', params.lab.params)
+      }
       that.$store.commit('setPtId', mark.ptid)
       that.$store.commit('setPltId', mark.pltId)
       that.$store.commit('setRid', mark.ec_labreport_id)
@@ -1591,7 +1603,7 @@ export default {
             })
           } else if(i==='c20'){
               //this.$store.commit('setDateInit', data[i])
-            if(data[i] != undefined) that.formRecord[i]= that.formatDate(data[i]);
+            if(data[i] != undefined) that.formRecord[i]= that.formatDate(parseInt(data[i]));
           }else {
             that.formRecord[i] = data[i]
           }
@@ -1689,7 +1701,7 @@ export default {
       count_s = Math.round(count_s * vv) / vv;
       this.formRecord.c123 = count_s
     },
-
+    
     showConfirm () {
       let _this = this
       let pageType=_this.$store.state.app.pageType;
@@ -1701,6 +1713,10 @@ export default {
         _this.$Message.warning('请上传铭牌图片！')
         return false
       }
+      if (_this.$store.state.app.oem &&_this.uploadParam.filePath26 === '') {
+        _this.$Message.warning('请上传oem声明！')
+        return false
+      }
       if(pageType==="extend" || pageType==="update" ){
           if (_this.formRecord.ec_master_kuozhan_text===''){
               let text=pageType==="extend"?'扩展':'变更'
@@ -1710,10 +1726,10 @@ export default {
           }
           return;
       }
-
+     
       _this.count43()
       _this.count123()
-
+      
       this.$refs['formRecord'].validate((valid) => {
         if (valid) {
           if (_this.confirmData.join('') == 1) {
@@ -1818,7 +1834,7 @@ export default {
           }
         })
       }else{
-
+        
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -1875,10 +1891,10 @@ export default {
         url: '/marking/saveDraft.do',
         method: 'POST',
         data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest`
+        // 只适用于 POST,PUT,PATCH，transformRequest` 
         //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
         //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) {
+        transformRequest: [function (data) { 
           let ret = ''
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
@@ -2310,7 +2326,7 @@ export default {
             message: '请填写额定值'
           },
           {
-            validator: twoDecimals,
+            validator: (this.formRecord.c21 === '冷藏冷冻箱' && twoDecimals ),
             trigger: 'blur'
           }
         ],
@@ -2352,7 +2368,7 @@ export default {
             trigger: 'blur'
           },
           {
-            validator: threeDecimals,
+            validator: (this.formRecord.c21 === '冷藏冷冻箱'&&threeDecimals),
             trigger: 'blur'
           }
         ],
@@ -2366,7 +2382,7 @@ export default {
             trigger: 'blur'
           },
           {
-            validator: threeDecimals,
+            validator: (this.formRecord.c21 === '冷藏冷冻箱'&&threeDecimals),
             trigger: 'blur'
           }
         ],
@@ -2394,7 +2410,7 @@ export default {
             trigger: 'blur'
           },
           {
-            validator: oneDecimals,
+            validator: (this.formRecord.c21 === '冷藏冷冻箱'&&oneDecimals),
             trigger: 'blur'
           }
         ],
