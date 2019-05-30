@@ -1,4 +1,4 @@
-<!--计算机显示器2015版-->
+<!--转速可控型房间空气调节器 2013版-->
 <!--创建日期:2019年5月27日-->
 <!--创建人:YCL-->
 <template>
@@ -107,17 +107,17 @@
               <td>额定制热量(W)</td>
               <td>
                 <FormItem prop="c25">
-                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c25'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c33">
-                  <Input type="text" v-model="formRecord.c33" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c33" :disabled='disabledoff || forbidden.c33'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c34">
-                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff || forbidden.c34'/>
                 </FormItem>
               </td>
             </tr>
@@ -143,17 +143,17 @@
               <td>制热季节耗电量(kW·h)（按照全年制热运行433小时计算）</td>
               <td>
                 <FormItem prop="c42">
-                  <Input type="text" v-model="formRecord.c42" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.c42'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c43">
-                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff || forbidden.c43'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c44">
-                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff || forbidden.c44'/>
                 </FormItem>
               </td>
             </tr>
@@ -161,7 +161,7 @@
               <td>制冷季节能源消耗效率[W·h/(W·h)]</td>
               <td>
                 <FormItem prop="c6">
-                  <Input type="text" v-model="formRecord.c6" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c6" :disabled='disabledoff || forbidden.c6'/>
                 </FormItem>
               </td>
               <td>
@@ -179,17 +179,17 @@
               <td>全年能源消耗效率[W·h/(W·h)]</td>
               <td>
                 <FormItem prop="c37">
-                  <Input type="text" v-model="formRecord.c37" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c37" :disabled='disabledoff || forbidden.c37'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c38">
-                  <Input type="text" v-model="formRecord.c38" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c38" :disabled='disabledoff || forbidden.c38'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c39">
-                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff || forbidden.c39'/>
                 </FormItem>
               </td>
             </tr>
@@ -244,7 +244,7 @@
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c13">
-                  <Input type="text" v-model="formRecord.c13" style="width:80px;" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c13" style="width:80px;" :disabled='disabledoff || forbidden.c13'/>
                 </FormItem>
               </td>
             </tr>
@@ -258,8 +258,7 @@
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c48">
-                  <Input type="text" placeholder="电加热装置输入功率(W)" v-model="formRecord.c48" style="width:200px;"
-                         :disabled='disabledoff'/>
+                  <Input type="text" placeholder="电加热装置输入功率(W)" v-model="formRecord.c48" style="width:200px;" :disabled='disabledoff || forbidden.c48'/>
                 </FormItem>
               </td>
             </tr>
@@ -810,7 +809,9 @@
       </div>
       <div class="tc">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" :disabled="saveDisabled">保存到草稿</Button>
+        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿
+        </Button>
+        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
       </div>
     </Form>
@@ -861,7 +862,7 @@
         我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
         品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">家用电冰箱-2015版</span>产品。
+        型号的 <span class="f-product">转速可控型房间空气调节器 2013版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1074,7 +1075,20 @@
           ec_model_no: 33,
           attach_list: ''
         },
-        forbidden: {}
+        forbidden: {
+          c25: true,
+          c33: true,
+          c34: true,
+          c42: true,
+          c43: true,
+          c44: true,
+          c37: true,
+          c38: true,
+          c39: true,
+          c6: true,
+          c13: true,
+          c48: true,
+        }
       }
     },
     mounted() {
@@ -1144,130 +1158,129 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        //能效等级
+        var nxdj = this.formRecord.c8
+        if (this.formRecord.c57 === '热泵型') {
+          this.forbidden.c25 = false
+          this.forbidden.c33 = false
+          this.forbidden.c34 = false
+          this.forbidden.c42 = false
+          this.forbidden.c43 = false
+          this.forbidden.c44 = false
+          this.forbidden.c37 = false
+          this.forbidden.c38 = false
+          this.forbidden.c39 = false
+        } else {
+          this.formRecord.c25 = ''
+          this.formRecord.c33 = ''
+          this.formRecord.c34 = ''
+          this.formRecord.c42 = ''
+          this.formRecord.c43 = ''
+          this.formRecord.c44 = ''
+          this.formRecord.c37 = ''
+          this.formRecord.c38 = ''
+          this.formRecord.c39 = ''
+          this.forbidden.c25 = true
+          this.forbidden.c33 = true
+          this.forbidden.c34 = true
+          this.forbidden.c42 = true
+          this.forbidden.c43 = true
+          this.forbidden.c44 = true
+          this.forbidden.c37 = true
+          this.forbidden.c38 = true
+          this.forbidden.c39 = true
+        }
+        if (this.formRecord.c57 === '单冷式') {
+          this.forbidden.c6 = false
+        } else {
+          this.formRecord.c6 = ''
+          this.forbidden.c6 = true
+        }
+
+        if (this.formRecord.c12 === '其他') {
+          this.forbidden.c13 = false
+        } else {
+          this.formRecord.c13 = ''
+          this.forbidden.c13 = true
+        }
+
+        if (this.formRecord.c14 === '有') {
+          this.forbidden.c48 = false
+        } else {
+          this.formRecord.c48 = ''
+          this.forbidden.c48 = true
+        }
+
         let checkc5 = (rule, value, callback) => {
           let c5 = parseFloat(this.formRecord.c5)
           if (c5 > 14000) {
-            callback("<=14000")
+            callback("额定制冷量数据错误")
           } else {
             callback()
           }
         }
-        let checkc6 = (rule, vaule, callback) => {
-          let c5 = parseFloat(this.formRecord.c5)
-          let c6 = parseFloat(this.formRecord.c6)
-          let c57 = this.formRecord.c57
-          let c8 = Number(this.formRecord.c8)
-          let errorc6 = ''
-          let errorc37 = ''
-          let nxdj = ""
-          if (c57 === "单冷式") {
-            if (c5 <= 4500) {
-              if (c6 >= 5.40) {
-                nxdj = "1"
-              } else if (c6 >= 5.00) {
-                nxdj = "2"
-              } else if (c6 >= 4.30) {
-                nxdj = "3"
-              }
-              switch (c8) {
-                case 1: errorc6 = ">=5.40";break
-                case 2: errorc6 = ">=5.00且<5.40";break
-                case 3: errorc6 = ">=4.30且<5.00";break
-              }
-            } else if (c5 <= 7100) {
-              if (c6 >= 5.10) {
-                nxdj = "1"
-              } else if (c6 >= 4.40) {
-                nxdj = "2"
-              } else if (c6 >= 3.90) {
-                nxdj = "3"
-              }
-              switch (c8) {
-                case 1: errorc6 = ">=5.10";break
-                case 2: errorc6 = ">=4.40且<5.10";break
-                case 3: errorc6 = ">=3.90且<4.40";break
-              }
-            } else {
-              if (c6 >= 4.70) {
-                nxdj = "1"
-              } else if (c6 >= 4.00) {
-                nxdj = "2"
-              } else if (c6 >= 3.50) {
-                nxdj = "3"
-              }
-              switch (c8) {
-                case 1: errorc6 = ">=4.70";break
-                case 2: errorc6 = ">=4.00且<4.70";break
-                case 3: errorc6 = ">=3.50且<4.70";break
-              }
+        if (this.formRecord.c57 === "单冷式") {
+          if (parseFloat(parseFloat(this.formRecord.c5)) <= 4500) {
+            if (parseFloat(this.formRecord.c6) >= 5.40) {
+              nxdj = "1";
+            } else if (parseFloat(this.formRecord.c6) >= 5.00) {
+              nxdj = "2";
+            } else if (parseFloat(this.formRecord.c6) >= 4.30) {
+              nxdj = "3";
             }
-            if (Number(nxdj) !== c8) {
-              callback(errorc6)
-            } else {
-              callback()
+          } else if (parseFloat(parseFloat(this.formRecord.c5)) <= 7100) {
+            if (parseFloat(this.formRecord.c6) >= 5.10) {
+              nxdj = "1";
+            } else if (parseFloat(this.formRecord.c6) >= 4.40) {
+              nxdj = "2";
+            } else if (parseFloat(this.formRecord.c6) >= 3.90) {
+              nxdj = "3";
             }
           } else {
-            callback()
-          }
-        }
-        let checkc37 = (rule, vaule, callback) => {
-          let c5 = parseFloat(this.formRecord.c5)
-          let c37 = parseFloat(this.formRecord.c37)
-          let c57 = this.formRecord.c57
-          let c8 = Number(this.formRecord.c8)
-          let errorc6 = ''
-          let errorc37 = ''
-          let nxdj = ""
-          if (c57 === "热泵型") {
-            if (c5 <= 4500) {
-              if (c37 >= 4.50) {
-                nxdj = "1"
-              } else if (c37 >= 4.00) {
-                nxdj = "2"
-              } else if (c37 >= 3.50) {
-                nxdj = "3"
-              }
-              switch (c8) {
-                case 1: errorc37 = ">=4.50";break
-                case 2: errorc37 = ">=4.00且<4.50";break
-                case 3: errorc37 = ">=3.50且<4.00";break
-              }
-            } else if (c5 <= 7100) {
-              if (c37 >= 4.00) {
-                nxdj = "1"
-              } else if (c37 >= 3.50) {
-                nxdj = "2"
-              } else if (c37 >= 3.30) {
-                nxdj = "3"
-              }
-              switch (c8) {
-                case 1: errorc37 = ">=4.00";break
-                case 2: errorc37 = ">=3.50且<4.00";break
-                case 3: errorc37 = ">=3.30且<3.50";break
-              }
-            } else {
-              if (c37 >= 3.70) {
-                nxdj = "1"
-              } else if (c37 >= 3.30) {
-                nxdj = "2"
-              } else if (c37 >= 3.10) {
-                nxdj = "3"
-              }
-              switch (c8) {
-                case 1: errorc37 = ">=3.70";break
-                case 2: errorc37 = ">=3.30且<3.70";break
-                case 3: errorc37 = ">=3.10且<3.30";break
-              }
+            if (parseFloat(this.formRecord.c6) >= 4.70) {
+              nxdj = "1";
+            } else if (parseFloat(this.formRecord.c6) >= 4.00) {
+              nxdj = "2";
+            } else if (parseFloat(this.formRecord.c6) >= 3.50) {
+              nxdj = "3";
             }
-            if (Number(nxdj) !== c8) {
-              callback(errorc37)
-            } else {
-              callback()
+          }
+        } else if (this.formRecord.c57 === "热泵型") {
+          if (parseFloat(parseFloat(this.formRecord.c5)) <= 4500) {
+            if (parseFloat(this.formRecord.c37) >= 4.50) {
+              nxdj = "1";
+            } else if (parseFloat(this.formRecord.c37) >= 4.00) {
+              nxdj = "2";
+            } else if (parseFloat(this.formRecord.c37) >= 3.50) {
+              nxdj = "3";
+            }
+          } else if (parseFloat(this.formRecord.c5) <= 7100) {
+            if (parseFloat(this.formRecord.c37) >= 4.00) {
+              nxdj = "1";
+            } else if (parseFloat(this.formRecord.c37) >= 3.50) {
+              nxdj = "2";
+            } else if (parseFloat(this.formRecord.c37) >= 3.30) {
+              nxdj = "3";
             }
           } else {
-            callback()
+            if (parseFloat(this.formRecord.c37) >= 3.70) {
+              nxdj = "1";
+            } else if (parseFloat(this.formRecord.c37) >= 3.30) {
+              nxdj = "2";
+            } else if (parseFloat(this.formRecord.c37) >= 3.10) {
+              nxdj = "3";
+            }
           }
         }
+        let checkc8 = (rule, value, callback) => {
+          if (!nxdj) {
+            callback("能效数据不在备案范围")
+          }
+          if (nxdj != this.formRecord.c8) {
+            callback("所选能效等级与计算结果不符")
+          }
+        }
+
         return {
           c3: [
             {
@@ -1303,6 +1316,10 @@
             {
               required: true,
               message: '请选择能效等级'
+            },
+            {
+              validator: checkc8,
+              trigger: 'blur'
             }
           ],
           c25: [
@@ -1311,7 +1328,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '热泵型'?isNumber:check,
+              validator: this.formRecord.c57 === '热泵型' ? isNumber : check,
               trigger: 'blur'
             }
           ],
@@ -1321,7 +1338,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '热泵型'?atLeastOneDecimals:check,
+              validator: this.formRecord.c57 === '热泵型' ? atLeastOneDecimals : check,
               trigger: 'blur'
             }
           ],
@@ -1331,7 +1348,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '热泵型'?isNumber:check,
+              validator: this.formRecord.c57 === '热泵型' ? isNumber : check,
               trigger: 'blur'
             }
           ],
@@ -1341,7 +1358,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '热泵型'?atLeastOneDecimals:check,
+              validator: this.formRecord.c57 === '热泵型' ? atLeastOneDecimals : check,
               trigger: 'blur'
             }
           ],
@@ -1351,11 +1368,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '热泵型'?twoDecimals:check,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc37,
+              validator: this.formRecord.c57 === '热泵型' ? twoDecimals : check,
               trigger: 'blur'
             }
           ],
@@ -1365,7 +1378,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '热泵型'?atLeastTwoDecimals:check,
+              validator: this.formRecord.c57 === '热泵型' ? atLeastTwoDecimals : check,
               trigger: 'blur'
             }
           ],
@@ -1375,11 +1388,7 @@
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c57 === '单冷式'?twoDecimals:check,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc6,
+              validator: this.formRecord.c57 === '单冷式' ? twoDecimals : check,
               trigger: 'blur'
             }
           ],

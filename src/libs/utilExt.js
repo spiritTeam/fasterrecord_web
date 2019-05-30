@@ -154,16 +154,19 @@ export const XfillDefaultData = (params, that) => {
     }
   })
 }
+
 export const XshowConfirm = (that) => {
   let _this = that
-  if (_this.$store.state.app.requiredStr){
-    _this.$store.state.app.requiredStr.split(",").forEach((e) => {
-      if (!(e && _this.formRecord[e])) {
-        _this.$Message.warning(e + " 不能为空" + this.formRecord[e])
-        return false
-      }
-    })
-  }
+  // if (_this.$store.state.app.requiredStr){
+  //   console.log(_this.$store.state.app.requiredStr)
+  //   _this.$store.state.app.requiredStr.substring(0,_this.$store.state.app.requiredStr.length - 1).split(",").forEach((e) => {
+  //     if (!_this.formRecord[e]) {
+  //       // _this.$Message.warning(e + " 不能为空" + _this.formRecord[e])
+  //       console.log("值为" + e + " 不能为空" + _this.formRecord[e])
+  //       return false
+  //     }
+  //   })
+  // }
   let pageType = _this.$store.state.app.pageType;
   if (_this.uploadParam.filePath24 === '') {
     _this.$Message.warning('请上传产品正面图片！')
@@ -177,13 +180,16 @@ export const XshowConfirm = (that) => {
     if (_this.formRecord.ec_master_kuozhan_text === '') {
       let text = pageType === "extend" ? '扩展' : '变更'
       _this.$Message.warning('请填写' + text + '申请书！')
+      return false
     }
     // else {
     //   _this.modal1 = true;
     // }
     // return;
   }
+  console.log(_this);
   _this.$refs['formRecord'].validate((valid) => {
+    console.log("xxx" + valid);
     if (valid) {
       if (_this.confirmData.join('') == 1) {
         _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord, _this);

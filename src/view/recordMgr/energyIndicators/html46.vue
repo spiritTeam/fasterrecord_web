@@ -198,7 +198,7 @@
                 <FormItem prop="c25">
                   <RadioGroup v-model="formRecord.c25">
                     <Radio label="内置电源" :disabled='disabledoff'>内置电源</Radio>
-                    <Radio label="外部电源，输出功率（W）" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
+                    <Radio label="外部电源，输出功率（W）" :disabled='disabledoff'>外部电源，输出功率（W）</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c26">
@@ -909,7 +909,7 @@
         我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
         品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">家用电冰箱-2015版</span>产品。
+        型号的 <span class="f-product">计算机显示器2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -948,7 +948,6 @@
       </div>
     </Modal>
   </div>
-
 </template>
 <script>
   import {
@@ -971,7 +970,8 @@
     atLeastOneDecimals,
     atLeastTwoDecimals,
     isInteger,
-    isNumber
+    isNumber,
+    check
   } from '@/libs/utilExt'
 
   export default {
@@ -1255,9 +1255,9 @@
         }
 
         var checkc10a
-        var checkc10b
-        var checkc10c
         var checkc11a
+        var checkc10b
+        var checkc11b
         if (lx != "") {
           if (lx == "标准显示器") {
             checkc10a = (rule, value, callback) => {
@@ -1267,9 +1267,9 @@
                 callback()
               }
             }
-            checkc10b = (rule, value, callback) => {
+            checkc11a = (rule, value, callback) => {
               if (sleepVal > 0.5) {
-                callback('关闭状态功率(W)标注值应小于等于0.50W')
+                callback('睡眠状态功率(W)标注值应小于等于0.50W')
               } else {
                 callback()
               }
@@ -1286,14 +1286,14 @@
               }
             }
           } else if (lx == "高性能显示器") {
-            checkc10c = (rule, value, callback) => {
+            checkc10b = (rule, value, callback) => {
               if (closeVal > 0.5) {
                 callback('关闭状态功率(W)标注值应小于等于0.50W')
               } else {
                 callback()
               }
             }
-            checkc11a = (rule, value, callback) => {
+            checkc11b = (rule, value, callback) => {
               if (sleepVal > 1.2) {
                 callback('睡眠状态功率(W)标注值应小于等于1.20W')
               } else {
@@ -1362,7 +1362,7 @@
               trigger: 'blur'
             },
             {
-              validator: checkc7a,
+              validator: checkc7b,
               trigger: 'blur'
             }
           ],
@@ -1400,10 +1400,6 @@
             {
               validator: checkc10b,
               trigger: 'blur'
-            },
-            {
-              validator: checkc10c,
-              trigger: 'blur'
             }
           ],
           c11: [
@@ -1417,6 +1413,10 @@
             },
             {
               validator: checkc11a,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc11b,
               trigger: 'blur'
             },
             {
