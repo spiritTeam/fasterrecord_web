@@ -8,7 +8,6 @@ const resolve = dir => {
 const env = process.env.NODE_ENV || 'development'
 fs.writeFileSync(path.join(__dirname, './config/env.js'), `export default '${env}'
 `)
-const apiRoot = 'http://192.168.199.163:8088' 
 
 // const apiRoot = '../'
 // 这里需要修改为你线上项目存放的路径
