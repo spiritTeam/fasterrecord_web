@@ -1713,7 +1713,7 @@ export default {
         _this.$Message.warning('请上传铭牌图片！')
         return false
       }
-      if (_this.$store.state.app.oem &&_this.uploadParam.filePath24 === '') {
+      if (_this.$store.state.app.oem &&_this.uploadParam.filePath26 === '') {
         _this.$Message.warning('请上传oem声明！')
         return false
       }
