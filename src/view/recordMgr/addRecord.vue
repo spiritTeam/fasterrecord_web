@@ -12,8 +12,7 @@
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
-          <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
-        </TabPane>
+          <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>        </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
         </TabPane>
@@ -31,7 +30,7 @@
   </Card>
 </template>
 <script>
-import {setCookie,getCookie} from '@/libs/util.js'
+import {setCookie, getCookie} from '@/libs/util.js'
 import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
@@ -41,8 +40,7 @@ import Html33 from './energyIndicators/html33'
 import Html31 from './energyIndicators/html31'
 import Html23 from './energyIndicators/html23'
 import Html46 from './energyIndicators/html46'
-import Html54 from './energyIndicators/html54'
-
+import Html48 from './energyIndicators/html48'
 export default {
   data () {
     return {
@@ -62,34 +60,32 @@ export default {
     Html31,
     Html23,
     Html46,
-    Html54
-  },
- mounted () {
-    if(this.$route.params.type){
-      if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
-          this.$store.commit('setPageType', this.$route.params.type)
-          this.$store.commit('setUpdateId',this.$route.params.id)
+    Html48  },
+  mounted () {
+    if (this.$route.params.type) {
+      if (this.$route.params.type === 'update' || this.$route.params.type === 'extend') {
+        this.$store.commit('setPageType', this.$route.params.type)
+        this.$store.commit('setUpdateId', this.$route.params.id)
       }
-    }else{
-          this.$store.commit('setPageType', '')
-          this.$store.commit('setUpdateId','')
+    } else {
+      this.$store.commit('setPageType', '')
+      this.$store.commit('setUpdateId', '')
     };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-        //this.modal1 = true
+        // this.modal1 = true
       }
-      if(this.$route.params.draftData){
+      if (this.$route.params.draftData) {
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
-      }else if(this.$route.params.extendData){
-
+      } else if (this.$route.params.extendData) {
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }
     }
   },
   methods: {
     setNoTips () {
-      setCookie('noTips',this.noTips.join(''),1)
+      setCookie('noTips', this.noTips.join(''), 1)
     },
     showTemple () {
       this.$refs.selectSample.getSampleList()
@@ -99,7 +95,7 @@ export default {
     showRecordTab () {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-        //this.modal1 = true
+        // this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()
     }
