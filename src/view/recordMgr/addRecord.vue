@@ -12,7 +12,7 @@
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
-          <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>        </TabPane>
+          <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
@@ -41,6 +41,7 @@ import Html33 from './energyIndicators/html33'
 import Html31 from './energyIndicators/html31'
 import Html23 from './energyIndicators/html23'
 import Html46 from './energyIndicators/html46'
+import Html48 from './energyIndicators/html48'
 
 export default {
   data () {
@@ -60,7 +61,8 @@ export default {
     Html33,
     Html31,
     Html23,
-    Html46
+    Html46,
+    Html48
   },
  mounted () {
     if(this.$route.params.type){
