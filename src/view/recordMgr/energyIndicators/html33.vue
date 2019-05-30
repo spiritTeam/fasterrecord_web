@@ -50,7 +50,7 @@
             <Input type="text" v-model="formRecord.c30" placeholder="备案方" :disabled='disabledoff'/>
           </FormItem>
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" placeholder="规格型号" readonly :disabled='disabledoff'/>
+            <Input type="text" v-model="formRecord.c4" placeholder="规格型号" readonly :disabled='!disabledoff'/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" placeholder="商标" :disabled='disabledoff'/>
@@ -61,21 +61,21 @@
           </FormItem>
           <FormItem prop="c8" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c8">
-              <Radio label="1">1级</Radio>
-              <Radio label="2">2级</Radio>
-              <Radio label="3">3级</Radio>
+              <Radio label="1" :disabled='disabledoff'>1级</Radio>
+              <Radio label="2" :disabled='disabledoff'>2级</Radio>
+              <Radio label="3" :disabled='disabledoff'>3级</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem prop="c11" label="类型" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c11">
-              <Radio label="分体式">分体式</Radio>
-              <Radio label="整体式">整体式</Radio>
+              <Radio label="分体式" :disabled='disabledoff'>分体式</Radio>
+              <Radio label="整体式" :disabled='disabledoff'>整体式</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem prop="c57" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c57">
-              <Radio label="单冷式">单冷式</Radio>
-              <Radio label="热泵型">热泵型</Radio>
+              <Radio label="单冷式" :disabled='disabledoff'>单冷式</Radio>
+              <Radio label="热泵型" :disabled='disabledoff'>热泵型</Radio>
             </RadioGroup>
           </FormItem>
           <table id="table1">
@@ -205,7 +205,7 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <FormItem prop="c9" label="备案标识开始使用日期" style="width:1000px;">
-            <DatePicker type="date" style="width: 200px" v-model="formRecord.c9"></DatePicker>
+            <DatePicker type="date" style="width: 200px" v-model="formRecord.c9" :disabled='disabledoff'></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -218,8 +218,8 @@
               <td width="30%">
                 <FormItem prop="c10">
                   <RadioGroup v-model="formRecord.c10">
-                    <Radio label="三相">三相</Radio>
-                    <Radio label="单相">单相</Radio>
+                    <Radio label="三相" :disabled='disabledoff'>三相</Radio>
+                    <Radio label="单相" :disabled='disabledoff'>单相</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -227,8 +227,8 @@
               <td width="30%">
                 <FormItem prop="c15">
                   <RadioGroup v-model="formRecord.c15">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -238,9 +238,9 @@
               <td colspan="3">
                 <FormItem prop="c12">
                   <RadioGroup v-model="formRecord.c12">
-                    <Radio label="交流变频">交流变频</Radio>
-                    <Radio label="直流变频">直流变频</Radio>
-                    <Radio label="其他">其他</Radio>
+                    <Radio label="交流变频" :disabled='disabledoff'>交流变频</Radio>
+                    <Radio label="直流变频" :disabled='disabledoff'>直流变频</Radio>
+                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c13">
@@ -253,8 +253,8 @@
               <td colspan="3">
                 <FormItem prop="c14">
                   <RadioGroup v-model="formRecord.c14">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c48">
@@ -281,8 +281,8 @@
               <td>
                 <FormItem prop="c16">
                   <RadioGroup v-model="formRecord.c16">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -290,8 +290,8 @@
               <td>
                 <FormItem prop="c17">
                   <RadioGroup v-model="formRecord.c17">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -301,8 +301,8 @@
               <td>
                 <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -310,8 +310,8 @@
               <td>
                 <FormItem prop="c19">
                   <RadioGroup v-model="formRecord.c19">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -321,8 +321,8 @@
               <td>
                 <FormItem prop="c20">
                   <RadioGroup v-model="formRecord.c20">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -330,8 +330,8 @@
               <td>
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -341,8 +341,8 @@
               <td>
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -350,8 +350,8 @@
               <td>
                 <FormItem prop="c23">
                   <RadioGroup v-model="formRecord.c23">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -361,8 +361,8 @@
               <td>
                 <FormItem prop="c24">
                   <RadioGroup v-model="formRecord.c24">
-                    <Radio label="有">有</Radio>
-                    <Radio label="无">无</Radio>
+                    <Radio label="有" :disabled='disabledoff'>有</Radio>
+                    <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -370,8 +370,8 @@
               <td>
                 <FormItem prop="c56">
                   <RadioGroup v-model="formRecord.c56">
-                    <Radio label="有">是</Radio>
-                    <Radio label="无">否</Radio>
+                    <Radio label="有" :disabled='disabledoff'>是</Radio>
+                    <Radio label="无" :disabled='disabledoff'>否</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
