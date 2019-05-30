@@ -1272,13 +1272,215 @@ export default {
       return this.$store.state.app.requiredStr
     },
     ruleRecord () {
-      console.log(this.formRecord.c34)
-        if (this.formRecord.c34.join('').indexOf('热水') > -1) {
+
+            //产品类型
+            var lx = this.formRecord.c27
+            //能效等级
+            var nxdjch = this.formRecord.c7
+            //额定热负荷热水热效率
+            var valueers = parseFloat(this.formRecord.c14);
+            //额定热负荷供暖热效率
+            var valueegn = parseFloat(this.formRecord.c20);
+            //50%额定热负荷效率值
+            var value50 = parseFloat(this.formRecord.c17);
+            //30%额定热负荷效率值
+            var value30 = parseFloat(this.formRecord.c23);
+
+        if (this.formRecord.c34.join('').indexOf('其他') > -1) {
           this.forbidden.c35 = false
         } else {
-          this.formRecord.c34 = ''
-          this.forbidden.c35 = true
-        }      
+          this.formRecord.c = ''
+          this.forbidden.c24 = true
+        }            
+
+            var nxdj = "";
+            var n1 = "";
+            var n2 = "";
+            var n3 = "";
+            var n4 = "";
+            var n1val = "";
+            var n2val = "";
+            var nxdj1 = "";
+            var nxdj2 = "";
+            var nxdj3 = "";
+            var nxdj4 = "";
+            var nxdjMidd1 = "";
+            var nxdjMidd2 = "";
+            if (lx != "") {
+                if (lx == "家用燃气快速热水器") {
+                    if (valueers > value50) {
+                        n1val = valueers;
+                        n2val = value50;
+                    } else {
+                        n1val = value50;
+                        n2val = valueers;
+                    }
+                    if (n1val != "" && n2val != "") {
+                        //能效等级1
+                        if (n1val >= 98) {
+                            nxdj1 = "1";
+                        } else if (n1val >= 89 && n1val < 98) {
+                            nxdj1 = "2";
+                        } else if (n1val >= 86 && n1val < 89) {
+                            nxdj1 = "3";
+                        } else {
+                            nxdj1 = "";
+                        }
+                        //能效等级2
+                        if (n2val >= 94) {
+                            nxdj2 = "1";
+                        } else if (n2val >= 85 && n2val < 94) {
+                            nxdj2 = "2";
+                        } else if (n2val >= 82 && n2val < 85) {
+                            nxdj2 = "3";
+                        } else {
+                            nxdj2 = "";
+                        }
+                        if (nxdj1 == "" || nxdj2 == "") {
+                            nxdj = "";
+                        } else {
+                            if (nxdj1 > nxdj2) {
+                                nxdj = nxdj1;
+                            } else {
+                                nxdj = nxdj2;
+                            }
+                        }
+                    }
+                } else if (lx == "燃气采暖热水炉单采暖型") {
+                    if (valueegn > value30) {
+                        n1val = valueegn;
+                        n2val = value30;
+                    } else {
+                        n1val = value30;
+                        n2val = valueegn;
+                    }
+                    if (n1val != "" && n2val != "") {
+                        //能效等级1
+                        if (n1val >= 99) {
+                            nxdj1 = "1";
+                        } else if (n1val >= 89 && n1val < 99) {
+                            nxdj1 = "2";
+                        } else if (n1val >= 86 && n1val < 89) {
+                            nxdj1 = "3";
+                        } else {
+                            nxdj1 = "";
+                        }
+                        //能效等级2
+                        if (n2val >= 95) {
+                            nxdj2 = "1";
+                        } else if (n2val >= 85 && n2val < 95) {
+                            nxdj2 = "2";
+                        } else if (n2val >= 82 && n2val < 85) {
+                            nxdj2 = "3";
+                        } else {
+                            nxdj2 = "";
+                        }
+                        if (nxdj1 == "" || nxdj2 == "") {
+                            nxdj = "";
+                        } else {
+                            if (nxdj1 > nxdj2) {
+                                nxdj = nxdj1;
+                            } else {
+                                nxdj = nxdj2;
+                            }
+                        }
+
+                    }
+                } else if (lx == "燃气采暖热水炉两用型") {
+                    //热水
+                    if (valueers > value50) {
+                        n1 = valueers;
+                        n2 = value50;
+                    } else {
+                        n1 = value50;
+                        n2 = valueers;
+                    }
+                    //能效等级1 
+                    if (n1 >= 96) {
+                        nxdj1 = "1";
+                    } else if (n1 >= 89 && n1 < 96) {
+                        nxdj1 = "2";
+                    } else if (n1 >= 86 && n1 < 89) {
+                        nxdj1 = "3";
+                    } else {
+                        nxdj1 = "";
+                    }
+                   //能效等级2
+                  if (n2 >= 92) {
+                      nxdj2 = "1";
+                  } else if (n2 >= 85 && n2 < 92) {
+                      nxdj2 = "2";
+                  } else if (n2 >= 82 && n2 < 85) {
+                      nxdj2 = "3";
+                  } else {
+                      nxdj2 = "";
+                  }
+                  //采暖
+                  if (valueegn > value30) {
+                      n3 = valueegn;
+                                } else {
+                    n3 = value30;
+                     n4 = valueegn;
+                   }
+                  //能效等级1
+                  if (n3 >= 99) {
+                      nxdj3 = "1";
+                  } else if (n3 >= 89 && n3 < 99) {
+                      nxdj3 = "2";
+                  } else if (n3 >= 86 && n3 < 89) {
+                      nxdj3 = "3";
+                   } else {
+                      nxdj3 = "";
+                  }
+                    //能效等级2
+                  if (n4 >= 95) {
+                      nxdj4 = "1";
+                  } else if (n4 >= 85 && n4 < 95) {
+                      nxdj4 = "2";
+                  } else if (n4 >= 82 && n4 < 85) {
+                      nxdj4 = "3";
+                  } else {
+                      nxdj4 = "";
+                  }
+                  //四个能效值比较出最大值
+                    if (nxdj1 == "" || nxdj2 == "" || nxdj3 == "" || nxdj4 == "") {                        nxdj = "";
+                  } else {
+                      if (nxdj1 > nxdj2) {
+                          nxdjMidd1 = nxdj1;
+                      } else {
+                          nxdjMidd1 = nxdj2;
+                      }
+                      if (nxdj3 > nxdj4) {
+                          nxdjMidd2 = nxdj3;
+                      } else {
+                          nxdjMidd2 = nxdj4;
+                       }
+                      if (nxdjMidd1 != "" && nxdjMidd2 != "") {
+                            if (nxdjMidd1 > nxdjMidd2) {
+                                nxdj = nxdjMidd1;
+                            } else {
+                              nxdj = nxdjMidd2;
+                          }
+                      }
+                  }
+              } else {
+                  var nxdj = "";
+              }
+           }
+       const checkc7a = (rule, value, callback) => {
+         if (nxdjst == "") {
+          callback('能效数据不在备案范围')
+         } else {
+           callback()
+         }
+      }
+      const checkc7b = (rule, value, callback) => {
+        if (nxdjst != nxdj) {
+           callback('所选能效等级与计算结果不符！')
+        } else {
+          callback()
+        }
+      }
       return {
         c1: [
           {
@@ -1308,6 +1510,14 @@ export default {
           {
             required: true,
             message: '能源效率等级不能为空'
+          },
+          {
+            validator: checkc7a,
+            trigger: 'blur'
+          },
+          {
+            validator: checkc7b,
+            trigger: 'blur'
           }
         ],
         c8: [
