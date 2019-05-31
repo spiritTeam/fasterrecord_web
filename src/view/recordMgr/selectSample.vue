@@ -36,6 +36,7 @@ export default {
     }
   },
   mounted () {
+
     //this.getSampleList()
     //this.setStyle()
   },
@@ -75,7 +76,6 @@ export default {
       })
     },
     confirmSample () {
-      console.log("123456");
       if (this.sample === '') {
         this.$Message.warning('请选择标识模板样式！')
       } else {
