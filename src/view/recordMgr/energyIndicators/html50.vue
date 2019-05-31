@@ -30,10 +30,10 @@
             <tbody>
             <tr>
               <td width="40%">
-                <Input type="text" :value="$store.state.app.labName" readonly/>
+                <Input type="text" :value="$store.state.app.labName" />
               </td>
               <td>
-                <Input type="text" :value="$store.state.app.barcode" readonly/>
+                <Input type="text" :value="$store.state.app.barcode" />
               </td>
             </tr>
             </tbody>
@@ -44,7 +44,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly/>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" />
           </FormItem>
           <FormItem prop="c3" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="制造单位"/>
@@ -59,7 +59,7 @@
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" />
           </FormItem>
           <FormItem prop="c9" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c9">
@@ -79,7 +79,7 @@
               <td align="center">制冷量(千瓦)</td>
               <td>
                  <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c5" readonly disabled/>
+                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -92,7 +92,7 @@
               <td align="center">消耗总电功率(千瓦)</td>
                 <td>
                  <FormItem prop="c6" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c6"  readonly disabled/>
+                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -105,7 +105,7 @@
               <td align="center">性能系数</td>
                <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  readonly disabled/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -118,7 +118,7 @@
               <td align="center">综合部分负荷性能系数</td>
                <td>
                  <FormItem prop="c8" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c8"  readonly disabled/>
+                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -177,7 +177,7 @@
               <td align="right"><span class="red">*</span>模块化</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c13">
+                  <FormItem prop="c13" style="width:100%">
                     <RadioGroup v-model="formRecord.c13">
                       <Radio :disabled='disabledoff' label="是">是</Radio>
                       <Radio :disabled='disabledoff' label="否">否</Radio>
@@ -188,7 +188,7 @@
               <td align="right"><span class="red">*</span>其他载冷剂</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c14">
+                  <FormItem prop="c14" style="width:100%">
                     <RadioGroup v-model="formRecord.c14">
                       <Radio :disabled='disabledoff' label="有">有</Radio>
                       <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -201,7 +201,7 @@
               <td align="right"><span class="red">*</span>热泵功能</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c15">
+                  <FormItem prop="c15" style="width:100%">
                     <RadioGroup v-model="formRecord.c15">
                       <Radio :disabled='disabledoff' label="有">有</Radio>
                       <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -212,7 +212,7 @@
               <td align="right"><span class="red">*</span>部分负荷运行</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c16">
+                  <FormItem prop="c16" style="width:100%">
                     <RadioGroup v-model="formRecord.c16">
                       <Radio :disabled='disabledoff' label="可以">可以</Radio>
                       <Radio :disabled='disabledoff' label="不可以">不可以</Radio>
@@ -225,7 +225,7 @@
               <td align="right"><span class="red">*</span>结构形式</td>
               <td colspan="3">
                 <label class="mb7">
-                  <FormItem prop="c17">
+                  <FormItem prop="c17" style="width:100%">
                     <RadioGroup v-model="formRecord.c17">
                       <Radio :disabled='disabledoff' label="整体式">整体式</Radio>
                       <Radio :disabled='disabledoff' label="分体式">分体式</Radio>
@@ -253,8 +253,8 @@
                      <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
-                <FormItem prop="c18">
-                  <Input type="text" v-model="formRecord.c18" :disabled='forbidden.c18'/>
+                <FormItem prop="c57">
+                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'/>
                 </FormItem>
                 </label>
               </td>
@@ -271,8 +271,8 @@
                     <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
-                <FormItem prop="c19">
-                  <Input type="text" v-model="formRecord.c19" :disabled='forbidden.c19'/>
+                <FormItem prop="c58">
+                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff || forbidden.c58'/>
                 </FormItem>
                 </label>
               </td>
@@ -290,8 +290,8 @@
                       <Radio :disabled='disabledoff' label="其他">其他</Radio>
                     </RadioGroup>
                   </FormItem>
-                  <FormItem prop="c20">
-                    <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20'/>
+                  <FormItem prop="c59">
+                    <Input type="text" v-model="formRecord.c59" :disabled='disabledoff || forbidden.c59'/>
                   </FormItem>
                 </label>
               </td>
@@ -310,7 +310,7 @@
               <td align="right"><span class="red">*</span>油分离器</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c22">
+                  <FormItem prop="c22" style="width:100%">
                     <RadioGroup v-model="formRecord.c22">
                       <Radio :disabled='disabledoff' label="有">有</Radio>
                       <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -321,7 +321,7 @@
               <td align="right"><span class="red">*</span>储液器</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c23">
+                  <FormItem prop="c23" style="width:100%">
                     <RadioGroup v-model="formRecord.c23">
                         <Radio :disabled='disabledoff' label="有">有</Radio>
                       <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -334,7 +334,7 @@
               <td align="right"><span class="red">*</span>辅助电加热器</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c24">
+                  <FormItem prop="c24" style="width:100%">
                     <RadioGroup v-model="formRecord.c24">
                       <Radio :disabled='disabledoff' label="有">有</Radio>
                       <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -345,7 +345,7 @@
               <td align="right"><span class="red">*</span>热回收功能</td>
               <td>
                 <label class="mb7">
-                  <FormItem prop="c25">
+                  <FormItem prop="c25" style="width:100%">
                     <RadioGroup v-model="formRecord.c25">
                         <Radio :disabled='disabledoff' label="有">有</Radio>
                       <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -390,12 +390,12 @@
                     <RadioGroup v-model="formRecord.c29">
                       <Radio :disabled='disabledoff' label="交流220V">交流220V</Radio>
                       <Radio :disabled='disabledoff' label="交流380V">交流380V</Radio>
-                      <Radio :disabled='disabledoff' label=" 直流">直流</Radio>
-                      <Radio :disabled='disabledoff' label=" 其他">其他</Radio>
+                      <Radio :disabled='disabledoff' label="直流">直流</Radio>
+                      <Radio :disabled='disabledoff' label="其他">其他</Radio>
                     </RadioGroup>
                   </FormItem>
-                  <FormItem prop="c29">
-                    <Input type="text" v-model="formRecord.c29" :disabled='forbidden.c29'/>
+                  <FormItem prop="c60">
+                    <Input type="text" v-model="formRecord.c60" :disabled='disabledoff || forbidden.c60'/>
                   </FormItem>
                 </label>
               </td>
@@ -408,11 +408,11 @@
                     <RadioGroup v-model="formRecord.c30">
                       <Radio :disabled='disabledoff' label="单片机">单片机</Radio>
                       <Radio :disabled='disabledoff' label="可编程(PLC)控制">可编程(PLC)控制</Radio>
-                      <Radio :disabled='disabledoff' label=" 其他">其他</Radio>
+                      <Radio :disabled='disabledoff' label="其他">其他</Radio>
                     </RadioGroup>
                   </FormItem>
-                  <FormItem prop="c30">
-                    <Input type="text" v-model="formRecord.c30" :disabled='forbidden.c30'/>
+                  <FormItem prop="c61">
+                    <Input type="text" v-model="formRecord.c61" :disabled='disabledoff || forbidden.c61'/>
                   </FormItem>
                 </label>
               </td>
@@ -421,7 +421,7 @@
               <td align="right"><span class="red">*</span>是否允注制冷剂</td>
               <td colspan="3">
                 <label class="mb7">
-                  <FormItem prop="c31">
+                  <FormItem prop="c31" style="width:100%">
                     <RadioGroup v-model="formRecord.c31">
                       <Radio :disabled='disabledoff' label="是">是</Radio>
                       <Radio :disabled='disabledoff' label="否">否</Radio>
@@ -450,31 +450,29 @@
              <tr>
               <td align="right"><span class="red">*</span>整机或室内机外形尺寸<br/>(长×宽×高)<br/>(mm×mm×mm)</td>
               <td> <label class="mb7">
-                <FormItem><b>长</b></FormItem>
-                <FormItem prop="c34" style="width: 27%">
+                <FormItem prop="c34" style="width: 30%">
                   <Input style="vertical-align:top" type="text" v-model="formRecord.c34" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>宽</b></FormItem>
-                <FormItem prop="c35" style="width: 27%">
+                <FormItem><b>x</b></FormItem>
+                <FormItem prop="c35" style="width: 30%">
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'/>
                 </FormItem>
-                 <FormItem><b>高</b></FormItem>
-                <FormItem prop="c36" style="width: 27%">
+                 <FormItem><b>x</b></FormItem>
+                <FormItem prop="c36" style="width: 30%">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
                 </FormItem></label>
               </td>
               <td align="right">室外机外形尺寸<br/>(长×宽×高)<br/>(mm×mm×mm)</td>
               <td>
-                <FormItem><b>长</b></FormItem>
-                <FormItem prop="c37" style="width: 27%">
+                <FormItem prop="c37" style="width: 30%">
                   <Input style="vertical-align:top" type="text" v-model="formRecord.c37" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>宽</b></FormItem>
-                <FormItem prop="c38" style="width: 27%">
+                <FormItem><b>x</b></FormItem>
+                <FormItem prop="c38" style="width: 30%">
                   <Input type="text" v-model="formRecord.c38" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>高</b></FormItem>
-                <FormItem prop="c39" style="width: 27%">
+                <FormItem><b>x</b></FormItem>
+                <FormItem prop="c39" style="width: 30%">
                   <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'/>
                 </FormItem>
               </td>
@@ -791,9 +789,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload24"
+                    :before-upload="file=>fileHandleBeforeUpload(file,24)"
                     :data="uploadParam.fileData24"
-                    :on-success="getFile24"
+                    :on-success="(res,file)=>getFile(res,file,24)"
+                    :on-format-error="file=>handleFormatError(file,24)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -818,9 +817,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload26"
+                    :before-upload="file=>fileHandleBeforeUpload(file,26)"
                     :data="uploadParam.fileData26"
-                    :on-success="getFile26"
+                    :on-success="(res,file)=>getFile(res,file,26)"
+                    :on-format-error="file=>handleFormatError(file,26)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -838,11 +838,13 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload27"
+                    :before-upload="file=>fileHandleBeforeUpload(file,27)"
                     :data="uploadParam.fileData27"
-                    :on-success="getFile27"
+                    :on-success="(res,file)=>getFile(res,file,27)"
+                    :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27"/>
                   </Upload>
@@ -860,9 +862,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload28"
+                    :before-upload="file=>fileHandleBeforeUpload(file,28)"
                     :data="uploadParam.fileData28"
-                    :on-success="getFile28"
+                    :on-success="(res,file)=>getFile(res,file, 28)"
+                    :on-format-error="file=>handleFormatError(file,28)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -880,9 +883,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload29"
+                    :before-upload="file=>fileHandleBeforeUpload(file,29)"
                     :data="uploadParam.fileData29"
-                    :on-success="getFile29"
+                    :on-success="(res,file)=>getFile(res,file, 29)"
+                    :on-format-error="file=>handleFormatError(file,29)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -902,9 +906,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload30"
+                    :before-upload="file=>fileHandleBeforeUpload(file,30)"
                     :data="uploadParam.fileData30"
-                    :on-success="getFile30"
+                    :on-success="(res,file)=>getFile(res,file, 30)"
+                    :on-format-error="file=>handleFormatError(file,30)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -922,9 +927,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload31"
+                    :before-upload="file=>fileHandleBeforeUpload(file,31)"
                     :data="uploadParam.fileData31"
-                    :on-success="getFile31"
+                    :on-success="(res,file)=>getFile(res,file, 31)"
+                    :on-format-error="file=>handleFormatError(file,31)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -944,9 +950,10 @@
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
-                    :before-upload="fileHandleBeforeUpload32"
+                    :before-upload="file=>fileHandleBeforeUpload(file,32)"
                     :data="uploadParam.fileData32"
-                    :on-success="getFile32"
+                    :on-success="(res,file)=>getFile(res,file, 32)"
+                    :on-format-error="file=>handleFormatError(file,32)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -965,9 +972,10 @@
                     id=76
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
-                    :before-upload="fileHandleBeforeUpload76"
+                    :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
-                    :on-success="getFile76"
+                    :on-success="(res,file)=>getFile(res,file, 76)"
+                    :on-format-error="file=>handleFormatError(file,76)"
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
@@ -1079,12 +1087,32 @@
       </div>
     </Modal>
   </div>
+
 </template>
 <script>
-import axios from 'axios'
+  import axios from 'axios'
+  import {
+    getImgPath,
+    XfillExtendData,
+    XfillDraftData,
+    XfillDefaultData,
+    XhandleFormatError,
+    XfileHandleBeforeUpload,
+    XshowConfirm,
+    diffRecord,
+    XsubmitRecord,
+    XsaveRecord,
+    XformatDate,
+    threeDecimals,
+    twoDecimals,
+    oneDecimals,
+    significantDigits22,
+    significantDigits33,
+    numberCheck
+  } from '@/libs/utilEst'
 
-export default {
-  data () {
+  export default {
+    data () {
     const timeDate = this.$store.state.app.dateinit
     return {
       // 当前初始使用日期 对应的C值
@@ -1200,6 +1228,11 @@ export default {
         c37: '',
         c38: '',
         c39: '',
+        c57: '',
+        c58: '',
+        c59: '',
+        c60: '',
+        c61: '',
         c69: '',
         c70: '',
         c71: '',
@@ -1239,1310 +1272,780 @@ export default {
         attach_list: ''
       },
       forbidden: {
-        c18: true,
-        c19: true,
-        c20: true,
         c26: true,
         c27: true,
         c28: true,
-        c29: true,
-        c30: true
-      }
+        c57: true,
+        c58: true,
+        c59: true,
+        c60: true,
+        c61: true
+      },
+      jsonPdyj: [{
+          type: "wind",
+          list: [{
+              cool: '<=50',
+              itemlist: [{
+                  grade: 1,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 3.80
+                  }, {
+                      opt_type: "cop",
+                      val: 3.20
+                  }]
+              }, {
+                  grade: 2,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 3.60
+                  }, {
+                      opt_type: "cop",
+                      val: 3.00
+                  }]
+
+              }, {
+                  grade: 3,
+                  iplv: 2.80,
+                  cop: 2.50
+              }]
+          }, {
+              cool: '>50',
+              itemlist: [{
+                  grade: 1,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 4.00
+                  }, {
+                      opt_type: "cop",
+                      val: 3.40
+                  }]
+              }, {
+                  grade: 2,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 3.70
+                  }, {
+                      opt_type: "cop",
+                      val: 3.20
+                  }]
+              }, {
+                  grade: 3,
+                  iplv: 2.90,
+                  cop: 2.70
+              }]
+          }]
+      }, {
+          type: "water",
+          list: [{
+              cool: '<=528',
+              itemlist: [{
+                  grade: 1,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 7.20
+                  }, {
+                      opt_type: "cop",
+                      val: 5.60
+                  }]
+              }, {
+                  grade: 2,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 6.30
+                  }, {
+                      opt_type: "cop",
+                      val: 5.30
+                  }]
+              }, {
+                  grade: 3,
+                  iplv: 5.00,
+                  cop: 4.20
+              }]
+          }, {
+              cool: '538-1163',
+              itemlist: [{
+                  grade: 1,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 7.50
+                  }, {
+                      opt_type: "cop",
+                      val: 6.00
+                  }]
+              }, {
+                  grade: 2,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 7.00
+                  }, {
+                      opt_type: "cop",
+                      val: 5.60
+                  }]
+              }, {
+                  grade: 3,
+                  iplv: 5.50,
+                  cop: 4.70
+              }]
+          }, {
+              cool: '>1163',
+              itemlist: [{
+                  grade: 1,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 8.10
+                  }, {
+                      opt_type: "cop",
+                      val: 6.30
+                  }]
+              }, {
+                  grade: 2,
+                  opt: [{
+                      opt_type: "iplv",
+                      val: 7.60
+                  }, {
+                      opt_type: "cop",
+                      val: 5.80
+                  }]
+              }, {
+                  grade: 3,
+                  iplv: 5.90,
+                  cop: 5.20
+              }]
+          }]
+      }]
     }
   },
-  mounted () {
-    this.disabledoff = this.$store.state.app.pageType == 'extend'
-  },
-  methods: {
-    showTemplate () {
-      this.templatePic = this.$store.state.app.pltPic
-      this.modal3 = true
-    },
-    prevStep () {
-      this.$emit('prevStep')
-    },
-    getRandom (type) {
-      return (Math.random().toString().slice(2)) + type
-    },
-    getImgPath (dir) {
-      let imgDir = dir
-      let nowDate = new Date()
-      let year = nowDate.getFullYear()
-      let month = nowDate.getMonth() > 8 ? (nowDate.getMonth() + 1) : '0' + (nowDate.getMonth() + 1)
-      let date = nowDate.getDate() > 9 ? nowDate.getDate() : '0' + nowDate.getDate()
-      imgDir += year + '/' + month + '/' + date + '/'
-      this.dir = imgDir
-    },
-    fileHandleBeforeUpload24 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList24 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '24'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList24.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList24.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData24['key'] = _this.dir + file.name
-          _this.uploadParam.fileData24['policy'] = res.data.policy
-          _this.uploadParam.fileData24['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData24['success_action_status'] = '200'
-          _this.uploadParam.fileData24['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath24 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload26 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList26 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '26'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList26.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList26.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData26['key'] = _this.dir + file.name
-          _this.uploadParam.fileData26['policy'] = res.data.policy
-          _this.uploadParam.fileData26['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData26['success_action_status'] = '200'
-          _this.uploadParam.fileData26['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath26 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload27 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList27 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '27'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList27.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList27.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData27['key'] = _this.dir + file.name
-          _this.uploadParam.fileData27['policy'] = res.data.policy
-          _this.uploadParam.fileData27['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData27['success_action_status'] = '200'
-          _this.uploadParam.fileData27['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath27 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload28 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList28 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '28'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList28.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList28.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData28['key'] = _this.dir + file.name
-          _this.uploadParam.fileData28['policy'] = res.data.policy
-          _this.uploadParam.fileData28['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData28['success_action_status'] = '200'
-          _this.uploadParam.fileData28['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath28 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload29 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList29 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '29'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList29.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList29.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData29['key'] = _this.dir + file.name
-          _this.uploadParam.fileData29['policy'] = res.data.policy
-          _this.uploadParam.fileData29['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData29['success_action_status'] = '200'
-          _this.uploadParam.fileData29['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath29 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload30 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList30 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '30'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList30.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList30.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData30['key'] = _this.dir + file.name
-          _this.uploadParam.fileData30['policy'] = res.data.policy
-          _this.uploadParam.fileData30['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData30['success_action_status'] = '200'
-          _this.uploadParam.fileData30['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath30 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload31 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList31 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '31'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList31.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList31.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData31['key'] = _this.dir + file.name
-          _this.uploadParam.fileData31['policy'] = res.data.policy
-          _this.uploadParam.fileData31['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData31['success_action_status'] = '200'
-          _this.uploadParam.fileData31['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath31 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload32 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList32 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '32'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList32.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList32.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData32['key'] = _this.dir + file.name
-          _this.uploadParam.fileData32['policy'] = res.data.policy
-          _this.uploadParam.fileData32['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData32['success_action_status'] = '200'
-          _this.uploadParam.fileData32['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath32 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    fileHandleBeforeUpload76 (file) {
-      let _this = this
-      let fileObj = {}
-      this.uploadParam.uploadFileList76 = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = '76'
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam.uploadFileList76.length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            _this.uploadParam.uploadFileList76.push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam.fileData76['key'] = _this.dir + file.name
-          _this.uploadParam.fileData76['policy'] = res.data.policy
-          _this.uploadParam.fileData76['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam.fileData76['success_action_status'] = '200'
-          _this.uploadParam.fileData76['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam.filePath76 = res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
-        })
-      })
-    },
-    /* 数据来源  扩展备案 */
-    fillExtendData (params) {
-      let that = this
-      let data = params.data
-      let mark = params.marking
-      that.$store.commit('setPtId', mark.ptid)
-      that.$store.commit('setPltId', mark.pltId)
-      that.$store.commit('setRid', mark.ec_labreport_id)
-      that.$store.commit('setBarcode', mark.ec_labreport_no)
-      that.$store.commit('setLabName', mark.ec_labname)
-      that.formRecord.id = mark.id
-      for (let i in data) {
-        if (that.formRecord[i] != null && that.formRecord[i].constructor === Array) {
-          that.formRecord[i] = []
-          data[i].split(';').forEach((v) => {
-            that.formRecord[i].push(v)
-          })
-        } else if (i === that.thisDateCV) {
-          // this.$store.commit('setDateInit', data[i])
-          if (data[i] != undefined) that.formRecord[i] = that.formatDate(data[i])
-        } else {
-          that.formRecord[i] = data[i]
-        }
-      }
-    },
-    /* 数据来源 草稿箱 */
-    fillDraftData (params) {
-      let that = this
-      let data = params.data
-      let mark = params.marking
-      let attachList = this.filesArr = params.attachList
-      attachList.forEach((item, idx) => {
-        if (item.ec_attach_id == 25) {
-          this.$store.commit('setPltPic', item.ec_attach_path)
-        } else {
-          that.uploadParam['filePath' + item.ec_attach_id] = item.ec_attach_path
-        }
-      })
 
-      that.$store.commit('setDefaultData', params.lab.params)
-      that.$store.commit('setPtId', mark.ptid)
-      that.$store.commit('setPltId', mark.pltId)
-      that.$store.commit('setRid', mark.ec_labreport_id)
-      that.$store.commit('setBarcode', mark.ec_labreport_no)
-      that.$store.commit('setLabName', mark.ec_labname)
-      that.formRecord.id = mark.id
-      for (let i in data) {
-        if (that.formRecord[i] != null && that.formRecord[i].constructor === Array) {
-          that.formRecord[i] = []
-          data[i].split(';').forEach((v) => {
-            that.formRecord[i].push(v)
-          })
-        } else if (i === that.thisDateCV) {
-          // this.$store.commit('setDateInit', data[i])
-          if (data[i] != undefined) that.formRecord[i] = that.formatDate(data[i])
-        } else {
-          that.formRecord[i] = data[i]
-        }
-      }
+    mounted() {
+      this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
-    showImg (path) {
-      this.uploadPic = path
-      this.modal4 = true
-    },
-    /* 数据来源 新增备案 */
-    fillDefaultData () {
-      let that = this
-      that.formRecord.c200 = that.$store.state.app.gb
-      that.$store.state.app.defaultData.forEach((e) => {
-        if (that.formRecord[i] != null && that.formRecord[i].constructor === Array) {
-          that.formRecord[e.recId] = []
-          if (e.labValue === '/' || e.labValue == null || e.labValue == '') {
-            return
-          }
-          that.formRecord[e.recId] = e.labValue.replace(/\s+/g, '').split(';')
-        } else {
-          if (e.labValue === '/' || e.labValue == null || e.labValue == '') {
-            that.formRecord[e.recId] = ''
-          } else {
-            let labVal = e.labValue.replace(/（/g, '(').replace(/）/g, ')')
-            if (e.recId === this.thisLevelCV) {
-              if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
-                that.formRecord[e.recId] = '1'
-              } else {
-                that.formRecord[e.recId] = parseInt(labVal).toString()
-              }
-            } else if (e.recId === that.thisDateCV && isNaN(labVal)) {
-              that.formRecord[e.recId] = new Date()
-            } else {
-              that.formRecord[e.recId] = labVal
+    methods: {
+      filterValue(type, cool, grade, opt_type){
+         var minVal;
+         this.jsonPdyj.forEach((v, i) => {
+            if (v.type == type) {
+               v.list.forEach((v,i) =>{
+                  if (v.grade == 1 && grade == 1 || v.grade == 2 && grade == 2) {
+                    v.itemlist.forEach((v,i)=>{
+                       if (v.opt_type == opt_type) {
+                         minVal = v.val;
+                       }
+                    });
+                  } else if(v.grade == 3 && grade == 3){
+                     var arr = [];
+                     arr.push(v.cop);
+                     arr.push(v.iplv);
+                     minVal = arr;
+                  }
+               });
             }
-          }
-        }
-      })
-    },
-
-    showConfirm () {
-      let _this = this
-      let pageType = _this.$store.state.app.pageType
-      if (_this.uploadParam.filePath24 === '') {
-        _this.$Message.warning('请上传产品正面图片！')
-        return false
-      }
-      if (_this.uploadParam.filePath76 === '') {
-        _this.$Message.warning('请上传铭牌图片！')
-        return false
-      }
-      if (pageType === 'extend' || pageType === 'update') {
-        if (_this.formRecord.ec_master_kuozhan_text === '') {
-          let text = pageType === 'extend' ? '扩展' : '变更'
-          _this.$Message.warning('请填写' + text + '申请书！')
-        } else {
-          _this.modal1 = true
-        }
-        return
-      }
-      this.$refs['formRecord'].validate((valid) => {
-        if (valid) {
-          if (_this.confirmData.join('') == 1) {
-            _this.boolFlag = _this.diffRecord(_this.$store.state.app.defaultData, _this.formRecord)
-            _this.modal1 = true
+         });
+         return minVal;
+      },
+      zll(type, val){
+        if (type == 'wind') {
+          if (val <= 50) {
+            return "<=50";
           } else {
-            _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
+            return ">50";
+          }
+        } else if (type == 'water') {
+          if (val <= 528) {
+            return "<=528";
+          } else if (val > 528 && val <= 1163) {
+            return "538-1163";
+          } else {
+            return ">1163";
           }
         }
-      })
+      },
+      showTemplate() {
+        this.templatePic = this.$store.state.app.pltPic
+        this.modal3 = true
+      },
+      prevStep() {
+        this.$emit('prevStep')
+      },
+      getRandom(type) {
+        return (Math.random().toString().slice(2)) + type
+      },
+      handleFormatError(file, id) {
+        return XhandleFormatError(file, id, this)
+      },
+      /* 数据来源  扩展备案 */
+      fileHandleBeforeUpload(file, id) {
+        return XfileHandleBeforeUpload(file, id, this)
+      },
+      /* 数据来源  扩展备案 */
+      fillExtendData(params) {
+        return XfillExtendData(params, this)
+      },
+      /* 数据来源 草稿箱 */
+      fillDraftData(params) {
+        return XfillDraftData(params, this)
+      },
+      showImg(path) {
+        this.uploadPic = path;
+        this.modal4 = true
+      },
+      /* 数据来源 新增备案 */
+      fillDefaultData(params) {
+        return XfillDefaultData(params, this)
+      },
+      showConfirm() {
+        return XshowConfirm(this)
+      },
+      submitBasic() {
+      },
+      submitRecord() {
+        return XsubmitRecord(this)
+      },
+      /* 保存草稿箱 */
+      saveRecord() {
+        return XsaveRecord(this)
+      },
+      formatDate(d) {
+        return XformatDate(d)
+      },
+      getFile(res, file, id) {
+        this['checkmark' + id] = true
+      }
     },
-    diffRecord (orgin, target) {
-      let newArr = []
-      for (let i = 0; i < orgin.length; i++) {
-        let v = orgin[i]
-        if (target.hasOwnProperty(v.recId)) {
-          if (Object.prototype.toString.call(target[v.recId]) == '[object Array]') {
-            let oldarr = (v.labValue).split(';').sort().join(';'),
-              newarr = (target[v.recId]).sort().join(';')
-            if (oldarr != newarr) {
-              v.updateVal = target[v.recId]
-              newArr.push(v)
+    computed: {
+      pltId() {
+        return this.$store.state.app.pltId
+      },
+      pltPic() {
+        return this.$store.state.app.pltPic
+      },
+      requiredStr() {
+        return this.$store.state.app.requiredStr
+      },
+      ruleRecord() {
+        //能效等级
+        var nxdj = this.formRecord.c9;
+        //冷却方式
+        var lqfs  = this.formRecord.c12 == "水冷" ? "water" : "wind";
+        //综合部分负荷性能系数
+        var iplv = parseFloat(this.formRecord.c8);
+        //性能系数标注值
+        var cop = parseFloat(this.formRecord.c7);
+        //制冷量标准值
+        var cc = parseFloat(this.formRecord.c5);
+        //性能系数实测值
+        var copsc = parseFloat(this.formRecord.c52);
+        //综合部分负荷性能系数实测值
+        var iplvsc = parseFloat(this.formRecord.c53);
+        //能效等级判定依据
+        var pdyj = this.formRecord.c300 == "性能系数" ? "cop" : "iplv";
+        //制冷量标注值
+        var cool = this.zll(lqfs, cc);
+
+        var minVal = this.filterValue(lqfs, cool, nxdj, "cop");
+
+        const checkc7a = (rule, value, callback) => {
+          if (nxdj == 3) {
+            if(iplv < minVal[1]){
+              callback('综合部分负荷性能系数不符合标准')
             }
-          } else {
-            if (v.labValue != target[v.recId]) {
-              if (v.recId == this.thisLevelCV) {
-                if (parseInt(v.labValue) != target[v.recId]) {
-                  v.updateVal = target[v.recId] + '级'
-                  newArr.push(v)
-                }
-              } else {
-                v.updateVal = target[v.recId]
-                newArr.push(v)
-              }
+            if (iplvsc < minVal[1]) {
+              callback("综合部分负荷性能系数实测值不符合标准");
             }
-          }
-        }
-      }
-
-      return newArr
-    },
-    submitBasic () {
-    },
-
-    submitRecord () {
-      let _this = this
-      let pageType = _this.$store.state.app.pageType
-      _this.formRecord[_this.thisDateCV] = _this.formatDate(_this.formRecord[_this.thisDateCV])
-      _this.formRecord.ptid = _this.$store.state.app.ptId
-      _this.formRecord.pltId = _this.$store.state.app.pltId
-      _this.formRecord.record_type = 0
-      _this.formRecord.ec_labreport_id = _this.$store.state.app.rid
-      _this.formRecord.ec_labreport_no = _this.$store.state.app.barcode
-      _this.formRecord.ec_labname = _this.$store.state.app.labName
-      let file25 = {
-        ec_attach_id: '25',
-        ec_attach_originalname: '',
-        ec_attach_file: '',
-        ec_attach_path: _this.$store.state.app.pltPic
-      }
-      let flag = false
-      _this.filesArr.forEach(item => {
-        if (item.ec_attach_id == 25) {
-          flag = true
-        }
-      })
-      if (!flag) {
-        _this.filesArr.push(file25)
-      }
-      _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id = _this.$store.state.app.updateId || 0
-      if (pageType === 'extend' || pageType === 'update') {
-        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do'
-        axios({
-          url: submitUrl,
-          method: 'POST',
-          data: _this.formRecord,
-          transformRequest: [function (data) {
-            let ret = ''
-            for (let it in data) {
-              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+            if (cop < minVal[0]) {
+              callback("性能系数不符合标准");
             }
-            return ret
-          }],
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then(res => {
-          if (res.data.result_code === '1') {
-            // let txt = _this.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
-            _this.$Modal.success({
-              title: '提交成功',
-              content: '<p>备案数据已经提交成功！</p>',
-              okText: '查看详情',
-              onOk () {
-                _this.$router.push('/queryRecord')
-              }
-            })
-          } else {
-            _this.$Message.warning(res.data.message)
-            // _this.submitDisabled = false
-          }
-        })
-      } else {
-        axios({
-          url: '/marking/save.do',
-          method: 'POST',
-          data: _this.formRecord,
-          transformRequest: [function (data) {
-            let ret = ''
-            for (let it in data) {
-              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+            if (copsc < minVal[0]) {
+              callback("性能系数实测值不符合标准");
             }
-            return ret
-          }],
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then(res => {
-          if (res.data.result_code === '1') {
-            let txt = _this.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
-            _this.$Modal.success({
-              title: '提交成功',
-              content: '<p>备案数据已经提交成功！</p><p>' + txt + '</p><p>完成操作后将同步到备案系统</p>',
-              okText: '查看详情',
-              onOk () {
-                _this.$router.push('/queryRecord')
-              }
-            })
-          } else {
-            _this.$Message.warning(res.data.message)
-            _this.submitDisabled = false
-          }
-        })
-      }
-    },
-    /* 保存草稿箱 */
-    saveRecord () {
-      let _this = this
-      _this.saveDisabled = true
-      _this.formRecord[_this.thisDateCV] = _this.formatDate(_this.formRecord[_this.thisDateCV])
-      _this.formRecord.ptid = _this.$store.state.app.ptId
-      _this.formRecord.pltId = _this.$store.state.app.pltId
-      _this.formRecord.record_type = 0
-      _this.formRecord.ec_labreport_id = _this.$store.state.app.rid
-      _this.formRecord.ec_labreport_no = _this.$store.state.app.barcode
-      _this.formRecord.ec_labname = _this.$store.state.app.labName
-      var file25 = {
-        ec_attach_id: '25',
-        ec_attach_originalname: '',
-        ec_attach_file: '',
-        ec_attach_path: _this.$store.state.app.pltPic
-      }
-      _this.filesArr.push(file25)
-      _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-
-      axios({
-        url: '/marking/saveDraft.do',
-        method: 'POST',
-        data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest`
-        // 允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
-        // 或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      })
-        .then(res => {
-          if (res.data.result_code === '1') {
-            _this.$Modal.success({
-              title: '保存成功',
-              content: '<p>备案数据已经保存成功！</p>',
-              okText: '查看详情',
-              onOk () {
-                _this.$router.push('/draftBox')
-              }
-            })
-          } else {
-            _this.$Message.warning(res.data.message)
-            _this.saveDisabled = false
-          }
-        })
-    },
-    formatDate (d) {
-      let date = new Date(d)
-      let year = date.getFullYear()
-      let month = date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
-      let day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
-      return year + '-' + month + '-' + day
-    },
-    getFile24 (res, file) {
-      this.checkmark24 = true
-    },
-    getFile26 (res, file) {
-      this.checkmark26 = true
-    },
-    getFile27 (res, file) {
-      this.checkmark27 = true
-    },
-    getFile28 (res, file) {
-      this.checkmark28 = true
-    },
-    getFile29 (res, file) {
-      this.checkmark29 = true
-    },
-    getFile30 (res, file) {
-      this.checkmark30 = true
-    },
-    getFile31 (res, file) {
-      this.checkmark31 = true
-    },
-    getFile32 (res, file) {
-      this.checkmark32 = true
-    },
-    getFile76 (res, file) {
-      this.checkmark76 = true
-    }
-  },
-  computed: {
-    pltId () {
-      return this.$store.state.app.pltId
-    },
-    pltPic () {
-      return this.$store.state.app.pltPic
-    },
-    requiredStr () {
-      return this.$store.state.app.requiredStr
-    },
-    ruleRecord () {
-      if (this.formRecord.c25 === '2') {
-          this.forbidden.c26 = false
-        } else {
-          this.formRecord.c26 = ''
-          this.forbidden.c26 = true
-        }
-
-
-      // let decimal1 =/^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
-      let decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
-      let decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
-      let significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
-      let significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
-
-      const threeDecimals = (rule, vaule, callback) => {
-        decimal3.test(vaule) ? callback() : callback('三位小数')
-      }
-      const twoDecimals = (rule, vaule, callback) => {
-        decimal2.test(vaule) ? callback() : callback('两位小数')
-      }
-      // const oneDecimals=(rule, vaule, callback)=>{
-      //   decimal1.test(vaule)? callback(): callback('一位小数');
-      // }
-      const significantDigits22 = (rule, vaule, callback) => {
-        significantDigits2.test(vaule) ? callback() : callback('两位有效数字')
-      }
-      const significantDigits33 = (rule, vaule, callback) => {
-        significantDigits3.test(vaule) ? callback() : callback('三位有效数字')
-      }
-
-      // 能效等级
-      var nxdj = this.formRecord.c7
-      // 类型
-      var lx = this.formRecord.c8
-      // 能源效率（cd/W）标注值
-      var energyVal = parseFloat(this.formRecord.c9)
-      // 能源效率（cd/W）实测值
-      var energyValsh = parseFloat(this.formRecord.c12)
-      // 关闭状态功率(W)标注值
-      var closeVal = parseFloat(this.formRecord.c10)
-      // 关闭状态功率(W)实测值
-      var closeValsh = parseFloat(this.formRecord.c13)
-      // 睡眠状态功率(W)标注值
-      var sleepVal = parseFloat(this.formRecord.c11)
-      // 睡眠状态功率(W)实测值
-      var sleepValsh = parseFloat(this.formRecord.c14)
-      var nxdjst = ''
-
-      const checkc9 = (rule, value, callback) => {
-        if (energyVal > energyValsh) {
-          callback('能源效率标注值应小于等于实测值')
-        } else {
-          callback()
-        }
-      }
-      const checkc10 = (rule, value, callback) => {
-        if (closeValsh > closeVal) {
-          callback('关闭状态功率标注值应大于等于实测值')
-        } else {
-          callback()
-        }
-      }
-      const checkc11 = (rule, value, callback) => {
-        if (sleepValsh > sleepVal) {
-          callback('睡眠状态功率标注值应大于等于实测值')
-        } else {
-          callback()
-        }
-      }
-      var checkc10a
-      var checkc10b
-      var checkc10c
-      var checkc11a
-      if (lx != '') {
-        if (lx == '标准显示器') {
-          checkc10a = (rule, value, callback) => {
-            if (closeVal > 0.5) {
-              callback('关闭状态功率(W)标注值应小于等于0.50W')
-            } else {
+            else {
               callback()
             }
+          } else {
+            callback()
           }
-          checkc10b = (rule, value, callback) => {
-            if (sleepVal > 0.5) {
-              callback('关闭状态功率(W)标注值应小于等于0.50W')
-            } else {
-              callback()
-            }
-          }
-          if (energyVal != '') {
-            if (energyVal >= 2.0) {
-              nxdjst = '1'
-            }
-            if (energyVal >= 1.5 && energyVal < 2.0) {
-              nxdjst = '2'
-            }
-            if (energyVal >= 1.0 && energyVal < 1.5) {
-              nxdjst = '3'
-            }
-          }
-        } else if (lx == '高性能显示器') {
-          checkc10c = (rule, value, callback) => {
-            if (closeVal > 0.5) {
-              callback('关闭状态功率(W)标注值应小于等于0.50W')
-            } else {
-              callback()
-            }
-          }
-          checkc11a = (rule, value, callback) => {
-            if (sleepVal > 1.2) {
-              callback('睡眠状态功率(W)标注值应小于等于1.20W')
-            } else {
-              callback()
-            }
-          }
-          if (energyVal != '') {
-            if (energyVal >= 1.5) {
-              nxdjst = '1'
-            }
-            if (energyVal >= 1.0 && energyVal < 1.5) {
-              nxdjst = '2'
-            }
-            if (energyVal >= 0.50 && energyVal < 1.0) {
-              nxdjst = '3'
-            }
-          }
-        } else {
-          nxdjst = ''
         }
-      }
+        const checkc7b = (rule, value, callback) => {
+          if (pdyj == "iplv" && nxdj != 3) {
+            if(iplv < minVal[1]){
+              callback('综合部分负荷性能系数不符合标准')
+            }
+            if (iplvsc < minVal) {
+              callback("综合部分负荷性能系数实测值不符合标准");
+            }
+            else {
+              callback()
+            }
+          } else {
+            callback()
+          }
+        }
+        const checkc7c = (rule, value, callback) => {
+          if(pdyj == "cop" && nxdj != 3){
+            if (cop < minVal) {
+              callback("性能系数不符合标准");
+          }
+            if (copsc < minVal) {
+              callback("性能系数实测值不符合标准");
+            }
+            else {
+              callback()
+            }
+          } else {
+            callback()
+          }
+        }
 
-      const checkc7a = (rule, value, callback) => {
-        if (nxdjst == '') {
-          callback('能效数据不在备案范围')
+        if (this.formRecord.c18.join('').indexOf('其他') > -1) {
+          this.forbidden.c57 = false
         } else {
-          callback()
+          this.formRecord.c57 = ''
+          this.forbidden.c57 = true
         }
-      }
-      const checkc7b = (rule, value, callback) => {
-        if (nxdjst != nxdj) {
-          callback('所选能效等级与计算结果不符！')
+        if (this.formRecord.c19.join('').indexOf('其他') > -1) {
+          this.forbidden.c58 = false
         } else {
-          callback()
+          this.formRecord.c58 = ''
+          this.forbidden.c58 = true
         }
-      }
+        if (this.formRecord.c20 === '其他') {
+          this.forbidden.c59 = false
+        } else {
+          this.formRecord.c59 = ''
+          this.forbidden.c59 = true
+        }
 
-      return {
-        c3: [
-          {
-            required: true,
-            message: '请填写制造单位'
-          }
-        ],
-        c45: [
-          {
-            required: true,
-            message: '请填写备案方'
-          }
-        ],
-        c2: [
-          {
-            required: true,
-            message: '请填写商标'
-          }
-        ],
-        c200: [
-          {
-            required: true,
-            message: '  '
-          }
-        ],
-        c9: [
-          {
-            required: true,
-            message: '请选择能效等级'
-          },
-          {
-            validator: checkc7a,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc7a,
-            trigger: 'blur'
-          }
-        ],
-        c300: [
-          {
-            required: true,
-            message: '能效等级判定依据不能为空'
-          }
-        ],
-        c5: [
-          {
-            required: true,
-            message: '制冷量标准值不能为空'
-          }
-        ],
-        c50: [
-          {
-            required: true,
-            message: '制冷量实测值不能为空'
-          }
-        ],
-        c6: [
-          {
-            required: true,
-            message: '消耗总电功率标注值不能为空'
-          }
-        ],
-        c51: [
-          {
-            required: true,
-            message: '消耗总电功率实测值不能为空'
-          }
-        ],
-        c7: [
-          {
-            required: true,
-            message: '性能系数标注值不能为空'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c52: [
-          {
-            required: true,
-            message: '性能系数实测值不能为空'
-          }
-        ],
-        c8: [
-          {
-            required: true,
-            message: '综合部分负荷性能系数标注值不能为空'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c53: [
-          {
-            required: true,
-            message: '综合部分负荷性能系数实测值不能为空'
-          }
-        ],
-        c10: [
-          {
-            required: true,
-            message: '备案标识开始使用日期不能为空'
-          }
-        ],
-        c11: [
-          {
-            required: true,
-            message: '机器类型不能为空'
-          }
-        ],
-        c12: [
-          {
-            required: true,
-            message: '冷却方式不能为空'
-          }
-        ],
-        c13: [
-          {
-            required: true,
-            message: '模块化不能为空'
-          }
-        ],
-        c14: [
-          {
-            required: true,
-            message: '其他载冷剂不能为空'
-          }
-        ],
-        c15: [
-          {
-            required: true,
-            message: '热泵功能不能为空'
-          }
-        ],
-        c16: [
-          {
-            required: true,
-            message: '部分负荷运行不能为空'
-          }
-        ],
-        c17: [
-          {
-            required: true,
-            message: '结构形式不能为空'
-          }
-        ],
-        c18: [
-          {
-            required: true,
-            message: '换热器(水/制冷剂)使用侧不能为空'
-          }
-        ],
-        c19: [
-          {
-            required: true,
-            message: '换热器(水/制冷剂)热源侧不能为空'
-          }
-        ],
-        c20: [
-          {
-            required: true,
-            message: '膨胀阀类型不能为空'
-          }
-        ],
-        c21: [
-          {
-            required: true,
-            message: '污垢系数不能为空'
-          }
-        ],
-        c22: [
-          {
-            required: true,
-            message: '油分离器不能为空'
-          }
-        ],
-        c23: [
-          {
-            required: true,
-            message: '储液器不能为空'
-          }
-        ],
-        c24: [
-          {
-            required: true,
-            message: '辅助电加热器不能为空'
-          }
-        ],
-        c25: [
-          {
-            required: true,
-            message: '热回收功能不能为空'
-          }
-        ],
-        c26: [
-          {
-            required: true,
-            message: '制热量不能为空'
-          }
-        ],
-        c27: [
-          {
-            required: true,
-            message: '热泵制热消耗总电功率（kW）不能为空'
-          }
-        ],
-        c28: [
-          {
-            required: true,
-            message: '制热性能系数（COP）不能为空'
-          }
-        ],
-        c29: [
-          {
-            required: true,
-            message: '电源类型不能为空'
-          }
-        ],
-        c30: [
-          {
-            required: true,
-            message: '控制系统不能为空'
-          }
-        ],
-        c31: [
-          {
-            required: true,
-            message: '是否允注制冷剂不能为空'
-          }
-        ],
-        c32: [
-          {
-            required: true,
-            message: '制冷剂/灌注量(kg)不能为空'
-          }
-        ],
-        c33: [
-          {
-            required: true,
-            message: '灌注量(kg)不能为空'
-          }
-        ],
-        c34: [
-          {
-            required: true,
-            message: '整机或室内机外形尺寸长不能为空'
-          }
-        ],
-        c35: [
-          {
-            required: true,
-            message: '整机或室内机外形尺寸宽不能为空'
-          }
-        ],
-        c36: [
-          {
-            required: true,
-            message: '整机或室内机外形尺寸高不能为空'
-          }
-        ],
-        c37: [
-          {
-            required: true,
-            message: '室外机外形尺寸长不能为空'
-          }
-        ],
-        c38: [
-          {
-            required: true,
-            message: '室外机外形尺寸宽不能为空'
-          }
-        ],
-        c39: [
-          {
-            required: true,
-            message: '室外机外形尺寸高不能为空'
-          }
-        ],
-        c69: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c70: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c71: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c72: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c73: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c78: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c79: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c80: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c81: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c82: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c83: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c89: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c90: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c91: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c92: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c97: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c98: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c99: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ]
+        if (this.formRecord.c29 === '其他') {
+          this.forbidden.c60 = false
+        } else {
+          this.formRecord.c60 = ''
+          this.forbidden.c60 = true
+        }
+
+        if (this.formRecord.c30 === '其他') {
+          this.forbidden.c61 = false
+        } else {
+          this.formRecord.c61 = ''
+          this.forbidden.c61 = true
+        }
+        return {
+          c3: [
+            {
+              required: true,
+              message: '请填写制造单位'
+            }
+          ],
+          c45: [
+            {
+              required: true,
+              message: '请填写备案方'
+            }
+          ],
+          c2: [
+            {
+              required: true,
+              message: '请填写商标'
+            }
+          ],
+          c200: [
+            {
+              required: true,
+              message: '  '
+            }
+          ],
+          c9: [
+            {
+              required: true,
+              message: '请选择能效等级'
+            }
+          ],
+          c300: [
+            {
+              required: true,
+              message: '能效等级判定依据不能为空'
+            }
+          ],
+          c5: [
+            {
+              required: true,
+              message: '制冷量标准值不能为空'
+            }
+          ],
+          c50: [
+            {
+              required: true,
+              message: '制冷量实测值不能为空'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c6: [
+            {
+              required: true,
+              message: '消耗总电功率标注值不能为空'
+            }
+          ],
+          c51: [
+            {
+              required: true,
+              message: '消耗总电功率实测值不能为空'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c7: [
+            {
+              required: true,
+              message: '性能系数标注值不能为空'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c52: [
+            {
+              required: true,
+              message: '性能系数实测值不能为空'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc7a,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc7b,
+              trigger: 'blur'
+            }
+          ],
+          c8: [
+            {
+              required: true,
+              message: '综合部分负荷性能系数标注值不能为空'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c53: [
+            {
+              required: true,
+              message: '综合部分负荷性能系数实测值不能为空'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc7a,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc7b,
+              trigger: 'blur'
+            }
+          ],
+          c10: [
+            {
+              required: true,
+              message: '备案标识开始使用日期不能为空'
+            }
+          ],
+          c11: [
+            {
+              required: true,
+              message: '机器类型不能为空'
+            }
+          ],
+          c12: [
+            {
+              required: true,
+              message: '冷却方式不能为空'
+            }
+          ],
+          c13: [
+            {
+              required: true,
+              message: '模块化不能为空'
+            }
+          ],
+          c14: [
+            {
+              required: true,
+              message: '其他载冷剂不能为空'
+            }
+          ],
+          c15: [
+            {
+              required: true,
+              message: '热泵功能不能为空'
+            }
+          ],
+          c16: [
+            {
+              required: true,
+              message: '部分负荷运行不能为空'
+            }
+          ],
+          c17: [
+            {
+              required: true,
+              message: '结构形式不能为空'
+            }
+          ],
+          c18: [
+            {
+              required: true,
+              message: '换热器(水/制冷剂)使用侧不能为空'
+            }
+          ],
+          c19: [
+            {
+              required: true,
+              message: '换热器(水/制冷剂)热源侧不能为空'
+            }
+          ],
+          c20: [
+            {
+              required: true,
+              message: '膨胀阀类型不能为空'
+            }
+          ],
+          c21: [
+            {
+              required: true,
+              message: '污垢系数不能为空'
+            }
+          ],
+          c22: [
+            {
+              required: true,
+              message: '油分离器不能为空'
+            }
+          ],
+          c23: [
+            {
+              required: true,
+              message: '储液器不能为空'
+            }
+          ],
+          c24: [
+            {
+              required: true,
+              message: '辅助电加热器不能为空'
+            }
+          ],
+          c25: [
+            {
+              required: true,
+              message: '热回收功能不能为空'
+            }
+          ],
+          c29: [
+            {
+              required: true,
+              message: '电源类型不能为空'
+            }
+          ],
+          c30: [
+            {
+              required: true,
+              message: '控制系统不能为空'
+            }
+          ],
+          c31: [
+            {
+              required: true,
+              message: '是否允注制冷剂不能为空'
+            }
+          ],
+          c32: [
+            {
+              required: true,
+              message: '制冷剂/灌注量(kg)不能为空'
+            }
+          ],
+          c33: [
+            {
+              required: true,
+              message: '灌注量(kg)不能为空'
+            }
+          ],
+          c34: [
+            {
+              required: true,
+              message: '整机或室内机外形尺寸长不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],
+          c35: [
+            {
+              required: true,
+              message: '整机或室内机外形尺寸宽不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],
+          c36: [
+            {
+              required: true,
+              message: '整机或室内机外形尺寸高不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],
+          c37: [
+            {
+              required: true,
+              message: '室外机外形尺寸长不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],
+          c38: [
+            {
+              required: true,
+              message: '室外机外形尺寸宽不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],
+          c39: [
+            {
+              required: true,
+              message: '室外机外形尺寸高不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],
+          c69: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c70: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c71: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c72: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c73: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c79: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c80: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c81: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c82: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c83: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c89: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c90: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c91: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c92: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c97: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c98: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c99: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ]
+        }
       }
     }
   }
-}
 </script>
-<style lang="less" scoped>
+<style>
   @import '../../../css/comm.css';
 </style>
