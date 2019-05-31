@@ -43,7 +43,7 @@
       <div class="part part3">
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
-          <FormItem prop="c1" label="生产者名称" style="width:100%;align:right;padding" :label-width="180">
+          <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly/>
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:100%;" :label-width="180">
@@ -579,14 +579,14 @@
           <table id="table4">
             <thead>
             <tr>
-              <th style="width:80px;">序号</th><th>部件名称</th><th>规格型号</th><th colspan="2" style="width:330px">技术参数</th><th>生产者（全称）</th>
+              <th style="width:80px;">序号</th><th>部件名称</th><th colspan="2">规格型号</th><th colspan="2" style="width:330px">技术参数</th><th>生产者（全称）</th>
             </tr>
             </thead>
             <tbody>
             <tr>
-              <td rowspan="3">1</td>
+              <td rowspan="3" class="t_label">1</td>
               <td rowspan="3" class="t_label">压缩机</td>
-              <td rowspan="3">
+              <td rowspan="3" colspan="2">
                 <FormItem prop="c113" style="width:100%">
                   <Input type="text" v-model="formRecord.c113" :disabled='disabledoff'/>
                 </FormItem>
@@ -620,7 +620,7 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="3">2</td>
+              <td rowspan="3" class="t_label">2</td>
               <td rowspan="3" class="t_label">压缩机</td>
               <td rowspan="3">
                 <FormItem prop="c162" style="width:100%">
@@ -656,7 +656,7 @@
               </td>
             </tr>
             <tr>
-              <td>3</td>
+              <td class="t_label">3</td>
               <td class="t_label">冷凝器（如有）</td>
               <td>
                 <FormItem prop="c118" style="width:100%">
@@ -676,7 +676,7 @@
               </td>
             </tr>
             <tr>
-              <td>4</td>
+              <td class="t_label">4</td>
               <td class="t_label">冷凝器（如有）</td>
               <td>
                 <FormItem prop="c167" style="width:100%">
@@ -1167,7 +1167,7 @@ export default {
         c89: '',
         c90: '',
         c91: '',
-        c92: '',
+        c92: [],
         c94: '',
         c95: '',
         c96: '',
