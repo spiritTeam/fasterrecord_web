@@ -458,7 +458,7 @@
               </td>
               <td>
                 <CheckboxGroup v-model="formRecord.c92">
-                  <Checkbox label="LED" :disabled='disabledoff'>LED</Checkbox>
+                  <Checkbox label="LED" :disabled='disabledoff'></Checkbox>
                 </CheckboxGroup>
               </td>
             </tr>
@@ -622,7 +622,7 @@
             <tr>
               <td rowspan="3" class="t_label">2</td>
               <td rowspan="3" class="t_label">压缩机</td>
-              <td rowspan="3">
+              <td rowspan="3" colspan="2">
                 <FormItem prop="c162" style="width:100%">
                   <Input type="text" v-model="formRecord.c162" :disabled='disabledoff'/>
                 </FormItem>
@@ -658,7 +658,7 @@
             <tr>
               <td class="t_label">3</td>
               <td class="t_label">冷凝器（如有）</td>
-              <td>
+              <td colspan="2">
                 <FormItem prop="c118" style="width:100%">
                   <Input type="text" v-model="formRecord.c118" :disabled='disabledoff'/>
                 </FormItem>
@@ -678,7 +678,7 @@
             <tr>
               <td class="t_label">4</td>
               <td class="t_label">冷凝器（如有）</td>
-              <td>
+              <td colspan="2">
                 <FormItem prop="c167" style="width:100%">
                   <Input type="text" v-model="formRecord.c167" :disabled='disabledoff'/>
                 </FormItem>
@@ -692,6 +692,580 @@
               <td>
                 <FormItem prop="c169" style="width:100%">
                   <Input type="text" v-model="formRecord.c169" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">5</td>
+              <td rowspan="3" class="t_label">冷凝器风机（如有）</td>
+              <td class="t_label">风机整机型号</td>
+              <td>
+                <FormItem prop="c121" style="width:100%">
+                  <Input type="text" v-model="formRecord.c121" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">叶轮直径(mm)</td>
+              <td>
+                <FormItem prop="c122" style="width:100%">
+                  <Input type="text" v-model="formRecord.c122" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c127" style="width:100%">
+                  <Input type="text" v-model="formRecord.c127" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">电机</td>
+              <td>
+                <FormItem prop="c123" style="width:100%">
+                  <Input type="text" v-model="formRecord.c123" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c124" style="width:100%">
+                  <Input type="text" v-model="formRecord.c124" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">扇叶</td>
+              <td>
+                <FormItem prop="c125" style="width:100%">
+                  <Input type="text" v-model="formRecord.c125" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">数量</td>
+              <td>
+                <FormItem prop="c126" style="width:100%">
+                  <Input type="text" v-model="formRecord.c126" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">6</td>
+              <td rowspan="3" class="t_label">冷凝器风机（如有）</td>
+              <td class="t_label">风机整机型号</td>
+              <td>
+                <FormItem prop="c170" style="width:100%">
+                  <Input type="text" v-model="formRecord.c121" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">叶轮直径(mm)</td>
+              <td>
+                <FormItem prop="c171" style="width:100%">
+                  <Input type="text" v-model="formRecord.c171" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c176" style="width:100%">
+                  <Input type="text" v-model="formRecord.c176" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">电机</td>
+              <td>
+                <FormItem prop="c172" style="width:100%">
+                  <Input type="text" v-model="formRecord.c172" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c173" style="width:100%">
+                  <Input type="text" v-model="formRecord.c173" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">扇叶</td>
+              <td>
+                <FormItem prop="c174" style="width:100%">
+                  <Input type="text" v-model="formRecord.c174" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">数量</td>
+              <td>
+                <FormItem prop="c175" style="width:100%">
+                  <Input type="text" v-model="formRecord.c175" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">7</td>
+              <td class="t_label">蒸发器</td>
+              <td colspan="2">
+                <FormItem prop="c128" style="width:100%">
+                  <Input type="text" v-model="formRecord.c128" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">换热表面积(m2)</td>
+              <td>
+                <FormItem prop="c129" style="width:100%">
+                  <Input type="text" v-model="formRecord.c129" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c130" style="width:100%">
+                  <Input type="text" v-model="formRecord.c130" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">8</td>
+              <td class="t_label">蒸发器</td>
+              <td colspan="2">
+                <FormItem prop="c177" style="width:100%">
+                  <Input type="text" v-model="formRecord.c177" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">换热表面积(m2)</td>
+              <td>
+                <FormItem prop="c178" style="width:100%">
+                  <Input type="text" v-model="formRecord.c178" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c179" style="width:100%">
+                  <Input type="text" v-model="formRecord.c179" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">9</td>
+              <td rowspan="3" class="t_label">蒸发器风机</td>
+              <td class="t_label">风机整机型号</td>
+              <td>
+                <FormItem prop="c131" style="width:100%">
+                  <Input type="text" v-model="formRecord.c131" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">叶轮直径(mm)</td>
+              <td>
+                <FormItem prop="c132" style="width:100%">
+                  <Input type="text" v-model="formRecord.c132" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c137" style="width:100%">
+                  <Input type="text" v-model="formRecord.c137" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">电机</td>
+              <td>
+                <FormItem prop="c133" style="width:100%">
+                  <Input type="text" v-model="formRecord.c133" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c134" style="width:100%">
+                  <Input type="text" v-model="formRecord.c134" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">扇叶</td>
+              <td>
+                <FormItem prop="c135" style="width:100%">
+                  <Input type="text" v-model="formRecord.c135" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">数量</td>
+              <td>
+                <FormItem prop="c136" style="width:100%">
+                  <Input type="text" v-model="formRecord.c136" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">10</td>
+              <td rowspan="3" class="t_label">蒸发器风机</td>
+              <td class="t_label">风机整机型号</td>
+              <td>
+                <FormItem prop="c180" style="width:100%">
+                  <Input type="text" v-model="formRecord.c180" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">叶轮直径(mm)</td>
+              <td>
+                <FormItem prop="c181" style="width:100%">
+                  <Input type="text" v-model="formRecord.c181" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c186" style="width:100%">
+                  <Input type="text" v-model="formRecord.c186" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">电机</td>
+              <td>
+                <FormItem prop="c182" style="width:100%">
+                  <Input type="text" v-model="formRecord.c182" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c183" style="width:100%">
+                  <Input type="text" v-model="formRecord.c183" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">扇叶</td>
+              <td>
+                <FormItem prop="c184" style="width:100%">
+                  <Input type="text" v-model="formRecord.c184" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">数量</td>
+              <td>
+                <FormItem prop="c185" style="width:100%">
+                  <Input type="text" v-model="formRecord.c185" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">11</td>
+              <td class="t_label">节流装置</td>
+              <td colspan="2">
+                <CheckboxGroup v-model="formRecord.c138">
+                  <Checkbox label="膨胀阀" :disabled='disabledoff'></Checkbox>
+                  <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
+                </CheckboxGroup>
+              </td>
+              <td class="t_label">膨胀阀芯</td>
+              <td>
+                <FormItem prop="c139" style="width:100%">
+                  <Input type="text" v-model="formRecord.c139" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c140" style="width:100%">
+                  <Input type="text" v-model="formRecord.c140" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">12</td>
+              <td class="t_label">节流装置</td>
+              <td colspan="2">
+                <CheckboxGroup v-model="formRecord.c187">
+                  <Checkbox label="膨胀阀" :disabled='disabledoff'></Checkbox>
+                  <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
+                </CheckboxGroup>
+              </td>
+              <td class="t_label">膨胀阀芯</td>
+              <td>
+                <FormItem prop="c188" style="width:100%">
+                  <Input type="text" v-model="formRecord.c188" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c189" style="width:100%">
+                  <Input type="text" v-model="formRecord.c189" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">13</td>
+              <td class="t_label">融霜加热器（如有）</td>
+              <td colspan="2">
+                <FormItem prop="c141" style="width:100%">
+                  <Input type="text" v-model="formRecord.c141" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c142" style="width:100%">
+                  <Input type="text" v-model="formRecord.c142" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c143" style="width:100%">
+                  <Input type="text" v-model="formRecord.c143" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">14</td>
+              <td class="t_label">融霜加热器（如有）</td>
+              <td colspan="2">
+                <FormItem prop="c190" style="width:100%">
+                  <Input type="text" v-model="formRecord.c190" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c191" style="width:100%">
+                  <Input type="text" v-model="formRecord.c191" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c192" style="width:100%">
+                  <Input type="text" v-model="formRecord.c192" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">15</td>
+              <td class="t_label">防凝露加热器(如有)</td>
+              <td colspan="2">
+                <FormItem prop="c144" style="width:100%">
+                  <Input type="text" v-model="formRecord.c144" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c145" style="width:100%">
+                  <Input type="text" v-model="formRecord.c145" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c146" style="width:100%">
+                  <Input type="text" v-model="formRecord.c146" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">16</td>
+              <td class="t_label">防凝露加热器(如有)</td>
+              <td colspan="2">
+                <FormItem prop="c193" style="width:100%">
+                  <Input type="text" v-model="formRecord.c193" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c194" style="width:100%">
+                  <Input type="text" v-model="formRecord.c194" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c195" style="width:100%">
+                  <Input type="text" v-model="formRecord.c195" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">17</td>
+              <td rowspan="3" class="t_label">照明灯(如有)</td>
+              <td rowspan="3" colspan="2">
+                <FormItem prop="c147" style="width:100%">
+                  <Input type="text" v-model="formRecord.c147" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c148" style="width:100%">
+                  <Input type="text" v-model="formRecord.c148" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c151" style="width:100%">
+                  <Input type="text" v-model="formRecord.c151" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">类型</td>
+              <td>
+                <FormItem prop="c149" style="width:100%">
+                  <Input type="text" v-model="formRecord.c149" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">数量</td>
+              <td>
+                <FormItem prop="c150" style="width:100%">
+                  <Input type="text" v-model="formRecord.c150" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">18</td>
+              <td rowspan="3" class="t_label">照明灯(如有)</td>
+              <td rowspan="3" colspan="2">
+                <FormItem prop="c196" style="width:100%">
+                  <Input type="text" v-model="formRecord.c196" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">功率(W)</td>
+              <td>
+                <FormItem prop="c197" style="width:100%">
+                  <Input type="text" v-model="formRecord.c197" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c239" style="width:100%">
+                  <Input type="text" v-model="formRecord.c239" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">类型</td>
+              <td>
+                <FormItem prop="c198" style="width:100%">
+                  <Input type="text" v-model="formRecord.c198" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">数量</td>
+              <td>
+                <FormItem prop="c199" style="width:100%">
+                  <Input type="text" v-model="formRecord.c199" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">19</td>
+              <td rowspan="3" class="t_label">夜帘(如有)</td>
+              <td rowspan="3" colspan="2">
+                <FormItem prop="c152" style="width:100%">
+                  <Input type="text" v-model="formRecord.c152" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">厚度（mm）</td>
+              <td>
+                <FormItem prop="c153" style="width:100%">
+                  <Input type="text" v-model="formRecord.c153" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c156" style="width:100%">
+                  <Input type="text" v-model="formRecord.c156" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">材质</td>
+              <td>
+                <FormItem prop="c154" style="width:100%">
+                  <Input type="text" v-model="formRecord.c154" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">个数</td>
+              <td>
+                <FormItem prop="c155" style="width:100%">
+                  <Input type="text" v-model="formRecord.c155" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">20</td>
+              <td rowspan="3" class="t_label">夜帘(如有)</td>
+              <td rowspan="3" colspan="2">
+                <FormItem prop="c203" style="width:100%">
+                  <Input type="text" v-model="formRecord.c203" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">厚度（mm）</td>
+              <td>
+                <FormItem prop="c204" style="width:100%">
+                  <Input type="text" v-model="formRecord.c204" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c207" style="width:100%">
+                  <Input type="text" v-model="formRecord.c207" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">材质</td>
+              <td>
+                <FormItem prop="c205" style="width:100%">
+                  <Input type="text" v-model="formRecord.c205" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">个数</td>
+              <td>
+                <FormItem prop="c206" style="width:100%">
+                  <Input type="text" v-model="formRecord.c206" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">21</td>
+              <td rowspan="3" class="t_label">门玻璃(如有)</td>
+              <td rowspan="3" colspan="2">
+                <FormItem prop="c157" style="width:100%">
+                  <Input type="text" v-model="formRecord.c167" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">厚度（mm）</td>
+              <td>
+                <FormItem prop="c158" style="width:100%">
+                  <Input type="text" v-model="formRecord.c158" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c161" style="width:100%">
+                  <Input type="text" v-model="formRecord.c161" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">传热系数K</td>
+              <td>
+                <FormItem prop="c159" style="width:100%">
+                  <Input type="text" v-model="formRecord.c159" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">可见光透射比</td>
+              <td>
+                <FormItem prop="c160" style="width:100%">
+                  <Input type="text" v-model="formRecord.c160" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td rowspan="3" class="t_label">22</td>
+              <td rowspan="3" class="t_label">门玻璃(如有)</td>
+              <td rowspan="3" colspan="2">
+                <FormItem prop="c208" style="width:100%">
+                  <Input type="text" v-model="formRecord.c208" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="t_label">厚度（mm）</td>
+              <td>
+                <FormItem prop="c209" style="width:100%">
+                  <Input type="text" v-model="formRecord.c209" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td rowspan="3">
+                <FormItem prop="c212" style="width:100%">
+                  <Input type="text" v-model="formRecord.c212" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">传热系数K</td>
+              <td>
+                <FormItem prop="c210" style="width:100%">
+                  <Input type="text" v-model="formRecord.c210" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">可见光透射比</td>
+              <td>
+                <FormItem prop="c211" style="width:100%">
+                  <Input type="text" v-model="formRecord.c211" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -713,7 +1287,7 @@
       <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
-          <div class="application" v-if='$store.state.app.pageType'>
+          <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
             <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
             <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
@@ -723,10 +1297,8 @@
               <td><span class="red">*</span>产品正面图片</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath24">
-                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -737,24 +1309,22 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark24"/>
+                    <Icon type="ios-checkmark" v-show="checkmark24" />
                   </Upload>
                 </div>
               </td>
               <td colspan="3" v-if="pltId != 244">
                 根据企业提交的相关能效指标，系统直接生成能效表示样本
-                <Button type="primary" @click="showTemplate">查看模板</Button>
+                <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
             <tr>
-              <td>OEM声明</td>
+              <td><span v-if='$store.state.app.oem' class="red">*</span>OEM声明</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath26">
-                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -765,17 +1335,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark26"/>
+                    <Icon type="ios-checkmark" v-show="checkmark26" />
                   </Upload>
                 </div>
               </td>
               <td>关系证明</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath27">
-                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -785,9 +1353,8 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark27"/>
+                    <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
                 </div>
               </td>
@@ -796,10 +1363,8 @@
               <td>品牌使用授权书</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath28">
-                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -810,17 +1375,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark28"/>
+                    <Icon type="ios-checkmark" v-show="checkmark28" />
                   </Upload>
                 </div>
               </td>
               <td>委托代理文件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath29">
-                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -831,7 +1394,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark29"/>
+                    <Icon type="ios-checkmark" v-show="checkmark29" />
                   </Upload>
                 </div>
               </td>
@@ -840,10 +1403,8 @@
               <td>进口商企业信息表</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath30">
-                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -854,17 +1415,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark30"/>
+                    <Icon type="ios-checkmark" v-show="checkmark30" />
                   </Upload>
                 </div>
               </td>
               <td>进口商营业执照或登记注册证明复印件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath31">
-                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -875,7 +1434,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark31"/>
+                    <Icon type="ios-checkmark" v-show="checkmark31" />
                   </Upload>
                 </div>
               </td>
@@ -884,10 +1443,8 @@
               <td>进口商与境外生产者订立的相关合同副本</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath32">
-                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -898,17 +1455,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark32"/>
+                    <Icon type="ios-checkmark" v-show="checkmark32" />
                   </Upload>
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
               <td>（PDF/JPG/PNG）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath76">
-                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     id=76
                     :show-upload-list=false
@@ -920,13 +1475,13 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark76"/>
+                    <Icon type="ios-checkmark" v-show="checkmark76" />
                   </Upload>
                 </div>
               </td>
             </tr>
           </table>
-          <p class="red">注：保存到草稿时，不保存附件！<br/>所有附件上传文件大小需要控制在2M以内。</p>
+          <p class="red">注：保存到草稿时，不保存附件！<br />所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div>
@@ -934,19 +1489,20 @@
           <Checkbox label="1"><span style="color:red;font-weight:bold;">我已确认以上数据填写无误！</span></Checkbox>
         </CheckboxGroup>
       </div>
-      <div class="tc">
+      <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿
-        </Button>
+        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿</Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
       </div>
+      <div class="tc" v-else>
+        <Button type="primary" @click="viewClose">关闭</Button>
+      </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
-      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">
-        以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
+      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
-        <table>
+        <table >
           <thead>
           <tr>
             <th>名称</th>
@@ -955,7 +1511,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(item,idx) in boolFlag" :key='idx'>
+          <tr v-for="(item,idx) in boolFlag" :key='idx' >
             <td width="50%">
               {{item.recName}}
             </td>
@@ -974,22 +1530,22 @@
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
-      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"/>
+      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
-      <img :src="templatePic"/>
+      <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic"/>
+      <img :src="uploadPic" />
     </Modal>
-    <Modal v-model="modal5" class="basic-info" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
+    <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
-        我 <span class="f-company">{{formRecord.c1}}</span>
+        我 <span  class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">家用电冰箱-2015版</span>产品。
+        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
+        型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1000,32 +1556,28 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
           特提出免检备案申请，扩展型号的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="$store.state.app.pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
           该型号的相关信息变更后的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">
-        附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}
-      </div>
+      <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
 </template>
@@ -1040,6 +1592,7 @@ import {
   XhandleFormatError,
   XfileHandleBeforeUpload,
   XshowConfirm,
+  XviewClose,
   diffRecord,
   XsubmitRecord,
   XsaveRecord,
@@ -1048,7 +1601,12 @@ import {
   twoDecimals,
   oneDecimals,
   significantDigits22,
-  significantDigits33
+  significantDigits33,
+  atLeastOneDecimals,
+  atLeastTwoDecimals,
+  isInteger,
+  isNumber,
+  check
 } from '@/libs/utilExt'
 
 export default {
@@ -1199,6 +1757,89 @@ export default {
         c167: '',
         c168: '',
         c169: '',
+        c121: '',
+        c123: '',
+        c125: '',
+        c122: '',
+        c124: '',
+        c126: '',
+        c127: '',
+        c170: '',
+        c172: '',
+        c174: '',
+        c171: '',
+        c173: '',
+        c175: '',
+        c176: '',
+        c128: '',
+        c129: '',
+        c130: '',
+        c177: '',
+        c178: '',
+        c179: '',
+        c131: '',
+        c133: '',
+        c135: '',
+        c132: '',
+        c134: '',
+        c136: '',
+        c137: '',
+        c180: '',
+        c182: '',
+        c184: '',
+        c181: '',
+        c183: '',
+        c185: '',
+        c186: '',
+        c138:[],
+        c139: '',
+        c140: '',
+        c187:[],
+        c188: '',
+        c189: '',
+        c141: '',
+        c142: '',
+        c143: '',
+        c190: '',
+        c191: '',
+        c192: '',
+        c144: '',
+        c145: '',
+        c146: '',
+        c193: '',
+        c194: '',
+        c195: '',
+        c147: '',
+        c148: '',
+        c149: '',
+        c150: '',
+        c151: '',
+        c196: '',
+        c197: '',
+        c198: '',
+        c199: '',
+        c239: '',
+        c152: '',
+        c153: '',
+        c154: '',
+        c155: '',
+        c156: '',
+        c203: '',
+        c204: '',
+        c205: '',
+        c206: '',
+        c207: '',
+        c157: '',
+        c158: '',
+        c159: '',
+        c160: '',
+        c161: '',
+        c208: '',
+        c209: '',
+        c210: '',
+        c211: '',
+        c212: '',
+        c202: '',
         ec_model_no: 46,
         attach_list: ''
       },
@@ -1280,22 +1921,23 @@ export default {
       return XfillDefaultData(params, this)
     },
     showConfirm() {
-    return XshowConfirm(this)
-    },
-    submitBasic() {
+      return XshowConfirm(this)
     },
     submitRecord() {
-    return XsubmitRecord(this)
+      return XsubmitRecord(this)
+    },
+    viewClose() {
+      return XviewClose(this)
     },
     /* 保存草稿箱 */
     saveRecord() {
-    return XsaveRecord(this)
+      return XsaveRecord(this)
     },
     formatDate(d) {
-    return XformatDate(d)
+      return XformatDate(d)
     },
     getFile(res, file, id) {
-    this['checkmark' + id] = true
+      this['checkmark' + id] = true
     }
   },
   computed: {
