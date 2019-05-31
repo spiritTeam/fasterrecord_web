@@ -87,8 +87,7 @@
               </td>
               <td>
                 <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' :required="formRecord.c21!==''"
-                         placeholder="三位有效数字"/>
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' placeholder="三位有效数字"/>
                 </FormItem>
               </td>
               <td>
