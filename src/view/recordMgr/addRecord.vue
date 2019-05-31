@@ -32,91 +32,91 @@
   </Card>
 </template>
 <script>
-  import {setCookie,getCookie} from '@/libs/util.js'
-  import ReportCode from './reportCode'
-  import SelectSample from './selectSample'
-  import PerformanceIndicators from './performanceIndicators'
-  import SecurityIndicators from './securityIndicators'
-  import Html23 from './energyIndicators/html23'
-  import Html33 from './energyIndicators/html33'
-  import Html31 from './energyIndicators/html31'
-  import Html46 from './energyIndicators/html46'
-  import Html47 from './energyIndicators/html47'
-  import Html48 from './energyIndicators/html48'
-  import Html54 from './energyIndicators/html54'
+import {setCookie,getCookie} from '@/libs/util.js'
+import ReportCode from './reportCode'
+import SelectSample from './selectSample'
+import PerformanceIndicators from './performanceIndicators'
+import SecurityIndicators from './securityIndicators'
+import Html23 from './energyIndicators/html23'
+import Html31 from './energyIndicators/html31'
+import Html33 from './energyIndicators/html33'
+import Html46 from './energyIndicators/html46'
+import Html47 from './energyIndicators/html47'
+import Html48 from './energyIndicators/html48'
+import Html54 from './energyIndicators/html54'
 
-  export default {
-    data () {
-      return {
-        step: 1,
-        category: this.$store.state.app.modelNo,
-        noTips: [],
-        modal1: false
+export default {
+  data () {
+    return {
+      step: 1,
+      category: this.$store.state.app.modelNo,
+      noTips: [],
+      modal1: false
+    }
+  },
+  components: {
+    ReportCode,
+    SelectSample,
+    PerformanceIndicators,
+    SecurityIndicators,
+    Html23,
+    Html31,
+    Html33,
+    Html46,
+    Html47,
+    Html48,
+    Html54
+  },
+  mounted () {
+    if(this.$route.params.type){
+      //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
+          this.$store.commit('setPageType', this.$route.params.type)
+          this.$store.commit('setUpdateId',this.$route.params.id)
+      //}
+    }else{
+          this.$store.commit('setPageType', '')
+          this.$store.commit('setUpdateId',0)
+    };
+    if (this.$route.params.step && this.$route.params.step === 3) {
+      this.step = 3
+      if (!getCookie('noTips') || getCookie('noTips') !== '1') {
+        //this.modal1 = true
       }
-    },
-    components: {
-      ReportCode,
-      SelectSample,
-      PerformanceIndicators,
-      SecurityIndicators,
-      Html23,
-      Html33,
-      Html31,
-      Html46,
-      Html47,
-      Html48,
-      Html54
-    },
-    mounted () {
-      if(this.$route.params.type){
-        //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
-        this.$store.commit('setPageType', this.$route.params.type)
-        this.$store.commit('setUpdateId',this.$route.params.id)
-        //}
-      }else{
-        this.$store.commit('setPageType', '')
-        this.$store.commit('setUpdateId',0)
-      };
-      if (this.$route.params.step && this.$route.params.step === 3) {
-        this.step = 3
-        if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-          //this.modal1 = true
-        }
-        if(this.$route.params.draftData){
-          this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
-        }else if(this.$route.params.extendData){
-          this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
-        }else if(this.$route.params.viewData){
-          this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.viewData)
-        }
-      }
-    },
-    methods: {
-      setNoTips () {
-        setCookie('noTips',this.noTips.join(''),1)
-        console.log(this.noTips)
-      },
-      showTemple () {
-        this.$refs.selectSample.getSampleList()
-        this.step = 2
-        this.category = this.$store.state.app.modelNo
-      },
-      showRecordTab () {
-        this.step = 3
-        if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-          //this.modal1 = true
-        }
-        this.$refs['energyIndicators' + this.category].fillDefaultData()
+      if(this.$route.params.draftData){
+        this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
+      }else if(this.$route.params.extendData){
+        this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
+      }else if(this.$route.params.viewData){
+        this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.viewData)
       }
     }
+  },
+  methods: {
+    setNoTips () {
+      setCookie('noTips',this.noTips.join(''),1)
+      console.log(this.noTips)
+    },
+    showTemple () {
+      this.$refs.selectSample.getSampleList()
+      this.step = 2
+      this.category = this.$store.state.app.modelNo
+    },
+    showRecordTab () {
+      this.step = 3
+      if (!getCookie('noTips') || getCookie('noTips') !== '1') {
+        //this.modal1 = true
+      }
+      this.$refs['energyIndicators' + this.category].fillDefaultData()
+    }
   }
+}
 </script>
 <style lang="less" scoped>
-  .ivu-radio-large .ivu-radio-inner{
-    top:20px!important;
-    left:62px!important;
-  }
-  .ivu-icon-ios-help-circle-outline:before{
-    content:"\F446";
-  }
+.ivu-radio-large .ivu-radio-inner{
+  top:20px!important;
+  left:62px!important;
+}
+.ivu-icon-ios-help-circle-outline:before{
+  content:"\F446";
+}
 </style>
