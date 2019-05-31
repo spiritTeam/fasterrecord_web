@@ -25,7 +25,7 @@ module.exports = {
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
   productionSourceMap: false,
-  baseUrl: BASE_URL,
+  publicPath: BASE_URL,
   lintOnSave: false,
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
