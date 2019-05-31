@@ -477,7 +477,7 @@
                   </CheckboxGroup>
                 </FormItem>
               </td>
-            </tr>
+            </tr> 
             <tr>
               <td>外形尺寸(长×宽×高)（mm×mm×mm）</td>
               <td>
