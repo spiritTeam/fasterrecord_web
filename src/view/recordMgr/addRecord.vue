@@ -15,6 +15,7 @@
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
 
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
+          <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
 
         </TabPane>
@@ -36,7 +37,7 @@
 </template>
 <script>
 
-import {setCookie, getCookie} from '@/libs/util.js'import ReportCode from './reportCode'
+
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
@@ -46,6 +47,7 @@ import Html33 from './energyIndicators/html33'
 import Html46 from './energyIndicators/html46'
 import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
+import Html50 from './energyIndicators/html50'
 import Html54 from './energyIndicators/html54'
 
 export default {
@@ -68,6 +70,7 @@ export default {
     Html46,
     Html47,
     Html48,
+    Html50,
     Html54
   },
   mounted () {
@@ -128,5 +131,4 @@ export default {
 .ivu-icon-ios-help-circle-outline:before{
   content:"\F446";
 }
-
 </style>
