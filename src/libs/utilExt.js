@@ -382,7 +382,7 @@ export const XviewClose= (that) => {
 }
 
 var integer = /^[1-9][0-9]*$/;
-var number = /-?(0|([1-9]\d*))\.?\d+/;
+var number = /^[+-]?\d+(\.\d+)?$/;
 var decimal1 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
 var decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
 var decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
