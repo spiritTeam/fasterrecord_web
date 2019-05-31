@@ -36,6 +36,11 @@ table td, table th {
   padding: 10px;
 }
 
+table tr .t_label {
+  padding-right:5px;
+  text-align:right;
+}
+
 .part6 td > div {
   margin-bottom: 5px;
 }

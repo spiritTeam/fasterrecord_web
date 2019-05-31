@@ -22,7 +22,8 @@ export default {
     dateinit:'',
     pageType:'',//新增，扩展，变更
     updateId:0,
-    gb: ''
+    gb: '',
+    oem:0
   },
   getters: {
     menuList: (state, getters, rootState) => getMenuByRouter(state.routers, rootState.user.access)
@@ -79,6 +80,9 @@ export default {
     },
     setGb (state, str) {
       state.gb = str
+    },
+    setOem(state, num) {
+      state.oem = num
     },
     setBreadCrumb (state, routeMetched) {
       state.breadCrumbList = getBreadCrumbList(routeMetched)
