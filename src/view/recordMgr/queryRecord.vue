@@ -118,6 +118,22 @@ export default {
           }
         }
     },'变更');
+    const viewBtn = (h,params) => h('Button',{
+        props:{
+          type:'primary',
+          size:'small',
+          long:'long'
+        },
+        style: {
+          margin: '3px'
+        },
+        on:{
+          click:()=>{
+              this.viewHandle(params.row.id);
+          }
+        }
+    },'查看');
+    
     return {
       total: 0,
       fileObj: {},
@@ -182,7 +198,8 @@ export default {
                 downLoadCode(h, params),
                 params.row.state === 2?uploadBtn(h,params): downLoadRecord(h,params),
                 params.row.kz ? extendBtn(h,params) :'',
-                params.row.bg ? updateBtn(h,params) :''
+                params.row.bg ? updateBtn(h,params) :'',
+                viewBtn(h,params)
             ]);
           }
         }
@@ -264,6 +281,7 @@ export default {
             _this.uploadParam.uploadFileList.push(file)
           }
           _this.getImgPath(res.data.dir)
+          console.log(_this.dir + file.name)
           _this.uploadParam.fileData['key'] = _this.dir + file.name
           _this.uploadParam.fileData['policy'] = res.data.policy
           _this.uploadParam.fileData['OSSAccessKeyId'] = res.data.accessid
@@ -298,6 +316,26 @@ export default {
         }
       })
     },
+    viewHandle(id){
+      axios.get('/marking/getInfo.do', {
+        params: {
+          id: id
+        }
+      }).then(res => {
+        if(res.data.result_code==='1'){
+            this.$router.push({
+              name:'addRecord',
+              params:{
+                step:3,
+                type:'view',
+                id:id,
+                viewData:res.data
+              }
+            })
+            this.$store.commit('setModelNo',res.data.marking.ec_model_no)
+        }
+      })
+    },
     updateHandle(id){
         this.$router.push({name:'addRecord',params:{type:'update',id:id}});
         //this.$store.commit('setPageType', 'update')
@@ -310,8 +348,17 @@ export default {
         }
       }).then(res => {
           if(res.data.result_code==='1'){
-            this.$router.push({name:'addRecord',params:{step:3,type:'extend',id:id,extendData:res.data}})
+            this.$router.push({
+              name:'addRecord',
+              params:{
+                step:3,
+                type:'extend',
+                id:id,
+                extendData:res.data
+              }
+            })
             this.$store.commit('setModelNo',res.data.marking.ec_model_no)
+            this.$store.commit('setOem',res.data.lab.oem)
           }
       })
     }
