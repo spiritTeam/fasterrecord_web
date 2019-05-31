@@ -18,13 +18,17 @@ export default {
       if(!this.reportCode){
         return;
       }
+      let updateId=0;
+      if(this.$store.state.app.pageType=='update'){
+          updateId=this.$store.state.app.updateId;
+      }
       axios.get('/lab/getReport.do', {
         params: {
-          barcode: this.reportCode
+          barcode: this.reportCode,
+          id:updateId
         }
       }).then(res => {
         if (res.data.result === true) {
-
           this.$store.commit('setDefaultData', res.data.msg.params)
           this.$store.commit('setRid', res.data.msg.rid)
           this.$store.commit('setDateInit', res.data.msg.upddate)
@@ -32,6 +36,7 @@ export default {
           this.$store.commit('setLabName', res.data.msg.labName)
           this.$store.commit('setModelNo', res.data.msg.modelNo)
           this.$store.commit('setTemplate', res.data.msg.templates)
+          this.$store.commit('setOem',res.data.msg.oem)
           this.$emit('toStep2')
         } else {
           this.$Message.warning(res.data.msg)

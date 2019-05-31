@@ -10,9 +10,9 @@
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
-          <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
-          <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
+          <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
+          <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>        </TabPane>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
         </TabPane>
         <!-- <TabPane label="性能指标">
@@ -37,12 +37,12 @@ import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
-import Html47 from './energyIndicators/html47'
-import Html33 from './energyIndicators/html33'
-import Html31 from './energyIndicators/html31'
 import Html23 from './energyIndicators/html23'
+import Html31 from './energyIndicators/html31'
+import Html33 from './energyIndicators/html33'
 import Html46 from './energyIndicators/html46'
-import Html50 from './energyIndicators/html50'// wlq
+import Html47 from './energyIndicators/html47'
+import Html48 from './energyIndicators/html48'
 import Html54 from './energyIndicators/html54'
 
 export default {
@@ -59,12 +59,12 @@ export default {
     SelectSample,
     PerformanceIndicators,
     SecurityIndicators,
-    Html47,
-    Html33,
-    Html31,
     Html23,
+    Html31,
+    Html33,
     Html46,
-    Html50,
+    Html47,
+    Html48,
     Html54
   },
   mounted () {
@@ -86,6 +86,8 @@ export default {
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
       } else if (this.$route.params.extendData) {
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
+      }else if(this.$route.params.viewData){
+        this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.viewData)
       }
     }
   },

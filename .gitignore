@@ -25,5 +25,5 @@ yarn-error.log*
 
 build/env.js
 node_modules.rar
-
-/target/
+/.project
+/fastrecord_web.iml
