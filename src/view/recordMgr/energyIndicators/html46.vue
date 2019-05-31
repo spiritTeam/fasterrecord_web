@@ -87,8 +87,7 @@
               </td>
               <td>
                 <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' :required="formRecord.c21!==''"
-                         placeholder="三位有效数字"/>
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' placeholder="三位有效数字"/>
                 </FormItem>
               </td>
               <td>
@@ -141,8 +140,7 @@
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
           <FormItem prop="c18" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18"
-                        :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18"></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -633,7 +631,7 @@
       <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
-          <div class="application" v-if='$store.state.app.pageType'>
+          <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
             <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
             <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
@@ -854,12 +852,15 @@
           <Checkbox label="1"><span style="color:red;font-weight:bold;">我已确认以上数据填写无误！</span></Checkbox>
         </CheckboxGroup>
       </div>
-      <div class="tc">
+      <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿
         </Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+      </div>
+      <div class="tc" v-else>
+        <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
@@ -958,6 +959,7 @@
     XhandleFormatError,
     XfileHandleBeforeUpload,
     XshowConfirm,
+    XviewClose,
     diffRecord,
     XsubmitRecord,
     XsaveRecord,
@@ -1178,6 +1180,9 @@
       },
       submitRecord() {
         return XsubmitRecord(this)
+      },
+      viewClose() {
+        return XviewClose(this)
       },
       /* 保存草稿箱 */
       saveRecord() {

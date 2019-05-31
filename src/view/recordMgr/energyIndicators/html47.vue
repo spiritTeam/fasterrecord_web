@@ -16,20 +16,20 @@
           <h2>二、能源效率标识检测信息</h2>
           <table>
             <thead>
-              <tr>
-                <th>实验室名称</th>
-                <th>检测报告条形码</th>
-              </tr>
+            <tr>
+              <th>实验室名称</th>
+              <th>检测报告条形码</th>
+            </tr>
             </thead>
             <tbody>
-              <tr>
-                <td width="40%">
-                  <Input type="text" :value="$store.state.app.labName" readonly></Input>
-                </td>
-                <td>
-                  <Input type="text" :value="$store.state.app.barcode" readonly></Input>
-                </td>
-              </tr>
+            <tr>
+              <td width="40%">
+                <Input type="text" :value="$store.state.app.labName" readonly></Input>
+              </td>
+              <td>
+                <Input type="text" :value="$store.state.app.barcode" readonly></Input>
+              </td>
+            </tr>
             </tbody>
           </table>
         </Card>
@@ -521,9 +521,9 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
-            <FormItem prop="c20" label="备案标识开始使用日期" style="width:1000px;">
-              <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c20" :disabled='disabledoff'></DatePicker>
-            </FormItem>
+          <FormItem prop="c20" label="备案标识开始使用日期" style="width:1000px;">
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c20" ></DatePicker>
+          </FormItem>
         </Card>
       </div>
       <div class="part part5">
@@ -974,7 +974,7 @@
       <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
-          <div class="application" v-if='$store.state.app.pageType'>
+          <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
             <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
             <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
@@ -985,7 +985,7 @@
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -1002,16 +1002,16 @@
               </td>
               <td colspan="3" v-if="pltId != 244">
                 根据企业提交的相关能效指标，系统直接生成能效表示样本
-                <Button type="primary" @click="showTemplate">查看模板</Button>
+                <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
             <tr>
-              <td>OEM声明</td>
+              <td><span v-if='$store.state.app.oem' class="red">*</span>OEM声明</td>
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -1030,7 +1030,7 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1052,7 +1052,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1071,7 +1071,7 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1092,7 +1092,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1111,7 +1111,7 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1132,7 +1132,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -1151,7 +1151,7 @@
               <td>（PDF/JPG/PNG）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     id=76
                     :show-upload-list=false
@@ -1177,11 +1177,14 @@
           <Checkbox label="1"><span style="color:red;font-weight:bold;">我已确认以上数据填写无误！</span></Checkbox>
         </CheckboxGroup>
       </div>
-      <div class="tc">
+      <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿</Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+      </div>
+      <div class="tc" v-else>
+        <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
@@ -1223,44 +1226,44 @@
     <Modal v-model="modal4" :width=820 :footer-hide=true>
       <img :src="uploadPic" />
     </Modal>
-     <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
-       <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
-       <p class="org">中国标准化研究院能效标识管理中心：</p>
-       <div class="pro-info">
-          我 <span  class="f-company">{{formRecord.c1}}</span>
-          公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
-       </div>
-       <dl v-if="$store.state.app.pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
-          <dd>a) 其与基础型号同属一个系列；</dd>
-          <dd>b) 其整机结构与基础型号基本相同；</dd>
-          <dd>c) 其产品的能效性能与基础型号一致；</dd>
-          <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
-              <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
-          </dd>
-          <dd>
-              特提出免检备案申请，扩展型号的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord.c20)}}</span>
-          </dd>
-          <dd>请中国标准化研究院能效标识管理中心核准。</dd>
+    <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+      <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
+      <p class="org">中国标准化研究院能效标识管理中心：</p>
+      <div class="pro-info">
+        我 <span  class="f-company">{{formRecord.c1}}</span>
+        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
+        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
+        型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
+      </div>
+      <dl v-if="$store.state.app.pageType==='extend'">
+        <dt>
+          现提出型号扩展备案申请的 <span class="f-model"></span>
+          型号是以上述型号为基础开发扩展的型号：
+        </dt>
+        <dd>a) 其与基础型号同属一个系列；</dd>
+        <dd>b) 其整机结构与基础型号基本相同；</dd>
+        <dd>c) 其产品的能效性能与基础型号一致；</dd>
+        <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
+        </dd>
+        <dd>
+          特提出免检备案申请，扩展型号的初始使用日期：
+          <span class="f-date">{{formatDate(formRecord.c20)}}</span>
+        </dd>
+        <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="$store.state.app.pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
-              (描述信息产品技术参数等信息)
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
-              <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
-          </dd>
-          <dd>
-              该型号的相关信息变更后的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord.c20)}}</span>
-          </dd>
-          <dd>请中国标准化研究院能效标识管理中心核准。</dd>
+        <dd>现申请该幸好申请的备案信息如下变更：<br>
+          (描述信息产品技术参数等信息)
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
+        </dd>
+        <dd>
+          该型号的相关信息变更后的初始使用日期：
+          <span class="f-date">{{formatDate(formRecord.c20)}}</span>
+        </dd>
+        <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
@@ -1268,471 +1271,484 @@
 
 </template>
 <script>
-import axios from 'axios'
-export default {
+  import axios from 'axios'
+  export default {
 
-  data () {
-    const timeDate=this.$store.state.app.dateinit;
-    return {
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      templatePic: '',
-      uploadPic:'',
-      modal2: false,
-      currentValue: '',
-      qus: '',
-      boolFlag:[],
-      currentCValue: '',
-      confirmData: [],
-      modal1: false,
-      saveDisabled: false,
-      submitDisabled: false,
-      dataInit:{
-        disabledDate (date) {
-          return date && date.valueOf() < timeDate;
+    data () {
+      const timeDate=parseInt(this.$store.state.app.dateinit);
+      return {
+        modal3: false,
+        modal4: false,
+        modal5: false,
+        templatePic: '',
+        uploadPic:'',
+        modal2: false,
+        currentValue: '',
+        qus: '',
+        boolFlag:[],
+        currentCValue: '',
+        confirmData: [],
+        modal1: false,
+        saveDisabled: false,
+        submitDisabled: false,
+        dataInit:{
+          disabledDate (date) {
+            return date && date.valueOf() < timeDate;
+          }
+        },
+        uploadUrl: '',
+        uploadParam: {
+          fileData24: {},
+          filePath24:'',
+          uploadFileList24: [],
+          fileData26: {},
+          filePath26:'',
+          uploadFileList26: [],
+          fileData27: {},
+          filePath27:'',
+          uploadFileList27: [],
+          fileData28: {},
+          filePath28:'',
+          uploadFileList28: [],
+          fileData29: {},
+          filePath29:'',
+          uploadFileList29: [],
+          fileData30: {},
+          filePath30:'',
+          uploadFileList30: [],
+          fileData31: {},
+          filePath31:'',
+          uploadFileList31: [],
+          fileData32: {},
+          filePath32:'',
+          uploadFileList32: [],
+          fileData76: {},
+          filePath76:'',
+          uploadFileList76: []
+        },
+        filesArr: [],
+        checkmark24: false,
+        checkmark26: false,
+        checkmark27: false,
+        checkmark28: false,
+        checkmark29: false,
+        checkmark30: false,
+        checkmark31: false,
+        checkmark32: false,
+        checkmark76: false,
+        formRecord: {
+          ec_master_kuozhan_text:'',
+          c1: '',
+          c2: '',
+          c3: '',
+          c4: '',
+          c5: '',
+          c7: '1',
+          c8: '',
+          c9: '',
+          c10: '',
+          c11: '',
+          c12: '',
+          c13: '',
+          c14: '',
+          c15: '',
+          c16: '',
+          c17: '',
+          c18: '',
+          c19: '',
+          c20: new Date(),
+          c21: '',
+          c22: '',
+          c23: [],
+          c24: '',
+          c25: '',
+          c26: '',
+          c27: '',
+          c28: '',
+          c29: '',
+          c30: '',
+          c31: '',
+          c32: '',
+          c33: '',
+          c34: '',
+          c35: '',
+          c36: '',
+          c37: '',
+          c38: '',
+          c39: '',
+          c40: '',
+          c41: '',
+          c42: '',
+          c43: '',
+          c44: '',
+          c45: '',
+          c46: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c51: [],
+          c52: '',
+          c53: '',
+          c54: '',
+          c55: '',
+          c56: [],
+          c57: '',
+          c58: [],
+          c59: '',
+          c60: '',
+          c61: '',
+          c62: '',
+          c63: '',
+          c64: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c69: '',
+          c70: '',
+          c71: '',
+          c72: '',
+          c73: '',
+          c74: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c78: '',
+          c79: '',
+          c80: '',
+          c81: '',
+          c82: '',
+          c83: '',
+          c84: '',
+          c85: '',
+          c86: '',
+          c87: '',
+          c88: '',
+          c89: '',
+          c90: '',
+          c91: '',
+          c92: '',
+          c93: '',
+          c94: '',
+          c95: '',
+          c96: '',
+          c97: '',
+          c98: '',
+          c104: '',
+          c105: '',
+          c106: '',
+          c107: '',
+          c112: '',
+          c113: '',
+          c114: '',
+          c115: '',
+          c120: '',
+          c121: '',
+          c122: '',
+          c123: '',
+          c124: '',
+          c125: '',
+          c126: '',
+          c127: '',
+          c128: '',
+          c129: '',
+          c130: '',
+          c131: '',
+          c132: '',
+          c200: '',
+          c202: '',
+          ec_model_no: 47,
+          attach_list: ''
         }
-      },
-      uploadUrl: '',
-      uploadParam: {
-        fileData24: {},
-        filePath24:'',
-        uploadFileList24: [],
-        fileData26: {},
-        filePath26:'',
-        uploadFileList26: [],
-        fileData27: {},
-        filePath27:'',
-        uploadFileList27: [],
-        fileData28: {},
-        filePath28:'',
-        uploadFileList28: [],
-        fileData29: {},
-        filePath29:'',
-        uploadFileList29: [],
-        fileData30: {},
-        filePath30:'',
-        uploadFileList30: [],
-        fileData31: {},
-        filePath31:'',
-        uploadFileList31: [],
-        fileData32: {},
-        filePath32:'',
-        uploadFileList32: [],
-        fileData76: {},
-        filePath76:'',
-        uploadFileList76: []
-      },
-      filesArr: [],
-      checkmark24: false,
-      checkmark26: false,
-      checkmark27: false,
-      checkmark28: false,
-      checkmark29: false,
-      checkmark30: false,
-      checkmark31: false,
-      checkmark32: false,
-      checkmark76: false,
-      formRecord: {
-        ec_master_kuozhan_text:'',
-        c1: '',
-        c2: '',
-        c3: '',
-        c4: '',
-        c5: '',
-        c7: '1',
-        c8: '',
-        c9: '',
-        c10: '',
-        c11: '',
-        c12: '',
-        c13: '',
-        c14: '',
-        c15: '',
-        c16: '',
-        c17: '',
-        c18: '',
-        c19: '',
-        c20: new Date(),
-        c21: '',
-        c22: '',
-        c23: [],
-        c24: '',
-        c25: '',
-        c26: '',
-        c27: '',
-        c28: '',
-        c29: '',
-        c30: '',
-        c31: '',
-        c32: '',
-        c33: '',
-        c34: '',
-        c35: '',
-        c36: '',
-        c37: '',
-        c38: '',
-        c39: '',
-        c40: '',
-        c41: '',
-        c42: '',
-        c43: '',
-        c44: '',
-        c45: '',
-        c46: '',
-        c47: '',
-        c48: '',
-        c49: '',
-        c50: '',
-        c51: [],
-        c52: '',
-        c53: '',
-        c54: '',
-        c55: '',
-        c56: [],
-        c57: '',
-        c58: [],
-        c59: '',
-        c60: '',
-        c61: '',
-        c62: '',
-        c63: '',
-        c64: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
-        c71: '',
-        c72: '',
-        c73: '',
-        c74: '',
-        c75: '',
-        c76: '',
-        c77: '',
-        c78: '',
-        c79: '',
-        c80: '',
-        c81: '',
-        c82: '',
-        c83: '',
-        c84: '',
-        c85: '',
-        c86: '',
-        c87: '',
-        c88: '',
-        c89: '',
-        c90: '',
-        c91: '',
-        c92: '',
-        c93: '',
-        c94: '',
-        c95: '',
-        c96: '',
-        c97: '',
-        c98: '',
-        c104: '',
-        c105: '',
-        c106: '',
-        c107: '',
-        c112: '',
-        c113: '',
-        c114: '',
-        c115: '',
-        c120: '',
-        c121: '',
-        c122: '',
-        c123: '',
-        c124: '',
-        c125: '',
-        c126: '',
-        c127: '',
-        c128: '',
-        c129: '',
-        c130: '',
-        c131: '',
-        c132: '',
-        c200: '',
-        c202: '',
-        ec_model_no: 47,
-        attach_list: ''
       }
-    }
-  },
-  mounted () {
-    this.disabledoff= this.$store.state.app.pageType=="extend"? true : false
-  },
-  methods: {
-    showTemplate () {
-      this.templatePic = this.$store.state.app.pltPic
-      this.modal3 = true
     },
-    prevStep () {
-      this.$emit('prevStep')
+    mounted () {
+      //console.log(this.$store.state.app.pageType)
+
     },
-    getRandom (type) {
-      return (Math.random().toString().slice(2)) + type
-    },
-    getImgPath (dir) {
-      let imgDir = dir
-      let nowDate = new Date()
-      let year = nowDate.getFullYear()
-      let month = nowDate.getMonth() > 8 ? (nowDate.getMonth() + 1) : '0' + (nowDate.getMonth() + 1)
-      let date = nowDate.getDate() > 9 ? nowDate.getDate() : '0' + nowDate.getDate()
-      imgDir += year + '/' + month + '/' + date + '/'
-      this.dir = imgDir
-    },
-    handleFormatError (file,id) {
+    methods: {
+      showTemplate () {
+        this.templatePic = this.$store.state.app.pltPic
+        this.modal3 = true
+      },
+      prevStep () {
+        this.$emit('prevStep')
+      },
+      getRandom (type) {
+        return (Math.random().toString().slice(2)) + type
+      },
+      getImgPath (dir) {
+        let imgDir = dir
+        let nowDate = new Date()
+        let year = nowDate.getFullYear()
+        let month = nowDate.getMonth() > 8 ? (nowDate.getMonth() + 1) : '0' + (nowDate.getMonth() + 1)
+        let date = nowDate.getDate() > 9 ? nowDate.getDate() : '0' + nowDate.getDate()
+        imgDir += year + '/' + month + '/' + date + '/'
+        this.dir = imgDir
+      },
+      handleFormatError (file,id) {
         this.uploadParam['filePath'+id]=''
         this.filesArr.splice(this.filesArr.indexOf(id),1)
         this.$Notice.warning({
-            title: '上传文件，类型错误',
-            desc: '请选择正确的类型文件'
+          title: '上传文件，类型错误',
+          desc: '请选择正确的类型文件'
         });
-    },
-    fileHandleBeforeUpload (file,id) {
-      console.log(id)
-      let _this = this
-      let fileObj = {}
-      _this.uploadParam['uploadFileList'+id] = []
-      const Fname = file.name
-      const seat = Fname.lastIndexOf('.')
-      const extension = Fname.substring(seat).toLowerCase()
-      const gname = this.getRandom(extension)
-      fileObj.ec_attach_id = id
-      fileObj.ec_attach_originalname = file.name
-      fileObj.ec_attach_file = gname
-      Object.defineProperty(file, 'name', {
-        writable: true,
-        value: gname
-      })
-      return new Promise(function (resolve, reject) {
-        axios.get('/oss/token.do').then(res => {
-          if (_this.uploadParam['uploadFileList'+id].length > 0) {
-            _this.$Notice.warning({
-              title: '最多上传1个附件'
-            })
-            return false
-          }
-          let reader = new FileReader()
-          reader.readAsDataURL(file)
-          reader.onloadend = (e) => {
-            file.url = reader.result
-            //console.log(_this.uploadParam['uploadFileList'+id])
-            _this.uploadParam['uploadFileList'+id].push(file)
-          }
-          _this.getImgPath(res.data.dir)
-          _this.uploadParam['fileData'+id]['key'] = _this.dir + file.name
-          _this.uploadParam['fileData'+id]['policy'] = res.data.policy
-          _this.uploadParam['fileData'+id]['OSSAccessKeyId'] = res.data.accessid
-          _this.uploadParam['fileData'+id]['success_action_status'] = '200'
-          _this.uploadParam['fileData'+id]['signature'] = res.data.signature
-          _this.uploadUrl = res.data.host
-          fileObj.ec_attach_path = _this.uploadParam['filePath'+id]= res.data.host + _this.dir + file.name
-          _this.filesArr.push(fileObj)
-          resolve()
+      },
+      fileHandleBeforeUpload (file,id) {
+        console.log(id)
+        let _this = this
+        let fileObj = {}
+        _this.uploadParam['uploadFileList'+id] = []
+        const Fname = file.name
+        const seat = Fname.lastIndexOf('.')
+        const extension = Fname.substring(seat).toLowerCase()
+        const gname = this.getRandom(extension)
+        fileObj.ec_attach_id = id
+        fileObj.ec_attach_originalname = file.name
+        fileObj.ec_attach_file = gname
+        Object.defineProperty(file, 'name', {
+          writable: true,
+          value: gname
         })
-      })
-    },
-    /* 数据来源  扩展备案 */
-    fillExtendData(params){
-      let that = this
-      let data=params.data;
-      let mark= params.marking;
-      that.$store.commit('setPtId', mark.ptid)
-      that.$store.commit('setPltId', mark.pltId)
-      that.$store.commit('setRid', mark.ec_labreport_id)
-      that.$store.commit('setBarcode', mark.ec_labreport_no)
-      that.$store.commit('setLabName', mark.ec_labname)
-      that.formRecord.id = mark.id
-
-      for(let i in data) {
+        return new Promise(function (resolve, reject) {
+          axios.get('/oss/token.do').then(res => {
+            if (_this.uploadParam['uploadFileList'+id].length > 0) {
+              _this.$Notice.warning({
+                title: '最多上传1个附件'
+              })
+              return false
+            }
+            let reader = new FileReader()
+            reader.readAsDataURL(file)
+            reader.onloadend = (e) => {
+              file.url = reader.result
+              //console.log(_this.uploadParam['uploadFileList'+id])
+              _this.uploadParam['uploadFileList'+id].push(file)
+            }
+            _this.getImgPath(res.data.dir)
+            _this.uploadParam['fileData'+id]['key'] = _this.dir + file.name
+            _this.uploadParam['fileData'+id]['policy'] = res.data.policy
+            _this.uploadParam['fileData'+id]['OSSAccessKeyId'] = res.data.accessid
+            _this.uploadParam['fileData'+id]['success_action_status'] = '200'
+            _this.uploadParam['fileData'+id]['signature'] = res.data.signature
+            _this.uploadUrl = res.data.host
+            fileObj.ec_attach_path = _this.uploadParam['filePath'+id]= res.data.host + _this.dir + file.name
+            _this.filesArr.push(fileObj)
+            resolve()
+          })
+        })
+      },
+      viewClose(){
+        this.$router.replace({
+          name:'queryRecord'
+        })
+      },
+      /* 数据来源  扩展备案 */
+      fillExtendData(params){
+        let that = this
+        let data=params.data;
+        let mark= params.marking;
+        that.$store.commit('setPtId', mark.ptid)
+        that.$store.commit('setPltId', mark.pltId)
+        that.$store.commit('setRid', mark.ec_labreport_id)
+        that.$store.commit('setBarcode', mark.ec_labreport_no)
+        that.$store.commit('setLabName', mark.ec_labname)
+        that.formRecord.id = mark.id
+        for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
             data[i].split(';').forEach((v) => {
               that.formRecord[i].push(v)
             })
           }else if(i==='c20'){
-              //this.$store.commit('setDateInit', data[i])
-              if(data[i] != undefined) that.formRecord[i] = that.formatDate(data[i]);
+            //this.$store.commit('setDateInit', data[i])
+            if(data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]));
           } else {
             that.formRecord[i] = data[i]
           }
-      }
-    },
-    /* 数据来源 草稿箱 */
-    fillDraftData (params) {
-      let that = this
-      let data=params.data;
-      let mark= params.marking;
-      let attachList=this.filesArr=params.attachList;
-      attachList.forEach((item,idx)=>{
-        if(item.ec_attach_id==25){
-          this.$store.commit('setPltPic',item.ec_attach_path)
-
-        }else{
-          that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
         }
-      })
-      console.log(params.lab.upddate);
-      that.$store.commit('setDefaultData', params.lab.params)
-      that.$store.commit('setPtId', mark.ptid)
-      that.$store.commit('setPltId', mark.pltId)
-      that.$store.commit('setRid', mark.ec_labreport_id)
-      that.$store.commit('setBarcode', mark.ec_labreport_no)
-      that.$store.commit('setLabName', mark.ec_labname)
-      that.formRecord.id = mark.id
-      for(let i in data) {
+      },
+      /* 数据来源 草稿箱 */
+      fillDraftData (params) {
+        let that = this
+        let data=params.data;
+        let mark= params.marking;
+        let attachList=this.filesArr=params.attachList;
+        if(  attachList && attachList.length>0){
+          attachList.forEach((item,idx)=>{
+            if(item.ec_attach_id==25){
+              this.$store.commit('setPltPic',item.ec_attach_path)
+
+            }else{
+              that.uploadParam['filePath'+item.ec_attach_id]=item.ec_attach_path;
+            }
+          })
+        }
+
+        if(params.lab){
+          that.$store.commit('setDefaultData', params.lab.params)
+        }
+        that.$store.commit('setPtId', mark.ptid)
+        that.$store.commit('setPltId', mark.pltId)
+        that.$store.commit('setRid', mark.ec_labreport_id)
+        that.$store.commit('setBarcode', mark.ec_labreport_no)
+        that.$store.commit('setLabName', mark.ec_labname)
+        that.formRecord.id = mark.id
+        for(let i in data) {
           if (i === 'c23' || i === 'c51' || i === 'c56' || i === 'c58') {
             that.formRecord[i] = []
             data[i].split(';').forEach((v) => {
               that.formRecord[i].push(v)
             })
           } else if(i==='c20'){
-              //this.$store.commit('setDateInit', data[i])
-            if(data[i] != undefined) that.formRecord[i]= that.formatDate(data[i]);
+            //this.$store.commit('setDateInit', data[i])
+            if(data[i] != undefined) that.formRecord[i]= that.formatDate(parseInt(data[i]));
           }else {
             that.formRecord[i] = data[i]
           }
-      }
-    },
-    showImg(path){
-      this.uploadPic = path;
-      this.modal4 = true
-    },
-    /* 数据来源 新增备案 */
-    fillDefaultData () {
-      let that = this;
-      that.formRecord.c200 = that.$store.state.app.gb
-      //console.log();
-      that.$store.state.app.defaultData.forEach((e) => {
-        if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
-          that.formRecord[e.recId] = []
-          if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
-            return
-          }
-          that.formRecord[e.recId]=e.labValue.replace(/\s+/g,'').split(';')
+        }
+      },
+      showImg(path){
+        this.uploadPic = path;
+        this.modal4 = true
+      },
+      /* 数据来源 新增备案 */
+      fillDefaultData () {
+        let that = this;
+        that.formRecord.c200 = that.$store.state.app.gb
+        //console.log();
+        that.$store.state.app.defaultData.forEach((e) => {
+          if (e.recId === 'c23' || e.recId === 'c51' || e.recId === 'c56' || e.recId === 'c58') {
+            that.formRecord[e.recId] = []
+            if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
+              return
+            }
+            that.formRecord[e.recId]=e.labValue.replace(/\s+/g,'').split(';')
 
-        } else if (e.recId === 'c24' || e.recId === 'c26' || e.recId === 'c28' || e.recId === 'c33' || e.recId === 'c38' || e.recId === 'c125') {
-          if (e.labValue !== '有霜' || e.labValue !== '无霜') {
-            that.formRecord[e.recId] = e.labValue;
+          } else if (e.recId === 'c24' || e.recId === 'c26' || e.recId === 'c28' || e.recId === 'c33' || e.recId === 'c38' || e.recId === 'c125') {
+            if (e.labValue !== '有霜' || e.labValue !== '无霜') {
+              that.formRecord[e.recId] = e.labValue;
+            } else {
+
+            }
           } else {
+            if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
+              that.formRecord[e.recId] = ''
+            } else {
 
-          }
-        } else {
-          if (e.labValue === '/'  || e.labValue == null || e.labValue=='') {
-            that.formRecord[e.recId] = ''
-          } else {
-
-            let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
-            if (e.recId === 'c7') {
-              if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
-                that.formRecord[e.recId] = '1'
-              } else {
-                that.formRecord[e.recId] = parseInt(labVal).toString();
+              let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
+              if (e.recId === 'c7') {
+                if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
+                  that.formRecord[e.recId] = '1'
+                } else {
+                  that.formRecord[e.recId] = parseInt(labVal).toString();
+                }
+              } else if (e.recId === 'c20' && isNaN(labVal)) {
+                that.formRecord[e.recId] = new Date()
+              }else {
+                that.formRecord[e.recId] = labVal
               }
-            } else if (e.recId === 'c20' && isNaN(labVal)) {
-              that.formRecord[e.recId] = new Date()
-            }else {
-              that.formRecord[e.recId] = labVal
             }
           }
+        })
+      },
+      count43 () {
+        let count_b = 0
+        let vv = Math.pow(10,1)
+        if (!isNaN(this.formRecord.c25)) {
+          count_b += Number(this.formRecord.c25)
         }
-      })
-    },
-    count43 () {
-      let count_b = 0
-      let vv = Math.pow(10,1)
-      if (!isNaN(this.formRecord.c25)) {
-        count_b += Number(this.formRecord.c25)
-      }
-      if (!isNaN(this.formRecord.c27)) {
-        count_b += Number(this.formRecord.c27)
-      }
-      if (!isNaN(this.formRecord.c30)) {
-        count_b += Number(this.formRecord.c30)
-      }
-      if (!isNaN(this.formRecord.c35)) {
-        count_b += Number(this.formRecord.c35)
-      }
-      if (!isNaN(this.formRecord.c40)) {
-        count_b += Number(this.formRecord.c40)
-      }
-      if (!isNaN(this.formRecord.c126)) {
-        count_b += Number(this.formRecord.c126)
-      }
-      count_b = Math.round(count_b*vv)/vv
-      this.formRecord.c43 = count_b
-    },
-    count123 () {
-      let count_s = 0
-      let vv = Math.pow(10,1)
-      if (!isNaN(this.formRecord.c82)) {
-        count_s += Number(this.formRecord.c82)
-      }
-      if (!isNaN(this.formRecord.c84)) {
-        count_s += Number(this.formRecord.c84)
-      }
-      if (!isNaN(this.formRecord.c86)) {
-        count_s += Number(this.formRecord.c86)
-      }
-      if (!isNaN(this.formRecord.c88)) {
-        count_s += Number(this.formRecord.c88)
-      }
-      if (!isNaN(this.formRecord.c90)) {
-        count_s += Number(this.formRecord.c90)
-      }
-      if (!isNaN(this.formRecord.c127)) {
-        count_s += Number(this.formRecord.c127)
-      }
-      count_s = Math.round(count_s * vv) / vv;
-      this.formRecord.c123 = count_s
-    },
+        if (!isNaN(this.formRecord.c27)) {
+          count_b += Number(this.formRecord.c27)
+        }
+        if (!isNaN(this.formRecord.c30)) {
+          count_b += Number(this.formRecord.c30)
+        }
+        if (!isNaN(this.formRecord.c35)) {
+          count_b += Number(this.formRecord.c35)
+        }
+        if (!isNaN(this.formRecord.c40)) {
+          count_b += Number(this.formRecord.c40)
+        }
+        if (!isNaN(this.formRecord.c126)) {
+          count_b += Number(this.formRecord.c126)
+        }
+        count_b = Math.round(count_b*vv)/vv
+        this.formRecord.c43 = count_b
+      },
+      count123 () {
+        let count_s = 0
+        let vv = Math.pow(10,1)
+        if (!isNaN(this.formRecord.c82)) {
+          count_s += Number(this.formRecord.c82)
+        }
+        if (!isNaN(this.formRecord.c84)) {
+          count_s += Number(this.formRecord.c84)
+        }
+        if (!isNaN(this.formRecord.c86)) {
+          count_s += Number(this.formRecord.c86)
+        }
+        if (!isNaN(this.formRecord.c88)) {
+          count_s += Number(this.formRecord.c88)
+        }
+        if (!isNaN(this.formRecord.c90)) {
+          count_s += Number(this.formRecord.c90)
+        }
+        if (!isNaN(this.formRecord.c127)) {
+          count_s += Number(this.formRecord.c127)
+        }
+        count_s = Math.round(count_s * vv) / vv;
+        this.formRecord.c123 = count_s
+      },
 
-    showConfirm () {
-      let _this = this
-      let pageType=_this.$store.state.app.pageType;
-       if (_this.uploadParam.filePath24 === '') {
-        _this.$Message.warning('请上传产品正面图片！')
-        return false
-      }
-      if (_this.uploadParam.filePath76 === '') {
-        _this.$Message.warning('请上传铭牌图片！')
-        return false
-      }
-      if(pageType==="extend" || pageType==="update" ){
+      showConfirm () {
+        let _this = this
+        let pageType=_this.$store.state.app.pageType;
+        if (_this.uploadParam.filePath24 === '') {
+          _this.$Message.warning('请上传产品正面图片！')
+          return false
+        }
+        if (_this.uploadParam.filePath76 === '') {
+          _this.$Message.warning('请上传铭牌图片！')
+          return false
+        }
+        if (_this.$store.state.app.oem &&_this.uploadParam.filePath26 === '') {
+          _this.$Message.warning('请上传oem声明！')
+          return false
+        }
+        if(pageType==="extend" || pageType==="update" ){
           if (_this.formRecord.ec_master_kuozhan_text===''){
-              let text=pageType==="extend"?'扩展':'变更'
-             _this.$Message.warning('请填写'+text+'申请书！')
+            let text=pageType==="extend"?'扩展':'变更'
+            _this.$Message.warning('请填写'+text+'申请书！')
           }else {
-             _this.modal1 = true;
+            _this.modal1 = true;
           }
           return;
-      }
-
-      _this.count43()
-      _this.count123()
-
-      this.$refs['formRecord'].validate((valid) => {
-        if (valid) {
-          if (_this.confirmData.join('') == 1) {
-            _this.boolFlag= _this.diffRecord(_this.$store.state.app.defaultData,_this.formRecord);
-            _this.modal1 = true
-          } else {
-            _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
-          }
         }
-      })
-    },
-    diffRecord(orgin,target){
+
+        _this.count43()
+        _this.count123()
+
+        this.$refs['formRecord'].validate((valid) => {
+          if (valid) {
+            if (_this.confirmData.join('') == 1) {
+              _this.boolFlag= _this.diffRecord(_this.$store.state.app.defaultData,_this.formRecord);
+              _this.modal1 = true
+            } else {
+              _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
+            }
+          }
+        })
+      },
+      diffRecord(orgin,target){
         let newArr = []
         for(let i=0; i<orgin.length; i++){
-           let v=orgin[i];
+          let v=orgin[i];
           if(target.hasOwnProperty(v.recId)) {
             if(Object.prototype.toString.call(target[v.recId]) == '[object Array]'){
               let oldarr=(v.labValue).split(';').sort().join(';'),
-                  newarr=(target[v.recId]).sort().join(";");
+                newarr=(target[v.recId]).sort().join(";");
               if(oldarr != newarr) {
                 v.updateVal=target[v.recId];
                 newArr.push(v);
@@ -1754,1157 +1770,1157 @@ export default {
         }
 
         return newArr;
-    },
-    submitBasic(){
-    },
+      },
+      submitBasic(){
+      },
 
-    submitRecord () {
-      let _this = this
-      let pageType=_this.$store.state.app.pageType;
-      _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
-      _this.formRecord.ptid = _this.$store.state.app.ptId
-      _this.formRecord.pltId = _this.$store.state.app.pltId
-      _this.formRecord.record_type = 0
-      _this.formRecord.ec_labreport_id = _this.$store.state.app.rid
-      _this.formRecord.ec_labreport_no = _this.$store.state.app.barcode
-      _this.formRecord.ec_labname = _this.$store.state.app.labName
-      let file25={
-        ec_attach_id:'25',
-        ec_attach_originalname :'',
-        ec_attach_file : '',
-        ec_attach_path : _this.$store.state.app.pltPic
-      };
-      let flag=false
-      _this.filesArr.forEach(item=>{
-        if(item.ec_attach_id==25){
-          flag=true
-        }
-      })
-      if(!flag){
-        _this.filesArr.push(file25)
-      }
-      _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId || 0
-      if(pageType==="extend" || pageType==="update" ){
-        let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
-        axios({
-          url: submitUrl,
-          method: 'POST',
-          data: _this.formRecord,
-          transformRequest: [function (data) {
-            let ret = ''
-            for (let it in data) {
-              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-            }
-            return ret
-          }],
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then(res => {
-          if (res.data.result_code === '1') {
-            //let txt = _this.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
-            _this.$Modal.success({
-              title: '提交成功',
-              content: '<p>备案数据已经提交成功！</p>',
-              okText: '查看详情',
-              onOk () {
-                _this.$router.push('/queryRecord')
-              }
-            })
-          } else {
-            _this.$Message.warning(res.data.message)
-            //_this.submitDisabled = false
+      submitRecord () {
+        let _this = this
+        let pageType=_this.$store.state.app.pageType;
+        _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
+        _this.formRecord.ptid = _this.$store.state.app.ptId
+        _this.formRecord.pltId = _this.$store.state.app.pltId
+        _this.formRecord.record_type = 0
+        _this.formRecord.ec_labreport_id = _this.$store.state.app.rid
+        _this.formRecord.ec_labreport_no = _this.$store.state.app.barcode
+        _this.formRecord.ec_labname = _this.$store.state.app.labName
+        let file25={
+          ec_attach_id:'25',
+          ec_attach_originalname :'',
+          ec_attach_file : '',
+          ec_attach_path : _this.$store.state.app.pltPic
+        };
+        let flag=false
+        _this.filesArr.forEach(item=>{
+          if(item.ec_attach_id==25){
+            flag=true
           }
         })
-      }else{
-
-        axios({
-          url: '/marking/save.do',
-          method: 'POST',
-          data: _this.formRecord,
-          transformRequest: [function (data) {
-            let ret = ''
-            for (let it in data) {
-              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-            }
-            return ret
-          }],
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }).then(res => {
-          if (res.data.result_code === '1') {
-            let txt = _this.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
-            _this.$Modal.success({
-              title: '提交成功',
-              content: '<p>备案数据已经提交成功！</p><p>' + txt + '</p><p>完成操作后将同步到备案系统</p>',
-              okText: '查看详情',
-              onOk () {
-                _this.$router.push('/queryRecord')
-              }
-            })
-          } else {
-            _this.$Message.warning(res.data.message)
-            _this.submitDisabled = false
-          }
-        })
-      }
-    },
-    /* 保存草稿箱 */
-    saveRecord () {
-      let _this = this
-      _this.saveDisabled = true
-      _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
-      _this.formRecord.ptid = _this.$store.state.app.ptId
-      _this.formRecord.pltId = _this.$store.state.app.pltId
-      _this.formRecord.record_type = 0
-      _this.formRecord.ec_labreport_id = _this.$store.state.app.rid
-      _this.formRecord.ec_labreport_no = _this.$store.state.app.barcode
-      _this.formRecord.ec_labname = _this.$store.state.app.labName
-      var file25={
-        ec_attach_id:'25',
-        ec_attach_originalname :'',
-        ec_attach_file : '',
-        ec_attach_path : _this.$store.state.app.pltPic
-      }
-      _this.filesArr.push(file25)
-      _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-
-      axios({
-        url: '/marking/saveDraft.do',
-        method: 'POST',
-        data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest`
-        //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
-        //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) {
-          let ret = ''
-          for (let it in data) {
-            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-          }
-          return ret
-        }],
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+        if(!flag){
+          _this.filesArr.push(file25)
         }
-      })
-      .then(res => {
-        if (res.data.result_code === '1') {
-          _this.$Modal.success({
-            title: '保存成功',
-            content: '<p>备案数据已经保存成功！</p>',
-            okText: '查看详情',
-            onOk () {
-              _this.$router.push('/draftBox')
+        _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
+        _this.formRecord.id=_this.$store.state.app.updateId || 0
+        if(pageType==="extend" || pageType==="update" ){
+          let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
+          axios({
+            url: submitUrl,
+            method: 'POST',
+            data: _this.formRecord,
+            transformRequest: [function (data) {
+              let ret = ''
+              for (let it in data) {
+                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+              }
+              return ret
+            }],
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }).then(res => {
+            if (res.data.result_code === '1') {
+              //let txt = _this.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
+              _this.$Modal.success({
+                title: '提交成功',
+                content: '<p>备案数据已经提交成功！</p>',
+                okText: '查看详情',
+                onOk () {
+                  _this.$router.push('/queryRecord')
+                }
+              })
+            } else {
+              _this.$Message.warning(res.data.message)
+              //_this.submitDisabled = false
             }
           })
-        } else {
-          _this.$Message.warning(res.data.message)
-          _this.saveDisabled = false
+        }else{
+
+          axios({
+            url: '/marking/save.do',
+            method: 'POST',
+            data: _this.formRecord,
+            transformRequest: [function (data) {
+              let ret = ''
+              for (let it in data) {
+                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+              }
+              return ret
+            }],
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }).then(res => {
+            if (res.data.result_code === '1') {
+              let txt = _this.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
+              _this.$Modal.success({
+                title: '提交成功',
+                content: '<p>备案数据已经提交成功！</p><p>' + txt + '</p><p>完成操作后将同步到备案系统</p>',
+                okText: '查看详情',
+                onOk () {
+                  _this.$router.push('/queryRecord')
+                }
+              })
+            } else {
+              _this.$Message.warning(res.data.message)
+              _this.submitDisabled = false
+            }
+          })
         }
-      })
+      },
+      /* 保存草稿箱 */
+      saveRecord () {
+        let _this = this
+        _this.saveDisabled = true
+        _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
+        _this.formRecord.ptid = _this.$store.state.app.ptId
+        _this.formRecord.pltId = _this.$store.state.app.pltId
+        _this.formRecord.record_type = 0
+        _this.formRecord.ec_labreport_id = _this.$store.state.app.rid
+        _this.formRecord.ec_labreport_no = _this.$store.state.app.barcode
+        _this.formRecord.ec_labname = _this.$store.state.app.labName
+        var file25={
+          ec_attach_id:'25',
+          ec_attach_originalname :'',
+          ec_attach_file : '',
+          ec_attach_path : _this.$store.state.app.pltPic
+        }
+        _this.filesArr.push(file25)
+        _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
+
+        axios({
+          url: '/marking/saveDraft.do',
+          method: 'POST',
+          data: _this.formRecord,
+          // 只适用于 POST,PUT,PATCH，transformRequest`
+          //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
+          //或 ArrayBuffer，或 Stream
+          transformRequest: [function (data) {
+            let ret = ''
+            for (let it in data) {
+              ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+            }
+            return ret
+          }],
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
+        })
+          .then(res => {
+            if (res.data.result_code === '1') {
+              _this.$Modal.success({
+                title: '保存成功',
+                content: '<p>备案数据已经保存成功！</p>',
+                okText: '查看详情',
+                onOk () {
+                  _this.$router.push('/draftBox')
+                }
+              })
+            } else {
+              _this.$Message.warning(res.data.message)
+              _this.saveDisabled = false
+            }
+          })
+      },
+      formatDate (d) {
+        let date = new Date(d)
+        let year = date.getFullYear()
+        let month = date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
+        let day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
+        return year + '-' + month + '-' + day
+      },
+      getFile (res, file,id) {
+        this['checkmark'+id] = true
+      },
     },
-    formatDate (d) {
-      let date = new Date(d)
-      let year = date.getFullYear()
-      let month = date.getMonth() > 8 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
-      let day = date.getDate() > 9 ? date.getDate() : '0' + date.getDate()
-      return year + '-' + month + '-' + day
-    },
-    getFile (res, file,id) {
-      this['checkmark'+id] = true
-    },
-  },
-  computed: {
-    disabledoff(){
-      return  this.$store.state.app.pageType==='extend';
-    },
-    pltId () {
-      return this.$store.state.app.pltId
-    },
-    pltPic () {
-      return this.$store.state.app.pltPic
-    },
-    requiredStr () {
-      return this.$store.state.app.requiredStr
-    },
-    disabled25 () {
-      return this.formRecord.c24!=='有霜' && this.formRecord.c24!=='无霜' && this.$store.state.app.requiredStr.indexOf('c25,') === -1
-    },
-    disabled27 () {
-      return this.formRecord.c26!=='有霜' && this.formRecord.c26!=='无霜' && this.$store.state.app.requiredStr.indexOf('c27,') === -1
-    },
-    lc () {
-      if (this.formRecord.c21 === '葡萄酒储藏柜' ||
+    computed: {
+      disabledoff(){
+        return  this.$store.state.app.pageType==='extend';
+      },
+      pltId () {
+        return this.$store.state.app.pltId
+      },
+      pltPic () {
+        return this.$store.state.app.pltPic
+      },
+      requiredStr () {
+        return this.$store.state.app.requiredStr
+      },
+      disabled25 () {
+        return this.formRecord.c24!=='有霜' && this.formRecord.c24!=='无霜' && this.$store.state.app.requiredStr.indexOf('c25,') === -1
+      },
+      disabled27 () {
+        return this.formRecord.c26!=='有霜' && this.formRecord.c26!=='无霜' && this.$store.state.app.requiredStr.indexOf('c27,') === -1
+      },
+      lc () {
+        if (this.formRecord.c21 === '葡萄酒储藏柜' ||
           this.formRecord.c21 === '卧式冷冻箱(柜)' ||
           this.formRecord.c21 === '立式冷冻箱(柜)' ||
           this.formRecord.c21 === '') {
-        return true
-      } else {
-        return false
-      }
-    },
-    ld () {
-      if (this.formRecord.c21 === '冷藏冷冻箱' ||
+          return true
+        } else {
+          return false
+        }
+      },
+      ld () {
+        if (this.formRecord.c21 === '冷藏冷冻箱' ||
           this.formRecord.c21 === '卧式冷藏冷冻柜' ||
           this.formRecord.c21 === '冷冻食品储藏箱' ||
           this.formRecord.c21 === '卧式冷冻箱(柜)' ||
           this.formRecord.c21 === '立式冷冻箱(柜)') {
-            return false
-      } else {
-        return true
-      }
-    },
-    otherCompartment () {
-      if (this.formRecord.c21 === '卧式冷冻箱(柜)' ||
+          return false
+        } else {
+          return true
+        }
+      },
+      otherCompartment () {
+        if (this.formRecord.c21 === '卧式冷冻箱(柜)' ||
           this.formRecord.c21 === '立式冷冻箱(柜)' ||
           this.formRecord.c21 === '') {
-        return true
-      } else {
-        return false
-      }
-    },
-    ruleRecord () {
-      let decimal1 =/^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
-      let decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
-      let decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
-      //能效等级
-      let nxdjch = this.formRecord.c7
-      //类型
-      let lx = this.formRecord.c21
-      //标准能效指数额定值
-      let c11 = parseFloat(this.formRecord.c11)
-      //标准能效指数实测值
-      let c12 = parseFloat(this.formRecord.c12)
-      //综合耗电量额定值
-      let c14 = parseFloat(this.formRecord.c14)
-      //综合耗电量实测值
-      let c15 = parseFloat(this.formRecord.c15)
-      //综合能效指数额定值
-      let c17 = parseFloat(this.formRecord.c17)
-      //综合能效指数实测值
-      let c18 = parseFloat(this.formRecord.c18)
-      //总容积额定值
-      let c43 = this.formRecord.c43
-      //总容积实测值
-      let c123 = this.formRecord.c123
-      //标准耗电量额定值
-      let c8 = parseFloat(this.formRecord.c8)
-      //标准耗电量实测值
-      let c9 = parseFloat(this.formRecord.c9)
+          return true
+        } else {
+          return false
+        }
+      },
+      ruleRecord () {
+        let decimal1 =/^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
+        let decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
+        let decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
+        //能效等级
+        let nxdjch = this.formRecord.c7
+        //类型
+        let lx = this.formRecord.c21
+        //标准能效指数额定值
+        let c11 = parseFloat(this.formRecord.c11)
+        //标准能效指数实测值
+        let c12 = parseFloat(this.formRecord.c12)
+        //综合耗电量额定值
+        let c14 = parseFloat(this.formRecord.c14)
+        //综合耗电量实测值
+        let c15 = parseFloat(this.formRecord.c15)
+        //综合能效指数额定值
+        let c17 = parseFloat(this.formRecord.c17)
+        //综合能效指数实测值
+        let c18 = parseFloat(this.formRecord.c18)
+        //总容积额定值
+        let c43 = this.formRecord.c43
+        //总容积实测值
+        let c123 = this.formRecord.c123
+        //标准耗电量额定值
+        let c8 = parseFloat(this.formRecord.c8)
+        //标准耗电量实测值
+        let c9 = parseFloat(this.formRecord.c9)
 
-      const threeDecimals=(rule, vaule, callback)=>{
-        decimal3.test(vaule)? callback(): callback('三位小数');
-      }
-      const twoDecimals=(rule, vaule, callback)=>{
-        decimal2.test(vaule)? callback(): callback('两位小数');
-      }
-      const oneDecimals=(rule, vaule, callback)=>{
-        decimal1.test(vaule)? callback(): callback('一位小数');
-      }
-      const checkc9 = (rule, vaule, callback) => {
-        if (c9 > c8 * 1.15) {
-          callback("标准耗电量实测值不应大于其额定值的 115%")
-        } else {
-          callback()
+        const threeDecimals=(rule, vaule, callback)=>{
+          decimal3.test(vaule)? callback(): callback('三位小数');
         }
-      }
-      const checkc12 = (rule, value, callback) => {
-        if (c12 > c11 * 1.05) {
-          callback("标准能效指数实测值不大于额定值的105%")
-        } else {
-          callback()
+        const twoDecimals=(rule, vaule, callback)=>{
+          decimal2.test(vaule)? callback(): callback('两位小数');
         }
-      }
-      const checkc15 = (rule, value, callback) => {
-        if (lx === "冷藏冷冻箱") {
-          if (c15 > c14 * 1.15) {
-            callback("综合耗电量值实测不应大于其额定值的 115%")
+        const oneDecimals=(rule, vaule, callback)=>{
+          decimal1.test(vaule)? callback(): callback('一位小数');
+        }
+        const checkc9 = (rule, vaule, callback) => {
+          if (c9 > c8 * 1.15) {
+            callback("标准耗电量实测值不应大于其额定值的 115%")
           } else {
             callback()
           }
-        } else {
-          callback()
         }
-      }
-      const checkc18 = (rule, value, callback) => {
-        if (lx === "冷藏冷冻箱") {
-          if (c18 > c17 * 1.05) {
-            callback("综合能效指数实测值不大于额定值的105%")
+        const checkc12 = (rule, value, callback) => {
+          if (c12 > c11 * 1.05) {
+            callback("标准能效指数实测值不大于额定值的105%")
           } else {
             callback()
           }
-        } else {
-          callback()
         }
-      }
-      const checkc123 = (rule, value, callback) => {
-        if (c43 > c123) {
-          let dc = c43 - c123
-          let c = 0
-          if (c43 * 0.03 < 1) {
-            c = 1
-          } else {
-            c = c43 * 0.03;
-          }
-          if (dc > c) {
-            callback("当总容积的实测值小于额定值时，实测值与额定值的差值不应大于额定值的3%或1L（取较大值）")
-          } else {
-            callback()
-          }
-        } else {
-          callback()
-        }
-      }
-      const checkc11 = (rule, value, callback) => {
-        // 能效等级校验
-        let nxdj = ""
-        let rangec11 = ""
-        let rangec17 = ""
-        if (lx == "冷藏冷冻箱") {
-          let nxdj1 = ""
-          let nxdj2 = ""
-          //标准能效指数
-          if (c11 <= 25) {
-              nxdj1 = "1";
-          } else if (c11 > 25 && c11 <= 35) {
-              nxdj1 = "2";
-          } else if (c11 > 35 && c11 <= 50) {
-              nxdj1 = "3";
-          } else if (c11 > 50 && c11 <= 60) {
-              nxdj1 = "4";
-          } else if (c11 > 60 && c11 <= 70) {
-              nxdj1 = "5";
-          } else {
-              nxdj1 = "";
-          }
-          switch (nxdjch) {
-            case "1" : rangec11 = "<= 25";break
-            case "2" : rangec11 = ">25或<=35";break
-            case "3" : rangec11 = ">35或<=50";break
-            case "4" : rangec11 = ">50或<=60";break
-            case "5" : rangec11 = ">60或<=70";break
-          }
-          //综合能效指数
-          if (c17 <= 50) {
-              nxdj2 = "1";
-          } else if (c17 > 50 && c17 <= 60) {
-              nxdj2 = "2";
-          } else if (c17 > 60 && c17 <= 70) {
-              nxdj2 = "3";
-          } else if (c17 > 70 && c17 <= 80) {
-              nxdj2 = "4";
-          } else if (c17 > 80 && c17 <= 90) {
-              nxdj2 = "5";
-          } else {
-              nxdj2 = "";
-          }
-          switch (nxdjch) {
-            case "1" : rangec17 = "<=50";break
-            case "2" : rangec17 = ">50或<=60";break
-            case "3" : rangec17 = ">60或<=70";break
-            case "4" : rangec17 = ">70或<=80";break
-            case "5" : rangec17 = ">80或<=90";break
-          }
-          if (nxdj1 == "" || nxdj2 == "") {
-              nxdj = ""
-          } else if (nxdj1 > nxdj2) {
-              nxdj = nxdj1
-          } else {
-              nxdj = nxdj2
-          }
-        } else if (lx == "葡萄酒储藏柜") {
-          if (c11 <= 55) {
-              nxdj = "1"
-          } else if (c11 > 55 && c11 <= 70) {
-              nxdj = "2"
-          } else if (c11 > 70 && c11 <= 80) {
-              nxdj = "3"
-          } else if (c11 > 80 && c11 <= 90) {
-              nxdj = "4"
-          } else if (c11 > 90 && c11 <= 100) {
-              nxdj = "5"
-          } else {
-              nxdj = ""
-          }
-          switch (nxdjch) {
-            case "1" : rangec11 = "<=55";break
-            case "2" : rangec11 = ">55或<=70";break
-            case "3" : rangec11 = ">70或<=80";break
-            case "4" : rangec11 = ">80或<=90";break
-            case "5" : rangec11 = ">90或<=100";break
-          }
-        } else if (lx == "卧式冷藏冷冻柜") {
-          if (c11 <= 35) {
-            nxdj = "1"
-          } else if (c11 > 35 && c11 <= 45) {
-            nxdj = "2"
-          } else if (c11 > 45 && c11 <= 55) {
-            nxdj = "3"
-          } else if (c11 > 55 && c11 <= 65) {
-            nxdj = "4"
-          } else if (c11 > 65 && c11 <= 75) {
-            nxdj = "5"
-          } else {
-            nxdj = ""
-          }
-          switch (nxdjch) {
-            case "1" : rangec11 = "<=35";break
-            case "2" : rangec11 = ">35或<=45";break
-            case "3" : rangec11 = ">45或<=55";break
-            case "4" : rangec11 = ">55或<=65";break
-            case "5" : rangec11 = ">65或<=75";break
-          }
-        } else {
-          if (c11 <= 45) {
-            nxdj = "1"
-          } else if (c11 > 45 && c11 <= 55) {
-            nxdj = "2"
-          } else if (c11 > 55 && c11 <= 65) {
-            nxdj = "3"
-          } else if (c11 > 65 && c11 <= 75) {
-            nxdj = "4"
-          } else if (c11 > 75 && c11 <= 85) {
-            nxdj = "5"
-          } else {
-            nxdj = ""
-          }
-          switch (nxdjch) {
-            case "1" : rangec11 = "<=45";break
-            case "2" : rangec11 = ">45或<=55";break
-            case "3" : rangec11 = ">55或<=65";break
-            case "4" : rangec11 = ">65或<=75";break
-            case "5" : rangec11 = ">75或<=85";break
-          }
-        }
-        // if (nxdj == "") {
-        //   callback("能效数据不在备案范围(标准能效指数需" + rangec11 + ")")
-        // }
-        if (nxdjch != nxdj) {
+        const checkc15 = (rule, value, callback) => {
           if (lx === "冷藏冷冻箱") {
-            callback("所选能效等级与计算结果(" + nxdj + "级)不符！标准能效指数额定值需" + rangec11 + ",综合能效指数额定值需" + rangec17)
+            if (c15 > c14 * 1.15) {
+              callback("综合耗电量值实测不应大于其额定值的 115%")
+            } else {
+              callback()
+            }
           } else {
-            callback("所选能效等级与计算结果(" + nxdj + "级)不符！标准能效指数额定值需" + rangec11)
+            callback()
           }
-        } else {
-          callback()
         }
-      }
-      const checkc17 = (rule, value, callback) => {
-
-        // 能效等级校验
-        let nxdj = ""
-        let rangec11 = ""
-        let rangec17 = ""
-        if (lx === "冷藏冷冻箱") {
-          let nxdj1 = ""
-          let nxdj2 = ""
-          //标准能效指数
-          if (c11 <= 25) {
-            nxdj1 = "1";
-          } else if (c11 > 25 && c11 <= 35) {
-            nxdj1 = "2";
-          } else if (c11 > 35 && c11 <= 50) {
-            nxdj1 = "3";
-          } else if (c11 > 50 && c11 <= 60) {
-            nxdj1 = "4";
-          } else if (c11 > 60 && c11 <= 70) {
-            nxdj1 = "5";
+        const checkc18 = (rule, value, callback) => {
+          if (lx === "冷藏冷冻箱") {
+            if (c18 > c17 * 1.05) {
+              callback("综合能效指数实测值不大于额定值的105%")
+            } else {
+              callback()
+            }
           } else {
-            nxdj1 = "";
+            callback()
           }
-          rangec11 = "<=70"
-          //综合能效指数
-          if (c17 <= 50) {
-            nxdj2 = "1";
-          } else if (c17 > 50 && c17 <= 60) {
-            nxdj2 = "2";
-          } else if (c17 > 60 && c17 <= 70) {
-            nxdj2 = "3";
-          } else if (c17 > 70 && c17 <= 80) {
-            nxdj2 = "4";
-          } else if (c17 > 80 && c17 <= 90) {
-            nxdj2 = "5";
+        }
+        const checkc123 = (rule, value, callback) => {
+          if (c43 > c123) {
+            let dc = c43 - c123
+            let c = 0
+            if (c43 * 0.03 < 1) {
+              c = 1
+            } else {
+              c = c43 * 0.03;
+            }
+            if (dc > c) {
+              callback("当总容积的实测值小于额定值时，实测值与额定值的差值不应大于额定值的3%或1L（取较大值）")
+            } else {
+              callback()
+            }
           } else {
-            nxdj2 = "";
+            callback()
           }
-          switch (nxdjch) {
-            case "1" : rangec17 = "<=50";break
-            case "2" : rangec17 = ">50或<=60";break
-            case "3" : rangec17 = ">60或<=70";break
-            case "4" : rangec17 = ">70或<=80";break
-            case "5" : rangec17 = ">80或<=90";break
-          }
-          if (nxdj1 == "" || nxdj2 == "") {
+        }
+        const checkc11 = (rule, value, callback) => {
+          // 能效等级校验
+          let nxdj = ""
+          let rangec11 = ""
+          let rangec17 = ""
+          if (lx == "冷藏冷冻箱") {
+            let nxdj1 = ""
+            let nxdj2 = ""
+            //标准能效指数
+            if (c11 <= 25) {
+              nxdj1 = "1";
+            } else if (c11 > 25 && c11 <= 35) {
+              nxdj1 = "2";
+            } else if (c11 > 35 && c11 <= 50) {
+              nxdj1 = "3";
+            } else if (c11 > 50 && c11 <= 60) {
+              nxdj1 = "4";
+            } else if (c11 > 60 && c11 <= 70) {
+              nxdj1 = "5";
+            } else {
+              nxdj1 = "";
+            }
+            switch (nxdjch) {
+              case "1" : rangec11 = "<= 25";break
+              case "2" : rangec11 = ">25或<=35";break
+              case "3" : rangec11 = ">35或<=50";break
+              case "4" : rangec11 = ">50或<=60";break
+              case "5" : rangec11 = ">60或<=70";break
+            }
+            //综合能效指数
+            if (c17 <= 50) {
+              nxdj2 = "1";
+            } else if (c17 > 50 && c17 <= 60) {
+              nxdj2 = "2";
+            } else if (c17 > 60 && c17 <= 70) {
+              nxdj2 = "3";
+            } else if (c17 > 70 && c17 <= 80) {
+              nxdj2 = "4";
+            } else if (c17 > 80 && c17 <= 90) {
+              nxdj2 = "5";
+            } else {
+              nxdj2 = "";
+            }
+            switch (nxdjch) {
+              case "1" : rangec17 = "<=50";break
+              case "2" : rangec17 = ">50或<=60";break
+              case "3" : rangec17 = ">60或<=70";break
+              case "4" : rangec17 = ">70或<=80";break
+              case "5" : rangec17 = ">80或<=90";break
+            }
+            if (nxdj1 == "" || nxdj2 == "") {
               nxdj = ""
-          } else if (nxdj1 > nxdj2) {
+            } else if (nxdj1 > nxdj2) {
               nxdj = nxdj1
-          } else {
+            } else {
               nxdj = nxdj2
+            }
+          } else if (lx == "葡萄酒储藏柜") {
+            if (c11 <= 55) {
+              nxdj = "1"
+            } else if (c11 > 55 && c11 <= 70) {
+              nxdj = "2"
+            } else if (c11 > 70 && c11 <= 80) {
+              nxdj = "3"
+            } else if (c11 > 80 && c11 <= 90) {
+              nxdj = "4"
+            } else if (c11 > 90 && c11 <= 100) {
+              nxdj = "5"
+            } else {
+              nxdj = ""
+            }
+            switch (nxdjch) {
+              case "1" : rangec11 = "<=55";break
+              case "2" : rangec11 = ">55或<=70";break
+              case "3" : rangec11 = ">70或<=80";break
+              case "4" : rangec11 = ">80或<=90";break
+              case "5" : rangec11 = ">90或<=100";break
+            }
+          } else if (lx == "卧式冷藏冷冻柜") {
+            if (c11 <= 35) {
+              nxdj = "1"
+            } else if (c11 > 35 && c11 <= 45) {
+              nxdj = "2"
+            } else if (c11 > 45 && c11 <= 55) {
+              nxdj = "3"
+            } else if (c11 > 55 && c11 <= 65) {
+              nxdj = "4"
+            } else if (c11 > 65 && c11 <= 75) {
+              nxdj = "5"
+            } else {
+              nxdj = ""
+            }
+            switch (nxdjch) {
+              case "1" : rangec11 = "<=35";break
+              case "2" : rangec11 = ">35或<=45";break
+              case "3" : rangec11 = ">45或<=55";break
+              case "4" : rangec11 = ">55或<=65";break
+              case "5" : rangec11 = ">65或<=75";break
+            }
+          } else {
+            if (c11 <= 45) {
+              nxdj = "1"
+            } else if (c11 > 45 && c11 <= 55) {
+              nxdj = "2"
+            } else if (c11 > 55 && c11 <= 65) {
+              nxdj = "3"
+            } else if (c11 > 65 && c11 <= 75) {
+              nxdj = "4"
+            } else if (c11 > 75 && c11 <= 85) {
+              nxdj = "5"
+            } else {
+              nxdj = ""
+            }
+            switch (nxdjch) {
+              case "1" : rangec11 = "<=45";break
+              case "2" : rangec11 = ">45或<=55";break
+              case "3" : rangec11 = ">55或<=65";break
+              case "4" : rangec11 = ">65或<=75";break
+              case "5" : rangec11 = ">75或<=85";break
+            }
           }
-        } else {
-          callback()
+          // if (nxdj == "") {
+          //   callback("能效数据不在备案范围(标准能效指数需" + rangec11 + ")")
+          // }
+          if (nxdjch != nxdj) {
+            if (lx === "冷藏冷冻箱") {
+              callback("所选能效等级与计算结果(" + nxdj + "级)不符！标准能效指数额定值需" + rangec11 + ",综合能效指数额定值需" + rangec17)
+            } else {
+              callback("所选能效等级与计算结果(" + nxdj + "级)不符！标准能效指数额定值需" + rangec11)
+            }
+          } else {
+            callback()
+          }
         }
-        // if (nxdj === "") {
-        //   callback("能效数据不在备案范围(综合能效指数额定值需" + rangec17 + ")")
-        // }
-        if (nxdjch !== nxdj) {
-          callback("所选能效等级与计算结果(" + nxdj + "级)不符！综合能效指数额定值需" + rangec17)
-        } else {
-          callback()
+        const checkc17 = (rule, value, callback) => {
+
+          // 能效等级校验
+          let nxdj = ""
+          let rangec11 = ""
+          let rangec17 = ""
+          if (lx === "冷藏冷冻箱") {
+            let nxdj1 = ""
+            let nxdj2 = ""
+            //标准能效指数
+            if (c11 <= 25) {
+              nxdj1 = "1";
+            } else if (c11 > 25 && c11 <= 35) {
+              nxdj1 = "2";
+            } else if (c11 > 35 && c11 <= 50) {
+              nxdj1 = "3";
+            } else if (c11 > 50 && c11 <= 60) {
+              nxdj1 = "4";
+            } else if (c11 > 60 && c11 <= 70) {
+              nxdj1 = "5";
+            } else {
+              nxdj1 = "";
+            }
+            rangec11 = "<=70"
+            //综合能效指数
+            if (c17 <= 50) {
+              nxdj2 = "1";
+            } else if (c17 > 50 && c17 <= 60) {
+              nxdj2 = "2";
+            } else if (c17 > 60 && c17 <= 70) {
+              nxdj2 = "3";
+            } else if (c17 > 70 && c17 <= 80) {
+              nxdj2 = "4";
+            } else if (c17 > 80 && c17 <= 90) {
+              nxdj2 = "5";
+            } else {
+              nxdj2 = "";
+            }
+            switch (nxdjch) {
+              case "1" : rangec17 = "<=50";break
+              case "2" : rangec17 = ">50或<=60";break
+              case "3" : rangec17 = ">60或<=70";break
+              case "4" : rangec17 = ">70或<=80";break
+              case "5" : rangec17 = ">80或<=90";break
+            }
+            if (nxdj1 == "" || nxdj2 == "") {
+              nxdj = ""
+            } else if (nxdj1 > nxdj2) {
+              nxdj = nxdj1
+            } else {
+              nxdj = nxdj2
+            }
+          } else {
+            callback()
+          }
+          // if (nxdj === "") {
+          //   callback("能效数据不在备案范围(综合能效指数额定值需" + rangec17 + ")")
+          // }
+          if (nxdjch !== nxdj) {
+            callback("所选能效等级与计算结果(" + nxdj + "级)不符！综合能效指数额定值需" + rangec17)
+          } else {
+            callback()
+          }
         }
-      }
-      const checkc25 = (rule, value, callback) => {
-        if (this.$store.state.app.requiredStr.indexOf('c25,') > -1 && this.formRecord.c25 === '') {
-          callback('模板要求必填')
-        } else {
-          callback()
+        const checkc25 = (rule, value, callback) => {
+          if (this.$store.state.app.requiredStr.indexOf('c25,') > -1 && this.formRecord.c25 === '') {
+            callback('模板要求必填')
+          } else {
+            callback()
+          }
         }
-      }
-      const checkc27 = (rule, value, callback) => {
-        if (this.$store.state.app.requiredStr.indexOf('c27,') > -1 && this.formRecord.c27 === '') {
-          callback('模板要求必填')
-        } else {
-          callback()
+        const checkc27 = (rule, value, callback) => {
+          if (this.$store.state.app.requiredStr.indexOf('c27,') > -1 && this.formRecord.c27 === '') {
+            callback('模板要求必填')
+          } else {
+            callback()
+          }
         }
-      }
-      return {
-        c2: [
-          {
-            required: true,
-            message: '请填写制造单位'
-          }
-        ],
-        c3: [
-          {
-            required: true,
-            message: '请填写备案方'
-          }
-        ],
-        c5: [
-          {
-            required: true,
-            message: '请填写商标'
-          }
-        ],
-        c7: [
-          {
-            required: true,
-            message: '请选择能效等级'
-          }
-        ],
-        c8: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写额定值'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c14: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写额定值'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c9: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc9,
-            trigger:'blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger:'blur'
-          }
-        ],
-        c12: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc12,
-            trigger:'blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger:'blur'
-          }
-        ],
-        c15: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc15,
-            trigger: 'blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c18: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc18,
-            trigger: 'blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c11: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写额定值'
-          },
-          {
-            validator: checkc11,
-            trigger: 'blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c17: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写额定值'
-          },
-          {
-            validator: checkc17,
-            trigger: 'blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c82: [
-          {
-            required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
-            message: '不能为空'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c62: [
-          {
-            required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c84: [
-          {
-            required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
-            message: '不能为空'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c63: [
-          {
-            required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c86: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '一位小数'
-          },
-          /*{
-            validator: oneDecimals,
-            trigger: 'blur'
-          }*/
-        ],
-        c31: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c32: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c64: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c120: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c88: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '一位小数'
-          },
-          /*{
-            validator: oneDecimals,
-            trigger: 'blur'
-          }*/
-        ],
-        c36: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c37: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c65: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c121: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c90: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '一位小数'
-          },
-         /* {
-            validator: oneDecimals,
-            trigger: 'blur'
-          }*/
-        ],
-        c41: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c42: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c66: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c122: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c127: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          },
-          /*{
-            validator: oneDecimals,
-            trigger: 'blur'
-          }*/
-        ],
-        c128: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c129: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c130: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c131: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c22: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c23: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c44: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c45: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c46: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c47: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c48: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c49: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c50: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c51: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c52: [
-          {
-            required: this.formRecord.c51.join('').indexOf('其他') > -1,
-            message: '不能为空'
-          }
-        ],
-        c53: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c54: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c55: [
-          {
-            required: this.formRecord.c54 === '多门',
-            message: '不能为空'
-          }
-        ],
-        c56: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c57: [
-          {
-            required: this.formRecord.c56.join('').indexOf('其他') > -1,
-            message: '不能为空'
-          }
-        ],
-        c58: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c59: [
-          {
-            required: this.formRecord.c58.join('').indexOf('其他') > -1,
-            message: '不能为空'
-          }
-        ],
-        c60: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c61: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c67: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c68: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c69: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c70: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c71: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c72: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c73: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c74: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c75: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c76: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c77: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c78: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c79: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c80: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c81: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c43: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c123: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-          ,
-          {
-            validator: checkc123,
-            trigger: 'blur'
-          }
-        ],
-        c20: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c25: [
-          {
-            required: this.$store.state.app.requiredStr.indexOf('c25,') > -1,
-            message: '模板要求不能为空'
-          }
-        ],
-        c27: [
-          {
-            required: this.$store.state.app.requiredStr.indexOf('c27,') > -1,
-            message: '模板要求不能为空'
-          }
-        ]
+        return {
+          c2: [
+            {
+              required: true,
+              message: '请填写制造单位'
+            }
+          ],
+          c3: [
+            {
+              required: true,
+              message: '请填写备案方'
+            }
+          ],
+          c5: [
+            {
+              required: true,
+              message: '请填写商标'
+            }
+          ],
+          c7: [
+            {
+              required: true,
+              message: '请选择能效等级'
+            }
+          ],
+          c8: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写额定值'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c14: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写额定值'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱' && twoDecimals ),
+              trigger: 'blur'
+            }
+          ],
+          c9: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc9,
+              trigger:'blur'
+            },
+            {
+              validator: threeDecimals,
+              trigger:'blur'
+            }
+          ],
+          c12: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc12,
+              trigger:'blur'
+            },
+            {
+              validator: threeDecimals,
+              trigger:'blur'
+            }
+          ],
+          c15: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc15,
+              trigger: 'blur'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱'&&threeDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c18: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc18,
+              trigger: 'blur'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱'&&threeDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c11: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写额定值'
+            },
+            {
+              validator: checkc11,
+              trigger: 'blur'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c17: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写额定值'
+            },
+            {
+              validator: checkc17,
+              trigger: 'blur'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱'&&oneDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c82: [
+            {
+              required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
+              message: '不能为空'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c62: [
+            {
+              required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c84: [
+            {
+              required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
+              message: '不能为空'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c63: [
+            {
+              required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c86: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '一位小数'
+            },
+            /*{
+              validator: oneDecimals,
+              trigger: 'blur'
+            }*/
+          ],
+          c31: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c32: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c64: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c120: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c88: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '一位小数'
+            },
+            /*{
+              validator: oneDecimals,
+              trigger: 'blur'
+            }*/
+          ],
+          c36: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c37: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c65: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c121: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c90: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '一位小数'
+            },
+            /* {
+               validator: oneDecimals,
+               trigger: 'blur'
+             }*/
+          ],
+          c41: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c42: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c66: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c122: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c127: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            },
+            /*{
+              validator: oneDecimals,
+              trigger: 'blur'
+            }*/
+          ],
+          c128: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c129: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c130: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c131: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c22: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c23: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c44: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c45: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c46: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c47: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c48: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c49: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c50: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c51: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c52: [
+            {
+              required: this.formRecord.c51.join('').indexOf('其他') > -1,
+              message: '不能为空'
+            }
+          ],
+          c53: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c54: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c55: [
+            {
+              required: this.formRecord.c54 === '多门',
+              message: '不能为空'
+            }
+          ],
+          c56: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c57: [
+            {
+              required: this.formRecord.c56.join('').indexOf('其他') > -1,
+              message: '不能为空'
+            }
+          ],
+          c58: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c59: [
+            {
+              required: this.formRecord.c58.join('').indexOf('其他') > -1,
+              message: '不能为空'
+            }
+          ],
+          c60: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c61: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c67: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c68: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c69: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c70: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c71: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c72: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c73: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c74: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c75: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c76: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c77: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c78: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c79: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c80: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c81: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c43: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c123: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+            ,
+            {
+              validator: checkc123,
+              trigger: 'blur'
+            }
+          ],
+          c20: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c25: [
+            {
+              required: this.$store.state.app.requiredStr.indexOf('c25,') > -1,
+              message: '模板要求不能为空'
+            }
+          ],
+          c27: [
+            {
+              required: this.$store.state.app.requiredStr.indexOf('c27,') > -1,
+              message: '模板要求不能为空'
+            }
+          ]
+        }
       }
     }
   }
-}
 </script>
 <style lang="less" scoped>
-h1{
-  font-size:20px;
-}
-h2{
-  font-size:18px;
-  margin:10px 0;
-}
+  h1{
+    font-size:20px;
+  }
+  h2{
+    font-size:18px;
+    margin:10px 0;
+  }
 
-.part{
-  background:#eee;
-  padding: 15px;
-  margin: 15px 0;
-}
-.part1 p{
-  text-indent:2em;
-  font-size:16px;
-  line-height:36px;
-}
-table{
-  width:1000px;
-  border-collapse:collapse;
-  margin-bottom:10px;
-}
-table th{
-  background-color: rgb(245, 245, 246);
-}
-table td,table th{
-  border:1px solid #dddee1;
-  padding:10px;
-}
-.part6 td>div{
-  margin-bottom:5px;
-}
-.part6 td span{
-  display:inline-block;width:100px;text-align:center;
-}
-.tc{
-  text-align:center;
-}
-.part8 td{
-  text-align:center;
-}
-.red{
-  color:red;
-}
-#table1 td,#table2 td,#table3 td,#table4 td{
-  padding:20px 10px;
-}
-#table1 .ivu-form-item,#table2 .ivu-form-item,#table3 .ivu-form-item,#table4 .ivu-form-item,#table5 .ivu-form-item{
-  margin-bottom:0!important;
-}
-#table2 .ivu-form-item,#table3 .ivu-form-item,#table4 .ivu-form-item,#table5 .ivu-form-item{
-  display:inline-block;
-}
-.ivu-icon-ios-help-circle-outline{
-  position:absolute;
-  top:-8px;
-  right:-2px;
-  display: none;
-}
-.ivu-icon-ios-help-circle-outline:before{
-  content:"\F446";
-}
-.diffList { margin:20px 0;}
-.diffList table{
-  width: 100%;
-}
-.lookOver{
-  margin-bottom: 10px;
-}
-.org, .basic-info dl{
+  .part{
+    background:#eee;
+    padding: 15px;
+    margin: 15px 0;
+  }
+  .part1 p{
+    text-indent:2em;
+    font-size:16px;
+    line-height:36px;
+  }
+  table{
+    width:1000px;
+    border-collapse:collapse;
+    margin-bottom:10px;
+  }
+  table th{
+    background-color: rgb(245, 245, 246);
+  }
+  table td,table th{
+    border:1px solid #dddee1;
+    padding:10px;
+  }
+  .part6 td>div{
+    margin-bottom:5px;
+  }
+  .part6 td span{
+    display:inline-block;width:100px;text-align:center;
+  }
+  .tc{
+    text-align:center;
+  }
+  .part8 td{
+    text-align:center;
+  }
+  .red{
+    color:red;
+  }
+  #table1 td,#table2 td,#table3 td,#table4 td{
+    padding:20px 10px;
+  }
+  #table1 .ivu-form-item,#table2 .ivu-form-item,#table3 .ivu-form-item,#table4 .ivu-form-item,#table5 .ivu-form-item{
+    margin-bottom:0!important;
+  }
+  #table2 .ivu-form-item,#table3 .ivu-form-item,#table4 .ivu-form-item,#table5 .ivu-form-item{
+    display:inline-block;
+  }
+  .ivu-icon-ios-help-circle-outline{
+    position:absolute;
+    top:-8px;
+    right:-2px;
+    display: none;
+  }
+  .ivu-icon-ios-help-circle-outline:before{
+    content:"\F446";
+  }
+  .diffList { margin:20px 0;}
+  .diffList table{
+    width: 100%;
+  }
+  .lookOver{
+    margin-bottom: 10px;
+  }
+  .org, .basic-info dl{
     font-size: 16px;
-}
-.basic-info .valid{ width: 100%;margin: 10px 0;}
-.textarea-annotation,.color-red{
+  }
+  .basic-info .valid{ width: 100%;margin: 10px 0;}
+  .textarea-annotation,.color-red{
     font-weight: normal;
     font-size: 14px;
-}
-.color-red{
+  }
+  .color-red{
     color: red;
-}
-.pro-info, .basic-info .record-number {
+  }
+  .pro-info, .basic-info .record-number {
     height: auto;
     line-height: 40px;
-}
-.basic-info span[class^="f-"],.pro-info span[class^="f-"]{
+  }
+  .basic-info span[class^="f-"],.pro-info span[class^="f-"]{
     font-weight: bold;
     padding: 0px 5px;
-}
-.application{ margin: 10px 0;}
+  }
+  .application{ margin: 10px 0;}
 </style>

@@ -4,7 +4,7 @@
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>转速可控型房间空气调节器 修订-能源效率标识备案表</h1>
+      <h1>转速可控型房间空气调节器 2013版</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>
@@ -56,8 +56,7 @@
             <Input type="text" v-model="formRecord.c2" placeholder="商标" :disabled='disabledoff'/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled
-                   :disabled='disabledoff'/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly/>
           </FormItem>
           <FormItem prop="c8" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c8">
@@ -204,8 +203,9 @@
       <div class="part part4">
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
-          <FormItem prop="c9" label="备案标识开始使用日期" style="width:1000px;">
-            <DatePicker type="date" style="width: 200px" v-model="formRecord.c9" :disabled='disabledoff'></DatePicker>
+          <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
+          <FormItem prop="c9" label="备案标识开始使用日期" style="width:100%;">
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c9" :disabled='disabledoff'></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -586,7 +586,7 @@
       <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
-          <div class="application" v-if='$store.state.app.pageType'>
+          <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
             <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
             <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
@@ -807,12 +807,15 @@
           <Checkbox label="1"><span style="color:red;font-weight:bold;">我已确认以上数据填写无误！</span></Checkbox>
         </CheckboxGroup>
       </div>
-      <div class="tc">
+      <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿
         </Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+      </div>
+      <div class="tc" v-else>
+        <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
@@ -862,7 +865,7 @@
         我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
         品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">转速可控型房间空气调节器 2013版</span>产品。
+        型号的 <span class="f-product">计算机显示器2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -911,6 +914,7 @@
     XhandleFormatError,
     XfileHandleBeforeUpload,
     XshowConfirm,
+    XviewClose,
     diffRecord,
     XsubmitRecord,
     XsaveRecord,
@@ -1136,6 +1140,9 @@
       submitRecord() {
         return XsubmitRecord(this)
       },
+      viewClose() {
+        return XviewClose(this)
+      },
       /* 保存草稿箱 */
       saveRecord() {
         return XsaveRecord(this)
@@ -1321,11 +1328,11 @@
             {
               required: true,
               message: '请选择能效等级'
-            },
-            {
-              validator: checkc8,
-              trigger: 'blur'
             }
+            // , {
+            //   validator: checkc8,
+            //   trigger: 'blur'
+            // }
           ],
           c25: [
             {
@@ -1405,11 +1412,11 @@
             {
               validator: isNumber,
               trigger: 'blur'
-            },
-            {
-              validator: checkc5,
-              trigger: 'blur'
             }
+            // , {
+            //   validator: checkc5,
+            //   trigger: 'blur'
+            // }
           ],
           c7: [
             {
