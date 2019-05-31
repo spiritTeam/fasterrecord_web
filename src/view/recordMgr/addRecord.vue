@@ -101,7 +101,6 @@ export default {
       this.category = this.$store.state.app.modelNo
     },
     showRecordTab () {
-        console.log("======");
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
         // this.modal1 = true
