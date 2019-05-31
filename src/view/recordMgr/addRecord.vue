@@ -12,7 +12,7 @@
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
-          <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>        </TabPane>
+          <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
         </TabPane>
         <!-- <TabPane label="性能指标">
@@ -101,6 +101,7 @@ export default {
       this.category = this.$store.state.app.modelNo
     },
     showRecordTab () {
+        console.log("======");
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
         // this.modal1 = true
