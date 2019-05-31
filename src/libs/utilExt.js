@@ -86,19 +86,22 @@ export const XfillExtendData = (params, that) => {
 
 /* 数据来源 草稿箱 */
 export const XfillDraftData = (params, that) => {
-  // let that = this
   let data = params.data;
   let mark = params.marking;
   let attachList = that.filesArr = params.attachList;
-  attachList.forEach((item, idx) => {
-    if (item.ec_attach_id == 25) {
-      that.$store.commit('setPltPic', item.ec_attach_path)
-    } else {
-      that.uploadParam['filePath' + item.ec_attach_id] = item.ec_attach_path;
-    }
-  })
+  if (attachList && attachList.length > 0) {
+    attachList.forEach((item, idx) => {
+      if (item.ec_attach_id == 25) {
+        that.$store.commit('setPltPic', item.ec_attach_path)
+      } else {
+        that.uploadParam['filePath' + item.ec_attach_id] = item.ec_attach_path;
+      }
+    })
+  }
 
-  that.$store.commit('setDefaultData', params.lab.params)
+  if (params.lab) {
+    that.$store.commit('setDefaultData', params.lab.params)
+  }
   that.$store.commit('setPtId', mark.ptid)
   that.$store.commit('setPltId', mark.pltId)
   that.$store.commit('setRid', mark.ec_labreport_id)
@@ -113,9 +116,7 @@ export const XfillDraftData = (params, that) => {
       })
     } else if (i === that.thisDateCV) {
       //this.$store.commit('setDateInit', data[i])
-      if (data[i] != undefined) {
-        that.formRecord[i] = that.formatDate(data[i]);
-      }
+      if (data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]));
     } else {
       that.formRecord[i] = data[i]
     }
@@ -374,6 +375,12 @@ export const XformatDate = (d) => {
   return year + '-' + month + '-' + day
 }
 
+export const XviewClose= (that) => {
+  that.$router.replace({
+    name:'queryRecord'
+  })
+}
+
 var integer = /^[1-9][0-9]*$/;
 var number = /-?(0|([1-9]\d*))\.?\d+/;
 var decimal1 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
@@ -406,7 +413,7 @@ export const significantDigits33 = (rule, vaule, callback) => {
   significantDigits3.test(vaule) ? callback() : callback('三位有效数字');
 }
 
-export const numberCheck= (rule, vaule, callback) => {
+export const numberCheck = (rule, vaule, callback) => {
   inputNumber.test(vaule) ? callback() : callback('请输入整数');
 }
 export const atLeastOneDecimals = (rule, vaule, callback) => {
