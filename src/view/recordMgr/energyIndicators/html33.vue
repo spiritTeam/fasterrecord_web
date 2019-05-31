@@ -1305,11 +1305,11 @@
             {
               required: true,
               message: '请选择能效等级'
+            },
+            {
+              validator: checkc8,
+              trigger: 'blur'
             }
-            // , {
-            //   validator: checkc8,
-            //   trigger: 'blur'
-            // }
           ],
           c25: [
             {
@@ -1390,10 +1390,10 @@
               validator: isNumber,
               trigger: 'blur'
             }
-            // , {
-            //   validator: checkc5,
-            //   trigger: 'blur'
-            // }
+            ,{
+              validator: checkc5,
+              trigger: 'blur'
+            }
           ],
           c7: [
             {
