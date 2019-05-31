@@ -371,12 +371,22 @@ export const XformatDate = (d) => {
   return year + '-' + month + '-' + day
 }
 
+var integer = /^[1-9][0-9]*$/;
+var number = /-?(0|([1-9]\d*))\.?\d+/;
 var decimal1 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
 var decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
 var decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
+var atLeast1 = /^[0-9]\+?(\d*\.\d{1,5})$/;
+var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
 var significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
 var significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
+var inputNumber = /^[0-9]\d*$/
 
+
+// 空校验规则
+export const check = (rule, value, callback) => {
+  callback()
+}
 export const threeDecimals = (rule, vaule, callback) => {
   decimal3.test(vaule) ? callback() : callback('三位小数');
 }
@@ -391,4 +401,20 @@ export const significantDigits22 = (rule, vaule, callback) => {
 }
 export const significantDigits33 = (rule, vaule, callback) => {
   significantDigits3.test(vaule) ? callback() : callback('三位有效数字');
+}
+
+export const numberCheck= (rule, vaule, callback) => {
+  inputNumber.test(vaule) ? callback() : callback('请输入整数');
+}
+export const atLeastOneDecimals = (rule, vaule, callback) => {
+  atLeast1.test(vaule) ? callback() : callback('至少一位小数');
+}
+export const atLeastTwoDecimals = (rule, vaule, callback) => {
+  atLeast2.test(vaule) ? callback() : callback('至少两位小数');
+}
+export const isInteger = (rule, vaule, callback) => {
+  integer.test(vaule) ? callback() : callback('整数');
+}
+export const isNumber = (rule, vaule, callback) => {
+  number.test(vaule) ? callback() : callback('请输入数字');
 }
