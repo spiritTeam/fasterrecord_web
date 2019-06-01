@@ -1116,7 +1116,7 @@ export default {
     this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
   },
   methods: {
-    showTemplate() {
+     showTemplate() {
         this.templatePic = this.$store.state.app.pltPic
         this.modal3 = true
       },
