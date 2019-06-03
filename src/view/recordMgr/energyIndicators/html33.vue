@@ -596,10 +596,8 @@
               <td><span class="red">*</span>产品正面图片</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath24">
-                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -610,24 +608,22 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark24"/>
+                    <Icon type="ios-checkmark" v-show="checkmark24" />
                   </Upload>
                 </div>
               </td>
               <td colspan="3" v-if="pltId != 244">
                 根据企业提交的相关能效指标，系统直接生成能效表示样本
-                <Button type="primary" @click="showTemplate">查看模板</Button>
+                <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
             <tr>
-              <td>OEM声明</td>
+              <td><span v-if='$store.state.app.oem' class="red">*</span>OEM声明</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath26">
-                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -638,17 +634,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark26"/>
+                    <Icon type="ios-checkmark" v-show="checkmark26" />
                   </Upload>
                 </div>
               </td>
               <td>关系证明</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath27">
-                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -660,7 +654,7 @@
                     :action="uploadUrl">
 
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark27"/>
+                    <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
                 </div>
               </td>
@@ -669,10 +663,8 @@
               <td>品牌使用授权书</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath28">
-                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -683,17 +675,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark28"/>
+                    <Icon type="ios-checkmark" v-show="checkmark28" />
                   </Upload>
                 </div>
               </td>
               <td>委托代理文件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath29">
-                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -704,7 +694,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark29"/>
+                    <Icon type="ios-checkmark" v-show="checkmark29" />
                   </Upload>
                 </div>
               </td>
@@ -713,10 +703,8 @@
               <td>进口商企业信息表</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath30">
-                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -727,17 +715,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark30"/>
+                    <Icon type="ios-checkmark" v-show="checkmark30" />
                   </Upload>
                 </div>
               </td>
               <td>进口商营业执照或登记注册证明复印件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath31">
-                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -748,7 +734,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark31"/>
+                    <Icon type="ios-checkmark" v-show="checkmark31" />
                   </Upload>
                 </div>
               </td>
@@ -757,10 +743,8 @@
               <td>进口商与境外生产者订立的相关合同副本</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath32">
-                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -771,17 +755,15 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark32"/>
+                    <Icon type="ios-checkmark" v-show="checkmark32" />
                   </Upload>
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
               <td>（PDF/JPG/PNG）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath76">
-                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
-                </div>
-                <div>
+                <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     id=76
                     :show-upload-list=false
@@ -793,13 +775,13 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark76"/>
+                    <Icon type="ios-checkmark" v-show="checkmark76" />
                   </Upload>
                 </div>
               </td>
             </tr>
           </table>
-          <p class="red">注：保存到草稿时，不保存附件！<br/>所有附件上传文件大小需要控制在2M以内。</p>
+          <p class="red">注：保存到草稿时，不保存附件！<br />所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div>
@@ -809,8 +791,7 @@
       </div>
       <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿
-        </Button>
+        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿</Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
       </div>
@@ -819,10 +800,9 @@
       </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
-      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">
-        以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
+      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
-        <table>
+        <table >
           <thead>
           <tr>
             <th>名称</th>
@@ -831,7 +811,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(item,idx) in boolFlag" :key='idx'>
+          <tr v-for="(item,idx) in boolFlag" :key='idx' >
             <td width="50%">
               {{item.recName}}
             </td>
@@ -850,22 +830,22 @@
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
-      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"/>
+      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
-      <img :src="templatePic"/>
+      <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic"/>
+      <img :src="uploadPic" />
     </Modal>
-    <Modal v-model="modal5" class="basic-info" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
+    <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
-        我 <span class="f-company">{{formRecord.c1}}</span>
+        我 <span  class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">计算机显示器2015版</span>产品。
+        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
+        型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -876,34 +856,31 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
           特提出免检备案申请，扩展型号的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="$store.state.app.pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
           该型号的相关信息变更后的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">
-        附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}
-      </div>
+      <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
+
 </template>
 <script>
   import {
@@ -1328,11 +1305,11 @@
             {
               required: true,
               message: '请选择能效等级'
+            },
+            {
+              validator: checkc8,
+              trigger: 'blur'
             }
-            // , {
-            //   validator: checkc8,
-            //   trigger: 'blur'
-            // }
           ],
           c25: [
             {
@@ -1413,10 +1390,10 @@
               validator: isNumber,
               trigger: 'blur'
             }
-            // , {
-            //   validator: checkc5,
-            //   trigger: 'blur'
-            // }
+            ,{
+              validator: checkc5,
+              trigger: 'blur'
+            }
           ],
           c7: [
             {
