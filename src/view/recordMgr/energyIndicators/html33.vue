@@ -4,7 +4,7 @@
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>转速可控型房间空气调节器 2013版</h1>
+      <h1>转速可控型房间空气调节器-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>
@@ -438,11 +438,11 @@
                 <FormItem prop="c28">
                   <Input type="text" v-model="formRecord.c28" style="width:80px;" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+                <span style="display: inline-block;height: 32px;line-height: 32px;">×</span>
                 <FormItem prop="c51">
                   <Input type="text" v-model="formRecord.c51" style="width:80px;" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+                <span style="display: inline-block;height: 32px;line-height: 32px;">×</span>
                 <FormItem prop="c52">
                   <Input type="text" v-model="formRecord.c52" style="width:80px;" :disabled='disabledoff'/>
                 </FormItem>
