@@ -8,6 +8,7 @@
         <TabPane label="能效指标">
           <!-- <EnergyIndicators ref="energyIndicators"></EnergyIndicators> -->
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
+          <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
@@ -43,6 +44,7 @@ import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
 import Html13 from './energyIndicators/html13'
+import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
 import Html31 from './energyIndicators/html31'
 import Html33 from './energyIndicators/html33'
@@ -67,6 +69,7 @@ export default {
     PerformanceIndicators,
     SecurityIndicators,
     Html13,
+    Html17,
     Html23,
     Html31,
     Html33,
