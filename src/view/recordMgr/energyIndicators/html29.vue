@@ -142,7 +142,7 @@
             <tr>
               <td align="right"><span style="color:red">*</span>辅助能源类别</td>
               <td colspan="3">
-                <FormItem prop="c12" style="width:100%;" :label-width="30">
+                <FormItem prop="c12" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c12">
                     <Radio label="电" :disabled='disabledoff'>电</Radio>
                     <Radio label="燃气" :disabled='disabledoff'>燃气</Radio>
@@ -159,7 +159,7 @@
             <tr>
               <td align="right"><span style="color:red">*</span>类别</td>
               <td colspan="3">
-                <FormItem prop="c13" style="width:100%;" :label-width="30">
+                <FormItem prop="c13" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c13">
                     <Radio label="紧凑式" :disabled='disabledoff'>紧凑式</Radio>
                     <Radio label="分离直接式(分体单回路)" :disabled='disabledoff'>分离直接式(分体单回路)</Radio>
@@ -171,202 +171,221 @@
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>集热器类型及面积</td>
-              <td colspan="3">
-                <FormItem prop="c14" style="width:100%;" :label-width="30">
+              <td colspan="3">`
+                <FormItem prop="c14" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c14">
                     <Radio label="真空管型" :disabled='disabledoff'>真空管型</Radio>
                     <Radio label="平板型" :disabled='disabledoff'>平板型</Radio>
+                    面积&nbsp;&nbsp;<Input type="text" v-model="formRecord.c15" style="width:200px;" :disabled='disabledoff'/>m²(两位小数)
                   </RadioGroup>
-                  <FormItem prop="c15">
-                    面积<Input type="text" v-model="formRecord.c15" style="width:200px;" :disabled='disabledoff'/>m²(两位小数)
-                  </FormItem>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right" rowspan="3"><span style="color:red">*</span>真空管型集热器</td>
               <td align="left">类型</td>
-              <td>
-                <FormItem prop="c16" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c16" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c16">
                     <Radio label="全玻璃" :disabled='disabledoff'>全玻璃</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c17" :label-width="10">
-                    <Input type="text" v-model="formRecord.c17" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c17">
+                     <Input type="text" v-model="formRecord.c17" style="width:200px;" :disabled='disabledoff || forbidden.c17'/>
+                  </FormItem>
                 </FormItem>
               </td>
              </tr>
              <tr>
               <td align="left">热管型</td>
               <td colspan="2">
-                <FormItem prop="c18" style="width:100%;" :label-width="30">
+                <FormItem prop="c18" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c18">
                     <Radio label="玻璃-金属封接" :disabled='disabledoff'>玻璃-金属封接</Radio>
                     <Radio label="内置带翅片的金属热管" :disabled='disabledoff'>内置带翅片的金属热管</Radio>
                     <Radio label="全玻璃热管" :disabled='disabledoff'>全玻璃热管</Radio>
+                    <br>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <FormItem prop="c19">
+                      <Input type="text" v-model="formRecord.c19" style="width:200px;" :disabled='disabledoff || forbidden.c19'/>
+                    </FormItem>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c19" :label-width="10">
-                    <Input type="text" v-model="formRecord.c19" style="width:200px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
              </tr>
              <tr>
               <td align="left">尺寸</td>
               <td colspan="2">
-                <FormItem prop="c20" label="长度:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c20" style="width:200px;" :disabled='disabledoff'/>
-                    <label>m(一位小数)></label>
+                <FormItem prop="c20" :label-width="10">
+                    长度:<Input type="text" v-model="formRecord.c20" style="width:100px;" :disabled='disabledoff'/>m(一位小数)
                 </FormItem>
-                <FormItem prop="c21" label="直径:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c21" style="width:200px;" :disabled='disabledoff'/>
-                    <label>mm</label>
+                <FormItem prop="c21" :label-width="10">
+                    直径:<Input type="text" v-model="formRecord.c21" style="width:100px;" :disabled='disabledoff'/>mm
                 </FormItem>
-                <FormItem prop="c22" label="根数:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c22" style="width:200px;" :disabled='disabledoff'/>
+                <FormItem prop="c22" :label-width="10">
+                    根数:<Input type="text" v-model="formRecord.c22" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
 
-            <!-- <tr>
+            <tr>
               <td align="right" rowspan="9"><span style="color:red">*</span>平板型集热器</td>
               <td align="left">吸热板材质</td>
-              <td>
-                <FormItem prop="c23" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c23" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c23">
                     <Radio label="铜板" :disabled='disabledoff'>铜板</Radio>
                     <Radio label="铝板" :disabled='disabledoff'>铝板</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c24" :label-width="10">
-                    <Input type="text" v-model="formRecord.c24" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c24">
+                    <Input type="text" v-model="formRecord.c24" style="width:200px;" :disabled='disabledoff || forbidden.c24'/>
+                  </FormItem>
                 </FormItem>
               </td>
+            </tr>
+            <tr>
               <td align="left">吸热板厚度(mm)</td>
-              <td>
+              <td colspan="2">
                 <FormItem prop="c25" :label-width="10">
                     <Input type="text" v-model="formRecord.c25" style="width:200px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
+            </tr>
+
+            <tr>
               <td align="left">吸收涂层工艺</td>
-              <td>
-                <FormItem prop="c26" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c26" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c26">
                     <Radio label="阳极氧化" :disabled='disabledoff'>阳极氧化</Radio>
                     <Radio label="镀铬" :disabled='disabledoff'>镀铬</Radio>
                     <Radio label="磁控溅射" :disabled='disabledoff'>磁控溅射</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c27" :label-width="10">
-                    <Input type="text" v-model="formRecord.c27" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c27">
+                    <Input type="text" v-model="formRecord.c27" style="width:200px;" :disabled='disabledoff || forbidden.c27'/>
+                  </FormItem>
                 </FormItem>
               </td>
+            </tr>
+
+            <tr>
               <td align="left">集热器用户传热工质接触部位的材料</td>
-              <td>
-                <FormItem prop="c28" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c28" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c28">
                     <Radio label="铜管" :disabled='disabledoff'>铜管</Radio>
                     <Radio label="铝管" :disabled='disabledoff'>铝管</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c29" :label-width="10">
-                    <Input type="text" v-model="formRecord.c29" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c29">
+                    <Input type="text" v-model="formRecord.c29" style="width:200px;" :disabled='disabledoff || forbidden.c29'/>
+                  </FormItem>
                 </FormItem>
               </td>
+            </tr>
+
+            <tr>
               <td align="left">集热器用户传热工质接触部位的材料厚度(mm)</td>
-              <td>
+              <td colspan="2">
                 <FormItem prop="c30" :label-width="10">
                     <Input type="text" v-model="formRecord.c30" style="width:200px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
+            </tr>
+
+            <tr>
               <td align="left">集热器盖板类型</td>
-              <td>
-                <FormItem prop="c31" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c31" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c31">
                     <Radio label="钢化玻璃" :disabled='disabledoff'>钢化玻璃</Radio>
                     <Radio label="普通玻璃" :disabled='disabledoff'>普通玻璃</Radio>
                     <Radio label="布纹玻璃" :disabled='disabledoff'>布纹玻璃</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c32" :label-width="10">
-                    <Input type="text" v-model="formRecord.c32" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c32">
+                    <Input type="text" v-model="formRecord.c32" style="width:200px;" :disabled='disabledoff || forbidden.c32'/>
+                  </FormItem>
                 </FormItem>
               </td>
+            </tr>
+
+            <tr>
               <td align="left">集热器盖板厚度</td>
-              <td>
-                <FormItem prop="c33" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c33" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c33">
                     <Radio label="3 mm" :disabled='disabledoff'>3 mm</Radio>
                     <Radio label="4 mm" :disabled='disabledoff'>4 mm</Radio>
                     <Radio label="5 mm" :disabled='disabledoff'>5 mm</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他（mm）</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c34" :label-width="10">
-                    <Input type="text" v-model="formRecord.c34" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c34">
+                    <Input type="text" v-model="formRecord.c34" style="width:200px;" :disabled='disabledoff || forbidden.c34'/>
+                  </FormItem>
                 </FormItem>
               </td>
+            </tr>
+
+            <tr>
               <td align="left">保温棉材料</td>
-              <td>
-                <FormItem prop="c35" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c35" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c35">
                     <Radio label="岩棉" :disabled='disabledoff'>岩棉</Radio>
                     <Radio label="玻璃棉" :disabled='disabledoff'>玻璃棉</Radio>
                     <Radio label="聚氨酯" :disabled='disabledoff'>聚氨酯</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c36" :label-width="10">
-                    <Input type="text" v-model="formRecord.c36" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c36">
+                    <Input type="text" v-model="formRecord.c36" style="width:200px;" :disabled='disabledoff || forbidden.c36'/>
+                  </FormItem>
                 </FormItem>
               </td>
+            </tr>
+            <tr>
               <td align="left">集热器背板材料</td>
-              <td>
-                <FormItem prop="c37" style="width:100%;" :label-width="30">
+              <td colspan="2">
+                <FormItem prop="c37" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c37">
                     <Radio label="镀锌板" :disabled='disabledoff'>镀锌板</Radio>
                     <Radio label="铝板" :disabled='disabledoff'>铝板</Radio>
                     <Radio label="彩板" :disabled='disabledoff'>彩板</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c38" :label-width="10">
-                    <Input type="text" v-model="formRecord.c38" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c38">
+                    <Input type="text" v-model="formRecord.c38" style="width:200px;" :disabled='disabledoff || forbidden.c38'/>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>支架外形、材质、颜色</td>
-              <td>
-                <FormItem prop="c39" label="外形:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c39" style="width:100px;" :disabled='disabledoff'/>
+              <td colspan="3">
+                <FormItem prop="c39" :label-width="10">
+                    外形:<Input type="text" v-model="formRecord.c39" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem prop="c73" label="材质:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c73" style="width:100px;" :disabled='disabledoff'/>
+                <FormItem prop="c73" :label-width="10">
+                    材质:<Input type="text" v-model="formRecord.c73" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem prop="c74" label="颜色:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c74" style="width:100px;" :disabled='disabledoff'/>
+                <FormItem prop="c74" :label-width="10">
+                    颜色:<Input type="text" v-model="formRecord.c74" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>水箱外形、材质、颜色</td>
-              <td>
-                <FormItem prop="c40" label="外形:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c40" style="width:100px;" :disabled='disabledoff'/>
+              <td colspan="3">
+                <FormItem prop="c40" :label-width="10">
+                    外形:<Input type="text" v-model="formRecord.c40" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem prop="c76" label="材质:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c76" style="width:100px;" :disabled='disabledoff'/>
+                <FormItem prop="c76" :label-width="10">
+                    材质:<Input type="text" v-model="formRecord.c76" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem prop="c77" label="颜色:" :label-width="10">
-                    <Input type="text" v-model="formRecord.c77" style="width:100px;" :disabled='disabledoff'/>
+                <FormItem prop="c77" :label-width="10">
+                    颜色:<Input type="text" v-model="formRecord.c77" style="width:100px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -374,15 +393,15 @@
               <td align="right"><span style="color:red">*</span>贮热水箱容积m³(三位小数)</td>
               <td>
                 <FormItem prop="c41" :label-width="10">
-                    <Input type="text" v-model="formRecord.c41" style="width:100px;" :disabled='disabledoff'/>
+                    <Input type="text" v-model="formRecord.c41" style="width:200px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td></td>
+              <td colspan="2"></td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>贮热水箱换热器材质</td>
-              <td>
-                <FormItem prop="c42" style="width:100%;" :label-width="30">
+              <td colspan="3">
+                <FormItem prop="c42" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c42">
                     <Radio label="不锈钢板" :disabled='disabledoff'>不锈钢板</Radio>
                     <Radio label="紫铜管" :disabled='disabledoff'>紫铜管</Radio>
@@ -390,41 +409,41 @@
                     <Radio label="碳钢管" :disabled='disabledoff'>碳钢管</Radio>
                     <Radio label="碳钢板" :disabled='disabledoff'>碳钢板</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
-                  </RadioGroup>
-                </FormItem>
-                <FormItem prop="c43" :label-width="10">
-                    <Input type="text" v-model="formRecord.c43" style="width:200px;" :disabled='disabledoff'/>
+                  </RadioGroup> 
+                  <FormItem prop="c43">
+                    <Input type="text" v-model="formRecord.c43" style="width:200px;" :disabled='disabledoff || forbidden.c43'/>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>贮热水箱换热器结构</td>
-              <td>
-                <FormItem prop="c44" style="width:100%;" :label-width="30">
+              <td colspan="3">
+                <FormItem prop="c44" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c44">
                     <Radio label="夹层水箱" :disabled='disabledoff'>夹层水箱</Radio>
                     <Radio label="外置板换" :disabled='disabledoff'>外置板换</Radio>
                     <Radio label="盘管" :disabled='disabledoff'>盘管</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c45" :label-width="10">
-                    <Input type="text" v-model="formRecord.c45" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c45">
+                    <Input type="text" v-model="formRecord.c45" style="width:200px;" :disabled='disabledoff || forbidden.c45'/>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>贮热水箱用于隔热体材料</td>
-              <td>
-                <FormItem prop="c46" style="width:100%;" :label-width="30">
+              <td colspan="3">
+                <FormItem prop="c46" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c46">
                     <Radio label="聚氨酯泡沫塑料" :disabled='disabledoff'>聚氨酯泡沫塑料</Radio>
                     <Radio label="聚苯乙烯泡沫塑料" :disabled='disabledoff'>聚苯乙烯泡沫塑料</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c47" :label-width="10">
-                    <Input type="text" v-model="formRecord.c47" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c47">
+                    <Input type="text" v-model="formRecord.c47" style="width:200px;" :disabled='disabledoff || forbidden.c47'/>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
@@ -432,43 +451,43 @@
               <td align="right"><span style="color:red">*</span>内胆厚度（mm）</td>
               <td>
                 <FormItem prop="c52" :label-width="10">
-                    <Input type="text" v-model="formRecord.c52" style="width:100px;" :disabled='disabledoff'/>
+                    <Input type="text" v-model="formRecord.c52" style="width:200px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td></td>
+              <td colspan="2"></td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>内胆形状</td>
-              <td>
-                <FormItem prop="c48" style="width:100%;" :label-width="30">
+              <td colspan="3">
+                <FormItem prop="c48" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c48">
                     <Radio label="圆柱形" :disabled='disabledoff'>圆柱形</Radio>
                     <Radio label="非圆柱形" :disabled='disabledoff'>非圆柱形</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c49" :label-width="10">
-                    <Input type="text" v-model="formRecord.c49" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c49">
+                    <Input type="text" v-model="formRecord.c49" style="width:200px;" :disabled='disabledoff || forbidden.c49'/>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>内胆材质</td>
-              <td>
-                <FormItem prop="c50" style="width:100%;" :label-width="30">
+              <td colspan="3">
+                <FormItem prop="c50" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c50">
                     <Radio label="不锈钢" :disabled='disabledoff'>不锈钢</Radio>
                     <Radio label="搪瓷" :disabled='disabledoff'>搪瓷</Radio>
                     <Radio label="塑料" :disabled='disabledoff'>塑料</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
-                </FormItem>
-                <FormItem prop="c51" :label-width="10">
-                    <Input type="text" v-model="formRecord.c51" style="width:200px;" :disabled='disabledoff'/>
+                  <FormItem prop="c51">
+                    <Input type="text" v-model="formRecord.c51" style="width:200px;" :disabled='disabledoff || forbidden.c51'/>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
-            <tr>
+             <tr>
               <td align="right"><span style="color:red">*</span>最大试验压力(×106Pa)</td>
               <td>
                 <FormItem prop="c54" :label-width="10">
@@ -485,16 +504,16 @@
             <tr>
               <td align="right"><span style="color:red">*</span>是否带有阳极保护材料</td>
               <td>
-               <FormItem prop="c53" style="width:100%;" :label-width="30">
+               <FormItem prop="c53" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c53">
                     <Radio label="是" :disabled='disabledoff'>是</Radio>
                     <Radio label="否" :disabled='disabledoff'>否</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td align="right"><span style="color:red">*</span>是否为一体机</td>
+              <td align="right"><span style="color:red;">*</span>是否为一体机</td>
               <td>
-                <FormItem prop="c71" style="width:100%;" :label-width="30">
+                <FormItem prop="c71" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c71">
                     <Radio label="是" :disabled='disabledoff'>是</Radio>
                     <Radio label="否" :disabled='disabledoff'>否</Radio>
@@ -504,52 +523,52 @@
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>一体机外形尺寸(长×宽×高)(mm×mm×mm)</td>
-              <td>
-                <FormItem prop="c56" style="width:60px;">
+              <td colspan="3">
+                <FormItem prop="c56" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c56" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c65" style="width:60px;">
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c65" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c66" style="width:60px;">
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c66" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>贮热水箱及其附件外形尺寸(长×宽×高)(mm×mm×mm)</td>
-              <td>
-                <FormItem prop="c57" style="width:60px;">
+              <td colspan="3">
+                <FormItem prop="c57" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c67" style="width:60px;">
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c67" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c68" style="width:60px;">
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c68" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>集热器外形尺寸(长×宽×高)(mm×mm×mm)</td>
-              <td>
-                <FormItem prop="c58" style="width:60px;">
+              <td colspan="3">
+                <FormItem prop="c58" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c69" style="width:60px;">
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c69" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c70" style="width:60px;">
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c70" style="width:100px;" :label-width="10">
                   <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-            </tr> -->
+            </tr>
           </table>
         </Card>
       </div>
@@ -1233,7 +1252,21 @@ export default {
         attach_list: ''
       },
       forbidden: {
-        c63: true
+        c63: true,
+        c17: true,
+        c19: true,
+        c24: true,
+        c27: true,
+        c29: true,
+        c32: true,
+        c34: true,
+        c36: true,
+        c38: true,
+        c43: true,
+        c45: true,
+        c47: true,
+        c49: true,
+        c51: true
       }
     }
   },
@@ -1291,6 +1324,49 @@ export default {
       },
       getFile(res, file, id) {
         this['checkmark' + id] = true
+      },
+      getNxdj(type, ctp){
+        if (type == "紧凑式") {
+            if (ctp >= 0.5) {
+                return "1";
+            } else if (ctp >= 0.32 && ctp < 0.5) {
+                return "2";
+            } else if (ctp >= 0.1 && ctp < 0.32) {
+                return "3";
+            } else {
+                return "error";
+            }
+        } else if (type == "分离直接式(分体单回路)") {
+            if (ctp >= 0.48) {
+                return "1";
+            } else if (ctp >= 0.3 && ctp < 0.48) {
+                return "2";
+            } else if (ctp >= 0.1 && ctp < 0.30) {
+                return "3";
+            } else {
+                return "error";
+            }
+        } else if (type == "分离间接式(分体双回路)") {
+            if (ctp >= 0.45) {
+                return "1";
+            } else if (ctp >= 0.28 && ctp < 0.45) {
+                return "2";
+            } else if (ctp >= 0.1 && ctp < 0.28) {
+                return "3";
+            } else {
+                return "error";
+            }
+        } else if (type == "闷晒式") {
+            if (ctp >= 0.6) {
+                return "1";
+            } else if (ctp >= 0.4 && ctp < 0.6) {
+                return "2";
+            } else if (ctp >= 0.1 && ctp < 0.4) {
+                return "3";
+            } else {
+                return "error";
+            }
+        }
       }
   },
   computed: {
@@ -1311,6 +1387,134 @@ export default {
       } else {
           this.formRecord.c63 = ''
           this.forbidden.c63 = true
+      }
+
+      //真空管型集热器-类型 启用/禁用
+      if (this.formRecord.c16 == '其他') {
+          this.forbidden.c17 = false
+      } else {
+          this.formRecord.c17 = ''
+          this.forbidden.c17 = true
+      }
+
+      //热管型 启用/禁用
+      if (this.formRecord.c18 == '其他') {
+          this.forbidden.c19 = false
+      } else {
+          this.formRecord.c19 = ''
+          this.forbidden.c19 = true
+      }
+
+      //吸热板材质 启用/禁用
+      if (this.formRecord.c23 == '其他') {
+          this.forbidden.c24 = false
+      } else {
+          this.formRecord.c24 = ''
+          this.forbidden.c24 = true
+      }
+
+      //吸收涂层工艺 启用/禁用
+      if (this.formRecord.c26 == '其他') {
+          this.forbidden.c27 = false
+      } else {
+          this.formRecord.c27 = ''
+          this.forbidden.c27 = true
+      }
+
+      //集热器用户传热工质接触部位的材料 启用/禁用
+      if (this.formRecord.c28 == '其他') {
+          this.forbidden.c29 = false
+      } else {
+          this.formRecord.c29 = ''
+          this.forbidden.c29 = true
+      }
+
+      //集热器盖板类型 启用/禁用
+      if (this.formRecord.c31 == '其他') {
+          this.forbidden.c32 = false
+      } else {
+          this.formRecord.c32 = ''
+          this.forbidden.c32 = true
+      }
+
+      //集热器盖板厚度 启用/禁用
+      if (this.formRecord.c33 == '其他') {
+          this.forbidden.c34 = false
+      } else {
+          this.formRecord.c34 = ''
+          this.forbidden.c34 = true
+      }
+
+      //保温棉材料 启用/禁用
+      if (this.formRecord.c35 == '其他') {
+          this.forbidden.c36 = false
+      } else {
+          this.formRecord.c36 = ''
+          this.forbidden.c36 = true
+      }
+
+      //集热器背板材料 启用/禁用
+      if (this.formRecord.c37 == '其他') {
+          this.forbidden.c38 = false
+      } else {
+          this.formRecord.c38 = ''
+          this.forbidden.c38 = true
+      }
+
+      //贮热水箱换热器材质 启用/禁用
+      if (this.formRecord.c42 == '其他') {
+          this.forbidden.c43 = false
+      } else {
+          this.formRecord.c43 = ''
+          this.forbidden.c43 = true
+      }
+
+      //贮热水箱换热器结构 启用/禁用
+      if (this.formRecord.c44 == '其他') {
+          this.forbidden.c45 = false
+      } else {
+          this.formRecord.c45 = ''
+          this.forbidden.c45 = true
+      }
+
+      //贮热水箱用于隔热体材料 启用/禁用
+      if (this.formRecord.c46 == '其他') {
+          this.forbidden.c47 = false
+      } else {
+          this.formRecord.c47 = ''
+          this.forbidden.c47 = true
+      }
+
+      //内胆形状 启用/禁用
+      if (this.formRecord.c48 == '其他') {
+          this.forbidden.c49 = false
+      } else {
+          this.formRecord.c49 = ''
+          this.forbidden.c49 = true
+      }
+
+      //内胆材质 启用/禁用
+      if (this.formRecord.c50 == '其他') {
+          this.forbidden.c51 = false
+      } else {
+          this.formRecord.c51 = ''
+          this.forbidden.c51 = true
+      }
+
+      var c13 = this.formRecord.c13;
+      var c5 = this.formRecord.c5;
+      var result = this.getNxdj(c13, c5);
+      const checkc64 = (rule, value, callback) => {
+           if (result == "error") {
+              callback('系统提示备案数据不在备案范围，校验结束。')
+           }else{
+             var nxdj = this.formRecord.c64;
+              if (result != nxdj) {
+                callback('能效等级校验错误。')
+              } else {
+                callback()
+              }
+           }
       }
 
       return {
@@ -1348,6 +1552,10 @@ export default {
           {
             required: true,
             message: '请选择能效等级'
+          },
+          {
+            validator: checkc64,
+            trigger: 'blur'
           }
         ],
         c5: [
@@ -1450,8 +1658,8 @@ export default {
         ],
         c17: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c16 === '其他',
+            message: '其他不能为空'
           }
         ],
         c18: [
@@ -1462,8 +1670,8 @@ export default {
         ],
         c19: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c18 === '其他',
+            message: '其他不能为空'
           }
         ],
         c20: [
@@ -1496,8 +1704,8 @@ export default {
         ],
         c24: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c23 === '其他',
+            message: '其他不能为空'
           }
         ],
         c25: [
@@ -1514,8 +1722,8 @@ export default {
         ],
         c27: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c26 === '其他',
+            message: '其他不能为空'
           }
         ],
         c28: [
@@ -1526,8 +1734,8 @@ export default {
         ],
         c29: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c28 === '其他',
+            message: '其他不能为空'
           }
         ],
         c30: [
@@ -1544,8 +1752,8 @@ export default {
         ],
         c32: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c31 === '其他',
+            message: '其他不能为空'
           }
         ],
         c33: [
@@ -1556,8 +1764,8 @@ export default {
         ],
         c34: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c33 === '其他',
+            message: '其他不能为空'
           }
         ],
         c35: [
@@ -1568,8 +1776,8 @@ export default {
         ],
         c36: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c35 === '其他',
+            message: '其他不能为空'
           }
         ],
         c37: [
@@ -1580,8 +1788,8 @@ export default {
         ],
         c38: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c37 === '其他',
+            message: '其他不能为空'
           }
         ],
         c39: [
@@ -1632,8 +1840,8 @@ export default {
         ],
         c45: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c44 === '其他',
+            message: '其他不能为空'
           },
           {
             validator: twoDecimals,
@@ -1648,20 +1856,14 @@ export default {
         ],
         c43: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c42 === '其他',
+            message: '其他不能为空'
           }
         ],
         c44: [
           {
             required: true,
             message: '请选择'
-          }
-        ],
-        c45: [
-          {
-            required: true,
-            message: '请输入'
           }
         ],
         c46: [
@@ -1672,8 +1874,8 @@ export default {
         ],
         c47: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c46 === '其他',
+            message: '其他不能为空'
           }
         ],
         c48: [
@@ -1684,8 +1886,8 @@ export default {
         ],
         c49: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c48 === '其他',
+            message: '其他不能为空'
           }
         ],
         c50: [
@@ -1696,8 +1898,8 @@ export default {
         ],
         c51: [
           {
-            required: true,
-            message: '请输入'
+            required: this.formRecord.c50 === '其他',
+            message: '其他不能为空'
           }
         ],
         c54: [
