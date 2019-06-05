@@ -10,6 +10,7 @@
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
+          <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
@@ -17,7 +18,6 @@
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
-          <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
@@ -44,6 +44,7 @@ import SecurityIndicators from './securityIndicators'
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
+import Html29 from './energyIndicators/html29'
 import Html31 from './energyIndicators/html31'
 import Html33 from './energyIndicators/html33'
 import Html46 from './energyIndicators/html46'
@@ -51,7 +52,6 @@ import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html54 from './energyIndicators/html54'
-import Html29 from './energyIndicators/html29'
 
 export default {
   data () {
@@ -70,14 +70,14 @@ export default {
     Html13,
     Html17,
     Html23,
+	Html29,
     Html31,
     Html33,
     Html46,
     Html47,
     Html48,
     Html50,
-    Html54,
-	Html29
+    Html54
   },
   mounted () {
 
