@@ -140,7 +140,7 @@
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
           <FormItem prop="c18" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18"></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18" :disabled='disabledoff'></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -899,7 +899,7 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -911,7 +911,7 @@
       <dl v-if="$store.state.app.pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -962,7 +962,6 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        disabledoff: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1111,7 +1110,7 @@
       }
     },
     mounted() {
-      this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: {
       showTemplate() {
@@ -1170,6 +1169,9 @@
       }
     },
     computed: {
+      disabledoff(){
+        return  this.$store.state.app.pageType==='extend';
+      },
       pltId() {
         return this.$store.state.app.pltId
       },
