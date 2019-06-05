@@ -392,6 +392,8 @@ var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
 var significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
 var significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
 var inputNumber = /^[0-9]\d*$/
+var numberOr11 = /^[0-9]+([.]{1}[0-9]{1,1})?$/
+var decimalOr22 = /^[0-9]+[.]{1}[0-9]{1,2}?$/
 
 // 空校验规则
 export const check = (rule, value, callback) => {
@@ -435,4 +437,10 @@ export const isInteger = (rule, vaule, callback) => {
 }
 export const isNumber = (rule, vaule, callback) => {
   number.test(vaule) ? callback() : callback('请输入数字');
+}
+export const numberOr1 = (rule, vaule, callback) => {
+  numberOr11.test(vaule) ? callback() : callback('整数或一位小数');
+}
+export const decimalOr2 = (rule, vaule, callback) => {
+  decimalOr22.test(vaule) ? callback() : callback('一位小数或两位小数');
 }

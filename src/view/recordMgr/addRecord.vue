@@ -7,6 +7,8 @@
       <Tabs type="card" v-show="step === 3">
         <TabPane label="能效指标">
           <!-- <EnergyIndicators ref="energyIndicators"></EnergyIndicators> -->
+          <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
+          <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
@@ -15,6 +17,7 @@
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
+          <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
@@ -33,11 +36,13 @@
   </Card>
 </template>
 <script>
-import {setCookie,getCookie} from '@/libs/util.js'
+import {setCookie, getCookie} from '@/libs/util.js'
 import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
+import Html13 from './energyIndicators/html13'
+import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
 import Html31 from './energyIndicators/html31'
 import Html33 from './energyIndicators/html33'
@@ -46,6 +51,7 @@ import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html54 from './energyIndicators/html54'
+import Html29 from './energyIndicators/html29'
 
 export default {
   data () {
@@ -61,6 +67,8 @@ export default {
     SelectSample,
     PerformanceIndicators,
     SecurityIndicators,
+    Html13,
+    Html17,
     Html23,
     Html31,
     Html33,
@@ -68,9 +76,11 @@ export default {
     Html47,
     Html48,
     Html50,
-    Html54
+    Html54,
+	Html29
   },
   mounted () {
+
     if(this.$route.params.type){
       //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
           this.$store.commit('setPageType', this.$route.params.type)
@@ -83,10 +93,13 @@ export default {
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
+
         //this.modal1 = true
       }
+
       if(this.$route.params.draftData){
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
+
       }else if(this.$route.params.extendData){
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }else if(this.$route.params.viewData){
@@ -96,6 +109,7 @@ export default {
   },
   methods: {
     setNoTips () {
+
       setCookie('noTips',this.noTips.join(''),1)
       console.log(this.noTips)
     },
@@ -107,6 +121,7 @@ export default {
     showRecordTab () {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
+
         //this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()
