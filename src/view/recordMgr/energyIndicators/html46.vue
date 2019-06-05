@@ -657,8 +657,7 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
-                根据企业提交的相关能效指标，系统直接生成能效表示样本
+              <td colspan="3" v-if="pltId != 244">根据企业提交的相关能效指标，系统直接生成能效表示样本
                 <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
@@ -684,7 +683,7 @@
                 </div>
               </td>
               <td>关系证明</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -697,7 +696,6 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -725,7 +723,7 @@
                 </div>
               </td>
               <td>委托代理文件</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -765,7 +763,7 @@
                 </div>
               </td>
               <td>进口商营业执照或登记注册证明复印件</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -805,7 +803,7 @@
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
-              <td>（PDF/JPG/PNG）</td>
+              <td>(PDF/JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -906,7 +904,7 @@
         </dd>
         <dd>
           特提出免检备案申请，扩展型号的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -918,14 +916,13 @@
         </dd>
         <dd>
           该型号的相关信息变更后的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-
 </template>
 <script>
   import {

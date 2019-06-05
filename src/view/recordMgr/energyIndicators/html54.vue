@@ -62,7 +62,7 @@
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
           </FormItem>
           <FormItem prop="c30" label="能效等级" style="width:100%;" :label-width="180">
-            <RadioGroup v-model="formRecord.c7">
+            <RadioGroup v-model="formRecord.c30">
               <Radio label="1" :disabled='disabledoff'>1级</Radio>
               <Radio label="2" :disabled='disabledoff'>2级</Radio>
               <Radio label="3" :disabled='disabledoff'>3级</Radio>
@@ -1313,8 +1313,7 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
-                根据企业提交的相关能效指标，系统直接生成能效表示样本
+              <td colspan="3" v-if="pltId != 244">根据企业提交的相关能效指标，系统直接生成能效表示样本
                 <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
@@ -1340,7 +1339,7 @@
                 </div>
               </td>
               <td>关系证明</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1380,7 +1379,7 @@
                 </div>
               </td>
               <td>委托代理文件</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1420,7 +1419,7 @@
                 </div>
               </td>
               <td>进口商营业执照或登记注册证明复印件</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1460,7 +1459,7 @@
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
-              <td>（PDF/JPG/PNG）</td>
+              <td>(PDF/JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1604,6 +1603,7 @@ import {
   significantDigits33,
   atLeastOneDecimals,
   atLeastTwoDecimals,
+  atLeastThreeDecimals,
   isInteger,
   isNumber,
   check
@@ -1923,6 +1923,8 @@ export default {
     showConfirm() {
       return XshowConfirm(this)
     },
+    submitBasic() {
+    },
     submitRecord() {
       return XsubmitRecord(this)
     },
@@ -1951,18 +1953,36 @@ export default {
       return this.$store.state.app.requiredStr
     },
     ruleRecord() {
+      var that=this;
+      /**一、以下为检测函数 */
+      /**1.1 */
       var nxdj=this.formRecord.c30;//能效等级
       var _C27=this.formRecord.c27;//能效指数（%）:标称值
-      var nxdjCoumpu
+      var nxdjCoumpute
 
-      const check_C30A=(rule, value, callback) => {
+      var check_C30A=(rule, value, callback) => {
         if (nxdjst=="") callback('能效数据不在备案范围');
         else callback();
       }
-      const check_C30B = (rule, value, callback) => {
+      var check_C30B = (rule, value, callback) => {
         if (nxdjst!=nxdj) callback('所选能效等级与计算结果不符！')
         else callback()
       }
+      /**1.2 根据容积选择，判断标称值与实测值 */
+      /**
+       * radioC:选择radio的c值，如'c214'
+       */
+      let check_JSRJ=(rule, value, callback, radioC)=>{
+          console.log(rule);
+          console.log(value);
+          console.log(radioC);
+        if (that.formRecord[""+radioC]=='（m³）') {
+          console.log("M");
+        } else if (that.formRecord[""+radioC]=='（L）') {
+          console.log("L");
+        } else callback()
+      }
+      alert("ABC123");
       return {
         c2: [{
           required:true, message:'请填写制造单位'
@@ -1981,9 +2001,28 @@ export default {
         }],
         c6: [{
           required:true, message:'请输入总能量消耗标称值'
+        },{
+          validator: twoDecimals,
+          trigger: 'blur'
+        }],
+        c7: [{
+          required:true, message:'请输入总能量消耗实测值'
+        },{
+          validator: atLeastThreeDecimals, trigger: 'blur'
+        }],
+        c9: [{
+          validator: twoDecimals, trigger: 'blur'
+        }],
+        c10: [{
+          validator: atLeastTwoDecimals, trigger: 'blur'
+        }],
+        c214: [{
+          required:true, message:'请选择'
         }],
         c15: [{
           required:true, message:'请输入间室净容积标称值'
+        },{
+          validator: (rule, value, callback)=>check_JSRJ(rule, value, callback, 'c214'), trigger: 'blur'
         }],
         c16: [{
           required:true, message:'请输入间室净容积实际值'

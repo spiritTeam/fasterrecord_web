@@ -133,7 +133,7 @@ export default {
           }
         }
     },'查看');
-    
+    console.log("DDDDDDDD")
     return {
       total: 0,
       fileObj: {},
