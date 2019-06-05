@@ -1066,7 +1066,6 @@
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-
 </template>
 <script>
   import axios from 'axios'
