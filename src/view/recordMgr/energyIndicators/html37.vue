@@ -44,7 +44,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly/>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff || forbidden.c1' placeholder="生产者名称" readonly/>
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位"/>
@@ -59,7 +59,7 @@
             <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准"  readonly/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" :disabled='disabledoff || forbidden.c200'/>
           </FormItem>
           <FormItem prop="c16" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c16">
@@ -75,7 +75,7 @@
               <td align="center">制热量（W）</td>
               <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff || forbidden.c7'/>
                  </FormItem>
               </td>
               <td>
@@ -93,7 +93,7 @@
               <td align="center">制热消耗功率（W）</td>
                 <td>
                  <FormItem prop="c10" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c10"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c10"  :disabled='disabledoff || forbidden.c10'/>
                  </FormItem>
               </td>
               <td>
@@ -111,7 +111,7 @@
               <td align="center">性能系数(COP)(W/W)</td>
                <td>
                  <FormItem prop="c13" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c13"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c13"  :disabled='disabledoff || forbidden.c13'/>
                  </FormItem>
               </td>
               <td>
@@ -211,7 +211,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c23">
-                    <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c23'/>
+                    <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td> 
@@ -221,7 +221,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c24" >
-                   <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c24'/>
+                   <Input type="text" v-model="formRecord.c24" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -229,7 +229,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c25" >
-                   <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c25'/>
+                   <Input type="text" v-model="formRecord.c25" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -239,7 +239,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c26" >
-                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c26'/>
+                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -247,7 +247,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c27" >
-                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff || forbidden.c27'/>
+                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -257,7 +257,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c28" >
-                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff || forbidden.c28'/>
+                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -265,7 +265,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c29" >
-                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff || forbidden.c29'/>
+                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -275,7 +275,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c30" >
-                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30'/>
+                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -283,7 +283,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c31" >
-                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff || forbidden.c31'/>
+                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -293,7 +293,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c32" >
-                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff || forbidden.c32'/>
+                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -301,7 +301,7 @@
               <td>
                 <label class="mb7">
                   <FormItem prop="c33" >
-                   <Input type="text" v-model="formRecord.c33" :disabled='disabledoff || forbidden.c33'/>
+                   <Input type="text" v-model="formRecord.c33" :disabled='disabledoff'/>
                   </FormItem>
                 </label>
               </td>
@@ -324,20 +324,59 @@
               <td align="right"><span class="red">*</span>辅助热源消耗功率（W）</td>
               <td colspan="3">
                 <label class="mb7">
-                  <FormItem prop="c35" >
-                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                  <FormItem prop="c36" >
+                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c36'/>
                   </FormItem>
                 </label>
               </td>
             </tr>
             <tr>
-              <td align="right"><span class="red">*</span>辅助热源消耗功率（W）</td>
+              <td align="right" rowspan="2"><span class="red">*</span>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c35" >
-                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;
+                  <FormItem prop="c37" >
+                    <Input type="text" v-model="formRecord.c37" :disabled='disabledoff' style="width:20%"/> &nbsp;&nbsp; x
+                    &nbsp;&nbsp;
+                    <Input type="text" v-model="formRecord.c38" :disabled='disabledoff' style="width:20%"/> &nbsp;&nbsp; x
+                    <Input type="text" v-model="formRecord.c39" :disabled='disabledoff' style="width:20%"/>
                   </FormItem>
-                </label>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                 储水箱 &nbsp;&nbsp;&nbsp;
+                 <FormItem prop="c39" >
+                   <Input type="text" v-model="formRecord.c40" :disabled='disabledoff' style="width:20%"/> &nbsp;&nbsp; x
+                   &nbsp;&nbsp;
+                   <Input type="text" v-model="formRecord.c41" :disabled='disabledoff' style="width:20%"/>&nbsp;&nbsp;  x
+                   <Input type="text" v-model="formRecord.c42" :disabled='disabledoff' style="width:20%"/>
+                 </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td align="right"><span class="red">*</span>噪声（声压级）dB（A）</td>
+              <td colspan="3">
+                整机或热泵机组  &nbsp;&nbsp;&nbsp;
+                <FormItem prop="c43">
+                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
+                </FormItem>
+                &nbsp;&nbsp;&nbsp;储水箱&nbsp;&nbsp;&nbsp;
+                 <FormItem prop="c44">
+                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td align="right"><span class="red">*</span>制冷剂/灌注量（Kg）</td>
+              <td colspan="3">
+                制冷量  &nbsp;&nbsp;&nbsp;
+                <FormItem prop="c45">
+                  <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
+                </FormItem>
+                &nbsp;&nbsp;&nbsp;灌注量（Kg）&nbsp;&nbsp;&nbsp;
+                 <FormItem prop="c46">
+                  <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
+                </FormItem>
               </td>
             </tr>
           </table>
@@ -361,35 +400,35 @@
               <td width="80">1</td>
               <td>压缩机</td>
               <td>
-                <FormItem prop="c69">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
+                <FormItem prop="c47">
+                  <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td width="330">
                 <div>
                   <label class="mb7">
-                    <span class="w70">制冷量（瓦）</span>
-                    <FormItem prop="c70">
-                      <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
+                    <span class="w70">制热量（kW）</span>
+                    <FormItem prop="c48">
+                      <Input type="text" v-model="formRecord.c48" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7">
-                    <span class="w70">输入功率（瓦）</span>
-                    <FormItem prop="c72">
-                      <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
+                    <span class="w70">输入功率（kW）</span>
+                    <FormItem prop="c50">
+                      <Input type="text" v-model="formRecord.c50" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7">
                     <span class="w70">COP值</span>
-                    <FormItem prop="c73">
-                      <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
+                    <FormItem prop="c51">
+                      <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c71">
-                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
+                <FormItem prop="c49">
+                  <Input type="text" v-model="formRecord.c49" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -397,226 +436,262 @@
               <td width="80">2</td>
               <td>压缩机</td>
               <td>
-                <FormItem prop="c74">
-                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
+                <FormItem prop="c52">
+                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td width="330">
                 <div>
                   <label class="mb7">
-                    <span class="w70">制冷量（瓦）</span>
-                    <FormItem prop="c75">
-                      <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
+                    <span class="w70">制热量（kW）</span>
+                    <FormItem prop="c53">
+                      <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7">
-                    <span class="w70">输入功率（瓦）</span>
-                    <FormItem prop="c77">
-                      <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                    <span class="w70">输入功率（kW）</span>
+                    <FormItem prop="c55">
+                      <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7">
                     <span class="w70">COP值</span>
-                    <FormItem prop="c78">
-                      <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                    <FormItem prop="c56">
+                      <Input type="text" v-model="formRecord.c56" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c76">
-                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                <FormItem prop="c54">
+                  <Input type="text" v-model="formRecord.c54" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td width="80">3</td>
-              <td>风机</td>
               <td>
-                <FormItem prop="c79">
-                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
+                换热器
+              </td>
+              <td>
+                <FormItem prop="c57">
+                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td class="tl" width="230">
                 <div>
-                  <label class="mb7">
-                    <span class="w70">风量（m³/h）</span>
-                    <FormItem prop="c80">
-                      <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                   <label class="mb7">
+                    <span class="w70">换热管内表面积（m2）</span>
+                    <FormItem prop="c58">
+                      <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
                     </FormItem>
-                  </label><br>
+                  </label><br/>
                   <label class="mb7">
-                    <span class="w70">全压（Pa）</span>
-                    <FormItem prop="c82">
-                      <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label><span class="w70">输入功率（W）</span>
-                    <FormItem prop="c83">
-                      <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
+                    <span class="w70">换热器形式</span>
+                    <FormItem prop="c60">
+                      <Input type="text" v-model="formRecord.c60" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c81">
-                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
+                <FormItem prop="c59">
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td width="80">4</td>
               <td>
-                风机
+                换热器
               </td>
               <td>
-                <FormItem prop="c84">
-                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'/>
+                <FormItem prop="c61">
+                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td class="tl" width="230">
                 <div>
                    <label class="mb7">
-                    <span class="w70">风量（m³/h）</span>
-                    <FormItem prop="c85">
-                      <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
+                    <span class="w70">换热管内表面积（m2）</span>
+                    <FormItem prop="c62">
+                      <Input type="text" v-model="formRecord.c62" :disabled='disabledoff'/>
                     </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">全压（Pa）</span>
-                    <FormItem prop="c87">
-                      <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label><span class="w70">输入功率（W）</span>
-                    <FormItem prop="c88">
-                      <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'/>
+                  </label><br/>
+                   <label class="mb7">
+                    <span class="w70">换热器形式</span>
+                    <FormItem prop="c64">
+                      <Input type="text" v-model="formRecord.c64" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c86">
-                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff'/>
+                <FormItem prop="c63">
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td width="80">5</td>
               <td>
-                翅片式换热器
+                水泵
               </td>
               <td>
-                <FormItem prop="c89">
-                  <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'/>
+                <FormItem prop="c65">
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td class="tl" width="230">
                 <div>
                    <label class="mb7">
-                    <span class="w70">换热面积（㎡）</span>
-                    <FormItem prop="c90">
-                      <Input type="text" v-model="formRecord.c90" :disabled='disabledoff'/>
+                    <span class="w70">扬程（mH2O）</span>
+                    <FormItem prop="c66">
+                      <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7">
-                    <span class="w70">铜管直径（mm）</span>
-                    <FormItem prop="c92">
-                      <Input type="text" v-model="formRecord.c92" :disabled='disabledoff'/>
+                    <span class="w70">额定功率（W）</span>
+                    <FormItem prop="c68">
+                      <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7">
+                    <span class="w70">流量（m3/h）</span>
+                    <FormItem prop="c69">
+                      <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c91">
-                  <Input type="text" v-model="formRecord.c91" :disabled='disabledoff'/>
+                <FormItem prop="c67">
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td width="80">6</td>
               <td>
-                翅片式换热器
+                水泵
               </td>
               <td>
-                <FormItem prop="c93">
-                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff'/>
+                <FormItem prop="c70">
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td class="tl" width="230">
                 <div>
                    <label class="mb7">
-                    <span class="w70">换热面积（㎡）</span>
-                    <FormItem prop="c94">
-                      <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
+                    <span class="w70">扬程（mH2O）</span>
+                    <FormItem prop="c71">
+                      <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7">
-                    <span class="w70">铜管直径（mm）</span>
-                    <FormItem prop="c96">
-                      <Input type="text" v-model="formRecord.c96" :disabled='disabledoff'/>
+                    <span class="w70">额定功率（W）</span>
+                    <FormItem prop="c73">
+                      <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7">
+                    <span class="w70">流量（m3/h）</span>
+                    <FormItem prop="c74">
+                      <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c95">
-                  <Input type="text" v-model="formRecord.c95" :disabled='disabledoff'/>
+                <FormItem prop="c72">
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
-             <tr>
+            <tr>
               <td width="80">7</td>
+              <td>风机</td>
               <td>
-                换热器
-              </td>
-              <td>
-                <FormItem prop="c97">
-                  <Input type="text" v-model="formRecord.c97" :disabled='disabledoff'/>
+                <FormItem prop="c75">
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">换热管表面积（㎡）</span>
-                    <FormItem prop="c98">
-                      <Input type="text" v-model="formRecord.c98" :disabled='disabledoff'/>
+                  <label class="mb7">
+                    <span class="w70">额定功率（W）</span>
+                    <FormItem prop="c76">
+                      <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7">
+                    <span class="w70">效率值（%）</span>
+                    <FormItem prop="c78">
+                      <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7">
+                    <span class="w70">额定转速（r/min）</span>
+                    <FormItem prop="c79">
+                      <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label><span class="w70">流量（m3/h）</span>
+                    <FormItem prop="c80">
+                      <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
               </td>
               <td>
-                <FormItem prop="c99">
-                  <Input type="text" v-model="formRecord.c99" :disabled='disabledoff'/>
+                <FormItem prop="c77">
+                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td width="80">8</td>
               <td>
-                换热器
+                风机
               </td>
               <td>
-                <FormItem prop="c100">
-                  <Input type="text" v-model="formRecord.c100" :disabled='disabledoff'/>
+                <FormItem prop="c81">
+                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">换热管表面积（㎡）</span>
-                    <FormItem prop="c101">
-                      <Input type="text" v-model="formRecord.c101" :disabled='disabledoff'/>
+                  <label class="mb7">
+                    <span class="w70">额定功率（W）</span>
+                    <FormItem prop="c82">
+                      <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7">
+                    <span class="w70">效率值（%）</span>
+                    <FormItem prop="c84">
+                      <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7">
+                    <span class="w70">额定转速（r/min）</span>
+                    <FormItem prop="c85">
+                      <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label><span class="w70">流量（m3/h）</span>
+                    <FormItem prop="c86">
+                      <Input type="text" v-model="formRecord.c86" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
-              </td>
-              <td>
-                <FormItem prop="c102">
-                  <Input type="text" v-model="formRecord.c102" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
+               </td>
+                <td>
+                  <FormItem prop="c83">
+                    <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
+                  </FormItem>
+                </td>
+              </tr>
             </tbody>
           </table>
         </Card>
@@ -929,7 +1004,6 @@
       <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-
 </template>
 <script>
   import axios from 'axios'
@@ -955,6 +1029,7 @@
     atLeastTwoDecimals,
     isInteger,
     isNumber,
+    numberCheck,
     check
   } from '@/libs/utilExt'
 
@@ -970,7 +1045,6 @@
       modal4: false,
       modal5: false,
       templatePic: '',
-      disabledoff: true,
       uploadPic: '',
       modal2: false,
       currentValue: '',
@@ -1125,14 +1199,18 @@
         attach_list: ''
       },
       forbidden: {
-        c: true,
-       
+        c1: true,
+        c7: true,
+        c10: true,
+        c13: true,
+        c35: true,
+        c200: true
       }
     }
   },
 
     mounted() {
-      this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+     // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: { 
       showTemplate() {
@@ -1191,6 +1269,9 @@
       }
     },
     computed: {
+      disabledoff(){
+        return this.$store.state.app.pageType == "extend"
+      },
       pltId() {
         return this.$store.state.app.pltId
       },
@@ -1201,7 +1282,578 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+          var nxdj = "";
+          var checkc8 = null;
+          var checkc11 = null;
+          var checkc14 = null;
+          var checkcnxdj = null;
 
+            if (parseFloat(this.formRecord.c7) * 0.95 > parseFloat(this.formRecord.c8)) {
+              checkc8 = (rule, value, callback) => {
+                callback("所填制热量实测值应不小于制热量标准规定值的95%");
+                return;
+              }   
+            } else if (parseFloat(this.formRecord.c10) * 1.10 < parseFloat(this.formRecord.c11)) {
+              checkc11 = (rule, value, callback) => {
+                callback("所填制热消耗功率实测值应不大于热消耗功率标准规定值的110%%");
+                return;
+              } 
+            } else if (parseFloat(this.formRecord.c13) * 0.95 > parseFloat(this.formRecord.c14)) {
+              checkc14 = (rule, value, callback) => {
+                callback("所填性能系数(COP)实测值应不小于性能系数(COP)标准规定值的95%%%");
+                return;
+              } 
+            } else {
+                if (parseFloat(this.formRecord.c7) < 10000) {
+                    if (this.formRecord.c20 == "普通式") {
+                        if (this.formRecord.c19== "一次加热" || $("input:radio[name=c19]:checked").val() == "循环加热式") {
+                            if (parseFloat(this.formRecord.c13) >= 4.60) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                                nxdj = "5";
+                            }
+                        } else if (this.formRecord.c19 == "静态加热式") {
+                            if (parseFloat(this.formRecord.c13) >= 4.20) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                                nxdj = "5";
+                            }
+                        }
+                    } else {
+                        if (this.formRecord.c19 == "一次加热" || this.formRecord.c19== "循环加热式") {
+                            if (parseFloat(this.formRecord.c13) >= 3.80) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.20) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.00) {
+                                nxdj = "5";
+                            }
+                        }
+                    }
+                } else {
+                    if (this.formRecord.c20 == "普通式") {
+                        if (this.formRecord.c19== "一次加热") {
+                            if (parseFloat(this.formRecord.c13) >= 4.60) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                                nxdj = "5";
+                            }
+                        } else if (this.formRecord.c19 == "静态加热式") {
+                            if (parseFloat(this.formRecord.c19) >= 4.20) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                                nxdj = "5";
+                            }
+                        }
+
+                        if (this.formRecord.c19 == "循环加热式") {
+                            if (this.formRecord.c21 == "否") {
+                                if (parseFloat(this.formRecord.c13) >= 4.60) {
+                                    nxdj = "1";
+                                } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                                    nxdj = "2";
+                                } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                                    nxdj = "3";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                                    nxdj = "4";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                                    nxdj = "5";
+                                }
+                            }
+                            if (this.formRecord.c21== "是") {
+                                if (parseFloat(this.formRecord.c13) >= 4.50) {
+                                    nxdj = "1";
+                                } else if (parseFloat(this.formRecord.c13) >= 4.30) {
+                                    nxdj = "2";
+                                } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                                    nxdj = "3";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                                    nxdj = "4";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                                    nxdj = "5";
+                                }
+                            }
+
+                        }
+                    } else if (this.formRecord.c20 == "低温式") {
+                        if (this.formRecord.c20 == "一次加热") {
+                            if (parseFloat(this.formRecord.c13) >= 3.90) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.50) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.30) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.10) {
+                                nxdj = "5";
+                            }
+                        } else if (this.formRecord.c20 == "低温式") {
+                            if (this.formRecord.c21 == "否") {
+                                if (parseFloat(this.formRecord.c13) >= 3.90) {
+                                    nxdj = "1";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                                    nxdj = "2";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.50) {
+                                    nxdj = "3";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.30) {
+                                    nxdj = "4";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.10) {
+                                    nxdj = "5";
+                                }
+                            }
+                            if (this.formRecord.c21 == "是") {
+                                if (parseFloat(this.formRecord.c13) >= 3.80) {
+                                    nxdj = "1";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                                    nxdj = "2";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                                    nxdj = "3";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.20) {
+                                    nxdj = "4";
+                                } else if (parseFloat(this.formRecord.c13) >= 3.00) {
+                                    nxdj = "5";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (nxdj == "") {
+              checkcnxdj = (rule, value, callback) => {
+                callback("能效数据不再备案范围%");
+                return;
+              } 
+            }
+            if (this.formRecord.c16 != nxdj) {
+               checkcnxdj = (rule, value, callback) => {
+                callback("所选能效等级与计算结果不符！");
+                return;
+              }
+            }
+
+        return {
+         c3: [
+            {
+              required: true,
+              message: '制造单位不能为空'
+            }
+          ],  
+         c4: [
+            {
+              required: true,
+              message: '产品规格型号不能为空'
+            }
+          ],  
+         c5: [
+            {
+              required: true,
+              message: '商标不能为空'
+            }
+          ],  
+         c16: [
+            {
+              required: true,
+              message: '能效等级不能为空'
+            }
+          ],  
+         c7: [
+            {
+              required: true,
+              message: '标注值不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],  
+         c8: [
+            {
+              required: true,
+              message: '标注值不能为空'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc8,
+              trigger: 'blur'
+            }
+          ],  
+         c10: [
+            {
+              required: true,
+              message: '标注值不能为空'
+            },
+            ,
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            }
+          ],  
+         c11: [
+            {
+              required: true,
+              message: '实测值不能为空'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc11,
+              trigger: 'blur'
+            }
+          ],  
+         c13: [
+            {
+              required: true,
+              message: '标注值不能为空'
+            },
+            {
+              validator: atLeastTwoDecimals,
+              trigger: 'blur'
+            }
+          ],  
+         c14: [
+            {
+              required: true,
+              message: '实测值不能为空'
+            },
+            {
+              validator: atLeastTwoDecimals,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc14,
+              trigger: 'blur'
+            }
+          ],  
+         c17: [
+            {
+              required: true,
+              message: '备案标识开始使用日期不能为空'
+            }
+          ],  
+         c18: [
+            {
+              required: true,
+              message: '机械类型不能为空'
+            }
+          ],  
+         c19: [
+            {
+              required: true,
+              message: '加热方式不能为空'
+            }
+          ],  
+         c20: [
+            {
+              required: true,
+              message: '产品类型不能为空'
+            }
+          ],  
+         c21: [
+            {
+              required: true,
+              message: '是否提供水泵不能为空'
+            }
+          ],  
+         c22: [
+            {
+              required: true,
+              message: '电源类型不能为空'
+            }
+          ],  
+         c23: [
+            {
+              required: true,
+              message: '额定电压不能为空'
+            }
+          ],  
+         c24: [
+            {
+              required: true,
+              message: '额定电流不能为空'
+            }
+          ],  
+         c25: [
+            {
+              required: true,
+              message: '额定频率不能为空'
+            }
+          ],  
+         c26: [
+            {
+              required: true,
+              message: '制热量不能为空'
+            }
+          ],  
+         c27: [
+            {
+              required: true,
+              message: '制热消耗功率不能为空'
+            }
+          ],  
+         c29: [
+            {
+              required: true,
+              message: '产水量不能为空'
+            }
+          ],  
+         c30: [
+            {
+              required: true,
+              message: '储水箱容量不能为空'
+            }
+          ],  
+         c31: [
+            {
+              required: true,
+              message: '储水箱额定压力不能为空'
+            }
+          ],  
+         c32: [
+            {
+              required: true,
+              message: '最高出水温度不能为空'
+            }
+          ],  
+         c33: [
+            {
+              required: true,
+              message: '最大输入功率不能为空'
+            }
+          ],  
+         c34: [
+            {
+              required: true,
+              message: '是否有辅助热源不能为空'
+            }
+          ],  
+         c35: [
+            {
+              required: true,
+              message: '辅助热源类型不能为空'
+            }
+          ],  
+         c36: [
+            {
+              required: true,
+              message: '辅助热源消耗功率不能为空'
+            }
+          ],  
+         c37: [
+            {
+              required: true,
+              message: '整机或热泵机组的长不能为空'
+            }
+          ],  
+         c38: [
+            {
+              required: true,
+              message: '整机或热泵机组的宽不能为空'
+            }
+          ],  
+         c39: [
+            {
+              required: true,
+              message: '整机或热泵机组的高不能为空'
+            }
+          ],  
+         c40: [
+            {
+              required: true,
+              message: '储水箱的长不能为空'
+            }
+          ],  
+         c41: [
+            {
+              required: true,
+              message: '储水箱的宽不能为空'
+            }
+          ],  
+         c42: [
+            {
+              required: true,
+              message: '储水箱的高不能为空'
+            }
+          ],  
+         c43: [
+            {
+              required: true,
+              message: '整机或热泵机组声压等级不能为空'
+            }
+          ],  
+         c44: [
+            {
+              required: true,
+              message: '储水箱声压等级不能为空'
+            }
+          ],  
+         c45: [
+            {
+              required: true,
+              message: '制冷剂不能为空'
+            }
+          ],  
+         c46: [
+            {
+              required: true,
+              message: '灌注量不能为空'
+            }
+          ],  
+         c47: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c48: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c49: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c50: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c51: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c57: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c58: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c59: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c60: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c65: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c66: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c67: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c68: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c69: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c75: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c76: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c77: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c78: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c79: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],  
+         c80: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ]
+        }
       }
     }
   }
