@@ -904,7 +904,7 @@
         </dd>
         <dd>
           特提出免检备案申请，扩展型号的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -916,7 +916,7 @@
         </dd>
         <dd>
           该型号的相关信息变更后的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
