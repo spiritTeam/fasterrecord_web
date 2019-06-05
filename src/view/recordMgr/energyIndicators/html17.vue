@@ -825,9 +825,9 @@
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
         我 <span class="f-company">{{formRecord.c1}}</span>
-        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">家用电冰箱-2015版</span>产品。
+        公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
+        品牌的 <span class="f-model">{{formRecord.c3}}</span>
+        型号的 <span class="f-product">交流电风扇-2008版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1128,10 +1128,8 @@
         //数据验证
         //1、能效值（实测值）大于等于能效值（标准规定值）
         const checkc25 = (rule, value, callback) => {
-          let c25 = this.formRecord.c25
-          let c5 = this.formRecord.c5
-          if (c25 != "") {
-            if (parseFloat(c25) < parseFloat(c5)) {
+          if (this.formRecord.c25 != "") {
+            if (parseFloat(this.formRecord.c25) < parseFloat(this.formRecord.c5)) {
               // $("#c25").focus();
               callback("能效值（实测值）应大于等于能效值（标准规定值）！")
             } else {
@@ -1139,8 +1137,6 @@
             }
           }
         }
-
-
 
         const checkc26 = (rule, value, callback) => {
           let edsrgl = parseInt(this.formRecord.c7);
@@ -1163,194 +1159,194 @@
           }
         }
 
-        const checkc24 = (rule, value, callback) => {
-          let nxdj = "";
-          let nxdjch = this.formRecord.c24;    //能效等级
-          let guige = this.formRecord.c14;    //规格
-          let zhonglei = this.formRecord.c13;    //种类
-          let nengxiao = parseFloat(this.formRecord.c5);    //能效值
-          let dianji = this.formRecord.c18;  //电动机类型
+        let nxdj = "";
+        let nxdjch = this.formRecord.c24;    //能效等级
+        let guige = this.formRecord.c14;    //规格
+        let zhonglei = this.formRecord.c13;    //种类
+        let nengxiao = parseFloat(this.formRecord.c5);    //能效值
+        let dianji = this.formRecord.c18;  //电动机类型
 
-          if (zhonglei != "吊扇") {
-            if (guige === "200") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 0.71) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.6) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.54) {
-                  nxdj = 3;
-                }
-              } else if (dianji === "罩极电动机") {
-                if (nengxiao >= 0.63) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.51) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.45) {
-                  nxdj = 3;
-                }
+        if (zhonglei != "吊扇") {
+          if (guige === "200") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 0.71) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.6) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.54) {
+                nxdj = 3;
               }
-            } else if (guige === "230") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 0.84) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.7) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.64) {
-                  nxdj = 3;
-                }
-              } else if (dianji === "罩极电动机") {
-                if (nengxiao >= 0.65) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.57) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.5) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "250") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 0.91) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.79) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.74) {
-                  nxdj = 3;
-                }
-              } else if (dianji === "罩极电动机") {
-                if (nengxiao >= 0.72) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.61) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.54) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "300") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 0.98) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.86) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.8) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "350") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 1.08) {
-                  nxdj = 1;
-                } else if (nengxiao >= 0.95) {
-                  nxdj = 2;
-                } else if (nengxiao >= 0.9) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "400") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 1.25) {
-                  nxdj = 1;
-                } else if (nengxiao >= 1.06) {
-                  nxdj = 2;
-                } else if (nengxiao >= 1) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "450") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 1.42) {
-                  nxdj = 1;
-                } else if (nengxiao >= 1.19) {
-                  nxdj = 2;
-                } else if (nengxiao >= 1.1) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "500") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 1.45) {
-                  nxdj = 1;
-                } else if (nengxiao >= 1.25) {
-                  nxdj = 2;
-                } else if (nengxiao >= 1.13) {
-                  nxdj = 3;
-                }
-              }
-            } else if (guige === "600") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 1.65) {
-                  nxdj = 1;
-                } else if (nengxiao >= 1.43) {
-                  nxdj = 2;
-                } else if (nengxiao >= 1.3) {
-                  nxdj = 3;
-                }
+            } else if (dianji === "罩极电动机") {
+              if (nengxiao >= 0.63) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.51) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.45) {
+                nxdj = 3;
               }
             }
-          } else {
-            if (guige === "900") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 2.95) {
-                  nxdj = 1;
-                } else if (nengxiao >= 2.87) {
-                  nxdj = 2;
-                } else if (nengxiao >= 2.75) {
-                  nxdj = 3;
-                }
+          } else if (guige === "230") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 0.84) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.7) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.64) {
+                nxdj = 3;
               }
-            } else if (guige === "1050") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 3.1) {
-                  nxdj = 1;
-                } else if (nengxiao >= 2.93) {
-                  nxdj = 2;
-                } else if (nengxiao >= 2.79) {
-                  nxdj = 3;
-                }
+            } else if (dianji === "罩极电动机") {
+              if (nengxiao >= 0.65) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.57) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.5) {
+                nxdj = 3;
               }
-            } else if (guige === "1200") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 3.22) {
-                  nxdj = 1;
-                } else if (nengxiao >= 3.08) {
-                  nxdj = 2;
-                } else if (nengxiao >= 2.93) {
-                  nxdj = 3;
-                }
+            }
+          } else if (guige === "250") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 0.91) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.79) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.74) {
+                nxdj = 3;
               }
-            } else if (guige === "1400") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 3.45) {
-                  nxdj = 1;
-                } else if (nengxiao >= 3.32) {
-                  nxdj = 2;
-                } else if (nengxiao >= 3.15) {
-                  nxdj = 3;
-                }
+            } else if (dianji === "罩极电动机") {
+              if (nengxiao >= 0.72) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.61) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.54) {
+                nxdj = 3;
               }
-            } else if (guige === "1500") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 3.68) {
-                  nxdj = 1;
-                } else if (nengxiao >= 3.52) {
-                  nxdj = 2;
-                } else if (nengxiao >= 3.33) {
-                  nxdj = 3;
-                }
+            }
+          } else if (guige === "300") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 0.98) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.86) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.8) {
+                nxdj = 3;
               }
-            } else if (guige === "1800") {
-              if (dianji === "电容电动机") {
-                if (nengxiao >= 3.81) {
-                  nxdj = 1;
-                } else if (nengxiao >= 3.67) {
-                  nxdj = 2;
-                } else if (nengxiao >= 3.47) {
-                  nxdj = 3;
-                }
+            }
+          } else if (guige === "350") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 1.08) {
+                nxdj = 1;
+              } else if (nengxiao >= 0.95) {
+                nxdj = 2;
+              } else if (nengxiao >= 0.9) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "400") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 1.25) {
+                nxdj = 1;
+              } else if (nengxiao >= 1.06) {
+                nxdj = 2;
+              } else if (nengxiao >= 1) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "450") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 1.42) {
+                nxdj = 1;
+              } else if (nengxiao >= 1.19) {
+                nxdj = 2;
+              } else if (nengxiao >= 1.1) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "500") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 1.45) {
+                nxdj = 1;
+              } else if (nengxiao >= 1.25) {
+                nxdj = 2;
+              } else if (nengxiao >= 1.13) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "600") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 1.65) {
+                nxdj = 1;
+              } else if (nengxiao >= 1.43) {
+                nxdj = 2;
+              } else if (nengxiao >= 1.3) {
+                nxdj = 3;
               }
             }
           }
+        } else {
+          if (guige === "900") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 2.95) {
+                nxdj = 1;
+              } else if (nengxiao >= 2.87) {
+                nxdj = 2;
+              } else if (nengxiao >= 2.75) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "1050") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 3.1) {
+                nxdj = 1;
+              } else if (nengxiao >= 2.93) {
+                nxdj = 2;
+              } else if (nengxiao >= 2.79) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "1200") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 3.22) {
+                nxdj = 1;
+              } else if (nengxiao >= 3.08) {
+                nxdj = 2;
+              } else if (nengxiao >= 2.93) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "1400") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 3.45) {
+                nxdj = 1;
+              } else if (nengxiao >= 3.32) {
+                nxdj = 2;
+              } else if (nengxiao >= 3.15) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "1500") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 3.68) {
+                nxdj = 1;
+              } else if (nengxiao >= 3.52) {
+                nxdj = 2;
+              } else if (nengxiao >= 3.33) {
+                nxdj = 3;
+              }
+            }
+          } else if (guige === "1800") {
+            if (dianji === "电容电动机") {
+              if (nengxiao >= 3.81) {
+                nxdj = 1;
+              } else if (nengxiao >= 3.67) {
+                nxdj = 2;
+              } else if (nengxiao >= 3.47) {
+                nxdj = 3;
+              }
+            }
+          }
+        }
 
+        const checkc24 = (rule, value, callback) => {
           if (nxdj === "") {
             callback("能效数据不在备案范围")
           } else if (nxdj != nxdjch) {

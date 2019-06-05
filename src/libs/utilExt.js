@@ -9,7 +9,7 @@ export const XhandleFormatError = (file, id, that) => {
   });
 }
 
-export const XfileHandleBeforeUpload = (file, ckey, that) => {
+export const XfileHandleBeforeUpload = (file, id, that) => {
   let fileObj = {}
   that.uploadParam['uploadFileList' + id] = []
   const Fname = file.name
