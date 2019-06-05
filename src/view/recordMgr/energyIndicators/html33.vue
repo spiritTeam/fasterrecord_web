@@ -861,7 +861,7 @@
         </dd>
         <dd>
           特提出免检备案申请，扩展型号的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -873,7 +873,7 @@
         </dd>
         <dd>
           该型号的相关信息变更后的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -1264,9 +1264,10 @@
         const checkc8 = (rule, value, callback) => {
           if (!nxdj) {
             callback("能效数据不在备案范围")
-          }
-          if (nxdj != c8) {
+          } else if (nxdj != c8) {
             callback("所选能效等级与计算结果不符")
+          } else {
+            callback()
           }
         }
 
