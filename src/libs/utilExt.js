@@ -9,7 +9,7 @@ export const XhandleFormatError = (file, id, that) => {
   });
 }
 
-export const XfileHandleBeforeUpload = (file, ckey, that) => {
+export const XfileHandleBeforeUpload = (file, id, that) => {
   let fileObj = {}
   that.uploadParam['uploadFileList' + id] = []
   const Fname = file.name
@@ -392,13 +392,8 @@ var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
 var significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
 var significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
 var inputNumber = /^[0-9]\d*$/
-<<<<<<< HEAD
-let decimal310 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3,10})$/
-
-=======
 var numberOr11 = /^[0-9]+([.]{1}[0-9]{1,1})?$/
 var decimalOr22 = /^[0-9]+[.]{1}[0-9]{1,2}?$/
->>>>>>> 461c596e9a90c4797a0194a6e83debe96a6b0f5a
 
 // 空校验规则
 export const check = (rule, value, callback) => {

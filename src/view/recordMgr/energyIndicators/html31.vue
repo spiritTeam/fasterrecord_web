@@ -24,10 +24,10 @@
           <tbody>
           <tr>
             <td width="40%">
-              <Input type="text" :value="$store.state.app.labName" readonly></Input>
+              <Input type="text" :value="$store.state.app.labName" readonly/>
             </td>
             <td>
-              <Input type="text" :value="$store.state.app.barcode" readonly></Input>
+              <Input type="text" :value="$store.state.app.barcode" readonly/>
             </td>
           </tr>
           </tbody>
@@ -38,38 +38,31 @@
       <Card :bordered="false">
         <h2>三、能源效率标识备案信息</h2>
         <FormItem prop="c1" label="生产者名称" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" readonly :disabled="help.c1"></Input>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c1" @click="showModal2('c1')"></Icon>
+          <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" readonly :disabled='disabledoff'/>
         </FormItem>
         <FormItem prop="c3" label="制造单位" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c3" placeholder="制造单位" :disabled="help.c3"></Input>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c3" @click="showModal2('c3')"></Icon>
+          <Input type="text" v-model="formRecord.c3" placeholder="制造单位" :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c36" label="备案方" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c36" placeholder="备案方" :disabled="help.c36"></Input>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c36" @click="showModal2('c36')"></Icon>
+          <Input type="text" v-model="formRecord.c36" placeholder="备案方" :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c2" label="产品规格型号" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" readonly :disabled="help.c2"></Input>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c2" @click="showModal2('c2')"></Icon>
+          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" readonly :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c4" label="商标" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled="help.c4"></Input>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c4" @click="showModal2('c4')"></Icon>
+          <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c200" label="依据国家标准" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled></Input>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c200" @click="showModal2('c200')"></Icon>
+          <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
         </FormItem>
         <FormItem prop="c6" label="能效等级" style="width:1000px;" :label-width="180">
           <RadioGroup v-model="formRecord.c6">
-            <Radio label="1" :disabled="help.c6">1级</Radio>
-            <Radio label="2" :disabled="help.c6">2级</Radio>
-            <Radio label="3" :disabled="help.c6">3级</Radio>
-            <Radio label="4" :disabled="help.c6">4级</Radio>
-            <Radio label="5" :disabled="help.c6">5级</Radio>
+            <Radio label="1" :disabled="disabledoff">1级</Radio>
+            <Radio label="2" :disabled="disabledoff">2级</Radio>
+            <Radio label="3" :disabled="disabledoff">3级</Radio>
+            <Radio label="4" :disabled="disabledoff">4级</Radio>
+            <Radio label="5" :disabled="disabledoff">5级</Radio>
           </RadioGroup>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c6" @click="showModal2('c6')"></Icon>
         </FormItem>
         <table id="table1">
           <tr>
@@ -82,14 +75,12 @@
             <td>耗电量（千瓦时/工作周期）</td>
             <td>
               <FormItem prop="c7">
-                <Input type="text" v-model="formRecord.c7" :disabled="help.c7"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c7" @click="showModal2('c7')"></Icon>
+                <Input type="text" v-model="formRecord.c7" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c8">
-                <Input type="text" v-model="formRecord.c8" :disabled="help.c8"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c8" @click="showModal2('c8')"></Icon>
+                <Input type="text" v-model="formRecord.c8" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>/</td>
@@ -98,8 +89,7 @@
             <td>单位功效耗电量</td>
             <td colspan="3">
               <FormItem prop="c37">
-                <Input type="text" v-model="formRecord.c37" :disabled="help.c37"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c37" @click="showModal2('c37')"></Icon>
+                <Input type="text" v-model="formRecord.c37" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -107,14 +97,12 @@
             <td>用水量（升/工作周期）</td>
             <td>
               <FormItem prop="c9">
-                <Input type="text" v-model="formRecord.c9" :disabled="help.c9"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c9" @click="showModal2('c9')"></Icon>
+                <Input type="text" v-model="formRecord.c9" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c10">
-                <Input type="text" v-model="formRecord.c10" :disabled="help.c10"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c10" @click="showModal2('c10')"></Icon>
+                <Input type="text" v-model="formRecord.c10" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>/</td>
@@ -123,8 +111,7 @@
             <td>单位功效用水量</td>
             <td colspan="3">
               <FormItem prop="c38">
-                <Input type="text" v-model="formRecord.c38" :disabled="help.c38"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c38" @click="showModal2('c38')"></Icon>
+                <Input type="text" v-model="formRecord.c38" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -132,20 +119,17 @@
             <td>洗净比</td>
             <td>
               <FormItem prop="c11">
-                <Input type="text" v-model="formRecord.c11" :disabled="help.c11"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c11" @click="showModal2('c11')"></Icon>
+                <Input type="text" v-model="formRecord.c11" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c12">
-                <Input type="text" v-model="formRecord.c12" :disabled="help.c12"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c12" @click="showModal2('c12')"></Icon>
+                <Input type="text" v-model="formRecord.c12" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c39">
-                <Input type="text" v-model="formRecord.c39" :disabled="help.c39"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c39" @click="showModal2('c39')"></Icon>
+                <Input type="text" v-model="formRecord.c39" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -153,15 +137,13 @@
             <td>额定洗涤容量（公斤）</td>
             <td>
               <FormItem prop="c29">
-                <Input type="text" v-model="formRecord.c29" :disabled="help.c29"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c29" @click="showModal2('c29')"></Icon>
+                <Input type="text" v-model="formRecord.c29" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>/</td>
             <td>
               <FormItem prop="c43">
-                <Input type="text" v-model="formRecord.c43" :disabled="help.c43"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c43" @click="showModal2('c43')"></Icon>
+                <Input type="text" v-model="formRecord.c43" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -169,15 +151,13 @@
             <td>额定脱水容量（公斤）</td>
             <td>
               <FormItem prop="c30">
-                <Input type="text" v-model="formRecord.c30" :disabled="help.c30"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c30" @click="showModal2('c30')"></Icon>
+                <Input type="text" v-model="formRecord.c30" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>/</td>
             <td>
               <FormItem prop="c44">
-                <Input type="text" v-model="formRecord.c44" :disabled="help.c44"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c44" @click="showModal2('c44')"></Icon>
+                <Input type="text" v-model="formRecord.c44" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -188,8 +168,7 @@
       <Card :bordered="false">
         <h2>四、初始使用日期</h2>
         <FormItem prop="c15" label="备案标识开始使用日期" style="width:1000px;">
-          <DatePicker type="date" style="width: 200px" v-model="formRecord.c15" :disabled="help.c15"></DatePicker>
-          <Icon type="ios-help-circle-outline" size="20" v-if="help.c15" @click="showModal2('c15')"></Icon>
+          <DatePicker type="date" style="width: 200px" v-model="formRecord.c15" :disabled="disabledoff"></DatePicker>
         </FormItem>
       </Card>
     </div>
@@ -202,15 +181,13 @@
             <td colspan="3">
               <FormItem prop="c27">
                 <RadioGroup v-model="formRecord.c27">
-                  <Radio label="波轮式" :disabled="help.c27">波轮式</Radio>
-                  <Radio label="滚筒式" :disabled="help.c27">滚筒式</Radio>
-                  <Radio label="搅拌式" :disabled="help.c27">搅拌式</Radio>
+                  <Radio label="波轮式" :disabled="disabledoff">波轮式</Radio>
+                  <Radio label="滚筒式" :disabled="disabledoff">滚筒式</Radio>
+                  <Radio label="搅拌式" :disabled="disabledoff">搅拌式</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c27" @click="showModal2('c27')"></Icon>
               </FormItem>
               <FormItem prop="c59">
-                <Input type="text" v-model="formRecord.c59" :disabled="formRecord.c27 !== '其他' || help.c59"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c59" @click="showModal2('c59')"></Icon>
+                <Input type="text" v-model="formRecord.c59" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -218,11 +195,10 @@
             <td colspan="3">
               <FormItem prop="c40">
                 <RadioGroup v-model="formRecord.c40">
-                  <Radio label="双桶" :disabled="help.c40">双桶</Radio>
-                  <Radio label="单桶" :disabled="help.c40">单桶</Radio>
-                  <Radio label="套桶" :disabled="help.c40">套桶</Radio>
+                  <Radio label="双桶" :disabled="disabledoff">双桶</Radio>
+                  <Radio label="单桶" :disabled="disabledoff">单桶</Radio>
+                  <Radio label="套桶" :disabled="disabledoff">套桶</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c40" @click="showModal2('c40')"></Icon>
               </FormItem>
             </td>
           </tr>
@@ -230,11 +206,10 @@
             <td colspan="3">
               <FormItem prop="c26">
                 <RadioGroup v-model="formRecord.c26">
-                  <Radio label="普通型洗衣机" :disabled="help.c26">普通型洗衣机</Radio>
-                  <Radio label="半自动型洗衣机" :disabled="help.c26">半自动型洗衣机</Radio>
-                  <Radio label="全自动型洗衣机" :disabled="help.c26">全自动型洗衣机</Radio>
+                  <Radio label="普通型洗衣机" :disabled="disabledoff">普通型洗衣机</Radio>
+                  <Radio label="半自动型洗衣机" :disabled="disabledoff">半自动型洗衣机</Radio>
+                  <Radio label="全自动型洗衣机" :disabled="disabledoff">全自动型洗衣机</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c26" @click="showModal2('c26')"></Icon>
               </FormItem>
             </td>
           </tr>
@@ -243,20 +218,18 @@
             <td width="30%">
               <FormItem prop="c41">
                 <RadioGroup v-model="formRecord.c41">
-                  <Radio label="单相" :disabled="help.c41">单相</Radio>
-                  <Radio label="三相" :disabled="help.c41">三相</Radio>
+                  <Radio label="单相" :disabled="disabledoff">单相</Radio>
+                  <Radio label="三相" :disabled="disabledoff">三相</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c41" @click="showModal2('c41')"></Icon>
               </FormItem>
             </td>
             <td width="20%">控制方式</td>
             <td width="30%">
               <FormItem prop="c25">
                 <RadioGroup v-model="formRecord.c25">
-                  <Radio label="机械" :disabled="help.c25">机械</Radio>
-                  <Radio label="电子" :disabled="help.c25">电子</Radio>
+                  <Radio label="机械" :disabled="disabledoff">机械</Radio>
+                  <Radio label="电子" :disabled="disabledoff">电子</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c25" @click="showModal2('c25')"></Icon>
               </FormItem>
             </td>
           </tr>
@@ -265,22 +238,20 @@
             <td>
               <FormItem prop="c45">
                 <RadioGroup v-model="formRecord.c45">
-                  <Radio label="有" :disabled="help.c45">有</Radio>
-                  <Radio label="无" :disabled="help.c45">无</Radio>
+                  <Radio label="有" :disabled="disabledoff">有</Radio>
+                  <Radio label="无" :disabled="disabledoff">无</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c45" @click="showModal2('c45')"></Icon>
               </FormItem>
             </td>
             <td>电动机</td>
             <td>
               <FormItem prop="c46">
                 <RadioGroup v-model="formRecord.c46">
-                  <Radio label="电容电动机" :disabled="help.c25">电容电动机</Radio>
-                  <Radio label="直流无刷电动机" :disabled="help.c25">直流无刷电动机</Radio>
-                  <Radio label="串励电动机" :disabled="help.c25">串励电动机</Radio>
-                  <Radio label="交流变频电动机" :disabled="help.c25">交流变频电动机</Radio>
+                  <Radio label="电容电动机" :disabled="disabledoff">电容电动机</Radio>
+                  <Radio label="直流无刷电动机" :disabled="disabledoff">直流无刷电动机</Radio>
+                  <Radio label="串励电动机" :disabled="disabledoff">串励电动机</Radio>
+                  <Radio label="交流变频电动机" :disabled="disabledoff">交流变频电动机</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c25" @click="showModal2('c25')"></Icon>
               </FormItem>
             </td>
           </tr>
@@ -289,20 +260,18 @@
             <td>
               <FormItem prop="c47">
                 <RadioGroup v-model="formRecord.c47">
-                  <Radio label="有" :disabled="help.c47">有</Radio>
-                  <Radio label="无" :disabled="help.c47">无</Radio>
+                  <Radio label="有" :disabled="disabledoff">有</Radio>
+                  <Radio label="无" :disabled="disabledoff">无</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c47" @click="showModal2('c47')"></Icon>
               </FormItem>
             </td>
             <td>定时器</td>
             <td>
               <FormItem prop="c50">
                 <RadioGroup v-model="formRecord.c50">
-                  <Radio label="有" :disabled="help.c50">有</Radio>
-                  <Radio label="无" :disabled="help.c50">无</Radio>
+                  <Radio label="有" :disabled="disabledoff">有</Radio>
+                  <Radio label="无" :disabled="disabledoff">无</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c50" @click="showModal2('c50')"></Icon>
               </FormItem>
             </td>
           </tr>
@@ -311,29 +280,25 @@
             <td>
               <FormItem prop="c48">
                 <RadioGroup v-model="formRecord.c48">
-                  <Radio label="排水泵" :disabled="help.c48">排水泵</Radio>
-                  <Radio label="排水牵引器" :disabled="help.c48">排水牵引器</Radio>
-                  <Radio label="其他" :disabled="help.c48">其他</Radio>
+                  <Radio label="排水泵" :disabled="disabledoff">排水泵</Radio>
+                  <Radio label="排水牵引器" :disabled="disabledoff">排水牵引器</Radio>
+                  <Radio label="其他" :disabled="disabledoff">其他</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c48" @click="showModal2('c48')"></Icon>
               </FormItem>
               <FormItem prop="c49">
-                <Input type="text" v-model="formRecord.c49" :disabled="formRecord.c48 !== '其他' || help.c49" style="width:50px;"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c49" @click="showModal2('c49')"></Icon>
+                <Input type="text" v-model="formRecord.c49" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>加热功能</td>
             <td>
               <FormItem prop="c28">
                 <RadioGroup v-model="formRecord.c28">
-                  <Radio label="有" :disabled="help.c28">有</Radio>
-                  <Radio label="无" :disabled="help.c28">无</Radio>
+                  <Radio label="有" :disabled="disabledoff">有</Radio>
+                  <Radio label="无" :disabled="disabledoff">无</Radio>
                 </RadioGroup>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c28" @click="showModal2('c28')"></Icon>
               </FormItem>
               <FormItem prop="c65" label="额定洗涤加热功率（W）" :label-width="170">
-                <Input type="text" v-model="formRecord.c65" :disabled="formRecord.c28 !== '有' || help.c65"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c65" @click="showModal2('c65')"></Icon>
+                <Input type="text" v-model="formRecord.c65" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -341,15 +306,13 @@
             <td>波轮直径</td>
             <td>
               <FormItem prop="c31">
-                <Input type="text" v-model="formRecord.c31" :disabled="help.c31"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c31" @click="showModal2('c31')"></Icon>
+                <Input type="text" v-model="formRecord.c31" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>波轮材料</td>
             <td>
               <FormItem prop="c32">
-                <Input type="text" v-model="formRecord.c32" :disabled="help.c32"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c32" @click="showModal2('c32')"></Icon>
+                <Input type="text" v-model="formRecord.c32" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -357,15 +320,13 @@
             <td>内筒直径</td>
             <td>
               <FormItem prop="c51">
-                <Input type="text" v-model="formRecord.c51" :disabled="help.c51"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c51" @click="showModal2('c51')"></Icon>
+                <Input type="text" v-model="formRecord.c51" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>内筒材料</td>
             <td>
               <FormItem prop="c34">
-                <Input type="text" v-model="formRecord.c34" :disabled="help.c34"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c34" @click="showModal2('c34')"></Icon>
+                <Input type="text" v-model="formRecord.c34" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -373,15 +334,13 @@
             <td>额定电压(V)</td>
             <td>
               <FormItem prop="c52">
-                <Input type="text" v-model="formRecord.c52" :disabled="help.c52"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c52" @click="showModal2('c52')"></Icon>
+                <Input type="text" v-model="formRecord.c52" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>额定频率(Hz)</td>
             <td>
               <FormItem prop="c53">
-                <Input type="text" v-model="formRecord.c53" :disabled="help.c53"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c53" @click="showModal2('c53')"></Icon>
+                <Input type="text" v-model="formRecord.c53" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -389,15 +348,13 @@
             <td>额定洗涤功率(W)<br />(按铭牌填写)</td>
             <td>
               <FormItem prop="c62">
-                <Input type="text" v-model="formRecord.c62" :disabled="help.c62"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c62" @click="showModal2('c62')"></Icon>
+                <Input type="text" v-model="formRecord.c62" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>额定脱水功率(W)<br />(按铭牌填写)</td>
             <td>
               <FormItem prop="c63">
-                <Input type="text" v-model="formRecord.c63" :disabled="help.c63"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c63" @click="showModal2('c63')"></Icon>
+                <Input type="text" v-model="formRecord.c63" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -405,15 +362,13 @@
             <td>额定烘干功率(W)<br />(按铭牌填写)</td>
             <td>
               <FormItem prop="c64">
-                <Input type="text" v-model="formRecord.c64" :disabled="help.c64"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c64" @click="showModal2('c64')"></Icon>
+                <Input type="text" v-model="formRecord.c64" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>额定功率(W)<br />(按铭牌填写)</td>
             <td>
               <FormItem prop="c66">
-                <Input type="text" v-model="formRecord.c66" :disabled="help.c66"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c66" @click="showModal2('c66')"></Icon>
+                <Input type="text" v-model="formRecord.c66" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -421,35 +376,29 @@
             <td>内桶尺寸（mm×mm×mm）</td>
             <td>
               <FormItem prop="c33">
-                <Input type="text" v-model="formRecord.c33" style="width:80px;" :disabled="help.c33"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c33" @click="showModal2('c33')"></Icon>
+                <Input type="text" v-model="formRecord.c33" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
               <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
               <FormItem prop="c57">
-                <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled="help.c57"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c57" @click="showModal2('c57')"></Icon>
+                <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
               <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
               <FormItem prop="c58">
-                <Input type="text" v-model="formRecord.c58" style="width:80px;" :disabled="help.c58"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c58" @click="showModal2('c58')"></Icon>
+                <Input type="text" v-model="formRecord.c58" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>外形尺寸（长×宽×高）（mm×mm×mm）</td>
             <td>
               <FormItem prop="c35">
-                <Input type="text" v-model="formRecord.c35" style="width:80px;" :disabled="help.c35"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c35" @click="showModal2('c35')"></Icon>
+                <Input type="text" v-model="formRecord.c35" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
               <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
               <FormItem prop="c55">
-                <Input type="text" v-model="formRecord.c55" style="width:80px;" :disabled="help.c55"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c55" @click="showModal2('c55')"></Icon>
+                <Input type="text" v-model="formRecord.c55" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
               <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
               <FormItem prop="c56">
-                <Input type="text" v-model="formRecord.c56" style="width:80px;" :disabled="help.c56"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c56" @click="showModal2('c56')"></Icon>
+                <Input type="text" v-model="formRecord.c56" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -479,64 +428,54 @@
           <tr>
             <td>
               <FormItem prop="c67">
-                <Input type="text" v-model="formRecord.c67" :disabled="help.c67"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c67" @click="showModal2('c67')"></Icon>
+                <Input type="text" v-model="formRecord.c67" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c68">
-                <Input type="text" v-model="formRecord.c68" :disabled="help.c68"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c68" @click="showModal2('c68')"></Icon>
+                <Input type="text" v-model="formRecord.c68" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c69">
-                <Input type="text" v-model="formRecord.c69" :disabled="help.c69"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c69" @click="showModal2('c69')"></Icon>
+                <Input type="text" v-model="formRecord.c69" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c70">
-                <Input type="text" v-model="formRecord.c70" :disabled="help.c70"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c70" @click="showModal2('c70')"></Icon>
+                <Input type="text" v-model="formRecord.c70" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c71">
-                <Input type="text" v-model="formRecord.c71" :disabled="help.c71"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c71" @click="showModal2('c71')"></Icon>
+                <Input type="text" v-model="formRecord.c71" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
           <tr>
             <td>
               <FormItem prop="c72">
-                <Input type="text" v-model="formRecord.c72" :disabled="help.c72"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c72" @click="showModal2('c72')"></Icon>
+                <Input type="text" v-model="formRecord.c72" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c73">
-                <Input type="text" v-model="formRecord.c73" :disabled="help.c73"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c73" @click="showModal2('c73')"></Icon>
+                <Input type="text" v-model="formRecord.c73" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c74">
-                <Input type="text" v-model="formRecord.c74" :disabled="help.c74"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c74" @click="showModal2('c74')"></Icon>
+                <Input type="text" v-model="formRecord.c74" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c75">
-                <Input type="text" v-model="formRecord.c75" :disabled="help.c75"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c75" @click="showModal2('c75')"></Icon>
+                <Input type="text" v-model="formRecord.c75" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c76">
-                <Input type="text" v-model="formRecord.c76" :disabled="help.c76"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c76" @click="showModal2('c76')"></Icon>
+                <Input type="text" v-model="formRecord.c76" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -552,20 +491,17 @@
             <td>定时器</td>
             <td>
               <FormItem prop="c77">
-                <Input type="text" v-model="formRecord.c77" :disabled="help.c77"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c77" @click="showModal2('c77')"></Icon>
+                <Input type="text" v-model="formRecord.c77" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c78">
-                <Input type="text" v-model="formRecord.c78" :disabled="help.c78"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c78" @click="showModal2('c78')"></Icon>
+                <Input type="text" v-model="formRecord.c78" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c79">
-                <Input type="text" v-model="formRecord.c79" :disabled="help.c79"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c79" @click="showModal2('c79')"></Icon>
+                <Input type="text" v-model="formRecord.c79" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -574,20 +510,17 @@
             <td>定时器</td>
             <td>
               <FormItem prop="c80">
-                <Input type="text" v-model="formRecord.c80" :disabled="help.c80"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c80" @click="showModal2('c80')"></Icon>
+                <Input type="text" v-model="formRecord.c80" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c81">
-                <Input type="text" v-model="formRecord.c81" :disabled="help.c81"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c81" @click="showModal2('c81')"></Icon>
+                <Input type="text" v-model="formRecord.c81" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c82">
-                <Input type="text" v-model="formRecord.c82" :disabled="help.c82"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c82" @click="showModal2('c82')"></Icon>
+                <Input type="text" v-model="formRecord.c82" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -596,20 +529,17 @@
             <td>程控器</td>
             <td>
               <FormItem prop="c83">
-                <Input type="text" v-model="formRecord.c83" :disabled="help.c83"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c83" @click="showModal2('c83')"></Icon>
+                <Input type="text" v-model="formRecord.c83" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c84">
-                <Input type="text" v-model="formRecord.c84" :disabled="help.c84"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c84" @click="showModal2('c84')"></Icon>
+                <Input type="text" v-model="formRecord.c84" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c85">
-                <Input type="text" v-model="formRecord.c85" :disabled="help.c85"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c85" @click="showModal2('c85')"></Icon>
+                <Input type="text" v-model="formRecord.c85" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -618,20 +548,17 @@
             <td>程控器</td>
             <td>
               <FormItem prop="c86">
-                <Input type="text" v-model="formRecord.c86" :disabled="help.c86"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c86" @click="showModal2('c86')"></Icon>
+                <Input type="text" v-model="formRecord.c86" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c87">
-                <Input type="text" v-model="formRecord.c87" :disabled="help.c87"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c87" @click="showModal2('c87')"></Icon>
+                <Input type="text" v-model="formRecord.c87" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c88">
-                <Input type="text" v-model="formRecord.c88" :disabled="help.c88"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c88" @click="showModal2('c88')"></Icon>
+                <Input type="text" v-model="formRecord.c88" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -640,20 +567,17 @@
             <td>电脑版</td>
             <td>
               <FormItem prop="c89">
-                <Input type="text" v-model="formRecord.c89" :disabled="help.c89"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c89" @click="showModal2('c89')"></Icon>
+                <Input type="text" v-model="formRecord.c89" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c90">
-                <Input type="text" v-model="formRecord.c90" :disabled="help.c90"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c90" @click="showModal2('c90')"></Icon>
+                <Input type="text" v-model="formRecord.c90" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c91">
-                <Input type="text" v-model="formRecord.c91" :disabled="help.c91"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c91" @click="showModal2('c91')"></Icon>
+                <Input type="text" v-model="formRecord.c91" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -662,20 +586,17 @@
             <td>电脑版</td>
             <td>
               <FormItem prop="c92">
-                <Input type="text" v-model="formRecord.c92" :disabled="help.c92"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c92" @click="showModal2('c92')"></Icon>
+                <Input type="text" v-model="formRecord.c92" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c93">
-                <Input type="text" v-model="formRecord.c93" :disabled="help.c93"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c93" @click="showModal2('c93')"></Icon>
+                <Input type="text" v-model="formRecord.c93" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c94">
-                <Input type="text" v-model="formRecord.c94" :disabled="help.c94"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c94" @click="showModal2('c94')"></Icon>
+                <Input type="text" v-model="formRecord.c94" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -684,20 +605,17 @@
             <td>电热管</td>
             <td>
               <FormItem prop="c95">
-                <Input type="text" v-model="formRecord.c95" :disabled="help.c95"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c95" @click="showModal2('c95')"></Icon>
+                <Input type="text" v-model="formRecord.c95" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c96">
-                <Input type="text" v-model="formRecord.c96" :disabled="help.c96"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c96" @click="showModal2('c96')"></Icon>
+                <Input type="text" v-model="formRecord.c96" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c97">
-                <Input type="text" v-model="formRecord.c97" :disabled="help.c97"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c97" @click="showModal2('c97')"></Icon>
+                <Input type="text" v-model="formRecord.c97" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -706,20 +624,17 @@
             <td>电热管</td>
             <td>
               <FormItem prop="c98">
-                <Input type="text" v-model="formRecord.c98" :disabled="help.c98"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c98" @click="showModal2('c98')"></Icon>
+                <Input type="text" v-model="formRecord.c98" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c99">
-                <Input type="text" v-model="formRecord.c99" :disabled="help.c99"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c99" @click="showModal2('c99')"></Icon>
+                <Input type="text" v-model="formRecord.c99" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c100">
-                <Input type="text" v-model="formRecord.c100" :disabled="help.c100"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c100" @click="showModal2('c100')"></Icon>
+                <Input type="text" v-model="formRecord.c100" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -728,20 +643,17 @@
             <td>排水泵</td>
             <td>
               <FormItem prop="c101">
-                <Input type="text" v-model="formRecord.c101" :disabled="help.c101"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c101" @click="showModal2('c101')"></Icon>
+                <Input type="text" v-model="formRecord.c101" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c102">
-                <Input type="text" v-model="formRecord.c102" :disabled="help.c102"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c102" @click="showModal2('c102')"></Icon>
+                <Input type="text" v-model="formRecord.c102" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c103">
-                <Input type="text" v-model="formRecord.c103" :disabled="help.c103"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c103" @click="showModal2('c103')"></Icon>
+                <Input type="text" v-model="formRecord.c103" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -750,20 +662,17 @@
             <td>排水泵</td>
             <td>
               <FormItem prop="c104">
-                <Input type="text" v-model="formRecord.c104" :disabled="help.c104"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c104" @click="showModal2('c104')"></Icon>
+                <Input type="text" v-model="formRecord.c104" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td colspan="3" class="tc">
               <FormItem prop="c105">
-                <Input type="text" v-model="formRecord.c105" :disabled="help.c105"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c105" @click="showModal2('c105')"></Icon>
+                <Input type="text" v-model="formRecord.c105" :disabled="disabledoff"/>
               </FormItem>
             </td>
             <td>
               <FormItem prop="c106">
-                <Input type="text" v-model="formRecord.c106" :disabled="help.c106"></Input>
-                <Icon type="ios-help-circle-outline" size="20" v-if="help.c106" @click="showModal2('c106')"></Icon>
+                <Input type="text" v-model="formRecord.c106" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
@@ -779,7 +688,7 @@
         <table>
           <tr>
             <td class="tc">3C认证证书编号</td>
-            <td><Input type="text" v-model="formRecord.c202"></Input></td>
+            <td><Input type="text" v-model="formRecord.c202"/></td>
           </tr>
         </table>
       </Card>
@@ -1031,7 +940,7 @@
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
-      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
+      <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"/>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
       <img :src="templatePic" />
@@ -1044,8 +953,8 @@
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
         我 <span  class="f-company">{{formRecord.c1}}</span>
-        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
+        公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
+        品牌的 <span  class="f-model">{{formRecord.c2}}</span>
         型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
@@ -1057,24 +966,24 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
           特提出免检备案申请，扩展型号的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="$store.state.app.pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
           该型号的相关信息变更后的初始使用日期：
-          <span class="f-date">{{formatDate(formRecord.thisDateCV)}}</span>
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
@@ -1104,6 +1013,7 @@
     significantDigits33,
     atLeastOneDecimals,
     atLeastTwoDecimals,
+    atLeastFourDecimals,
     isInteger,
     isNumber,
     check
@@ -1120,7 +1030,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        disabledoff: true,
+        //disabledoff: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1275,7 +1185,7 @@
       }
     },
     mounted() {
-      this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+     // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: {
       showTemplate() {
@@ -1331,6 +1241,9 @@
       }
     },
     computed: {
+      disabledoff(){
+        return  this.$store.state.app.pageType==='extend';
+      },     
       pltId () {
         return this.$store.state.app.pltId
       },
@@ -1346,11 +1259,6 @@
 
 
         let checkc8 = (rule, value, callback) => {
-          if (!this.help.c8 && this.formRecord.c8 !== '' && !decimal410.test(this.help.c8)) {
-            callback('至少四位小数')
-          } else {
-            callback('')
-          }
           let c8 = parseFloat(this.formRecord.c8)
           let c7 = parseFloat(this.formRecord.c7)
           if (c8 !== "" && c7 !== "") {
@@ -1364,11 +1272,6 @@
           }
         }
         let checkc10 = (rule, value, callback) => {
-          if (!this.help.c10 && this.formRecord.c10 !== '' && !decimal1.test(this.help.c10)) {
-            callback('一位小数')
-          } else {
-            callback()
-          }
           let c10 = parseFloat(this.formRecord.c10)
           let c9 = parseFloat(this.formRecord.c9)
           if (c10 !== "" && c9 !== "") {
@@ -1382,11 +1285,6 @@
           }
         }
         let checkc12 = (rule, value, callback) => {
-          if (!this.help.c12 && this.formRecord.c12 !== '' && !decimal310.test(this.help.c12)) {
-            callback('至少三位小数')
-          } else {
-            callback()
-          }
           let c11 = parseFloat(this.formRecord.c11)
           let c12 = parseFloat(this.formRecord.c12)
           if (c12 !== "" && c11 !== "") {
@@ -1400,11 +1298,6 @@
           }
         }
         let checkc11 = (rule, value, callback) => {
-          if (!this.help.c11 && this.formRecord.c11 !== '' && !decimal2.test(this.help.c11)) {
-            callback('两位小数')
-          } else {
-            callback()
-          }
           let nxdj = 0
           let c27 = this.formRecord.c27
           let c11 = parseFloat(this.formRecord.c11)
@@ -1424,41 +1317,30 @@
             callback()
           }
         }
-        let checkc29 = (rule, value, callback) => {
-          if (!this.help.c29 && this.formRecord.c29 !== '' && !decimal1.test(this.help.c29)) {
-            callback('一位小数')
-          } else {
-            callback()
-          }
-        }
-        let checkc30 = (rule, value, callback) => {
-          if (!this.help.c30 && this.formRecord.c30 !== '' && !decimal1.test(this.help.c30)) {
-            callback('一位小数')
-          } else {
-            callback()
-          }
-        }
-        let checkc38 = (rule, value, callback) => {
-          if (!this.help.c38 && this.formRecord.c38 !== '' && !decimal1.test(this.help.c38)) {
-            callback('一位小数')
-          } else {
-            callback()
-          }
-        }
-        let checkc7 = (rule, value, callback) => {
-          if (!this.help.c7 && this.formRecord.c7 !== '' && !decimal3.test(this.help.c7)) {
-            callback('三位小数')
-          } else {
-            callback()
-          }
-        }
-        let checkc37 = (rule, value, callback) => {
-          if (!this.help.c37 && this.formRecord.c37 !== '' && !decimal410.test(this.help.c37)) {
-            callback('至少四位小数')
-          } else {
-            callback()
-          }
-        }
+        const checkc6a = (rule, value, callback) => {
+          let nxdj = 0
+          let c27 = this.formRecord.c27
+          let c11 = parseFloat(this.formRecord.c11)
+          let c6 = Number(this.formRecord.c6)
+			  if (c27 == "波轮式") {
+				  if (parseFloat(c11) >= 0.90) {
+				  	nxdj = 1;
+				  } else if (parseFloat(c11) >= 0.80) {
+				  	nxdj = 2;
+				  }
+				if (c6 == 1) {
+					if (nxdj != 1) {
+						callback("所选能效等级与计算结果不符或该产品不在备案范围内！");
+					}
+				} else {
+					if (nxdj != 2) {
+						callback("所选能效等级与计算结果不符或该产品不在备案范围内！");
+					}
+				}
+			}
+    }       
+
+        
         return {
           c2: [
             {
@@ -1488,6 +1370,10 @@
             {
               required: true,
               message: '不能为空'
+            },
+            {
+              validator: checkc6a,
+              trigger: 'blur'
             }
           ],
           c7: [
@@ -1495,28 +1381,33 @@
               required: true,
               message: '不能为空'
             },
+            {
+              validator: threeDecimals,
+              trigger: 'blur'
+            }
+
             // {
             //   pattern: decimal3,
             //   message: '三位小数'
             // },
-            {
-              validator: checkc7,
-              trigger: 'blur'
-            }
           ],
           c8: [
             {
               required: true,
               message: '不能为空'
             },
-            // {
-            //   pattern: decimal410,
-            //   message: '至少四位小数'
-            // },
+            {
+              validator: atLeastFourDecimals,
+              trigger: 'blur'
+            },
             {
               validator: checkc8,
               trigger: 'blur'
             }
+            // {
+            //   pattern: decimal410,
+            //   message: '至少四位小数'
+            // },
           ],
           c9: [
             {
@@ -1533,28 +1424,36 @@
               required: true,
               message: '不能为空'
             },
-            // {
-            //   pattern: decimal1,
-            //   message: '一位小数'
-            // },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            },
             {
               validator: checkc10,
               trigger: 'blur'
             }
+            // {
+            //   pattern: decimal1,
+            //   message: '一位小数'
+            // },
           ],
           c11: [
             {
               required: true,
               message: '不能为空'
             },
-            // {
-            //   pattern: decimal2,
-            //   message: '两位小数'
-            // },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            },
             {
               validator: checkc11,
               trigger: 'blur'
             }
+            // {
+            //   pattern: decimal2,
+            //   message: '两位小数'
+            // },
           ],
           c12: [
             {
@@ -1566,11 +1465,11 @@
             //   message: '至少三位小数'
             // },
             {
-              validator: checkc12,
+              validator: atLeastThreeDecimals,
               trigger: 'blur'
             },
             {
-              validator: atLeastThreeDecimals,
+              validator: checkc12,
               trigger: 'blur'
             }
           ],
@@ -1609,28 +1508,28 @@
               required: true,
               message: '不能为空'
             },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
             // {
             //   pattern: decimal1,
             //   message: '一位小数'
             // }
-            {
-              validator: checkc29,
-              trigger: 'blur'
-            }
           ],
           c30: [
             {
               required: true,
               message: '不能为空'
             },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
             // {
             //   pattern: decimal1,
             //   message: '一位小数'
             // }
-            {
-              validator: checkc30,
-              trigger: 'blur'
-            }
           ],
           c31: [
             {
@@ -1673,28 +1572,28 @@
               required: true,
               message: '不能为空'
             },
+            {
+              validator: atLeastFourDecimals,
+              trigger: 'blur'
+            }
             // {
             //   pattern: decimal410,
             //   message: '至少四位小数'
             // },
-            {
-              validator: checkc37,
-              trigger: 'blur'
-            }
           ],
           c38: [
             {
               required: true,
               message: '不能为空'
             },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
             // {
             //   pattern: decimal1,
             //   message: '一位小数'
             // },
-            {
-              validator: checkc38,
-              trigger: 'blur'
-            }
           ],
           c39: [
             {
