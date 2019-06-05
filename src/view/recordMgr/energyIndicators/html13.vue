@@ -50,13 +50,13 @@
             <Input type="text" v-model="formRecord.c22" placeholder="备案方" :disabled='disabledoff'/>
           </FormItem>
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" placeholder="规格型号" readonly :disabled='!disabledoff'/>
+            <Input type="text" v-model="formRecord.c4" placeholder="规格型号" :disabled='!disabledoff'/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" placeholder="商标" :disabled='disabledoff'/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" :disabled='disabledoff' readonly/>
           </FormItem>
           <FormItem prop="c7" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c7">
@@ -1078,9 +1078,9 @@
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
         我 <span class="f-company">{{formRecord.c1}}</span>
-        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
+        公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
         品牌的 <span class="f-model">{{formRecord.c4}}</span>
-        型号的 <span class="f-product">家用电冰箱-2015版</span>产品。
+        型号的 <span class="f-product">储水式电热水器-2008版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1092,7 +1092,7 @@
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
           <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -1105,7 +1105,7 @@
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
           <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -1160,7 +1160,6 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        disabledoff: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1325,7 +1324,7 @@
       }
     },
     mounted() {
-      this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: {
       showTemplate() {
@@ -1384,6 +1383,9 @@
       }
     },
     computed: {
+      disabledoff(){
+        return  this.$store.state.app.pageType==='extend';
+      },
       pltId() {
         return this.$store.state.app.pltId
       },
