@@ -1313,8 +1313,7 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
-                根据企业提交的相关能效指标，系统直接生成能效表示样本
+              <td colspan="3" v-if="pltId != 244">根据企业提交的相关能效指标，系统直接生成能效表示样本
                 <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
@@ -1340,7 +1339,7 @@
                 </div>
               </td>
               <td>关系证明</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1380,7 +1379,7 @@
                 </div>
               </td>
               <td>委托代理文件</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1420,7 +1419,7 @@
                 </div>
               </td>
               <td>进口商营业执照或登记注册证明复印件</td>
-              <td>（PDF）</td>
+              <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1460,7 +1459,7 @@
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
-              <td>（PDF/JPG/PNG）</td>
+              <td>(PDF/JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
                 <div v-if='$store.state.app.pageType!="view"'>
@@ -1922,6 +1921,8 @@ export default {
     },
     showConfirm() {
       return XshowConfirm(this)
+    },
+    submitBasic() {
     },
     submitRecord() {
       return XsubmitRecord(this)
