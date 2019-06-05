@@ -391,6 +391,7 @@ var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
 var significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
 var significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
 var inputNumber = /^[0-9]\d*$/
+let decimal310 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3,10})$/
 
 
 // 空校验规则
@@ -421,6 +422,9 @@ export const atLeastOneDecimals = (rule, vaule, callback) => {
 }
 export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
+}
+export const atLeastThreeDecimals = (rule, vaule, callback) => {
+  decimal310.test(vaule) ? callback() : callback('至少三位小数');
 }
 export const isInteger = (rule, vaule, callback) => {
   integer.test(vaule) ? callback() : callback('整数');

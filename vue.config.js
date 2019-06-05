@@ -8,9 +8,9 @@ const resolve = dir => {
 const env = process.env.NODE_ENV || 'development'
 fs.writeFileSync(path.join(__dirname, './config/env.js'), `export default '${env}'
 `)
-
-
-// const apiRoot = '../'// 这里需要修改为你线上项目存放的路径
+const apiRoot = 'http://192.168.1.8:8088'
+// const apiRoot = '../'
+// 这里需要修改为你线上项目存放的路径
 // 比如你打包的文件放到服务器的my-app文件夹，域名为a.com，则应改为
 // http(s)://a.com/my-app/
 const BASE_URL = './'
@@ -24,7 +24,7 @@ module.exports = {
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
   productionSourceMap: false,
-  publicPath: BASE_URL,
+  baseUrl: BASE_URL,
   lintOnSave: false,
   // tweak internal webpack configuration.
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md

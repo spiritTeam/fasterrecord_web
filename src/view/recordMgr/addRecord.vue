@@ -10,14 +10,11 @@
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
-
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
-
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
-
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
@@ -36,8 +33,8 @@
   </Card>
 </template>
 <script>
-
-
+import {setCookie,getCookie} from '@/libs/util.js'
+import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
@@ -74,7 +71,6 @@ export default {
     Html54
   },
   mounted () {
-
     if(this.$route.params.type){
       //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
           this.$store.commit('setPageType', this.$route.params.type)
@@ -87,13 +83,10 @@ export default {
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-
         //this.modal1 = true
       }
-
       if(this.$route.params.draftData){
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
-
       }else if(this.$route.params.extendData){
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }else if(this.$route.params.viewData){
@@ -103,7 +96,6 @@ export default {
   },
   methods: {
     setNoTips () {
-
       setCookie('noTips',this.noTips.join(''),1)
       console.log(this.noTips)
     },
@@ -115,7 +107,6 @@ export default {
     showRecordTab () {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-
         //this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()
