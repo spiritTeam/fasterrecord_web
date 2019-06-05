@@ -8,7 +8,8 @@ export const XhandleFormatError = (file, id, that) => {
     desc: '请选择正确的类型文件'
   });
 }
-export const XfileHandleBeforeUpload = (file, id, that) => {
+
+export const XfileHandleBeforeUpload = (file, ckey, that) => {
   let fileObj = {}
   that.uploadParam['uploadFileList' + id] = []
   const Fname = file.name
@@ -392,7 +393,6 @@ var significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
 var significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
 var inputNumber = /^[0-9]\d*$/
 
-
 // 空校验规则
 export const check = (rule, value, callback) => {
   callback()
@@ -421,6 +421,14 @@ export const atLeastOneDecimals = (rule, vaule, callback) => {
 }
 export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
+}
+export const atLeastThreeDecimals = (rule, vaule, callback) => {
+  var atLeast3=/^[0-9]\+?(\d*\.\d{3,5})$/;
+  atLeast3.test(vaule) ? callback() : callback('至少三位小数');
+}
+export const atLeastFourDecimals = (rule, vaule, callback) => {
+  var atLeast3=/^[0-9]\+?(\d*\.\d{4,5})$/;
+  atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
 export const isInteger = (rule, vaule, callback) => {
   integer.test(vaule) ? callback() : callback('整数');
