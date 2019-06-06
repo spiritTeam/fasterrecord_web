@@ -1200,7 +1200,7 @@
       },
       forbidden: {
         c1: true,
-        c7: true,
+        c7: false,
         c10: true,
         c13: true,
         c35: true,
@@ -1282,31 +1282,100 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-          var nxdj = "";
-          var checkc8 = null;
-          var checkc11 = null;
-          var checkc14 = null;
-          var checkcnxdj = null;
-
-            if (parseFloat(this.formRecord.c7) * 0.95 > parseFloat(this.formRecord.c8)) {
-              checkc8 = (rule, value, callback) => {
-                callback("所填制热量实测值应不小于制热量标准规定值的95%");
-                return;
-              }   
-            } else if (parseFloat(this.formRecord.c10) * 1.10 < parseFloat(this.formRecord.c11)) {
-              checkc11 = (rule, value, callback) => {
-                callback("所填制热消耗功率实测值应不大于热消耗功率标准规定值的110%%");
-                return;
-              } 
-            } else if (parseFloat(this.formRecord.c13) * 0.95 > parseFloat(this.formRecord.c14)) {
-              checkc14 = (rule, value, callback) => {
-                callback("所填性能系数(COP)实测值应不小于性能系数(COP)标准规定值的95%%%");
-                return;
-              } 
+        var nxdj = "";
+        var checkc8 = null;
+        var checkc11 = null;
+        var checkc14 = null;
+        var checkcnxdj = null;
+        
+        if (parseFloat(this.formRecord.c7) * 0.95 > parseFloat(this.formRecord.c8)) {
+          checkc8 = (rule, value, callback) => {
+            callback("所填制热量实测值应不小于制热量标准规定值的95%");
+            return;
+          }   
+        } else if (parseFloat(this.formRecord.c10) * 1.10 < parseFloat(this.formRecord.c11)) {
+          checkc11 = (rule, value, callback) => {
+            callback("所填制热消耗功率实测值应不大于热消耗功率标准规定值的110%%");
+            return;
+          } 
+        } else if (parseFloat(this.formRecord.c13) * 0.95 > parseFloat(this.formRecord.c14)) {
+          checkc14 = (rule, value, callback) => {
+            callback("所填性能系数(COP)实测值应不小于性能系数(COP)标准规定值的95%%%");
+            return;
+          } 
+        } else {
+            if (parseFloat(this.formRecord.c7) < 10000) {
+                if (this.formRecord.c20 == "普通式") {
+                    if (this.formRecord.c19== "一次加热" || $("input:radio[name=c19]:checked").val() == "循环加热式") {
+                        if (parseFloat(this.formRecord.c13) >= 4.60) {
+                            nxdj = "1";
+                        } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                            nxdj = "2";
+                        } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                            nxdj = "3";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                            nxdj = "4";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                            nxdj = "5";
+                        }
+                    } else if (this.formRecord.c19 == "静态加热式") {
+                        if (parseFloat(this.formRecord.c13) >= 4.20) {
+                            nxdj = "1";
+                        } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                            nxdj = "2";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                            nxdj = "3";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                            nxdj = "4";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                            nxdj = "5";
+                        }
+                    }
+                } else {
+                    if (this.formRecord.c19 == "一次加热" || this.formRecord.c19== "循环加热式") {
+                        if (parseFloat(this.formRecord.c13) >= 3.80) {
+                            nxdj = "1";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                            nxdj = "2";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                            nxdj = "3";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.20) {
+                            nxdj = "4";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.00) {
+                            nxdj = "5";
+                        }
+                    }
+                }
             } else {
-                if (parseFloat(this.formRecord.c7) < 10000) {
-                    if (this.formRecord.c20 == "普通式") {
-                        if (this.formRecord.c19== "一次加热" || $("input:radio[name=c19]:checked").val() == "循环加热式") {
+                if (this.formRecord.c20 == "普通式") {
+                    if (this.formRecord.c19== "一次加热") {
+                        if (parseFloat(this.formRecord.c13) >= 4.60) {
+                            nxdj = "1";
+                        } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                            nxdj = "2";
+                        } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                            nxdj = "3";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                            nxdj = "4";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                            nxdj = "5";
+                        }
+                    } else if (this.formRecord.c19 == "静态加热式") {
+                        if (parseFloat(this.formRecord.c19) >= 4.20) {
+                            nxdj = "1";
+                        } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                            nxdj = "2";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                            nxdj = "3";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                            nxdj = "4";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                            nxdj = "5";
+                        }
+                    }
+
+                    if (this.formRecord.c19 == "循环加热式") {
+                        if (this.formRecord.c21 == "否") {
                             if (parseFloat(this.formRecord.c13) >= 4.60) {
                                 nxdj = "1";
                             } else if (parseFloat(this.formRecord.c13) >= 4.40) {
@@ -1318,21 +1387,50 @@
                             } else if (parseFloat(this.formRecord.c13) >= 3.70) {
                                 nxdj = "5";
                             }
-                        } else if (this.formRecord.c19 == "静态加热式") {
-                            if (parseFloat(this.formRecord.c13) >= 4.20) {
+                        }
+                        if (this.formRecord.c21== "是") {
+                            if (parseFloat(this.formRecord.c13) >= 4.50) {
                                 nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                            } else if (parseFloat(this.formRecord.c13) >= 4.30) {
                                 nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                            } else if (parseFloat(this.formRecord.c13) >= 4.00) {
                                 nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                            } else if (parseFloat(this.formRecord.c13) >= 3.80) {
                                 nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
                                 nxdj = "5";
                             }
                         }
-                    } else {
-                        if (this.formRecord.c19 == "一次加热" || this.formRecord.c19== "循环加热式") {
+
+                    }
+                } else if (this.formRecord.c20 == "低温式") {
+                    if (this.formRecord.c20 == "一次加热") {
+                        if (parseFloat(this.formRecord.c13) >= 3.90) {
+                            nxdj = "1";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                            nxdj = "2";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.50) {
+                            nxdj = "3";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.30) {
+                            nxdj = "4";
+                        } else if (parseFloat(this.formRecord.c13) >= 3.10) {
+                            nxdj = "5";
+                        }
+                    } else if (this.formRecord.c20 == "低温式") {
+                        if (this.formRecord.c21 == "否") {
+                            if (parseFloat(this.formRecord.c13) >= 3.90) {
+                                nxdj = "1";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                                nxdj = "2";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.50) {
+                                nxdj = "3";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.30) {
+                                nxdj = "4";
+                            } else if (parseFloat(this.formRecord.c13) >= 3.10) {
+                                nxdj = "5";
+                            }
+                        }
+                        if (this.formRecord.c21 == "是") {
                             if (parseFloat(this.formRecord.c13) >= 3.80) {
                                 nxdj = "1";
                             } else if (parseFloat(this.formRecord.c13) >= 3.60) {
@@ -1346,120 +1444,22 @@
                             }
                         }
                     }
-                } else {
-                    if (this.formRecord.c20 == "普通式") {
-                        if (this.formRecord.c19== "一次加热") {
-                            if (parseFloat(this.formRecord.c13) >= 4.60) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.40) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.10) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.90) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                                nxdj = "5";
-                            }
-                        } else if (this.formRecord.c19 == "静态加热式") {
-                            if (parseFloat(this.formRecord.c19) >= 4.20) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.00) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.80) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.40) {
-                                nxdj = "5";
-                            }
-                        }
-
-                        if (this.formRecord.c19 == "循环加热式") {
-                            if (this.formRecord.c21 == "否") {
-                                if (parseFloat(this.formRecord.c13) >= 4.60) {
-                                    nxdj = "1";
-                                } else if (parseFloat(this.formRecord.c13) >= 4.40) {
-                                    nxdj = "2";
-                                } else if (parseFloat(this.formRecord.c13) >= 4.10) {
-                                    nxdj = "3";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.90) {
-                                    nxdj = "4";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                                    nxdj = "5";
-                                }
-                            }
-                            if (this.formRecord.c21== "是") {
-                                if (parseFloat(this.formRecord.c13) >= 4.50) {
-                                    nxdj = "1";
-                                } else if (parseFloat(this.formRecord.c13) >= 4.30) {
-                                    nxdj = "2";
-                                } else if (parseFloat(this.formRecord.c13) >= 4.00) {
-                                    nxdj = "3";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.80) {
-                                    nxdj = "4";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                                    nxdj = "5";
-                                }
-                            }
-
-                        }
-                    } else if (this.formRecord.c20 == "低温式") {
-                        if (this.formRecord.c20 == "一次加热") {
-                            if (parseFloat(this.formRecord.c13) >= 3.90) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.50) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.30) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.10) {
-                                nxdj = "5";
-                            }
-                        } else if (this.formRecord.c20 == "低温式") {
-                            if (this.formRecord.c21 == "否") {
-                                if (parseFloat(this.formRecord.c13) >= 3.90) {
-                                    nxdj = "1";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                                    nxdj = "2";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.50) {
-                                    nxdj = "3";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.30) {
-                                    nxdj = "4";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.10) {
-                                    nxdj = "5";
-                                }
-                            }
-                            if (this.formRecord.c21 == "是") {
-                                if (parseFloat(this.formRecord.c13) >= 3.80) {
-                                    nxdj = "1";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                                    nxdj = "2";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.40) {
-                                    nxdj = "3";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.20) {
-                                    nxdj = "4";
-                                } else if (parseFloat(this.formRecord.c13) >= 3.00) {
-                                    nxdj = "5";
-                                }
-                            }
-                        }
-                    }
                 }
             }
+        }
 
-            if (nxdj == "") {
-              checkcnxdj = (rule, value, callback) => {
-                callback("能效数据不再备案范围%");
-                return;
-              } 
-            }
-            if (this.formRecord.c16 != nxdj) {
-               checkcnxdj = (rule, value, callback) => {
-                callback("所选能效等级与计算结果不符！");
-                return;
-              }
-            }
+        if (nxdj == "") {
+          checkcnxdj = (rule, value, callback) => {
+            callback("能效数据不再备案范围%");
+            return;
+          } 
+        }
+        if (this.formRecord.c16 != nxdj) {
+            checkcnxdj = (rule, value, callback) => {
+            callback("所选能效等级与计算结果不符！");
+            return;
+          }
+        }
 
         return {
          c3: [
