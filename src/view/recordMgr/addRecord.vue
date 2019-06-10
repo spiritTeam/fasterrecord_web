@@ -52,7 +52,7 @@ import Html46 from './energyIndicators/html46'
 import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
-import Html50 from './energyIndicators/html51'
+import Html51 from './energyIndicators/html51'
 import Html54 from './energyIndicators/html54'
 
 export default {
