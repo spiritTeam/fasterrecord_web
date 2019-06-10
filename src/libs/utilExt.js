@@ -425,11 +425,11 @@ export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
 }
 export const atLeastThreeDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{3,5})$/;
+  var atLeast3=/^[0-9]\+?(\d*\.\d{3,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少三位小数');
 }
 export const atLeastFourDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{4,5})$/;
+  var atLeast3=/^[0-9]\+?(\d*\.\d{4,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
 export const isInteger = (rule, vaule, callback) => {
@@ -443,4 +443,8 @@ export const numberOr1 = (rule, vaule, callback) => {
 }
 export const decimalOr2 = (rule, vaule, callback) => {
   decimalOr22.test(vaule) ? callback() : callback('一位小数或两位小数');
+}
+export const numberOrn = (rule, vaule, callback) => {
+  var tel = /^[0-9]+([.]{1}[0-9]{1,5})?$/;
+  tel.test(vaule) ? callback() : callback('整数或小数');
 }
