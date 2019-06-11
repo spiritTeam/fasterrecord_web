@@ -1220,6 +1220,7 @@
             callback()
           }
         }
+
         const checkc10 = (rule, value, callback) => {
           if (closeValsh > closeVal) {
             callback('关闭状态功率标注值应大于等于实测值')
