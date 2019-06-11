@@ -13,6 +13,7 @@
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
+          <Html39 v-if="category == 39" ref="energyIndicators39" @prevStep="step = 2"></Html39>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
@@ -52,7 +53,6 @@ import Html46 from './energyIndicators/html46'
 import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
-import Html53 from './energyIndicators/html53'
 import Html54 from './energyIndicators/html54'
 
 export default {
@@ -73,8 +73,10 @@ export default {
     Html17,
     Html23,
 	  Html29,
+    Html29,
     Html31,
     Html33,
+    Html39,
     Html46,
     Html47,
     Html48,
@@ -83,26 +85,22 @@ export default {
     Html54
   },
   mounted () {
-
     if(this.$route.params.type){
       //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
           this.$store.commit('setPageType', this.$route.params.type)
           this.$store.commit('setUpdateId',this.$route.params.id)
       //}
     }else{
-          this.$store.commit('setPageType', '')
-          this.$store.commit('setUpdateId',0)
+      this.$store.commit('setPageType', '')
+      this.$store.commit('setUpdateId',0)
     };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-
         //this.modal1 = true
       }
-
       if(this.$route.params.draftData){
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
-
       }else if(this.$route.params.extendData){
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }else if(this.$route.params.viewData){
@@ -124,7 +122,6 @@ export default {
     showRecordTab () {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-
         //this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()
