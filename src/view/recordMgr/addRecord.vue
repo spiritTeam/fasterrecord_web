@@ -21,7 +21,6 @@
           <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
           <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
-          <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
