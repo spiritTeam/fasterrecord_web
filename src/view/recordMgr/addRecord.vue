@@ -19,6 +19,7 @@
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
+          <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
         </TabPane>
@@ -56,6 +57,7 @@ import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html53 from './energyIndicators/html53'
+import Html51 from './energyIndicators/html51'
 import Html54 from './energyIndicators/html54'
 
 export default {
@@ -84,6 +86,7 @@ export default {
     Html48,
     Html50,
     Html53,
+    Html51,
     Html54
   },
   mounted () {
