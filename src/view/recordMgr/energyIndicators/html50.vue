@@ -51,7 +51,7 @@
           </FormItem>
           <FormItem prop="c45" label="备案方" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c45" :disabled='disabledoff' placeholder="备案方"/>
-          </FormItem>
+          </FormItem>            
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="产品规格型号"/>
           </FormItem>
@@ -59,7 +59,7 @@
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" />
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准"  :disabled='disabledoff' readonly/>
           </FormItem>
           <FormItem prop="c9" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c9">
@@ -149,96 +149,81 @@
             <tr>
               <td align="right"><span class="red">*</span>机器类型</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c11">
-                    <RadioGroup v-model="formRecord.c11">
-                      <Radio :disabled='disabledoff' label="工商业用和类似用途">工商业用和类似用途</Radio>
-                      <Radio :disabled='disabledoff' label="户用和类似用途">户用和类似用途</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c11">
+                  <RadioGroup v-model="formRecord.c11">
+                    <Radio :disabled='disabledoff' label="工商业用和类似用途">工商业用和类似用途</Radio>
+                    <Radio :disabled='disabledoff' label="户用和类似用途">户用和类似用途</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>冷却方式</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c12">
-                    <RadioGroup v-model="formRecord.c12">
-                      <Radio :disabled='disabledoff' label="水冷">水冷</Radio>
-                      <Radio :disabled='disabledoff' label="风冷">风冷</Radio>
-                      <Radio :disabled='disabledoff' label="蒸发冷却式">蒸发冷却式</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c12">
+                  <RadioGroup v-model="formRecord.c12">
+                    <Radio :disabled='disabledoff' label="水冷">水冷</Radio>
+                    <Radio :disabled='disabledoff' label="风冷">风冷</Radio>
+                    <Radio :disabled='disabledoff' label="蒸发冷却式">蒸发冷却式</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>模块化</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c13" style="width:100%">
-                    <RadioGroup v-model="formRecord.c13">
-                      <Radio :disabled='disabledoff' label="是">是</Radio>
-                      <Radio :disabled='disabledoff' label="否">否</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c13" style="width:100%">
+                  <RadioGroup v-model="formRecord.c13">
+                    <Radio :disabled='disabledoff' label="是">是</Radio>
+                    <Radio :disabled='disabledoff' label="否">否</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
               <td align="right"><span class="red">*</span>其他载冷剂</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c14" style="width:100%">
-                    <RadioGroup v-model="formRecord.c14">
-                      <Radio :disabled='disabledoff' label="有">有</Radio>
-                      <Radio :disabled='disabledoff' label="无">无</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c14" style="width:100%">
+                  <RadioGroup v-model="formRecord.c14">
+                    <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>热泵功能</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c15" style="width:100%">
-                    <RadioGroup v-model="formRecord.c15">
-                      <Radio :disabled='disabledoff' label="有">有</Radio>
-                      <Radio :disabled='disabledoff' label="无">无</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c15" style="width:100%">
+                  <RadioGroup v-model="formRecord.c15">
+                    <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
               <td align="right"><span class="red">*</span>部分负荷运行</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c16" style="width:100%">
-                    <RadioGroup v-model="formRecord.c16">
-                      <Radio :disabled='disabledoff' label="可以">可以</Radio>
-                      <Radio :disabled='disabledoff' label="不可以">不可以</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c16" style="width:100%">
+                  <RadioGroup v-model="formRecord.c16">
+                    <Radio :disabled='disabledoff' label="可以">可以</Radio>
+                    <Radio :disabled='disabledoff' label="不可以">不可以</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>结构形式</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c17" style="width:100%">
-                    <RadioGroup v-model="formRecord.c17">
-                      <Radio :disabled='disabledoff' label="整体式">整体式</Radio>
-                      <Radio :disabled='disabledoff' label="分体式">分体式</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c17" style="width:100%">
+                  <RadioGroup v-model="formRecord.c17">
+                    <Radio :disabled='disabledoff' label="整体式">整体式</Radio>
+                    <Radio :disabled='disabledoff' label="分体式">分体式</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>换热器(水/制冷剂)使用侧</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c18">
+                <FormItem prop="c18">
                   <CheckboxGroup v-model="formRecord.c18">
                     <Checkbox label="板式换热器" :disabled='disabledoff'>板式换热器</Checkbox>
                     <Checkbox label="套管式换热器" :disabled='disabledoff'>套管式换热器</Checkbox>
@@ -256,14 +241,12 @@
                 <FormItem prop="c57">
                   <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'/>
                 </FormItem>
-                </label>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>换热器(水/制冷剂)热源侧</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c19">
+                <FormItem prop="c19">
                   <CheckboxGroup v-model="formRecord.c19">
                     <Checkbox label="板式换热器" :disabled='disabledoff'>板式换热器</Checkbox>
                     <Checkbox label="套管式换热器" :disabled='disabledoff'>套管式换热器</Checkbox>
@@ -274,182 +257,153 @@
                 <FormItem prop="c58">
                   <Input type="text" v-model="formRecord.c58" :disabled='disabledoff || forbidden.c58'/>
                 </FormItem>
-                </label>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>膨胀阀类型</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c20">
-                    <RadioGroup v-model="formRecord.c20">
-                      <Radio :disabled='disabledoff' label="电子膨胀阀">电子膨胀阀</Radio>
-                      <Radio :disabled='disabledoff' label="热力膨胀阀">热力膨胀阀</Radio>
-                      <Radio :disabled='disabledoff' label="电动调节阀">电动调节阀</Radio>
-                      <Radio :disabled='disabledoff' label="毛细管">毛细管</Radio>
-                      <Radio :disabled='disabledoff' label="其他">其他</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                  <FormItem prop="c59">
-                    <Input type="text" v-model="formRecord.c59" :disabled='disabledoff || forbidden.c59'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c20">
+                  <RadioGroup v-model="formRecord.c20">
+                    <Radio :disabled='disabledoff' label="电子膨胀阀">电子膨胀阀</Radio>
+                    <Radio :disabled='disabledoff' label="热力膨胀阀">热力膨胀阀</Radio>
+                    <Radio :disabled='disabledoff' label="电动调节阀">电动调节阀</Radio>
+                    <Radio :disabled='disabledoff' label="毛细管">毛细管</Radio>
+                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                  </RadioGroup>
+                </FormItem>
+                <FormItem prop="c59">
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff || forbidden.c59'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>污垢系数</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c21">
-                    <Input type="text" v-model="formRecord.c21" :disabled='forbidden.c21'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c21">
+                  <Input type="text" v-model="formRecord.c21" :disabled='forbidden.c21'/>
+                </FormItem>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>油分离器</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c22" style="width:100%">
-                    <RadioGroup v-model="formRecord.c22">
-                      <Radio :disabled='disabledoff' label="有">有</Radio>
-                      <Radio :disabled='disabledoff' label="无">无</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c22" style="width:100%">
+                  <RadioGroup v-model="formRecord.c22">
+                    <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
               <td align="right"><span class="red">*</span>储液器</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c23" style="width:100%">
-                    <RadioGroup v-model="formRecord.c23">
-                        <Radio :disabled='disabledoff' label="有">有</Radio>
-                      <Radio :disabled='disabledoff' label="无">无</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c23" style="width:100%">
+                  <RadioGroup v-model="formRecord.c23">
+                      <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>辅助电加热器</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c24" style="width:100%">
-                    <RadioGroup v-model="formRecord.c24">
-                      <Radio :disabled='disabledoff' label="有">有</Radio>
-                      <Radio :disabled='disabledoff' label="无">无</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c24" style="width:100%">
+                  <RadioGroup v-model="formRecord.c24">
+                    <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
               <td align="right"><span class="red">*</span>热回收功能</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c25" style="width:100%">
-                    <RadioGroup v-model="formRecord.c25">
-                        <Radio :disabled='disabledoff' label="有">有</Radio>
-                      <Radio :disabled='disabledoff' label="无">无</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c25" style="width:100%">
+                  <RadioGroup v-model="formRecord.c25">
+                      <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>制热量</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c26">
-                    <Input type="text" v-model="formRecord.c26" :disabled='forbidden.c26'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c26">
+                  <Input type="text" v-model="formRecord.c26" :disabled='forbidden.c26'/>
+                </FormItem>
               </td>
               <td align="right"><span class="red">*</span>热泵制热消耗总电功率（kW）</td>
               <td>
-                <label class="mb7">
-                  <FormItem prop="c27">
-                    <Input type="text" v-model="formRecord.c27" :disabled='forbidden.c27'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c27">
+                  <Input type="text" v-model="formRecord.c27" :disabled='forbidden.c27'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>制热性能系数（COP）</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c28">
-                    <Input type="text" v-model="formRecord.c28" :disabled='forbidden.c28'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c28">
+                  <Input type="text" v-model="formRecord.c28" :disabled='forbidden.c28'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>电源类型</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c29">
-                    <RadioGroup v-model="formRecord.c29">
-                      <Radio :disabled='disabledoff' label="交流220V">交流220V</Radio>
-                      <Radio :disabled='disabledoff' label="交流380V">交流380V</Radio>
-                      <Radio :disabled='disabledoff' label="直流">直流</Radio>
-                      <Radio :disabled='disabledoff' label="其他">其他</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                  <FormItem prop="c60">
-                    <Input type="text" v-model="formRecord.c60" :disabled='disabledoff || forbidden.c60'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c29">
+                  <RadioGroup v-model="formRecord.c29">
+                    <Radio :disabled='disabledoff' label="交流220V">交流220V</Radio>
+                    <Radio :disabled='disabledoff' label="交流380V">交流380V</Radio>
+                    <Radio :disabled='disabledoff' label="直流">直流</Radio>
+                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                  </RadioGroup>
+                </FormItem>
+                <FormItem prop="c60">
+                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff || forbidden.c60'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>控制系统</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c30">
-                    <RadioGroup v-model="formRecord.c30">
-                      <Radio :disabled='disabledoff' label="单片机">单片机</Radio>
-                      <Radio :disabled='disabledoff' label="可编程(PLC)控制">可编程(PLC)控制</Radio>
-                      <Radio :disabled='disabledoff' label="其他">其他</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                  <FormItem prop="c61">
-                    <Input type="text" v-model="formRecord.c61" :disabled='disabledoff || forbidden.c61'/>
-                  </FormItem>
-                </label>
+                <FormItem prop="c30">
+                  <RadioGroup v-model="formRecord.c30">
+                    <Radio :disabled='disabledoff' label="单片机">单片机</Radio>
+                    <Radio :disabled='disabledoff' label="可编程(PLC)控制">可编程(PLC)控制</Radio>
+                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                  </RadioGroup>
+                </FormItem>
+                <FormItem prop="c61">
+                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff || forbidden.c61'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>是否允注制冷剂</td>
               <td colspan="3">
-                <label class="mb7">
-                  <FormItem prop="c31" style="width:100%">
-                    <RadioGroup v-model="formRecord.c31">
-                      <Radio :disabled='disabledoff' label="是">是</Radio>
-                      <Radio :disabled='disabledoff' label="否">否</Radio>
-                    </RadioGroup>
-                  </FormItem>
-                </label>
+                <FormItem prop="c31" style="width:100%">
+                  <RadioGroup v-model="formRecord.c31">
+                    <Radio :disabled='disabledoff' label="是">是</Radio>
+                    <Radio :disabled='disabledoff' label="否">否</Radio>
+                  </RadioGroup>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td align="right"><span class="red">*</span>制冷剂/灌注量(kg)</td>
               <td colspan="3">
-                <label class="mb7">
-                  <span class="w70">制冷剂:</span>
-                  <FormItem prop="c32">
-                    <Input type="text" v-model="formRecord.c32" :disabled='disabledoff'/>
-                  </FormItem>
-                </label>
-                <label class="mb7" style="padding-left:100px">
-                  <span class="w70">灌注量(kg):</span>
+                <span class="w70">制冷剂:</span>
+                <FormItem prop="c32">
+                  <Input type="text" v-model="formRecord.c32" :disabled='disabledoff'/>
+                </FormItem>
+                  <span class="w70" style="padding-left:100px">灌注量(kg):</span>
                   <FormItem prop="c33">
                     <Input type="text" v-model="formRecord.c33" :disabled='disabledoff'/>
                   </FormItem>
-                </label>
               </td>
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>整机或室内机外形尺寸<br/>(长×宽×高)<br/>(mm×mm×mm)</td>
-              <td> <label class="mb7">
+              <td> 
                 <FormItem prop="c34" style="width: 30%">
                   <Input style="vertical-align:top" type="text" v-model="formRecord.c34" :disabled='disabledoff'/>
                 </FormItem>
@@ -460,7 +414,7 @@
                  <FormItem><b>x</b></FormItem>
                 <FormItem prop="c36" style="width: 30%">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
-                </FormItem></label>
+                </FormItem>
               </td>
               <td align="right">室外机外形尺寸<br/>(长×宽×高)<br/>(mm×mm×mm)</td>
               <td>
@@ -504,24 +458,20 @@
               </td>
               <td width="330">
                 <div>
-                  <label class="mb7">
-                    <span class="w70">制冷量（瓦）</span>
-                    <FormItem prop="c70">
-                      <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">输入功率（瓦）</span>
-                    <FormItem prop="c72">
-                      <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">COP值</span>
-                    <FormItem prop="c73">
-                      <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">制冷量（瓦）</span>
+                  <FormItem prop="c70">
+                    <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">输入功率（瓦）</span>
+                  <FormItem prop="c72">
+                    <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
+                  </FormItem>
+                 <br>
+                  <span class="w70">COP值</span>
+                  <FormItem prop="c73">
+                    <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -540,24 +490,20 @@
               </td>
               <td width="330">
                 <div>
-                  <label class="mb7">
-                    <span class="w70">制冷量（瓦）</span>
-                    <FormItem prop="c75">
-                      <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">输入功率（瓦）</span>
-                    <FormItem prop="c77">
-                      <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">COP值</span>
-                    <FormItem prop="c78">
-                      <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">制冷量（瓦）</span>
+                  <FormItem prop="c75">
+                    <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">输入功率（瓦）</span>
+                  <FormItem prop="c77">
+                    <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">COP值</span>
+                  <FormItem prop="c78">
+                    <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -576,23 +522,20 @@
               </td>
               <td class="tl" width="230">
                 <div>
-                  <label class="mb7">
-                    <span class="w70">风量（m³/h）</span>
-                    <FormItem prop="c80">
-                      <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">全压（Pa）</span>
-                    <FormItem prop="c82">
-                      <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label><span class="w70">输入功率（W）</span>
-                    <FormItem prop="c83">
-                      <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">风量（m³/h）</span>
+                  <FormItem prop="c80">
+                    <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">全压（Pa）</span>
+                  <FormItem prop="c82">
+                    <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">输入功率（W）</span>
+                  <FormItem prop="c83">
+                    <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -613,23 +556,20 @@
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">风量（m³/h）</span>
-                    <FormItem prop="c85">
-                      <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">全压（Pa）</span>
-                    <FormItem prop="c87">
-                      <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label><span class="w70">输入功率（W）</span>
-                    <FormItem prop="c88">
-                      <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">风量（m³/h）</span>
+                  <FormItem prop="c85">
+                    <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">全压（Pa）</span>
+                  <FormItem prop="c87">
+                    <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">输入功率（W）</span>
+                  <FormItem prop="c88">
+                    <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -650,18 +590,15 @@
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">换热面积（㎡）</span>
-                    <FormItem prop="c90">
-                      <Input type="text" v-model="formRecord.c90" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">铜管直径（mm）</span>
-                    <FormItem prop="c92">
-                      <Input type="text" v-model="formRecord.c92" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">换热面积（㎡）</span>
+                  <FormItem prop="c90">
+                    <Input type="text" v-model="formRecord.c90" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">铜管直径（mm）</span>
+                  <FormItem prop="c92">
+                    <Input type="text" v-model="formRecord.c92" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -682,18 +619,15 @@
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">换热面积（㎡）</span>
-                    <FormItem prop="c94">
-                      <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label><br>
-                  <label class="mb7">
-                    <span class="w70">铜管直径（mm）</span>
-                    <FormItem prop="c96">
-                      <Input type="text" v-model="formRecord.c96" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">换热面积（㎡）</span>
+                  <FormItem prop="c94">
+                    <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
+                  </FormItem>
+                  <br>
+                  <span class="w70">铜管直径（mm）</span>
+                  <FormItem prop="c96">
+                    <Input type="text" v-model="formRecord.c96" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -714,12 +648,10 @@
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">换热管表面积（㎡）</span>
-                    <FormItem prop="c98">
-                      <Input type="text" v-model="formRecord.c98" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">换热管表面积（㎡）</span>
+                  <FormItem prop="c98">
+                    <Input type="text" v-model="formRecord.c98" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -740,12 +672,10 @@
               </td>
               <td class="tl" width="230">
                 <div>
-                   <label class="mb7">
-                    <span class="w70">换热管表面积（㎡）</span>
-                    <FormItem prop="c101">
-                      <Input type="text" v-model="formRecord.c101" :disabled='disabledoff'/>
-                    </FormItem>
-                  </label>
+                  <span class="w70">换热管表面积（㎡）</span>
+                  <FormItem prop="c101">
+                    <Input type="text" v-model="formRecord.c101" :disabled='disabledoff'/>
+                  </FormItem>
                 </div>
               </td>
               <td>
@@ -1106,7 +1036,6 @@
       modal4: false,
       modal5: false,
       templatePic: '',
-      disabledoff: true,
       uploadPic: '',
       modal2: false,
       currentValue: '',
@@ -1268,7 +1197,7 @@
   },
 
     mounted() {
-      this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+     // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: { 
       showTemplate() {
@@ -1327,6 +1256,9 @@
       }
     },
     computed: {
+      disabledoff(){
+        return this.$store.state.app.pageType == "extend"
+      },
       pltId() {
         return this.$store.state.app.pltId
       },
