@@ -1050,7 +1050,7 @@ export default {
       modal4: false,
       modal5: false,
       templatePic: '',
-      disabledoff: true,
+      //disabledoff: true,
       uploadPic: '',
       modal2: false,
       currentValue: '',
@@ -1205,7 +1205,7 @@ export default {
     }
   },
   mounted () {
-    this.disabledoff = this.$store.state.app.pageType == 'extend'
+    //this.disabledoff = this.$store.state.app.pageType == 'extend'
   },
     methods: {
       showTemplate() {
@@ -1261,6 +1261,9 @@ export default {
       }
     },
   computed: {
+    disabledoff(){
+      return  this.$store.state.app.pageType==='extend';
+    },   
     pltId () {
       return this.$store.state.app.pltId
     },
