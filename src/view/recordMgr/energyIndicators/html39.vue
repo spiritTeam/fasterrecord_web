@@ -1552,5 +1552,5 @@
   }
 </script>
 <style>
-  @import '../../../css/comm.css';
+@import '../../../css/comm.css';
 </style>
