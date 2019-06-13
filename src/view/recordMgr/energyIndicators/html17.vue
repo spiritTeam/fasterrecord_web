@@ -1461,8 +1461,7 @@
           c9: [
             {
               required: true,
-              message: '备案标识开始使用日期不能为空',
-              trigger: 'change,blur'
+              message: '备案标识开始使用日期不能为空'
             }
           ],
           c10: [

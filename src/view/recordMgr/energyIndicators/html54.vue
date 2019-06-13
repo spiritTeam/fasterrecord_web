@@ -2137,7 +2137,7 @@ export default {
           validator:atLeastThreeDecimals, trigger:'change,blur'
         }],
         c31: [{
-          required:true, message:'请选择开始使用日期', trigger: 'change,blur'
+          required:true, message:'备案标识开始使用日期不能为空'
         }],
         c32: [{
           required:true, message:'请选择产品类型', trigger: 'change,blur'

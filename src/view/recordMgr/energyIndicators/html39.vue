@@ -1363,6 +1363,9 @@
           }, {
             validator: checkC18C19, trigger: 'change,blur'
           }],
+          c22: [{
+            required:true, message:'备案标识开始使用日期不能为空'
+          }],
           c23: [{
             required: true, message: '请选择电源性质', trigger: 'change,blur'
           }],
