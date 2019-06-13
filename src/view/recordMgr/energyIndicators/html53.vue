@@ -151,10 +151,10 @@
                     <Radio label="两极" :disabled='disabledoff'>两极</Radio>
                     <Radio label="三极" :disabled='disabledoff'>三极</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c18">
-                      <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c18">
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>
                 </FormItem>
               </td>
             </tr>
@@ -197,10 +197,10 @@
                     <Radio label="电容式" :disabled='disabledoff'>电容式</Radio>
                     <Radio label="罩极式" :disabled='disabledoff'>罩极式</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c23">
-                      <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c23'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c23">
+                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c23'/>
                 </FormItem>
               </td>
             </tr>
@@ -212,10 +212,10 @@
                     <Radio label="机械" :disabled='disabledoff'>机械</Radio>
                     <Radio label="电子" :disabled='disabledoff'>电子</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c25">
-                      <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c25'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c25">
+                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c25'/>
                 </FormItem>
               </td>
             </tr>
@@ -238,10 +238,10 @@
                     <Radio label="ABS" :disabled='disabledoff'>ABS</Radio>
                     <Radio label="PP" :disabled='disabledoff'>PP</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c28">
-                      <Input type="text" v-model="formRecord.c28" :disabled='disabledoff || forbidden.c28'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c28">
+                  <Input type="text" v-model="formRecord.c28" :disabled='disabledoff || forbidden.c28'/>
                 </FormItem>
               </td>
             </tr>
@@ -253,10 +253,10 @@
                     <Radio label="ABS" :disabled='disabledoff'>ABS</Radio>
                     <Radio label="PP" :disabled='disabledoff'>PP</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c30">
-                      <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c30">
+                  <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30'/>
                 </FormItem>
               </td>
             </tr>
@@ -1591,36 +1591,42 @@
         return {
           c1: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '生产者名称不能为空'
             }
           ],
           c2: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '制造单位不能为空'
             }
           ],
           c3: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '备案方不能为空'
             }
           ],
           c4: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '规格型号不能为空'
             }
           ],
           c5: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '商标不能为空'
             }
           ],
           c6: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '能效等级不能为空'
             },
@@ -1631,6 +1637,7 @@
           ],
           c7: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '能效值不能为空'
             },
@@ -1641,6 +1648,7 @@
           ],
           c8: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '实测值不能为空'
             },
@@ -1651,18 +1659,21 @@
           ],
           c10: [
             {
+              trigger: 'change,blur',
               validator: numberOr1,
               trigger: 'blur'
             }
           ],
           c11: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '实测值不能为空'
             }
           ],
           c13: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '标称风量不能为空'
             },
@@ -1673,6 +1684,7 @@
           ],
           c14: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '实测值不能为空'
             },
@@ -1683,24 +1695,28 @@
           ],
           c17: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '电源线插头形式不能为空'
             }
           ],
           c19: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '额定电压不能为空'
             }
           ],
           c20: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '种类不能为空'
             }
           ],
           c21: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '规格不能为空'
             },
@@ -1711,6 +1727,7 @@
           ],
           c22: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '电动机种类不能为空'
             },
@@ -1721,44 +1738,51 @@
           ],
           c24: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '控制方式不能为空'
             }
           ],
           c26: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '控制方式不能为空'
+              message: '不能为空'
             }
           ],
           c27: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '控制方式不能为空'
+              message: '不能为空'
             }
           ],
           c29: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '控制方式不能为空'
+              message: '不能为空'
             }
           ],
           c31: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '控制方式不能为空'
+              message: '不能为空'
             }
           ],
           c32: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '控制方式不能为空'
+              message: '不能为空'
             }
           ],
           c33: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '控制方式不能为空'
+              message: '不能为空'
             }
           ]
         }
