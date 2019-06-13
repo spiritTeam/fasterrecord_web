@@ -445,6 +445,6 @@ export const decimalOr2 = (rule, vaule, callback) => {
   decimalOr22.test(vaule) ? callback() : callback('一位小数或两位小数');
 }
 export const numberOrn = (rule, vaule, callback) => {
-  var tel = /^[0-9]+([.]{1}[0-9]{1,5})?$/;
+  let tel = /^[0-9]+([.]{1}[0-9]{1,5})?$/;
   tel.test(vaule) ? callback() : callback('整数或小数');
 }
