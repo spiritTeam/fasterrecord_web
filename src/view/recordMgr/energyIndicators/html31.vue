@@ -480,13 +480,6 @@
             </td>
           </tr>
           <tr>
-            <td>/</td>
-            <td>/</td>
-            <td>/</td>
-            <td colspan="3" class="tc">额定电压</td>
-            <td>/</td>
-          </tr>
-          <tr>
             <td>2</td>
             <td>定时器</td>
             <td>
@@ -677,7 +670,7 @@
             </td>
           </tr>
           <tr>
-            <td colspan="7">备注：如上述零部件属多个生产者，均应按上述要求逐一填写。</td>
+            <td colspan="7" align="center">备注：如上述零部件属多个生产者，均应按上述要求逐一填写。</td>
           </tr>
         </table>
       </Card>
