@@ -480,13 +480,6 @@
             </td>
           </tr>
           <tr>
-            <td>/</td>
-            <td>/</td>
-            <td>/</td>
-            <td colspan="3" class="tc">额定电压</td>
-            <td>/</td>
-          </tr>
-          <tr>
             <td>2</td>
             <td>定时器</td>
             <td>
@@ -1324,20 +1317,30 @@
           let c6 = Number(this.formRecord.c6)
 			  if (c27 == "波轮式") {
 				  if (parseFloat(c11) >= 0.90) {
-				  	nxdj = 1;
+            nxdj = 1;
+            callback()
 				  } else if (parseFloat(c11) >= 0.80) {
-				  	nxdj = 2;
-				  }
+            nxdj = 2;
+            callback()
+          }else{
+            callback()
+          }
 				if (c6 == 1) {
 					if (nxdj != 1) {
-						callback("所选能效等级与计算结果不符或该产品不在备案范围内！");
-					}
+						callback("所选能效等级与计算结果不符或该产品不在备案范围内！")
+					}else{
+            callback()
+          }
 				} else {
 					if (nxdj != 2) {
-						callback("所选能效等级与计算结果不符或该产品不在备案范围内！");
-					}
+						callback("所选能效等级与计算结果不符或该产品不在备案范围内！")
+					}else{
+            callback()
+          }
 				}
-			}
+			}else{
+        callback()
+      }
     }       
 
         
