@@ -1503,7 +1503,6 @@
           ],
           c23: [
             {
-              trigger: 'change,blur',
               required: true,
               message: '附加功能不能为空'
             }

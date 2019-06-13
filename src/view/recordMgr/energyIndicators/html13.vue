@@ -1678,7 +1678,6 @@
             {
               required: this.formRecord.c17.join('').indexOf('带有开关') > -1,
               message: '带有开关不能为空',
-              trigger: 'change,blur'
             }
           ],
           c34: [
@@ -1699,7 +1698,6 @@
             {
               required: true,
               message: '控制及保护装置不能为空',
-              trigger: 'change,blur'
             }
           ],
           c18: [
