@@ -532,7 +532,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">2</td>
               <td>燃烧器</td>
               <td>
                 <FormItem prop="c70">
@@ -551,7 +551,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">3</td>
               <td>燃烧器</td>
               <td>
                 <FormItem prop="c73">
@@ -570,7 +570,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">4</td>
               <td>热交换器</td>
               <td>
                 <FormItem prop="c64">
@@ -589,7 +589,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">5</td>
               <td>热交换器</td>
               <td>
                 <FormItem prop="c76">
@@ -608,7 +608,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">6</td>
               <td>热交换器</td>
               <td>
                 <FormItem prop="c79">
@@ -627,7 +627,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">7</td>
               <td>燃气比例阀</td>
               <td>
                 <FormItem prop="c67">
@@ -646,7 +646,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">8</td>
               <td>燃气比例阀</td>
               <td>
                 <FormItem prop="c82">
@@ -665,7 +665,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">9</td>
               <td>燃气比例阀</td>
               <td>
                 <FormItem prop="c85">
@@ -1507,31 +1507,31 @@ export default {
       return {
         c1: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '生产者名称不能为空'
           }
         ],
         c2: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '制造单位不能为空'
           }
         ],
         c3: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '备案方不能为空'
           }
         ],
         c4: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '规格型号不能为空'
           }
         ],
         c7: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '能源效率等级不能为空'
           },
           {
@@ -1545,301 +1545,301 @@ export default {
         ],
         c8: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定热水热负荷额定值不能为空'
           }
         ],
         c9: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定热水热负荷实测值不能为空'
           }
         ],
         c11: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定供暖热负荷额定值不能为空'
           }
         ],
         c12: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定供暖热负荷实测值不能为空'
           }
         ],
         c14: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定热负荷热水热效率额定值不能为空'
           },
         ],
         c15: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定热负荷热水热效率实测值不能为空'
           }
         ],
         c17: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '50%额定热负荷热水热效率额定值不能为空'
           }
         ],
         c18: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '50%额定热负荷热水热效率实测值不能为空'
           }
         ],
         c20: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定热负荷供暖热效率额定值不能为空'
           }
         ],
         c21: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定热负荷供暖热效率实测值不能为空'
           }
         ],
         c23: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '30%额定热负荷供暖热效率额定值不能为空'
           }
         ],
         c24: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '30%额定热负荷供暖热效率实测值不能为空'
           }
         ],
         c26: [
           {
-            required: this.formRecord.c25 === '2',
+            trigger: 'change,blur',required: this.formRecord.c25 === '2',
             message: '初始使用日期不能为空'
           }
         ],
         c27: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '产品类别不能为空'
           }
         ],
         c28: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '是否冷凝式不能为空'
           }
         ],
         c29: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃气类别不能为空'
           }
         ],
         c30: [
           {
-            required: this.formRecord.c29 === '人工煤气',
+            trigger: 'change,blur',required: this.formRecord.c29 === '人工煤气',
             message: '人工煤气不能为空'
           }
         ],
         c31: [
           {
-            required: this.formRecord.c29 === '天然气',
+            trigger: 'change,blur',required: this.formRecord.c29 === '天然气',
             message: '天然气不能为空'
           }
         ],
         c32: [
           {
-            required: this.formRecord.c29 === '液化石油气',
+            trigger: 'change,blur',required: this.formRecord.c29 === '液化石油气',
             message: '液化石油气不能为空'
           }
         ],
         c33: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '供电电压不能为空'
           }
         ],
         c35: [
           {
-            required: this.formRecord.c34.join('').indexOf('热水') > -1,
+            trigger: 'change,blur',required: this.formRecord.c34.join('').indexOf('热水') > -1,
             message: '额定热负荷(kW)热水值不能为空'
           }
         ],
         c36: [
           {
-            required: this.formRecord.c34.join('').indexOf('供暖') > -1,
+            trigger: 'change,blur',required: this.formRecord.c34.join('').indexOf('供暖') > -1,
             message: '额定热负荷(kW)供暖值不能为空'
           }
         ],
         c37: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '供暖热输出不能为空'
           }
         ],
         c39: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '产热水能力不能为空'
           }
         ],
         c40: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '额定燃气压力不能为空'
           }
         ],
         c41: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '系统适用水压不能为空'
           }
         ],
         c42: [
           {
-            required: this.formRecord.c41.join('').indexOf('热水') > -1,
+            trigger: 'change,blur',required: this.formRecord.c41.join('').indexOf('热水') > -1,
             message: '系统适用水压(MPa)热水值不能为空'
           }
         ],
         c43: [
           {
-            required: this.formRecord.c41.join('').indexOf('供暖') > -1,
+            trigger: 'change,blur',required: this.formRecord.c41.join('').indexOf('供暖') > -1,
             message: '系统适用水压(MPa)供暖值不能为空'
           }
         ],
         c44: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '华白数不能为空'
           }
         ],
         c45: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃烧势不能为空'
           }
         ],
         c46: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '安装位置不能为空'
           }
         ],
         c47: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '给排气方式不能为空'
           }
         ],
         c48: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '热水系统自动恒温功能不能为空'
           }
         ],
         c49: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '热水系统温度显示不能为空'
           }
         ],
         c50: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃气稳压装置不能为空'
           }
         ],
         c51: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '烟气倒流保护装置不能为空'
           }
         ],
         c56: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '安全装置不能为空'
           }
         ],
         c57: [
           {
-            required: this.formRecord.c56.join('').indexOf('其他') > -1,
+            trigger: 'change,blur',required: this.formRecord.c56.join('').indexOf('其他') > -1,
             message: '安全装置其他值不能为空'
           }
         ],
         c58: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '外形尺寸(长)不能为空'
           }
         ],
         c59: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '外形尺寸(宽)不能为空'
           }
         ],
         c60: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '外形尺寸(高)不能为空'
           }
         ],
         c61: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃烧器型号规格1不能为空'
           }
         ],
         c62: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃烧器技术参数1不能为空'
           }
         ],
         c63: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃烧器生产者(全称)1不能为空'
           }
         ],
         c64: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '热交换器型号规格1不能为空'
           }
         ],
         c65: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '热交换器技术参数1不能为空'
           }
         ],
         c66: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '热交换器生产者(全称)1不能为空'
           }
         ],
         c67: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃气比例阀型号规格1不能为空'
           }
         ],
         c68: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃气比例阀技术参数1不能为空'
           }
         ],
         c69: [
           {
-            required: true,
+            trigger: 'change,blur',required: true,
             message: '燃气比例阀生产者(全称)1不能为空'
           }
         ]
