@@ -18,6 +18,7 @@
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
+          <Html42 v-if="category == 42" ref="energyIndicators42" @prevStep="step = 2"></Html42>          
         </TabPane>
         <!-- <TabPane label="性能指标">
           <PerformanceIndicators></PerformanceIndicators>
@@ -52,6 +53,7 @@ import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html54 from './energyIndicators/html54'
 import Html29 from './energyIndicators/html29'
+import Html42 from './energyIndicators/html42'
 
 export default {
   data () {
@@ -77,7 +79,8 @@ export default {
     Html48,
     Html50,
     Html54,
-	Html29
+    Html42,
+	  Html29
   },
   mounted () {
 
