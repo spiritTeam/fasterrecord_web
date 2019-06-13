@@ -13,10 +13,15 @@
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
+          <Html37 v-if="category == 37" ref="energyIndicators37" @prevStep="step = 2"></Html37>
+          <Html39 v-if="category == 39" ref="energyIndicators39" @prevStep="step = 2"></Html39>
+          <Html40 v-if="category == 40" ref="energyIndicators40" @prevStep="step = 2"></Html40>
+          <Html42 v-if="category == 42" ref="energyIndicators42" @prevStep="step = 2"></Html42>          
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
+          <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
           <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
         </TabPane>
@@ -48,10 +53,15 @@ import Html23 from './energyIndicators/html23'
 import Html29 from './energyIndicators/html29'
 import Html31 from './energyIndicators/html31'
 import Html33 from './energyIndicators/html33'
+import Html37 from './energyIndicators/html37'
+import Html39 from './energyIndicators/html39'
+import Html40 from './energyIndicators/html40'
+import Html42 from './energyIndicators/html42'
 import Html46 from './energyIndicators/html46'
 import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
+import Html53 from './energyIndicators/html53'
 import Html51 from './energyIndicators/html51'
 import Html54 from './energyIndicators/html54'
 
@@ -72,37 +82,38 @@ export default {
     Html13,
     Html17,
     Html23,
-	  Html29,
+    Html29,
     Html31,
     Html33,
+    Html37,
+    Html39,
+    Html40,
+    Html42,
     Html46,
     Html47,
     Html48,
     Html50,
+    Html53,
     Html51,
     Html54
   },
   mounted () {
-
     if(this.$route.params.type){
       //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
           this.$store.commit('setPageType', this.$route.params.type)
           this.$store.commit('setUpdateId',this.$route.params.id)
       //}
     }else{
-          this.$store.commit('setPageType', '')
-          this.$store.commit('setUpdateId',0)
+      this.$store.commit('setPageType', '')
+      this.$store.commit('setUpdateId',0)
     };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-
         //this.modal1 = true
       }
-
       if(this.$route.params.draftData){
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
-
       }else if(this.$route.params.extendData){
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
       }else if(this.$route.params.viewData){
@@ -124,7 +135,6 @@ export default {
     showRecordTab () {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-
         //this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()

@@ -425,22 +425,26 @@ export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
 }
 export const atLeastThreeDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{3,5})$/;
+  var atLeast3=/^[0-9]\+?(\d*\.\d{3,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少三位小数');
 }
 export const atLeastFourDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{4,5})$/;
+  var atLeast3=/^[0-9]\+?(\d*\.\d{4,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
 export const isInteger = (rule, vaule, callback) => {
   integer.test(vaule) ? callback() : callback('整数');
 }
 export const isNumber = (rule, vaule, callback) => {
-  number.test(vaule) ? callback() : callback('请输入数字');
+  number.test(vaule) ? callback() : callback('请输入数字'); 
 }
 export const numberOr1 = (rule, vaule, callback) => {
   numberOr11.test(vaule) ? callback() : callback('整数或一位小数');
 }
 export const decimalOr2 = (rule, vaule, callback) => {
   decimalOr22.test(vaule) ? callback() : callback('一位小数或两位小数');
+}
+export const numberOrn = (rule, vaule, callback) => {
+  let tel = /^[0-9]+([.]{1}[0-9]{1,5})?$/;
+  tel.test(vaule) ? callback() : callback('整数或小数');
 }
