@@ -1274,17 +1274,17 @@
             required: true, message: '请填写商标'
           }],
           c21: [{
-            required: true, message: '请选择能效等级'
+            required: true, message: '请选择能效等级', trigger: 'change'
           }, {
             validator: checkC21C40, trigger: 'change'
           }],
           c40: [{
-            required: true, message: '请选择产品类型'
+            required: true, message: '请选择产品类型', trigger: 'change'
           }, {
             validator: checkC21C40, trigger: 'change'
           }],
           c6: [{
-            required: true, message: '请输入全压效率标称值'
+            required: true, message: '请输入全压效率标称值', trigger: 'change,blur'
           }, {
             validator: isInteger, trigger: 'change,blur'
           }, {
@@ -1293,14 +1293,14 @@
             validator: checkC6_C21, trigger: 'change,blur'
           }],
           c7: [{
-            required: true, message: '请输入全压效率实测值'
+            required: true, message: '请输入全压效率实测值', trigger: 'change,blur'
           }, {
             validator: atLeastOneDecimals, trigger: 'change,blur'
           }, {
             validator: checkC6C7, trigger: 'change,blur'
           }],
           c9: [{
-            required: !this.forbidden.djgl, message: '请输入待机功率标称值'
+            required: !this.forbidden.djgl, message: '请输入待机功率标称值', trigger: 'change,blur'
           }, {
             validator: checkC9, trigger: 'change,blur'
           }, {
@@ -1309,14 +1309,14 @@
             validator: checkC9_C21C40, trigger: 'change,blur'
           }],
           c10: [{
-            required: !this.forbidden.djgl, message: '请输入待机功率实测值'
+            required: !this.forbidden.djgl, message: '请输入待机功率实测值', trigger: 'change,blur'
           }, {
             validator: checkC10, trigger: 'change,blur'
           }, {
             validator: checkC9C10, trigger: 'change,blur'
           }],
           c12: [{
-            required: !this.forbidden.gjgl, message: '请输入关机功率标称值'
+            required: !this.forbidden.gjgl, message: '请输入关机功率标称值', trigger: 'change,blur'
           }, {
             validator: checkC12, trigger: 'change,blur'
           }, {
@@ -1325,14 +1325,14 @@
             validator: checkC12_C21C40, trigger: 'change,blur'
           }],
           c13: [{
-            required: !this.forbidden.gjgl, message: '请输入关机功率实测值'
+            required: !this.forbidden.gjgl, message: '请输入关机功率实测值', trigger: 'change,blur'
           }, {
             validator: checkC13, trigger: 'change,blur'
           }, {
             validator: checkC12C13, trigger: 'change,blur'
           }],
           c15: [{
-            required: true, message: '请输入常态气味降低度标称值'
+            required: true, message: '请输入常态气味降低度标称值', trigger: 'change,blur'
           }, {
             validator: isInteger, trigger: 'change,blur'
           }, {
@@ -1348,7 +1348,7 @@
             validator: checkC15C16, trigger: 'change,blur'
           }],
           c18: [{
-            required: true, message: '请输入油脂分离度标称值'
+            required: true, message: '请输入油脂分离度标称值', trigger: 'change,blur'
           }, {
             validator: isInteger, trigger: 'change,blur'
           }, {
@@ -1364,22 +1364,22 @@
             validator: checkC18C19, trigger: 'change,blur'
           }],
           c23: [{
-            required: true, message: '请选择电源性质'
+            required: true, message: '请选择电源性质', trigger: 'change,blur'
           }],
           c27: [{
-            required: true, message: '请选择控制方式'
+            required: true, message: '请选择控制方式', trigger: 'change,blur'
           }],
           c24: [{
-            required: true, message: '请输入额定电压'
+            required: true, message: '请输入额定电压', trigger: 'change,blur'
           }],
           c25: [{
-            required: true, message: '请输入额定频率'
+            required: true, message: '请输入额定频率', trigger: 'change,blur'
           }],
           c26: [{
-            required: true, message: '请选择安装方式'
+            required: true, message: '请选择安装方式', trigger: 'change,blur'
           }],
           c28: [{
-            required: true, message: '请选择外观形式'
+            required: true, message: '请选择外观形式', trigger: 'change'
           }, {
             validator: (rule, value, callback) => {
               if (value!='其它') this.formRecord.c29="";
@@ -1387,49 +1387,49 @@
             }, trigger: 'change'
           }],
           c29: [{
-            required: this.formRecord.c28=='其它', message: '请输入其它外观形式'
+            required: this.formRecord.c28=='其它', message: '请输入其它外观形式', trigger: 'change,blur'
           }],
           c30: [{
-            required: true, message: '请选择过滤网'
+            required: true, message: '请选择过滤网', trigger: 'change,blur'
           }],
           c31: [{
-            required: true, message: '请输入主电机额定输入功率'
+            required: true, message: '请输入主电机额定输入功率', trigger: 'change,blur'
           }],
           c32: [{
-            required: true, message: '请输入最大照明输入功率'
+            required: true, message: '请输入最大照明输入功率', trigger: 'change,blur'
           }],
           c33: [{
-            required: true, message: '请输入整机额定输入功率'
+            required: true, message: '请输入整机额定输入功率', trigger: 'change,blur'
           }],
           c34: [{
-            required: true, message: '请输入风量'
+            required: true, message: '请输入风量', trigger: 'change,blur'
           }],
           c35: [{
-            required: true, message: '请输入最大静压'
+            required: true, message: '请输入最大静压', trigger: 'change,blur'
           }],
           c36: [{
-            required: true, message: '请输入风压'
+            required: true, message: '请输入风压', trigger: 'change,blur'
           }],
           c37: [{
-            required: true, message: '请输入噪声'
+            required: true, message: '请输入噪声', trigger: 'change,blur'
           }],
           c38: [{
-            required: true, message: '请输入外形长度尺寸'
+            required: true, message: '请输入外形长度尺寸', trigger: 'change,blur'
           }],
           c39: [{
-            required: true, message: '请输入出风罩'
+            required: true, message: '请输入出风罩', trigger: 'change,blur'
           }],
           c41: [{
-            required: true, message: '请输入牌号及规格/型号'
+            required: true, message: '请输入牌号及规格/型号', trigger: 'change,blur'
           }],
           c42: [{
-            required: true, message: '请输入生产者'
+            required: true, message: '请输入生产者', trigger: 'change,blur'
           }],
           c47: [{
-            required: true, message: '请输入牌号及规格/型号'
+            required: true, message: '请输入牌号及规格/型号', trigger: 'change,blur'
           }],
           c48: [{
-            required: true, message: '请输入生产者'
+            required: true, message: '请输入生产者', trigger: 'change,blur'
           }]
         }
       }

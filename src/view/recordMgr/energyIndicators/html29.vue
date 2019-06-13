@@ -1372,7 +1372,7 @@ import {
       return this.$store.state.app.requiredStr
     },
     ruleRecord () {
-
+      //let _c5=this.formRecord.c5;
       //辅助能源类别-其他 启用/禁用
       if (this.formRecord.c12 == '其他') {
           this.forbidden.c63 = false
@@ -1551,10 +1551,6 @@ import {
           }
         ],
         c5: [
-          {
-            required: true,
-            message: '请输入'
-          },
           {
             validator: twoDecimals,
             trigger: 'blur'
