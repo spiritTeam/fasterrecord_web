@@ -975,8 +975,8 @@
               <td colspan="2">
                 <FormItem prop="c138">
                 <CheckboxGroup v-model="formRecord.c138">
-                  <Checkbox label="膨胀阀" :disabled='disabledoff'></Checkbox>
-                  <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
+                  <Checkbox label="膨胀阀" :disabled='disabledoff' size="large"></Checkbox>
+                  <Checkbox label="毛细管" :disabled='disabledoff' size="large"></Checkbox>
                 </CheckboxGroup>
                 </FormItem>
               </td>
@@ -998,8 +998,8 @@
               <td colspan="2">
                 <FormItem prop="c187">
                 <CheckboxGroup v-model="formRecord.c187">
-                  <Checkbox label="膨胀阀" :disabled='disabledoff'></Checkbox>
-                  <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
+                  <Checkbox label="膨胀阀" :disabled='disabledoff' size="large"></Checkbox>
+                  <Checkbox label="毛细管" :disabled='disabledoff' size="large"></Checkbox>
                 </CheckboxGroup>
                 </FormItem>
               </td>
