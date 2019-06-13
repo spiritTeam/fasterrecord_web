@@ -1347,31 +1347,31 @@
         return {
           c2: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请填写制造单位'
             }
           ],
           c50: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请填写备案方'
             }
           ],
           c4: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请填写商标'
             }
           ],
           c51: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择能效等级'
             }
           ],
           c6: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1381,7 +1381,7 @@
           ],
           c7: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1396,7 +1396,7 @@
           ],
           c8: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1414,6 +1414,7 @@
           ],
           c9: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '不能为空'
             },
@@ -1424,6 +1425,7 @@
           ],
           c10: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '不能为空'
             },
@@ -1442,7 +1444,7 @@
           ],
           c11: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1460,7 +1462,7 @@
           ],
           c12: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             // {
@@ -1478,37 +1480,37 @@
           ],
           c15: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c25: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c26: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c27: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c28: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c29: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1522,7 +1524,7 @@
           ],
           c30: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1536,43 +1538,43 @@
           ],
           c31: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c32: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c33: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c34: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c35: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c36: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c37: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1586,7 +1588,7 @@
           ],
           c38: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             },
             {
@@ -1600,253 +1602,253 @@
           ],
           c39: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c40: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c41: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c43: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c44: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c45: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c46: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c47: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c48: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c49: [
             {
-              required: this.formRecord.c48 === '其他',
+              trigger: 'change,blur',required: this.formRecord.c48 === '其他',
               message: '不能为空'
             }
           ],
           c52: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c53: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c55: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c56: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c57: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c58: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c59: [
             {
-              required: this.formRecord.c27 === '其他',
+              trigger: 'change,blur',required: this.formRecord.c27 === '其他',
               message: '不能为空'
             }
           ],
           c62: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c63: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c64: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c65: [
             {
-              required: this.formRecord.c28 === '有',
+              trigger: 'change,blur',required: this.formRecord.c28 === '有',
               message: '不能为空'
             }
           ],
           c66: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c67: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c68: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c69: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c70: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c71: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c77: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c78: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c79: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c83: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c84: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c85: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c89: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c90: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c91: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c95: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c96: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c97: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c101: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c102: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c103: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ]
