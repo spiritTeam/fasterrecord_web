@@ -532,7 +532,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">2</td>
               <td>燃烧器</td>
               <td>
                 <FormItem prop="c70">
@@ -551,7 +551,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">3</td>
               <td>燃烧器</td>
               <td>
                 <FormItem prop="c73">
@@ -570,7 +570,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">4</td>
               <td>热交换器</td>
               <td>
                 <FormItem prop="c64">
@@ -589,7 +589,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">5</td>
               <td>热交换器</td>
               <td>
                 <FormItem prop="c76">
@@ -608,7 +608,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">6</td>
               <td>热交换器</td>
               <td>
                 <FormItem prop="c79">
@@ -627,7 +627,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">7</td>
               <td>燃气比例阀</td>
               <td>
                 <FormItem prop="c67">
@@ -646,7 +646,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">8</td>
               <td>燃气比例阀</td>
               <td>
                 <FormItem prop="c82">
@@ -665,7 +665,7 @@
               </td>
             </tr>
             <tr>
-              <td width="80">1</td>
+              <td width="80">9</td>
               <td>燃气比例阀</td>
               <td>
                 <FormItem prop="c85">
