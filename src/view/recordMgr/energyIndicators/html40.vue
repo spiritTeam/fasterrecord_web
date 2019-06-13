@@ -1217,7 +1217,6 @@
           ],
           c8: [
             {
-              trigger: 'change,blur',
               required: true,
               message: '备案标识开始使用日期不能为空'
             }
