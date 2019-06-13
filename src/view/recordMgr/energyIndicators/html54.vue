@@ -2033,31 +2033,31 @@ export default {
 
       return {
         c2: [{
-          required:true, message:'请填写制造单位'
+          required:true, message:'请填写制造单位', trigger: 'change,blur'
         }],
         c3: [{
-          required:true, message:'请填写备案方'
+          required:true, message:'请填写备案方', trigger: 'change,blur'
         }],
         c4: [{
-          required:true, message:'请填写规格型号'
+          required:true, message:'请填写规格型号', trigger: 'change,blur'
         }],
         c5: [{
-          required:true, message:'请填写商标'
+          required:true, message:'请填写商标', trigger: 'change,blur'
         }],
         c30: [{
-          required:true, message:'请选择能效等级'
+          required:true, message:'请选择能效等级', trigger: 'change,blur'
         },{
           validator:check_C27C30, trigger: 'change,blur'
         }],
         c6: [{
-          required:true, message:'请输入总能量消耗标称值'
+          required:true, message:'请输入总能量消耗标称值', trigger: 'change,blur'
         },{
           validator:twoDecimals, trigger: 'change,blur'
         },{
           validator:checkC6C7, trigger:'change,blur'
         }],
         c7: [{
-          required:true, message:'请输入总能量消耗实测值'
+          required:true, message:'请输入总能量消耗实测值', trigger: 'change,blur'
         },{
           validator:atLeastThreeDecimals, trigger:'change,blur'
         },{
@@ -2070,7 +2070,7 @@ export default {
           validator: atLeastTwoDecimals, trigger: 'change,blur'
         }],
         c15: [{
-          required:true, message:'请输入间室净容积标称值'
+          required:true, message:'请输入间室净容积标称值', trigger: 'change,blur'
         },{
           validator:this.formRecord.c214=="（L）"?isInteger:(
               this.formRecord.c214=="（m³）"?atLeastThreeDecimals:""
@@ -2078,7 +2078,7 @@ export default {
           trigger: 'change,blur'
         }],
         c16: [{
-          required:true, message:'请输入间室净容积实际值'
+          required:true, message:'请输入间室净容积实际值', trigger: 'change,blur'
         },{
           validator: this.formRecord.c214=="（L）"?atLeastOneDecimals:(
               this.formRecord.c214=="（m³）"?atLeastFourDecimals:""
@@ -2122,150 +2122,150 @@ export default {
           trigger: 'change,blur'
         }],
         c27: [{
-          required:true, message:'请输入能效指数标称值'
+          required:true, message:'请输入能效指数标称值', trigger: 'change,blur'
         },{
           validator:(isInteger,check_C27C30), trigger:'change,blur'
         }],
         c28: [{
-          required:true, message:'请输入能效指数实际值'
+          required:true, message:'请输入能效指数实际值', trigger: 'change,blur'
         },{
           validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c37: [{
-          required:true, message:'请输入总能量消耗的标准规定值'
+          required:true, message:'请输入总能量消耗的标准规定值', trigger: 'change,blur'
         },{
           validator:atLeastThreeDecimals, trigger:'change,blur'
         }],
         c31: [{
-          required:true, message:'请选择开始使用日期'
+          required:true, message:'备案标识开始使用日期不能为空'
         }],
         c32: [{
-          required:true, message:'请选择产品类型'
+          required:true, message:'请选择产品类型', trigger: 'change,blur'
         }],
         c33: [{
           required:this.formRecord.c32=='其它', message:'请输入其他产品类型'
         }],
         c34: [{
-          required:true, message:'请选择独立间室数量'
+          required:true, message:'请选择独立间室数量', trigger: 'change,blur'
         }],
         c35: [{
-          required:true, message:'请选择间室系列代号'
+          required:true, message:'请选择间室系列代号', trigger: 'change,blur'
         }],
         c41: [{
-          required:true, message:'请选择额定气候类型'
+          required:true, message:'请选择额定气候类型', trigger: 'change,blur'
         }],
         c42: [{
-          required:true, message:'请选择条件下的温度等级'
+          required:true, message:'请选择条件下的温度等级', trigger: 'change,blur'
         }],
         c43: [{
-          required:true, message:'请输入标准规定值'
+          required:true, message:'请输入标准规定值', trigger: 'change,blur'
         }],
         c44: [{
-          required:true, message:'请输入实测值'
+          required:true, message:'请输入实测值', trigger: 'change,blur'
         },{
           validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c222: [{
-          required:true, message:'请输入标准规定值'
+          required:true, message:'请输入标准规定值', trigger: 'change,blur'
         }],
         c223: [{
-          required:true, message:'请输入实测值'
+          required:true, message:'请输入实测值', trigger: 'change,blur'
         },{
           validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c45: [{
-          required:true, message:'请选择额定气候类型'
+          required:true, message:'请选择额定气候类型', trigger: 'change,blur'
         }],
         c46: [{
-          required:true, message:'请选择条件下的温度等级'
+          required:true, message:'请选择条件下的温度等级', trigger: 'change,blur'
         }],
         c224: [{
-          required:true, message:'请输入标准规定值'
+          required:true, message:'请输入标准规定值', trigger: 'change,blur'
         }],
         c225: [{
-          required:true, message:'请输入实测值'
+          required:true, message:'请输入实测值', trigger: 'change,blur'
         },{
           validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c47: [{
-          required:true, message:'请输入标准规定值'
+          required:true, message:'请输入标准规定值', trigger: 'change,blur'
         }],
         c48: [{
-          required:true, message:'请输入实测值'
+          required:true, message:'请输入实测值', trigger: 'change,blur'
         },{
           validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c74: [{
-          required:true, message:'请输入基准耗电量'
+          required:true, message:'请输入基准耗电量', trigger: 'change,blur'
         }],
         c79: [{
-          required:true, message:'请输入能耗调整系数k'
+          required:true, message:'请输入能耗调整系数k', trigger: 'change,blur'
         }],
         c243: [{
-          required:true, message:'请输入展示面积(实测值)'
+          required:true, message:'请输入展示面积(实测值)', trigger: 'change,blur'
         }],
         c100: [{
-          required:true, message:'请选择融霜方式'
+          required:true, message:'请选择融霜方式', trigger: 'change'
         },{
           trigger:'change',
           validator:this.formRecord.c100=='敞开式'?this.formRecord.c218="":""
         }],
         c83: [{
-          required:true, message:'请输入额定电压'
+          required:true, message:'请输入额定电压', trigger: 'change,blur'
         }],
         c84: [{
-          required:true, message:'请输入额定电流'
+          required:true, message:'请输入额定电流', trigger: 'change,blur'
         }],
         c85: [{
-          required:true, message:'请输入额定频率'
+          required:true, message:'请输入额定频率', trigger: 'change,blur'
         }],
         c93: [{
-          required:true, message:'请选择节流装置'
+          required:true, message:'请选择节流装置', trigger: 'change,blur'
         }],
         c87: [{
-          required:true, message:'请输入额定功率'
+          required:true, message:'请输入额定功率', trigger: 'change,blur'
         }],
         c94: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         }],
         c95: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         }],
         c96: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         }],
         c97: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         }],
         c238: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         },{
           trigger:'change,blur',
           validator:this.formRecord.c238=='无'?this.formRecord.c218="":""
         }],
         c105: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         }],
         c106: [{
-          required:true, message:'请选择'
+          required:true, message:'请选择', trigger: 'change,blur'
         }],
         c109: [{
-          required:true, message:'请输入制冷剂/灌注量'
+          required:true, message:'请输入制冷剂/灌注量', trigger: 'change,blur'
         }],
         c107: [{
-          required:true, message:'请选择保温层'
+          required:true, message:'请选择保温层', trigger: 'change,blur'
         }],
         c108: [{
           required:this.formRecord.c107=='其它', message:'请输入其它保温层'
         }],
         c110: [{
-          required:true, message:'请输入长'
+          required:true, message:'请输入长', trigger: 'change,blur'
         }],
         c111: [{
-          required:true, message:'请输入宽'
+          required:true, message:'请输入宽', trigger: 'change,blur'
         }],
         c112: [{
-          required:true, message:'请输入高'
+          required:true, message:'请输入高', trigger: 'change,blur'
         }]
       }
     }
