@@ -46,7 +46,7 @@
           <FormItem prop="c3" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c3" placeholder="制造单位" :disabled='disabledoff'/>
           </FormItem>
-          <FormItem prop="c22" label="备案方" style="width:100%;" :label-width="180">
+          <FormItem prop="c20" label="备案方" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c20" placeholder="备案方" :disabled='disabledoff'/>
           </FormItem>
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
