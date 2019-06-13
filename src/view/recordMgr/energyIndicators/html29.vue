@@ -409,7 +409,7 @@
                     <Radio label="碳钢管" :disabled='disabledoff'>碳钢管</Radio>
                     <Radio label="碳钢板" :disabled='disabledoff'>碳钢板</Radio>
                     <Radio label="其他" :disabled='disabledoff'>其他</Radio>
-                  </RadioGroup> 
+                  </RadioGroup>
                   <FormItem prop="c43">
                     <Input type="text" v-model="formRecord.c43" style="width:200px;" :disabled='disabledoff || forbidden.c43'/>
                   </FormItem>
@@ -1257,7 +1257,7 @@ import {
     }
   },
   mounted () {
-    
+
   },
   methods: {
     showTemplate() {
