@@ -436,7 +436,7 @@ export const isInteger = (rule, vaule, callback) => {
   integer.test(vaule) ? callback() : callback('整数');
 }
 export const isNumber = (rule, vaule, callback) => {
-  number.test(vaule) ? callback() : callback('请输入数字');
+  number.test(vaule) ? callback() : callback('请输入数字'); 
 }
 export const numberOr1 = (rule, vaule, callback) => {
   numberOr11.test(vaule) ? callback() : callback('整数或一位小数');

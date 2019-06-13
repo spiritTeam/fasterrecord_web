@@ -1737,7 +1737,7 @@ export default {
         c29: '',
         c37: '',
         c31: new Date(),
-        c32: [],
+        c32: '',
         c33: '',
         c34: [],
         c35: [],
@@ -1995,37 +1995,40 @@ export default {
       return this.$store.state.app.requiredStr
     },
     ruleRecord() {
-      var thiz=this
+      let _c6=parseFloat(this.formRecord.c6);
+      let _c7=parseFloat(this.formRecord.c7);
+      let _nxzs=this.formRecord.c27;//能效指数
+      let _nxdj=this.formRecord.c30;//能效等级
+
       /**一、以下为检测函数 */
       /**1.1 */
       let checkC6C7=(rule, value, callback) => {
         let _msg=null
-        if (thiz.formRecord.c7&&thiz.formRecord.c6) {
+        if (_c6&&_c7) {
           try {
-            if (parseFloat(thiz.formRecord.c7)>(parseFloat(thiz.formRecord.c6)*1.05)) {
-              _msg="总能量消耗实测值不能大于标称值(额定值)的105%！"
+            if (_c7>(parseFloat(_c6)*1.05)) {
+              _msg="总能量消耗实测值不能大于标称值(额定值)的105%！";
             }
           } catch(e) {}
         }
-        if (_msg) callback(_msg)
-        else callback()
+        if (_msg) callback(_msg);
+        else callback();
       }
-      var check_C27C30=(rule, value, callback) => {
-        let _msg=""
+      let check_C27C30=(rule, value, callback) => {
+        let _msg="";
 
         var nxdj=0
-        var n=parseFloat(thiz.formRecord.c27)
-        if (n<=55) nxdj=1; else
-        if (55<n && n<=65)  nxdj=2; else
-        if (65<n && n<=80)  nxdj=3; else
-        if (80<n && n<=90)  nxdj=4; else
-        if (90<n && n<=100) nxdj=5;
+        if (_nxzs<=55) nxdj=1; else
+        if (55<_nxzs && _nxzs<=65)  nxdj=2; else
+        if (65<_nxzs && _nxzs<=80)  nxdj=3; else
+        if (80<_nxzs && _nxzs<=90)  nxdj=4; else
+        if (90<_nxzs && _nxzs<=100) nxdj=5;
 
         if (nxdj==0) _msg="能效数据不在备案范围"; else
-        if (thiz.formRecord.c30!=nxdj) _msg="能效数据不在备案范围";
+        if (_nxdj!=nxdj) _msg="能效数据不在备案范围";
 
-        if (_msg) callback(_msg)
-        else callback()
+        if (_msg) callback(_msg);
+        else callback();
       }
 
       return {
@@ -2044,27 +2047,27 @@ export default {
         c30: [{
           required:true, message:'请选择能效等级'
         },{
-          validator:check_C27C30, trigger: 'change'
+          validator:check_C27C30, trigger: 'change,blur'
         }],
         c6: [{
           required:true, message:'请输入总能量消耗标称值'
         },{
-          validator:twoDecimals, trigger: 'blur'
+          validator:twoDecimals, trigger: 'change,blur'
         },{
-          validator:checkC6C7, trigger:'blur'
+          validator:checkC6C7, trigger:'change,blur'
         }],
         c7: [{
           required:true, message:'请输入总能量消耗实测值'
         },{
-          validator:atLeastThreeDecimals, trigger:'blur'
+          validator:atLeastThreeDecimals, trigger:'change,blur'
         },{
-          validator:checkC6C7, trigger:'blur'
+          validator:checkC6C7, trigger:'change,blur'
         }],
         c9: [{
-          validator:twoDecimals, trigger: 'change'
+          validator:twoDecimals, trigger: 'change,blur'
         }],
         c10: [{
-          validator: atLeastTwoDecimals, trigger: 'change'
+          validator: atLeastTwoDecimals, trigger: 'change,blur'
         }],
         c15: [{
           required:true, message:'请输入间室净容积标称值'
@@ -2072,7 +2075,7 @@ export default {
           validator:this.formRecord.c214=="（L）"?isInteger:(
               this.formRecord.c214=="（m³）"?atLeastThreeDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c16: [{
           required:true, message:'请输入间室净容积实际值'
@@ -2080,58 +2083,58 @@ export default {
           validator: this.formRecord.c214=="（L）"?atLeastOneDecimals:(
               this.formRecord.c214=="（m³）"?atLeastFourDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c18: [{
           validator: this.formRecord.c215=="（L）"?isInteger:(
               this.formRecord.c215=="（m³）"?atLeastThreeDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c19: [{
           validator: this.formRecord.c215=="（L）"?atLeastOneDecimals:(
               this.formRecord.c215=="（m³）"?atLeastFourDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c21: [{
           validator: this.formRecord.c216=="（L）"?isInteger:(
               this.formRecord.c216=="（m³）"?atLeastThreeDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c22: [{
           validator: this.formRecord.c216=="（L）"?atLeastOneDecimals:(
               this.formRecord.c216=="（m³）"?atLeastFourDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c24: [{
           validator: this.formRecord.c217=="（L）"?isInteger:(
               this.formRecord.c217=="（m³）"?atLeastThreeDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c25: [{
           validator: this.formRecord.c217=="（L）"?atLeastOneDecimals:(
               this.formRecord.c217=="（m³）"?atLeastFourDecimals:""
             ),
-          trigger: 'change'
+          trigger: 'change,blur'
         }],
         c27: [{
           required:true, message:'请输入能效指数标称值'
         },{
-          validator:(isInteger,check_C27C30), trigger:'change'
+          validator:(isInteger,check_C27C30), trigger:'change,blur'
         }],
         c28: [{
           required:true, message:'请输入能效指数实际值'
         },{
-          validator:atLeastOneDecimals, trigger:'change'
+          validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c37: [{
           required:true, message:'请输入总能量消耗的标准规定值'
         },{
-          validator:atLeastThreeDecimals, trigger:'change'
+          validator:atLeastThreeDecimals, trigger:'change,blur'
         }],
         c31: [{
           required:true, message:'请选择开始使用日期'
@@ -2160,7 +2163,7 @@ export default {
         c44: [{
           required:true, message:'请输入实测值'
         },{
-          validator:atLeastOneDecimals, trigger:'change'
+          validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c222: [{
           required:true, message:'请输入标准规定值'
@@ -2168,7 +2171,7 @@ export default {
         c223: [{
           required:true, message:'请输入实测值'
         },{
-          validator:atLeastOneDecimals, trigger:'change'
+          validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c45: [{
           required:true, message:'请选择额定气候类型'
@@ -2182,7 +2185,7 @@ export default {
         c225: [{
           required:true, message:'请输入实测值'
         },{
-          validator:atLeastOneDecimals, trigger:'change'
+          validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c47: [{
           required:true, message:'请输入标准规定值'
@@ -2190,7 +2193,7 @@ export default {
         c48: [{
           required:true, message:'请输入实测值'
         },{
-          validator:atLeastOneDecimals, trigger:'change'
+          validator:atLeastOneDecimals, trigger:'change,blur'
         }],
         c74: [{
           required:true, message:'请输入基准耗电量'
@@ -2237,7 +2240,7 @@ export default {
         c238: [{
           required:true, message:'请选择'
         },{
-          trigger:'change',
+          trigger:'change,blur',
           validator:this.formRecord.c238=='无'?this.formRecord.c218="":""
         }],
         c105: [{
