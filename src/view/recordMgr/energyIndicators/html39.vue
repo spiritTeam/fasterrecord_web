@@ -481,7 +481,7 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">根据企业提交的相关能效指标，系统直接生成能效表示样本
+              <td colspan="3" v-if="pltId!=244">根据企业提交的相关能效指标，系统直接生成能效表示样本
                 <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
@@ -741,8 +741,7 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -754,8 +753,7 @@
       <dl v-if="$store.state.app.pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
-                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -803,7 +801,7 @@
 
   export default {
     data() {
-      const timeDate = this.$store.state.app.dateinit;
+      const timeDate=this.$store.state.app.dateinit;
       return {
         checkC21C40Msg: "",
         thisDateCV: "c22",  //当前初始使用日期 对应的C值
@@ -916,18 +914,18 @@
       }
     },
     mounted() {
-      //this.disabledoff=(this.$store.state.app.pageType == "extend" ? true : false)
+      //this.disabledoff=(this.$store.state.app.pageType=="extend" ? true : false)
     },
     methods: {
       showTemplate() {
-        this.templatePic = this.$store.state.app.pltPic
-        this.modal3 = true
+        this.templatePic=this.$store.state.app.pltPic
+        this.modal3=true
       },
       prevStep() {
         this.$emit('prevStep')
       },
       getRandom(type) {
-        return (Math.random().toString().slice(2)) + type
+        return (Math.random().toString().slice(2))+type
       },
       handleFormatError(file, id) {
         return XhandleFormatError(file, id, this)
@@ -945,8 +943,8 @@
         return XfillDraftData(params, this)
       },
       showImg(path) {
-        this.uploadPic = path;
-        this.modal4 = true
+        this.uploadPic=path;
+        this.modal4=true
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -971,7 +969,7 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        this['checkmark'+id]=true
       }
     },
     computed: {
@@ -988,388 +986,278 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        var thiz = this;
+        //拿出需要检测的变量
+        let _c21=this.formRecord.c21;//能效等级
+        let _c40=this.formRecord.c40;//产品类型
+
+        let  _c6=parseFloat( this.formRecord.c6);
+        let  _c7=parseFloat( this.formRecord.c7);
+        let  _c9=parseFloat( this.formRecord.c9);
+        let _c10=parseFloat(this.formRecord.c10);
+        let _c12=parseFloat(this.formRecord.c12);
+        let _c13=parseFloat(this.formRecord.c13);
+        let _c15=parseFloat(this.formRecord.c15);
+        let _c16=parseFloat(this.formRecord.c16);
+        let _c18=parseFloat(this.formRecord.c18);
+        let _c19=parseFloat(this.formRecord.c19);
+
         /**一、以下为检测函数 */
         /**1.0-基础校验 */
-        let checkC9 = (rule, value, callback) => {
-          let _msg = null
-          if (!thiz.forbidden.djgl) {
-            if (!sCheck.isInteger(value)) _msg = '整数'
-          }
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC9=(rule, value, callback) => {
+          let _msg=null;
+          if (!this.forbidden.djgl&&!sCheck.number.isOneDecimal(value)) _msg='一位小数';
+          if (_msg) callback(_msg);
+          else callback();
+        }
+        let checkC10=(rule, value, callback) => {
+          let _msg=null;
+          if (!this.forbidden.djgl&&!sCheck.number.atLeastTwoDecimals(value)) _msg='至少两位小数';
+          if (_msg) callback(_msg);
+          else callback();
+        }
+        let checkC12=(rule, value, callback) => {
+          let _msg=null;
+          if (!this.forbidden.gjgl&&!sCheck.number.isOneDecimal(value)) _msg='一位小数';
+          if (_msg) callback(_msg);
+          else callback();
+        }
+        let checkC13=(rule, value, callback) => {
+          let _msg=null;
+          if (!this.forbidden.gjgl&&!sCheck.number.atLeastTwoDecimals(value)) _msg='至少两位小数';
+          if (_msg) callback(_msg);
+          else callback();
         }
         /**1.1-实测值与标称值关系 */
-        let checkC6C7 = (rule, value, callback) => {
-          let _msg = null
-          if (thiz.formRecord.c7 != "" && thiz.formRecord.c6 != "") {
-            try {
-              if (parseFloat(thiz.formRecord.c6) > parseFloat(thiz.formRecord.c7)) {
-                _msg = "全压效率实测值必须大于标称值"
-              }
-            } catch (e) {
-            }
-          }
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC6C7=(rule, value, callback) => {
+          let _msg=null;
+          if (_c6&&_c7&&_c6>_c7) _msg="全压效率实测值必须大于标称值";
+          if (_msg) callback(_msg); else callback();
         }
-        let checkC9C10 = (rule, value, callback) => {
-          let _msg = null
-          if (!thiz.forbidden.djgl) {
-            if (thiz.formRecord.c9 != "" && thiz.formRecord.c10 != "") {
-              try {
-                if (parseFloat(thiz.formRecord.c9) < parseFloat(thiz.formRecord.c10)) {
-                  _msg = "待机功率实测值必须小于标称值"
-                }
-              } catch (e) {
-              }
-            }
-          }
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC9C10=(rule, value, callback) => {
+          let _msg=null;
+          if (!this.forbidden.djgl&&_c9&&_c10&&_c9<_c10) _msg="待机功率实测值必须小于标称值";
+          if (_msg) callback(_msg); else callback();
         }
-        let checkC12C13 = (rule, value, callback) => {
-          let _msg = null
-          if (thiz.formRecord.c12 != "" && thiz.formRecord.c13 != "") {
-            try {
-              if (parseFloat(thiz.formRecord.c12) < parseFloat(thiz.formRecord.c13)) {
-                _msg = "关机功率实测值必须小于标称值"
-              }
-            } catch (e) {
-            }
-          }
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC12C13=(rule, value, callback) => {
+          let _msg=null;
+          if (!this.forbidden.gjgl&&_c12&&_c13&&_c12<_c13) _msg="关机功率实测值必须小于标称值";
+          if (_msg) callback(_msg); else callback();
         }
-        let checkC15C16 = (rule, value, callback) => {
-          let _msg = null
-          if (thiz.formRecord.c15 != "" && thiz.formRecord.c16 != "") {
-            try {
-              if ((parseFloat(thiz.formRecord.c15) * 0.95) < parseFloat(thiz.formRecord.c16)) {
-                _msg = "常态气味降低度实测值必须大于等于标称值的95%"
-              }
-            } catch (e) {
-            }
-          }
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC15C16=(rule, value, callback) => {
+          let _msg=null;
+          if (_c15&&_c16&&(_c15*0.95<_c16)) _msg="常态气味降低度实测值必须大于等于标称值的95%";
+          if (_msg) callback(_msg);
+          else callback();
         }
-        let checkC18C19 = (rule, value, callback) => {
-          let _msg = null
-          if (thiz.formRecord.c18 != "" && thiz.formRecord.c19 != "") {
-            try {
-              if (parseFloat(thiz.formRecord.c18) > parseFloat(thiz.formRecord.c19)) {
-                _msg = "油脂分离度实测值必须大于等于标称值"
-              }
-            } catch (e) {
-            }
-          }
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC18C19=(rule, value, callback) => {
+          let _msg=null;
+          if (_c18&&_c19&&_c18>_c19) _msg="油脂分离度实测值必须大于等于标称值";
+          if (_msg) callback(_msg);
+          else callback();
         }
         /**1.2-能效等级、产品类型与各实测值标称值之间关系 */
-        let checkC21C40 = (rule, value, callback) => {
-          let _msg = null
-          if (!thiz.formRecord.c40) {
-            thiz.checkC21C40Msg = "请选择产品类型"
-            return
-          }
-          if (!thiz.formRecord.c21 || (thiz.formRecord.c21 != '1' && thiz.formRecord.c21 != '2'
-            && thiz.formRecord.c21 != '3' && thiz.formRecord.c21 != '4' && thiz.formRecord.c21 != '5')) {
-            thiz.checkC21C40Msg = "未选择能效等级，无法校验，请先选择能效等级"
-            return
-          }
+        let checkC21C40=(rule, value, callback) => {
+          if (!_c40) return;
+          //this.checkC21C40Msg="请选择产品类型"
+          if (!_c21||(_c21!='1'&&_c21!='2'&&_c21!='3'&&_c21!='4'&&_c21!='5')) return;
+          //this.checkC21C40Msg="未选择能效等级，无法校验，请先选择能效等级"
 
-          _msg = "产品类型=" + thiz.formRecord.c40 + "||能效等级=" + thiz.formRecord.c21
-          if (thiz.formRecord.c40 == "全部都有") {
-            thiz.forbidden.djgl = false;
-            thiz.forbidden.gjgl = false;
-            if (thiz.formRecord.c21 == 5) {
-              if (!(thiz.formRecord.c6 >= 15)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 15";
-              }
-              if (!(thiz.formRecord.c9 <= 3.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 3.0";
-              }
-              if (!(thiz.formRecord.c12 <= 1.5)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.5";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 4) {
-              if (!(thiz.formRecord.c6 >= 17)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 17";
-              }
-              if (!(thiz.formRecord.c9 <= 3.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 3.0";
-              }
-              if (!(thiz.formRecord.c12 <= 1.5)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.5";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 3) {
-              if (!(thiz.formRecord.c6 >= 19)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 19";
-              }
-              if (!(thiz.formRecord.c9 <= 3.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 3.0";
-              }
-              if (!(thiz.formRecord.c12 <= 1.5)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.5";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 2) {
-              if (!(thiz.formRecord.c6 >= 21)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 21";
-              }
-              if (!(thiz.formRecord.c9 <= 2.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 2.0";
-              }
-              if (!(thiz.formRecord.c12 <= 1.0)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.0";
-              }
-              if (!(thiz.formRecord.c15 >= 95)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 95";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 1) {
-              if (!(thiz.formRecord.c6 >= 23)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 23";
-              }
-              if (!(thiz.formRecord.c9 <= 2.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 2.0";
-              }
-              if (!(thiz.formRecord.c12 <= 1.0)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.0";
-              }
-              if (!(thiz.formRecord.c15 >= 95)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 95";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
+          let _msg="当：产品类型="+_c40+",能效等级="+_c21+"。"
+          let _errMsg=""
+          if (_c40=="全部都有") {
+            this.forbidden.djgl=false;
+            this.forbidden.gjgl=false;
+            if (_c21==5) {
+              if (!(_c6>=15))   _errMsg+="[全压效率（%）标称值]应>=15;";
+              if (!(_c9<=3.0))  _errMsg+="[待机功率标称值]应<=3.0;";
+              if (!(_c12<=1.5)) _errMsg+="[关机功率标称值]应<=1.5;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==4) {
+              if (!(_c6>=17))   _errMsg+="[全压效率（%）标称值]应>=17;";
+              if (!(_c9<=3.0))  _errMsg+="[待机功率标称值]应<=3.0;";
+              if (!(_c12<=1.5)) _errMsg+="[关机功率标称值]应<=1.5;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==3) {
+              if (!(_c6>=19))   _errMsg+="[全压效率（%）标称值]应>=19;";
+              if (!(_c9<=3.0))  _errMsg+="[待机功率标称值]应<=3.0;";
+              if (!(_c12<=1.5)) _errMsg+="[关机功率标称值]应<=1.5;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==2) {
+              if (!(_c6>=21))   _errMsg+="[全压效率（%）标称值]应>=21;";
+              if (!(_c9<=2.0))  _errMsg+="[待机功率标称值]应<=2.0;";
+              if (!(_c12<=1.0)) _errMsg+="[关机功率标称值]应<=1.0;";
+              if (!(_c15>=95))  _errMsg+="[常态气味降低度标称值]应>=95;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==1) {
+              if (!(_c6>=23))   _errMsg+="[全压效率（%）标称值]应>=23;";
+              if (!(_c9<=2.0))  _errMsg+="[待机功率标称值]应<=2.0;";
+              if (!(_c12<=1.0)) _errMsg+="[关机功率标称值]应<=1.0;";
+              if (!(_c15>=95))  _errMsg+="[常态气味降低度标称值]应>=95;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
             }
-          } else if (thiz.formRecord.c40 == "无待机功率") {
-            thiz.forbidden.djgl = true;
-            thiz.forbidden.gjgl = false;
-            if (thiz.formRecord.c21 == 5) {
-              if (!(thiz.formRecord.c6 >= 15)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 15";
-              }
-              if (!(thiz.formRecord.c12 <= 1.5)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.5";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 4) {
-              if (!(thiz.formRecord.c6 >= 17)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 17";
-              }
-              if (!(thiz.formRecord.c12 <= 1.5)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.5";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 3) {
-              if (!(thiz.formRecord.c6 >= 19)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 19";
-              }
-              if (!(thiz.formRecord.c12 <= 1.5)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.5";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 2) {
-              if (!(thiz.formRecord.c6 >= 21)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 21";
-              }
-              if (!(thiz.formRecord.c12 <= 1.0)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.0";
-              }
-              if (!(thiz.formRecord.c15 >= 95)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 95";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 1) {
-              if (!(thiz.formRecord.c6 >= 23)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 23";
-              }
-              if (!(thiz.formRecord.c12 <= 1.0)) {
-                thiz.checkC21C40Msg = _msg + "||关机功率标称值 应该 <= 1.0";
-              }
-              if (!(thiz.formRecord.c15 >= 95)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 95";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
+          } else if (_c40=="无待机功率") {
+            this.forbidden.djgl=true;
+            this.forbidden.gjgl=false;
+            this.formRecord.c9="";
+            this.formRecord.c10="";
+            _c9="";
+            _c10="";
+
+            if (_c21==5) {
+              if (!(_c6>=15))   _errMsg+="[全压效率（%）标称值]应>=15;";
+              if (!(_c12<=1.5)) _errMsg+="[关机功率标称值]应<=1.5;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==4) {
+              if (!(_c6>=17))   _errMsg+="[全压效率（%）标称值]应>=17;";
+              if (!(_c12<=1.5)) _errMsg+="[关机功率标称值]应<=1.5;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==3) {
+              if (!(_c6>=19))   _errMsg+="[全压效率（%）标称值]应>=19;";
+              if (!(_c12<=1.5)) _errMsg+="[关机功率标称值]应<=1.5;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==2) {
+              if (!(_c6>=21))   _errMsg+="[全压效率（%）标称值]应>=21;";
+              if (!(_c12<=1.0)) _errMsg+="[关机功率标称值]应<=1.0;";
+              if (!(_c15>=95))  _errMsg+="[常态气味降低度标称值]应>=95";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80";
+            } else if (_c21==1) {
+              if (!(_c6>=23))   _errMsg+="[全压效率（%）标称值]应>=23;";
+              if (!(_c12<=1.0)) _errMsg+="[关机功率标称值]应<=1.0;";
+              if (!(_c15>=95))  _errMsg+="[常态气味降低度标称值]应>=95;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
             }
-          } else if (thiz.formRecord.c40 == "无关机功率") {
-            thiz.forbidden.djgl = false;
-            thiz.forbidden.gjgl = true;
-            if (thiz.formRecord.c21 == 5) {
-              if (!(thiz.formRecord.c6 >= 15)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 15";
-              }
-              if (!(thiz.formRecord.c9 <= 3.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 3.0";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 4) {
-              if (!(thiz.formRecord.c6 >= 17)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 17";
-              }
-              if (!(thiz.formRecord.c9 <= 3.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 3.0";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 3) {
-              if (!(thiz.formRecord.c6 >= 19)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 19";
-              }
-              if (!(thiz.formRecord.c9 <= 3.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 3.0";
-              }
-              if (!(thiz.formRecord.c15 >= 90)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 90";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 2) {
-              if (!(thiz.formRecord.c6 >= 21)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 21";
-              }
-              if (!(thiz.formRecord.c9 <= 2.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 2.0";
-              }
-              if (!(thiz.formRecord.c15 >= 95)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 95";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
-            } else if (thiz.formRecord.c21 == 1) {
-              if (!(thiz.formRecord.c6 >= 23)) {
-                thiz.checkC21C40Msg = _msg + "||全压效率（%）标称值 应该 >= 23";
-              }
-              if (!(thiz.formRecord.c9 <= 2.0)) {
-                thiz.checkC21C40Msg = _msg + "||待机功率标称值 应该 <= 2.0";
-              }
-              if (!(thiz.formRecord.c15 >= 95)) {
-                thiz.checkC21C40Msg = _msg + "||常态气味降低度标称值 应该 >= 95";
-              }
-              if (!(thiz.formRecord.c18 >= 80)) {
-                thiz.checkC21C40Msg = _msg + "||油脂分离度标称值 应该 >= 80";
-              }
+          } else if (_c40=="无关机功率") {
+            this.forbidden.djgl=false;
+            this.forbidden.gjgl=true;
+            this.formRecord.c12="";
+            this.formRecord.c13="";
+            _c12="";
+            _c13="";
+
+            if (_c21==5) {
+              if (!(_c6>=15))   _errMsg+="[全压效率（%）标称值]应>=15;";
+              if (!(_c9<=3.0))  _errMsg+="[待机功率标称值]应<=3.0;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==4) {
+              if (!(_c6>=17))   _errMsg+="[全压效率（%）标称值]应>=17;";
+              if (!(_c9<=3.0))  _errMsg+="[待机功率标称值]应<=3.0;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==3) {
+              if (!(_c6>=19))   _errMsg+="[全压效率（%）标称值]应>=19;";
+              if (!(_c9<=3.0))  _errMsg+="[待机功率标称值]应<=3.0;";
+              if (!(_c15>=90))  _errMsg+="[常态气味降低度标称值]应>=90;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==2) {
+              if (!(_c6>=21))   _errMsg+="[全压效率（%）标称值]应>=21;";
+              if (!(_c9<=2.0))  _errMsg+="[待机功率标称值]应<=2.0;";
+              if (!(_c15>=95))  _errMsg+="[常态气味降低度标称值]应>=95;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
+            } else if (_c21==1) {
+              if (!(_c6>=23))   _errMsg+="[全压效率（%）标称值]应>=23;";
+              if (!(_c9<=2.0))  _errMsg+="[待机功率标称值]应<=2.0;";
+              if (!(_c15>=95))  _errMsg+="[常态气味降低度标称值]应>=95;";
+              if (!(_c18>=80))  _errMsg+="[油脂分离度标称值]应>=80;";
             }
           }
-          callback();
-        }
-        /**1.3-标称值根据能效等级、产品类型进行检验 */
-        let nxdj = this.formRecord.c21
-        let qyxl = parseFloat(this.formRecord.c6)
-        const checkC6_C21 = (rule, value, callback) => {
-          let typeStr = "能效等级=" + nxdj
-          if (nxdj == '5') {
-            if (!(qyxl >= 15)) {
-              callback(typeStr + "||全压效率（%）标称值 应该 >= 15")
-            }
-          } else if (nxdj == '4') {
-            if (!(qyxl >= 17)) {
-              callback(typeStr + "||全压效率（%）标称值 应该 >= 17")
-            }
-          } else if (nxdj == '3') {
-            if (!(qyxl >= 19)) {
-              callback(typeStr + "||全压效率（%）标称值 应该 >= 19")
-            }
-          } else if (nxdj == '2') {
-            if (!(qyxl >= 21)) {
-              callback(typeStr + "||全压效率（%）标称值 应该 >= 21")
-            }
-          } else if (nxdj == '1') {
-            if (!(qyxl >= 23)) {
-              callback(typeStr + "||全压效率（%）标称值 应该 >= 23")
-            }
-          }
+          this.checkC21C40Msg=(_errMsg?(_msg+_errMsg):"");
           callback()
         }
-        // let checkC6_C21=(rule, value, callback) => {
-        //   let _msg="";
-        //   let typeStr="能效等级="+thiz.formRecord.c21
-        //   if (thiz.formRecord.c21==5) {
-        //     if (!(value>=15)) _msg=typeStr+"||全压效率（%）标称值 应该 >= 15"
-        //   } else if (thiz.formRecord.c21==4) {
-        //     if (!(value>=17)) _msg=typeStr+"||全压效率（%）标称值 应该 >= 17"
-        //   } else if (thiz.formRecord.c21==3) {
-        //     if (!(value>=19)) _msg=typeStr+"||全压效率（%）标称值 应该 >= 19"
-        //   } else if (thiz.formRecord.c21==2) {
-        //     if (!(value>=21)) _msg=typeStr+"||全压效率（%）标称值 应该 >= 21"
-        //   } else if (thiz.formRecord.c21==1) {
-        //     if (!(value>=23)) _msg=typeStr+"||全压效率（%）标称值 应该 >= 23"
-        //   }
-        //   if (_msg) callback(_msg)
-        //   else callback()
-        // }
-        let checkC9_C21C40 = (rule, value, callback) => {
-          let _msg = "";
-          if (_msg) callback(_msg)
-          else callback()
+        /**1.3-标称值根据能效等级、产品类型进行检验 */
+        let checkC6_C21=(rule, value, callback) => {
+          let typeStr="当：能效等级="+_c21+"。[标称值]应";
+
+          let _errMsg="";
+          if (_c21=='5'&&!(value>=15)) _errMsg=">=15";
+          else
+          if (_c21=='4'&&!(value>=17)) _errMsg=">=17";
+          else
+          if (_c21=='3'&&!(value>=19)) _errMsg=">=19";
+          else
+          if (_c21=='2'&&!(value>=21)) _errMsg=">=21";
+          else
+          if (_c21=='1'&&!(value>=23)) _errMsg=">=23";
+
+          if (_errMsg) callback(typeStr+_errMsg);
+          else callback();
         }
-        let checkC12_C21C40 = (rule, value, callback) => {
-          let _msg = "";
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC9_C21C40=(rule, value, callback) => {
+          let typeStr="当：能效等级="+_c21+"。[标称值]应";
+
+          let _errMsg="";
+          if (_c40=="全部都有"||_c40=="无关机功率") {
+            if (_c21==5&&!(_c9<=3.0)) _errMsg+="<=3.0;";
+            else
+            if (_c21==4&&!(_c9<=3.0)) _errMsg+="<=3.0;";
+            else
+            if (_c21==3&&!(_c9<=3.0)) _errMsg+="<=3.0;";
+            else
+            if (_c21==2&&!(_c9<=2.0)) _errMsg+="<=2.0;";
+            else
+            if (_c21==1&&!(_c9<=2.0)) _errMsg+="<=2.0;";
+          }
+
+          if (_errMsg) callback(typeStr+_errMsg);
+          else callback();
         }
-        let checkC15_C21C40 = (rule, value, callback) => {
-          let _msg = "";
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC12_C21C40=(rule, value, callback) => {
+          let typeStr="当：能效等级="+_c21+"。[标称值]应";
+
+          let _errMsg="";
+          if (_c40=="全部都有"||_c40=="无待机功率") {
+            if (_c21==5&&!(_c12<=1.5)) _errMsg+="<=1.5;";
+            else
+            if (_c21==4&&!(_c12<=1.5)) _errMsg+="<=1.5;";
+            else
+            if (_c21==3&&!(_c12<=1.5)) _errMsg+="<=1.5;";
+            else
+            if (_c21==2&&!(_c12<=1.0)) _errMsg+="<=1.0;";
+            else
+            if (_c21==1&&!(_c12<=1.0)) _errMsg+="<=1.0;";
+          }
+
+          if (_errMsg) callback(typeStr+_errMsg);
+          else callback();
         }
-        let checkC18_C21C40 = (rule, value, callback) => {
-          let _msg = "";
-          if (_msg) callback(_msg)
-          else callback()
+        let checkC15_C21=(rule, value, callback) => {
+          let typeStr="当：能效等级="+_c21+"。[标称值]应";
+
+          let _errMsg="";
+          if (_c21==5&&!(_c15>=90)) _errMsg+=">=90;";
+          else
+          if (_c21==4&&!(_c15>=90)) _errMsg+=">=90;";
+          else
+          if (_c21==3&&!(_c15>=90)) _errMsg+=">=90;";
+          else
+          if (_c21==2&&!(_c15>=95)) _errMsg+=">=95;";
+          else
+          if (_c21==1&&!(_c15>=95)) _errMsg+=">=95;";
+          if (_errMsg) callback(typeStr+_errMsg);
+          else callback();
+        }
+        let checkC18_C21=(rule, value, callback) => {
+          let typeStr="当：能效等级="+_c21+"。[标称值]应";
+
+          let _errMsg="";
+          if (_c21==5&&!(_c18>=80)) _errMsg+=">=80;";
+          else
+          if (_c21==4&&!(_c18>=80)) _errMsg+=">=80;";
+          else
+          if (_c21==3&&!(_c18>=80)) _errMsg+=">=80;";
+          else
+          if (_c21==2&&!(_c18>=80)) _errMsg+=">=80;";
+          else
+          if (_c21==1&&!(_c18>=80)) _errMsg+=">=80;";
+
+          if (_errMsg) callback(typeStr+_errMsg);
+          else callback();
         }
 
         return {
@@ -1398,82 +1286,82 @@
           c6: [{
             required: true, message: '请输入全压效率标称值'
           }, {
-            validator: isInteger, trigger: 'change'
+            validator: isInteger, trigger: 'change,blur'
           }, {
-            validator: checkC6C7, trigger: 'blur'
+            validator: checkC6C7, trigger: 'change,blur'
           }, {
-            validator: checkC6_C21, trigger: 'blur'
+            validator: checkC6_C21, trigger: 'change,blur'
           }],
           c7: [{
             required: true, message: '请输入全压效率实测值'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change'
+            validator: atLeastOneDecimals, trigger: 'change,blur'
           }, {
-            validator: checkC6C7, trigger: 'blur'
+            validator: checkC6C7, trigger: 'change,blur'
           }],
           c9: [{
             required: !this.forbidden.djgl, message: '请输入待机功率标称值'
           }, {
-            validator: oneDecimals, trigger: 'change'
+            validator: checkC9, trigger: 'change,blur'
           }, {
-            validator: checkC9C10, trigger: 'blur'
+            validator: checkC9C10, trigger: 'change,blur'
           }, {
-            validator: checkC9_C21C40, trigger: 'blur'
+            validator: checkC9_C21C40, trigger: 'change,blur'
           }],
           c10: [{
             required: !this.forbidden.djgl, message: '请输入待机功率实测值'
           }, {
-            validator: atLeastTwoDecimals, trigger: 'change'
+            validator: checkC10, trigger: 'change,blur'
           }, {
-            validator: checkC9C10, trigger: 'blur'
+            validator: checkC9C10, trigger: 'change,blur'
           }],
           c12: [{
             required: !this.forbidden.gjgl, message: '请输入关机功率标称值'
           }, {
-            validator: oneDecimals, trigger: 'change'
+            validator: checkC12, trigger: 'change,blur'
           }, {
-            validator: checkC12C13, trigger: 'blur'
+            validator: checkC12C13, trigger: 'change,blur'
           }, {
-            validator: checkC12_C21C40, trigger: 'blur'
+            validator: checkC12_C21C40, trigger: 'change,blur'
           }],
           c13: [{
             required: !this.forbidden.gjgl, message: '请输入关机功率实测值'
           }, {
-            validator: atLeastTwoDecimals, trigger: 'change'
+            validator: checkC13, trigger: 'change,blur'
           }, {
-            validator: checkC12C13, trigger: 'blur'
+            validator: checkC12C13, trigger: 'change,blur'
           }],
           c15: [{
             required: true, message: '请输入常态气味降低度标称值'
           }, {
-            validator: isInteger, trigger: 'change'
+            validator: isInteger, trigger: 'change,blur'
           }, {
-            validator: checkC15_C21C40, trigger: 'blur'
-            //},{
-            //  validator:checkC21C40, trigger:'blur'
+            validator: checkC15C16, trigger: 'change,blur'
+          }, {
+            validator: checkC15_C21, trigger: 'change,blur'
           }],
           c16: [{
             required: true, message: '请输入常态气味降低度实测值'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change'
+            validator: atLeastOneDecimals, trigger: 'change,blur'
           }, {
-            validator: checkC15C16, trigger: 'blur'
+            validator: checkC15C16, trigger: 'change,blur'
           }],
           c18: [{
             required: true, message: '请输入油脂分离度标称值'
           }, {
-            validator: isInteger, trigger: 'change'
+            validator: isInteger, trigger: 'change,blur'
           }, {
-            validator: checkC18C19, trigger: 'blur'
+            validator: checkC18C19, trigger: 'change,blur'
           }, {
-            validator: checkC18_C21C40, trigger: 'blur'
+            validator: checkC18_C21, trigger: 'change,blur'
           }],
           c19: [{
             required: true, message: '请输入油脂分离度实测值'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change'
+            validator: atLeastOneDecimals, trigger: 'change,blur'
           }, {
-            validator: checkC18C19, trigger: 'blur'
+            validator: checkC18C19, trigger: 'change,blur'
           }],
           c23: [{
             required: true, message: '请选择电源性质'
@@ -1494,12 +1382,12 @@
             required: true, message: '请选择外观形式'
           }, {
             validator: (rule, value, callback) => {
-              if (value != '其它') this.formRecord.c29 = "";
+              if (value!='其它') this.formRecord.c29="";
               callback();
             }, trigger: 'change'
           }],
           c29: [{
-            required: this.formRecord.c28 == '其它', message: '请输入其它外观形式'
+            required: this.formRecord.c28=='其它', message: '请输入其它外观形式'
           }],
           c30: [{
             required: true, message: '请选择过滤网'
@@ -1542,9 +1430,6 @@
           }],
           c48: [{
             required: true, message: '请输入生产者'
-          }],
-          c1000: [{
-            required: true, message: '请选择电源性质'
           }]
         }
       }
@@ -1552,5 +1437,5 @@
   }
 </script>
 <style>
-  @import '../../../css/comm.css';
+@import '../../../css/comm.css';
 </style>
