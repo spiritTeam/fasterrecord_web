@@ -1,14 +1,5 @@
 /*数字校验类-私有*/
 class NumberCheck {
-  constructor() {
-    this.regAtLeast1=/^[0-9]\+?(\d*\.\d{1,5})$/;
-    this.regAtLeast2=/^[0-9]\+?(\d*\.\d{2,5})$/;
-    this.regAtLeast3=/^[0-9]\+?(\d*\.\d{3,5})$/;
-    this.regAtLeast4=/^[0-9]\+?(\d*\.\d{4,5})$/;
-    this.regSignificantDigits2=/^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/;
-    this.regSignificantDigits3=/^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/;
-  }
-
   /** 是否数字 */
   isNumber(value){
     return /^[+-]?\d+(\.\d+)?$/.test(value);
