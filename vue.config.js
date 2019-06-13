@@ -9,7 +9,7 @@ const env = process.env.NODE_ENV || 'development'
 fs.writeFileSync(path.join(__dirname, './config/env.js'), `export default '${env}'
 `)
 
-const apiRoot = 'http://192.168.1.5:8088'
+const apiRoot = 'http://192.168.1.7:8088'
 // 比如你打包的文件放到服务器的my-app文件夹，域名为a.com，则应改为
 // http(s)://a.com/my-app/
 const BASE_URL = './'
