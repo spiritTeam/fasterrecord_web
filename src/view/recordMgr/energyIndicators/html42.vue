@@ -1338,25 +1338,25 @@
         return {
           c3: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入制造单位'
             }
           ],
           c5: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入备案方'
             }
           ],
           c2: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请填写商标'
             }
           ],
           c7: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择能效等级'
             },
             {
@@ -1370,31 +1370,31 @@
           ],
           c4: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入规格型号'
             }
           ],
           c18: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择灶具类型'
             }
           ],
           c19: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择结构形式'
             }
           ],
           c20: [
             {
-              required: this.formRecord.c19 ==='其他',
+              trigger: 'change,blur',required: this.formRecord.c19 ==='其他',
               message: '请输入其它结构形式'
             }
           ],
           c8: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入热效率标注值'
             },
             {
@@ -1404,7 +1404,7 @@
           ],
           c9: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '睡眠状态功率(W)实测值不能为空'
             },
             {
@@ -1419,7 +1419,7 @@
           ],
           c11: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入热负荷标注值'
             },
             {
@@ -1429,169 +1429,169 @@
           ],
           c12: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入热负荷实测值'
             }
           ],
           c6: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择灶眼数量'
             }
           ],
           c15: [
             {
-              required: this.formRecord.c6 ==='多眼灶',
+              trigger: 'change,blur',required: this.formRecord.c6 ==='多眼灶',
               message: '请输入多眼灶灶眼数量'
             }
           ],
           c21: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择燃气类别'
             }
           ],
           c22: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择燃气类别值'
             }
           ],
           c23: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择点火方式'
             }
           ],
           c24: [
             {
-              required: this.formRecord.c23 ==='其他',
+              trigger: 'change,blur',required: this.formRecord.c23 ==='其他',
               message: '请输入其他点火方式'
             }
           ],
           c25: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择熄火保护装置'
             }
           ],
           c26: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择调风装置'
             }
           ],
           c28: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入额定频率'
             }
           ],
           c27: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入额定电压'
             }
           ],
           c29: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请选择额定燃气供气压力'
             }
           ],
           c30: [
             {
-              required: this.formRecord.c29 ==='其他',
+              trigger: 'change,blur',required: this.formRecord.c29 ==='其他',
               message: '请输入额定燃气供气压力其他值'
             }
           ],
           c31: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入额定热负荷'
             }
           ],
           c32: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入挖孔尺寸（长）'
             }
           ],
           c33: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入挖孔尺寸（宽）'
             }
           ],
           c35: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入外形尺寸（长）'
             }
           ],
           c36: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入外形尺寸（宽）'
             }
           ],
           c37: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '请输入外形尺寸（高）'
             }
           ],
           c66: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c67: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c68: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ],
           c69: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ], 
           c70: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ], 
           c71: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ], 
           c84: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ], 
           c85: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ], 
           c86: [
             {
-              required: true,
+              trigger: 'change,blur',required: true,
               message: '不能为空'
             }
           ]
