@@ -1617,7 +1617,7 @@ export default {
         ],
         c26: [
           {
-            trigger: 'change,blur',required: this.formRecord.c25 === '2',
+            required: this.formRecord.c25 === '2',
             message: '初始使用日期不能为空'
           }
         ],

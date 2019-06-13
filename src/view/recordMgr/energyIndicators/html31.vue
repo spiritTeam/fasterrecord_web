@@ -1480,7 +1480,7 @@
           ],
           c15: [
             {
-              trigger: 'change,blur',required: true,
+              required: true,
               message: '不能为空'
             }
           ],
