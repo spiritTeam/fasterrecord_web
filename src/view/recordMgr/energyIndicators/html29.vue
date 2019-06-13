@@ -1553,7 +1553,8 @@ import {
         c5: [
           {
             required: true,
-            message: '请输入'
+            message: '请输入',
+            trigger: 'blur'
           },
           {
             validator: twoDecimals,
@@ -1573,7 +1574,8 @@ import {
         c7: [
           {
             required: true,
-            message: '请输入'
+            message: '请输入',
+            trigger: 'blur'
           },
           {
             validator: oneDecimals,
