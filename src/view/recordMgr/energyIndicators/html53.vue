@@ -1661,7 +1661,6 @@
             {
               trigger: 'change,blur',
               validator: numberOr1,
-              trigger: 'blur'
             }
           ],
           c11: [
