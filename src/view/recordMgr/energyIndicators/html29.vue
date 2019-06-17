@@ -187,8 +187,8 @@
               <td colspan="2">
                 <FormItem prop="c16" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c16">
-                    <Radio label="全玻璃" :disabled='disabledoff'>全玻璃</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="全玻璃" :disabled='disabledoff || forbidden.zkgx'>全玻璃</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.zkgx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c17">
                      <Input type="text" v-model="formRecord.c17" style="width:200px;" :disabled='disabledoff || forbidden.c17'/>
@@ -201,11 +201,11 @@
               <td colspan="2">
                 <FormItem prop="c18" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c18">
-                    <Radio label="玻璃-金属封接" :disabled='disabledoff'>玻璃-金属封接</Radio>
-                    <Radio label="内置带翅片的金属热管" :disabled='disabledoff'>内置带翅片的金属热管</Radio>
-                    <Radio label="全玻璃热管" :disabled='disabledoff'>全玻璃热管</Radio>
+                    <Radio label="玻璃-金属封接" :disabled='disabledoff || forbidden.zkgx'>玻璃-金属封接</Radio>
+                    <Radio label="内置带翅片的金属热管" :disabled='disabledoff || forbidden.zkgx'>内置带翅片的金属热管</Radio>
+                    <Radio label="全玻璃热管" :disabled='disabledoff || forbidden.zkgx'>全玻璃热管</Radio>
                     <br>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.zkgx'>其他</Radio>
                     <FormItem prop="c19">
                       <Input type="text" v-model="formRecord.c19" style="width:200px;" :disabled='disabledoff || forbidden.c19'/>
                     </FormItem>
@@ -217,13 +217,13 @@
               <td align="left">尺寸</td>
               <td colspan="2">
                 <FormItem prop="c20" :label-width="10">
-                    长度:<Input type="text" v-model="formRecord.c20" style="width:100px;" :disabled='disabledoff'/>m(一位小数)
+                    长度:<Input type="text" v-model="formRecord.c20" style="width:100px;" :disabled='disabledoff || forbidden.zkgx'/>m(一位小数)
                 </FormItem>
                 <FormItem prop="c21" :label-width="10">
-                    直径:<Input type="text" v-model="formRecord.c21" style="width:100px;" :disabled='disabledoff'/>mm
+                    直径:<Input type="text" v-model="formRecord.c21" style="width:100px;" :disabled='disabledoff || forbidden.zkgx'/>mm
                 </FormItem>
                 <FormItem prop="c22" :label-width="10">
-                    根数:<Input type="text" v-model="formRecord.c22" style="width:100px;" :disabled='disabledoff'/>
+                    根数:<Input type="text" v-model="formRecord.c22" style="width:100px;" :disabled='disabledoff || forbidden.zkgx'/>
                 </FormItem>
               </td>
             </tr>
@@ -234,9 +234,9 @@
               <td colspan="2">
                 <FormItem prop="c23" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c23">
-                    <Radio label="铜板" :disabled='disabledoff'>铜板</Radio>
-                    <Radio label="铝板" :disabled='disabledoff'>铝板</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="铜板" :disabled='disabledoff || forbidden.pbx'>铜板</Radio>
+                    <Radio label="铝板" :disabled='disabledoff || forbidden.pbx'>铝板</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c24">
                     <Input type="text" v-model="formRecord.c24" style="width:200px;" :disabled='disabledoff || forbidden.c24'/>
@@ -248,7 +248,7 @@
               <td align="left">吸热板厚度(mm)</td>
               <td colspan="2">
                 <FormItem prop="c25" :label-width="10">
-                    <Input type="text" v-model="formRecord.c25" style="width:200px;" :disabled='disabledoff'/>
+                    <Input type="text" v-model="formRecord.c25" style="width:200px;" :disabled='disabledoff || forbidden.pbx'/>
                 </FormItem>
               </td>
             </tr>
@@ -258,10 +258,10 @@
               <td colspan="2">
                 <FormItem prop="c26" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c26">
-                    <Radio label="阳极氧化" :disabled='disabledoff'>阳极氧化</Radio>
-                    <Radio label="镀铬" :disabled='disabledoff'>镀铬</Radio>
-                    <Radio label="磁控溅射" :disabled='disabledoff'>磁控溅射</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="阳极氧化" :disabled='disabledoff || forbidden.pbx'>阳极氧化</Radio>
+                    <Radio label="镀铬" :disabled='disabledoff || forbidden.pbx'>镀铬</Radio>
+                    <Radio label="磁控溅射" :disabled='disabledoff || forbidden.pbx'>磁控溅射</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c27">
                     <Input type="text" v-model="formRecord.c27" style="width:200px;" :disabled='disabledoff || forbidden.c27'/>
@@ -275,9 +275,9 @@
               <td colspan="2">
                 <FormItem prop="c28" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c28">
-                    <Radio label="铜管" :disabled='disabledoff'>铜管</Radio>
-                    <Radio label="铝管" :disabled='disabledoff'>铝管</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="铜管" :disabled='disabledoff || forbidden.pbx'>铜管</Radio>
+                    <Radio label="铝管" :disabled='disabledoff || forbidden.pbx'>铝管</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c29">
                     <Input type="text" v-model="formRecord.c29" style="width:200px;" :disabled='disabledoff || forbidden.c29'/>
@@ -290,7 +290,7 @@
               <td align="left">集热器用户传热工质接触部位的材料厚度(mm)</td>
               <td colspan="2">
                 <FormItem prop="c30" :label-width="10">
-                    <Input type="text" v-model="formRecord.c30" style="width:200px;" :disabled='disabledoff'/>
+                    <Input type="text" v-model="formRecord.c30" style="width:200px;" :disabled='disabledoff || forbidden.pbx'/>
                 </FormItem>
               </td>
             </tr>
@@ -300,10 +300,10 @@
               <td colspan="2">
                 <FormItem prop="c31" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c31">
-                    <Radio label="钢化玻璃" :disabled='disabledoff'>钢化玻璃</Radio>
-                    <Radio label="普通玻璃" :disabled='disabledoff'>普通玻璃</Radio>
-                    <Radio label="布纹玻璃" :disabled='disabledoff'>布纹玻璃</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="钢化玻璃" :disabled='disabledoff || forbidden.pbx'>钢化玻璃</Radio>
+                    <Radio label="普通玻璃" :disabled='disabledoff || forbidden.pbx'>普通玻璃</Radio>
+                    <Radio label="布纹玻璃" :disabled='disabledoff || forbidden.pbx'>布纹玻璃</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c32">
                     <Input type="text" v-model="formRecord.c32" style="width:200px;" :disabled='disabledoff || forbidden.c32'/>
@@ -317,10 +317,10 @@
               <td colspan="2">
                 <FormItem prop="c33" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c33">
-                    <Radio label="3 mm" :disabled='disabledoff'>3 mm</Radio>
-                    <Radio label="4 mm" :disabled='disabledoff'>4 mm</Radio>
-                    <Radio label="5 mm" :disabled='disabledoff'>5 mm</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他（mm）</Radio>
+                    <Radio label="3 mm" :disabled='disabledoff || forbidden.pbx'>3 mm</Radio>
+                    <Radio label="4 mm" :disabled='disabledoff || forbidden.pbx'>4 mm</Radio>
+                    <Radio label="5 mm" :disabled='disabledoff || forbidden.pbx'>5 mm</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他（mm）</Radio>
                   </RadioGroup>
                   <FormItem prop="c34">
                     <Input type="text" v-model="formRecord.c34" style="width:200px;" :disabled='disabledoff || forbidden.c34'/>
@@ -334,10 +334,10 @@
               <td colspan="2">
                 <FormItem prop="c35" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c35">
-                    <Radio label="岩棉" :disabled='disabledoff'>岩棉</Radio>
-                    <Radio label="玻璃棉" :disabled='disabledoff'>玻璃棉</Radio>
-                    <Radio label="聚氨酯" :disabled='disabledoff'>聚氨酯</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="岩棉" :disabled='disabledoff || forbidden.pbx'>岩棉</Radio>
+                    <Radio label="玻璃棉" :disabled='disabledoff || forbidden.pbx'>玻璃棉</Radio>
+                    <Radio label="聚氨酯" :disabled='disabledoff || forbidden.pbx'>聚氨酯</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c36">
                     <Input type="text" v-model="formRecord.c36" style="width:200px;" :disabled='disabledoff || forbidden.c36'/>
@@ -350,10 +350,10 @@
               <td colspan="2">
                 <FormItem prop="c37" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c37">
-                    <Radio label="镀锌板" :disabled='disabledoff'>镀锌板</Radio>
-                    <Radio label="铝板" :disabled='disabledoff'>铝板</Radio>
-                    <Radio label="彩板" :disabled='disabledoff'>彩板</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="镀锌板" :disabled='disabledoff || forbidden.pbx'>镀锌板</Radio>
+                    <Radio label="铝板" :disabled='disabledoff || forbidden.pbx'>铝板</Radio>
+                    <Radio label="彩板" :disabled='disabledoff || forbidden.pbx'>彩板</Radio>
+                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
                   </RadioGroup>
                   <FormItem prop="c38">
                     <Input type="text" v-model="formRecord.c38" style="width:200px;" :disabled='disabledoff || forbidden.c38'/>
@@ -525,15 +525,15 @@
               <td align="right"><span style="color:red">*</span>一体机外形尺寸(长×宽×高)(mm×mm×mm)</td>
               <td colspan="3">
                 <FormItem prop="c56" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c56" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c56" :disabled='disabledoff || forbidden.c56'/>
                 </FormItem>
                 <FormItem :label-width="10"><b>×</b></FormItem>
                 <FormItem prop="c65" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff || forbidden.c65'/>
                 </FormItem>
                 <FormItem :label-width="10"><b>×</b></FormItem>
                 <FormItem prop="c66" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff || forbidden.c66'/>
                 </FormItem>
               </td>
             </tr>
@@ -541,15 +541,15 @@
               <td align="right"><span style="color:red">*</span>贮热水箱及其附件外形尺寸(长×宽×高)(mm×mm×mm)</td>
               <td colspan="3">
                 <FormItem prop="c57" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'/>
                 </FormItem>
                 <FormItem :label-width="10"><b>×</b></FormItem>
                 <FormItem prop="c67" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff || forbidden.c67'/>
                 </FormItem>
                 <FormItem :label-width="10"><b>×</b></FormItem>
                 <FormItem prop="c68" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff || forbidden.c68'/>
                 </FormItem>
               </td>
             </tr>
@@ -557,15 +557,15 @@
               <td align="right"><span style="color:red">*</span>集热器外形尺寸(长×宽×高)(mm×mm×mm)</td>
               <td colspan="3">
                 <FormItem prop="c58" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff || forbidden.c58'/>
                 </FormItem>
                 <FormItem :label-width="10"><b>×</b></FormItem>
                 <FormItem prop="c69" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff || forbidden.c69'/>
                 </FormItem>
                 <FormItem :label-width="10"><b>×</b></FormItem>
                 <FormItem prop="c70" style="width:100px;" :label-width="10">
-                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff || forbidden.c70'/>
                 </FormItem>
               </td>
             </tr>
@@ -1252,7 +1252,18 @@ import {
         c45: true,
         c47: true,
         c49: true,
-        c51: true
+        c51: true,
+        c56: false,
+        c65: false,
+        c66: false,
+        c57: false,
+        c67: false,
+        c68: false,
+        c58: false,
+        c69: false,
+        c70: false,
+        zkgx: true,
+        pbx: true
       }
     }
   },
@@ -1493,6 +1504,70 @@ import {
           this.forbidden.c51 = true
       }
 
+      //集热器类型及面积
+      if (this.formRecord.c14 == '真空管型') {
+          this.forbidden.zkgx=false
+          this.forbidden.pbx=true
+          this.formRecord.c23 = ''
+          this.formRecord.c24 = ''
+          this.formRecord.c25 = ''
+          this.formRecord.c26 = ''
+          this.formRecord.c27 = ''
+          this.formRecord.c28 = ''
+          this.formRecord.c29 = ''
+          this.formRecord.c30 = ''
+          this.formRecord.c31 = ''
+          this.formRecord.c32 = ''
+          this.formRecord.c33 = ''
+          this.formRecord.c34 = ''
+          this.formRecord.c35 = ''
+          this.formRecord.c36 = ''
+          this.formRecord.c37 = ''
+          this.formRecord.c38 = ''
+      }else{
+          this.forbidden.pbx=false
+          this.forbidden.zkgx=true
+          this.formRecord.c16 = ''
+          this.formRecord.c17 = ''
+          this.formRecord.c18 = ''
+          this.formRecord.c19 = ''
+          this.formRecord.c20 = ''
+          this.formRecord.c21 = ''
+          this.formRecord.c22 = ''
+      }
+
+      //是否为一体机 启用/禁用
+      if (this.formRecord.c71 == '是') {
+          this.formRecord.c57 = ''
+          this.formRecord.c67 = ''
+          this.formRecord.c68 = ''
+          this.formRecord.c58 = ''
+          this.formRecord.c69 = ''
+          this.formRecord.c70 = ''
+          this.forbidden.c57 = true
+          this.forbidden.c67 = true
+          this.forbidden.c68 = true
+          this.forbidden.c58 = true
+          this.forbidden.c69 = true
+          this.forbidden.c70 = true
+          this.forbidden.c56 = false
+          this.forbidden.c65 = false
+          this.forbidden.c66 = false
+      } else {
+          this.forbidden.c57 = false
+          this.forbidden.c67 = false
+          this.forbidden.c68 = false
+          this.forbidden.c58 = false
+          this.forbidden.c69 = false
+          this.forbidden.c70 = false
+          this.formRecord.c56 = ''
+          this.formRecord.c65 = ''
+          this.formRecord.c66 = ''
+          this.forbidden.c56 = true
+          this.forbidden.c65 = true
+          this.forbidden.c66 = true
+      }
+
       var c13 = this.formRecord.c13;
       var c5 = this.formRecord.c5;
       var result = this.getNxdj(c13, c5);
@@ -1617,8 +1692,7 @@ import {
         c11: [
           {
             required: true,
-            message: '请输入备案起始日期',
-            trigger: 'change,blur'
+            message: '请输入备案起始日期'
           }
         ],
         c12: [
@@ -1662,7 +1736,7 @@ import {
         ],
         c16: [
           {
-            required: true,
+            required: this.formRecord.c14 == '真空管型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1676,7 +1750,7 @@ import {
         ],
         c18: [
           {
-            required: true,
+            required: this.formRecord.c14 == '真空管型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1690,32 +1764,32 @@ import {
         ],
         c20: [
           {
-            required: true,
+            required: this.formRecord.c14 == '真空管型',
             message: '请输入',
             trigger: 'change,blur'
           },
           {
-            validator: oneDecimals,
+            validator: this.formRecord.c14 === '真空管型' ? oneDecimals : check,
             trigger: 'change,blur'
           }
         ],
         c21: [
           {
-            required: true,
+            required: this.formRecord.c14 == '真空管型',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c22: [
           {
-            required: true,
+            required: this.formRecord.c14 == '真空管型',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c23: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1729,14 +1803,14 @@ import {
         ],
         c25: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c26: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1750,7 +1824,7 @@ import {
         ],
         c28: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1764,14 +1838,14 @@ import {
         ],
         c30: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c31: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1785,7 +1859,7 @@ import {
         ],
         c33: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1799,7 +1873,7 @@ import {
         ],
         c35: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1813,7 +1887,7 @@ import {
         ],
         c37: [
           {
-            required: true,
+            required: this.formRecord.c14 == '平板型',
             message: '请选择',
             trigger: 'change,blur'
           }
@@ -1982,56 +2056,55 @@ import {
         ],
         c56: [
           {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
+            required: this.formRecord.c71 === '是',
+            message: '请输入'
           }
         ],
         c57: [
           {
-            required: true,
+            required: this.formRecord.c71 === '否',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c58: [
           {
-            required: true,
+            required: this.formRecord.c71 === '否',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c65: [
           {
-            required: true,
+            required: this.formRecord.c71 === '是',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c66: [
           {
-            required: true,
+            required: this.formRecord.c71 === '是',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c67: [
           {
-            required: true,
+            required: this.formRecord.c71 === '否',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c68: [
           {
-            required: true,
+            required: this.formRecord.c71 === '否',
             message: '请输入',
             trigger: 'change,blur'
           }
         ],
         c69: [
           {
-            required: true,
+           required: this.formRecord.c71 === '否',
             message: '请输入',
             trigger: 'change,blur'
           }
@@ -2045,7 +2118,7 @@ import {
         ],
         c70: [
           {
-            required: true,
+            required: this.formRecord.c71 === '否',
             message: '请输入',
             trigger: 'change,blur'
           }
