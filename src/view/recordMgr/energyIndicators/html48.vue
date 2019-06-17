@@ -1,3 +1,4 @@
+
 /*
 *家用燃气快速热水器/燃气采暖热水炉-能源效率标识备案表
 *创建人：yph
@@ -477,7 +478,7 @@
                   </CheckboxGroup>
                 </FormItem>
               </td>
-            </tr> 
+            </tr>
             <tr>
               <td>外形尺寸(长×宽×高)（mm×mm×mm）</td>
               <td>
@@ -1263,7 +1264,7 @@ export default {
   computed: {
     disabledoff(){
       return  this.$store.state.app.pageType==='extend';
-    },   
+    },
     pltId () {
       return this.$store.state.app.pltId
     },
