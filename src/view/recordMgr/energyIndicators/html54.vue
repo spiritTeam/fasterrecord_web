@@ -997,12 +997,12 @@
               <td class="t_label">节流装置</td>
               <td colspan="2">
                 <FormItem prop="c187">
-                <CheckboxGroup v-model="formRecord.c187">
+                  <CheckboxGroup v-model="formRecord.c187">
                   <Checkbox label="膨胀阀" :disabled='disabledoff'></Checkbox>
-                  <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
-                </CheckboxGroup>
+                 <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
-              </td>
+             </td>
               <td class="t_label">膨胀阀芯</td>
               <td>
                 <FormItem prop="c188" style="width:100%">
@@ -1995,6 +1995,7 @@ export default {
       return this.$store.state.app.requiredStr
     },
     ruleRecord() {
+      console.log("sss")
       let _c6=parseFloat(this.formRecord.c6);
       let _c7=parseFloat(this.formRecord.c7);
       let _nxzs=this.formRecord.c27;//能效指数

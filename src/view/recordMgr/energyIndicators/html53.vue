@@ -151,10 +151,10 @@
                     <Radio label="两极" :disabled='disabledoff'>两极</Radio>
                     <Radio label="三极" :disabled='disabledoff'>三极</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c18">
-                      <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c18">
+                   <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>
                 </FormItem>
               </td>
             </tr>

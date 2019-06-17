@@ -404,7 +404,7 @@
       <td class="right-align"><span class="color-red">*</span>额定频率(Hz)</td>
       <td>
         <FormItem prop="c28">
-          <Input type="text" v-model="formRecord.checkmark28" :disabled='disabledoff'/>
+          <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
         </FormItem>          
       </td>
   </tr>

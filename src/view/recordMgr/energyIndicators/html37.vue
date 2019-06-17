@@ -277,12 +277,14 @@
             <tr>
               <td align="right"><span class="red">*</span>是否有辅助热源</td>
               <td colspan="3">
-                <FormItem prop="c34" style="width:100%">
+                <FormItem prop="c34">
                   <RadioGroup v-model="formRecord.c34">
                     <Radio :disabled='disabledoff' label="无">无</Radio>
                     <Radio :disabled='disabledoff' label="有">有</Radio>
                   </RadioGroup>
-                    辅助热源类型 &nbsp;&nbsp;&nbsp; <Input type="text" style="width:20%" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                </FormItem>
+                <FormItem prop="c35">
+                   辅助热源类型 &nbsp;&nbsp;&nbsp; <Input type="text" style="width: 50%" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
                 </FormItem>
               </td>
             </tr>
@@ -1215,6 +1217,13 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        if (this.formRecord.c34 === '有' ) {
+          this.forbidden.c35 = false
+        } else {
+          this.formRecord.c35 = ''
+          this.forbidden.c35 = true
+        }
+
         var nxdj = "";
         var checkc8 = null;
         var checkc11 = null;
@@ -1622,7 +1631,7 @@
           ],  
          c35: [
             {
-              required: true,
+              required: this.formRecord.c34==='有',
               message: '辅助热源类型不能为空',
               trigger: 'change,blur'
             }
