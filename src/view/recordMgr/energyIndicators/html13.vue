@@ -238,14 +238,14 @@
               <td colspan="3">
                 <FormItem prop="c17">
                   <CheckboxGroup v-model="formRecord.c17">
-                    <FormItem prop="c35">
-                      <RadioGroup v-model="formRecord.c35">
-                        <Checkbox label="带有热断路器" :disabled='disabledoff'>带有热断路器</Checkbox>
-                        <Radio label="自复位型" :disabled='disabledoff || forbidden.c35'>自复位型</Radio>
-                        <Radio label="非自复位型" :disabled='disabledoff || forbidden.c35'>非自复位型</Radio>
-                        <Radio label="双极断开型" :disabled='disabledoff || forbidden.c35'>双极断开型</Radio>
-                      </RadioGroup>
-                    </FormItem>
+                    <Checkbox label="带有热断路器" :disabled='disabledoff'>带有热断路器</Checkbox>
+                  </CheckboxGroup>
+                </FormItem>
+                <FormItem prop="c35">
+                  <CheckboxGroup v-model="formRecord.c35">
+                    <Checkbox label="自复位型" :disabled='disabledoff || forbidden.c35'>自复位型</Checkbox>
+                    <Checkbox label="非自复位型" :disabled='disabledoff || forbidden.c35'>非自复位型</Checkbox>
+                    <Checkbox label="双极断开型" :disabled='disabledoff || forbidden.c35'>双极断开型</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -1250,7 +1250,7 @@
           c32: '',
           c33: '',
           c34: '',
-          c35: '',
+          c35: [],
           c37: '',
           c38: '',
           c39: '',
@@ -1320,7 +1320,8 @@
           c33: true,
           c34: true,
           c35: true
-        }
+        },
+        click_c35: []
       }
     },
     mounted() {
@@ -1383,8 +1384,8 @@
       }
     },
     computed: {
-      disabledoff(){
-        return  this.$store.state.app.pageType==='extend';
+      disabledoff() {
+        return this.$store.state.app.pageType === 'extend';
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1428,6 +1429,16 @@
           this.formRecord.c35 = ''
           this.forbidden.c35 = true
         }
+
+        console.log(this.formRecord.c35)
+
+        let c35 = this.formRecord.c35.filter(item => !this.click_c35.includes(item))
+
+        // if (c35 === ''){
+        //
+        // }
+
+        this.click_c35 = this.formRecord.c35
 
         //提交前数据规则验证
         var gynhxs = parseFloat(this.formRecord.c5);   //24小时固有能耗系数
