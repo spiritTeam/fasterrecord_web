@@ -239,13 +239,13 @@
                 <FormItem prop="c17">
                   <CheckboxGroup v-model="formRecord.c17">
                     <Checkbox label="带有热断路器" :disabled='disabledoff'>带有热断路器</Checkbox>
-                    <FormItem prop="c35">
-                      <CheckboxGroup v-model="formRecord.c35">
-                        <Checkbox label="自复位型" :disabled='disabledoff || forbidden.c35'>自复位型</Checkbox>
-                        <Checkbox label="非自复位型" :disabled='disabledoff || forbidden.c35'>非自复位型</Checkbox>
-                        <Checkbox label="双极断开型" :disabled='disabledoff || forbidden.c35'>双极断开型</Checkbox>
-                      </CheckboxGroup>
-                    </FormItem>
+                  </CheckboxGroup>
+                </FormItem>
+                <FormItem prop="c35">
+                  <CheckboxGroup v-model="formRecord.c35">
+                    <Checkbox label="自复位型" :disabled='disabledoff || forbidden.c35'>自复位型</Checkbox>
+                    <Checkbox label="非自复位型" :disabled='disabledoff || forbidden.c35'>非自复位型</Checkbox>
+                    <Checkbox label="双极断开型" :disabled='disabledoff || forbidden.c35'>双极断开型</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -1426,14 +1426,11 @@
         if (this.formRecord.c17.join('').indexOf('带有热断路器') > -1) {
           this.forbidden.c35 = false
         } else {
-          this.formRecord.c35 = ''
+          this.formRecord.c35 = []
           this.forbidden.c35 = true
         }
 
-
-
-        console.log(this.formRecord.c35)
-        let c35 = this.formRecord.c35.filter(item => !this.click_c35.includes(item))
+        let c35 = this.formRecord.c35.filter(item => !this.click_c35.includes(item)).join('')
         if (c35 === '自复位型'){
           this.formRecord.c35 = this.formRecord.c35.filter(item => item !== '非自复位型')
         } else if (c35 === '非自复位型'){
@@ -1703,7 +1700,6 @@
             {
               required: this.formRecord.c17.join('').indexOf('带有热断路器') > -1,
               message: '带有热断路器不能为空',
-              trigger: 'change,blur'
             }
           ],
           c17: [
