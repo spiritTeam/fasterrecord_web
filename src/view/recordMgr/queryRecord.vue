@@ -18,8 +18,9 @@
         <Button type="primary" @click="clearFun">清空</Button>
       </FormItem>
     </Form>
-    <Table border :columns="columns1" :data="recordData"></Table>
-    <Page :total="total" :page-size=10
+    <Table border class="tableList" :columns="columns1" :data="recordData"></Table>
+    <Page :total="total" :page-size="formQuery.pageSize"
+      :current="formQuery.pageNum"
       @on-change="changeList"
       style="margin-top:10px; text-align: right">
     </Page>
@@ -37,56 +38,61 @@
         <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
       </Upload>
     </Modal>
+    <Modal v-model="modal2" title="撤销申请" @on-ok="submitWorkorder" ok-text="提交">
+        <Input type="textarea" :rows="3" placeholder="撤销申请" v-model="qus"></Input>
+    </Modal>
   </Card>
 </template>
 <script>
 import axios from 'axios'
+    
 export default {
+  
   data () {
     const downLoadCode = (h,params) => h('Button', {
-            props: {
-              type: 'primary',
-              size: 'small',
-              long:'long'
-            },
-            style: {
-              margin: '3px'
-            },
-            on: {
-              click: () => {
-                this.downloadQrcode(params.row.id)
-              }
-            }
+        props: {
+          type: 'primary',
+          size: 'small',
+          long:'long'
+        },
+        style: {
+          margin: '1px'
+        },
+        on: {
+          click: () => {
+            this.downloadQrcode(params.row.id)
+          }
+        }
       }, '下载二维码');
     const uploadBtn=(h,params) => h('Button', {
-              props: {
-                type: 'primary',
-                size: 'small',
-                long:'long'
-              },
-              style: {
-                margin: '3px'
-              },
-              on: {
-                click: () => {
-                  this.uploadPic(params.row.id)
-                }
-              }
+        props: {
+          type: 'primary',
+          size: 'small',
+          long:'long'
+        },
+        style: {
+          margin: '1px'
+        },
+        on: {
+          click: () => {
+            this.uploadPic(params.row.id)
+          }
+        }
       }, '标识图上传');
     const downLoadRecord = (h,params) =>  h('Button', {
-                  props: {
-                    type: 'primary',
-                    size: 'small',
-                    long:'long'
-                  },
-                  style: {
-                    margin: '3px'
-                  },
-                  on: {
-                    click: () => {
-                      this.downloadElImg(params.row.id)
-                    }
-                  }
+        props: {
+          type: 'primary',
+          size: 'small',
+          long:'long'
+        },
+        style: {
+          margin: '1px'
+        },
+        on: {
+          click: () => {
+            this.downloadElImg(params.row.id)
+          }
+        }
     }, '下载能效标识图');
     const extendBtn = (h,params) => h('Button',{
         props:{
@@ -95,7 +101,7 @@ export default {
           long:'long'
         },
         style: {
-          margin: '3px'
+          margin: '1px'
         },
         on:{
           click:()=>{
@@ -110,7 +116,7 @@ export default {
           long:'long'
         },
         style: {
-          margin: '3px'
+          margin: '1px'
         },
         on:{
           click:()=>{
@@ -125,7 +131,7 @@ export default {
           long:'long'
         },
         style: {
-          margin: '3px'
+          margin: '1px'
         },
         on:{
           click:()=>{
@@ -133,11 +139,30 @@ export default {
           }
         }
     },'查看');
+    const cancleBtn = (h,params) => h('Button',{
+        props:{
+          type:'primary',
+          size:'small',
+          long:'long'
+        },
+        style: {
+          margin: '1px'
+        },
+        on:{
+          click:()=>{
+              this.cancleHandle(params.row.id);
+          }
+        }
+    },'撤销');
+    
     return {
       total: 0,
       fileObj: {},
       modal1: false,
+      modal2: false,
+      qus:'',
       id: '',
+      rowId:0,
       uploadUrl: '',
       uploadParam: {
         fileData: {},
@@ -163,6 +188,20 @@ export default {
           align: 'center'
         },
         {
+          title: '主型号',
+          key: 'p_model_name',
+          align: 'center',
+          render:(h,params)=>{
+              return h('a',{
+                on:{
+                  click:()=>{
+                      this.viewHandle(params.row.p_id);
+                  }
+                }
+              },params.row.p_model_name)
+          }
+        },
+        {
           title: '实验室报告条码',
           key: 'bar_code',
           align: 'center'
@@ -174,14 +213,14 @@ export default {
         },
         {
           title: '状态',
-          key: 'state',
-          align: 'center',
-          render: (h, params) => {//1草稿2标识图制作中3数据同步中10已公告
-            return h('span', {}, params.row.state === 1 ? '草稿' :
-                                 params.row.state === 2 ? '标识图制作中' :
-                                 params.row.state === 3 ? '数据同步中' :
-                                 params.row.state === 10 ? '已公告' : '')
-          }
+          key: 'state_name',
+          align: 'center'
+          // render: (h, params) => {//1草稿2标识图制作中3数据同步中10已公告
+          //   return h('span', {}, params.row.state === 1 ? '草稿' :
+          //                        params.row.state === 2 ? '标识图制作中' :
+          //                        params.row.state === 3 ? '数据同步中' :
+          //                        params.row.state === 10 ? '已公告' : '')
+          // }
         },
         {
           title: '备案类型',
@@ -194,17 +233,24 @@ export default {
           align: 'center',
           render: (h, params) => {
             return h('div',[
+                viewBtn(h,params),
                 downLoadCode(h, params),
                 params.row.state === 2?uploadBtn(h,params): downLoadRecord(h,params),
                 params.row.kz ? extendBtn(h,params) :'',
                 params.row.bg ? updateBtn(h,params) :'',
-                viewBtn(h,params)
+                params.row.cx ?cancleBtn(h,params):''
             ]);
           }
         }
       ],
       recordData: []
     }
+  },
+  created(){
+    if(this.$route.params.pageNum){
+      this.formQuery.pageNum=this.$route.params.pageNum;
+    }
+    
   },
   mounted () {
     this.getCategoryList()
@@ -315,6 +361,31 @@ export default {
         }
       })
     },
+    cancleHandle(id){
+        this.rowId=id
+        this.modal2=true;
+    },
+    submitWorkorder(){
+      let _this=this
+      if(this.qus===''){
+        this.$Message.error("撤销申请不能为空");
+        return;
+      }
+      axios.get('/marking/revoke.do', {
+        params: {
+          id: this.rowId,
+          reason:this.qus
+        }
+      }).then(res => {
+        if(res.data.result_code==='1'){
+          _this.$Message.success(res.data.message);
+          _this.qus='';
+         _this.reqData();
+        }else{
+          _this.$Message.warning(res.data.message)
+        }
+      })
+    },
     viewHandle(id){
       axios.get('/marking/getInfo.do', {
         params: {
@@ -328,6 +399,7 @@ export default {
                 step:3,
                 type:'view',
                 id:id,
+                pageNum:this.formQuery.pageNum,
                 viewData:res.data
               }
             })
@@ -364,3 +436,8 @@ export default {
   }
 }
 </script>
+<style>
+.ivu-table-cell span{
+    word-break: break-word;
+}
+</style>
