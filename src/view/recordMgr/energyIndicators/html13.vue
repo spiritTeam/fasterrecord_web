@@ -239,13 +239,13 @@
                 <FormItem prop="c17">
                   <CheckboxGroup v-model="formRecord.c17">
                     <Checkbox label="带有热断路器" :disabled='disabledoff'>带有热断路器</Checkbox>
-                  </CheckboxGroup>
-                </FormItem>
-                <FormItem prop="c35">
-                  <CheckboxGroup v-model="formRecord.c35">
-                    <Checkbox label="自复位型" :disabled='disabledoff || forbidden.c35'>自复位型</Checkbox>
-                    <Checkbox label="非自复位型" :disabled='disabledoff || forbidden.c35'>非自复位型</Checkbox>
-                    <Checkbox label="双极断开型" :disabled='disabledoff || forbidden.c35'>双极断开型</Checkbox>
+                    <FormItem prop="c35">
+                      <CheckboxGroup v-model="formRecord.c35">
+                        <Checkbox label="自复位型" :disabled='disabledoff || forbidden.c35'>自复位型</Checkbox>
+                        <Checkbox label="非自复位型" :disabled='disabledoff || forbidden.c35'>非自复位型</Checkbox>
+                        <Checkbox label="双极断开型" :disabled='disabledoff || forbidden.c35'>双极断开型</Checkbox>
+                      </CheckboxGroup>
+                    </FormItem>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -1430,14 +1430,15 @@
           this.forbidden.c35 = true
         }
 
+
+
         console.log(this.formRecord.c35)
-
         let c35 = this.formRecord.c35.filter(item => !this.click_c35.includes(item))
-
-        // if (c35 === ''){
-        //
-        // }
-
+        if (c35 === '自复位型'){
+          this.formRecord.c35 = this.formRecord.c35.filter(item => item !== '非自复位型')
+        } else if (c35 === '非自复位型'){
+          this.formRecord.c35 = this.formRecord.c35.filter(item => item !== '自复位型')
+        }
         this.click_c35 = this.formRecord.c35
 
         //提交前数据规则验证
