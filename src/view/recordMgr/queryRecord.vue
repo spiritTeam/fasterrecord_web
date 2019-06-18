@@ -357,7 +357,7 @@ export default {
               }
             })
             this.$store.commit('setModelNo',res.data.marking.ec_model_no)
-            this.$store.commit('setOem',res.data.lab.oem)
+            //this.$store.commit('setOem',res.data.lab.oem)
           }
       })
     }

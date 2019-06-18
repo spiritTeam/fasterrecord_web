@@ -1277,6 +1277,8 @@ import {
           } else {
             callback()
           }
+        }else{
+          callback()
         }
       }
 
