@@ -9,9 +9,7 @@
     <Row>
       <Col span="4" v-for="(item,idx) in sampleList" :offset="idx === 0 ? offsetNum : 0" :key="item.id">
         <RadioGroup v-model="sample" size="large">
-          <!--暂时不禁用模板-->
-          <!--<Radio class="radioItem"  :label="item.id" :disabled="!template.includes(item.id)" :data-pic="item.pic1"> <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" /></Radio>-->
-          <Radio class="radioItem"  :label="item.id" :data-pic="item.pic1"> <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" /></Radio>
+          <Radio class="radioItem"  :label="item.id" :disabled="!template.includes(item.id)" :data-pic="item.pic1"> <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" /></Radio>
         </RadioGroup>
       </Col>
     </Row>
@@ -36,6 +34,7 @@ export default {
     }
   },
   mounted () {
+
     //this.getSampleList()
     //this.setStyle()
   },

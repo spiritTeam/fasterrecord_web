@@ -6,7 +6,7 @@
         <div class="logo-con">
           <!-- <img v-show="!collapsed" :src="maxLogo" key="max-logo" />
           <img v-show="collapsed" :src="minLogo" key="min-logo" /> -->
-          <p style="height:60px;line-height:60px;color:#fff;text-align:center;font-size:20px;font-weight:bold;">自主诚信备案系统</p>
+          <p style="height:60px;line-height:60px;color:#fff;text-align:center;font-size:20px;font-weight:bold;">能效标识备案系统</p>
         </div>
       </side-menu>
     </Sider>
@@ -27,7 +27,7 @@
             </keep-alive>
           </Content>
         </Layout>
-        <Footer>&nbsp;</Footer>
+        <!-- <Footer>&nbsp;</Footer> -->
       </Content>
     </Layout>
   </Layout>
