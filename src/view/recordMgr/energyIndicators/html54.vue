@@ -1012,7 +1012,7 @@
                     <Checkbox label="毛细管" :disabled='disabledoff'  class="overwrite2"></Checkbox>
                   </CheckboxGroup>
                 </FormItem>
-              </td>
+             </td>
               <td class="t_label">膨胀阀芯</td>
               <td>
                 <FormItem prop="c188" style="width:100%">

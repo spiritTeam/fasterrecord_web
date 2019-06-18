@@ -216,17 +216,16 @@
               <td>热断路器类型</td>
               <td colspan="3" style="border-bottom:none;">
                 <FormItem prop="c14">
-                  <RadioGroup v-model="formRecord.c14">
-                    <Radio label="热敏电阻" :disabled='disabledoff'>热敏电阻</Radio>
-                    <Radio label="双金属片式" :disabled='disabledoff'>双金属片式</Radio>
-                    <Radio label="自复位式" :disabled='disabledoff'>自复位式</Radio>
-                    <Radio label="非自复位式" :disabled='disabledoff'>非自复位式</Radio>
-                    <Radio label="软件" :disabled='disabledoff'>软件</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
-                  </RadioGroup>
-                  <FormItem prop="c21">
-                    <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.c21'/>
-                  </FormItem>
+                  <CheckboxGroup v-model="formRecord.c14">
+                    <Checkbox label="热敏电阻" :disabled='disabledoff'>热敏电阻</Checkbox>
+                    <Checkbox label="双金属片式" :disabled='disabledoff'>双金属片式</Checkbox>
+                    <Checkbox label="自复位式" :disabled='disabledoff'>自复位式</Checkbox>
+                    <Checkbox label="软件" :disabled='disabledoff'>软件</Checkbox>
+                     <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                  </CheckboxGroup>
+                </FormItem>
+                <FormItem prop="c21">
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.c21'/>
                 </FormItem>
               </td>
             </tr>
@@ -922,7 +921,7 @@
           c12: '',
           c13: '',
           c16: '',
-          c14: '',
+          c14: [],
           c21: '',
           c15: '',
           c31: '',
@@ -1044,7 +1043,7 @@
           this.formRecord.c18 = ''
           this.forbidden.c18 = true
         }
-        if (this.formRecord.c14 === '其他') {
+        if (this.formRecord.c14.join('').indexOf('其他') > -1) {
           this.forbidden.c21 = false
         } else {
           this.formRecord.c21 = ''
@@ -1305,7 +1304,6 @@
           ],
           c14: [
             {
-              trigger: 'change,blur',
               required: true,
               message: '热断路器类型不能为空'
             }
@@ -1313,7 +1311,7 @@
           c21: [
             {
               trigger: 'change,blur',
-              required: this.formRecord.c14 === '其他',
+              required: this.formRecord.c14.join('').indexOf('其他') > -1,
               message: '其他不能为空'
             }
           ],
