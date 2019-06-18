@@ -140,7 +140,8 @@
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
           <FormItem prop="c18" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18" :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c18"
+                        :disabled='disabledoff'></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -641,7 +642,9 @@
               <td><span class="red">*</span>产品正面图片</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath24">
+                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -653,7 +656,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark24" />
+                    <Icon type="ios-checkmark" v-show="checkmark24"/>
                   </Upload>
                 </div>
               </td>
@@ -667,7 +670,9 @@
               <td><span v-if='$store.state.app.oem' class="red">*</span>OEM声明</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath26">
+                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -679,14 +684,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark26" />
+                    <Icon type="ios-checkmark" v-show="checkmark26"/>
                   </Upload>
                 </div>
               </td>
               <td>关系证明</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath27">
+                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -699,7 +706,7 @@
                     :action="uploadUrl">
 
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark27" />
+                    <Icon type="ios-checkmark" v-show="checkmark27"/>
                   </Upload>
                 </div>
               </td>
@@ -708,7 +715,9 @@
               <td>品牌使用授权书</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath28">
+                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -720,14 +729,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark28" />
+                    <Icon type="ios-checkmark" v-show="checkmark28"/>
                   </Upload>
                 </div>
               </td>
               <td>委托代理文件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath29">
+                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -739,7 +750,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark29" />
+                    <Icon type="ios-checkmark" v-show="checkmark29"/>
                   </Upload>
                 </div>
               </td>
@@ -748,7 +759,9 @@
               <td>进口商企业信息表</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath30">
+                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -760,14 +773,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark30" />
+                    <Icon type="ios-checkmark" v-show="checkmark30"/>
                   </Upload>
                 </div>
               </td>
               <td>进口商营业执照或登记注册证明复印件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath31">
+                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -779,7 +794,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark31" />
+                    <Icon type="ios-checkmark" v-show="checkmark31"/>
                   </Upload>
                 </div>
               </td>
@@ -788,7 +803,9 @@
               <td>进口商与境外生产者订立的相关合同副本</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath32">
+                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     :show-upload-list=false
@@ -800,14 +817,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark32" />
+                    <Icon type="ios-checkmark" v-show="checkmark32"/>
                   </Upload>
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
               <td>（PDF/JPG/PNG）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath76">
+                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
                     id=76
@@ -820,13 +839,13 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark76" />
+                    <Icon type="ios-checkmark" v-show="checkmark76"/>
                   </Upload>
                 </div>
               </td>
             </tr>
           </table>
-          <p class="red">注：保存到草稿时，不保存附件！<br />所有附件上传文件大小需要控制在2M以内。</p>
+          <p class="red">注：保存到草稿时，不保存附件！<br/>所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div>
@@ -836,7 +855,8 @@
       </div>
       <div class="tc" v-if="$store.state.app.pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿</Button>
+        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿
+        </Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
       </div>
@@ -845,9 +865,10 @@
       </div>
     </Form>
     <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
-      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
+      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">
+        以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
-        <table >
+        <table>
           <thead>
           <tr>
             <th>名称</th>
@@ -856,7 +877,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(item,idx) in boolFlag" :key='idx' >
+          <tr v-for="(item,idx) in boolFlag" :key='idx'>
             <td width="50%">
               {{item.recName}}
             </td>
@@ -878,19 +899,19 @@
       <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
-      <img :src="templatePic" />
+      <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
+      <img :src="uploadPic"/>
     </Modal>
-    <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+    <Modal v-model="modal5" class="basic-info" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
-        我 <span  class="f-company">{{formRecord.c1}}</span>
+        我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-        型号的 <span  class="f-product">计算机显示器-2015版</span>产品。
+        品牌的 <span class="f-model">{{formRecord.c4}}</span>
+        型号的 <span class="f-product">计算机显示器-2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -901,7 +922,8 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -913,7 +935,8 @@
       <dl v-if="$store.state.app.pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"/>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -922,7 +945,9 @@
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
+      <div class="record-attached">
+        附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}
+      </div>
     </Modal>
   </div>
 
@@ -957,6 +982,7 @@
     data() {
       const timeDate = this.$store.state.app.dateinit;
       return {
+
         // 当前初始使用日期 对应的C值
         thisDateCV: "c18",
         // 当前能效等级 对应的C值
@@ -1172,8 +1198,8 @@
       }
     },
     computed: {
-      disabledoff(){
-        return  this.$store.state.app.pageType==='extend';
+      disabledoff() {
+        return this.$store.state.app.pageType === 'extend';
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1315,27 +1341,32 @@
             callback()
           }
         }
+
         return {
           c2: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '请填写制造单位'
             }
           ],
           c3: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '请填写备案方'
             }
           ],
           c5: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '请填写商标'
             }
           ],
           c7: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '请选择能效等级'
             },
@@ -1350,8 +1381,9 @@
           ],
           c9: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '能源效率（cd/W）标注值不能为空'
+              message: '能源效率（cd/W）标注值不能为空',
             },
             {
               validator: significantDigits22,
@@ -1364,8 +1396,9 @@
           ],
           c10: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '关闭状态功率(W)标注值不能为空'
+              message: '关闭状态功率(W)标注值不能为空',
             },
             {
               validator: twoDecimals,
@@ -1386,8 +1419,9 @@
           ],
           c11: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '睡眠状态功率(W)标注值不能为空'
+              message: '睡眠状态功率(W)标注值不能为空',
             },
             {
               validator: twoDecimals,
@@ -1408,8 +1442,9 @@
           ],
           c12: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '能源效率（cd/W）实测值不能为空'
+              message: '能源效率（cd/W）实测值不能为空',
             },
             {
               validator: significantDigits33,
@@ -1418,8 +1453,9 @@
           ],
           c13: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '关闭状态功率(W)实测值不能为空'
+              message: '关闭状态功率(W)实测值不能为空',
             },
             {
               validator: threeDecimals,
@@ -1428,8 +1464,9 @@
           ],
           c14: [
             {
+              trigger: 'change,blur',
               required: true,
-              message: '睡眠状态功率(W)实测值不能为空'
+              message: '睡眠状态功率(W)实测值不能为空',
             },
             {
               validator: threeDecimals,
@@ -1438,24 +1475,28 @@
           ],
           c19: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '屏幕尺寸长（mm）不能为空'
             }
           ],
           c20: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '屏幕尺寸宽（mm）不能为空'
             }
           ],
           c21: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '固有分辨力（像素数）值1不能为空'
             }
           ],
           c22: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '固有分辨力（像素数）值2不能为空'
             }
@@ -1468,144 +1509,168 @@
           ],
           c24: [
             {
+              trigger: 'change,blur',
               required: this.formRecord.c23.join('').indexOf('其他') > -1,
               message: '附加功能其他不能为空'
             }
           ],
           c25: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '供电方式不能为空'
             }
           ],
           c26: [
             {
+              trigger: 'change,blur',
               required: this.formRecord.c25 === '外部电源，输出功率（W）',
               message: '外部电源,输出功率(W)的值不能为空'
             }
           ],
           c27: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '额定功率（W）不能为空'
             }
           ],
           c28: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '额定电压（V）不能为空'
             }
           ],
           c29: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '额定电流（A）不能为空'
             }
           ],
           c30: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '额定频率（Hz）不能为空'
             }
           ],
           c31: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '显示屏型号规格不能为空'
             }
           ],
           c32: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '显示屏固有分辨力不能为空'
             }
           ],
           c33: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '显示屏屏幕尺寸不能为空'
             }
           ],
           c34: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '显示屏亮度不能为空'
             }
           ],
           c35: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '显示屏型号规格生产者（全称）不能为空'
             }
           ],
           c36: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '变压器型号规格不能为空'
             }
           ],
           c37: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '变压器技术参数不能为空'
             }
           ],
           c38: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '变压器生产者（全称）不能为空'
             }
           ],
           c39: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '主控IC型号规格不能为空'
             }
           ],
           c40: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '主控IC技术参数不能为空'
             }
           ],
           c41: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '主控IC生产者（全称）不能为空'
             }
           ],
           c42: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '开关管型号规格不能为空'
             }
           ],
           c43: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '开关管技术参数不能为空'
             }
           ],
           c44: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '开关管生产者（全称）不能为空'
             }
           ],
           c45: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '外部电源型号规格不能为空'
             }
           ],
           c46: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '外部电源技术参数不能为空'
             }
           ],
           c47: [
             {
+              trigger: 'change,blur',
               required: true,
               message: '外部电源生产者（全称）不能为空'
             }

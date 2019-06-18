@@ -163,10 +163,10 @@
                 <FormItem prop="c11">
                   <RadioGroup v-model="formRecord.c11">
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c12">
-                      <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c12'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c12">
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c12'/>
                 </FormItem>
               </td>
             </tr>
@@ -246,10 +246,10 @@
                 <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
-                    <FormItem prop="c19">
-                      <Input type="text" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c19">
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>
                 </FormItem>
               </td>
               <td style="border-top:none;">

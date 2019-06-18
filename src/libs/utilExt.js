@@ -122,6 +122,7 @@ export const XfillDraftData = (params, that) => {
       that.formRecord[i] = data[i]
     }
   }
+
 }
 /* 数据来源 新增备案 */
 export const XfillDefaultData = (params, that) => {
@@ -389,8 +390,6 @@ var decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
 var decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
 var atLeast1 = /^[0-9]\+?(\d*\.\d{1,5})$/;
 var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
-var significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
-var significantDigits3 = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
 var inputNumber = /^[0-9]\d*$/
 var numberOr11 = /^[0-9]+([.]{1}[0-9]{1,1})?$/
 var decimalOr22 = /^[0-9]+[.]{1}[0-9]{1,2}?$/
@@ -409,10 +408,12 @@ export const oneDecimals = (rule, vaule, callback) => {
   decimal1.test(vaule) ? callback() : callback('一位小数');
 }
 export const significantDigits22 = (rule, vaule, callback) => {
+  let significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
   significantDigits2.test(vaule) ? callback() : callback('两位有效数字');
 }
 export const significantDigits33 = (rule, vaule, callback) => {
-  significantDigits3.test(vaule) ? callback() : callback('三位有效数字');
+  let tel = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
+  tel.test(vaule) ? callback() : callback('三位有效数字');
 }
 
 export const numberCheck = (rule, vaule, callback) => {
@@ -436,7 +437,7 @@ export const isInteger = (rule, vaule, callback) => {
   integer.test(vaule) ? callback() : callback('整数');
 }
 export const isNumber = (rule, vaule, callback) => {
-  number.test(vaule) ? callback() : callback('请输入数字'); 
+  number.test(vaule) ? callback() : callback('请输入数字');
 }
 export const numberOr1 = (rule, vaule, callback) => {
   numberOr11.test(vaule) ? callback() : callback('整数或一位小数');

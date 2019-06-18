@@ -71,7 +71,7 @@
             <RadioGroup v-model="formRecord.c27">
               <Radio :disabled='disabledoff' label="家用燃气快速热水器">家用燃气快速热水器</Radio>
               <Radio :disabled='disabledoff' label="燃气采暖热水炉(单采暖型)">燃气采暖热水炉(单采暖型)</Radio>
-              <Radio :disabled='disabledoff' label=" 燃气采暖热水炉(两用型)"> 燃气采暖热水炉(两用型)</Radio>
+              <Radio :disabled='disabledoff' label="燃气采暖热水炉(两用型)">燃气采暖热水炉(两用型)</Radio>
             </RadioGroup>
           </FormItem>
           <table id="table1">
@@ -90,12 +90,12 @@
               </td>
               <td>
                 <FormItem prop="c9">
-                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff || forbidden.c9'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c10">
-                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff || forbidden.c10'/>
                 </FormItem>
               </td>
             </tr>
@@ -108,12 +108,12 @@
               </td>
               <td>
                 <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c12'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c13">
-                  <Input type="text" v-model="formRecord.c13" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c13" :disabled='disabledoff || forbidden.c13'/>
                 </FormItem>
               </td>
             </tr>
@@ -126,12 +126,12 @@
               </td>
               <td>
                 <FormItem prop="c15">
-                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff || forbidden.c15'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c16">
-                  <Input type="text" v-model="formRecord.c16" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c16" :disabled='disabledoff || forbidden.c16'/>
                 </FormItem>
               </td>
             </tr>
@@ -144,12 +144,12 @@
               </td>
               <td>
                 <FormItem prop="c18">
-                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c19">
-                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>
                 </FormItem>
               </td>
             </tr>
@@ -162,17 +162,17 @@
               </td>
               <td>
                 <FormItem prop="c21">
-                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.c21'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c22">
-                  <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c22" :disabled='disabledoff || forbidden.c22'/>
                 </FormItem>
               </td>
             </tr>
-             <tr>
-              <td>30%额定热负荷供暖热效率	</td>
+            <tr>
+              <td>30%额定热负荷供暖热效率</td>
               <td>
                 <FormItem prop="c23">
                   <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
@@ -180,12 +180,12 @@
               </td>
               <td>
                 <FormItem prop="c24">
-                  <Input type="text" v-model="formRecord.c24" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c24'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c25">
-                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c25'/>
                 </FormItem>
               </td>
             </tr>
@@ -222,31 +222,37 @@
               <td>
                 <FormItem prop="c29">
                   <RadioGroup v-model="formRecord.c29">
-                    <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>（
-                      <FormItem prop="c30">
-                        <RadioGroup v-model="formRecord.c30">
-                          <Radio label="5R" :disabled='disabledoff'>5R</Radio>
-                          <Radio label="6R" :disabled='disabledoff'>6R</Radio>
-                          <Radio label="7R" :disabled='disabledoff'>7R</Radio>
-                        </RadioGroup>
-                      </FormItem>）<br><br>
-                    <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>（
-                      <FormItem prop="c31">
-                        <RadioGroup v-model="formRecord.c31">
-                          <Radio label="4T" :disabled='disabledoff'>4T</Radio>
-                          <Radio label="6T" :disabled='disabledoff'>6T</Radio>
-                          <Radio label="10T" :disabled='disabledoff'>10T</Radio>
-                          <Radio label="12T" :disabled='disabledoff'>12T</Radio>
-                        </RadioGroup>
-                      </FormItem>）<br><br>
-                    <Radio label="液化石油气" :disabled='disabledoff'>液化石油气</Radio>（
-                      <FormItem prop="c32">
-                        <RadioGroup v-model="formRecord.c32">
-                        <Radio label="19Y" :disabled='disabledoff'>19Y</Radio>
-                        <Radio label="20Y" :disabled='disabledoff'>20Y</Radio>
-                        <Radio label="22Y" :disabled='disabledoff'>22Y</Radio>
+                    <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>
+                    （
+                    <FormItem prop="c30">
+                      <RadioGroup v-model="formRecord.c30">
+                        <Radio label="5R" :disabled='disabledoff || forbidden.c30'>5R</Radio>
+                        <Radio label="6R" :disabled='disabledoff || forbidden.c30'>6R</Radio>
+                        <Radio label="7R" :disabled='disabledoff || forbidden.c30'>7R</Radio>
                       </RadioGroup>
-                    </FormItem>）<br><br>
+                    </FormItem>
+                    ）<br><br>
+                    <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>
+                    （
+                    <FormItem prop="c31">
+                      <RadioGroup v-model="formRecord.c31">
+                        <Radio label="4T" :disabled='disabledoff || forbidden.c31'>4T</Radio>
+                        <Radio label="6T" :disabled='disabledoff || forbidden.c31'>6T</Radio>
+                        <Radio label="10T" :disabled='disabledoff || forbidden.c31'>10T</Radio>
+                        <Radio label="12T" :disabled='disabledoff || forbidden.c31'>12T</Radio>
+                      </RadioGroup>
+                    </FormItem>
+                    ）<br><br>
+                    <Radio label="液化石油气" :disabled='disabledoff'>液化石油气</Radio>
+                    （
+                    <FormItem prop="c32">
+                      <RadioGroup v-model="formRecord.c32">
+                        <Radio label="19Y" :disabled='disabledoff || forbidden.c32'>19Y</Radio>
+                        <Radio label="20Y" :disabled='disabledoff || forbidden.c32'>20Y</Radio>
+                        <Radio label="22Y" :disabled='disabledoff || forbidden.c32'>22Y</Radio>
+                      </RadioGroup>
+                    </FormItem>
+                    ）<br><br>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -255,7 +261,8 @@
               <td>供电电压（V）</td>
               <td>
                 <FormItem prop="c33">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c33" :disabled='disabledoff' width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c33" :disabled='disabledoff'
+                         width="100px"/>
                 </FormItem>
               </td>
             </tr>
@@ -266,11 +273,13 @@
                   <CheckboxGroup v-model="formRecord.c34">
                     <Checkbox label="热水" :disabled='disabledoff'></Checkbox>
                     <FormItem prop="c35">
-                      <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35' style="width:80px;" />（kW）
+                      <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'
+                             style="width:80px;"/>（kW）
                     </FormItem>
                     <Checkbox label="供暖" :disabled='disabledoff'></Checkbox>
                     <FormItem prop="c36">
-                      <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c36' style="width:80px;" />（kW）
+                      <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c36'
+                             style="width:80px;"/>（kW）
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
@@ -280,7 +289,8 @@
               <td>供暖热输出（kW）</td>
               <td>
                 <FormItem prop="c37">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c37" :disabled='disabledoff' width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c37" :disabled='disabledoff'
+                         width="100px"/>
                 </FormItem>
               </td>
             </tr>
@@ -299,7 +309,8 @@
               <td>产热水能力（kg/min）</td>
               <td>
                 <FormItem prop="c39">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c39" :disabled='disabledoff' width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c39" :disabled='disabledoff'
+                         width="100px"/>
                 </FormItem>
               </td>
             </tr>
@@ -307,7 +318,8 @@
               <td>额定燃气压力（kPa）</td>
               <td>
                 <FormItem prop="c40">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c40" :disabled='disabledoff' width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c40" :disabled='disabledoff'
+                         width="100px"/>
                 </FormItem>
               </td>
             </tr>
@@ -318,11 +330,13 @@
                   <CheckboxGroup v-model="formRecord.c41" style="display:inline-block;">
                     <Checkbox label="热水" :disabled='disabledoff'>热水</Checkbox>
                     <FormItem prop="c42">
-                      <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.c42' style="width:80px;" />（kW）
+                      <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.c42'
+                             style="width:80px;"/>（kW）
                     </FormItem>
                     <Checkbox label="供暖" :disabled='disabledoff'>供暖</Checkbox>
                     <FormItem prop="c43">
-                      <Input type="text" v-model="formRecord.c43" :disabled='disabledoff || forbidden.c43' style="width:80px;" />（kW）
+                      <Input type="text" v-model="formRecord.c43" :disabled='disabledoff || forbidden.c43'
+                             style="width:80px;"/>（kW）
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
@@ -332,7 +346,8 @@
               <td>华白数（MJ/m3）</td>
               <td>
                 <FormItem prop="c44">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c44" :disabled='disabledoff' width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c44" :disabled='disabledoff'
+                         width="100px"/>
                 </FormItem>
               </td>
             </tr>
@@ -340,7 +355,8 @@
               <td>燃烧势</td>
               <td>
                 <FormItem prop="c45">
-                  <Input type="text" style="width: 440px" v-model="formRecord.c45" :disabled='disabledoff' width="100px"/>
+                  <Input type="text" style="width: 440px" v-model="formRecord.c45" :disabled='disabledoff'
+                         width="100px"/>
                 </FormItem>
               </td>
             </tr>
@@ -463,35 +479,39 @@
                   <CheckboxGroup v-model="formRecord.c56" style="display:inline-block;">
                     <Checkbox label="熄火保护装置" :disabled='disabledoff'>熄火保护装置</Checkbox>
                     <Checkbox label="烟道堵塞安全装置" :disabled='disabledoff'>烟道堵塞安全装置</Checkbox>
-                    <Checkbox label="再点火安全装置" :disabled='disabledoff'>再点火安全装置</Checkbox><br>
+                    <Checkbox label="再点火安全装置" :disabled='disabledoff'>再点火安全装置</Checkbox>
+                    <br>
                     <Checkbox label="防过热安全装置" :disabled='disabledoff'>防过热安全装置</Checkbox>
                     <Checkbox label="泄压安全装置" :disabled='disabledoff'>泄压安全装置</Checkbox>
-                    <Checkbox label="风压过大安全装置" :disabled='disabledoff'>风压过大安全装置</Checkbox><br>
+                    <Checkbox label="风压过大安全装置" :disabled='disabledoff'>风压过大安全装置</Checkbox>
+                    <br>
                     <Checkbox label="自动排气装置" :disabled='disabledoff'>自动排气装置</Checkbox>
                     <Checkbox label="燃烧室损伤安全装置" :disabled='disabledoff'>燃烧室损伤安全装置</Checkbox>
-                    <Checkbox label="自动防冻安全装置" :disabled='disabledoff'>自动防冻安全装置</Checkbox><br>
+                    <Checkbox label="自动防冻安全装置" :disabled='disabledoff'>自动防冻安全装置</Checkbox>
+                    <br>
                     <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
                     <FormItem prop="c57">
-                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57' style="width:80px;" />
+                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'
+                             style="width:80px;"/>
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
               </td>
-            </tr> 
+            </tr>
             <tr>
               <td>外形尺寸(长×宽×高)（mm×mm×mm）</td>
               <td>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">长</span>
                 <FormItem prop="c58">
-                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff' style="width:80px;" />
+                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">宽</span>
                 <FormItem prop="c59">
-                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff' style="width:80px;" />
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">高</span>
                 <FormItem prop="c60">
-                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' style="width:80px;" />
+                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
               </td>
             </tr>
@@ -698,7 +718,7 @@
           </table>
         </Card>
       </div>
-        <div class="part part8">
+      <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
           <div class="application" v-if='$store.state.app.pageType'>
@@ -1019,7 +1039,7 @@
 
 </template>
 <script>
- import {
+  import {
     getImgPath,
     XfillExtendData,
     XfillDraftData,
@@ -1038,175 +1058,191 @@
     significantDigits33
   } from '@/libs/utilExt'
 
-export default {
-  data () {
-    const timeDate = this.$store.state.app.dateinit
-    return {
-      // 当前初始使用日期 对应的C值
-      thisDateCV: 'c26',
-      // 当前能效等级 对应的C值
-      thisLevelCV: 'c7',
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      templatePic: '',
-      //disabledoff: true,
-      uploadPic: '',
-      modal2: false,
-      currentValue: '',
-      qus: '',
-      boolFlag: [],
-      currentCValue: '',
-      confirmData: [],
-      modal1: false,
-      saveDisabled: false,
-      submitDisabled: false,
-      dataInit: {
-        disabledDate (date) {
-          return date && date.valueOf() < timeDate
+  export default {
+    data() {
+      const timeDate = this.$store.state.app.dateinit
+      return {
+        // 当前初始使用日期 对应的C值
+        thisDateCV: 'c26',
+        // 当前能效等级 对应的C值
+        thisLevelCV: 'c7',
+        modal3: false,
+        modal4: false,
+        modal5: false,
+        templatePic: '',
+        //disabledoff: true,
+        uploadPic: '',
+        modal2: false,
+        currentValue: '',
+        qus: '',
+        boolFlag: [],
+        currentCValue: '',
+        confirmData: [],
+        modal1: false,
+        saveDisabled: false,
+        submitDisabled: false,
+        dataInit: {
+          disabledDate(date) {
+            return date && date.valueOf() < timeDate
+          }
+        },
+        uploadUrl: '',
+        uploadParam: {
+          fileData24: {},
+          filePath24: '',
+          uploadFileList24: [],
+          fileData26: {},
+          filePath26: '',
+          uploadFileList26: [],
+          fileData27: {},
+          filePath27: '',
+          uploadFileList27: [],
+          fileData28: {},
+          filePath28: '',
+          uploadFileList28: [],
+          fileData29: {},
+          filePath29: '',
+          uploadFileList29: [],
+          fileData30: {},
+          filePath30: '',
+          uploadFileList30: [],
+          fileData31: {},
+          filePath31: '',
+          uploadFileList31: [],
+          fileData32: {},
+          filePath32: '',
+          uploadFileList32: [],
+          fileData76: {},
+          filePath76: '',
+          uploadFileList76: []
+        },
+        filesArr: [],
+        checkmark24: false,
+        checkmark26: false,
+        checkmark27: false,
+        checkmark28: false,
+        checkmark29: false,
+        checkmark30: false,
+        checkmark31: false,
+        checkmark32: false,
+        checkmark76: false,
+        formRecord: {
+          ec_master_kuozhan_text: '',
+          c1: '',
+          c2: '',
+          c3: '',
+          c4: '',
+          c5: '',
+          c7: '1',
+          c8: '',
+          c9: '',
+          c10: '',
+          c11: '',
+          c12: '',
+          c13: '',
+          c14: '',
+          c15: '',
+          c16: '',
+          c17: '',
+          c18: '',
+          c19: '',
+          c20: '',
+          c21: '',
+          c22: '',
+          c23: '',
+          c24: '',
+          c25: '',
+          c26: new Date(),
+          c27: '',
+          c28: '',
+          c29: '',
+          c30: '',
+          c31: '',
+          c32: '',
+          c33: '',
+          c34: [],
+          c35: '',
+          c36: '',
+          c37: '',
+          c38: '',
+          c39: '',
+          c40: '',
+          c41: [],
+          c42: '',
+          c43: '',
+          c44: '',
+          c45: '',
+          c46: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c51: '',
+          c52: '',
+          c53: '',
+          c54: '',
+          c55: '',
+          c56: [],
+          c57: '',
+          c58: '',
+          c59: '',
+          c60: '',
+          c61: '',
+          c62: '',
+          c63: '',
+          c64: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c69: '',
+          c70: '',
+          c71: '',
+          c72: '',
+          c73: '',
+          c74: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c78: '',
+          c79: '',
+          c80: '',
+          c81: '',
+          c82: '',
+          c83: '',
+          c84: '',
+          c85: '',
+          c86: '',
+          c87: '',
+          c202: '',
+          ec_model_no: 48,
+          attach_list: ''
+        },
+        forbidden: {
+          c35: true,
+          c36: true,
+          c30: true,
+          c31: true,
+          c32: true,
+          c9: true,
+          c10: true,
+          c12: true,
+          c13: true,
+          c15: true,
+          c16: true,
+          c18: true,
+          c19: true,
+          c21: true,
+          c22: true,
+          c24: true,
+          c25: true,
+
         }
-      },
-      uploadUrl: '',
-      uploadParam: {
-        fileData24: {},
-        filePath24: '',
-        uploadFileList24: [],
-        fileData26: {},
-        filePath26: '',
-        uploadFileList26: [],
-        fileData27: {},
-        filePath27: '',
-        uploadFileList27: [],
-        fileData28: {},
-        filePath28: '',
-        uploadFileList28: [],
-        fileData29: {},
-        filePath29: '',
-        uploadFileList29: [],
-        fileData30: {},
-        filePath30: '',
-        uploadFileList30: [],
-        fileData31: {},
-        filePath31: '',
-        uploadFileList31: [],
-        fileData32: {},
-        filePath32: '',
-        uploadFileList32: [],
-        fileData76: {},
-        filePath76: '',
-        uploadFileList76: []
-      },
-      filesArr: [],
-      checkmark24: false,
-      checkmark26: false,
-      checkmark27: false,
-      checkmark28: false,
-      checkmark29: false,
-      checkmark30: false,
-      checkmark31: false,
-      checkmark32: false,
-      checkmark76: false,
-      formRecord: {
-        ec_master_kuozhan_text: '',
-        c1: '',
-        c2: '',
-        c3: '',
-        c4: '',
-        c5: '',
-        c7: '1',
-        c8: '',
-        c9: '',
-        c10: '',
-        c11: '',
-        c12: '',
-        c13: '',
-        c14: '',
-        c15: '',
-        c16: '',
-        c17: '',
-        c18: '',
-        c19: '',
-        c20: '',
-        c21: '',
-        c22: '',
-        c23: '',
-        c24: '',
-        c25: '',
-        c26: new Date(),
-        c27: '',
-        c28: '',
-        c29: '',
-        c30: '',
-        c31: '',
-        c32: '',
-        c33: '',
-        c34: [],
-        c35: '',
-        c36: '',
-        c37: '',
-        c38: '',
-        c39: '',
-        c40: '',
-        c41: [],
-        c42: '',
-        c43: '',
-        c44: '',
-        c45: '',
-        c46: '',
-        c47: '',
-        c48: '',
-        c49: '',
-        c50: '',
-        c51: '',
-        c52: '',
-        c53: '',
-        c54: '',
-        c55: '',
-        c56: [],
-        c57: '',
-        c58: '',
-        c59: '',
-        c60: '',
-        c61: '',
-        c62: '',
-        c63: '',
-        c64: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
-        c71: '',
-        c72: '',
-        c73: '',
-        c74: '',
-        c75: '',
-        c76: '',
-        c77: '',
-        c78: '',
-        c79: '',
-        c80: '',
-        c81: '',
-        c82: '',
-        c83: '',
-        c84: '',
-        c85: '',
-        c86: '',
-        c87: '',
-        c202: '',
-        ec_model_no: 48,
-        attach_list: ''
-      },
-      forbidden: {
-        c35: true,
-        c36: true
       }
-    }
-  },
-  mounted () {
-    //this.disabledoff = this.$store.state.app.pageType == 'extend'
-  },
+    },
+    mounted() {
+      //this.disabledoff = this.$store.state.app.pageType == 'extend'
+    },
     methods: {
       showTemplate() {
         this.templatePic = this.$store.state.app.pltPic
@@ -1260,593 +1296,663 @@ export default {
         this['checkmark' + id] = true
       }
     },
-  computed: {
-    disabledoff(){
-      return  this.$store.state.app.pageType==='extend';
-    },   
-    pltId () {
-      return this.$store.state.app.pltId
-    },
-    pltPic () {
-      return this.$store.state.app.pltPic
-    },
-    requiredStr () {
-      return this.$store.state.app.requiredStr
-    },
-    ruleRecord () {
-     //产品类型
-      var lx = this.formRecord.c27
-      //能效等级
-      var nxdjch = this.formRecord.c7
-      //额定热负荷热水热效率
-      var valueers = parseFloat(this.formRecord.c14);
-      //额定热负荷供暖热效率
-      var valueegn = parseFloat(this.formRecord.c20);
-      //50%额定热负荷效率值
-      var value50 = parseFloat(this.formRecord.c17);
-      //30%额定热负荷效率值
-      var value30 = parseFloat(this.formRecord.c23);
-      if (this.formRecord.c34.join('').indexOf('热水') > -1) {
-        this.forbidden.c35 = false
-      } else {
-        this.formRecord.c35 = ''
-        this.forbidden.c35 = true
-      }
-      if (this.formRecord.c34.join('').indexOf('供暖') > -1) {
-        this.forbidden.c36 = false
-      } else {
-        this.formRecord.c36 = ''
-        this.forbidden.c36 = true
-      }
-      if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
-        this.forbidden.c43 = false
-      } else {
-        this.formRecord.c43 = ''
-        this.forbidden.c43 = true
-      }
-      if (this.formRecord.c41.join('').indexOf('热水') > -1) {
-        this.forbidden.c42 = false
-      } else {
-        this.formRecord.c42 = ''
-        this.forbidden.c42 = true
-      }
-      if (this.formRecord.c56.join('').indexOf('其他') > -1) {
-        this.forbidden.c57 = false
-      } else {
-        this.formRecord.c57 = ''
-        this.forbidden.c57 = true
-      }
-      var nxdj = "";
-      var n1 = "";
-      var n2 = "";
-      var n3 = "";
-      var n4 = "";
-      var n1val = "";
-      var n2val = "";
-      var nxdj1 = "";
-      var nxdj2 = "";
-      var nxdj3 = "";
-      var nxdj4 = "";
-      var nxdjMidd1 = "";
-      var nxdjMidd2 = "";
-      if (lx != "") {
-        if (lx == "家用燃气快速热水器") {
-          if (valueers > value50) {
+    computed: {
+      disabledoff() {
+        return this.$store.state.app.pageType === 'extend';
+      },
+      pltId() {
+        return this.$store.state.app.pltId
+      },
+      pltPic() {
+        return this.$store.state.app.pltPic
+      },
+      requiredStr() {
+        return this.$store.state.app.requiredStr
+      },
+      ruleRecord() {
+        //产品类型
+        var lx = this.formRecord.c27
+        //能效等级
+        var nxdjch = this.formRecord.c7
+        //额定热负荷热水热效率
+        var valueers = parseFloat(this.formRecord.c14);
+        //额定热负荷供暖热效率
+        var valueegn = parseFloat(this.formRecord.c20);
+        //50%额定热负荷效率值
+        var value50 = parseFloat(this.formRecord.c17);
+        //30%额定热负荷效率值
+        var value30 = parseFloat(this.formRecord.c23);
+        if (this.formRecord.c34.join('').indexOf('热水') > -1) {
+          this.forbidden.c35 = false
+        } else {
+          this.formRecord.c35 = ''
+          this.forbidden.c35 = true
+        }
+        if (this.formRecord.c34.join('').indexOf('供暖') > -1) {
+          this.forbidden.c36 = false
+        } else {
+          this.formRecord.c36 = ''
+          this.forbidden.c36 = true
+        }
+        if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
+          this.forbidden.c43 = false
+        } else {
+          this.formRecord.c43 = ''
+          this.forbidden.c43 = true
+        }
+        if (this.formRecord.c41.join('').indexOf('热水') > -1) {
+          this.forbidden.c42 = false
+        } else {
+          this.formRecord.c42 = ''
+          this.forbidden.c42 = true
+        }
+        if (this.formRecord.c56.join('').indexOf('其他') > -1) {
+          this.forbidden.c57 = false
+        } else {
+          this.formRecord.c57 = ''
+          this.forbidden.c57 = true
+        }
+
+        if (this.formRecord.c27 === '家用燃气快速热水器') {
+          this.forbidden.c9 = false
+          this.forbidden.c10 = false
+          this.forbidden.c12 = true
+          this.formRecord.c12 = ''
+          this.forbidden.c13 = true
+          this.formRecord.c13 = ''
+          this.forbidden.c15 = false
+          this.forbidden.c16 = false
+          this.forbidden.c18 = false
+          this.forbidden.c19 = false
+          this.forbidden.c21 = true
+          this.formRecord.c21 = ''
+          this.forbidden.c22 = true
+          this.formRecord.c22 = ''
+          this.forbidden.c24 = true
+          this.formRecord.c24 = ''
+          this.forbidden.c25 = true
+          this.formRecord.c25 = ''
+        } else if (this.formRecord.c27 === '燃气采暖热水炉(单采暖型)') {
+          this.forbidden.c9 = true
+          this.formRecord.c9 = ''
+          this.forbidden.c10 = true
+          this.formRecord.c10 = ''
+          this.forbidden.c12 = false
+          this.forbidden.c13 = false
+          this.forbidden.c15 = true
+          this.formRecord.c15 = ''
+          this.forbidden.c16 = true
+          this.formRecord.c16 = ''
+          this.forbidden.c18 = true
+          this.formRecord.c18 = ''
+          this.forbidden.c19 = true
+          this.formRecord.c19 = ''
+          this.forbidden.c21 = false
+          this.forbidden.c22 = false
+          this.forbidden.c24 = false
+          this.forbidden.c25 = false
+        } else if (this.formRecord.c27 === '燃气采暖热水炉(两用型)') {
+          this.forbidden.c9 = false
+          this.forbidden.c10 = false
+          this.forbidden.c12 = false
+          this.forbidden.c13 = false
+          this.forbidden.c15 = false
+          this.forbidden.c16 = false
+          this.forbidden.c18 = false
+          this.forbidden.c19 = false
+          this.forbidden.c21 = false
+          this.forbidden.c22 = false
+          this.forbidden.c24 = false
+          this.forbidden.c25 = false
+        }
+
+        if (this.formRecord.c29 === '人工煤气') {
+          this.forbidden.c30 = false
+          this.forbidden.c31 = true
+          this.forbidden.c32 = true
+        } else if (this.formRecord.c29 === '天然气') {
+          this.forbidden.c30 = true
+          this.forbidden.c31 = false
+          this.forbidden.c32 = true
+        } else if (this.formRecord.c29 === '液化石油气') {
+          this.forbidden.c30 = true
+          this.forbidden.c31 = true
+          this.forbidden.c32 = false
+        }
+
+
+        var nxdj = "";
+        var n1 = "";
+        var n2 = "";
+        var n3 = "";
+        var n4 = "";
+        var n1val = "";
+        var n2val = "";
+        var nxdj1 = "";
+        var nxdj2 = "";
+        var nxdj3 = "";
+        var nxdj4 = "";
+        var nxdjMidd1 = "";
+        var nxdjMidd2 = "";
+        if (lx != "") {
+          if (lx == "家用燃气快速热水器") {
+            if (valueers > value50) {
               n1val = valueers;
               n2val = value50;
-          } else {
+            } else {
               n1val = value50;
               n2val = valueers;
-          }
-          if (n1val != "" && n2val != "") {
-            //能效等级1
-            if (n1val >= 98) {
-                nxdj1 = "1";
-            } else if (n1val >= 89 && n1val < 98) {
-                nxdj1 = "2";
-            } else if (n1val >= 86 && n1val < 89) {
-                nxdj1 = "3";
-            } else {
-                nxdj1 = "";
-            }
-            //能效等级2
-            if (n2val >= 94) {
-                nxdj2 = "1";
-            } else if (n2val >= 85 && n2val < 94) {
-                nxdj2 = "2";
-            } else if (n2val >= 82 && n2val < 85) {
-                nxdj2 = "3";
-            } else {
-                nxdj2 = "";
-            }
-            if (nxdj1 == "" || nxdj2 == "") {
-                nxdj = "";
-            } else {
-                if (nxdj1 > nxdj2) {
-                    nxdj = nxdj1;
-                } else {
-                    nxdj = nxdj2;
-                }
-            }
-          }
-        } else if (lx == "燃气采暖热水炉单采暖型") {
-            if (valueegn > value30) {
-                n1val = valueegn;
-                n2val = value30;
-            } else {
-                n1val = value30;
-                n2val = valueegn;
             }
             if (n1val != "" && n2val != "") {
-                //能效等级1
-                if (n1val >= 99) {
-                    nxdj1 = "1";
-                } else if (n1val >= 89 && n1val < 99) {
-                    nxdj1 = "2";
-                } else if (n1val >= 86 && n1val < 89) {
-                    nxdj1 = "3";
+              //能效等级1
+              if (n1val >= 98) {
+                nxdj1 = "1";
+              } else if (n1val >= 89 && n1val < 98) {
+                nxdj1 = "2";
+              } else if (n1val >= 86 && n1val < 89) {
+                nxdj1 = "3";
+              } else {
+                nxdj1 = "";
+              }
+              //能效等级2
+              if (n2val >= 94) {
+                nxdj2 = "1";
+              } else if (n2val >= 85 && n2val < 94) {
+                nxdj2 = "2";
+              } else if (n2val >= 82 && n2val < 85) {
+                nxdj2 = "3";
+              } else {
+                nxdj2 = "";
+              }
+              if (nxdj1 == "" || nxdj2 == "") {
+                nxdj = "";
+              } else {
+                if (nxdj1 > nxdj2) {
+                  nxdj = nxdj1;
                 } else {
-                    nxdj1 = "";
+                  nxdj = nxdj2;
                 }
-                //能效等级2
-                if (n2val >= 95) {
-                    nxdj2 = "1";
-                } else if (n2val >= 85 && n2val < 95) {
-                    nxdj2 = "2";
-                } else if (n2val >= 82 && n2val < 85) {
-                    nxdj2 = "3";
+              }
+            }
+          } else if (lx == "燃气采暖热水炉单采暖型") {
+            if (valueegn > value30) {
+              n1val = valueegn;
+              n2val = value30;
+            } else {
+              n1val = value30;
+              n2val = valueegn;
+            }
+            if (n1val != "" && n2val != "") {
+              //能效等级1
+              if (n1val >= 99) {
+                nxdj1 = "1";
+              } else if (n1val >= 89 && n1val < 99) {
+                nxdj1 = "2";
+              } else if (n1val >= 86 && n1val < 89) {
+                nxdj1 = "3";
+              } else {
+                nxdj1 = "";
+              }
+              //能效等级2
+              if (n2val >= 95) {
+                nxdj2 = "1";
+              } else if (n2val >= 85 && n2val < 95) {
+                nxdj2 = "2";
+              } else if (n2val >= 82 && n2val < 85) {
+                nxdj2 = "3";
+              } else {
+                nxdj2 = "";
+              }
+              if (nxdj1 == "" || nxdj2 == "") {
+                nxdj = "";
+              } else {
+                if (nxdj1 > nxdj2) {
+                  nxdj = nxdj1;
                 } else {
-                    nxdj2 = "";
+                  nxdj = nxdj2;
                 }
-                if (nxdj1 == "" || nxdj2 == "") {
-                    nxdj = "";
-                } else {
-                    if (nxdj1 > nxdj2) {
-                        nxdj = nxdj1;
-                    } else {
-                        nxdj = nxdj2;
-                    }
-                }
+              }
 
             }
-        } else if (lx == "燃气采暖热水炉两用型") {
+          } else if (lx == "燃气采暖热水炉两用型") {
             //热水
             if (valueers > value50) {
-                n1 = valueers;
-                n2 = value50;
+              n1 = valueers;
+              n2 = value50;
             } else {
-                n1 = value50;
-                n2 = valueers;
+              n1 = value50;
+              n2 = valueers;
             }
             //能效等级1
             if (n1 >= 96) {
-                nxdj1 = "1";
+              nxdj1 = "1";
             } else if (n1 >= 89 && n1 < 96) {
-                nxdj1 = "2";
+              nxdj1 = "2";
             } else if (n1 >= 86 && n1 < 89) {
-                nxdj1 = "3";
+              nxdj1 = "3";
             } else {
-                nxdj1 = "";
+              nxdj1 = "";
             }
             //能效等级2
-          if (n2 >= 92) {
+            if (n2 >= 92) {
               nxdj2 = "1";
-          } else if (n2 >= 85 && n2 < 92) {
+            } else if (n2 >= 85 && n2 < 92) {
               nxdj2 = "2";
-          } else if (n2 >= 82 && n2 < 85) {
+            } else if (n2 >= 82 && n2 < 85) {
               nxdj2 = "3";
-          } else {
+            } else {
               nxdj2 = "";
-          }
-          //采暖
-          if (valueegn > value30) {
+            }
+            //采暖
+            if (valueegn > value30) {
               n3 = valueegn;
-                        } else {
-            n3 = value30;
+            } else {
+              n3 = value30;
               n4 = valueegn;
             }
-          //能效等级1
-          if (n3 >= 99) {
+            //能效等级1
+            if (n3 >= 99) {
               nxdj3 = "1";
-          } else if (n3 >= 89 && n3 < 99) {
+            } else if (n3 >= 89 && n3 < 99) {
               nxdj3 = "2";
-          } else if (n3 >= 86 && n3 < 89) {
+            } else if (n3 >= 86 && n3 < 89) {
               nxdj3 = "3";
             } else {
               nxdj3 = "";
-          }
+            }
             //能效等级2
-          if (n4 >= 95) {
+            if (n4 >= 95) {
               nxdj4 = "1";
-          } else if (n4 >= 85 && n4 < 95) {
+            } else if (n4 >= 85 && n4 < 95) {
               nxdj4 = "2";
-          } else if (n4 >= 82 && n4 < 85) {
+            } else if (n4 >= 82 && n4 < 85) {
               nxdj4 = "3";
-          } else {
+            } else {
               nxdj4 = "";
-          }
-          //四个能效值比较出最大值
-            if (nxdj1 == "" || nxdj2 == "" || nxdj3 == "" || nxdj4 == "") {                        nxdj = "";
-          } else {
+            }
+            //四个能效值比较出最大值
+            if (nxdj1 == "" || nxdj2 == "" || nxdj3 == "" || nxdj4 == "") {
+              nxdj = "";
+            } else {
               if (nxdj1 > nxdj2) {
-                  nxdjMidd1 = nxdj1;
+                nxdjMidd1 = nxdj1;
               } else {
-                  nxdjMidd1 = nxdj2;
+                nxdjMidd1 = nxdj2;
               }
               if (nxdj3 > nxdj4) {
-                  nxdjMidd2 = nxdj3;
+                nxdjMidd2 = nxdj3;
               } else {
-                  nxdjMidd2 = nxdj4;
-                }
-              if (nxdjMidd1 != "" && nxdjMidd2 != "") {
-                    if (nxdjMidd1 > nxdjMidd2) {
-                        nxdj = nxdjMidd1;
-                    } else {
-                      nxdj = nxdjMidd2;
-                  }
+                nxdjMidd2 = nxdj4;
               }
+              if (nxdjMidd1 != "" && nxdjMidd2 != "") {
+                if (nxdjMidd1 > nxdjMidd2) {
+                  nxdj = nxdjMidd1;
+                } else {
+                  nxdj = nxdjMidd2;
+                }
+              }
+            }
+          } else {
+            var nxdj = "";
           }
-      } else {
-        var nxdj = "";
-    }
-  }
-       const checkc7a = (rule, value, callback) => {
-         if (nxdj == "") {
-          callback('能效数据不在备案范围')
-         } else {
-           callback()
-         }
-      }
-      const checkc7b = (rule, value, callback) => {
-        if (nxdj != nxdjch) {
-           callback('所选能效等级与计算结果不符！')
-        } else {
-          callback()
+        }
+        const checkc7a = (rule, value, callback) => {
+          if (nxdj == "") {
+            callback('能效数据不在备案范围')
+          } else {
+            callback()
+          }
+        }
+        const checkc7b = (rule, value, callback) => {
+          if (nxdj != nxdjch) {
+            callback('所选能效等级与计算结果不符！')
+          } else {
+            callback()
+          }
+        }
+        return {
+          c1: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '生产者名称不能为空'
+            }
+          ],
+          c2: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '制造单位不能为空'
+            }
+          ],
+          c3: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '备案方不能为空'
+            }
+          ],
+          c4: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '规格型号不能为空'
+            }
+          ],
+          c7: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '能源效率等级不能为空'
+            },
+            {
+              validator: checkc7a,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc7b,
+              trigger: 'blur'
+            }
+          ],
+          c8: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '额定热水热负荷额定值不能为空'
+            }
+          ],
+          c9: [
+            {
+              trigger: 'change,blur', required: !this.forbidden.c9,
+              message: '额定热水热负荷实测值不能为空'
+            }
+          ],
+          c11: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '额定供暖热负荷额定值不能为空'
+            }
+          ],
+          c12: [
+            {
+              trigger: 'change,blur', required: !this.forbidden.c12,
+              message: '额定供暖热负荷实测值不能为空'
+            }
+          ],
+          c14: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '额定热负荷热水热效率额定值不能为空'
+            },
+          ],
+          c15: [
+            {
+              trigger: 'change,blur', required: !this.forbidden.c15,
+              message: '额定热负荷热水热效率实测值不能为空'
+            }
+          ],
+          c17: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '50%额定热负荷热水热效率额定值不能为空'
+            }
+          ],
+          c18: [
+            {
+              trigger: 'change,blur', required: !this.forbidden.c18,
+              message: '50%额定热负荷热水热效率实测值不能为空'
+            }
+          ],
+          c20: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '额定热负荷供暖热效率额定值不能为空'
+            }
+          ],
+          c21: [
+            {
+              trigger: 'change,blur', required: !this.forbidden.c21,
+              message: '额定热负荷供暖热效率实测值不能为空'
+            }
+          ],
+          c23: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '30%额定热负荷供暖热效率额定值不能为空'
+            }
+          ],
+          c24: [
+            {
+              trigger: 'change,blur', required: !this.forbidden.c24,
+              message: '30%额定热负荷供暖热效率实测值不能为空'
+            }
+          ],
+          c26: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c25 === '2',
+              message: '初始使用日期不能为空'
+            }
+          ],
+          c27: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品类别不能为空'
+            }
+          ],
+          c28: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '是否冷凝式不能为空'
+            }
+          ],
+          c29: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃气类别不能为空'
+            }
+          ],
+          c30: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c29 === '人工煤气',
+              message: '人工煤气不能为空'
+            }
+          ],
+          c31: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c29 === '天然气',
+              message: '天然气不能为空'
+            }
+          ],
+          c32: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c29 === '液化石油气',
+              message: '液化石油气不能为空'
+            }
+          ],
+          c33: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '供电电压不能为空'
+            }
+          ],
+          c35: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c34.join('').indexOf('热水') > -1,
+              message: '额定热负荷(kW)热水值不能为空'
+            }
+          ],
+          c36: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c34.join('').indexOf('供暖') > -1,
+              message: '额定热负荷(kW)供暖值不能为空'
+            }
+          ],
+          c37: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '供暖热输出不能为空'
+            }
+          ],
+          c39: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产热水能力不能为空'
+            }
+          ],
+          c40: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '额定燃气压力不能为空'
+            }
+          ],
+          c41: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '系统适用水压不能为空'
+            }
+          ],
+          c42: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c41.join('').indexOf('热水') > -1,
+              message: '系统适用水压(MPa)热水值不能为空'
+            }
+          ],
+          c43: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c41.join('').indexOf('供暖') > -1,
+              message: '系统适用水压(MPa)供暖值不能为空'
+            }
+          ],
+          c44: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '华白数不能为空'
+            }
+          ],
+          c45: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃烧势不能为空'
+            }
+          ],
+          c46: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '安装位置不能为空'
+            }
+          ],
+          c47: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '给排气方式不能为空'
+            }
+          ],
+          c48: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '热水系统自动恒温功能不能为空'
+            }
+          ],
+          c49: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '热水系统温度显示不能为空'
+            }
+          ],
+          c50: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃气稳压装置不能为空'
+            }
+          ],
+          c51: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '烟气倒流保护装置不能为空'
+            }
+          ],
+          c56: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '安全装置不能为空'
+            }
+          ],
+          c57: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c56.join('').indexOf('其他') > -1,
+              message: '安全装置其他值不能为空'
+            }
+          ],
+          c58: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '外形尺寸(长)不能为空'
+            }
+          ],
+          c59: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '外形尺寸(宽)不能为空'
+            }
+          ],
+          c60: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '外形尺寸(高)不能为空'
+            }
+          ],
+          c61: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃烧器型号规格1不能为空'
+            }
+          ],
+          c62: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃烧器技术参数1不能为空'
+            }
+          ],
+          c63: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃烧器生产者(全称)1不能为空'
+            }
+          ],
+          c64: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '热交换器型号规格1不能为空'
+            }
+          ],
+          c65: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '热交换器技术参数1不能为空'
+            }
+          ],
+          c66: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '热交换器生产者(全称)1不能为空'
+            }
+          ],
+          c67: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃气比例阀型号规格1不能为空'
+            }
+          ],
+          c68: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃气比例阀技术参数1不能为空'
+            }
+          ],
+          c69: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '燃气比例阀生产者(全称)1不能为空'
+            }
+          ]
         }
       }
-      return {
-        c1: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '生产者名称不能为空'
-          }
-        ],
-        c2: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '制造单位不能为空'
-          }
-        ],
-        c3: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '备案方不能为空'
-          }
-        ],
-        c4: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '规格型号不能为空'
-          }
-        ],
-        c7: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '能源效率等级不能为空'
-          },
-          {
-            validator: checkc7a,
-            trigger: 'blur'
-          },
-          {
-            validator: checkc7b,
-            trigger: 'blur'
-          }
-        ],
-        c8: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定热水热负荷额定值不能为空'
-          }
-        ],
-        c9: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定热水热负荷实测值不能为空'
-          }
-        ],
-        c11: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定供暖热负荷额定值不能为空'
-          }
-        ],
-        c12: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定供暖热负荷实测值不能为空'
-          }
-        ],
-        c14: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定热负荷热水热效率额定值不能为空'
-          },
-        ],
-        c15: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定热负荷热水热效率实测值不能为空'
-          }
-        ],
-        c17: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '50%额定热负荷热水热效率额定值不能为空'
-          }
-        ],
-        c18: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '50%额定热负荷热水热效率实测值不能为空'
-          }
-        ],
-        c20: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定热负荷供暖热效率额定值不能为空'
-          }
-        ],
-        c21: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定热负荷供暖热效率实测值不能为空'
-          }
-        ],
-        c23: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '30%额定热负荷供暖热效率额定值不能为空'
-          }
-        ],
-        c24: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '30%额定热负荷供暖热效率实测值不能为空'
-          }
-        ],
-        c26: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c25 === '2',
-            message: '初始使用日期不能为空'
-          }
-        ],
-        c27: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '产品类别不能为空'
-          }
-        ],
-        c28: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '是否冷凝式不能为空'
-          }
-        ],
-        c29: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃气类别不能为空'
-          }
-        ],
-        c30: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c29 === '人工煤气',
-            message: '人工煤气不能为空'
-          }
-        ],
-        c31: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c29 === '天然气',
-            message: '天然气不能为空'
-          }
-        ],
-        c32: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c29 === '液化石油气',
-            message: '液化石油气不能为空'
-          }
-        ],
-        c33: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '供电电压不能为空'
-          }
-        ],
-        c35: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c34.join('').indexOf('热水') > -1,
-            message: '额定热负荷(kW)热水值不能为空'
-          }
-        ],
-        c36: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c34.join('').indexOf('供暖') > -1,
-            message: '额定热负荷(kW)供暖值不能为空'
-          }
-        ],
-        c37: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '供暖热输出不能为空'
-          }
-        ],
-        c39: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '产热水能力不能为空'
-          }
-        ],
-        c40: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '额定燃气压力不能为空'
-          }
-        ],
-        c41: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '系统适用水压不能为空'
-          }
-        ],
-        c42: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c41.join('').indexOf('热水') > -1,
-            message: '系统适用水压(MPa)热水值不能为空'
-          }
-        ],
-        c43: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c41.join('').indexOf('供暖') > -1,
-            message: '系统适用水压(MPa)供暖值不能为空'
-          }
-        ],
-        c44: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '华白数不能为空'
-          }
-        ],
-        c45: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃烧势不能为空'
-          }
-        ],
-        c46: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '安装位置不能为空'
-          }
-        ],
-        c47: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '给排气方式不能为空'
-          }
-        ],
-        c48: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '热水系统自动恒温功能不能为空'
-          }
-        ],
-        c49: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '热水系统温度显示不能为空'
-          }
-        ],
-        c50: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃气稳压装置不能为空'
-          }
-        ],
-        c51: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '烟气倒流保护装置不能为空'
-          }
-        ],
-        c56: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '安全装置不能为空'
-          }
-        ],
-        c57: [
-          {
-            trigger: 'change,blur',required: this.formRecord.c56.join('').indexOf('其他') > -1,
-            message: '安全装置其他值不能为空'
-          }
-        ],
-        c58: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '外形尺寸(长)不能为空'
-          }
-        ],
-        c59: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '外形尺寸(宽)不能为空'
-          }
-        ],
-        c60: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '外形尺寸(高)不能为空'
-          }
-        ],
-        c61: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃烧器型号规格1不能为空'
-          }
-        ],
-        c62: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃烧器技术参数1不能为空'
-          }
-        ],
-        c63: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃烧器生产者(全称)1不能为空'
-          }
-        ],
-        c64: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '热交换器型号规格1不能为空'
-          }
-        ],
-        c65: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '热交换器技术参数1不能为空'
-          }
-        ],
-        c66: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '热交换器生产者(全称)1不能为空'
-          }
-        ],
-        c67: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃气比例阀型号规格1不能为空'
-          }
-        ],
-        c68: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃气比例阀技术参数1不能为空'
-          }
-        ],
-        c69: [
-          {
-            trigger: 'change,blur',required: true,
-            message: '燃气比例阀生产者(全称)1不能为空'
-          }
-        ]
-      }
     }
   }
-}
 </script>
 <style>
   @import '../../../css/comm.css';
