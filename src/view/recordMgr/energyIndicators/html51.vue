@@ -102,11 +102,11 @@
               <td align="center">功能</td>
               <td colspan="3">
                 <FormItem prop="c23">
-                  <RadioGroup v-model="formRecord.c23">
-                    <Radio label="待机功能" :disabled='disabledoff'>待机功能</Radio>
-                    <Radio label="保温功能" :disabled='disabledoff'>保温功能</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
-                  </RadioGroup>
+                  <CheckboxGroup v-model="formRecord.c23">
+                    <Checkbox label="待机功能" :disabled='disabledoff'>待机功能</Checkbox>
+                    <Checkbox label="保温功能" :disabled='disabledoff'>保温功能</Checkbox>
+                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c24">
                   <Input type="text" v-model="formRecord.c24" style="width:200px;" :disabled='disabledoff || forbidden.c24'/>
@@ -117,15 +117,15 @@
               <td align="center">通讯协议功能</td>
               <td colspan="3">
                 <FormItem prop="c90">
-                  <RadioGroup v-model="formRecord.c90">
-                    <Radio label="WIFI" :disabled='disabledoff'>WIFI</Radio>
-                    <Radio label="蓝牙" :disabled='disabledoff'>蓝牙</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                  <CheckboxGroup v-model="formRecord.c90">
+                    <Checkbox label="WIFI" :disabled='disabledoff || forbidden.c90_a'>WIFI</Checkbox>
+                    <Checkbox label="蓝牙" :disabled='disabledoff || forbidden.c90_b'>蓝牙</Checkbox>
+                    <Checkbox label="其他" :disabled='disabledoff || forbidden.c90_c'>其他</Checkbox>
                     <FormItem prop="c91">
                       <Input type="text" v-model="formRecord.c91" style="width:200px;" :disabled='disabledoff || forbidden.c91'/>
                     </FormItem>
-                    <Radio label="无" :disabled='disabledoff'>无</Radio>
-                  </RadioGroup>
+                    <Checkbox label="无" :disabled='disabledoff'>无</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
             </tr>
@@ -1182,7 +1182,7 @@ import {
         c20: '',
         c21: '',
         c22: '',
-        c23: '',
+        c23: [],
         c24: '',
         c25: '',
         c26: '',
@@ -1247,7 +1247,7 @@ import {
         c87: '',
         c88: '',
         c89: '',
-        c90: '',
+        c90: [],
         c91: '',
         c92: '',
         c93: '',
@@ -1269,7 +1269,10 @@ import {
       forbidden: {
         c16: true,
         c24: true,
-        c91: true
+        c91: true,
+        c90_a: false,
+        c90_b: false,
+        c90_c: false
       }
     }
   },
@@ -1356,7 +1359,7 @@ import {
       }
 
       //功能-其他
-      if (this.formRecord.c23 == '其他') {
+      if (this.formRecord.c23.join('').indexOf('其他') > -1) {
           this.forbidden.c24 = false
       } else {
           this.formRecord.c24 = ''
@@ -1364,12 +1367,25 @@ import {
       }
 
       //通讯协议功能-其他
-      if (this.formRecord.c90 == '其他') {
+      if (this.formRecord.c90.join('').indexOf('其他') > -1) {
           this.forbidden.c91 = false
       } else {
           this.formRecord.c91 = ''
           this.forbidden.c91 = true
       }
+      if (this.formRecord.c90.join('').indexOf('无') > -1) {
+          this.formRecord.c90=['无']
+          this.forbidden.c90_a = true
+          this.forbidden.c90_b = true
+          this.forbidden.c90_c = true
+          this.forbidden.c91 = true
+          this.formRecord.c91 = ''
+      } else {
+          this.forbidden.c90_a = false
+          this.forbidden.c90_b = false
+          this.forbidden.c90_c = false
+      }
+
 
       const checkc30 = (rule, value, callback) => {
           if(this.formRecord.c30 != ""){
@@ -1694,7 +1710,7 @@ import {
         ],
         c24: [
           {
-            required: this.formRecord.c23 === '其他',
+            required: this.formRecord.c23.join('').indexOf('其他') > -1,
             message: '功能选项其他的值不能为空',
             trigger: 'change,blur'
           }
@@ -1767,24 +1783,22 @@ import {
         c23: [
           {
             required: true,
-            message: '功能选项不能为空',
-            trigger: 'change,blur'
+            message: '功能选项不能为空'
           },
           {
             validator: checkc23,
-            trigger: 'change,blur'
+            trigger: 'blur'
           }
         ],
         c90: [
           {
             required: true,
-            message: '通讯协议功能不能为空',
-            trigger: 'change,blur'
+            message: '通讯协议功能不能为空'
           }
         ],
         c91: [
           {
-            required: this.formRecord.c90 === '其他',
+            required: this.formRecord.c90.join('').indexOf('其他') > -1,
             message: '通讯协议其他值不能为空',
             trigger: 'change,blur'
           }
@@ -1859,8 +1873,7 @@ import {
         c13: [
           {
             required: true,
-            message: '初始使用日期不能为空',
-            trigger: 'change,blur'
+            message: '初始使用日期不能为空'
           }
         ],
         c14: [

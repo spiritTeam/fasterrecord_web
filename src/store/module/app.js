@@ -26,7 +26,8 @@ export default {
     oem:0
   },
   getters: {
-    menuList: (state, getters, rootState) => getMenuByRouter(state.routers, rootState.user.access)
+    menuList: (state, getters, rootState) => getMenuByRouter(state.routers, rootState.user.access),
+    pageType:(state)=>state.pageType
   },
   mutations: {
     updateAppRouter (state, routes) {

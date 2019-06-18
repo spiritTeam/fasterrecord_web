@@ -43,7 +43,7 @@
   </Card>
 </template>
 <script>
-import {setCookie, getCookie} from '@/libs/util.js'
+import {setCookie,getCookie} from '@/libs/util.js'
 import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
@@ -66,6 +66,7 @@ import Html50 from './energyIndicators/html50'
 import Html53 from './energyIndicators/html53'
 import Html51 from './energyIndicators/html51'
 import Html54 from './energyIndicators/html54'
+
 
 export default {
   data () {
@@ -107,8 +108,8 @@ export default {
           this.$store.commit('setUpdateId',this.$route.params.id)
       //}
     }else{
-      this.$store.commit('setPageType', '')
-      this.$store.commit('setUpdateId',0)
+          this.$store.commit('setPageType', '')
+          this.$store.commit('setUpdateId',0)
     };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
@@ -126,7 +127,6 @@ export default {
   },
   methods: {
     setNoTips () {
-
       setCookie('noTips',this.noTips.join(''),1)
       console.log(this.noTips)
     },

@@ -127,7 +127,7 @@ export default {
           this.$router.push({name:'addRecord',params:{step:3,draftData:res.data}})
           this.$store.commit('setDateInit', res.data.lab.upddate)
           this.$store.commit('setModelNo',res.data.marking.ec_model_no)
-          this.$store.commit('setOem',res.data.lab.oem)
+          //this.$store.commit('setOem',res.data.lab.oem)
         } else {
           this.$Message.warning(res.data.return_msg)
         }
