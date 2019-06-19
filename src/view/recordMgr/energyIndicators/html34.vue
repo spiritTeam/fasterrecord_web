@@ -1,5 +1,5 @@
 <!--平板电视 2013版->
-<!--创建日期:2019年5月27日-->
+<!--创建日期:2019年6月18日-->
 <!--创建人:YCL-->
 <template>
   <div class="wrapper">
@@ -70,10 +70,10 @@
               <Radio label="LCD" :disabled='disabledoff'>LCD</Radio>
               <Radio label="PDP" :disabled='disabledoff'>PDP</Radio>
               <Radio label="其他" :disabled='disabledoff'>其他</Radio>
-              <FormItem prop="c17" :label-width="180">
-                <Input type="text" v-model="formRecord.c17" :disabled='disabledoff || forbidden.c17'/>
-              </FormItem>
             </RadioGroup>
+          </FormItem>
+          <FormItem prop="c17" :label-width="360" style="margin-top: -57px" >
+            <Input type="text" v-model="formRecord.c17" style="width: 170px" :disabled='disabledoff || forbidden.c17'/>
           </FormItem>
 
           <table id="table1">
@@ -1046,6 +1046,7 @@
     significantDigits33,
     atLeastOneDecimals,
     atLeastTwoDecimals,
+    atLeastThreeDecimals,
     isInteger,
     isNumber,
     check
@@ -1195,7 +1196,7 @@
           c72: '',
           c73: '',
           c74: '',
-          ec_model_no: 33,
+          ec_model_no: 34,
           attach_list: ''
         },
         forbidden: {
@@ -1312,13 +1313,114 @@
         if (this.formRecord.c16 === 'LCD') {
           this.forbidden.c16_LCD = false
           this.forbidden.c16_PDP = true
+          this.formRecord.c9 = ''
+          this.formRecord.c34 = ''
+          this.formRecord.c10 = ''
+          this.formRecord.c11 = ''
+          this.formRecord.c35 = ''
+          this.formRecord.c12 = ''
         } else if (this.formRecord.c16 === 'PDP') {
           this.forbidden.c16_LCD = true
           this.forbidden.c16_PDP = false
+          this.formRecord.c5 = ''
+          this.formRecord.c32 = ''
+          this.formRecord.c6 = ''
+          this.formRecord.c7 = ''
+          this.formRecord.c33 = ''
+          this.formRecord.c8 = ''
         } else if (this.formRecord.c16 === '其他') {
           this.forbidden.c16_LCD = false
           this.forbidden.c16_PDP = false
         }
+
+        let nxdj = "";
+        let lcddjgl = parseFloat(this.formRecord.c5);             // LCD被动待机功率
+        let pdpdjgl = parseFloat(this.formRecord.c9);             //PDP 被动待机功率
+        let c32 = parseFloat(this.formRecord.c32);
+        let c33 = parseFloat(this.formRecord.c33);
+        let c34 = parseFloat(this.formRecord.c34);
+        let c35 = parseFloat(this.formRecord.c35);
+        let c11 = parseFloat(this.formRecord.c11);
+        let c7 = parseFloat(this.formRecord.c7);
+        let c16 = this.formRecord.c16;
+        let c31 = this.formRecord.c31;
+
+        const checkc5 = (rule, value, callback) => {
+          if (lcddjgl != null && lcddjgl !== "" && lcddjgl > 0.5) {
+            callback("LCD 被动待机功率应小于等于0.5！")
+          } else {
+            callback()
+          }
+        }
+
+        const checkc9 = (rule, value, callback) => {
+          if (pdpdjgl != null && pdpdjgl > 0.5) {
+            callback("PDP 被动待机功率应小于等于0.5！")
+          } else {
+            callback()
+          }
+        }
+
+        const checkc32 = (rule, value, callback) => {
+          if (parseFloat(c32) != null && parseFloat(c32) > lcddjgl) {
+            callback("LCD 被动待机功率实测值应小于标准规定值!")
+          } else {
+            callback()
+          }
+        }
+
+        const checkc33 = (rule, value, callback) => {
+          if (parseFloat(c33) != null && parseFloat(c33) < parseFloat(c33)) {
+            callback("LCD能效指数实测值应大于或等于标准规定值!");
+          } else {
+            callback()
+          }
+        }
+
+        const checkc34 = (rule, value, callback) => {
+          if (parseFloat(c34) != null && parseFloat(c34) > parseFloat(pdpdjgl)) {
+            callback("PDP被动待机功率实测值应小于标准规定值!");
+          } else {
+            callback()
+          }
+        }
+
+        const checkc35 = (rule, value, callback) => {
+          if (parseFloat(c35) != null && parseFloat(c35) < parseFloat(c11)) {
+            callback("PDP能效指数实测值应大于或等于标准规定值!");
+          } else {
+            callback()
+          }
+        }
+
+        if (c16 === "LCD") {
+          if (parseFloat(c7) >= 2.7) {
+            nxdj = "1";
+          } else if (parseFloat(c7) >= 2) {
+            nxdj = "2";
+          } else if (parseFloat(c7) >= 1.3) {
+            nxdj = "3";
+          }
+        } else if (c16 === "PDP") {
+          if (parseFloat(c11) >= 2) {
+            nxdj = "1";
+          } else if (parseFloat(c11) >= 1.6) {
+            nxdj = "2";
+          } else if (parseFloat(c11) >= 1.2) {
+            nxdj = "3";
+          }
+        }
+
+        const checkc31 = (rule, value, callback) => {
+          if (nxdj === "") {
+            callback("能效数据不在备案范围");
+          }else if (c31 !== nxdj) {
+            callback("所选能效等级与计算结果不符！");
+          } else {
+            callback()
+          }
+        }
+
 
         return {
           c2: [
@@ -1361,7 +1463,11 @@
               required: true,
               trigger: 'change,blur',
               message: '能效等级不能为空'
-            }
+            },
+            {
+              validator: checkc31,
+              trigger: 'change,blur',
+            },
           ],
           c16: [
             {
@@ -1379,29 +1485,37 @@
           ],
           c5: [
             {
-              required: true,
+              required: !this.forbidden.c16_LCD,
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
             {
               validator: !this.forbidden.c16_LCD ? twoDecimals : check,
               trigger: 'change,blur',
+            },
+            {
+              validator: checkc5,
+              trigger: 'change,blur',
             }
           ],
           c32: [
             {
-              required: true,
+              required: !this.forbidden.c16_LCD,
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
             {
               validator: !this.forbidden.c16_LCD ? atLeastThreeDecimals : check,
               trigger: 'change,blur',
+            },
+            {
+              validator: checkc32,
+              trigger: 'change,blur',
             }
           ],
           c7: [
             {
-              required: true,
+              required: !this.forbidden.c16_LCD,
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
@@ -1412,56 +1526,72 @@
           ],
           c33: [
             {
-              required: true,
+              required: !this.forbidden.c16_LCD,
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
             {
               validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
+              trigger: 'change,blur',
+            },
+            {
+              validator: checkc33,
               trigger: 'change,blur',
             }
           ],
           c9: [
             {
-              required: true,
+              required: !this.forbidden.c16_PDP,
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
             {
-              validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
+              validator: !this.forbidden.c16_PDP ? twoDecimals : check,
+              trigger: 'change,blur',
+            },
+            {
+              validator: checkc9,
               trigger: 'change,blur',
             }
           ],
           c34: [
             {
-              required: true,
+              required: !this.forbidden.c16_PDP,
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
             {
-              validator: !this.forbidden.c16_LCD ? atLeastThreeDecimals : check,
+              validator: !this.forbidden.c16_PDP ? atLeastThreeDecimals : check,
+              trigger: 'change,blur',
+            },
+            {
+              validator: checkc34,
               trigger: 'change,blur',
             }
           ],
           c11: [
             {
-              required: true,
+              required: !this.forbidden.c16_PDP,
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
             {
-              validator: !this.forbidden.c16_LCD ? oneDecimals : check,
+              validator: !this.forbidden.c16_PDP ? oneDecimals : check,
               trigger: 'change,blur',
             }
           ],
           c35: [
             {
-              required: true,
+              required: !this.forbidden.c16_PDP,
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
             {
-              validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
+              validator: !this.forbidden.c16_PDP ? atLeastTwoDecimals : check,
+              trigger: 'change,blur',
+            },
+            {
+              validator: checkc35,
               trigger: 'change,blur',
             }
           ],
@@ -1521,7 +1651,7 @@
           ],
           c23: [
             {
-              required: true,
+              required: this.formRecord.c22 === '外部电源，输出功率（W）',
               trigger: 'change,blur',
               message: '外部电源不能为空'
             }
