@@ -20,7 +20,7 @@
       <div class="part part2">
         <Card :bordered="false">
           <h2>二、能源效率标识检测信息</h2>
-          <table>
+          <table> 
             <thead>
             <tr>
               <th>实验室名称</th>
@@ -354,7 +354,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right"><span class="red">*</span>腔体容积（L） </td>
+              <td align="right"><span class="red">*</span>腔体容积（L）</td>
               <td>
                 <FormItem prop="c30" style="width: 100%">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
@@ -1339,7 +1339,6 @@
         var checkc9 = null;
         var checkc7 = null;
         var checkc11 = null;
-        var checkc7_c9 = null;
         var gjgn = this.formRecord.c37;
         var djgn = this.formRecord.c35;
 
@@ -1438,8 +1437,13 @@
             } else {
                 var gjgl = this.formRecord.c9;
                 var djgl = this.formRecord.c7;
-                if ((gjgl != null && gjgl != "") || (djgl != null && djgl != "")) {
-                  checkc7_c9 = (rule, value, callback) => {
+                if (gjgl != null && gjgl != "") {
+                  checkc9 = (rule, value, callback) => {
+                    callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
+                  }
+                } 
+                if(djgl != null && djgl != ""){
+                  checkc7 = (rule, value, callback) => {
                     callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
                   }
                 }
@@ -1640,10 +1644,6 @@
             },*/
             {
               validator: checkc9,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc7_c9,
               trigger: 'change,blur'
             }
           ],
@@ -1885,10 +1885,6 @@
             },*/
             {
               validator: checkc7,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc7_c9,
               trigger: 'change,blur'
             }
           ],
