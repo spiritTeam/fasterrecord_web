@@ -427,6 +427,193 @@
                 </FormItem>
               </td>
             </tr>
+            <tr>
+              <td>
+                <FormItem prop="c69" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c44" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c45" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c70" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c71" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c72" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c97" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c97" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c52" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c53" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c98" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c98" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c99" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c99" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c100" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c100" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <FormItem prop="c73" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c46" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c47" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c74" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c75" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c76" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c101" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c101" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c54" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c54" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c55" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c102" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c102" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c103" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c103" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c104" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c104" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <FormItem prop="c77" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c78" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c79" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c80" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c81" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c82" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c105" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c105" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c106" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c106" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c107" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c107" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c108" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c108" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c109" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c109" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c110" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c110" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <FormItem prop="c83" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c84" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c85" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c86" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c87" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c88" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c111" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c111" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c112" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c112" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c113" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c113" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c114" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c114" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c115" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c115" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c116" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c116" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3"><span style="color:red">额定热负荷和额定热效率是整数，实测热负荷和实测热效率至少保留一位小数</span></td>
+            </tr>
+            <tr>
+              <td align="right"><span style="color:red">*</span>外形尺寸(长×宽×高)(mm×mm×mm)</td>
+              <td colspan="3">
+                <FormItem prop="c58" style="width:100px;" :label-width="10">
+                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c59" style="width:100px;" :label-width="10">
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem :label-width="10"><b>×</b></FormItem>
+                <FormItem prop="c60" style="width:100px;" :label-width="10">
+                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
           </table>
         </Card>
       </div>
@@ -514,6 +701,7 @@
                 </FormItem>
               </td>
             </tr>
+            <tr><td colspan="7">注：如上述零部件属多个生产者，均应按上述要求逐一填写。</td></tr>
           </table>
         </Card>
       </div>
@@ -858,9 +1046,9 @@ import {
       const timeDate = this.$store.state.app.dateinit
     return {
       // 当前初始使用日期 对应的C值
-      thisDateCV: 'c11',
+      thisDateCV: 'c14',
       // 当前能效等级 对应的C值
-      thisLevelCV: 'c64',
+      thisLevelCV: 'c7',
       modal3: false,
       modal4: false,
       modal5: false,
@@ -927,15 +1115,13 @@ import {
         c3: '',
         c4: '',
         c5: '',
-        c6: '',
         c7: '',
         c8: '',
         c9: '',
         c10: '',
-        c11: new Date(),
+        c11: '',
         c12: '',
-        c13: '',
-        c14: '',
+        c14: new Date(),
         c15: '',
         c16: '',
         c17: '',
@@ -962,7 +1148,6 @@ import {
         c38: '',
         c39: '',
         c40: '',
-        c41: '',
         c42: '',
         c43: '',
         c44: '',
@@ -983,7 +1168,6 @@ import {
         c59: '',
         c60: '',
         c61: '',
-        c62: '',
         c63: '',
         c64: '',
         c65: '',
@@ -993,8 +1177,10 @@ import {
         c69: '',
         c70: '',
         c71: '',
+        c72: '',
         c73: '',
         c74: '',
+        c75: '',
         c76: '',
         c77: '',
         c78: '',
@@ -1012,9 +1198,43 @@ import {
         c90: '',
         c91: '',
         c92: '',
+        c93: '',
+        c94: '',
+        c95: '',
+        c96: '',
+        c97: '',
+        c98: '',
+        c99: '',
+        c100: '',
+        c101: '',
+        c102: '',
+        c103: '',
+        c104: '',
+        c105: '',
+        c106: '',
+        c107: '',
+        c108: '',
+        c109: '',
+        c110: '',
+        c111: '',
+        c112: '',
+        c113: '',
+        c114: '',
+        c115: '',
+        c116: '',
+        c117: '',
+        c118: '',
+        c119: '',
+        c120: '',
+        c121: '',
+        c122: '',
+        c123: '',
+        c124: '',
+        c125: '',
+        c126: '',
         c200: '',
         c202: '',
-        ec_model_no: 29,
+        ec_model_no: 41,
         attach_list: ''
       },
       forbidden: {
@@ -1097,6 +1317,433 @@ import {
     ruleRecord () {
 
       return {
+        c3: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入制造单位'
+          }
+        ],
+        c5: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入备案方'
+          }
+        ],
+        c4: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入规格型号'
+          }
+        ],
+        c2: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入商标'
+          }
+        ],
+        c7: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择能源效率等级'
+          }
+        ],
+        c8: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入热效率标注值 请输入整数'
+          }
+        ],
+        c9: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入热效率实测值 请输入一位小数'
+          }
+        ],
+        c11: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入热负荷标注值 请输入整数'
+          }
+        ],
+        c12: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入热负荷实测值 请输入一位小数'
+          }
+        ],
+        c14: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择初始使用日期'
+          }
+        ],
+        c15: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择燃气类别'
+          }
+        ],
+        c16: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择燃气类别值'
+          }
+        ],
+        c17: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择电源类别'
+          }
+        ],
+        c18: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入电源电压'
+          }
+        ],
+        c19: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入电源电流'
+          }
+        ],
+        c20: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择是否有稳压器'
+          }
+        ],
+        c21: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定功率'
+          }
+        ],
+        c22: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入运行噪声等级'
+          }
+        ],
+        c23: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择产品类别'
+          }
+        ],
+        c24: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择空气供给方式'
+          }
+        ],
+        c25: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择空气供给方式'
+          }
+        ],
+        c26: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择空气供给方式'
+          }
+        ],
+        c27: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择灶眼数'
+          }
+        ],
+        c28: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入多眼灶灶眼数'
+          }
+        ],
+        c29: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择灶眼数'
+          }
+        ],
+        c30: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入多眼灶灶眼数'
+          }
+        ],
+        c31: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择点火方式 常明火点火方式'
+          }
+        ],
+        c32: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择点火方式 常明火点火方式'
+          }
+        ],
+        c33: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择点火方式 常明火点火方式'
+          }
+        ],
+        c35: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入熄火保护装置形式 火焰监控装置形式'
+          }
+        ],
+        c36: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择熄火保护装置形式 火焰监控装置形式'
+          }
+        ],
+        c37: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入其它熄火保护装置形式 火焰监控装置形式'
+          }
+        ],
+        c38: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请选择熄火保护装置形式 火焰监控装置形式'
+          }
+        ],
+        c39: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入其它熄火保护装置形式 火焰监控装置形式'
+          }
+        ],
+        c40: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c41: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c42: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c43: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c44: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c45: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c46: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c47: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c48: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c49: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c50: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c51: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c52: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c53: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c54: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入炉口直径值'
+          }
+        ],
+        c55: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c56: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入水胆容量'
+          }
+        ],
+        c57: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入额定热负荷值'
+          }
+        ],
+        c58: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入外形尺寸 长 请输入整数'
+          }
+        ],
+        c59: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入外形尺寸 宽 请输入整数'
+          }
+        ],
+        c60: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '请输入外形尺寸 高 请输入整数'
+          }
+        ],
+        c118: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '不能为空'
+          }
+        ],
+        c120: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '不能为空'
+          }
+        ],
+        c121: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '不能为空'
+          }
+        ],
+        c123: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '不能为空'
+          }
+        ],
+        c124: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '不能为空'
+          }
+        ],
+        c126: [
+          {
+            required: true,
+            trigger: 'change,blur',
+            message: '不能为空'
+          }
+        ]
       }
     }
   }
