@@ -4,7 +4,7 @@
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>储水式电热水器-能源效率标识备案表</h1>
+      <h1>家用电磁灶-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>

@@ -982,7 +982,7 @@
     data() {
       const timeDate = this.$store.state.app.dateinit;
       return {
-        
+
         // 当前初始使用日期 对应的C值
         thisDateCV: "c18",
         // 当前能效等级 对应的C值
@@ -1503,7 +1503,6 @@
           ],
           c23: [
             {
-              trigger: 'change,blur',
               required: true,
               message: '附加功能不能为空'
             }

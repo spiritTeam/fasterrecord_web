@@ -36,7 +36,7 @@ export default {
           this.$store.commit('setLabName', res.data.msg.labName)
           this.$store.commit('setModelNo', res.data.msg.modelNo)
           this.$store.commit('setTemplate', res.data.msg.templates)
-          this.$store.commit('setOem',res.data.msg.oem)
+          //this.$store.commit('setOem',res.data.msg.oem)
           this.$emit('toStep2')
         } else {
           this.$Message.warning(res.data.msg)

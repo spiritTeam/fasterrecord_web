@@ -23,7 +23,6 @@
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
           <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
-          <Html52 v-if="category == 52" ref="energyIndicators52" @prevStep="step = 2"></Html52>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
         </TabPane>
         <!-- <TabPane label="性能指标">
@@ -43,7 +42,7 @@
   </Card>
 </template>
 <script>
-import {setCookie, getCookie} from '@/libs/util.js'
+import {setCookie,getCookie} from '@/libs/util.js'
 import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
@@ -64,8 +63,8 @@ import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html53 from './energyIndicators/html53'
 import Html51 from './energyIndicators/html51'
-import Html52 from './energyIndicators/html52'
 import Html54 from './energyIndicators/html54'
+
 
 export default {
   data () {
@@ -97,7 +96,6 @@ export default {
     Html50,
     Html53,
     Html51,
-    Html52,
     Html54
   },
   mounted () {
@@ -107,8 +105,8 @@ export default {
           this.$store.commit('setUpdateId',this.$route.params.id)
       //}
     }else{
-      this.$store.commit('setPageType', '')
-      this.$store.commit('setUpdateId',0)
+          this.$store.commit('setPageType', '')
+          this.$store.commit('setUpdateId',0)
     };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
@@ -126,7 +124,6 @@ export default {
   },
   methods: {
     setNoTips () {
-
       setCookie('noTips',this.noTips.join(''),1)
       console.log(this.noTips)
     },

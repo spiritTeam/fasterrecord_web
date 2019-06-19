@@ -1236,7 +1236,7 @@
     computed: {
       disabledoff(){
         return  this.$store.state.app.pageType==='extend';
-      },     
+      },
       pltId () {
         return this.$store.state.app.pltId
       },
@@ -1341,9 +1341,9 @@
 			}else{
         callback()
       }
-    }       
+    }
 
-        
+
         return {
           c2: [
             {
