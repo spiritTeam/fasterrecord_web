@@ -385,6 +385,48 @@
                 </FormItem>
               </td>
             </tr>
+            <tr>
+              <td>
+                <FormItem prop="c65" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c42" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c42" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c43" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c66" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c67" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c68" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c93" lable="灶眼名称(主火):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c50" lable="炉口直径(mm):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c50" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c51" lable="额定热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c94" lable="实测热负荷(kW):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c95" lable="额定热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c95" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem prop="c96" lable="实测热效率(%):" style="width:100%;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c96" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
           </table>
         </Card>
       </div>
@@ -446,6 +488,29 @@
               <td>
                 <FormItem prop="c123" style="width:100%;">
                   <Input type="text" v-model="formRecord.c123" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <FormItem prop="c124" style="width:100%;">
+                  <Input type="text" v-model="formRecord.c124" :disabled='disabledoff' />
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c125">
+                  <CheckboxGroup v-model="formRecord.c125">
+                    <Checkbox label="陶瓷" :disabled='disabledoff'>陶瓷</Checkbox>
+                    <Checkbox label="金属网" :disabled='disabledoff'>金属网</Checkbox>
+                    <Checkbox label="硬质不锈钢" :disabled='disabledoff'>硬质不锈钢</Checkbox>
+                    <Checkbox label="铁质" :disabled='disabledoff'>铁质</Checkbox>
+                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                  </CheckboxGroup>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c126" style="width:100%;">
+                  <Input type="text" v-model="formRecord.c126" :disabled='disabledoff' />
                 </FormItem>
               </td>
             </tr>
@@ -953,32 +1018,7 @@ import {
         attach_list: ''
       },
       forbidden: {
-        c63: true,
-        c17: true,
-        c19: true,
-        c24: true,
-        c27: true,
-        c29: true,
-        c32: true,
-        c34: true,
-        c36: true,
-        c38: true,
-        c43: true,
-        c45: true,
-        c47: true,
-        c49: true,
-        c51: true,
-        c56: false,
-        c65: false,
-        c66: false,
-        c57: false,
-        c67: false,
-        c68: false,
-        c58: false,
-        c69: false,
-        c70: false,
-        zkgx: true,
-        pbx: true
+        c63: true
       }
     }
   },
@@ -1039,49 +1079,6 @@ import {
     },
     getFile(res, file, id) {
       this['checkmark' + id] = true
-    },
-    getNxdj(type, ctp){
-       if (type == "紧凑式") {
-            if (ctp >= 0.5) {
-                return "1";
-            } else if (ctp >= 0.32 && ctp < 0.5) {
-                return "2";
-            } else if (ctp >= 0.1 && ctp < 0.32) {
-                return "3";
-            } else {
-                return "error";
-            }
-        } else if (type == "分离直接式(分体单回路)") {
-            if (ctp >= 0.48) {
-                return "1";
-            } else if (ctp >= 0.3 && ctp < 0.48) {
-                return "2";
-            } else if (ctp >= 0.1 && ctp < 0.30) {
-                return "3";
-            } else {
-                return "error";
-            }
-        } else if (type == "分离间接式(分体双回路)") {
-            if (ctp >= 0.45) {
-                return "1";
-            } else if (ctp >= 0.28 && ctp < 0.45) {
-                return "2";
-            } else if (ctp >= 0.1 && ctp < 0.28) {
-                return "3";
-            } else {
-                return "error";
-            }
-        } else if (type == "闷晒式") {
-            if (ctp >= 0.6) {
-                return "1";
-            } else if (ctp >= 0.4 && ctp < 0.6) {
-                return "2";
-            } else if (ctp >= 0.1 && ctp < 0.4) {
-                return "3";
-            } else {
-                return "error";
-            }
-        }
     }
   },
   computed: {
@@ -1098,823 +1095,8 @@ import {
       return this.$store.state.app.requiredStr
     },
     ruleRecord () {
-      //let _c5=this.formRecord.c5;
-      //辅助能源类别-其他 启用/禁用
-      if (this.formRecord.c12 == '其他') {
-          this.forbidden.c63 = false
-      } else {
-          this.formRecord.c63 = ''
-          this.forbidden.c63 = true
-      }
-
-      //真空管型集热器-类型 启用/禁用
-      if (this.formRecord.c16 == '其他') {
-          this.forbidden.c17 = false
-      } else {
-          this.formRecord.c17 = ''
-          this.forbidden.c17 = true
-      }
-
-      //热管型 启用/禁用
-      if (this.formRecord.c18 == '其他') {
-          this.forbidden.c19 = false
-      } else {
-          this.formRecord.c19 = ''
-          this.forbidden.c19 = true
-      }
-
-      //吸热板材质 启用/禁用
-      if (this.formRecord.c23 == '其他') {
-          this.forbidden.c24 = false
-      } else {
-          this.formRecord.c24 = ''
-          this.forbidden.c24 = true
-      }
-
-      //吸收涂层工艺 启用/禁用
-      if (this.formRecord.c26 == '其他') {
-          this.forbidden.c27 = false
-      } else {
-          this.formRecord.c27 = ''
-          this.forbidden.c27 = true
-      }
-
-      //集热器用户传热工质接触部位的材料 启用/禁用
-      if (this.formRecord.c28 == '其他') {
-          this.forbidden.c29 = false
-      } else {
-          this.formRecord.c29 = ''
-          this.forbidden.c29 = true
-      }
-
-      //集热器盖板类型 启用/禁用
-      if (this.formRecord.c31 == '其他') {
-          this.forbidden.c32 = false
-      } else {
-          this.formRecord.c32 = ''
-          this.forbidden.c32 = true
-      }
-
-      //集热器盖板厚度 启用/禁用
-      if (this.formRecord.c33 == '其他') {
-          this.forbidden.c34 = false
-      } else {
-          this.formRecord.c34 = ''
-          this.forbidden.c34 = true
-      }
-
-      //保温棉材料 启用/禁用
-      if (this.formRecord.c35 == '其他') {
-          this.forbidden.c36 = false
-      } else {
-          this.formRecord.c36 = ''
-          this.forbidden.c36 = true
-      }
-
-      //集热器背板材料 启用/禁用
-      if (this.formRecord.c37 == '其他') {
-          this.forbidden.c38 = false
-      } else {
-          this.formRecord.c38 = ''
-          this.forbidden.c38 = true
-      }
-
-      //贮热水箱换热器材质 启用/禁用
-      if (this.formRecord.c42 == '其他') {
-          this.forbidden.c43 = false
-      } else {
-          this.formRecord.c43 = ''
-          this.forbidden.c43 = true
-      }
-
-      //贮热水箱换热器结构 启用/禁用
-      if (this.formRecord.c44 == '其他') {
-          this.forbidden.c45 = false
-      } else {
-          this.formRecord.c45 = ''
-          this.forbidden.c45 = true
-      }
-
-      //贮热水箱用于隔热体材料 启用/禁用
-      if (this.formRecord.c46 == '其他') {
-          this.forbidden.c47 = false
-      } else {
-          this.formRecord.c47 = ''
-          this.forbidden.c47 = true
-      }
-
-      //内胆形状 启用/禁用
-      if (this.formRecord.c48 == '其他') {
-          this.forbidden.c49 = false
-      } else {
-          this.formRecord.c49 = ''
-          this.forbidden.c49 = true
-      }
-
-      //内胆材质 启用/禁用
-      if (this.formRecord.c50 == '其他') {
-          this.forbidden.c51 = false
-      } else {
-          this.formRecord.c51 = ''
-          this.forbidden.c51 = true
-      }
-
-      //集热器类型及面积
-      if (this.formRecord.c14 == '真空管型') {
-          this.forbidden.zkgx=false
-          this.forbidden.pbx=true
-          this.formRecord.c23 = ''
-          this.formRecord.c24 = ''
-          this.formRecord.c25 = ''
-          this.formRecord.c26 = ''
-          this.formRecord.c27 = ''
-          this.formRecord.c28 = ''
-          this.formRecord.c29 = ''
-          this.formRecord.c30 = ''
-          this.formRecord.c31 = ''
-          this.formRecord.c32 = ''
-          this.formRecord.c33 = ''
-          this.formRecord.c34 = ''
-          this.formRecord.c35 = ''
-          this.formRecord.c36 = ''
-          this.formRecord.c37 = ''
-          this.formRecord.c38 = ''
-      }else{
-          this.forbidden.pbx=false
-          this.forbidden.zkgx=true
-          this.formRecord.c16 = ''
-          this.formRecord.c17 = ''
-          this.formRecord.c18 = ''
-          this.formRecord.c19 = ''
-          this.formRecord.c20 = ''
-          this.formRecord.c21 = ''
-          this.formRecord.c22 = ''
-      }
-
-      //是否为一体机 启用/禁用
-      if (this.formRecord.c71 == '是') {
-          this.formRecord.c57 = ''
-          this.formRecord.c67 = ''
-          this.formRecord.c68 = ''
-          this.formRecord.c58 = ''
-          this.formRecord.c69 = ''
-          this.formRecord.c70 = ''
-          this.forbidden.c57 = true
-          this.forbidden.c67 = true
-          this.forbidden.c68 = true
-          this.forbidden.c58 = true
-          this.forbidden.c69 = true
-          this.forbidden.c70 = true
-          this.forbidden.c56 = false
-          this.forbidden.c65 = false
-          this.forbidden.c66 = false
-      } else {
-          this.forbidden.c57 = false
-          this.forbidden.c67 = false
-          this.forbidden.c68 = false
-          this.forbidden.c58 = false
-          this.forbidden.c69 = false
-          this.forbidden.c70 = false
-          this.formRecord.c56 = ''
-          this.formRecord.c65 = ''
-          this.formRecord.c66 = ''
-          this.forbidden.c56 = true
-          this.forbidden.c65 = true
-          this.forbidden.c66 = true
-      }
-
-      var c13 = this.formRecord.c13;
-      var c5 = this.formRecord.c5;
-      var result = this.getNxdj(c13, c5);
-      const checkc64 = (rule, value, callback) => {
-           if (result == "error") {
-              callback('系统提示备案数据不在备案范围，校验结束。')
-           }else{
-             var nxdj = this.formRecord.c64;
-              if (result != nxdj) {
-                callback('能效等级校验错误。')
-              } else {
-                callback()
-              }
-           }
-      }
 
       return {
-        c3: [
-          {
-            required: true,
-            message: '请输入制造单位',
-            trigger: 'change,blur'
-          }
-        ],
-        c59: [
-          {
-            required: true,
-            message: '请输入备案方',
-            trigger: 'change,blur'
-          }
-        ],
-        c2: [
-          {
-            required: true,
-            message: '请输入产品规格型号',
-            trigger: 'change,blur'
-          }
-        ],
-        c4: [
-          {
-            required: true,
-            message: '请输入商标',
-            trigger: 'change,blur'
-          }
-        ],
-        c200: [
-          {
-            required: true,
-            message: '请输入依据国家标准',
-            trigger: 'change,blur'
-          }
-        ],
-        c64: [
-          {
-            required: true,
-            message: '请选择能效等级',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc64,
-            trigger: 'change,blur'
-          }
-        ],
-        c5: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c6: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c7: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c8: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c9: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c10: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c11: [
-          {
-            required: true,
-            message: '请输入备案起始日期'
-          }
-        ],
-        c12: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c63: [
-          {
-              required: this.formRecord.c12 === '其他',
-              message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c13: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c14: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c15: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c16: [
-          {
-            required: this.formRecord.c14 == '真空管型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c17: [
-          {
-            required: this.formRecord.c16 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c18: [
-          {
-            required: this.formRecord.c14 == '真空管型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c19: [
-          {
-            required: this.formRecord.c18 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c20: [
-          {
-            required: this.formRecord.c14 == '真空管型',
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: this.formRecord.c14 === '真空管型' ? oneDecimals : check,
-            trigger: 'change,blur'
-          }
-        ],
-        c21: [
-          {
-            required: this.formRecord.c14 == '真空管型',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c22: [
-          {
-            required: this.formRecord.c14 == '真空管型',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c23: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c24: [
-          {
-            required: this.formRecord.c23 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c25: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c26: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c27: [
-          {
-            required: this.formRecord.c26 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c28: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c29: [
-          {
-            required: this.formRecord.c28 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c30: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c31: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c32: [
-          {
-            required: this.formRecord.c31 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c33: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c34: [
-          {
-            required: this.formRecord.c33 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c35: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c36: [
-          {
-            required: this.formRecord.c35 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c37: [
-          {
-            required: this.formRecord.c14 == '平板型',
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c38: [
-          {
-            required: this.formRecord.c37 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c39: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c73: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c74: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c40: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c76: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c77: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c41: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c42: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c43: [
-          {
-            required: this.formRecord.c42 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c44: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c45: [
-          {
-            required: this.formRecord.c44 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: this.formRecord.c44 === '其他' ? twoDecimals : check,
-            trigger: 'change,blur'
-          }
-        ],
-        c46: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c47: [
-          {
-            required: this.formRecord.c46 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c48: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c49: [
-          {
-            required: this.formRecord.c48 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c50: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c51: [
-          {
-            required: this.formRecord.c50 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c54: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c55: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c53: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c71: [
-          {
-            required: true,
-            message: '请选择',
-            trigger: 'change,blur'
-          }
-        ],
-        c56: [
-          {
-            required: this.formRecord.c71 === '是',
-            message: '请输入'
-          }
-        ],
-        c57: [
-          {
-            required: this.formRecord.c71 === '否',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c58: [
-          {
-            required: this.formRecord.c71 === '否',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c65: [
-          {
-            required: this.formRecord.c71 === '是',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c66: [
-          {
-            required: this.formRecord.c71 === '是',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c67: [
-          {
-            required: this.formRecord.c71 === '否',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c68: [
-          {
-            required: this.formRecord.c71 === '否',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c69: [
-          {
-           required: this.formRecord.c71 === '否',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c52: [
-          {
-            required: true,
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c70: [
-          {
-            required: this.formRecord.c71 === '否',
-            message: '请输入',
-            trigger: 'change,blur'
-          }
-        ],
-        c78: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c79: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c80: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c84: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c85: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c86: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c90: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c91: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c92: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c93: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c94: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ]
       }
     }
   }
