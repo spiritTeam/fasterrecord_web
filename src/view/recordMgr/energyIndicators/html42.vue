@@ -329,35 +329,31 @@
               <td>
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
-                    <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>
                     <FormItem prop="c22">
+                      <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="5R" :disabled='disabledoff || forbidden.c22_a'>5R</Radio>
                         <Radio label="6R" :disabled='disabledoff || forbidden.c22_a'>6R</Radio>
                         <Radio label="7R" :disabled='disabledoff || forbidden.c22_a'>7R</Radio>
                       </RadioGroup>
-                    </FormItem>
-                    <br><br>
-                    <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>
-                    <FormItem prop="c22">
+                      <br>
+                      <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="4T" :disabled='disabledoff || forbidden.c22_b'>4T</Radio>
                         <Radio label="6T" :disabled='disabledoff || forbidden.c22_b'>6T</Radio>
                         <Radio label="10T" :disabled='disabledoff || forbidden.c22_b'>10T</Radio>
                         <Radio label="12T" :disabled='disabledoff || forbidden.c22_b'>12T</Radio>
                       </RadioGroup>
-                    </FormItem>
-                    <br><br>
-                    <Radio label="液化石油气" :disabled='disabledoff'>液化石油气</Radio>
-                    <FormItem prop="c22">
+                      <br>
+                      <Radio label="液化石油气" :disabled='disabledoff'>液化石油气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="19Y" :disabled='disabledoff || forbidden.c22_c'>19Y</Radio>
                         <Radio label="20Y" :disabled='disabledoff || forbidden.c22_c'>20Y</Radio>
                         <Radio label="22Y" :disabled='disabledoff || forbidden.c22_c'>22Y</Radio>
                       </RadioGroup>
                     </FormItem>
-                    <br><br>
                   </RadioGroup>
+                  <br/><br>
                 </FormItem>
               </td>
             </tr>
@@ -1180,7 +1176,6 @@
           c22_a: true,
           c22_b: true,
           c22_c: true
-
         }
       }
     },
@@ -1299,7 +1294,6 @@
           this.forbidden.c22_b = true
           this.forbidden.c22_c = false
         }
-
 
 
         //0803
