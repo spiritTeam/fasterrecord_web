@@ -1392,49 +1392,77 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '实测值不能为空 实测值至少保留三位小数'
+              message: '实测值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? atLeastThreeDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c7: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '标称值不能为空 标称值须保留一位小数'
+              message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? oneDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c33: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '实测值不能为空 实测值至少保留两位小数'
+              message: '实测值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c9: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '标称值不能为空 标称值须保留两位小数'
+              message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c34: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '实测值不能为空 实测值至少保留三位小数'
+              message: '实测值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? atLeastThreeDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c11: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '标称值不能为空 标称值须保留一位小数'
+              message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? oneDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c35: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '实测值不能为空 实测值至少保留两位小数'
+              message: '实测值不能为空'
+            },
+            {
+              validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
+              trigger: 'change,blur',
             }
           ],
           c13: [
