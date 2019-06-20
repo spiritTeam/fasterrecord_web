@@ -1704,8 +1704,8 @@ import {
         ],
         c63: [
           {
-              required: this.formRecord.c12 === '其他',
-              message: '其他不能为空',
+            required: this.formRecord.c12 === '其他',
+            message: '其他不能为空',
             trigger: 'change,blur'
           }
         ],
