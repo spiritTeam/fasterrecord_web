@@ -330,14 +330,14 @@
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
                     <FormItem prop="c22">
-                      <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>
+                      <Radio label="人工煤气灶具" :disabled='disabledoff'>人工煤气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="5R" :disabled='disabledoff || forbidden.c22_a'>5R</Radio>
                         <Radio label="6R" :disabled='disabledoff || forbidden.c22_a'>6R</Radio>
                         <Radio label="7R" :disabled='disabledoff || forbidden.c22_a'>7R</Radio>
                       </RadioGroup>
                       <br>
-                      <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>
+                      <Radio label="天然气灶具" :disabled='disabledoff'>天然气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="4T" :disabled='disabledoff || forbidden.c22_b'>4T</Radio>
                         <Radio label="6T" :disabled='disabledoff || forbidden.c22_b'>6T</Radio>
@@ -345,7 +345,7 @@
                         <Radio label="12T" :disabled='disabledoff || forbidden.c22_b'>12T</Radio>
                       </RadioGroup>
                       <br>
-                      <Radio label="液化石油气" :disabled='disabledoff'>液化石油气</Radio>
+                      <Radio label="液化石油气灶具" :disabled='disabledoff'>液化石油气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="19Y" :disabled='disabledoff || forbidden.c22_c'>19Y</Radio>
                         <Radio label="20Y" :disabled='disabledoff || forbidden.c22_c'>20Y</Radio>
@@ -1281,15 +1281,15 @@
           this.forbidden.c15 = true
         }
 
-        if (this.formRecord.c21 === '人工煤气') {
+        if (this.formRecord.c21 === '人工煤气灶具') {
           this.forbidden.c22_a = false
           this.forbidden.c22_b = true
           this.forbidden.c22_c = true
-        } else if (this.formRecord.c21 === '天然气') {
+        } else if (this.formRecord.c21 === '天然气灶具') {
           this.forbidden.c22_a = true
           this.forbidden.c22_b = false
           this.forbidden.c22_c = true
-        } else if (this.formRecord.c21 === '液化石油气') {
+        } else if (this.formRecord.c21 === '液化石油气灶具') {
           this.forbidden.c22_a = true
           this.forbidden.c22_b = true
           this.forbidden.c22_c = false
