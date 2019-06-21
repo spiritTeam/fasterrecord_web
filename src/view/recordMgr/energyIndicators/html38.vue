@@ -2476,7 +2476,6 @@
           this.forbidden.c7_7 = false
         }
 
-        console.log(this.formRecord.c80)
         if (this.formRecord.c80.join('').indexOf('黑白速度') > -1) {
           this.forbidden.c81 = false
         } else {
