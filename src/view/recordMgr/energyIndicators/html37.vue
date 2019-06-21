@@ -300,23 +300,29 @@
               <td align="right" rowspan="2"><span class="red">*</span>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3">
                 整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;
-                  <FormItem prop="c37" >
-                    <Input type="text" v-model="formRecord.c37" :disabled='disabledoff' style="width:20%"/> &nbsp;&nbsp; x
-                    &nbsp;&nbsp;
-                    <Input type="text" v-model="formRecord.c38" :disabled='disabledoff' style="width:20%"/> &nbsp;&nbsp; x
-                    <Input type="text" v-model="formRecord.c39" :disabled='disabledoff' style="width:20%"/>
-                  </FormItem>
+                 <FormItem prop="c37" >
+                  <Input type="text" style="width:100px" v-model="formRecord.c37" :disabled='disabledoff'/>
+                </FormItem> &nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                <FormItem prop="c38" >
+                  <Input type="text" style="width:100px" v-model="formRecord.c38" :disabled='disabledoff'/>
+                </FormItem>&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                <FormItem prop="c39" >
+                  <Input type="text" style="width:100px" v-model="formRecord.c39" :disabled='disabledoff'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td colspan="3">
                  储水箱 &nbsp;&nbsp;&nbsp;
-                 <FormItem prop="c39" >
-                   <Input type="text" v-model="formRecord.c40" :disabled='disabledoff' style="width:20%"/> &nbsp;&nbsp; x
-                   &nbsp;&nbsp;
-                   <Input type="text" v-model="formRecord.c41" :disabled='disabledoff' style="width:20%"/>&nbsp;&nbsp;  x
-                   <Input type="text" v-model="formRecord.c42" :disabled='disabledoff' style="width:20%"/>
-                 </FormItem>
+                  <FormItem prop="c40" >
+                  <Input type="text" style="width:100px" v-model="formRecord.c40" :disabled='disabledoff'/>
+                </FormItem> &nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                <FormItem prop="c41" >
+                  <Input type="text" style="width:100px" v-model="formRecord.c41" :disabled='disabledoff'/>
+                </FormItem>&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                <FormItem prop="c42" >
+                  <Input type="text" style="width:100px" v-model="formRecord.c42" :disabled='disabledoff'/>
+                </FormItem>
               </td>
             </tr>
             <tr>
@@ -1108,12 +1114,6 @@
         c68: '',
         c69: '',
         c70: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
         c71: '',
         c72: '',
         c73: '',
@@ -1233,17 +1233,14 @@
         if (parseFloat(this.formRecord.c7) * 0.95 > parseFloat(this.formRecord.c8)) {
           checkc8 = (rule, value, callback) => {
             callback("所填制热量实测值应不小于制热量标准规定值的95%");
-            return;
           }   
         } else if (parseFloat(this.formRecord.c10) * 1.10 < parseFloat(this.formRecord.c11)) {
           checkc11 = (rule, value, callback) => {
             callback("所填制热消耗功率实测值应不大于热消耗功率标准规定值的110%");
-            return;
           } 
         } else if (parseFloat(this.formRecord.c13) * 0.95 > parseFloat(this.formRecord.c14)) {
           checkc14 = (rule, value, callback) => {
             callback("所填性能系数(COP)实测值应不小于性能系数(COP)标准规定值的95%");
-            return;
           } 
         } else {
             if (parseFloat(this.formRecord.c7) < 10000) {
@@ -1392,14 +1389,12 @@
 
         if (nxdj == "") {
           checkcnxdj = (rule, value, callback) => {
-            callback("能效数据不再备案范围%");
-            return;
+            callback("能效数据不再备案范围");
           } 
         }
         if (this.formRecord.c16 != nxdj) {
             checkcnxdj = (rule, value, callback) => {
             callback("所选能效等级与计算结果不符！");
-            return;
           }
         }
 
@@ -1464,7 +1459,6 @@
               message: '标注值不能为空',
               trigger: 'change,blur'
             },
-            ,
             {
               validator: numberCheck,
               trigger: 'change,blur'
