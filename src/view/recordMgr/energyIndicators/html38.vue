@@ -2476,6 +2476,7 @@
           this.forbidden.c7_7 = false
         }
 
+        console.log(this.formRecord.c80)
         if (this.formRecord.c80.join('').indexOf('黑白速度') > -1) {
           this.forbidden.c81 = false
         } else {
@@ -2505,6 +2506,31 @@
         var c12 = parseFloat(this.formRecord.c12);
         var c17 = parseFloat(this.formRecord.c17);
         var c18 = parseFloat(this.formRecord.c18);
+        var c44 = parseFloat(this.formRecord.c44);
+        var c35 = parseFloat(this.formRecord.c35);
+        var c38 = parseFloat(this.formRecord.c38);
+        var c23 = parseFloat(this.formRecord.c23);
+        var c24 = parseFloat(this.formRecord.c24);
+        var c29 = parseFloat(this.formRecord.c29);
+        var c30 = parseFloat(this.formRecord.c30);
+        var c36 = parseFloat(this.formRecord.c36);
+        var c39 = parseFloat(this.formRecord.c39);
+        var c51 = parseFloat(this.formRecord.c51);
+        var c53 = parseFloat(this.formRecord.c53);
+        var c54 = parseFloat(this.formRecord.c54);
+        var c66 = parseFloat(this.formRecord.c66);
+        var c68 = parseFloat(this.formRecord.c68);
+        var c69 = parseFloat(this.formRecord.c69);
+        var nxdj = 0;
+        var zhlkd = parseFloat(this.formRecord.c83);//最大幅面
+        var c7 = this.formRecord.c7;//产品类型
+        var c50 = parseFloat(this.formRecord.c50);
+        var c59 = parseFloat(this.formRecord.c59);
+        var cz = Math.round(c50 * 100);//操作模式功率Pom标称值2.2*100=220
+        var dj = Math.round(c53 * 100);//待机功率（W）标称值0.5*100=50
+        var yz = Math.round(c59 * 100);//附加功能功率因子之和(W)标称值1.6*100=160
+        var c65 = parseFloat(this.formRecord.c65);
+        var c74 = parseFloat(this.formRecord.c74);
 
         let checkc12 = (rule, value, callback) => {
           if (c12 > c11) {
@@ -2522,8 +2548,7 @@
           }
         }
 
-        var c23 = parseFloat(this.formRecord.c23);
-        var c24 = parseFloat(this.formRecord.c24);
+
         let checkc24 = (rule, value, callback) => {
           if (c24 > c23) {
             callback("单色多功能一体机典型能耗实测值应小于等于标称值！");
@@ -2532,8 +2557,6 @@
           }
         }
 
-        var c29 = parseFloat(this.formRecord.c29);
-        var c30 = parseFloat(this.formRecord.c30);
         let checkc30 = (rule, value, callback) => {
           if (c30 > c29) {
             callback("彩色多功能一体机典型能耗实测值应小于等于标称值！");
@@ -2543,8 +2566,6 @@
         }
 
 
-        var c36 = parseFloat(this.formRecord.c36);
-        var c35 = parseFloat(this.formRecord.c35);
         let checkc36 = (rule, value, callback) => {
           if (c36 > c35) {
             callback("喷墨打印机、针式打印机操作模式功率Pom（W）实测值应小于等于标称值！");
@@ -2553,8 +2574,6 @@
           }
         }
 
-        var c39 = parseFloat(this.formRecord.c39);
-        var c38 = parseFloat(this.formRecord.c38);
         let checkc39 = (rule, value, callback) => {
           if (c39 > c38) {
             callback("喷墨打印机、针式打印机待机功率（W）实测值应小于等于标称值！");
@@ -2563,9 +2582,6 @@
           }
         }
 
-
-        var c50 = parseFloat(this.formRecord.c50);
-        var c51 = parseFloat(this.formRecord.c51);
         let checkc51 = (rule, value, callback) => {
           if (c51 > c50) {
             callback("喷墨多功能一体机操作模式功率Pom（W）实测值应小于等于标称值！");
@@ -2574,8 +2590,6 @@
           }
         }
 
-        var c53 = parseFloat(this.formRecord.c53);
-        var c54 = parseFloat(this.formRecord.c54);
         let checkc54 = (rule, value, callback) => {
           if (c54 > c53) {
             callback("喷墨多功能一体机待机功率（W）实测值应小于等于标称值！");
@@ -2584,8 +2598,6 @@
           }
         }
 
-        var c65 = parseFloat(this.formRecord.c65);
-        var c66 = parseFloat(this.formRecord.c66);
         let checkc66 = (rule, value, callback) => {
           if (c66 > c65) {
             callback("喷墨传真机操作模式功率Pom（W）实测值应小于等于标称值！");
@@ -2594,8 +2606,6 @@
           }
         }
 
-        var c68 = parseFloat(this.formRecord.c68);
-        var c69 = parseFloat(this.formRecord.c69);
         let checkc69 = (rule, value, callback) => {
           if (c69 > c68) {
             callback("喷墨传真机待机功率（W）实测值应小于等于标称值！");
@@ -2605,9 +2615,6 @@
         }
 
 
-        var nxdj = 0;
-        var zhlkd = parseFloat(this.formRecord.c83);//最大幅面
-        var c7 = this.formRecord.c7;//产品类型
         if (zhlkd < 275) { //最大幅面210< 275
           if (c7 === "单色复印机" || c7 === "单色打印机" || c7 === "单色传真机") {
             let speed = parseFloat(this.formRecord.c8);
@@ -2986,12 +2993,7 @@
             callback()
           }
 
-          var c44 = parseFloat(this.formRecord.c44);
-          var c35 = parseFloat(this.formRecord.c35);
-          var c38 = parseFloat(this.formRecord.c38);
-          var yz = Math.round(c44 * 100);
-          var cz = Math.round(c35 * 100);
-          var dj = Math.round(c38 * 100);
+
           if (c7 === "喷墨打印机") {
             if (cz <= 60 + yz) {
               if (dj <= 50) {
@@ -3054,12 +3056,6 @@
             callback()
           }
 
-          var c50 = parseFloat(this.formRecord.c50);
-          var c53 = parseFloat(this.formRecord.c53);
-          var c59 = parseFloat(this.formRecord.c59);
-          var cz = Math.round(c50 * 100);//操作模式功率Pom标称值2.2*100=220
-          var dj = Math.round(c53 * 100);//待机功率（W）标称值0.5*100=50
-          var yz = Math.round(c59 * 100);//附加功能功率因子之和(W)标称值1.6*100=160
           if (cz <= 60 + yz) {
             if (dj <= 50) {
               nxdj = 1;
@@ -3088,12 +3084,6 @@
             }
           }
 
-          var c65 = parseFloat(this.formRecord.c65);
-          var c68 = parseFloat(this.formRecord.c68);
-          var c74 = parseFloat(this.formRecord.c74);
-          var cz = Math.round(c65 * 100);
-          var dj = Math.round(c68 * 100);
-          var yz = Math.round(c74 * 100);
           if (cz <= 60 + yz) {
             if (dj <= 50) {
               nxdj = 1;
