@@ -1629,7 +1629,7 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '投影光效 标注值不能为空'
+              message: '投影光效（lm/W）标注值不能为空'
             },
             {
               validator: oneDecimals,
@@ -1644,7 +1644,7 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '投影光效 实测值不能为空'
+              message: '投影光效（lm/W）实测值不能为空'
             },
             {
               validator: atLeastTwoDecimals,
@@ -1655,7 +1655,7 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '被动待机功率 标注值不能为空'
+              message: '被动待机功率（W）标注值不能为空'
             },
             {
               validator: twoDecimals,
@@ -1670,7 +1670,7 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '被动待机功率 实测值不能为空'
+              message: '被动待机功率（W）实测值不能为空'
             },
             {
               validator: atLeastThreeDecimals,
@@ -1729,14 +1729,14 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '固有分辨力 像素数 水平不能为空'
+              message: '固有分辨力（像素数）水平不能为空'
             }
           ],
           c23: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '固有分辨力 像素数 垂直不能为空'
+              message: '固有分辨力（像素数）垂直不能为空'
             }
           ],
           c24: [
@@ -1771,42 +1771,42 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '额定电压 不能为空'
+              message: '额定电压（V）不能为空'
             }
           ],
           c29: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '额定电流 不能为空'
+              message: '额定电流（A）不能为空'
             }
           ],
           c30: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '额定功率 不能为空'
+              message: '额定功率（W）不能为空'
             }
           ],
           c31: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '额定光输出 不能为空'
+              message: '额定光输出（lm）不能为空'
             }
           ],
           c32: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '额定频率 不能为空'
+              message: '额定频率（Hz）不能为空'
             }
           ],
           c33: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '整机质量 不能为空'
+              message: '整机质量(kg)不能为空'
             }
           ],
           c34: [
@@ -1890,42 +1890,42 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '待机控制电路 主板 型号规格不能为空'
+              message: '待机控制电路（主板/CPU）型号规格不能为空'
             }
           ],
           c46: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '待机控制电路 主板 技术参数不能为空'
+              message: '待机控制电路（主板/CPU）技术参数不能为空'
             }
           ],
           c47: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '液晶板 型号规格不能为空'
+              message: '液晶板/DMD型号规格不能为空'
             }
           ],
           c48: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '液晶板 固有分辨力不能为空'
+              message: '液晶板/DMD固有分辨力不能为空'
             }
           ],
           c49: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '液晶板 尺寸不能为空'
+              message: '液晶板/DMD尺寸不能为空'
             }
           ],
           c50: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '液晶板 英寸不能为空'
+              message: '液晶板/DMD英寸不能为空'
             }
           ],
           c51: [
