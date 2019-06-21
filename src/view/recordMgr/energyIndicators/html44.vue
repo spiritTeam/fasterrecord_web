@@ -1135,7 +1135,7 @@ export default {
         c2: '',
         c200: '',
         c7: '',
-        c8: [],
+        c8: '',
         c9: '',
         c10: '',
         c11: '',
@@ -1526,14 +1526,11 @@ export default {
       if (_c7!=_nxdjMax) this.checkComplex+="所选能效等级与计算结果不符！";
       if (this.checkComplex) this.modal1=false;
 
-      if (this.formRecord.c8 == '冷热风型'){
-        this.formRecord.c25 = '冷热风型';
-      }
-      if (this.formRecord.c8 == '冷热水型'){
-        this.formRecord.c25 = '冷热水型';
-      }
-
-
+      if (this.formRecord.c25 == '冷热风型') this.formRecord.c8 = '冷热风型';
+      if (this.formRecord.c25 == '冷热水型') this.formRecord.c8 = '冷热水型';
+      if (this.formRecord.c8 == '冷热风型') this.formRecord.c25 = '冷热风型';
+      if (this.formRecord.c8 == '冷热水型') this.formRecord.c25 = '冷热水型';
+      
       return {
         c3: [{
           required:true, message:'制造单位不能为空'
