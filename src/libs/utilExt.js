@@ -390,7 +390,7 @@ var decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
 var decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
 var atLeast1 = /^[0-9]\+?(\d*\.\d{1,5})$/;
 var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
-var inputNumber = /^[0-9]\d*$/
+var inputNumber = /^[0-9]\d*$/ //不包括0
 var numberOr11 = /^[0-9]+([.]{1}[0-9]{1,1})?$/
 var decimalOr22 = /^[0-9]+[.]{1}[0-9]{1,2}?$/
 
@@ -416,7 +416,7 @@ export const significantDigits33 = (rule, vaule, callback) => {
   tel.test(vaule) ? callback() : callback('三位有效数字');
 }
 
-export const numberCheck = (rule, vaule, callback) => {
+export const numberCheck = (rule, vaule, callback) => {//整数中包含0
   inputNumber.test(vaule) ? callback() : callback('请输入整数');
 }
 export const atLeastOneDecimals = (rule, vaule, callback) => {
@@ -433,8 +433,11 @@ export const atLeastFourDecimals = (rule, vaule, callback) => {
   var atLeast3=/^[0-9]\+?(\d*\.\d{4,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
-export const isInteger = (rule, vaule, callback) => {
+export const isInteger = (rule, vaule, callback) => {//整数中不包含0,提示整数
   integer.test(vaule) ? callback() : callback('整数');
+}
+export const isIntegerNotZero = (rule, vaule, callback) => {//整数中不包含0，提示请输入整数
+  integer.test(vaule) ? callback() : callback('请输入整数');
 }
 export const isNumber = (rule, vaule, callback) => {
   number.test(vaule) ? callback() : callback('请输入数字');
