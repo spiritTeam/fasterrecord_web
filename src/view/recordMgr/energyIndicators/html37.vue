@@ -1114,12 +1114,6 @@
         c68: '',
         c69: '',
         c70: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
         c71: '',
         c72: '',
         c73: '',
@@ -1465,7 +1459,6 @@
               message: '标注值不能为空',
               trigger: 'change,blur'
             },
-            ,
             {
               validator: numberCheck,
               trigger: 'change,blur'

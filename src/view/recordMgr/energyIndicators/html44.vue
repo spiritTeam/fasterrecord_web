@@ -151,8 +151,8 @@
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c14" label="备注:" :label-width="70">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
+                <FormItem prop="c17" label="备注:" :label-width="70">
+                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -1394,7 +1394,7 @@ export default {
       /**1.1-实测值与标称值关系 */
       let checkC12C13=(rule, value, callback) => {
         let _msg=null;
-        if (_c12&&_c13&&_c13>_c12*0.95) _msg="名义制冷量实测值不应小于额定值的95%。";
+        if (_c12&&_c13&&_c13<_c12*0.95) _msg="名义制冷量实测值不应小于额定值的95%。";
         if (_msg) callback(_msg); else callback();
       }
       let checkC15C16=(rule, value, callback) => {
@@ -1525,6 +1525,14 @@ export default {
       if (_nxdjMax==0) this.checkComplex+="能效数据不在备案范围";
       if (_c7!=_nxdjMax) this.checkComplex+="所选能效等级与计算结果不符！";
       if (this.checkComplex) this.modal1=false;
+
+      if (this.formRecord.c8 == '冷热风型'){
+        this.formRecord.c25 = '冷热风型';
+      }
+      if (this.formRecord.c8 == '冷热水型'){
+        this.formRecord.c25 = '冷热水型';
+      }
+
 
       return {
         c3: [{
@@ -1770,4 +1778,4 @@ export default {
 </script>
 <style>
 @import '../../../css/comm.css';
-</style>
+</style> 
