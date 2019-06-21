@@ -19,12 +19,14 @@
           <Html39 v-if="category == 39" ref="energyIndicators39" @prevStep="step = 2"></Html39>
           <Html40 v-if="category == 40" ref="energyIndicators40" @prevStep="step = 2"></Html40>
           <Html42 v-if="category == 42" ref="energyIndicators42" @prevStep="step = 2"></Html42>
+          <Html44 v-if="category == 44" ref="energyIndicators44" @prevStep="step = 2"></Html44>
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
           <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
+          <Html52 v-if="category == 52" ref="energyIndicators52" @prevStep="step = 2"></Html52>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
         </TabPane>
         <!-- <TabPane label="性能指标">
@@ -61,12 +63,14 @@ import Html38 from './energyIndicators/html38'
 import Html39 from './energyIndicators/html39'
 import Html40 from './energyIndicators/html40'
 import Html42 from './energyIndicators/html42'
+import Html44 from './energyIndicators/html44'
 import Html46 from './energyIndicators/html46'
 import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html53 from './energyIndicators/html53'
 import Html51 from './energyIndicators/html51'
+import Html52 from './energyIndicators/html52'
 import Html54 from './energyIndicators/html54'
 
 
@@ -96,12 +100,14 @@ export default {
     Html39,
     Html40,
     Html42,
+    Html44,
     Html46,
     Html47,
     Html48,
     Html50,
     Html53,
     Html51,
+    Html52,
     Html54
   },
   mounted () {

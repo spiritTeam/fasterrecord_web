@@ -44,22 +44,22 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" />
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly />
           </FormItem>
           <FormItem prop="c3" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="制造单位"/>
           </FormItem>
           <FormItem prop="c45" label="备案方" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c45" :disabled='disabledoff' placeholder="备案方"/>
+            <Input type="text" v-model="formRecord.c45" :disabled='disabledoff' placeholder="备案方" />
           </FormItem>            
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :di1sabled='!disabledoff' placeholder="产品规格型号"/>
+            <Input type="text" v-model="formRecord.c4" :di1sabled='!disabledoff' placeholder="产品规格型号" disabled/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准"  :disabled='disabledoff' readonly/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
           </FormItem>
           <FormItem prop="c9" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c9">
@@ -1875,7 +1875,7 @@
           c34: [
             {
               required: true,
-              message: '整机或室内机外形尺寸长不能为空',
+              message: '长不能为空',
               trigger: 'change,blur'
             },
             {
@@ -1886,7 +1886,7 @@
           c35: [
             {
               required: true,
-              message: '整机或室内机外形尺寸宽不能为空',
+              message: '宽不能为空',
               trigger: 'change,blur'
             },
             {
@@ -1897,7 +1897,7 @@
           c36: [
             {
               required: true,
-              message: '整机或室内机外形尺寸高不能为空',
+              message: '高不能为空',
               trigger: 'change,blur'
             },
             {
@@ -1908,7 +1908,7 @@
           c37: [
             {
               required: true,
-              message: '室外机外形尺寸长不能为空',
+              message: '长不能为空',
               trigger: 'change,blur'
             },
             {
@@ -1919,7 +1919,7 @@
           c38: [
             {
               required: true,
-              message: '室外机外形尺寸宽不能为空',
+              message: '宽不能为空',
               trigger: 'change,blur'
             },
             {
@@ -1930,7 +1930,7 @@
           c39: [
             {
               required: true,
-              message: '室外机外形尺寸高不能为空',
+              message: '高不能为空',
               trigger: 'change,blur'
             },
             {
