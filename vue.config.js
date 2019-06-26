@@ -26,7 +26,7 @@ module.exports = {
   productionSourceMap: false,
   baseUrl: BASE_URL,
   lintOnSave: false,
-  // tweak internal webpack configuration.
+  // tweak internal webpack configuration.`
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   chainWebpack: config => {
     config.resolve.alias

@@ -10,6 +10,7 @@
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
+          <Html27 v-if="category == 27" ref="energyIndicators27" @prevStep="step = 2"></Html27>
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
@@ -53,6 +54,7 @@ import SecurityIndicators from './securityIndicators'
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
+import Html27 from './energyIndicators/html27'
 import Html29 from './energyIndicators/html29'
 import Html31 from './energyIndicators/html31'
 import Html33 from './energyIndicators/html33'
@@ -89,6 +91,7 @@ export default {
     Html13,
     Html17,
     Html23,
+    Html27,
     Html29,
     Html31,
     Html33,
