@@ -47,7 +47,7 @@
           <Input type="text" v-model="formRecord.c36" placeholder="备案方" :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c2" label="产品规格型号" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" disabled/>
+          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" :disabled='!disabledoff'/>
         </FormItem>
         <FormItem prop="c4" label="商标" style="width:1000px;" :label-width="180">
           <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled="disabledoff"/>
