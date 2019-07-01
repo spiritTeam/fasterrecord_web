@@ -216,25 +216,28 @@ export const delCookie = (name) => {
     document.cookie = name + '=' + cval + ';expires=' + exp.toGMTString()
   }
 }
-/*初始化路由*/
-export const initRouter=(vm)=>{
-  let otherRoute=[]
+/* 初始化路由 */
+export const initRouter = (vm) => {
+  let otherRoute = []
   //
-  axios.get("/function/mylist.do").then((res)=>{
-    initRouterNode(otherRoute,res.data)
-  //console.log(otherRoute);
-  // 添加主界面路由
-  vm.$store.commit('updateAppRouter', otherRoute);
-  //console.log(vm.$router)
-})
+  axios.get('/function/mylist.do').then((res) => {
+    initRouterNode(otherRoute, res.data)
+    // console.log(otherRoute);
+    // 添加主界面路由
+    vm.$store.commit('updateAppRouter', otherRoute)
+  // console.log(vm.$router)
+  }).catch(err => {
+    console.log(err)
+    window.location.href = '/base_html/index/login.jsp'
+  })
 }
-export const initRouterNode=(routs,data) =>{
+export const initRouterNode = (routs, data) => {
   for (var item of data) {
-    let menu = Object.assign({}, item);
-    menu.component = load(menu.component);
+    let menu = Object.assign({}, item)
+    menu.component = load(menu.component)
     if (item.children && item.children.length > 0) {
-      menu.children = [];
-      initRouterNode(menu.children,item.children);
+      menu.children = []
+      initRouterNode(menu.children, item.children)
     }
     routs.push(menu)
   }
