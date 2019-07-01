@@ -261,7 +261,6 @@
                 </FormItem>
               </td>
             </tr>
-
             <tr>
               <td>控制方式</td>
               <td colspan="3">
