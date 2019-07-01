@@ -10,6 +10,7 @@
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
+          <Html27 v-if="category == 27" ref="energyIndicators27" @prevStep="step = 2"></Html27>
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
           <Html30 v-if="category == 30" ref="energyIndicators30" @prevStep="step = 2"></Html30>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
@@ -27,6 +28,7 @@
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
           <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
+          <Html52 v-if="category == 52" ref="energyIndicators52" @prevStep="step = 2"></Html52>
           <Html54 v-if="category == 54" ref="energyIndicators54" @prevStep="step = 2"></Html54>
         </TabPane>
         <!-- <TabPane label="性能指标">
@@ -54,6 +56,7 @@ import SecurityIndicators from './securityIndicators'
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
+import Html27 from './energyIndicators/html27'
 import Html29 from './energyIndicators/html29'
 import Html30 from './energyIndicators/html30'
 import Html31 from './energyIndicators/html31'
@@ -71,6 +74,7 @@ import Html48 from './energyIndicators/html48'
 import Html50 from './energyIndicators/html50'
 import Html53 from './energyIndicators/html53'
 import Html51 from './energyIndicators/html51'
+import Html52 from './energyIndicators/html52'
 import Html54 from './energyIndicators/html54'
 
 
@@ -91,6 +95,7 @@ export default {
     Html13,
     Html17,
     Html23,
+    Html27,
     Html29,
     Html30,
     Html31,
@@ -108,6 +113,7 @@ export default {
     Html50,
     Html53,
     Html51,
+    Html52,
     Html54
   },
   mounted () {

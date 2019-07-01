@@ -151,8 +151,8 @@
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c14" label="备注:" :label-width="70">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
+                <FormItem prop="c17" label="备注:" :label-width="70">
+                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -1135,7 +1135,7 @@ export default {
         c2: '',
         c200: '',
         c7: '',
-        c8: [],
+        c8: '',
         c9: '',
         c10: '',
         c11: '',
@@ -1526,6 +1526,11 @@ export default {
       if (_c7!=_nxdjMax) this.checkComplex+="所选能效等级与计算结果不符！";
       if (this.checkComplex) this.modal1=false;
 
+      if (this.formRecord.c25 == '冷热风型') this.formRecord.c8 = '冷热风型';
+      if (this.formRecord.c25 == '冷热水型') this.formRecord.c8 = '冷热水型';
+      if (this.formRecord.c8 == '冷热风型') this.formRecord.c25 = '冷热风型';
+      if (this.formRecord.c8 == '冷热水型') this.formRecord.c25 = '冷热水型';
+      
       return {
         c3: [{
           required:true, message:'制造单位不能为空'
@@ -1770,4 +1775,4 @@ export default {
 </script>
 <style>
 @import '../../../css/comm.css';
-</style>
+</style> 
