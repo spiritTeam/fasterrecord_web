@@ -1,10 +1,10 @@
-<!--平板电视 2013版->
-<!--创建日期:2019年6月18日-->
+<!--03、投影机 2015版-->
+<!--创建日期:2019年6月21日-->
 <!--创建人:YCL-->
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>平板电视-能源效率标识备案表</h1>
+      <h1>投影机-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>
@@ -41,120 +41,76 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" readonly :disabled='disabledoff'/>
+            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly/>
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c2" placeholder="制造单位" :disabled='disabledoff'/>
+            <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位"/>
           </FormItem>
-          <FormItem prop="c29" label="备案方" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c29" placeholder="备案方" :disabled='disabledoff'/>
+          <FormItem prop="c3" label="备案方" style="width:100%;" :label-width="180">
+            <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方"/>
           </FormItem>
-          <FormItem prop="c3" label="产品规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c3" placeholder="规格型号" :disabled='!disabledoff'/>
+          <FormItem prop="c4" label="规格型号" style="width:100%;" :label-width="180">
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
-          <FormItem prop="c4" label="商标" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled='disabledoff'/>
+          <FormItem prop="c5" label="商标" style="width:100%" :label-width="180">
+            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
           </FormItem>
-          <FormItem prop="c31" label="能效等级" style="width:100%;" :label-width="180">
-            <RadioGroup v-model="formRecord.c31">
+          <FormItem prop="c7" label="能效等级" style="width:100%;" :label-width="180">
+            <RadioGroup v-model="formRecord.c7">
               <Radio label="1" :disabled='disabledoff'>1级</Radio>
               <Radio label="2" :disabled='disabledoff'>2级</Radio>
               <Radio label="3" :disabled='disabledoff'>3级</Radio>
             </RadioGroup>
           </FormItem>
-          <FormItem prop="c16" label="平板电视类型" style="width:100%;" :label-width="180">
-            <RadioGroup v-model="formRecord.c16">
-              <Radio label="LCD" :disabled='disabledoff'>LCD</Radio>
-              <Radio label="PDP" :disabled='disabledoff'>PDP</Radio>
-              <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+          <FormItem prop="c15" label="产品类型" style="width:100%;" :label-width="180">
+            <RadioGroup v-model="formRecord.c15">
+              <Radio label="普通投影机" :disabled='disabledoff'>普通投影机</Radio>
+              <Radio label="高色域投影机" :disabled='disabledoff'>高色域投影机</Radio>
             </RadioGroup>
           </FormItem>
-          <FormItem prop="c17" :label-width="360" style="margin-top: -57px" >
-            <Input type="text" v-model="formRecord.c17" style="width: 170px" :disabled='disabledoff || forbidden.c17'/>
-          </FormItem>
-
           <table id="table1">
             <tr>
-              <th></th>
               <th>项目</th>
-              <th>标注值</th>
+              <th>额定值</th>
               <th>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
-              <td rowspan="2">LCD</td>
-              <td>被动待机功率(W)</td>
-              <td>
-                <FormItem prop="c5">
-                  <Input type="text" v-model="formRecord.c5" :disabled='disabledoff || forbidden.c16_LCD'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c32">
-                  <Input type="text" v-model="formRecord.c32" :disabled='disabledoff || forbidden.c16_LCD'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c6">
-                  <Input type="text" v-model="formRecord.c6" :disabled='disabledoff || forbidden.c16_LCD'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>液晶电视能效指数EEILCD</td>
-              <td>
-                <FormItem prop="c7">
-                  <Input type="text" v-model="formRecord.c7" :disabled='disabledoff || forbidden.c16_LCD'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c33">
-                  <Input type="text" v-model="formRecord.c33" :disabled='disabledoff || forbidden.c16_LCD'/>
-                </FormItem>
-              </td>
+              <td>投影光效（lm/W）</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c16_LCD'/>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-            </tr>
-            <tr>
-              <td rowspan="2">PDP</td>
-              <td>被动待机功率(W)</td>
               <td>
                 <FormItem prop="c9">
-                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff || forbidden.c16_PDP'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c34">
-                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff || forbidden.c16_PDP'/>
+                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c10">
-                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff || forbidden.c16_PDP'/>
+                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td>等离子电视能效指数EEIPDP</td>
+              <td>被动待机功率（W）</td>
               <td>
                 <FormItem prop="c11">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.c16_PDP'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c35">
-                  <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c16_PDP'/>
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c12">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c16_PDP'/>
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c13">
+                  <Input type="text" v-model="formRecord.c13" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -165,8 +121,8 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
-          <FormItem prop="c13" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c13"
+          <FormItem prop="c14" label="备案标识开始使用日期" style="width:100%;">
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c14"
                         :disabled='disabledoff'></DatePicker>
           </FormItem>
         </Card>
@@ -175,112 +131,166 @@
         <Card :bordered="false">
           <h2>五、样品描述</h2>
           <table id="table3">
+            <tbody>
             <tr>
-              <td>屏幕有效尺寸（长×宽）（mm×mm）</td>
-              <td colspan="3" class="w19">
-                <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
+              <td>色域覆盖率（%）</td>
+              <td>
+                <FormItem prop="c16">
+                  <RadioGroup v-model="formRecord.c16">
+                    <Radio label="大于等于33" :disabled='disabledoff'>>=33</Radio>
+                    <Radio label="小于33" :disabled='disabledoff'><33</Radio>
+                  </RadioGroup>
                 </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c15">
-                  <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'/>
+              </td>
+            </tr>
+            <tr>
+              <td>显示器件类型</td>
+              <td>
+                <FormItem prop="c17">
+                  <RadioGroup v-model="formRecord.c17">
+                    <Radio label="LCD" :disabled='disabledoff'>LCD</Radio>
+                    <Radio label="DLP" :disabled='disabledoff'>DLP</Radio>
+                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                  </RadioGroup>
+                </FormItem>
+                <FormItem prop="c18">
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>光源</td>
+              <td class="w19">
+                <FormItem><b>光源类型</b></FormItem>
+                <FormItem prop="c19">
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem><b>功率</b></FormItem>
+                <FormItem prop="c20">
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem><b>（W） × </b></FormItem>
+                <FormItem prop="c21">
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem><b>（个）</b></FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>固有分辨力<br>（像素数）</td>
+              <td class="w19">
+                <FormItem><b>水平</b></FormItem>
+                <FormItem prop="c22">
+                  <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem><b>× 垂直</b></FormItem>
+                <FormItem prop="c23">
+                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>附加功能</td>
-              <td colspan="3">
-                <FormItem prop="c18">
-                  <CheckboxGroup v-model="formRecord.c18">
-                    <Checkbox label="视盘播放" :disabled='disabledoff'>视盘播放</Checkbox>
-                    <Checkbox label="计算机" :disabled='disabledoff'>计算机</Checkbox>
-                    <Checkbox label="网络" :disabled='disabledoff'>网络</Checkbox>
-                    <Checkbox label="录像" :disabled='disabledoff'>录像</Checkbox>
-                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
-                  </CheckboxGroup>
-                </FormItem>
-                <FormItem prop="c19">
-                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>固有分辨率（像素数）（水平×垂直）</td>
-              <td colspan="3">
-                <FormItem prop="c20">
-                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
-                </FormItem>
-                <FormItem><b>×</b></FormItem>
-                <FormItem prop="c21">
-                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>供电方式（W）</td>
-              <td colspan="3">
-                <FormItem prop="c22">
-                  <RadioGroup v-model="formRecord.c22">
-                    <Radio label="内置电源" :disabled='disabledoff'>内置电源</Radio>
-                    <Radio label="外部电源，输出功率（W）" :disabled='disabledoff'>外部电源，输出功率（W）</Radio>
+              <td>
+                <FormItem prop="c24">
+                  <RadioGroup v-model="formRecord.c24">
+                    <Radio label="网络" :disabled='disabledoff'>网络</Radio>
+                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
                   </RadioGroup>
                 </FormItem>
-                <FormItem prop="c23">
-                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c23'/>
+                <FormItem prop="c25">
+                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c25'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td rowspan="2">信号处理功率（W）</td>
-              <td colspan="3" style="border-bottom:none;">
-                <FormItem prop="c24">
-                  <CheckboxGroup v-model="formRecord.c24">
-                    <Checkbox label="模拟射频接口输入（4W）" :disabled='disabledoff'>模拟射频接口输入（4W）</Checkbox>
-                    <Checkbox label="数字射频接口输入（8W）" :disabled='disabledoff'>数字射频接口输入（8W）</Checkbox>
-                  </CheckboxGroup>
+              <td>供电方式</td>
+              <td>
+                <FormItem prop="c26">
+                  <RadioGroup v-model="formRecord.c26">
+                    <Radio label="内置电源" :disabled='disabledoff'>内置电源</Radio>
+                    <Radio label="外部电源,输出功率(W)" :disabled='disabledoff'>外部电源,输出功率(W)</Radio>
+                  </RadioGroup>
+                </FormItem>
+                <FormItem prop="c27">
+                  <Input type="text" v-model="formRecord.c27" :disabled='disabledoff || forbidden.c27'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td colspan="3" style="border-top:none;">
-                <FormItem prop="c24">
-                  <CheckboxGroup v-model="formRecord.c24">
-                    <Checkbox label="其它接口输入" :disabled='disabledoff'>其它接口输入</Checkbox>
-                  </CheckboxGroup>
+              <td>额定电压（V）</td>
+              <td>
+                <FormItem prop="c28">
+                  <Input type="text" v-model="formRecord.c28" style="width: 500px" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem prop="c30">
-                  <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30'/>
+              </td>
+            </tr>
+            <tr>
+              <td>额定电流（A）</td>
+              <td>
+                <FormItem prop="c29">
+                  <Input type="text" v-model="formRecord.c29" style="width: 500px" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>额定功率（W）</td>
               <td>
-                <FormItem prop="c25">
-                  <Input type="text" v-model="formRecord.c25" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>电压（V）</td>
-              <td>
-                <FormItem prop="c26">
-                  <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
+                <FormItem prop="c30">
+                  <Input type="text" v-model="formRecord.c30" style="width: 500px" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td>电流（A）</td>
+              <td>额定光输出（lm）</td>
               <td>
-                <FormItem prop="c27">
-                  <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>频率（Hz）</td>
-              <td>
-                <FormItem prop="c28">
-                  <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
+                <FormItem prop="c31">
+                  <Input type="text" v-model="formRecord.c31" style="width: 500px" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
+            <tr>
+              <td>额定频率（Hz）</td>
+              <td>
+                <FormItem prop="c32">
+                  <Input type="text" v-model="formRecord.c32" style="width: 500px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>整机质量（kg）</td>
+              <td>
+                <FormItem prop="c33">
+                  <Input type="text" v-model="formRecord.c33" style="width: 500px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>整机尺寸（长×宽×高）<br>（mm × mm × mm）</td>
+              <td class="w19">
+                <FormItem><b>长</b></FormItem>
+                <FormItem prop="c34">
+                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem><b>× 宽</b></FormItem>
+                <FormItem prop="c35">
+                  <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem><b>× 高</b></FormItem>
+                <FormItem prop="c36">
+                  <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td>噪音（dB）</td>
+              <td>
+                <FormItem prop="c112">
+                  <Input type="text" v-model="formRecord.c112" style="width: 500px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            </tbody>
           </table>
         </Card>
       </div>
@@ -288,396 +298,114 @@
         <Card :bordered="false">
           <h2>六、产品基本配置清单</h2>
           <table id="table4">
+            <thead>
             <tr>
               <th>序号</th>
               <th>部件名称</th>
-              <th>位号</th>
-              <th>型号规格</th>
-              <th colspan="2">技术参数</th>
+              <th>规格型号</th>
+              <th>技术参数</th>
               <th>生产者（全称）</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
-              <td rowspan="7">1</td>
-              <td rowspan="7">电源模块/外部电源</td>
-              <td rowspan="7">
-                <FormItem prop="c36">
-                  <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
-                </FormItem>
+              <td width="70">1</td>
+              <td>
+                灯
               </td>
-              <td rowspan="7">
-
+              <td>
                 <FormItem prop="c37">
                   <Input type="text" v-model="formRecord.c37" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>输入电压</td>
-              <td>
-                <FormItem prop="c38">
-                  <Input type="text" v-model="formRecord.c38" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="7">
-                <FormItem prop="c39">
-                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输入电流</td>
-              <td>
-                <FormItem prop="c40">
-                  <Input type="text" v-model="formRecord.c40" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输入功率</td>
-              <td>
-                <FormItem prop="c41">
-                  <Input type="text" v-model="formRecord.c41" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输入频率</td>
-              <td>
-                <FormItem prop="c42">
-                  <Input type="text" v-model="formRecord.c42" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输出电压</td>
-              <td>
-                <FormItem prop="c43">
-                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输出电流</td>
-              <td>
-                <FormItem prop="c44">
-                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输出功率</td>
-              <td>
-                <FormItem prop="c45">
-                  <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td rowspan="7">2</td>
-              <td rowspan="7">电源模块/外部电源</td>
-              <td rowspan="7">
-                <FormItem prop="c46">
-                  <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="7">
-                <FormItem prop="c47">
-                  <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>输入电压</td>
-              <td>
-                <FormItem prop="c48">
-                  <Input type="text" v-model="formRecord.c48" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="7">
-                <FormItem prop="c49">
-                  <Input type="text" v-model="formRecord.c49" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输入电流</td>
-              <td>
-                <FormItem prop="c50">
-                  <Input type="text" v-model="formRecord.c50" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输入功率</td>
-              <td>
-                <FormItem prop="c51">
-                  <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输入频率</td>
-              <td>
-                <FormItem prop="c52">
-                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输出电压</td>
-              <td>
-                <FormItem prop="c53">
-                  <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输出电流</td>
-              <td>
-                <FormItem prop="c54">
-                  <Input type="text" v-model="formRecord.c54" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>输出功率</td>
-              <td>
-                <FormItem prop="c55">
-                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td rowspan="4">3</td>
-              <td rowspan="4">显示屏</td>
-              <td rowspan="4">
-                <FormItem prop="c56">
-                  <Input type="text" v-model="formRecord.c56" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="4">
-                <FormItem prop="c57">
-                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>固有分辨率</td>
-              <td>
-                <FormItem prop="c58">
-                  <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="4">
-                <FormItem prop="c59">
-                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>屏幕尺寸</td>
-              <td>
-                <FormItem prop="c60">
-                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>亮度</td>
-              <td>
-                <FormItem prop="c61">
-                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>背光方式</td>
-              <td>
-                <FormItem prop="c62">
-                  <Input type="text" v-model="formRecord.c62" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td rowspan="4">4</td>
-              <td rowspan="4">显示屏</td>
-              <td rowspan="4">
-                <FormItem prop="c63">
-                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="4">
-                <FormItem prop="c64">
-                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>固有分辨率</td>
-              <td>
-                <FormItem prop="c65">
-                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td rowspan="4">
-                <FormItem prop="c66">
-                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>屏幕尺寸</td>
-              <td>
-                <FormItem prop="c67">
-                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>亮度</td>
-              <td>
-                <FormItem prop="c68">
-                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>背光方式</td>
-              <td>
-                <FormItem prop="c69">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>待机控制CPU</td>
-              <td>
-                <FormItem prop="c70">
-                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c71">
-                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td colspan="2">
-                <FormItem prop="c72">
-                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c73">
-                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td>待机控制CPU</td>
-              <td>
-                <FormItem prop="c74">
-                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c75">
-                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td colspan="2">
-                <FormItem prop="c76">
-                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c77">
-                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>7</td>
-              <td>解码和图像处理芯</td>
-              <td>
-                <FormItem prop="c78">
-                  <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c79">
-                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td colspan="2">
-                <FormItem prop="c80">
-                  <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c81">
-                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>8</td>
-              <td>解码和图像处理芯</td>
-              <td>
-                <FormItem prop="c82">
-                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c83">
-                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td colspan="2">
-                <FormItem prop="c84">
-                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c85">
-                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>功放IC</td>
-              <td>
-                <FormItem prop="c86">
-                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c87">
-                  <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td colspan="2">
-                <FormItem prop="c88">
-                  <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-              <td>
-                <FormItem prop="c89">
-                  <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td>10</td>
-              <td>功放IC</td>
-              <td>
-                <FormItem prop="c90">
-                  <Input type="text" v-model="formRecord.c90" :disabled='disabledoff'/>
-                </FormItem>
+              <td class="tl">
+                <div class="radio i-checks">
+                  <label class="mb7"><span class="w100">灯泡类型：</span>
+                    <FormItem prop="c38">
+                      <Input type="text" v-model="formRecord.c38" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br><br>
+                  <label class="mb7"><span class="w100">灯泡额定功率：</span>
+                    <FormItem prop="c39">
+                      <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br><br>
+                  <label><span class="w100">灯泡数量：</span>
+                    <FormItem prop="c40">
+                      <Input type="text" v-model="formRecord.c40" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label>
+                </div>
               </td>
               <td>
                 <FormItem prop="c91">
                   <Input type="text" v-model="formRecord.c91" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td colspan="2">
+            </tr>
+            <tr>
+              <td width="70">2</td>
+              <td>
+                灯
+              </td>
+              <td>
+                <FormItem prop="c55">
+                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="tl">
+                <div class="radio i-checks">
+                  <label class="mb7"><span class="w100">灯泡类型：</span>
+                    <FormItem prop="c56">
+                      <Input type="text" v-model="formRecord.c56" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br><br>
+                  <label class="mb7"><span class="w100">灯泡额定功率：</span>
+                    <FormItem prop="c57">
+                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br><br>
+                  <label><span class="w100">灯泡数量：</span>
+                    <FormItem prop="c58">
+                      <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label>
+                </div>
+              </td>
+              <td>
                 <FormItem prop="c92">
                   <Input type="text" v-model="formRecord.c92" :disabled='disabledoff'/>
                 </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">3</td>
+              <td>
+                灯
+              </td>
+              <td>
+                <FormItem prop="c59">
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="tl">
+                <div class="radio i-checks">
+                  <label class="mb7"><span class="w100">灯泡类型：</span>
+                    <FormItem prop="c60">
+                      <Input type="text" v-model="formRecord.c60" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br><br>
+                  <label class="mb7"><span class="w100">灯泡额定功率：</span>
+                    <FormItem prop="c61">
+                      <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br><br>
+                  <label><span class="w100">灯泡数量：</span>
+                    <FormItem prop="c62">
+                      <Input type="text" v-model="formRecord.c62" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label>
+                </div>
               </td>
               <td>
                 <FormItem prop="c93">
@@ -686,8 +414,426 @@
               </td>
             </tr>
             <tr>
-              <td colspan="7">注：如果上述关键零部件/原材料属多个制造商，均应按上述要求逐一填写。</td>
+              <td width="70">4</td>
+              <td>
+                主电源控制器件
+              </td>
+              <td>
+                <FormItem prop="c41">
+                  <Input type="text" v-model="formRecord.c41" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c42">
+                  <Input type="text" v-model="formRecord.c42" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c94">
+                  <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
             </tr>
+            <tr>
+              <td width="70">5</td>
+              <td>
+                主电源控制器件
+              </td>
+              <td>
+                <FormItem prop="c63">
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c64">
+                  <Input type="text" v-model="formRecord.c64" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c95">
+                  <Input type="text" v-model="formRecord.c95" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">6</td>
+              <td>
+                主电源控制器件
+              </td>
+              <td>
+                <FormItem prop="c65">
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c66">
+                  <Input type="text" v-model="formRecord.c66" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c96">
+                  <Input type="text" v-model="formRecord.c96" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">7</td>
+              <td>
+                辅电源控制器件
+              </td>
+              <td>
+                <FormItem prop="c43">
+                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c44">
+                  <Input type="text" v-model="formRecord.c44" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c97">
+                  <Input type="text" v-model="formRecord.c97" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">8</td>
+              <td>
+                辅电源控制器件
+              </td>
+              <td>
+                <FormItem prop="c67">
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c68">
+                  <Input type="text" v-model="formRecord.c68" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c98">
+                  <Input type="text" v-model="formRecord.c98" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">9</td>
+              <td>
+                辅电源控制器件
+              </td>
+              <td>
+                <FormItem prop="c69">
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c70">
+                  <Input type="text" v-model="formRecord.c70" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c99">
+                  <Input type="text" v-model="formRecord.c99" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">10</td>
+              <td>
+                待机控制电路<br>（主板/CPU）
+              </td>
+              <td>
+                <FormItem prop="c45">
+                  <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c46">
+                  <Input type="text" v-model="formRecord.c46" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c100">
+                  <Input type="text" v-model="formRecord.c100" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">11</td>
+              <td>
+                待机控制电路<br>（主板/CPU）
+              </td>
+              <td>
+                <FormItem prop="c71">
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c72">
+                  <Input type="text" v-model="formRecord.c72" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c101">
+                  <Input type="text" v-model="formRecord.c101" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">12</td>
+              <td>
+                待机控制电路<br>（主板/CPU）
+              </td>
+              <td>
+                <FormItem prop="c73">
+                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c74">
+                  <Input type="text" v-model="formRecord.c74" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c102">
+                  <Input type="text" v-model="formRecord.c102" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">13</td>
+              <td>
+                液晶板/DMD
+              </td>
+              <td>
+                <FormItem prop="c47">
+                  <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="tl">
+                <div class="radio i-checks">
+                  <label class="mb7"><span class="w90">固有分辨力：</span>
+                    <FormItem prop="c48">
+                      <Input type="text" v-model="formRecord.c48" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7"><span class="w90">尺寸：</span>
+                    <FormItem prop="c49">
+                      <Input type="text" v-model="formRecord.c49" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label><span class="w90">英寸：</span>
+                    <FormItem prop="c50">
+                      <Input type="text" v-model="formRecord.c50" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label>
+                </div>
+              </td>
+              <td>
+                <FormItem prop="c103">
+                  <Input type="text" v-model="formRecord.c103" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">14</td>
+              <td>
+                液晶板/DMD
+              </td>
+              <td>
+                <FormItem prop="c75">
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="tl">
+                <div class="radio i-checks">
+                  <label class="mb7"><span class="w90">固有分辨力：</span>
+                    <FormItem prop="c76">
+                      <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7"><span class="w90">尺寸：</span>
+                    <FormItem prop="c77">
+                      <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label><span class="w90">英寸：</span>
+                    <FormItem prop="c78">
+                      <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label>
+                </div>
+              </td>
+              <td>
+                <FormItem prop="c104">
+                  <Input type="text" v-model="formRecord.c104" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">15</td>
+              <td>
+                液晶板/DMD
+              </td>
+              <td>
+                <FormItem prop="c79">
+                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td class="tl">
+                <div class="radio i-checks">
+                  <label class="mb7"><span class="w90">固有分辨力：</span>
+                    <FormItem prop="c80">
+                      <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label class="mb7"><span class="w90">尺寸：</span>
+                    <FormItem prop="c81">
+                      <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label><br>
+                  <label><span class="w90">英寸：</span>
+                    <FormItem prop="c82">
+                      <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                    </FormItem>
+                  </label>
+                </div>
+              </td>
+              <td>
+                <FormItem prop="c105">
+                  <Input type="text" v-model="formRecord.c105" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">16</td>
+              <td>
+                光学镜头
+              </td>
+              <td>
+                <FormItem prop="c51">
+                  <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c52">
+                  <Input type="text" v-model="formRecord.c52" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c106">
+                  <Input type="text" v-model="formRecord.c106" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">17</td>
+              <td>
+                光学镜头
+              </td>
+              <td>
+                <FormItem prop="c83">
+                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c84">
+                  <Input type="text" v-model="formRecord.c84" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c107">
+                  <Input type="text" v-model="formRecord.c107" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">18</td>
+              <td>
+                光学镜头
+              </td>
+              <td>
+                <FormItem prop="c85">
+                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c86">
+                  <Input type="text" v-model="formRecord.c86" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c108">
+                  <Input type="text" v-model="formRecord.c108" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">19</td>
+              <td>
+                电源板
+              </td>
+              <td>
+                <FormItem prop="c53">
+                  <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c54">
+                  <Input type="text" v-model="formRecord.c54" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c109">
+                  <Input type="text" v-model="formRecord.c109" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">20</td>
+              <td>
+                电源板
+              </td>
+              <td>
+                <FormItem prop="c87">
+                  <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c88">
+                  <Input type="text" v-model="formRecord.c88" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c110">
+                  <Input type="text" v-model="formRecord.c110" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td width="70">21</td>
+              <td>
+                电源板
+              </td>
+              <td>
+                <FormItem prop="c89">
+                  <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c90">
+                  <Input type="text" v-model="formRecord.c90" style="width: 300px" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c111">
+                  <Input type="text" v-model="formRecord.c111" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            </tbody>
           </table>
         </Card>
       </div>
@@ -697,7 +843,7 @@
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
-              <td><Input type="text" v-model="formRecord.c202" :disabled='disabledoff'/></td>
+              <td><Input type="text" v-model="formRecord.c222" :disabled='disabledoff'/></td>
             </tr>
           </table>
         </Card>
@@ -707,7 +853,8 @@
           <h2>八、附件部分</h2>
           <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
             <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
-            <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
+            <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书
+            </Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
           </div>
           <table>
@@ -716,7 +863,8 @@
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath24">
-                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -744,7 +892,8 @@
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath26">
-                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -765,7 +914,8 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27">
-                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -789,7 +939,8 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath28">
-                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -810,7 +961,8 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29">
-                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -833,7 +985,8 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath30">
-                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -854,7 +1007,8 @@
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31">
-                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -877,7 +1031,8 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath32">
-                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -898,7 +1053,8 @@
               <td>（PDF/JPG/PNG）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76">
-                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
+                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看
+                  </Button>
                 </div>
                 <div v-if='$store.state.app.pageType!="view"'>
                   <Upload
@@ -982,9 +1138,9 @@
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
         我 <span class="f-company">{{formRecord.c1}}</span>
-        公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
-        品牌的 <span class="f-model">{{formRecord.c3}}</span>
-        型号的 <span class="f-product">平板电视-2013版</span>产品。
+        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
+        品牌的 <span class="f-model">{{formRecord.c4}}</span>
+        型号的 <span class="f-product">投影机 2015版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1049,6 +1205,7 @@
     atLeastThreeDecimals,
     isInteger,
     isNumber,
+    numberCheck,
     check
   } from '@/libs/utilExt'
 
@@ -1057,9 +1214,9 @@
       const timeDate = this.$store.state.app.dateinit;
       return {
         // 当前初始使用日期 对应的C值
-        thisDateCV: "c13",
+        thisDateCV: "c14",
         // 当前能效等级 对应的C值
-        thisLevelCV: "c31",
+        thisLevelCV: "c7",
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1123,90 +1280,125 @@
           ec_master_kuozhan_text: '',
           c1: '',
           c2: '',
-          c29: '',
           c3: '',
           c4: '',
-          c200: '',
-          c31: '',
-          c16: '',
-          c17: '',
           c5: '',
-          c32: '',
-          c6: '',
+          c200: '',
+          c15: '',
           c7: '',
-          c33: '',
           c8: '',
           c9: '',
-          c34: '',
           c10: '',
           c11: '',
-          c35: '',
           c12: '',
-          c13: new Date(),
-          c14: '',
-          c15: '',
-          c18: [],
+          c13: '',
+          c14: new Date(),
+          c16: '',
+          c17: '',
+          c18: '',
           c19: '',
           c20: '',
           c21: '',
           c22: '',
           c23: '',
-          c24: [],
-          c30: '',
+          c24: '',
           c25: '',
           c26: '',
           c27: '',
           c28: '',
+          c29: '',
+          c30: '',
+          c31: '',
+          c32: '',
+          c33: '',
+          c34: '',
+          c35: '',
           c36: '',
+          c112: '',
           c37: '',
           c38: '',
           c39: '',
           c40: '',
-          c41: '',
-          c42: '',
-          c43: '',
-          c44: '',
-          c45: '',
-          c46: '',
-          c47: '',
-          c48: '',
-          c49: '',
-          c50: '',
-          c51: '',
-          c52: '',
-          c53: '',
-          c54: '',
+          c91: '',
           c55: '',
           c56: '',
           c57: '',
           c58: '',
+          c92: '',
           c59: '',
           c60: '',
           c61: '',
           c62: '',
+          c93: '',
+          c41: '',
+          c42: '',
+          c94: '',
           c63: '',
           c64: '',
+          c95: '',
           c65: '',
           c66: '',
+          c96: '',
+          c43: '',
+          c44: '',
+          c97: '',
           c67: '',
           c68: '',
+          c98: '',
           c69: '',
           c70: '',
+          c99: '',
+          c45: '',
+          c46: '',
+          c100: '',
           c71: '',
           c72: '',
+          c101: '',
           c73: '',
           c74: '',
-          ec_model_no: 34,
+          c102: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c103: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c78: '',
+          c104: '',
+          c79: '',
+          c80: '',
+          c81: '',
+          c82: '',
+          c105: '',
+          c51: '',
+          c52: '',
+          c106: '',
+          c83: '',
+          c84: '',
+          c107: '',
+          c85: '',
+          c86: '',
+          c108: '',
+          c53: '',
+          c54: '',
+          c109: '',
+          c87: '',
+          c88: '',
+          c110: '',
+          c89: '',
+          c90: '',
+          c111: '',
+          c202: '',
+          ec_model_no: 49,
           attach_list: ''
         },
         forbidden: {
-          c17: true,
-          c19: true,
-          c23: true,
-          c30: true,
-          c16_LCD: true,
-          c16_PDP: true,
-        }
+          c18: true,
+          c25: true,
+          c27: true,
+        },
       }
     },
     mounted() {
@@ -1282,139 +1474,96 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c16 === '其他') {
-          this.forbidden.c17 = false
+        if (this.formRecord.c17 === '其他') {
+          this.forbidden.c18 = false
         } else {
-          this.formRecord.c17 = ''
-          this.forbidden.c17 = true
+          this.formRecord.c18 = ''
+          this.forbidden.c18 = true
         }
-
-        if (this.formRecord.c18.join('').indexOf('其它') > -1) {
-          this.forbidden.c19 = false
+        if (this.formRecord.c24 === '其他') {
+          this.forbidden.c25 = false
         } else {
-          this.formRecord.c19 = ''
-          this.forbidden.c19 = true
+          this.formRecord.c25 = ''
+          this.forbidden.c25 = true
         }
-
-        if (this.formRecord.c22 === '外部电源，输出功率（W）') {
-          this.forbidden.c23 = false
+        if (this.formRecord.c26 === '外部电源，输出功率（W）') {
+          this.forbidden.c27 = false
         } else {
-          this.formRecord.c23 = ''
-          this.forbidden.c23 = true
+          this.formRecord.c27 = ''
+          this.forbidden.c27 = true
         }
 
-        if (this.formRecord.c24.join('').indexOf('其它接口输入') > -1) {
-          this.forbidden.c30 = false
-        } else {
-          this.formRecord.c30 = ''
-          this.forbidden.c30 = true
-        }
+        //所选能效等级
+        var nxdjch = this.formRecord.c7
+        //被动待机功率（W）标注值
+        var bddj = parseFloat(this.formRecord.c11);
+        //被动待机功率（W）实测值
+        var bddjsh = parseFloat(this.formRecord.c12);
 
-        if (this.formRecord.c16 === 'LCD') {
-          this.forbidden.c16_LCD = false
-          this.forbidden.c16_PDP = true
-          this.formRecord.c9 = ''
-          this.formRecord.c34 = ''
-          this.formRecord.c10 = ''
-          this.formRecord.c11 = ''
-          this.formRecord.c35 = ''
-          this.formRecord.c12 = ''
-        } else if (this.formRecord.c16 === 'PDP') {
-          this.forbidden.c16_LCD = true
-          this.forbidden.c16_PDP = false
-          this.formRecord.c5 = ''
-          this.formRecord.c32 = ''
-          this.formRecord.c6 = ''
-          this.formRecord.c7 = ''
-          this.formRecord.c33 = ''
-          this.formRecord.c8 = ''
-        } else if (this.formRecord.c16 === '其他') {
-          this.forbidden.c16_LCD = false
-          this.forbidden.c16_PDP = false
-        }
-
-        let nxdj = "";
-        let lcddjgl = parseFloat(this.formRecord.c5);             // LCD被动待机功率
-        let pdpdjgl = parseFloat(this.formRecord.c9);             //PDP 被动待机功率
-        let c32 = parseFloat(this.formRecord.c32);
-        let c33 = parseFloat(this.formRecord.c33);
-        let c34 = parseFloat(this.formRecord.c34);
-        let c35 = parseFloat(this.formRecord.c35);
-        let c11 = parseFloat(this.formRecord.c11);
-        let c7 = parseFloat(this.formRecord.c7);
-        let c16 = this.formRecord.c16;
-        let c31 = this.formRecord.c31;
-
-        const checkc5 = (rule, value, callback) => {
-          if (lcddjgl != null && lcddjgl !== "" && lcddjgl > 0.5) {
-            callback("LCD 被动待机功率应小于等于0.5！")
+        let checkc11 = (rule, value, callback) => {
+          if (bddj > 0.5) {
+            callback("被动待机功率（W）标注值小于等于0.50W");
+          } else if (bddjsh > bddj) {
+            callback("被动待机功率标注值应大于等于实测值");
           } else {
             callback()
           }
         }
 
-        const checkc9 = (rule, value, callback) => {
-          if (pdpdjgl != null && pdpdjgl > 0.5) {
-            callback("PDP 被动待机功率应小于等于0.5！")
+        //投影光效（lm/W）标注值
+        var tygx = parseFloat(this.formRecord.c8);
+        //投影光效（lm/W）实测值
+        var tygxsh = parseFloat(this.formRecord.c9);
+        let checkc8 = (rule, value, callback) => {
+          if (tygx > tygxsh) {
+            callback("投影光效标注值应小于等于实测值");
           } else {
             callback()
           }
         }
 
-        const checkc32 = (rule, value, callback) => {
-          if (parseFloat(c32) != null && parseFloat(c32) > lcddjgl) {
-            callback("LCD 被动待机功率实测值应小于标准规定值!")
+        //色域覆盖率（%）
+        var syfgl = this.formRecord.c16;
+        //产品类型
+        var lx = this.formRecord.c15;
+        var nxdj = "";
+        if (lx != "") {
+          if (lx == "普通投影机") {
+            if (syfgl != "") {
+              if (syfgl == "小于33") {
+                if (tygx >= 12.0) {
+                  nxdj = "1";
+                }
+                if (tygx >= 8.0 && tygx < 12.0) {
+                  nxdj = "2";
+                }
+                if (tygx >= 6.0 && tygx < 8.0) {
+                  nxdj = "3";
+                }
+              }
+            }
+          } else if (lx == "高色域投影机") {
+            if (syfgl != "") {
+              if (syfgl == "大于等于33") {
+                if (tygx >= 12.0) {
+                  nxdj = "1";
+                }
+                if (tygx >= 8.0 && tygx < 12.0) {
+                  nxdj = "2";
+                }
+                if (tygx >= 4.2 && tygx < 8.0) {
+                  nxdj = "3";
+                }
+              }
+            }
           } else {
-            callback()
+            nxdj = "";
           }
         }
-
-        const checkc33 = (rule, value, callback) => {
-          if (parseFloat(c33) != null && parseFloat(c33) < parseFloat(c33)) {
-            callback("LCD能效指数实测值应大于或等于标准规定值!");
-          } else {
-            callback()
-          }
-        }
-
-        const checkc34 = (rule, value, callback) => {
-          if (parseFloat(c34) != null && parseFloat(c34) > parseFloat(pdpdjgl)) {
-            callback("PDP被动待机功率实测值应小于标准规定值!");
-          } else {
-            callback()
-          }
-        }
-
-        const checkc35 = (rule, value, callback) => {
-          if (parseFloat(c35) != null && parseFloat(c35) < parseFloat(c11)) {
-            callback("PDP能效指数实测值应大于或等于标准规定值!");
-          } else {
-            callback()
-          }
-        }
-
-        if (c16 === "LCD") {
-          if (parseFloat(c7) >= 2.7) {
-            nxdj = "1";
-          } else if (parseFloat(c7) >= 2) {
-            nxdj = "2";
-          } else if (parseFloat(c7) >= 1.3) {
-            nxdj = "3";
-          }
-        } else if (c16 === "PDP") {
-          if (parseFloat(c11) >= 2) {
-            nxdj = "1";
-          } else if (parseFloat(c11) >= 1.6) {
-            nxdj = "2";
-          } else if (parseFloat(c11) >= 1.2) {
-            nxdj = "3";
-          }
-        }
-
-        const checkc31 = (rule, value, callback) => {
-          if (nxdj === "") {
+        let checkc7 = (rule, value, callback) => {
+          if (nxdj == "") {
             callback("能效数据不在备案范围");
-          }else if (c31 !== nxdj) {
+          } else if (nxdjch != nxdj) {
             callback("所选能效等级与计算结果不符！");
           } else {
             callback()
@@ -1423,6 +1572,13 @@
 
 
         return {
+          c1: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '生产者名称不能为空'
+            }
+          ],
           c2: [
             {
               required: true,
@@ -1430,21 +1586,21 @@
               message: '制造单位不能为空'
             }
           ],
-          c29: [
+          c3: [
             {
               required: true,
               trigger: 'change,blur',
               message: '备案方不能为空'
             }
           ],
-          c3: [
+          c4: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '产品规格型号不能为空'
+              message: '规格型号不能为空'
             }
           ],
-          c4: [
+          c5: [
             {
               required: true,
               trigger: 'change,blur',
@@ -1458,442 +1614,398 @@
               message: '依据国家标准不能为空'
             }
           ],
-          c31: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '能效等级不能为空'
-            },
-            {
-              validator: checkc31,
-              trigger: 'change,blur',
-            },
-          ],
-          c16: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '平板电视类型不能为空'
-            }
-          ],
-          c17: [
-            {
-              required: this.formRecord.c16 === '其他',
-              trigger: 'change,blur',
-              message: '其他不能为空'
-            }
-          ],
-          c5: [
-            {
-              required: !this.forbidden.c16_LCD,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c16_LCD ? twoDecimals : check,
-              trigger: 'change,blur',
-            },
-            {
-              validator: checkc5,
-              trigger: 'change,blur',
-            }
-          ],
-          c32: [
-            {
-              required: !this.forbidden.c16_LCD,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c16_LCD ? atLeastThreeDecimals : check,
-              trigger: 'change,blur',
-            },
-            {
-              validator: checkc32,
-              trigger: 'change,blur',
-            }
-          ],
           c7: [
             {
-              required: !this.forbidden.c16_LCD,
+              required: true,
               trigger: 'change,blur',
-              message: '标称值不能为空'
+              message: '能源效率等级不能为空'
             },
             {
-              validator: !this.forbidden.c16_LCD ? oneDecimals : check,
-              trigger: 'change,blur',
+              validator: checkc7,
+              trigger: 'blur'
             }
           ],
-          c33: [
+          c8: [
             {
-              required: !this.forbidden.c16_LCD,
+              required: true,
               trigger: 'change,blur',
-              message: '实测值不能为空'
+              message: '投影光效（lm/W）标注值不能为空'
             },
             {
-              validator: !this.forbidden.c16_LCD ? atLeastTwoDecimals : check,
-              trigger: 'change,blur',
+              validator: oneDecimals,
+              trigger: 'blur'
             },
             {
-              validator: checkc33,
-              trigger: 'change,blur',
+              validator: checkc8,
+              trigger: 'blur'
             }
           ],
           c9: [
             {
-              required: !this.forbidden.c16_PDP,
+              required: true,
               trigger: 'change,blur',
-              message: '标称值不能为空'
+              message: '投影光效（lm/W）实测值不能为空'
             },
             {
-              validator: !this.forbidden.c16_PDP ? twoDecimals : check,
-              trigger: 'change,blur',
-            },
-            {
-              validator: checkc9,
-              trigger: 'change,blur',
-            }
-          ],
-          c34: [
-            {
-              required: !this.forbidden.c16_PDP,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c16_PDP ? atLeastThreeDecimals : check,
-              trigger: 'change,blur',
-            },
-            {
-              validator: checkc34,
-              trigger: 'change,blur',
+              validator: atLeastTwoDecimals,
+              trigger: 'blur'
             }
           ],
           c11: [
             {
-              required: !this.forbidden.c16_PDP,
+              required: true,
               trigger: 'change,blur',
-              message: '标称值不能为空'
+              message: '被动待机功率（W）标注值不能为空'
             },
             {
-              validator: !this.forbidden.c16_PDP ? oneDecimals : check,
-              trigger: 'change,blur',
+              validator: twoDecimals,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc11,
+              trigger: 'blur'
             }
           ],
-          c35: [
-            {
-              required: !this.forbidden.c16_PDP,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c16_PDP ? atLeastTwoDecimals : check,
-              trigger: 'change,blur',
-            },
-            {
-              validator: checkc35,
-              trigger: 'change,blur',
-            }
-          ],
-          c13: [
+          c12: [
             {
               required: true,
-              message: '备案标识开始使用日期不能为空'
+              trigger: 'change,blur',
+              message: '被动待机功率（W）实测值不能为空'
+            },
+            {
+              validator: atLeastThreeDecimals,
+              trigger: 'blur'
             }
           ],
           c14: [
             {
               required: true,
-              trigger: 'change,blur',
-              message: '屏幕有效尺寸长不能为空'
+              message: '初始使用日期不能为空'
             }
           ],
           c15: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '屏幕有效尺寸宽不能为空'
+              message: '产品类型不能为空'
+            }
+          ],
+          c17: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '显示器件类型不能为空'
             }
           ],
           c18: [
             {
-              required: true,
-              message: '附件功能不能为空'
+              required: this.formRecord.c17 === '其他',
+              trigger: 'change,blur',
+              message: '显示器件类型其他不能为空'
             }
           ],
           c19: [
             {
-              required: this.formRecord.c18.join('').indexOf('其它') > -1,
+              required: true,
               trigger: 'change,blur',
-              message: '其他不能为空'
+              message: '光源类型不能为空'
             }
           ],
           c20: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '固有分辨率水平不能为空'
+              message: '光源功率不能为空'
             }
           ],
           c21: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '固有分辨率垂直不能为空'
+              message: '光源个数不能为空'
             }
           ],
           c22: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '供电方式不能为空'
+              message: '固有分辨力（像素数）水平不能为空'
             }
           ],
           c23: [
             {
-              required: this.formRecord.c22 === '外部电源，输出功率（W）',
+              required: true,
               trigger: 'change,blur',
-              message: '外部电源不能为空'
+              message: '固有分辨力（像素数）垂直不能为空'
             }
           ],
           c24: [
             {
               required: true,
-              message: '信号处理功率不能为空'
-            }
-          ],
-          c30: [
-            {
-              required: this.formRecord.c24.join('').indexOf('其它接口输入') > -1,
               trigger: 'change,blur',
-              message: '其他接口输入不能为空'
+              message: '附加功能不能为空'
             }
           ],
           c25: [
             {
-              required: true,
+              required: this.formRecord.c24 === '其他',
               trigger: 'change,blur',
-              message: '额定功率不能为空'
+              message: '附加功能其他不能为空'
             }
           ],
           c26: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '电压不能为空'
+              message: '供电方式不能为空'
             }
           ],
           c27: [
             {
-              required: true,
+              required: this.formRecord.c26 === '外部电源，输出功率（W）',
               trigger: 'change,blur',
-              message: '电流不能为空'
+              message: '供电方式外部电源值不能为空'
             }
           ],
           c28: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '频率不能为空'
+              message: '额定电压（V）不能为空'
+            }
+          ],
+          c29: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '额定电流（A）不能为空'
+            }
+          ],
+          c30: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '额定功率（W）不能为空'
+            }
+          ],
+          c31: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '额定光输出（lm）不能为空'
+            }
+          ],
+          c32: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '额定频率（Hz）不能为空'
+            }
+          ],
+          c33: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '整机质量(kg)不能为空'
+            }
+          ],
+          c34: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '整机尺寸长不能为空'
+            }
+          ],
+          c35: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '整机尺寸宽不能为空'
             }
           ],
           c36: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '整机尺寸高不能为空'
             }
           ],
           c37: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '灯型号规格不能为空'
             }
           ],
           c38: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '灯泡类型不能为空'
             }
           ],
           c39: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '灯泡额定功率不能为空'
             }
           ],
           c40: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '灯泡数量不能为空'
             }
           ],
           c41: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '主电源控制器件型号规格不能为空'
             }
           ],
           c42: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '主电源控制器件技术参数不能为空'
             }
           ],
           c43: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '辅电源控制器件型号规格不能为空'
             }
           ],
           c44: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '辅电源控制器件技术参数不能为空'
             }
           ],
           c45: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '不能为空'
+              message: '待机控制电路（主板/CPU）型号规格不能为空'
             }
           ],
-          c56: [
+          c46: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '待机控制电路（主板/CPU）技术参数不能为空'
+            }
+          ],
+          c47: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '液晶板/DMD型号规格不能为空'
+            }
+          ],
+          c48: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '液晶板/DMD固有分辨力不能为空'
+            }
+          ],
+          c49: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '液晶板/DMD尺寸不能为空'
+            }
+          ],
+          c50: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '液晶板/DMD英寸不能为空'
+            }
+          ],
+          c51: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '光学镜头型号规格不能为空'
+            }
+          ],
+          c52: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '光学镜头技术参数不能为空'
+            }
+          ],
+          c53: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '电源板型号规格不能为空'
+            }
+          ],
+          c54: [
+            {
+              required: true,
+              trigger: 'change,blur',
+              message: '电源板技术参数不能为空'
+            }
+          ],
+          c112: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c57: [
+          c91: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c58: [
+          c94: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c59: [
+          c97: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c60: [
+          c100: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c61: [
+          c103: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c62: [
+          c106: [
             {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-          c70: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c71: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c72: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c73: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c78: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c79: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c80: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c81: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c86: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c87: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c88: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c89: [
+          c109: [
             {
               required: true,
               trigger: 'change,blur',
