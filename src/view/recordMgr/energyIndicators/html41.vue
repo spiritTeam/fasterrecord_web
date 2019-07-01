@@ -38,7 +38,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识标注的信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" readonly disabled />
+            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" disabled />
           </FormItem>
           <FormItem prop="c3" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="制造单位"/>
@@ -53,7 +53,7 @@
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
           </FormItem>
           <FormItem prop="c7" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c7">
