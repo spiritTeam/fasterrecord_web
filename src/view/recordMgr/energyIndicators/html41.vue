@@ -101,33 +101,32 @@
               <td  width="150" align="right"><span style="color:red">*</span>燃气类别</td>
               <td colspan="3">
                 <FormItem prop="c15">
-                  <RadioGroup v-model="formRecord.c15">
-                    <Radio label="人工煤气" :disabled='disabledoff'>人工煤气</Radio>
-                      <FormItem prop="c16">
-                        <RadioGroup v-model="formRecord.c16">
-                          <Radio label="5R" :disabled='disabledoff'>5R</Radio>
-                          <Radio label="6R" :disabled='disabledoff'>6R</Radio>
-                          <Radio label="7R" :disabled='disabledoff'>7R</Radio>
-                        </RadioGroup>
-                      </FormItem><br><br>
-                    <Radio label="天然气" :disabled='disabledoff'>天然气灶具</Radio>
-                      <FormItem prop="c16">
-                        <RadioGroup v-model="formRecord.c16">
-                          <Radio label="4T" :disabled='disabledoff'>4T</Radio>
-                          <Radio label="6T" :disabled='disabledoff'>6T</Radio>
-                          <Radio label="10T" :disabled='disabledoff'>10T</Radio>
-                          <Radio label="12T" :disabled='disabledoff'>12T</Radio>
-                        </RadioGroup>
-                      </FormItem><br><br>
-                    <Radio label="液化石油气" :disabled='disabledoff'>液化石油气灶具</Radio>
-                      <FormItem prop="c16">
-                        <RadioGroup v-model="formRecord.c16">
-                          <Radio label="19Y" :disabled='disabledoff'>19Y</Radio>
-                          <Radio label="20Y" :disabled='disabledoff'>20Y</Radio>
-                          <Radio label="22Y" :disabled='disabledoff'>22Y</Radio>
-                        </RadioGroup>
-                    </FormItem><br><br>
-                  </RadioGroup>
+                  <FormItem prop="c16">
+                    <RadioGroup v-model="formRecord.c15">
+                      <Radio label="人工煤气灶具" :disabled='disabledoff'>人工煤气</Radio>
+                      <RadioGroup v-model="formRecord.c16">
+                        <Radio label="5R" :disabled='disabledoff || forbidden.c16_a'>5R</Radio>
+                        <Radio label="6R" :disabled='disabledoff || forbidden.c16_a'>6R</Radio>
+                        <Radio label="7R" :disabled='disabledoff || forbidden.c16_a'>7R</Radio>
+                      </RadioGroup>
+                      <br><br>
+                      <Radio label="天然气灶具" :disabled='disabledoff'>天然气</Radio>
+                      <RadioGroup v-model="formRecord.c16">
+                        <Radio label="4T" :disabled='disabledoff || forbidden.c16_b'>4T</Radio>
+                        <Radio label="6T" :disabled='disabledoff || forbidden.c16_b'>6T</Radio>
+                        <Radio label="10T" :disabled='disabledoff || forbidden.c16_b'>10T</Radio>
+                        <Radio label="12T" :disabled='disabledoff || forbidden.c16_b'>12T</Radio>
+                      </RadioGroup>
+                        <br><br>
+                      <Radio label="液化石油气灶具" :disabled='disabledoff'>液化石油气</Radio>
+                      <RadioGroup v-model="formRecord.c16">
+                        <Radio label="19Y" :disabled='disabledoff || forbidden.c16_c'>19Y</Radio>
+                        <Radio label="20Y" :disabled='disabledoff || forbidden.c16_c'>20Y</Radio>
+                        <Radio label="22Y" :disabled='disabledoff || forbidden.c16_c'>22Y</Radio>
+                      </RadioGroup>
+                      <br><br>
+                    </RadioGroup>
+                  </FormItem>
                 </FormItem>
               </td>
             </tr>
@@ -137,26 +136,17 @@
                 <FormItem prop="c17">
                   <RadioGroup v-model="formRecord.c17">
                     <Radio label="直流" :disabled='disabledoff'>直流</Radio>
-                    <FormItem prop="c18" style="width:200px;" :label-width="0">
-                      <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'/>
-                    </FormItem>
-                    <FormItem :label-width="10">V</FormItem>
-                    <FormItem prop="c19" style="width:200px;" :label-width="0">
-                      <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
-                    </FormItem>
-                    <FormItem :label-width="10">mA</FormItem>
-                    <br>
                     <Radio label="交流" :disabled='disabledoff'>交流</Radio>
-                    <FormItem prop="c18" style="width:200px;" :label-width="0">
-                      <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'/>
-                    </FormItem>
-                    <FormItem :label-width="10">V</FormItem>
-                    <FormItem prop="c19" style="width:200px;" :label-width="0">
-                      <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
-                    </FormItem>
-                    <FormItem :label-width="10">mA</FormItem>
                   </RadioGroup>
                 </FormItem>
+                <FormItem prop="c18" style="width:200px;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem :label-width="10">V</FormItem>
+                <FormItem prop="c19" style="width:200px;" :label-width="0">
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem :label-width="10">mA</FormItem>
               </td>
             </tr>
             <tr>
@@ -213,29 +203,29 @@
               <td>
                 <FormItem prop="c24">
                   <RadioGroup v-model="formRecord.c24">
-                    <Radio label="鼓风预混式" :disabled='disabledoff'>鼓风预混式</Radio>
-                    <Radio label="鼓风扩散式" :disabled='disabledoff'>鼓风扩散式</Radio>
-                    <Radio label="引射大气式" :disabled='disabledoff'>引射大气式</Radio>
+                    <Radio label="鼓风预混式" :disabled='disabledoff || forbidden.zcrqccz'>鼓风预混式</Radio>
+                    <Radio label="鼓风扩散式" :disabled='disabledoff || forbidden.zcrqccz'>鼓风扩散式</Radio>
+                    <Radio label="引射大气式" :disabled='disabledoff || forbidden.zcrqccz'>引射大气式</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c25">
                   <RadioGroup v-model="formRecord.c25">
-                    <Radio label="强制排气式" :disabled='disabledoff'>强制排气式</Radio>
-                    <Radio label="鼓风预混式" :disabled='disabledoff'>鼓风预混式</Radio>
-                    <Radio label="鼓风扩散式" :disabled='disabledoff'>鼓风扩散式</Radio>
-                    <Radio label="引射大气式" :disabled='disabledoff'>引射大气式</Radio>
+                    <Radio label="强制排气式" :disabled='disabledoff || forbidden.yyrqdgz'>强制排气式</Radio>
+                    <Radio label="鼓风预混式" :disabled='disabledoff || forbidden.yyrqdgz'>鼓风预混式</Radio>
+                    <Radio label="鼓风扩散式" :disabled='disabledoff || forbidden.yyrqdgz'>鼓风扩散式</Radio>
+                    <Radio label="引射大气式" :disabled='disabledoff || forbidden.yyrqdgz'>引射大气式</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c26">
                   <RadioGroup v-model="formRecord.c26">
-                    <Radio label="强制排气式" :disabled='disabledoff'>强制排气式</Radio>
-                    <Radio label="鼓风预混式" :disabled='disabledoff'>鼓风预混式</Radio>
-                    <Radio label="鼓风扩散式" :disabled='disabledoff'>鼓风扩散式</Radio>
-                    <Radio label="引射大气式" :disabled='disabledoff'>引射大气式</Radio>
+                    <Radio label="强制排气式" :disabled='disabledoff || forbidden.rqzx'>强制排气式</Radio>
+                    <Radio label="鼓风预混式" :disabled='disabledoff || forbidden.rqzx'>鼓风预混式</Radio>
+                    <Radio label="鼓风扩散式" :disabled='disabledoff || forbidden.rqzx'>鼓风扩散式</Radio>
+                    <Radio label="引射大气式" :disabled='disabledoff || forbidden.rqzx'>引射大气式</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -245,26 +235,26 @@
               <td>
                 <FormItem prop="c27">
                   <RadioGroup v-model="formRecord.c27">
-                    <Radio label="单眼灶" :disabled='disabledoff'>单眼灶</Radio>
-                    <Radio label="双眼灶" :disabled='disabledoff'>双眼灶</Radio>
-                    <Radio label="多眼灶" :disabled='disabledoff'>多眼灶</Radio>
+                    <Radio label="单眼灶" :disabled='disabledoff || forbidden.zcrqccz'>单眼灶</Radio>
+                    <Radio label="双眼灶" :disabled='disabledoff || forbidden.zcrqccz'>双眼灶</Radio>
+                    <Radio label="多眼灶" :disabled='disabledoff || forbidden.zcrqccz'>多眼灶</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c28" style="width:80px;" :label-width="0">
-                  <Input type="text" v-model="formRecord.c28" :disabled='disabledoff || forbidden.c28'/>
+                  <Input type="text" v-model="formRecord.c28" :disabled='disabledoff || forbidden.c28 || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem>眼灶</FormItem>
               </td>
               <td>
                 <FormItem prop="c29">
                   <RadioGroup v-model="formRecord.c29">
-                    <Radio label="单眼灶" :disabled='disabledoff'>单眼灶</Radio>
-                    <Radio label="双眼灶" :disabled='disabledoff'>双眼灶</Radio>
-                    <Radio label="多眼灶" :disabled='disabledoff'>多眼灶</Radio>
+                    <Radio label="单眼灶" :disabled='disabledoff || forbidden.yyrqdgz'>单眼灶</Radio>
+                    <Radio label="双眼灶" :disabled='disabledoff || forbidden.yyrqdgz'>双眼灶</Radio>
+                    <Radio label="多眼灶" :disabled='disabledoff || forbidden.yyrqdgz'>多眼灶</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c30" style="width:80px;" :label-width="0">
-                  <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30'/>
+                  <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30 || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem>眼灶</FormItem>
               </td>
@@ -275,26 +265,26 @@
               <td>
                 <FormItem prop="c31">
                   <CheckboxGroup v-model="formRecord.c31">
-                    <Checkbox label="常明火(必选)" :disabled='disabledoff'>常明火(必选)</Checkbox>
-                    <Checkbox label="人工点火装置" :disabled='disabledoff'>人工点火装置</Checkbox>
-                    <Checkbox label="电点火器" :disabled='disabledoff'>电点火器</Checkbox>
+                    <Checkbox label="常明火(必选)" :disabled='disabledoff || forbidden.zcrqccz'>常明火(必选)</Checkbox>
+                    <Checkbox label="人工点火装置" :disabled='disabledoff || forbidden.zcrqccz'>人工点火装置</Checkbox>
+                    <Checkbox label="电点火器" :disabled='disabledoff || forbidden.zcrqccz'>电点火器</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c32">
                   <CheckboxGroup v-model="formRecord.c32">
-                    <Checkbox label="点火燃烧器(必选)" :disabled='disabledoff'>点火燃烧器(必选)</Checkbox>
-                    <Checkbox label="人工点火装置" :disabled='disabledoff'>人工点火装置</Checkbox>
-                    <Checkbox label="电点火器" :disabled='disabledoff'>电点火器</Checkbox>
+                    <Checkbox label="点火燃烧器(必选)" :disabled='disabledoff || forbidden.yyrqdgz'>点火燃烧器(必选)</Checkbox>
+                    <Checkbox label="人工点火装置" :disabled='disabledoff || forbidden.yyrqdgz'>人工点火装置</Checkbox>
+                    <Checkbox label="电点火器" :disabled='disabledoff || forbidden.yyrqdgz'>电点火器</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c33">
                   <CheckboxGroup v-model="formRecord.c33">
-                    <Checkbox label="常明火" :disabled='disabledoff'>常明火</Checkbox>
-                    <Checkbox label="自动程序控制点火" :disabled='disabledoff'>自动程序控制点火</Checkbox>
+                    <Checkbox label="常明火" :disabled='disabledoff || forbidden.rqzx'>常明火</Checkbox>
+                    <Checkbox label="自动程序控制点火" :disabled='disabledoff || forbidden.rqzx'>自动程序控制点火</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -304,39 +294,39 @@
               <td>
                 <FormItem prop="c34">
                   <CheckboxGroup v-model="formRecord.c34">
-                    <Checkbox label="热电偶方式" :disabled='disabledoff'>热电偶方式</Checkbox>
-                    <Checkbox label="离子感应式" :disabled='disabledoff'>离子感应式</Checkbox><br>
-                    <Checkbox label="其它方式" :disabled='disabledoff'>其它方式</Checkbox>
+                    <Checkbox label="热电偶方式" :disabled='disabledoff || forbidden.zcrqccz'>热电偶方式</Checkbox>
+                    <Checkbox label="离子感应式" :disabled='disabledoff || forbidden.zcrqccz'>离子感应式</Checkbox><br>
+                    <Checkbox label="其它方式" :disabled='disabledoff || forbidden.zcrqccz'>其它方式</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c35" style="width:120px;margin-top:30px;margin-left:-115px;" :label-width="0">
-                    <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                    <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35 || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem style="margin-top:30px;">(可选)</FormItem>
               </td>
               <td>
                 <FormItem prop="c36">
                   <CheckboxGroup v-model="formRecord.c36">
-                    <Checkbox label="热电偶方式" :disabled='disabledoff'>热电偶方式</Checkbox>
-                    <Checkbox label="离子感应式" :disabled='disabledoff'>离子感应式</Checkbox><br>
-                    <Checkbox label="其它方式" :disabled='disabledoff'>其它方式</Checkbox>
+                    <Checkbox label="热电偶方式" :disabled='disabledoff || forbidden.yyrqdgz'>热电偶方式</Checkbox>
+                    <Checkbox label="离子感应式" :disabled='disabledoff || forbidden.yyrqdgz'>离子感应式</Checkbox><br>
+                    <Checkbox label="其它方式" :disabled='disabledoff || forbidden.yyrqdgz'>其它方式</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c37" style="width:120px;margin-top:30px;margin-left:-115px;" :label-width="0">
-                   <Input type="text" v-model="formRecord.c37" :disabled='disabledoff || forbidden.c37'/>
+                   <Input type="text" v-model="formRecord.c37" :disabled='disabledoff || forbidden.c37 || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem style="margin-top:30px;">(必选)</FormItem>
               </td>
               <td>
                 <FormItem prop="c38">
                   <CheckboxGroup v-model="formRecord.c38">
-                    <Checkbox label="热电偶方式" :disabled='disabledoff'>热电偶方式</Checkbox>
-                    <Checkbox label="离子感应式" :disabled='disabledoff'>离子感应式</Checkbox><br>
-                    <Checkbox label="其它方式" :disabled='disabledoff'>其它方式</Checkbox>
+                    <Checkbox label="热电偶方式" :disabled='disabledoff || forbidden.rqzx'>热电偶方式</Checkbox>
+                    <Checkbox label="离子感应式" :disabled='disabledoff || forbidden.rqzx'>离子感应式</Checkbox><br>
+                    <Checkbox label="其它方式" :disabled='disabledoff || forbidden.rqzx'>其它方式</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c39" style="width:120px;margin-top:30px;margin-left:-115px;" :label-width="0">
-                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff || forbidden.c39'/>
+                  <Input type="text" v-model="formRecord.c39" :disabled='disabledoff || forbidden.c39 || forbidden.rqzx'/>
                 </FormItem>
                 <FormItem style="margin-top:30px;">(必选)</FormItem>
               </td>
@@ -345,268 +335,268 @@
               <td align="right" rowspan="7"><span style="color:red">*</span>灶眼直径/热负荷</td>
               <td>
                 <FormItem prop="c61" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c61" :disabled='disabledoff || forbidden.zcrqccz' />
                 </FormItem>
                 <br>
                 <FormItem prop="c40" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c40" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c40" :disabled='disabledoff || forbidden.zcrqccz' />
                 </FormItem>
                 <br>
                 <FormItem prop="c11" label="额定热负荷(kW能效标识标注值):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff' style="margin-top:10px;"/>
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.zcrqccz' style="margin-top:10px;"/>
                 </FormItem>
                  <br>
                 <FormItem prop="c12" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.zcrqccz' />
                 </FormItem>
                  <br>
                 <FormItem prop="c63" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff || forbidden.zcrqccz' />
                 </FormItem>
                  <br>
                 <FormItem prop="c64" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff || forbidden.zcrqccz' />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c89" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c89" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c48" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c48" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c48" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c49" label="额定热负荷(kW能效标识标注值):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c49" :disabled='disabledoff' style="margin-top:10px;"/>
+                  <Input type="text" v-model="formRecord.c49" :disabled='disabledoff || forbidden.yyrqdgz' style="margin-top:10px;"/>
                 </FormItem>
                 <FormItem prop="c90" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c90" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c90" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c91" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c91" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c91" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c92" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c92" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c92" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
               </td>
               <td rowspan="6">
                 <FormItem prop="c56" label="水胆容量(L):" style="width:100%;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c56" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c56" :disabled='disabledoff || forbidden.rqzx'/>
                 </FormItem>
                 <FormItem prop="c57" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.rqzx'/>
                 </FormItem>
                 <FormItem prop="c117" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c117" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c117" :disabled='disabledoff || forbidden.rqzx'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
                 <FormItem prop="c65" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c42" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c42" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c43" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c43" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c66" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c67" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c68" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c93" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff'/>
+                <FormItem prop="c93" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c50" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c50" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c50" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c51" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c51" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c94" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c94" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c95" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c95" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c95" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c96" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c96" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c96" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
-                <FormItem prop="c69" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
+                <FormItem prop="c69" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c44" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c44" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c45" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c45" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c70" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c71" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c72" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c97" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c97" :disabled='disabledoff'/>
+                <FormItem prop="c97" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c97" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c52" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c53" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c53" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c98" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c98" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c98" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c99" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c99" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c99" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c100" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c100" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c100" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
-                <FormItem prop="c73" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
+                <FormItem prop="c73" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c46" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c46" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c47" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c47" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c74" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c75" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c76" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c101" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c101" :disabled='disabledoff'/>
+                <FormItem prop="c101" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c101" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c54" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c54" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c54" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c55" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c102" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c102" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c102" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c103" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c103" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c103" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c104" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c104" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c104" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
-                <FormItem prop="c77" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                <FormItem prop="c77" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c78" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c78" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c79" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c79" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c80" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c80" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c81" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c82" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c105" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c105" :disabled='disabledoff'/>
+                <FormItem prop="c105" label="灶眼名称(主火):" style="width:100%;" :label-width="130">
+                  <Input type="text" v-model="formRecord.c105" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c106" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c106" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c106" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c107" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c107" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c107" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c108" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c108" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c108" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c109" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c109" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c109" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c110" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c110" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c110" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
                 <FormItem prop="c83" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c83" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c84" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c84" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c85" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c85" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c86" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c86" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c87" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c87" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c87" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
                 <FormItem prop="c88" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c88" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c88" :disabled='disabledoff || forbidden.zcrqccz'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c111" label="灶眼名称(主火):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c111" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c111" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c112" label="炉口直径(mm):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c112" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c112" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c113" label="额定热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c113" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c113" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c114" label="实测热负荷(kW):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c114" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c114" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c115" label="额定热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c115" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c115" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
                 <FormItem prop="c116" label="实测热效率(%):" style="width:100%;margin-top:20px;" :label-width="130">
-                  <Input type="text" v-model="formRecord.c116" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c116" :disabled='disabledoff || forbidden.yyrqdgz'/>
                 </FormItem>
               </td>
             </tr>
@@ -1240,7 +1230,7 @@ import {
         c116: '',
         c117: '',
         c118: '',
-        c119: [],
+        c119: [], 
         c120: '',
         c121: '',
         c122: [],
@@ -1258,7 +1248,13 @@ import {
         c30:true,
         c35:true,
         c37:true,
-        c39:true
+        c39:true,
+        c16_a: true,
+        c16_b: true,
+        c16_c: true,
+        zcrqccz:true,
+        yyrqdgz:true,
+        rqzx:true
       }
     }
   },
@@ -1319,6 +1315,103 @@ import {
     },
     getFile(res, file, id) {
       this['checkmark' + id] = true
+    },
+    clearZcrqcczData(){//中餐燃气炒菜灶
+        this.formRecord.c24=''
+        this.formRecord.c27=''
+        this.formRecord.c28=''
+        this.formRecord.c31=[]
+        this.formRecord.c34=[]
+        this.formRecord.c35=''
+        this.formRecord.c61=''
+        this.formRecord.c40=''
+        this.formRecord.c11=''
+        this.formRecord.c12=''
+        this.formRecord.c63=''
+        this.formRecord.c64=''
+        this.formRecord.c65=''
+        this.formRecord.c42=''
+        this.formRecord.c43=''
+        this.formRecord.c66=''
+        this.formRecord.c67=''
+        this.formRecord.c68=''
+        this.formRecord.c69=''
+        this.formRecord.c44=''
+        this.formRecord.c45=''
+        this.formRecord.c70=''
+        this.formRecord.c71=''
+        this.formRecord.c72=''
+        this.formRecord.c73=''
+        this.formRecord.c46=''
+        this.formRecord.c47=''
+        this.formRecord.c74=''
+        this.formRecord.c75=''
+        this.formRecord.c76=''
+        this.formRecord.c77=''
+        this.formRecord.c78=''
+        this.formRecord.c79=''
+        this.formRecord.c80=''
+        this.formRecord.c81=''
+        this.formRecord.c82=''
+        this.formRecord.c83=''
+        this.formRecord.c84=''
+        this.formRecord.c85=''
+        this.formRecord.c86=''
+        this.formRecord.c87=''
+        this.formRecord.c88=''
+    },
+    clearYyrqdgzData(){// 炊用燃气大锅灶
+        this.formRecord.c25=''
+        this.formRecord.c29=''
+        this.formRecord.c30=''
+        this.formRecord.c32=[]
+        this.formRecord.c36=[]
+        this.formRecord.c37=''
+        this.formRecord.c89=''
+        this.formRecord.c48=''
+        this.formRecord.c49=''
+        this.formRecord.c90=''
+        this.formRecord.c91=''
+        this.formRecord.c92=''
+        this.formRecord.c93=''
+        this.formRecord.c50=''
+        this.formRecord.c51=''
+        this.formRecord.c94=''
+        this.formRecord.c95=''
+        this.formRecord.c96=''
+        this.formRecord.c97=''
+        this.formRecord.c52=''
+        this.formRecord.c53=''
+        this.formRecord.c98=''
+        this.formRecord.c99=''
+        this.formRecord.c100=''
+        this.formRecord.c101=''
+        this.formRecord.c54=''
+        this.formRecord.c55=''
+        this.formRecord.c102=''
+        this.formRecord.c103=''
+        this.formRecord.c104=''
+        this.formRecord.c105=''
+        this.formRecord.c106=''
+        this.formRecord.c107=''
+        this.formRecord.c108=''
+        this.formRecord.c109=''
+        this.formRecord.c110=''
+        this.formRecord.c111=''
+        this.formRecord.c112=''
+        this.formRecord.c113=''
+        this.formRecord.c114=''
+        this.formRecord.c115=''
+        this.formRecord.c116=''
+    },
+    clearRqzxData(){// 燃气蒸箱
+        this.formRecord.c26=''
+        this.formRecord.c33=[]
+        this.formRecord.c38=[]
+        this.formRecord.c39=''
+        this.formRecord.c56=''
+        this.formRecord.c57=''
+        this.formRecord.c117=''
     }
   },
   computed: {
@@ -1335,6 +1428,43 @@ import {
       return this.$store.state.app.requiredStr
     },
     ruleRecord () {
+
+      //燃气类别
+      if (this.formRecord.c15 === '人工煤气灶具') {
+        this.forbidden.c16_a = false
+        this.forbidden.c16_b = true
+        this.forbidden.c16_c = true
+      } else if (this.formRecord.c15 === '天然气灶具') {
+        this.forbidden.c16_a = true
+        this.forbidden.c16_b = false
+        this.forbidden.c16_c = true
+      } else if (this.formRecord.c15 === '液化石油气灶具') {
+        this.forbidden.c16_a = true
+        this.forbidden.c16_b = true
+        this.forbidden.c16_c = false
+      }
+
+      //产品类别
+      var  c23_V=this.formRecord.c23;
+      if(c23_V==='中餐燃气炒菜灶'){
+          this.clearYyrqdgzData()
+          this.clearRqzxData()
+          this.forbidden.zcrqccz=false
+          this.forbidden.yyrqdgz=true
+          this.forbidden.rqzx=true
+      }else if(c23_V==='炊用燃气大锅灶'){
+          this.clearZcrqcczData()
+          this.clearRqzxData()
+          this.forbidden.zcrqccz=true
+          this.forbidden.yyrqdgz=false
+          this.forbidden.rqzx=true
+      }else if(c23_V==='燃气蒸箱'){
+          this.clearZcrqcczData()
+          this.clearYyrqdgzData()
+          this.forbidden.zcrqccz=true
+          this.forbidden.yyrqdgz=true
+          this.forbidden.rqzx=false
+      }
 
       //中餐燃气炒菜灶-多眼灶
       if (this.formRecord.c27 == '多眼灶') {
@@ -1504,25 +1634,26 @@ import {
         ],
         c11: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入热负荷标注值'
           },
           {
-            validator: isIntegerNotZero,
+            validator: this.formRecord.c11 != ''? isIntegerNotZero:check,
             trigger: 'change,blur'
           }
         ],
         c12: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入热负荷实测值'
           },
           {
-            validator: oneDecimals,
+            validator: this.formRecord.c12 != ''? oneDecimals:check,
             trigger: 'change,blur'
           }
+
         ],
         c14: [
           {
@@ -1595,28 +1726,28 @@ import {
         ],
         c24: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请选择空气供给方式'
           }
         ],
         c25: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请选择空气供给方式'
           }
         ],
         c26: [
           {
-            required: true,
+            required: this.formRecord.c23 === '燃气蒸箱',
             trigger: 'change,blur',
             message: '请选择空气供给方式'
           }
         ],
         c27: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请选择灶眼数'
           }
@@ -1630,7 +1761,7 @@ import {
         ],
         c29: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请选择灶眼数'
           }
@@ -1644,19 +1775,19 @@ import {
         ],
         c31: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             message: '请选择点火方式/常明火点火方式'
           }
         ],
         c32: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             message: '请选择点火方式/常明火点火方式'
           }
         ],
         c33: [
           {
-            required: true,
+            required: this.formRecord.c23 === '燃气蒸箱',
             message: '请选择点火方式/常明火点火方式'
           }
         ],
@@ -1669,7 +1800,7 @@ import {
         ],
         c36: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             message: '请选择'
           }
         ],
@@ -1682,7 +1813,7 @@ import {
         ],
         c38: [
           {
-            required: true,
+            required: this.formRecord.c23 === '燃气蒸箱',
             message: '请选择'
           }
         ],
@@ -1695,7 +1826,7 @@ import {
         ],
         c40: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
@@ -1709,112 +1840,112 @@ import {
         ],
         c42: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c43: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c44: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c45: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c46: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c47: [
           {
-            required: true,
+            required: this.formRecord.c23 === '中餐燃气炒菜灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c48: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c49: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c50: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c51: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c52: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c53: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c54: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入炉口直径值'
           }
         ],
         c55: [
           {
-            required: true,
+            required: this.formRecord.c23 === '炊用燃气大锅灶',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
         ],
         c56: [
           {
-            required: true,
+            required: this.formRecord.c23 === '燃气蒸箱',
             trigger: 'change,blur',
             message: '请输入水胆容量'
           }
         ],
         c57: [
           {
-            required: true,
+            required: this.formRecord.c23 === '燃气蒸箱',
             trigger: 'change,blur',
             message: '请输入额定热负荷值'
           }
