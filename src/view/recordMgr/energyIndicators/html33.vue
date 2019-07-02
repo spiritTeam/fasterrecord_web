@@ -205,8 +205,7 @@
           <h2>四、初始使用日期</h2>
           <!-- <Form ref="formRecord" :model="formRecord" label-position="left" :label-width="180" :rules="ruleRecord"> -->
           <FormItem prop="c9" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c9"
-                        :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c9"></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -655,7 +654,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1330,6 +1329,12 @@
             {
               validator: checkc8,
               trigger: 'blur'
+            }
+          ],
+          c9: [
+            {
+              required: true,
+              message: '不能为空'
             }
           ],
           c25: [

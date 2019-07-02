@@ -67,7 +67,7 @@
               <td align="center" rowspan="2">产品类型<span style="color:red">*</span></td>
               <td>
                 <FormItem prop="c15" style="width:100%;">
-                  <RadioGroup v-model="formRecord.c15" >
+                  <RadioGroup v-model="formRecord.c15" @on-change="initData">
                     <Radio label="台式微型计算机及一体机" :disabled='disabledoff'>台式微型计算机及一体机</Radio>
                   </RadioGroup>
                 </FormItem>
@@ -86,14 +86,14 @@
             <tr>
               <td>
                 <FormItem prop="c15" style="width:100%;">
-                  <RadioGroup v-model="formRecord.c15" >
+                  <RadioGroup v-model="formRecord.c15" @on-change="initData">
                     <Radio label="便携式计算机" :disabled='disabledoff'>便携式计算机</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c17" style="width:100%;">
-                  <RadioGroup v-model="formRecord.c17">
+                  <RadioGroup v-model="formRecord.c17" @on-change="bxsjsjChange">
                     <Radio label="A类" :disabled='disabledoff || forbidden.c17'>A类</Radio>
                     <Radio label="B类" :disabled='disabledoff || forbidden.c17'>B类</Radio>
                     <Radio label="C类" :disabled='disabledoff || forbidden.c17'>C类</Radio>
@@ -160,7 +160,7 @@
               <td align="right"><span style="color:red">*</span>GPU类型</td>
               <td>
                 <FormItem prop="c27" style="width:100%;">
-                  <RadioGroup v-model="formRecord.c27" @on-change="gpuChange">
+                  <RadioGroup v-model="formRecord.c27" @on-change="gpuTypeChange">
                     <Radio label="集成" :disabled='disabledoff'>集成</Radio>
                     <Radio label="独立" :disabled='disabledoff'>独立</Radio>
                   </RadioGroup>
@@ -177,7 +177,7 @@
               <td align="right"><span style="color:red">*</span>显存等效频率(MHz)</td>
               <td>
                 <FormItem prop="c19" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff || forbidden.gpu' />
+                  <Input type="text" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19' />
                 </FormItem>
               </td>
             </tr>
@@ -185,13 +185,13 @@
               <td align="right"><span style="color:red">*</span>显存位宽(位)</td>
               <td>
                 <FormItem prop="c20" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.gpu' />
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20' />
                 </FormItem>
               </td>
               <td align="right"><span style="color:red">*</span>显存带宽（FBBW）(GB/s)</td>
               <td>
                 <FormItem prop="c21" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.gpu' />
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.c21' />
                 </FormItem>
               </td>
             </tr>
@@ -276,7 +276,7 @@
             <tr>
               <td>
                 <FormItem prop="c33" style="width:100%;" :label-width="10">
-                  <RadioGroup v-model="formRecord.c33">
+                  <RadioGroup v-model="formRecord.c33" @on-change="memoryChange">
                     <Radio label="是" :disabled='disabledoff || forbidden.c33'>是</Radio>
                     <Radio label="否" :disabled='disabledoff || forbidden.c33'>否</Radio>
                   </RadioGroup>
@@ -481,7 +481,7 @@
             <tr>
               <td>
                 <FormItem prop="c58" style="width:100%;" :label-width="10">
-                  <RadioGroup v-model="formRecord.c58">
+                  <RadioGroup v-model="formRecord.c58" @on-change="storeInChange">
                     <Radio label="是" :disabled='disabledoff || forbidden.c58'>是</Radio>
                     <Radio label="否" :disabled='disabledoff || forbidden.c58'>否</Radio>
                   </RadioGroup>
@@ -1142,39 +1142,41 @@ import {
         attach_list: ''
       },
       forbidden: {
-        c16:true,
-        c17:true,
-        gpu:true,
-        c33:true,
-        c34:true,
-        c35:true,
-        c36:true,
-        c37:true,
-        c38:true,
-        c39:true,
-        c40:true,
-        c41:true,
-        c42:true,
-        c43:true,
-        c44:true,
-        c45:true,
-        c46:true,
-        c47:true,
-        c48:true,
-        c49:true,
-        c50:true,
-        c51:true,
-        c52:true,
-        c53:true,
-        c54:true,
-        c55:true,
-        c56:true,
-        c57:true,
-        c58:true,
-        c59:true,
-        c60:true,
-        c61:true,
-        c62:true
+        c16:false,
+        c17:false,
+        c19:false,
+        c20:false,
+        c21:false,
+        c33:false,
+        c34:false,
+        c35:false,
+        c36:false,
+        c37:false,
+        c38:false,
+        c39:false,
+        c40:false,
+        c41:false,
+        c42:false,
+        c43:false,
+        c44:false,
+        c45:false,
+        c46:false,
+        c47:false,
+        c48:false,
+        c49:false,
+        c50:false,
+        c51:false,
+        c52:false,
+        c53:false,
+        c54:false,
+        c55:false,
+        c56:false,
+        c57:false,
+        c58:false,
+        c59:false,
+        c60:false,
+        c61:false,
+        c62:false
       }
     }
   },
@@ -1220,6 +1222,7 @@ import {
     submitBasic() {
     },
     submitRecord() {
+      this.clearData()
       return XsubmitRecord(this)
     },
     viewClose() {
@@ -1227,6 +1230,7 @@ import {
     },
     /* 保存草稿箱 */
     saveRecord() {
+      this.clearData()
       return XsaveRecord(this)
     },
     formatDate(d) {
@@ -1235,127 +1239,401 @@ import {
     getFile(res, file, id) {
       this['checkmark' + id] = true
     },
-    clearBxsjsj(){
-      this.formRecord.c37=[]
-      this.forbidden.c37=true
-      this.formRecord.c38=''
-      this.forbidden.c38=true
-      this.formRecord.c39=''
-      this.forbidden.c39=true
-      this.formRecord.c42=[]
-      this.forbidden.c42=true
-      this.formRecord.c45=[]
-      this.forbidden.c45=true
-      this.formRecord.c48=[]
-      this.forbidden.c48=true
-      this.formRecord.c49=[]
-      this.forbidden.c49=true
-      this.formRecord.c52=[]
-      this.forbidden.c52=true
-      this.formRecord.c53=[]
-      this.forbidden.c53=true
-      this.formRecord.c56=[]
-      this.forbidden.c56=true
-      this.formRecord.c57=[]
-      this.forbidden.c57=true
-      this.formRecord.c61=[]
-      this.forbidden.c61=true
-      this.formRecord.c62=''
-      this.forbidden.c62=true
+    clearData(){
+      if(this.forbidden.c40==true)
+      this.formRecord.c40=''
+      if(this.forbidden.c43==true)
+      this.formRecord.c43=''
+      if(this.forbidden.c46==true)
+      this.formRecord.c46=''
+      if(this.forbidden.c50==true)
+      this.formRecord.c50=''
+      if(this.forbidden.c54==true)
+      this.formRecord.c54=''
     },
-    clearAlbxj(){//清除A类便携机
-      this.formRecord.c40='否'
-      this.forbidden.c40=true
-      this.formRecord.c43='否'
-      this.forbidden.c43=true
-      this.formRecord.c46='否'
-      this.forbidden.c46=true
-      this.formRecord.c50='否'
-      this.forbidden.c50=true
-      this.formRecord.c54='否'
-      this.forbidden.c54=true
-      this.formRecord.c41=[]
-      this.forbidden.c41=true
-      this.formRecord.c44=[]
-      this.forbidden.c44=true
-      this.formRecord.c47=[]
-      this.forbidden.c47=true
-      this.formRecord.c51=[]
-      this.forbidden.c51=true
-      this.formRecord.c55=[]
-      this.forbidden.c55=true
-      this.formRecord.c42=[]
-      this.forbidden.c42=true
-      this.formRecord.c45=[]
-      this.forbidden.c45=true
-      this.formRecord.c48=[]
-      this.forbidden.c48=true
-      this.formRecord.c52=[]
-      this.forbidden.c52=true
-      this.formRecord.c56=[]
-      this.forbidden.c56=true
-      this.formRecord.c49=[]
-      this.forbidden.c49=true
-      this.formRecord.c53=[]
-      this.forbidden.c53=true
-      this.formRecord.c57=[]
-      this.forbidden.c57=true
-    },
-    clearBcty(){//清除B类\C类便携机
+    initData(){
+      this.formRecord.c16=''
+      this.formRecord.c17=''
 
-      //Gpu类型 禁用台式机
-      this.formRecord.c41=[]
-      this.forbidden.c41=true
-      this.formRecord.c44=[]
-      this.forbidden.c44=true
-      this.formRecord.c47=[]
-      this.forbidden.c47=true
-      this.formRecord.c51=[]
-      this.forbidden.c51=true
-      this.formRecord.c55=[]
-      this.forbidden.c55=true
-
-      //内存禁用
-      this.formRecord.c33='否'
-      this.forbidden.c33=true
-      //禁用
-      this.formRecord.c34=[]
-      this.formRecord.c35=''
-      this.formRecord.c36=''
-      this.forbidden.c34=true
-      this.forbidden.c35=true
-      this.forbidden.c36=true
-      //内存值禁用
-      this.formRecord.c37=[]
-      this.formRecord.c38=''
-      this.formRecord.c39=''
-      this.forbidden.c37=true
-      this.forbidden.c38=true
-      this.forbidden.c39=true
-
-      //内部存储禁用
-      this.formRecord.c58='否'
-      this.forbidden.c58=true
-      this.formRecord.c59=[]
-      this.forbidden.c59=true
-      this.formRecord.c60=''
-      this.forbidden.c60=true
-      //内部存储值禁用
-      this.formRecord.c61=[]
-      this.formRecord.c62=''
-      this.forbidden.c61=true
-      this.forbidden.c62=true
-    },
-    gpuChange(){
-      //显存 输入框处理
+      this.formRecord.c27=''
       this.formRecord.c19=''
       this.formRecord.c20=''
       this.formRecord.c21=''
-      if(this.formRecord.c17 =='B类' && this.formRecord.c27 =='独立'){
-        this.formRecord.c46='否'
-        this.formRecord.c50='否'
-        this.formRecord.c54='否'      
+
+      this.formRecord.c33=''
+      this.formRecord.c34=[]
+      this.formRecord.c35=''
+      this.formRecord.c36=''
+      this.formRecord.c37=[]
+      this.formRecord.c38=''
+      this.formRecord.c39=''
+      this.forbidden.c34=true
+      this.forbidden.c35=true
+      this.forbidden.c36=true
+      this.forbidden.c37=true
+      this.forbidden.c38=true
+      this.forbidden.c39=true
+
+      this.formRecord.c40='否'
+      this.formRecord.c41=[]
+      this.formRecord.c42=[]
+      this.forbidden.c40=true
+      this.forbidden.c41=true
+      this.forbidden.c42=true
+
+      this.formRecord.c43='否'
+      this.formRecord.c44=[]
+      this.formRecord.c45=[]
+      this.forbidden.c43=true
+      this.forbidden.c44=true
+      this.forbidden.c45=true
+
+      this.formRecord.c46='否'
+      this.formRecord.c47=[]
+      this.formRecord.c48=[]
+      this.formRecord.c49=[]
+      this.forbidden.c46=true
+      this.forbidden.c47=true
+      this.forbidden.c48=true
+      this.forbidden.c49=true
+
+      this.formRecord.c50='否'
+      this.formRecord.c51=[]
+      this.formRecord.c52=[]
+      this.formRecord.c53=[]
+      this.forbidden.c50=true
+      this.forbidden.c51=true
+      this.forbidden.c52=true
+      this.forbidden.c53=true
+
+      this.formRecord.c54='否'
+      this.formRecord.c55=[]
+      this.formRecord.c56=[]
+      this.formRecord.c57=[]
+      this.forbidden.c54=true
+      this.forbidden.c55=true
+      this.forbidden.c56=true
+      this.forbidden.c57=true
+
+      this.formRecord.c58=''
+      this.formRecord.c59=[]
+      this.formRecord.c60=''
+      this.forbidden.c59=true
+      this.forbidden.c60=true
+
+      this.formRecord.c61=[]
+      this.formRecord.c62=''
+      this.forbidden.c61=true
+      this.forbidden.c62=true
+    },
+    memoryChange(){
+      var c15=this.formRecord.c15
+      var c33=this.formRecord.c33
+      if(c15 == "台式微型计算机及一体机"){
+        if(c33 == '是'){
+          this.formRecord.c34=['1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）']
+          this.forbidden.c34=false
+          this.forbidden.c35=false
+          this.forbidden.c36=false
+        }else{
+          this.formRecord.c34=[]
+          this.formRecord.c35=''
+          this.formRecord.c36=''
+          this.forbidden.c34=true
+          this.forbidden.c35=true
+          this.forbidden.c36=true
+        }
+      }else if(c15 == "便携式计算机"){
+        if(c33 == '是'){
+          this.formRecord.c37=['0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）']
+          this.forbidden.c37=false
+          this.forbidden.c38=false
+          this.forbidden.c39=false
+        }else{
+          this.formRecord.c37=[]
+          this.formRecord.c38=''
+          this.formRecord.c39=''
+          this.forbidden.c37=true
+          this.forbidden.c38=true
+          this.forbidden.c39=true
+        }
       }
+    },
+    storeInChange(){
+      var c15=this.formRecord.c15
+      var c58=this.formRecord.c58
+      if(c15 == "台式微型计算机及一体机"){
+        if(c58 == '是'){
+          this.formRecord.c59=['25×附加硬盘数＿＿']
+          this.forbidden.c59=false
+          this.forbidden.c60=false
+        }else{
+          this.formRecord.c59=[]
+          this.formRecord.c60=''
+          this.forbidden.c59=true
+          this.forbidden.c60=true
+        }
+      }else if(c15 == "便携式计算机"){
+        if(c58 == '是'){
+          this.formRecord.c61=['3×附加硬盘数＿＿']
+          this.forbidden.c61=false
+          this.forbidden.c62=false
+        }else{
+          this.formRecord.c61=[]
+          this.formRecord.c62=''
+          this.forbidden.c61=true
+          this.forbidden.c62=true
+        }
+      }
+    },
+    gpuTypeChange(){
+      var c15=this.formRecord.c15
+      var c27=this.formRecord.c27
+      if(c27 == "集成"){
+        this.formRecord.c19=''
+        this.formRecord.c20=''
+        this.formRecord.c21=''
+        this.forbidden.c19=true
+        this.forbidden.c20=true
+        this.forbidden.c21=true
+      }else if(c27 == "独立"){
+        this.forbidden.c19=false
+        this.forbidden.c20=false
+        this.forbidden.c21=false
+      }
+      if(c15 == "台式微型计算机及一体机"){
+        if(c27 == "集成"){
+          this.formRecord.c40='否'
+          this.formRecord.c41=[]
+          this.forbidden.c40=true
+          this.forbidden.c41=true
+          this.formRecord.c43='否'
+          this.formRecord.c44=[]
+          this.forbidden.c43=true
+          this.forbidden.c44=true
+          this.formRecord.c46='否'
+          this.formRecord.c47=[]
+          this.forbidden.c46=true
+          this.forbidden.c47=true
+          this.formRecord.c50='否'
+          this.formRecord.c51=[]
+          this.forbidden.c50=true
+          this.forbidden.c51=true
+          this.formRecord.c54='否'
+          this.formRecord.c55=[]
+          this.forbidden.c54=true
+          this.forbidden.c55=true
+        }else if(c27 == "独立"){
+          this.formRecord.c41=[]
+          this.forbidden.c40=false
+          this.forbidden.c41=false
+          this.formRecord.c44=[]
+          this.forbidden.c43=false
+          this.forbidden.c44=false
+          this.formRecord.c47=[]
+          this.forbidden.c46=false
+          this.forbidden.c47=false
+          this.formRecord.c51=[]
+          this.forbidden.c50=false
+          this.forbidden.c51=false
+          this.formRecord.c55=[]
+          this.forbidden.c54=false
+          this.forbidden.c55=false
+        }
+        if(this.formRecord.c40 =='是'){
+          this.forbidden.c41=false
+          this.formRecord.c41=['46']
+        }else{
+          this.formRecord.c41=[]
+          this.forbidden.c41=true
+        }
+        if(this.formRecord.c43 =='是'){
+          this.forbidden.c44=false
+          this.formRecord.c44=['70']
+        }else{
+          this.formRecord.c44=[]
+          this.forbidden.c44=true
+        }
+        if(this.formRecord.c46 =='是'){
+          this.forbidden.c47=false
+          this.formRecord.c47=['95']
+        }else{
+          this.formRecord.c47=[]
+          this.forbidden.c47=true
+        }
+        if(this.formRecord.c50 =='是'){
+          this.forbidden.c51=false
+          this.formRecord.c51=['140']
+        }else{
+          this.formRecord.c51=[]
+          this.forbidden.c51=true
+        }
+        if(this.formRecord.c54 =='是'){
+          this.forbidden.c55=false
+          this.formRecord.c55=['394']
+        }else{
+          this.formRecord.c55=[]
+          this.forbidden.c55=true
+        }
+      }else if(c15 == "便携式计算机"){
+        var c17=this.formRecord.c17
+        if(c17 == 'B类'){
+          if(c27 == "集成"){
+            this.formRecord.c40='否'
+            this.forbidden.c40=true
+            this.formRecord.c42=[]
+            this.forbidden.c42=true
+            this.formRecord.c43='否'
+            this.forbidden.c43=true
+            this.formRecord.c45=[]
+            this.forbidden.c45=true
+            this.formRecord.c46='否'
+            this.forbidden.c46=true
+            this.formRecord.c48=[]
+            this.forbidden.c48=true
+            this.formRecord.c50='否'
+            this.forbidden.c50=true
+            this.formRecord.c52=[]
+            this.forbidden.c52=true
+            this.formRecord.c54='否'
+            this.forbidden.c56=true
+            this.formRecord.c54=[]
+            this.forbidden.c56=true
+          }else if(c27 == "独立"){
+            if(this.forbidden.c40 ==true)
+            this.forbidden.c40=false
+            if(this.formRecord.c40 =='是'){
+              this.forbidden.c42=false
+              this.formRecord.c42=['4']
+            }else{
+              this.formRecord.c42=[]
+              this.forbidden.c42=true
+            }
+            if(this.forbidden.c43 ==true)
+            this.forbidden.c43=false
+            if(this.formRecord.c43 =='是'){
+              this.forbidden.c45=false
+              this.formRecord.c45=['12']
+            }else{
+              this.formRecord.c45=[]
+              this.forbidden.c45=true
+            }
+            if(this.forbidden.c46 ==true)
+            this.forbidden.c46=false
+            if(this.formRecord.c46 =='是'){
+              this.forbidden.c48=false
+              this.formRecord.c48=['24']
+            }else{
+              this.formRecord.c48=[]
+              this.forbidden.c48=true
+            }
+            if(this.forbidden.c50 ==true)
+            this.forbidden.c50=false
+            if(this.formRecord.c50 =='是'){
+              this.forbidden.c52=false
+              this.formRecord.c52=['36']
+            }else{
+              this.formRecord.c52=[]
+              this.forbidden.c52=true
+            }
+            if(this.forbidden.c54 ==true)
+            this.forbidden.c54=false
+            if(this.formRecord.c54 =='是'){
+              this.forbidden.c56=false
+              this.formRecord.c56=['146']
+            }else{
+              this.formRecord.c56=[]
+              this.forbidden.c56=true
+            }
+          }
+        }else if(c17 == 'C类'){
+          if(c27 == "集成"){
+            this.formRecord.c46='否'
+            this.forbidden.c46=true
+            this.formRecord.c49=[]
+            this.forbidden.c49=true
+            this.formRecord.c50='否'
+            this.forbidden.c50=true
+            this.formRecord.c53=[]
+            this.forbidden.c53=true
+            this.formRecord.c54='否'
+            this.forbidden.c54=true
+            this.formRecord.c57=[]
+            this.forbidden.c57=true
+          }else if(c27 == "独立"){
+            if(this.forbidden.c46 ==true)
+            this.forbidden.c46=false
+            if(this.formRecord.c46 == '是'){
+              this.forbidden.c49=false
+              this.formRecord.c49=['37']
+            }else{
+              this.formRecord.c49=[]
+              this.forbidden.c49=true
+            }
+            if(this.forbidden.c50 ==true)
+            this.forbidden.c50=false
+            if(this.formRecord.c50 =='是'){
+              this.forbidden.c53=false
+              this.formRecord.c53=['49']
+            }else{
+              this.formRecord.c53=[]
+              this.forbidden.c53=true
+            }
+            if(this.forbidden.c54 ==true)
+            this.forbidden.c54=false
+            if(this.formRecord.c54 =='是'){
+              this.forbidden.c57=false
+              this.formRecord.c57=['159']
+            }else{
+              this.formRecord.c57=[]
+              this.forbidden.c57=true
+            }
+          }
+        }
+      }
+    },
+    bxsjsjChange(){
+      this.formRecord.c40='否'
+      this.formRecord.c41=[]
+      this.formRecord.c42=[]
+      this.forbidden.c40=true
+      this.forbidden.c41=true
+      this.forbidden.c42=true
+
+      this.formRecord.c43='否'
+      this.formRecord.c44=[]
+      this.formRecord.c45=[]
+      this.forbidden.c43=true
+      this.forbidden.c44=true
+      this.forbidden.c45=true
+
+      this.formRecord.c46='否'
+      this.formRecord.c47=[]
+      this.formRecord.c48=[]
+      this.formRecord.c49=[]
+      this.forbidden.c46=true
+      this.forbidden.c47=true
+      this.forbidden.c48=true
+      this.forbidden.c49=true
+
+      this.formRecord.c50='否'
+      this.formRecord.c51=[]
+      this.formRecord.c52=[]
+      this.formRecord.c53=[]
+      this.forbidden.c50=true
+      this.forbidden.c51=true
+      this.forbidden.c52=true
+      this.forbidden.c53=true
+
+      this.formRecord.c54='否'
+      this.formRecord.c55=[]
+      this.formRecord.c56=[]
+      this.formRecord.c57=[]
+      this.forbidden.c54=true
+      this.forbidden.c55=true
+      this.forbidden.c56=true
+      this.forbidden.c57=true
+
     }
   },
   computed: {
@@ -1462,270 +1740,317 @@ import {
         }
       }
 
-      if(c15 == "台式微型计算机及一体机"){
+      //gpu类型
+      this.gpuTypeChange();
 
-          this.forbidden.c33=false
-          this.forbidden.c58=false
-          this.forbidden.c16=false
-          this.forbidden.c17=true
-          this.formRecord.c17=''
-          this.clearBxsjsj();//禁用便携式计算机
-          //是否有内存
-          if(this.formRecord.c33 =='是'){
-            this.formRecord.c34=['1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）']
-            this.forbidden.c34=false
-            this.forbidden.c35=false
-            this.forbidden.c36=false
-          }else{
-            this.formRecord.c34=[]
-            this.formRecord.c35=''
-            this.forbidden.c35=true
-            this.formRecord.c36=''
-            this.forbidden.c36=true
-          }
-          //是否有附加硬盘
-          if(this.formRecord.c58 =='是'){
-            this.formRecord.c59=['25×附加硬盘数＿＿']
-            this.forbidden.c59=false
-            this.forbidden.c60=false
-          }else{
-            this.formRecord.c59=[]
-            this.forbidden.c59=true
-            this.formRecord.c60=''
-            this.forbidden.c60=true
-          }
-          //GPU类型
-          if(this.formRecord.c27 =='集成'){
-            this.forbidden.gpu=true
-            this.formRecord.c19=''
-            this.formRecord.c20=''
-            this.formRecord.c21=''
-            this.formRecord.c40='否'
-            this.formRecord.c41=[]
-            this.forbidden.c40=true
-            this.forbidden.c41=true
-            this.formRecord.c43='否'
-            this.formRecord.c44=[]
-            this.forbidden.c43=true
-            this.forbidden.c44=true
-            this.formRecord.c46='否'
-            this.formRecord.c47=[]
-            this.forbidden.c46=true
-            this.forbidden.c47=true
-            this.formRecord.c50='否'
-            this.formRecord.c51=[]
-            this.forbidden.c50=true
-            this.forbidden.c51=true
-            this.formRecord.c54='否'
-            this.formRecord.c55=[]
-            this.forbidden.c54=true
-            this.forbidden.c55=true
-          }else{//独立
-            this.forbidden.gpu=false
-            this.forbidden.c40=false
-            //this.formRecord.c40='否'
-            this.forbidden.c41=false
-            //this.formRecord.c41=[]
-            this.forbidden.c43=false
-            //this.formRecord.c43='否'
-            this.forbidden.c44=false
-            //this.formRecord.c44=[]
-            this.forbidden.c46=false
-            //this.formRecord.c46='否'
-            this.forbidden.c47=false
-            //this.formRecord.c47=[]
-            this.forbidden.c50=false
-            //this.formRecord.c50='否'
-            this.forbidden.c51=false
-            //this.formRecord.c51=[]
-            this.forbidden.c54=false
-            //this.formRecord.c54='否'
-            this.forbidden.c55=false
-            //this.formRecord.c55=[]
-          }
+      // if(c15 == "台式微型计算机及一体机"){
+      //    console.log("123456")
+      //     if(this.formRecord.c40 =='是'){
+      //       console.log("aaa")
+      //       this.formRecord.c41=['46']
+      //       this.forbidden.c41=false
+      //     }else{
+      //       console.log("bbb")
+      //       this.formRecord.c41=[]
+      //       this.forbidden.c41=true
+      //     }
+      //     if(this.formRecord.c43 =='是'){
+      //       this.forbidden.c44=false
+      //       this.formRecord.c44=['70']
+      //     }else{
+      //       this.formRecord.c44=[]
+      //       this.forbidden.c44=true
+      //     }
+      //     if(this.formRecord.c46 =='是'){
+      //       this.forbidden.c47=false
+      //       this.formRecord.c47=['95']
+      //     }else{
+      //       this.formRecord.c47=[]
+      //       this.forbidden.c47=true
+      //     }
+      //     if(this.formRecord.c50 =='是'){
+      //       this.forbidden.c51=false
+      //       this.formRecord.c51=['140']
+      //     }else{
+      //       this.formRecord.c51=[]
+      //       this.forbidden.c51=true
+      //     }
+      //     if(this.formRecord.c54 =='是'){
+      //       this.forbidden.c55=false
+      //       this.formRecord.c55=['394']
+      //     }else{
+      //       this.formRecord.c55=[]
+      //       this.forbidden.c55=true
+      //     }
+        
+      // }else if(c15 == "便携式计算机"){
 
-          if(this.formRecord.c40 =='是'){
-              this.forbidden.c41=false
-              this.formRecord.c41=['46']
-          }else{
-            this.formRecord.c41=[]
-            this.forbidden.c41=true
-          }
-          if(this.formRecord.c43 =='是'){
-            this.forbidden.c44=false
-            this.formRecord.c44=['70']
-          }else{
-            this.formRecord.c44=[]
-            this.forbidden.c44=true
-          }
-          if(this.formRecord.c46 =='是'){
-            this.forbidden.c47=false
-            this.formRecord.c47=['95']
-          }else{
-            this.formRecord.c47=[]
-            this.forbidden.c47=true
-          }
-          if(this.formRecord.c50 =='是'){
-            this.forbidden.c51=false
-            this.formRecord.c51=['140']
-          }else{
-            this.formRecord.c51=[]
-            this.forbidden.c51=true
-          }
-          if(this.formRecord.c54 =='是'){
-            this.forbidden.c55=false
-            this.formRecord.c55=['394']
-          }else{
-            this.formRecord.c55=[]
-            this.forbidden.c55=true
-          }
-      }else if(c15 == "便携式计算机"){
-          this.forbidden.c17=false
-          this.forbidden.c16=true
-          this.formRecord.c16=''
-          if(this.formRecord.c17 =='A类' && this.formRecord.c27 =='集成'){//集成
-             this.forbidden.gpu=true
+      // }
+
+      // if(c15 == "台式微型计算机及一体机"){
+
+      //     this.forbidden.c33=false
+      //     this.forbidden.c58=false
+      //     this.forbidden.c16=false
+      //     this.forbidden.c17=true
+      //     this.formRecord.c17=''
+      //     this.clearBxsjsj();//禁用便携式计算机
+      //     //是否有内存
+      //     if(this.formRecord.c33 =='是'){
+      //       this.formRecord.c34=['1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）']
+      //       this.forbidden.c34=false
+      //       this.forbidden.c35=false
+      //       this.forbidden.c36=false
+      //     }else{
+      //       this.formRecord.c34=[]
+      //       this.formRecord.c35=''
+      //       this.forbidden.c35=true
+      //       this.formRecord.c36=''
+      //       this.forbidden.c36=true
+      //     }
+      //     //是否有附加硬盘
+      //     if(this.formRecord.c58 =='是'){
+      //       this.formRecord.c59=['25×附加硬盘数＿＿']
+      //       this.forbidden.c59=false
+      //       this.forbidden.c60=false
+      //     }else{
+      //       this.formRecord.c59=[]
+      //       this.forbidden.c59=true
+      //       this.formRecord.c60=''
+      //       this.forbidden.c60=true
+      //     }
+      //     //GPU类型
+      //     if(this.formRecord.c27 =='集成'){
+      //       this.forbidden.gpu=true
+      //       this.formRecord.c19=''
+      //       this.formRecord.c20=''
+      //       this.formRecord.c21=''
+      //       this.formRecord.c40='否'
+      //       this.formRecord.c41=[]
+      //       this.forbidden.c40=true
+      //       this.forbidden.c41=true
+      //       this.formRecord.c43='否'
+      //       this.formRecord.c44=[]
+      //       this.forbidden.c43=true
+      //       this.forbidden.c44=true
+      //       this.formRecord.c46='否'
+      //       this.formRecord.c47=[]
+      //       this.forbidden.c46=true
+      //       this.forbidden.c47=true
+      //       this.formRecord.c50='否'
+      //       this.formRecord.c51=[]
+      //       this.forbidden.c50=true
+      //       this.forbidden.c51=true
+      //       this.formRecord.c54='否'
+      //       this.formRecord.c55=[]
+      //       this.forbidden.c54=true
+      //       this.forbidden.c55=true
+      //     }else{//独立
+      //       this.forbidden.gpu=false
+      //       this.forbidden.c40=false
+      //       //this.formRecord.c40='否'
+      //       this.forbidden.c41=false
+      //       //this.formRecord.c41=[]
+      //       this.forbidden.c43=false
+      //       //this.formRecord.c43='否'
+      //       this.forbidden.c44=false
+      //       //this.formRecord.c44=[]
+      //       this.forbidden.c46=false
+      //       //this.formRecord.c46='否'
+      //       this.forbidden.c47=false
+      //       //this.formRecord.c47=[]
+      //       this.forbidden.c50=false
+      //       //this.formRecord.c50='否'
+      //       this.forbidden.c51=false
+      //       //this.formRecord.c51=[]
+      //       this.forbidden.c54=false
+      //       //this.formRecord.c54='否'
+      //       this.forbidden.c55=false
+      //       //this.formRecord.c55=[]
+      //     }
+
+      //     if(this.formRecord.c40 =='是'){
+      //         this.forbidden.c41=false
+      //         this.formRecord.c41=['46']
+      //     }else{
+      //       this.formRecord.c41=[]
+      //       this.forbidden.c41=true
+      //     }
+      //     if(this.formRecord.c43 =='是'){
+      //       this.forbidden.c44=false
+      //       this.formRecord.c44=['70']
+      //     }else{
+      //       this.formRecord.c44=[]
+      //       this.forbidden.c44=true
+      //     }
+      //     if(this.formRecord.c46 =='是'){
+      //       this.forbidden.c47=false
+      //       this.formRecord.c47=['95']
+      //     }else{
+      //       this.formRecord.c47=[]
+      //       this.forbidden.c47=true
+      //     }
+      //     if(this.formRecord.c50 =='是'){
+      //       this.forbidden.c51=false
+      //       this.formRecord.c51=['140']
+      //     }else{
+      //       this.formRecord.c51=[]
+      //       this.forbidden.c51=true
+      //     }
+      //     if(this.formRecord.c54 =='是'){
+      //       this.forbidden.c55=false
+      //       this.formRecord.c55=['394']
+      //     }else{
+      //       this.formRecord.c55=[]
+      //       this.forbidden.c55=true
+      //     }
+      // }else if(c15 == "便携式计算机"){
+      //     this.forbidden.c17=false
+      //     this.forbidden.c16=true
+      //     this.formRecord.c16=''
+      //     if(this.formRecord.c17 =='A类' && this.formRecord.c27 =='集成'){//集成
+      //        this.forbidden.gpu=true
              
-             //清除A类便携机
-             this.clearAlbxj();
+      //        //清除A类便携机
+      //        this.clearAlbxj();
 
-             //A类便携机-内存 启用
-             this.forbidden.c33=false
-             this.formRecord.c34=[]
-             this.forbidden.c34=true
-             this.formRecord.c35=''
-             this.forbidden.c35=true
-             this.formRecord.c36=''
-             this.forbidden.c36=true
-             if( this.formRecord.c33 =='是'){
-                this.formRecord.c37=['0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）']
-                this.forbidden.c37=false
-                this.formRecord.c38=''
-                this.forbidden.c38=false
-                this.formRecord.c39=''
-                this.forbidden.c39=false
-             }else{
-                this.formRecord.c37=[]
-                this.forbidden.c37=true
-                this.formRecord.c38=''
-                this.forbidden.c38=true
-                this.formRecord.c39=''
-                this.forbidden.c39=true
-             }
-             //A类便携机-内部存储 启用
-             this.forbidden.c58=false
-             this.formRecord.c59=[]
-             this.forbidden.c59=true
-             this.formRecord.c60=''
-             this.forbidden.c60=true
-             if( this.formRecord.c58 =='是'){
-                this.formRecord.c61=['3×附加硬盘数＿＿']
-                 this.forbidden.c61=false
-                this.formRecord.c62=''
-                this.forbidden.c62=false
-             }else{
-                this.formRecord.c61=[]
-                this.forbidden.c61=true
-                this.formRecord.c62=''
-                this.forbidden.c62=true
-             }
-          }else if(this.formRecord.c17 =='B类' && this.formRecord.c27 =='独立'){//独立
-              this.forbidden.gpu=false
+      //        //A类便携机-内存 启用
+      //        this.forbidden.c33=false
+      //        this.formRecord.c34=[]
+      //        this.forbidden.c34=true
+      //        this.formRecord.c35=''
+      //        this.forbidden.c35=true
+      //        this.formRecord.c36=''
+      //        this.forbidden.c36=true
+      //        if( this.formRecord.c33 =='是'){
+      //           this.formRecord.c37=['0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）']
+      //           this.forbidden.c37=false
+      //           this.formRecord.c38=''
+      //           this.forbidden.c38=false
+      //           this.formRecord.c39=''
+      //           this.forbidden.c39=false
+      //        }else{
+      //           this.formRecord.c37=[]
+      //           this.forbidden.c37=true
+      //           this.formRecord.c38=''
+      //           this.forbidden.c38=true
+      //           this.formRecord.c39=''
+      //           this.forbidden.c39=true
+      //        }
+      //        //A类便携机-内部存储 启用
+      //        this.forbidden.c58=false
+      //        this.formRecord.c59=[]
+      //        this.forbidden.c59=true
+      //        this.formRecord.c60=''
+      //        this.forbidden.c60=true
+      //        if( this.formRecord.c58 =='是'){
+      //           this.formRecord.c61=['3×附加硬盘数＿＿']
+      //            this.forbidden.c61=false
+      //           this.formRecord.c62=''
+      //           this.forbidden.c62=false
+      //        }else{
+      //           this.formRecord.c61=[]
+      //           this.forbidden.c61=true
+      //           this.formRecord.c62=''
+      //           this.forbidden.c62=true
+      //        }
+      //     }else if(this.formRecord.c17 =='B类' && this.formRecord.c27 =='独立'){//独立
+      //         this.forbidden.gpu=false
               
-              //清除无用选项
-              this.clearBcty();
+      //         //清除无用选项
+      //         this.clearBcty();
 
-              this.formRecord.c49=[]
-              this.formRecord.c53=[]
-              this.formRecord.c57=[]
+      //         this.formRecord.c49=[]
+      //         this.formRecord.c53=[]
+      //         this.formRecord.c57=[]
               
-              this.forbidden.c40=false
-              if(this.formRecord.c40 =='是'){
-                this.forbidden.c42=false
-                this.formRecord.c42=['4']
-              }else{
-                this.formRecord.c42=[]
-                this.forbidden.c42=true
-              }
-              this.forbidden.c43=false
-              if(this.formRecord.c43 =='是'){
-                this.forbidden.c45=false
-                this.formRecord.c45=['12']
-              }else{
-                this.formRecord.c45=[]
-                this.forbidden.c45=true
-              }
-              this.forbidden.c46=false
-              if(this.formRecord.c46 =='是'){
-                this.forbidden.c48=false
-                this.formRecord.c48=['24']
-              }else{
-                this.formRecord.c48=[]
-                this.forbidden.c48=true
-              }
-              this.forbidden.c50=false
-              if(this.formRecord.c50 =='是'){
-                this.forbidden.c52=false
-                this.formRecord.c52=['36']
-              }else{
-                this.formRecord.c52=[]
-                this.forbidden.c52=true
-              }
-              this.forbidden.c54=false
-              if(this.formRecord.c54 =='是'){
-                this.forbidden.c56=false
-                this.formRecord.c56=['146']
-              }else{
-                this.formRecord.c56=[]
-                this.forbidden.c56=true
-              }
-          }else if(this.formRecord.c17 =='C类' && this.formRecord.c27 =='独立'){//C类
-              this.forbidden.gpu=false
-               //清除无用选项
-              this.clearBcty();
-              //----通用结束
-              this.formRecord.c40='否'
-              this.forbidden.c40=true
-              this.formRecord.c43='否'
-              this.forbidden.c43=true
-              this.formRecord.c42=[]
-              this.forbidden.c42=true
-              this.formRecord.c45=[]
-              this.forbidden.c45=true
-              this.formRecord.c48=[]
-              this.forbidden.c48=true
-              this.formRecord.c52=[]
-              this.forbidden.c52=true
-              this.formRecord.c56=[]
-              this.forbidden.c56=true
+      //         this.forbidden.c40=false
+      //         if(this.formRecord.c40 =='是'){
+      //           this.forbidden.c42=false
+      //           this.formRecord.c42=['4']
+      //         }else{
+      //           this.formRecord.c42=[]
+      //           this.forbidden.c42=true
+      //         }
+      //         this.forbidden.c43=false
+      //         if(this.formRecord.c43 =='是'){
+      //           this.forbidden.c45=false
+      //           this.formRecord.c45=['12']
+      //         }else{
+      //           this.formRecord.c45=[]
+      //           this.forbidden.c45=true
+      //         }
+      //         this.forbidden.c46=false
+      //         if(this.formRecord.c46 =='是'){
+      //           this.forbidden.c48=false
+      //           this.formRecord.c48=['24']
+      //         }else{
+      //           this.formRecord.c48=[]
+      //           this.forbidden.c48=true
+      //         }
+      //         this.forbidden.c50=false
+      //         if(this.formRecord.c50 =='是'){
+      //           this.forbidden.c52=false
+      //           this.formRecord.c52=['36']
+      //         }else{
+      //           this.formRecord.c52=[]
+      //           this.forbidden.c52=true
+      //         }
+      //         this.forbidden.c54=false
+      //         if(this.formRecord.c54 =='是'){
+      //           this.forbidden.c56=false
+      //           this.formRecord.c56=['146']
+      //         }else{
+      //           this.formRecord.c56=[]
+      //           this.forbidden.c56=true
+      //         }
+      //     }else if(this.formRecord.c17 =='C类' && this.formRecord.c27 =='独立'){//C类
+      //         this.forbidden.gpu=false
+      //          //清除无用选项
+      //         this.clearBcty();
+      //         //----通用结束
+      //         this.formRecord.c40='否'
+      //         this.forbidden.c40=true
+      //         this.formRecord.c43='否'
+      //         this.forbidden.c43=true
+      //         this.formRecord.c42=[]
+      //         this.forbidden.c42=true
+      //         this.formRecord.c45=[]
+      //         this.forbidden.c45=true
+      //         this.formRecord.c48=[]
+      //         this.forbidden.c48=true
+      //         this.formRecord.c52=[]
+      //         this.forbidden.c52=true
+      //         this.formRecord.c56=[]
+      //         this.forbidden.c56=true
 
-              this.forbidden.c46=false
-              if(this.formRecord.c46 =='是'){
-                this.forbidden.c49=false
-                this.formRecord.c49=['37']
-              }else{
-                this.formRecord.c49=[]
-                this.forbidden.c49=true
-              }
-              this.forbidden.c50=false
-              if(this.formRecord.c50 =='是'){
-                this.forbidden.c53=false
-                this.formRecord.c53=['49']
-              }else{
-                this.formRecord.c53=[]
-                this.forbidden.c53=true
-              }
-              this.forbidden.c54=false
-              if(this.formRecord.c54 =='是'){
-                this.forbidden.c57=false
-                this.formRecord.c57=['159']
-              }else{
-                this.formRecord.c57=[]
-                this.forbidden.c57=true
-              }
+      //         this.forbidden.c46=false
+      //         if(this.formRecord.c46 =='是'){
+      //           this.forbidden.c49=false
+      //           this.formRecord.c49=['37']
+      //         }else{
+      //           this.formRecord.c49=[]
+      //           this.forbidden.c49=true
+      //         }
+      //         this.forbidden.c50=false
+      //         if(this.formRecord.c50 =='是'){
+      //           this.forbidden.c53=false
+      //           this.formRecord.c53=['49']
+      //         }else{
+      //           this.formRecord.c53=[]
+      //           this.forbidden.c53=true
+      //         }
+      //         this.forbidden.c54=false
+      //         if(this.formRecord.c54 =='是'){
+      //           this.forbidden.c57=false
+      //           this.formRecord.c57=['159']
+      //         }else{
+      //           this.formRecord.c57=[]
+      //           this.forbidden.c57=true
+      //         }
 
-          }
-      }
+      //     }
+      // }
 
       return {
         c1: [
@@ -1868,21 +2193,21 @@ import {
         ],
         c19: [
           {
-            required: this.formRecord.c27 !='集成',
+            required: this.formRecord.c27 ==='独立',
             trigger: 'change,blur',
             message: '请输入显存等效频率'
           }
         ],
         c20: [
           {
-            required: this.formRecord.c27 !='集成',
+            required: this.formRecord.c27 ==='独立',
             trigger: 'change,blur',
             message: '请输入显存位宽'
           }
         ],
         c21: [
           {
-            required: this.formRecord.c27 !='集成',
+            required: this.formRecord.c27 ==='独立',
             trigger: 'change,blur',
             message: '请输入显存带宽'
           }

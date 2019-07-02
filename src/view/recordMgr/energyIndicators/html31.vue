@@ -47,7 +47,7 @@
           <Input type="text" v-model="formRecord.c36" placeholder="备案方" :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c2" label="产品规格型号" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" :disabled='!disabledoff'/>
+          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" :disabled="!disabledoff"/>
         </FormItem>
         <FormItem prop="c4" label="商标" style="width:1000px;" :label-width="180">
           <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled="disabledoff"/>
@@ -168,7 +168,7 @@
       <Card :bordered="false">
         <h2>四、初始使用日期</h2>
         <FormItem prop="c15" label="备案标识开始使用日期" style="width:1000px;">
-          <DatePicker type="date" style="width: 200px" v-model="formRecord.c15" :disabled="disabledoff"></DatePicker>
+          <DatePicker type="date" style="width: 200px" :options="dataInit" v-model="formRecord.c15"></DatePicker>
         </FormItem>
       </Card>
     </div>
@@ -755,7 +755,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1109,7 +1109,7 @@
           c32: '',
           c33: '',
           c34: '',
-          c35: '', 
+          c35: '',
           c36: '',
           c37: '',
           c38: '',

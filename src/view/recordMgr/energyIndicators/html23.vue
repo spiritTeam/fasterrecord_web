@@ -142,7 +142,7 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <FormItem prop="c15" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c15" :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c15"></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -682,7 +682,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -879,9 +879,9 @@
        <p class="org">中国标准化研究院能效标识管理中心：</p>
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
-          公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c3}}</span>
-          型号的 <span  class="f-product">房间空气调节器 2010版</span>产品。
+          公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
+          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
+          型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
        </div>
        <dl v-if="pageType==='extend'">
           <dt>
@@ -1336,7 +1336,7 @@
                 xdz = 2.90;
             }
         }
-        
+
         const checkc13 = (rule, value, callback) => {
             if (c13 < xdz) {
               callback('实测能效比不应小于能效限定值')
@@ -1475,6 +1475,12 @@
             {
               validator: checkc13,
               trigger: 'change,blur'
+            }
+          ],
+          c15: [
+            {
+              required: true,
+              message: '不能为空',
             }
           ],
           c16: [
