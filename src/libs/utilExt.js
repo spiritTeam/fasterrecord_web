@@ -77,7 +77,8 @@ export const XfillExtendData = (params, that) => {
         that.formRecord[i].push(v)
       })
     } else if (i === that.thisDateCV) {
-      if (data[i] != undefined) that.formRecord[i] = that.formatDate(data[i]);
+      if (data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]))
+      //console.log(that)
     } else {
       that.formRecord[i] = data[i]
     }
@@ -145,7 +146,9 @@ export const XfillDefaultData = (params, that) => {
           }
         } else if (e.recId === that.thisDateCV && isNaN(labVal)) {
           that.formRecord[e.recId] = new Date()
-        } else {
+        } else if(e.recId==='c1' || e.recId==='c2'|| e.recId==='c3'){
+          that.formRecord[e.recId] =e.labValue
+        }else {
           that.formRecord[e.recId] = labVal
         }
       }

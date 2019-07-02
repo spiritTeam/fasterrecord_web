@@ -984,7 +984,7 @@
         我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
         品牌的 <span class="f-model">{{formRecord.c3}}</span>
-        型号的 <span class="f-product">平板电视-2013版</span>产品。
+        型号的 <span class="f-product">平板电视 2013版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1026,6 +1026,7 @@
 
 </template>
 <script>
+  import { mapGetters } from 'vuex';
   import {
     getImgPath,
     XfillExtendData,
@@ -1054,7 +1055,7 @@
 
   export default {
     data() {
-      const timeDate = this.$store.state.app.dateinit;
+      const timeDate=parseInt(this.$store.state.app.dateinit);
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: "c13",
@@ -1269,8 +1270,11 @@
       }
     },
     computed: {
-      disabledoff() {
-        return this.$store.state.app.pageType === 'extend';
+      ...mapGetters([
+        'pageType'
+      ]),
+      disabledoff(){
+        return  this.pageType==='extend';
       },
       pltId() {
         return this.$store.state.app.pltId
