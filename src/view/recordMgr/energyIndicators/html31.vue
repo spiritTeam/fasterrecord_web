@@ -47,7 +47,7 @@
           <Input type="text" v-model="formRecord.c36" placeholder="备案方" :disabled="disabledoff"/>
         </FormItem>
         <FormItem prop="c2" label="产品规格型号" style="width:1000px;" :label-width="180">
-          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" :disabled='!disabledoff'/>
+          <Input type="text" v-model="formRecord.c2" placeholder="规格型号" :disabled="!disabledoff"/>
         </FormItem>
         <FormItem prop="c4" label="商标" style="width:1000px;" :label-width="180">
           <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled="disabledoff"/>
@@ -1201,14 +1201,12 @@
       handleFormatError(file, id) {
         return XhandleFormatError(file, id, this)
       },
-
+      /* 数据来源  扩展备案 */
       fileHandleBeforeUpload(file, id) {
-
         return XfileHandleBeforeUpload(file, id, this)
       },
       /* 数据来源  扩展备案 */
       fillExtendData(params) {
-        console.log(this)
         return XfillExtendData(params, this)
       },
       /* 数据来源 草稿箱 */
