@@ -44,7 +44,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" :disabled='disabledoff' placeholder="生产者名称" readonly />
+            <Input type="text" v-model="formRecord.c1" disabled placeholder="生产者名称"/>
           </FormItem>
           <FormItem prop="c3" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="制造单位"/>
@@ -53,7 +53,7 @@
             <Input type="text" v-model="formRecord.c45" :disabled='disabledoff' placeholder="备案方" />
           </FormItem>            
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :di1sabled='!disabledoff' placeholder="产品规格型号" disabled/>
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="产品规格型号"/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>

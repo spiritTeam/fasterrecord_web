@@ -35,7 +35,6 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
       reader.readAsDataURL(file)
       reader.onloadend = (e) => {
         file.url = reader.result
-        //console.log(that.uploadParam['uploadFileList'+id])
         that.uploadParam['uploadFileList' + id].push(file)
       }
       getImgPath(res.data.dir, that)
@@ -116,7 +115,6 @@ export const XfillDraftData = (params, that) => {
         that.formRecord[i].push(v)
       })
     } else if (i === that.thisDateCV) {
-      //this.$store.commit('setDateInit', data[i])
       if (data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]));
     } else {
       that.formRecord[i] = data[i]
@@ -166,7 +164,7 @@ export const XshowConfirm = (that) => {
   //     }
   //   })
   // }
-  let pageType = that.$store.state.app.pageType;
+  let pageType = that.pageType;
   if (that.uploadParam.filePath24 === '') {
     that.$Message.warning('请上传产品正面图片！')
     return false
@@ -224,7 +222,7 @@ export const XdiffRecord = (orgin, target, that) => {
 }
 
 export const XsubmitRecord = (that) => {
-  let pageType = that.$store.state.app.pageType;
+  let pageType = that.pageType;
   that.formRecord[that.thisDateCV] = that.formatDate(that.formRecord[that.thisDateCV])
   that.formRecord.ptid = that.$store.state.app.ptId
   that.formRecord.pltId = that.$store.state.app.pltId
@@ -267,7 +265,6 @@ export const XsubmitRecord = (that) => {
       }
     }).then(res => {
       if (res.data.result_code === '1') {
-        //let txt = that.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
         that.$Modal.success({
           title: '提交成功',
           content: '<p>备案数据已经提交成功！</p>',
@@ -278,7 +275,6 @@ export const XsubmitRecord = (that) => {
         })
       } else {
         that.$Message.warning(res.data.message)
-        //that.submitDisabled = false
       }
     })
   } else {

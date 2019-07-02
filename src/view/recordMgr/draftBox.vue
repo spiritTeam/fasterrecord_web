@@ -40,8 +40,8 @@ export default {
       },
       categoryList: [
         {
-          ec_model_no: '47',
-          ec_model_title: '家用电冰箱 2015版'
+          ec_model_no: '',
+          ec_model_title: ''
         }
       ],
       columns1: [
