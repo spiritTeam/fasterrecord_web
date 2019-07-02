@@ -321,6 +321,7 @@
                 <FormItem prop="c42" >
                   <Input type="text" style="width:100px" v-model="formRecord.c42" :disabled='disabledoff'/>
                 </FormItem>
+                <br/><br/>
               </td>
             </tr>
             <tr>
