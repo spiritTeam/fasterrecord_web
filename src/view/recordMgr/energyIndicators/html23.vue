@@ -1477,6 +1477,12 @@
               trigger: 'change,blur'
             }
           ],
+          c15: [
+            {
+              required: true,
+              message: '不能为空',
+            }
+          ],
           c16: [
             {
               required: true,
