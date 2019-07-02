@@ -144,7 +144,7 @@
           <FormItem prop="c15" label="备案标识开始使用日期" style="width:100%;">
             <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c15"></DatePicker>
           </FormItem>
-        </Card>   
+        </Card>
       </div>
       <div class="part part5">
         <Card :bordered="false">
@@ -682,7 +682,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1336,7 +1336,7 @@
                 xdz = 2.90;
             }
         }
-        
+
         const checkc13 = (rule, value, callback) => {
             if (c13 < xdz) {
               callback('实测能效比不应小于能效限定值')
@@ -1475,6 +1475,12 @@
             {
               validator: checkc13,
               trigger: 'change,blur'
+            }
+          ],
+          c15: [
+            {
+              required: true,
+              message: '不能为空',
             }
           ],
           c16: [

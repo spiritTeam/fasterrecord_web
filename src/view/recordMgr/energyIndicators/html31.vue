@@ -755,7 +755,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1109,7 +1109,7 @@
           c32: '',
           c33: '',
           c34: '',
-          c35: '', 
+          c35: '',
           c36: '',
           c37: '',
           c38: '',
