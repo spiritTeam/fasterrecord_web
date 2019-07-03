@@ -1001,9 +1001,9 @@
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
         我 <span  class="f-company">{{formRecord.c1}}</span>
-        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-        型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
+        公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
+        品牌的 <span  class="f-model">{{formRecord.c3}}</span>
+        型号的 <span  class="f-product">家用和类似用途微波炉 2017版</span>产品。
       </div>
       <dl v-if="$store.state.app.pageType==='extend'">
         <dt>
@@ -1040,7 +1040,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
+  import { mapGetters } from 'vuex';
   import {
     getImgPath,
     XfillExtendData,
@@ -1069,7 +1069,7 @@
 
   export default {
     data () {
-    const timeDate = this.$store.state.app.dateinit
+    const timeDate=parseInt(this.$store.state.app.dateinit);
     return {
       // 当前初始使用日期 对应的C值
       thisDateCV: 'c13',
@@ -1317,8 +1317,11 @@
       }
     },
     computed: {
+      ...mapGetters([
+        'pageType'
+      ]),
       disabledoff(){
-        return this.$store.state.app.pageType == "extend"
+        return  this.pageType==='extend';
       },
       pltId() {
         return this.$store.state.app.pltId
