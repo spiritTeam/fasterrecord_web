@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+#table4  .ivu-form-item-content{ display: flex;}
 h1 {
   font-size: 20px;
 }
@@ -61,6 +62,7 @@ table tr .t_label {
 
 .red {
   color: red;
+  margin-right: 5px;
 }
 
 #table1 td, #table2 td, #table3 td, #table4 td {
