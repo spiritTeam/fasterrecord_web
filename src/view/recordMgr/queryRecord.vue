@@ -35,7 +35,7 @@
         style="display:inline-block;"
         :on-format-error="handleFormatError"
         :action="uploadUrl">
-        
+
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
         <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
       </Upload>
@@ -437,6 +437,7 @@ export default {
               }
             })
             this.$store.commit('setModelNo',res.data.marking.ec_model_no)
+            this.$store.commit('setDateInit', res.data.lab.upddate)
             //this.$store.commit('setOem',res.data.lab.oem)
           }
       })
