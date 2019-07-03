@@ -1087,6 +1087,7 @@
         checkmark32: false,
         checkmark76: false,
         formRecord: {
+          ec_master_kuozhan_text: '',
           c1: '',
           c2: '',
           c3: '',
