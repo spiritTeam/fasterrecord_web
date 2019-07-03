@@ -28,12 +28,14 @@
       v-model="modal1"
       title="上传标识图">
       <Upload
-        :format="['jpg','jpeg','png']"
+        :format="['png']"
         :before-upload="fileHandleBeforeUpload"
         :data="uploadParam.fileData"
         :on-success="getFile"
         style="display:inline-block;"
+        :on-format-error="handleFormatError"
         :action="uploadUrl">
+        
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
         <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
       </Upload>
@@ -264,6 +266,12 @@ export default {
         this.recordData = res.data.list
         this.total = res.data.total
       })
+    },
+    handleFormatError(){
+       this.$Notice.warning({
+            title: '上传文件，类型错误',
+            desc: '请选择正确的类型文件'
+        });
     },
     changeList (pNum) {
       this.formQuery.pageNum = pNum

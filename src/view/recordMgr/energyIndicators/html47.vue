@@ -17,8 +17,8 @@
           <table>
             <thead>
               <tr>
-                <th>实验室名称</th>
-                <th>检测报告条形码</th>
+                <th><i class="red">*</i>实验室名称</th>
+                <th><i class="red">*</i>检测报告条形码</th>
               </tr>
             </thead>
             <tbody>
@@ -88,8 +88,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>额定值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>额定值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -178,13 +178,13 @@
           </table>
           <table id="table2">
             <tr>
-              <th>间室名称</th>
-              <th>类型</th>
-              <th>标称容积值L</th>
-              <th>实测容积值L</th>
-              <th width="150px;">设计温度℃</th>
-              <th>特性温度℃</th>
-              <th>隔热层厚度(mm)</th>
+              <th><i class="red">*</i>间室名称</th>
+              <th><i class="red">*</i>类型</th>
+              <th><i class="red">*</i>标称容积值L</th>
+              <th><i class="red">*</i>实测容积值L</th>
+              <th width="150px;"><i class="red">*</i>设计温度℃</th>
+              <th><i class="red">*</i>特性温度℃</th>
+              <th><i class="red">*</i>隔热层厚度(mm)</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -500,7 +500,7 @@
           </table>
           <table id="table5">
             <tr>
-              <td>总容积</td>
+              <td><i class="red">*</i>总容积</td>
               <td>
                 <Button type="info" @click="count43">计算标称值</Button>
                 <FormItem prop="c43">
@@ -531,7 +531,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td>电源性质</td>
+              <td><i class="red">*</i>电源性质</td>
               <td width="40%">
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
@@ -543,7 +543,7 @@
               </td>
             </tr>
             <tr>
-              <td>气候类型</td>
+              <td><i class="red">*</i>气候类型</td>
               <td>
                 <FormItem prop="c23">
                   <CheckboxGroup v-model="formRecord.c23">
@@ -557,7 +557,7 @@
               </td>
             </tr>
             <tr>
-              <td>含有15 L及以上容积、具有冰温区功能的变温室</td>
+              <td><i class="red">*</i>含有15 L及以上容积、具有冰温区功能的变温室</td>
               <td>
                 <FormItem prop="c44">
                   <RadioGroup v-model="formRecord.c44">
@@ -569,7 +569,7 @@
               </td>
             </tr>
             <tr>
-              <td>含有15 L及以上容积、具有冰温区功能同时具备冷藏功能和三星级或四星级冷冻功能的变温室</td>
+              <td><i class="red">*</i>含有15 L及以上容积、具有冰温区功能同时具备冷藏功能和三星级或四星级冷冻功能的变温室</td>
               <td>
                 <FormItem prop="c45">
                   <RadioGroup v-model="formRecord.c45">
@@ -581,7 +581,7 @@
               </td>
             </tr>
             <tr>
-              <td>间室容积大于400 L并带有穿透式自动制冰功能</td>
+              <td><i class="red">*</i>间室容积大于400 L并带有穿透式自动制冰功能</td>
               <td>
                 <FormItem prop="c46">
                   <RadioGroup v-model="formRecord.c46">
@@ -593,7 +593,7 @@
               </td>
             </tr>
             <tr>
-              <td>当器具类型为1、2、3、4类型，所有门体均采用透明门体，且从内部往外投影的透明区域总投影面积占所有门体总投影面积的50%以上</td>
+              <td><i class="red">*</i>当器具类型为1、2、3、4类型，所有门体均采用透明门体，且从内部往外投影的透明区域总投影面积占所有门体总投影面积的50%以上</td>
               <td>
                 <FormItem prop="c47">
                   <RadioGroup v-model="formRecord.c47">
@@ -605,7 +605,7 @@
               </td>
             </tr>
             <tr>
-              <td>当器具类型为5、6、7、8、9类型，至少有一个门体采用透明门体，且从内部往外投影的透明区域总投影面积大于所有门体总投影面积的25%</td>
+              <td><i class="red">*</i>当器具类型为5、6、7、8、9类型，至少有一个门体采用透明门体，且从内部往外投影的透明区域总投影面积大于所有门体总投影面积的25%</td>
               <td>
                 <FormItem prop="c48">
                   <RadioGroup v-model="formRecord.c48">
@@ -617,7 +617,7 @@
               </td>
             </tr>
             <tr>
-              <td>嵌入式制冷器具</td>
+              <td><i class="red">*</i>嵌入式制冷器具</td>
               <td>
                 <FormItem prop="c49">
                   <RadioGroup v-model="formRecord.c49">
@@ -629,7 +629,7 @@
               </td>
             </tr>
             <tr>
-              <td>具有环境可控型防凝露加热器</td>
+              <td><i class="red">*</i>具有环境可控型防凝露加热器</td>
               <td>
                 <FormItem prop="c50">
                   <RadioGroup v-model="formRecord.c50">
@@ -641,7 +641,7 @@
               </td>
             </tr>
             <tr>
-              <td>冷凝器形式</td>
+              <td><i class="red">*</i>冷凝器形式</td>
               <td>
                 <FormItem prop="c51">
                   <CheckboxGroup v-model="formRecord.c51" style="display:inline-block;">
@@ -659,7 +659,7 @@
               </td>
             </tr>
             <tr>
-              <td>温控器形式</td>
+              <td><i class="red">*</i>温控器形式</td>
               <td>
                 <FormItem prop="c53">
                   <RadioGroup v-model="formRecord.c53">
@@ -671,7 +671,7 @@
               </td>
             </tr>
             <tr>
-              <td>冰箱门数</td>
+              <td><i class="red">*</i>冰箱门数</td>
               <td>
                 <FormItem prop="c54">
                   <RadioGroup v-model="formRecord.c54" style="display:inline-block;">
@@ -689,7 +689,7 @@
               </td>
             </tr>
             <tr>
-              <td>温控器安装位置</td>
+              <td><i class="red">*</i>温控器安装位置</td>
               <td>
                 <FormItem prop="c56">
                   <CheckboxGroup v-model="formRecord.c56" style="display:inline-block;">
@@ -706,7 +706,7 @@
               </td>
             </tr>
             <tr>
-              <td>照明灯安装位置</td>
+              <td><i class="red">*</i>照明灯安装位置</td>
               <td>
                 <FormItem prop="c58">
                   <CheckboxGroup v-model="formRecord.c58" style="display:inline-block;">
@@ -723,7 +723,7 @@
               </td>
             </tr>
             <tr>
-              <td>照明灯额定输入功率（W）</td>
+              <td><i class="red">*</i>照明灯额定输入功率（W）</td>
               <td>
                 <FormItem prop="c60">
                   <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' ></Input>
@@ -732,7 +732,7 @@
               </td>
             </tr>
             <tr>
-              <td>输入总功率（W）</td>
+              <td><i class="red">*</i>输入总功率（W）</td>
               <td>
                 <FormItem prop="c61">
                   <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'></Input>
@@ -741,7 +741,7 @@
               </td>
             </tr>
             <tr>
-              <td>冷冻能力（kg/12h）</td>
+              <td><i class="red">*</i>冷冻能力（kg/12h）</td>
               <td>
                 <FormItem prop="c67">
                   <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'></Input>
@@ -750,7 +750,7 @@
               </td>
             </tr>
             <tr>
-              <td>外形尺寸(长×宽×高)（mm×mm×mm）</td>
+              <td><i class="red">*</i>外形尺寸(长×宽×高)（mm×mm×mm）</td>
               <td>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">长</span>
                 <FormItem prop="c68">
@@ -795,30 +795,35 @@
             <tr>
               <td>
                 <FormItem prop="c71">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c71" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c73">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c73" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c74">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c74" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c75" :disabled='disabledoff' ></Input>
 
                 </FormItem>
@@ -851,20 +856,21 @@
               <td>制冷剂</td>
               <td>
                 <FormItem prop="c76">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c76" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td colspan="3">
                 <div style="margin-bottom:25px">
-                  <span>主要成分：</span>
+                  <span><i class="red">*</i>主要成分：</span>
                   <FormItem prop="c77">
                     <Input type="text" v-model="formRecord.c77" :disabled='disabledoff' style="width:300px;" ></Input>
 
                   </FormItem>
                 </div>
                 <div>
-                  <span>重量：</span>
+                  <span><i class="red">*</i>重量：</span>
                   <FormItem prop="c92">
                     <Input type="text" v-model="formRecord.c92" :disabled='disabledoff' style="width:300px;" ></Input>
                   </FormItem>
@@ -872,6 +878,7 @@
               </td>
               <td>
                 <FormItem prop="c78">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c78" :disabled='disabledoff' ></Input>
 
                 </FormItem>
@@ -906,20 +913,21 @@
               <td>发泡材料</td>
               <td>
                 <FormItem prop="c79">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c79" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td colspan="3">
                 <div style="margin-bottom:25px">
-                  <span>主要成分：</span>
+                  <span><i class="red">*</i>主要成分：</span>
                   <FormItem prop="c80">
                     <Input type="text" v-model="formRecord.c80" :disabled='disabledoff' style="width:300px;" ></Input>
 
                   </FormItem>
                 </div>
                 <div>
-                  <span>比例：</span>
+                  <span><i class="red">*</i>比例：</span>
                   <FormItem prop="c93">
                     <Input type="text" v-model="formRecord.c93" :disabled='disabledoff' style="width:300px;" ></Input>
                   </FormItem>
@@ -927,6 +935,7 @@
               </td>
               <td>
                 <FormItem prop="c81">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c81" :disabled='disabledoff' ></Input>
 
                 </FormItem>
@@ -2304,6 +2313,12 @@ export default {
         }
       }
       return {
+        c1: [
+          {
+            required: true,
+            message: '不能为空'
+          }
+        ],
         c2: [
           {
             required: true,
@@ -2314,6 +2329,18 @@ export default {
           {
             required: true,
             message: '请填写备案方'
+          }
+        ],
+        c4: [
+          {
+            required: true,
+            message: '不能为空'
+          }
+        ],
+        c21: [
+          {
+            required: true,
+            message: '不能为空'
           }
         ],
         c5: [
