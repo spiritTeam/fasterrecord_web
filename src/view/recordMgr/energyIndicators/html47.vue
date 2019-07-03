@@ -1051,7 +1051,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1286,7 +1286,7 @@
       <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-  
+
 </template>
 <script>
 import axios from 'axios'
@@ -1484,7 +1484,7 @@ export default {
   },
   mounted () {
     //console.log(this.pageType)
-   
+
   },
   methods: {
     showTemplate () {
@@ -1529,7 +1529,7 @@ export default {
       Object.defineProperty(file, 'name', {
         writable: true,
         value: gname
-      })      
+      })
       return new Promise(function (resolve, reject) {
         axios.get('/oss/token.do').then(res => {
           if (_this.uploadParam['uploadFileList'+id].length > 0) {
@@ -1607,7 +1607,7 @@ export default {
           }
         })
       }
-      
+
       if(params.lab){
         that.$store.commit('setDefaultData', params.lab.params)
       }
@@ -1726,7 +1726,7 @@ export default {
       count_s = Math.round(count_s * vv) / vv;
       this.formRecord.c123 = count_s
     },
-    
+
     showConfirm () {
       let _this = this
       let pageType=_this.pageType;
@@ -1751,10 +1751,10 @@ export default {
           }
           return;
       }
-     
+
       _this.count43()
       _this.count123()
-      
+
       this.$refs['formRecord'].validate((valid) => {
         if (valid) {
           if (_this.confirmData.join('') == 1) {
@@ -1859,7 +1859,7 @@ export default {
           }
         })
       }else{
-        
+
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -1916,10 +1916,10 @@ export default {
         url: '/marking/saveDraft.do',
         method: 'POST',
         data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest` 
+        // 只适用于 POST,PUT,PATCH，transformRequest`
         //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
         //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) { 
+        transformRequest: [function (data) {
           let ret = ''
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
@@ -2838,7 +2838,7 @@ export default {
             message: '不能为空'
           }
         ],
- 
+
         c80: [
           {
             required: true,
