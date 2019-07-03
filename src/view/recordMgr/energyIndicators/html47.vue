@@ -2891,7 +2891,10 @@ export default {
   }
 }
 </script>
-<style lang="less">
+<style>
+#table4  .ivu-form-item-content{ display: flex;}
+</style>
+<style lang="less" scoped>
 h1{
   font-size:20px;
 }
@@ -2950,7 +2953,7 @@ table td,table th{
 #table2 .ivu-form-item,#table3 .ivu-form-item,#table4 .ivu-form-item,#table5 .ivu-form-item{
   display:inline-block;
 }
-#table4 .ivu-form-item-content{ display: flex;}
+
 .ivu-icon-ios-help-circle-outline{
   position:absolute;
   top:-8px;
