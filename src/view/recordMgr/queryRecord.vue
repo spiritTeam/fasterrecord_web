@@ -45,9 +45,9 @@
 </template>
 <script>
 import axios from 'axios'
-    
+
 export default {
-  
+
   data () {
     const downLoadCode = (h,params) => h('Button', {
         props: {
@@ -154,7 +154,7 @@ export default {
           }
         }
     },'撤销');
-    
+
     return {
       total: 0,
       fileObj: {},
@@ -250,7 +250,7 @@ export default {
     if(this.$route.params.pageNum){
       this.formQuery.pageNum=this.$route.params.pageNum;
     }
-    
+
   },
   mounted () {
     this.getCategoryList()
