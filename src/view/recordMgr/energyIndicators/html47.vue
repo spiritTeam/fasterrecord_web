@@ -1175,7 +1175,7 @@
               </td>
             </tr>
           </table>
-          <p class="red" v-if="pageType!='view'">注：保存到草稿时，不保存附件！<br />所有附件上传文件大小需要控制在2M以内。</p>
+          <p class="red" v-if="pageType!='view'">注：<br />1、标“*”内容为必填项；<br />2、所有附件上传文件大小需要控制在2M以内。</p >
         </Card>
       </div>
       <div v-if="pageType!='view'">
