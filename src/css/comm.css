@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#pageStyle #table4  .ivu-form-item-content{
+#table4  .ivu-form-item-content{
   display: flex;
 }
 
@@ -13,13 +13,13 @@
   margin: 10px 0;
 }
 
-#pageStyle .part {
+.part {
   background: #eee;
   padding: 15px;
   margin: 15px 0;
 }
 
-#pageStyle .part1 p {
+.part1 p {
   text-indent: 2em;
   font-size: 16px;
   line-height: 36px;
@@ -45,38 +45,38 @@
   text-align:right;
 }
 
-#pageStyle .part6 td > div {
+.part6 td > div {
   margin-bottom: 5px;
 }
 
-#pageStyle .part6 td span {
+.part6 td span {
   display: inline-block;
   width: 100px;
   text-align: center;
 }
 
-#pageStyle .tc {
+.tc {
   text-align: center;
 }
 
-#pageStyle .part8 td {
+.part8 td {
   text-align: center;
 }
 
-#pageStyle .red {
+.red {
   color: red;
   margin-right: 5px;
 }
 
-#pageStyle #table1 td, #pageStyle #table2 td, #pageStyle #table3 td, #pageStyle #table4 td {
+#table1 td, #table2 td, #table3 td, #table4 td {
   padding: 20px 10px;
 }
 
-#pageStyle #table1 .ivu-form-item, #pageStyle #table2 .ivu-form-item, #pageStyle #table3 .ivu-form-item, #pageStyle #table4 .ivu-form-item, #pageStyle #table5 .ivu-form-item {
+#table1 .ivu-form-item, #table2 .ivu-form-item, #table3 .ivu-form-item, #table4 .ivu-form-item, #table5 .ivu-form-item {
   margin-bottom: 0 !important;
 }
 
-#pageStyle #table2 .ivu-form-item, #pageStyle #table3 .ivu-form-item, #pageStyle #table4 .ivu-form-item, #pageStyle #table5 .ivu-form-item {
+#table2 .ivu-form-item, #table3 .ivu-form-item, #table4 .ivu-form-item, #table5 .ivu-form-item {
   display: inline-block;
 }
 
@@ -91,51 +91,51 @@
   content: "\F446";
 }
 
-#pageStyle .diffList {
+.diffList {
   margin: 20px 0;
 }
 
-#pageStyle .diffList table {
+.diffList table {
   width: 100%;
 }
 
-#pageStyle .lookOver {
+.lookOver {
   margin-bottom: 10px;
 }
 
-#pageStyle .org, #pageStyle .basic-info dl {
+.org,.basic-info dl {
   font-size: 16px;
 }
 
-#pageStyle .basic-info .valid {
+.basic-info .valid {
   width: 100%;
   margin: 10px 0;
 }
 
-#pageStyle .textarea-annotation, #pageStyle .color-red {
+.textarea-annotation,.color-red {
   font-weight: normal;
   font-size: 14px;
 }
 
-#pageStyle .color-red {
+.color-red {
   color: red;
 }
 
-#pageStyle .pro-info, #pageStyle .basic-info .record-number {
+.pro-info,.basic-info .record-number {
   height: auto;
   line-height: 40px;
 }
 
-#pageStyle .basic-info span[class^="f-"], #pageStyle .pro-info span[class^="f-"] {
+.basic-info span[class^="f-"],.pro-info span[class^="f-"] {
   font-weight: bold;
   padding: 0px 5px;
 }
 
-#pageStyle .application {
+.application {
   margin: 10px 0;
 }
 
-#pageStyle .w70 {
+.w70 {
   height: 52px;
 }
 
