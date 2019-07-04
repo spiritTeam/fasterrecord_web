@@ -20,7 +20,7 @@
       <div class="part part2">
         <Card :bordered="false">
           <h2>二、能源效率标识检测信息</h2>
-          <table> 
+          <table>
             <thead>
             <tr>
               <th>实验室名称</th>
@@ -1260,7 +1260,7 @@
     mounted() {
      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
-    methods: { 
+    methods: {
       showTemplate() {
         this.templatePic = this.$store.state.app.pltPic
         this.modal3 = true
@@ -1350,7 +1350,7 @@
              checkc34 = (rule, value, callback) => {
              callback("效率值（实测值）应大于等于效率值（标称值）！");
             }
-          } 
+          }
         }
 
         if ("" != (parseFloat(this.formRecord.c36))) {
@@ -1358,7 +1358,7 @@
             checkc36 = (rule, value, callback) => {
              callback("待机功耗（实测值）应小于等于待机功耗（标称值）！");
             }
-          } 
+          }
         }
 
         if ("" != (parseFloat(this.formRecord.c38))) {
@@ -1444,7 +1444,7 @@
                   checkc9 = (rule, value, callback) => {
                     callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
                   }
-                } 
+                }
                 if(djgl != null && djgl != ""){
                   checkc7 = (rule, value, callback) => {
                     callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
@@ -1518,7 +1518,7 @@
           this.formRecord.c16 = ''
           this.forbidden.c16 = true
         }
-        
+
         if (this.formRecord.c25 === '其他') {
           this.forbidden.c26 = false
         } else {

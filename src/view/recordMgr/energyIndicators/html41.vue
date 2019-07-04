@@ -2042,7 +2042,7 @@ import {
   }
 }
 </script>
-<style>
+<style lang="less" scoped>
   @import '../../../css/comm.css';
   .overwrite2 > span > span {
     width: 14px !important;

@@ -1519,7 +1519,7 @@ export default {
       if (this.formRecord.c25 == '冷热水型') this.formRecord.c8 = '冷热水型';
       if (this.formRecord.c8 == '冷热风型') this.formRecord.c25 = '冷热风型';
       if (this.formRecord.c8 == '冷热水型') this.formRecord.c25 = '冷热水型';
-      
+
       return {
         c3: [{
           required:true, message:'制造单位不能为空'
@@ -1764,4 +1764,4 @@ export default {
 </script>
 <style>
 @import '../../../css/comm.css';
-</style> 
+</style>

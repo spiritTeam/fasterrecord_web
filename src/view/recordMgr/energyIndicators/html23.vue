@@ -1863,7 +1863,7 @@
 </script>
 <style>
 @import '../../../css/comm.css';
-</style>
+</style >
 <style lang="less" scoped>
   .span-red{
     color: red;

@@ -845,7 +845,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1291,7 +1291,7 @@ import {
     }
   },
   mounted () {
-    
+
   },
   methods: {
     showTemplate() {
@@ -1604,7 +1604,7 @@ import {
               }
           }
       }
-      
+
       //绑定额定功率
       const checkc25 = (rule, value, callback) => {
           if(c25 > 2000){
@@ -1655,7 +1655,7 @@ import {
               callback();
           }
       }
-      
+
       //待机功能选择有选择通讯协议，待机功率和保温功耗不能填写。
       var c9 = this.formRecord.c9;
       var c23 = this.formRecord.c23;

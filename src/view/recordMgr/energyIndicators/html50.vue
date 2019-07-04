@@ -52,7 +52,7 @@
           </FormItem>
           <FormItem prop="c45" label="备案方" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c45" :disabled='disabledoff' placeholder="备案方" />
-          </FormItem>            
+          </FormItem>
           <FormItem prop="c4" label="产品规格型号" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="产品规格型号"/>
           </FormItem>
@@ -402,7 +402,7 @@
             </tr>
              <tr>
               <td align="right"><span class="red">*</span>整机或室内机外形尺寸<br/>(长×宽×高)<br/>(mm×mm×mm)</td>
-              <td> 
+              <td>
                 <FormItem prop="c34" style="width: 30%">
                   <Input style="vertical-align:top" type="text" v-model="formRecord.c34" :disabled='disabledoff'/>
                 </FormItem>
@@ -1208,7 +1208,7 @@
     mounted() {
      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
-    methods: { 
+    methods: {
       showTemplate() {
         this.templatePic = this.$store.state.app.pltPic
         this.modal3 = true
@@ -1448,7 +1448,7 @@
                 }
             }
         }
-        
+
         var filterValue =(type, cool, grade, opt_type) => {
             var minVal;
             jsonPdyj.forEach((v, i) => {
