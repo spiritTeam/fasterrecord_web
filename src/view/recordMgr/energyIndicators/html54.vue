@@ -23,8 +23,8 @@
           <table>
             <thead>
             <tr>
-              <th>实验室名称</th>
-              <th>检测报告条形码</th>
+               <th><i class="red">*</i>实验室名称</th>
+               <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
@@ -1523,7 +1523,7 @@
                     :on-format-error="file=>handleFormatError(file,76)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
+                    <Button icon="ios-cloud-upload-outline" type="primary">上传</Button> 
                     <Icon type="ios-checkmark" v-show="checkmark76" />
                   </Upload>
                 </div>
