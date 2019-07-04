@@ -23,8 +23,8 @@
           <table>
             <thead>
             <tr>
-              <th>实验室名称</th>
-              <th>检测报告条形码</th>
+               <th><i class="red">*</i>实验室名称</th>
+               <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
