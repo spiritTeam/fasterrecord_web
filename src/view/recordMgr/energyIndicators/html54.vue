@@ -1523,7 +1523,7 @@
                     :on-format-error="file=>handleFormatError(file,76)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
+                    <Button icon="ios-cloud-upload-outline" type="primary">上传</Button> 
                     <Icon type="ios-checkmark" v-show="checkmark76" />
                   </Upload>
                 </div>
