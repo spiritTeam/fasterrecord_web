@@ -148,8 +148,7 @@
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
-          <h3>样品描述</h3>
+          <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
               <td align="right"><span style="color:red">*</span>产品类型</td>
