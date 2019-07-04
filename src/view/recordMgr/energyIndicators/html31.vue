@@ -1087,6 +1087,7 @@
         checkmark32: false,
         checkmark76: false,
         formRecord: {
+          ec_master_kuozhan_text: '',
           c1: '',
           c2: '',
           c3: '',
@@ -1254,6 +1255,8 @@
         return this.$store.state.app.pltPic
       },
       ruleRecord () {
+        console.log(this.formRecord.c15)
+        console.log(this.$store.state.app.dateinit)
         let decimal1 =/^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
         let decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
         let decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/

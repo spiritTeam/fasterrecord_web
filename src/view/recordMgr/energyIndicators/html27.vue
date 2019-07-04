@@ -20,7 +20,7 @@
       <div class="part part2">
         <Card :bordered="false">
           <h2>二、能源效率标识检测信息</h2>
-          <table> 
+          <table>
             <thead>
             <tr>
               <th>实验室名称</th>
@@ -182,7 +182,7 @@
                         <Input type="text"  style="width:50px" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>个
                       </FormItem>
                     </CheckboxGroup>
-                </FormItem> 
+                </FormItem>
               </td>
             </tr>
             <tr>
@@ -415,7 +415,7 @@
                   </FormItem>
                 </td>
               </tr>
-              
+
               <tr>
                 <td width="80">3</td>
                 <td align="center">解码芯片</td>
@@ -517,7 +517,7 @@
                 </td>
               </tr>
             </tbody>
-          </table> 
+          </table>
         </Card>
       </div>
       <div class="part part7">
@@ -600,7 +600,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1013,7 +1013,7 @@
     mounted() {
      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
-    methods: { 
+    methods: {
       showTemplate() {
         this.templatePic = this.$store.state.app.pltPic
         this.modal3 = true
@@ -1215,7 +1215,7 @@
               message: '商标不能为空'
             }
           ],
-                  
+
           c28: [
             {
               required: true,
@@ -1251,7 +1251,7 @@
             {
               validator: atLeastTwoDecimals,
               trigger: 'change,blur'
-            } 
+            }
           ],
           c8: [
             {
@@ -1293,7 +1293,7 @@
             {
               validator: checkc11,
               trigger: 'change,blur'
-            } 
+            }
           ],
           c12: [
             {

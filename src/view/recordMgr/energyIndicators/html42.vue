@@ -5,7 +5,7 @@
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
       <h1>家用燃气灶具能源效率标识备案表</h1>
-      <div class="part part1"> 
+      <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>
           <p>本组织保证如下：</p>

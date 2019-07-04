@@ -2220,6 +2220,3 @@
 <style>
 @import '../../../css/comm.css';
 </style>
-<style lang="less" scoped>
-
-</style>

@@ -13,6 +13,9 @@
       <FormItem>
         <Input type="text" v-model="formQuery.bar_code" placeholder="实验室报告条码"></Input>
       </FormItem>
+       <FormItem>
+        <Input type="text" v-model="formQuery.record_no" placeholder="备案号"></Input>
+      </FormItem>
       <FormItem>
         <Button type="primary" @click="searchFun">搜索</Button>
         <Button type="primary" @click="clearFun">清空</Button>
@@ -28,12 +31,14 @@
       v-model="modal1"
       title="上传标识图">
       <Upload
-        :format="['jpg','jpeg','png']"
+        :format="['png']"
         :before-upload="fileHandleBeforeUpload"
         :data="uploadParam.fileData"
         :on-success="getFile"
         style="display:inline-block;"
+        :on-format-error="handleFormatError"
         :action="uploadUrl">
+
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
         <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
       </Upload>
@@ -45,124 +50,124 @@
 </template>
 <script>
 import axios from 'axios'
-    
+
 export default {
-  
+
   data () {
-    const downLoadCode = (h,params) => h('Button', {
-        props: {
-          type: 'primary',
-          size: 'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on: {
-          click: () => {
-            this.downloadQrcode(params.row.id)
-          }
+    const downLoadCode = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.downloadQrcode(params.row.id)
         }
-      }, '下载二维码');
-    const uploadBtn=(h,params) => h('Button', {
-        props: {
-          type: 'primary',
-          size: 'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on: {
-          click: () => {
-            this.uploadPic(params.row.id)
-          }
+      }
+    }, '下载二维码')
+    const uploadBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.uploadPic(params.row.id)
         }
-      }, '标识图上传');
-    const downLoadRecord = (h,params) =>  h('Button', {
-        props: {
-          type: 'primary',
-          size: 'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on: {
-          click: () => {
-            this.downloadElImg(params.row.id)
-          }
+      }
+    }, '标识图上传')
+    const downLoadRecord = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.downloadElImg(params.row.id)
         }
-    }, '下载能效标识图');
-    const extendBtn = (h,params) => h('Button',{
-        props:{
-          type:'primary',
-          size:'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on:{
-          click:()=>{
-              this.extendHandle(params.row.id);
-          }
+      }
+    }, '下载能效标识图')
+    const extendBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.extendHandle(params.row.id)
         }
-    },'扩展');
-    const updateBtn = (h,params) => h('Button',{
-        props:{
-          type:'primary',
-          size:'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on:{
-          click:()=>{
-              this.updateHandle(params.row.id);
-          }
+      }
+    }, '扩展')
+    const updateBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.updateHandle(params.row.id)
         }
-    },'变更');
-    const viewBtn = (h,params) => h('Button',{
-        props:{
-          type:'primary',
-          size:'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on:{
-          click:()=>{
-              this.viewHandle(params.row.id);
-          }
+      }
+    }, '变更')
+    const viewBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.viewHandle(params.row.id)
         }
-    },'查看');
-    const cancleBtn = (h,params) => h('Button',{
-        props:{
-          type:'primary',
-          size:'small',
-          long:'long'
-        },
-        style: {
-          margin: '1px'
-        },
-        on:{
-          click:()=>{
-              this.cancleHandle(params.row.id);
-          }
+      }
+    }, '查看')
+    const cancleBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.cancleHandle(params.row.id)
         }
-    },'撤销');
-    
+      }
+    }, '撤销')
+
     return {
       total: 0,
       fileObj: {},
       modal1: false,
       modal2: false,
-      qus:'',
+      qus: '',
       id: '',
-      rowId:0,
+      rowId: 0,
       uploadUrl: '',
       uploadParam: {
         fileData: {},
@@ -172,6 +177,7 @@ export default {
         category_id: '',
         model_name: '',
         bar_code: '',
+        record_no: '',
         pageSize: 10,
         pageNum: 1
       },
@@ -191,20 +197,21 @@ export default {
           title: '主型号',
           key: 'p_model_name',
           align: 'center',
-          render:(h,params)=>{
-              return h('a',{
-                on:{
-                  click:()=>{
-                      this.viewHandle(params.row.p_id);
-                  }
+          render: (h, params) => {
+            return h('a', {
+              on: {
+                click: () => {
+                  this.viewHandle(params.row.p_id)
                 }
-              },params.row.p_model_name)
+              }
+            }, params.row.p_model_name)
           }
         },
         {
           title: '实验室报告条码',
           key: 'bar_code',
-          align: 'center'
+          align: 'center',
+          width: 130,
         },
         {
           title: '备案号',
@@ -223,6 +230,11 @@ export default {
           // }
         },
         {
+          title: '公告时间',
+          key: 'publish_time',
+          align: 'center'
+        },
+        {
           title: '备案类型',
           key: 'type_name',
           align: 'center'
@@ -231,26 +243,26 @@ export default {
           title: '操作',
           key: 'action',
           align: 'center',
+          width: 140,
           render: (h, params) => {
-            return h('div',[
-                viewBtn(h,params),
-                downLoadCode(h, params),
-                params.row.state === 2?uploadBtn(h,params): downLoadRecord(h,params),
-                params.row.kz ? extendBtn(h,params) :'',
-                params.row.bg ? updateBtn(h,params) :'',
-                params.row.cx ?cancleBtn(h,params):''
-            ]);
+            return h('div', [
+              viewBtn(h, params),
+              downLoadCode(h, params),
+              params.row.state === 2 ? uploadBtn(h, params) : downLoadRecord(h, params),
+              params.row.kz ? extendBtn(h, params) : '',
+              params.row.bg ? updateBtn(h, params) : '',
+              params.row.cx ? cancleBtn(h, params) : ''
+            ])
           }
         }
       ],
       recordData: []
     }
   },
-  created(){
-    if(this.$route.params.pageNum){
-      this.formQuery.pageNum=this.$route.params.pageNum;
+  created () {
+    if (this.$route.params.pageNum) {
+      this.formQuery.pageNum = this.$route.params.pageNum
     }
-    
   },
   mounted () {
     this.getCategoryList()
@@ -265,6 +277,12 @@ export default {
         this.total = res.data.total
       })
     },
+    handleFormatError () {
+      this.$Notice.warning({
+        title: '上传文件，类型错误',
+        desc: '请选择正确的类型文件'
+      })
+    },
     changeList (pNum) {
       this.formQuery.pageNum = pNum
       this.reqData()
@@ -277,13 +295,14 @@ export default {
       this.formQuery.category_id = ''
       this.formQuery.model_name = ''
       this.formQuery.bar_code = ''
+      this.formQuery.record_no = ''
       this.searchFun()
     },
     downloadQrcode (id) {
-      window.open('/marking/downloadQrcode.do?id='+id)
+      window.open('/marking/downloadQrcode.do?id=' + id)
     },
     downloadElImg (id) {
-      window.open('/marking/downloadELImg.do?id='+id)
+      window.open('/marking/downloadELImg.do?id=' + id)
     },
     getRandom (type) {
       return (Math.random().toString().slice(2)) + type
@@ -361,76 +380,77 @@ export default {
         }
       })
     },
-    cancleHandle(id){
-        this.rowId=id
-        this.modal2=true;
+    cancleHandle (id) {
+      this.rowId = id
+      this.modal2 = true
     },
-    submitWorkorder(){
-      let _this=this
-      if(this.qus===''){
-        this.$Message.error("撤销申请不能为空");
-        return;
+    submitWorkorder () {
+      let _this = this
+      if (this.qus === '') {
+        this.$Message.error('撤销申请不能为空')
+        return
       }
       axios.get('/marking/revoke.do', {
         params: {
           id: this.rowId,
-          reason:this.qus
+          reason: this.qus
         }
       }).then(res => {
-        if(res.data.result_code==='1'){
-          _this.$Message.success(res.data.message);
-          _this.qus='';
-         _this.reqData();
-        }else{
+        if (res.data.result_code === '1') {
+          _this.$Message.success(res.data.message)
+          _this.qus = ''
+          _this.reqData()
+        } else {
           _this.$Message.warning(res.data.message)
         }
       })
     },
-    viewHandle(id){
+    viewHandle (id) {
       axios.get('/marking/getInfo.do', {
         params: {
           id: id
         }
       }).then(res => {
-        if(res.data.result_code==='1'){
-            this.$router.push({
-              name:'addRecord',
-              params:{
-                step:3,
-                type:'view',
-                id:id,
-                pageNum:this.formQuery.pageNum,
-                viewData:res.data
-              }
-            })
-            this.$store.commit('setModelNo',res.data.marking.ec_model_no)
+        if (res.data.result_code === '1') {
+          this.$router.push({
+            name: 'addRecord',
+            params: {
+              step: 3,
+              type: 'view',
+              id: id,
+              pageNum: this.formQuery.pageNum,
+              viewData: res.data
+            }
+          })
+          this.$store.commit('setModelNo', res.data.marking.ec_model_no)
         }
       })
     },
-    updateHandle(id){
-        this.$router.push({name:'addRecord',params:{type:'update',id:id}});
-        //this.$store.commit('setPageType', 'update')
-        //this.$store.commit('setUpdateId',id)
+    updateHandle (id) {
+      this.$router.push({name: 'addRecord', params: {type: 'update', id: id}})
+      // this.$store.commit('setPageType', 'update')
+      // this.$store.commit('setUpdateId',id)
     },
-    extendHandle(id){
+    extendHandle (id) {
       axios.get('/marking/getInfoWithoutAttach.do', {
         params: {
           id: id
         }
       }).then(res => {
-          if(res.data.result_code==='1'){
-            this.$router.push({
-              name:'addRecord',
-              params:{
-                step:3,
-                type:'extend',
-                id:id,
-                extendData:res.data
-              }
-            })
-            this.$store.commit('setModelNo',res.data.marking.ec_model_no)
-            //this.$store.commit('setOem',res.data.lab.oem)
-          }
+        if (res.data.result_code === '1') {
+          this.$router.push({
+            name: 'addRecord',
+            params: {
+              step: 3,
+              type: 'extend',
+              id: id,
+              extendData: res.data
+            }
+          })
+          this.$store.commit('setModelNo', res.data.marking.ec_model_no)
+          this.$store.commit('setDateInit', res.data.lab.upddate)
+          // this.$store.commit('setOem',res.data.lab.oem)
+        }
       })
     }
   }

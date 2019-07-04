@@ -5,7 +5,7 @@
       <ReportCode v-show="step === 1" @toStep2="showTemple"></ReportCode>
       <SelectSample ref="selectSample" v-show="step === 2" @toStep3="showRecordTab"></SelectSample>
       <Tabs type="card" v-show="step === 3">
-        <TabPane label="能效指标">
+        <TabPane label="能效指标" id="pageStyle">
           <!-- <EnergyIndicators ref="energyIndicators"></EnergyIndicators> -->
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>

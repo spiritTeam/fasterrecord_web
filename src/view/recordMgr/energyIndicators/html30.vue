@@ -1794,7 +1794,7 @@
       //       this.formRecord.c55=[]
       //       this.forbidden.c55=true
       //     }
-        
+
       // }else if(c15 == "便携式计算机"){
 
       // }
@@ -1922,7 +1922,7 @@
       //     this.formRecord.c16=''
       //     if(this.formRecord.c17 =='A类' && this.formRecord.c27 =='集成'){//集成
       //        this.forbidden.gpu=true
-             
+
       //        //清除A类便携机
       //        this.clearAlbxj();
 
@@ -1968,14 +1968,14 @@
       //        }
       //     }else if(this.formRecord.c17 =='B类' && this.formRecord.c27 =='独立'){//独立
       //         this.forbidden.gpu=false
-              
+
       //         //清除无用选项
       //         this.clearBcty();
 
       //         this.formRecord.c49=[]
       //         this.formRecord.c53=[]
       //         this.formRecord.c57=[]
-              
+
       //         this.forbidden.c40=false
       //         if(this.formRecord.c40 =='是'){
       //           this.forbidden.c42=false

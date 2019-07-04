@@ -1,10 +1,14 @@
 @charset "UTF-8";
 
-h1 {
+#table4  .ivu-form-item-content{
+  display: flex;
+}
+
+#pageStyle h1 {
   font-size: 20px;
 }
 
-h2 {
+#pageStyle h2 {
   font-size: 18px;
   margin: 10px 0;
 }
@@ -21,22 +25,22 @@ h2 {
   line-height: 36px;
 }
 
-table {
+#pageStyle table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 10px;
 }
 
-table th {
+#pageStyle table th {
   background-color: rgb(245, 245, 246);
 }
 
-table td, table th {
+#pageStyle table td, #pageStyle table th {
   border: 1px solid #dddee1;
   padding: 10px;
 }
 
-table tr .t_label {
+#pageStyle table tr .t_label {
   padding-right:5px;
   text-align:right;
 }
@@ -61,6 +65,7 @@ table tr .t_label {
 
 .red {
   color: red;
+  margin-right: 5px;
 }
 
 #table1 td, #table2 td, #table3 td, #table4 td {
@@ -75,14 +80,14 @@ table tr .t_label {
   display: inline-block;
 }
 
-.ivu-icon-ios-help-circle-outline {
+#pageStyle .ivu-icon-ios-help-circle-outline {
   position: absolute;
   top: -8px;
   right: -2px;
   display: none;
 }
 
-.ivu-icon-ios-help-circle-outline:before {
+#pageStyle .ivu-icon-ios-help-circle-outline:before {
   content: "\F446";
 }
 
@@ -98,7 +103,7 @@ table tr .t_label {
   margin-bottom: 10px;
 }
 
-.org, .basic-info dl {
+.org,.basic-info dl {
   font-size: 16px;
 }
 
@@ -107,7 +112,7 @@ table tr .t_label {
   margin: 10px 0;
 }
 
-.textarea-annotation, .color-red {
+.textarea-annotation,.color-red {
   font-weight: normal;
   font-size: 14px;
 }
@@ -116,12 +121,12 @@ table tr .t_label {
   color: red;
 }
 
-.pro-info, .basic-info .record-number {
+.pro-info,.basic-info .record-number {
   height: auto;
   line-height: 40px;
 }
 
-.basic-info span[class^="f-"], .pro-info span[class^="f-"] {
+.basic-info span[class^="f-"],.pro-info span[class^="f-"] {
   font-weight: bold;
   padding: 0px 5px;
 }

@@ -1239,7 +1239,7 @@ import {
         c116: '',
         c117: '',
         c118: '',
-        c119: [], 
+        c119: [],
         c120: '',
         c121: '',
         c122: [],
@@ -1268,7 +1268,7 @@ import {
     }
   },
   mounted () {
-    
+
   },
   methods: {
     showTemplate() {
@@ -1517,7 +1517,7 @@ import {
           this.formRecord.c39 = ''
           this.forbidden.c39 = true
       }
-      
+
       //热效率实测值应大于标注值
       var c8v = this.formRecord.c8;
       var c9v = this.formRecord.c9;
@@ -2042,7 +2042,7 @@ import {
   }
 }
 </script>
-<style>
+<style lang="less" scoped>
   @import '../../../css/comm.css';
   .overwrite2 > span > span {
     width: 14px !important;
