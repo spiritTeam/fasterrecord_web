@@ -210,7 +210,8 @@ export default {
         {
           title: '实验室报告条码',
           key: 'bar_code',
-          align: 'center'
+          align: 'center',
+          width: 130,
         },
         {
           title: '备案号',
@@ -242,6 +243,7 @@ export default {
           title: '操作',
           key: 'action',
           align: 'center',
+          width: 140,
           render: (h, params) => {
             return h('div', [
               viewBtn(h, params),
