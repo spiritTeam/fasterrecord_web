@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#table4  .ivu-form-item-content{
+#pageStyle #table4  .ivu-form-item-content{
   display: flex;
 }
 
@@ -17,6 +17,12 @@
   background: #eee;
   padding: 15px;
   margin: 15px 0;
+}
+
+#pageStyle .lookPdf{
+  margin: 40px auto;
+  display: block;
+  border: 1px solid #ccc;
 }
 
 #pageStyle .part1 p {

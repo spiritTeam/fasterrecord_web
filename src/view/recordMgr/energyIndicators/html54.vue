@@ -1523,7 +1523,7 @@
                     :on-format-error="file=>handleFormatError(file,76)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    <Button icon="ios-cloud-upload-outline" type="primary">上传</Button> 
+                    <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark76" />
                   </Upload>
                 </div>
@@ -1585,7 +1585,8 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
      <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
