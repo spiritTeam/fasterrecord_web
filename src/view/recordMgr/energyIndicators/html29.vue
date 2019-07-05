@@ -130,7 +130,7 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <FormItem prop="c11" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c11" :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c11"></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -1010,10 +1010,10 @@
     <Modal v-model="modal3" :width=820 :footer-hide=true>
       <img :src="templatePic" />
     </Modal>
-    <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
-    </Modal>
+  <Modal v-model="modal4" :width=820 :footer-hide=true>
+    <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+    <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+  </Modal>
      <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
@@ -1021,7 +1021,7 @@
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
           品牌的 <span  class="f-model">{{formRecord.c2}}</span>
-          型号的 <span  class="f-product">电动洗衣机 2013版</span>产品。
+          型号的 <span  class="f-product">家用太阳能热水系统 2011版</span>产品。
        </div>
        <dl v-if="pageType==='extend'">
           <dt>

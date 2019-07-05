@@ -843,10 +843,10 @@
     <Modal v-model="modal3" :width=820 :footer-hide=true>
       <img :src="templatePic" />
     </Modal>
-    <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
-    </Modal>
+  <Modal v-model="modal4" :width=820 :footer-hide=true>
+    <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+    <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+  </Modal>
      <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
