@@ -80,8 +80,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>标注值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>标注值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -214,7 +214,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td>电源性质</td>
+              <td><i class="red">*</i>电源性质</td>
               <td width="30%">
                 <FormItem prop="c10">
                   <RadioGroup v-model="formRecord.c10">
@@ -223,7 +223,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>开关（全极断开）</td>
+              <td><i class="red">*</i>开关（全极断开）</td>
               <td width="30%">
                 <FormItem prop="c15">
                   <RadioGroup v-model="formRecord.c15">
@@ -234,7 +234,7 @@
               </td>
             </tr>
             <tr>
-              <td>压缩机调速方式</td>
+              <td><i class="red">*</i>压缩机调速方式</td>
               <td colspan="3">
                 <FormItem prop="c12">
                   <RadioGroup v-model="formRecord.c12">
@@ -250,7 +250,7 @@
               </td>
             </tr>
             <tr>
-              <td>电加热装置</td>
+              <td><i class="red">*</i>电加热装置</td>
               <td colspan="3">
                 <FormItem prop="c14">
                   <RadioGroup v-model="formRecord.c14">
@@ -265,13 +265,13 @@
               </td>
             </tr>
             <tr>
-              <td>最大输入功率（W）</td>
+              <td><i class="red">*</i>最大输入功率（W）</td>
               <td>
                 <FormItem prop="c58">
                   <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>最大输入电流（A）</td>
+              <td><i class="red">*</i>最大输入电流（A）</td>
               <td>
                 <FormItem prop="c59">
                   <Input type="text" v-model="formRecord.c59" :disabled='disabledoff'/>
@@ -279,7 +279,7 @@
               </td>
             </tr>
             <tr>
-              <td>单极开关</td>
+              <td><i class="red">*</i>单极开关</td>
               <td>
                 <FormItem prop="c16">
                   <RadioGroup v-model="formRecord.c16">
@@ -299,7 +299,7 @@
               </td>
             </tr>
             <tr>
-              <td>温控器以外的其它控制装置</td>
+              <td><i class="red">*</i>温控器以外的其它控制装置</td>
               <td>
                 <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
@@ -308,7 +308,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>用于非正常工作保护的薄弱零件</td>
+              <td><i class="red">*</i>用于非正常工作保护的薄弱零件</td>
               <td>
                 <FormItem prop="c19">
                   <RadioGroup v-model="formRecord.c19">
@@ -319,7 +319,7 @@
               </td>
             </tr>
             <tr>
-              <td>电子控制线路</td>
+              <td><i class="red">*</i>电子控制线路</td>
               <td>
                 <FormItem prop="c20">
                   <RadioGroup v-model="formRecord.c20">
@@ -328,7 +328,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>不可拆线插头的电源线</td>
+              <td><i class="red">*</i>不可拆线插头的电源线</td>
               <td>
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
@@ -339,7 +339,7 @@
               </td>
             </tr>
             <tr>
-              <td>单独的控制面板</td>
+              <td><i class="red">*</i>单独的控制面板</td>
               <td>
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
@@ -348,7 +348,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>线控器</td>
+              <td><i class="red">*</i>线控器</td>
               <td>
                 <FormItem prop="c23">
                   <RadioGroup v-model="formRecord.c23">
@@ -359,7 +359,7 @@
               </td>
             </tr>
             <tr>
-              <td>遥控器</td>
+              <td><i class="red">*</i>遥控器</td>
               <td>
                 <FormItem prop="c24">
                   <RadioGroup v-model="formRecord.c24">
@@ -368,7 +368,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>是否接风管</td>
+              <td><i class="red">*</i>是否接风管</td>
               <td>
                 <FormItem prop="c56">
                   <RadioGroup v-model="formRecord.c56">
@@ -379,13 +379,13 @@
               </td>
             </tr>
             <tr>
-              <td>额定电压(V)</td>
+              <td><i class="red">*</i>额定电压(V)</td>
               <td>
                 <FormItem prop="c45">
                   <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>额定电流(A)</td>
+              <td><i class="red">*</i>额定电流(A)</td>
               <td>
                 <FormItem prop="c47">
                   <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
@@ -393,13 +393,13 @@
               </td>
             </tr>
             <tr>
-              <td>额定频率（Hz）</td>
+              <td><i class="red">*</i>额定频率（Hz）</td>
               <td>
                 <FormItem prop="c46">
                   <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>制热季节能源消耗效率</td>
+              <td><i class="red">*</i>制热季节能源消耗效率</td>
               <td>
                 <FormItem prop="c26">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
@@ -407,13 +407,13 @@
               </td>
             </tr>
             <tr>
-              <td>制冷剂</td>
+              <td><i class="red">*</i>制冷剂</td>
               <td>
                 <FormItem prop="c29">
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>灌注量(g)</td>
+              <td><i class="red">*</i>灌注量(g)</td>
               <td>
                 <FormItem prop="c53">
                   <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
@@ -421,7 +421,7 @@
               </td>
             </tr>
             <tr>
-              <td>整机或室内机外形尺寸(长×宽×高)（mm×mm×mm）</td>
+              <td><i class="red">*</i>整机或室内机外形尺寸(长×宽×高)（mm×mm×mm）</td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" style="width:80px;" :disabled='disabledoff'/>
@@ -451,13 +451,13 @@
               </td>
             </tr>
             <tr>
-              <td>整机或室内机噪声dB（A）</td>
+              <td><i class="red">*</i>整机或室内机噪声dB（A）</td>
               <td>
                 <FormItem prop="c54">
                   <Input type="text" v-model="formRecord.c54" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>室外机噪声dB（A）</td>
+              <td><i class="red">*</i>室外机噪声dB（A）</td>
               <td>
                 <FormItem prop="c55">
                   <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
@@ -775,7 +775,7 @@
                   <Upload
                     id=76
                     :show-upload-list=false
-                    :format="['jpg','jpeg','png']"
+                    :format="['jpg','jpeg','png','pdf']"
                     :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
                     :on-success="(res,file)=>getFile(res,file, 76)"
@@ -844,7 +844,8 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
      <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1162,6 +1163,7 @@
         var c6 = parseFloat(this.formRecord.c6)
         var c37 = parseFloat(this.formRecord.c37)
         var c57 = this.formRecord.c57
+
 
         if (this.formRecord.c57 === '热泵型') {
           this.forbidden.c25 = false

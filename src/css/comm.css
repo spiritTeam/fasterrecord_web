@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#table4  .ivu-form-item-content{
+#pageStyle #table4  .ivu-form-item-content{
   display: flex;
 }
 
@@ -13,13 +13,19 @@
   margin: 10px 0;
 }
 
-.part {
+#pageStyle .part {
   background: #eee;
   padding: 15px;
   margin: 15px 0;
 }
 
-.part1 p {
+#pageStyle .lookPdf{
+  margin: 40px auto;
+  display: block;
+  border: 1px solid #ccc;
+}
+
+#pageStyle .part1 p {
   text-indent: 2em;
   font-size: 16px;
   line-height: 36px;
@@ -45,38 +51,38 @@
   text-align:right;
 }
 
-.part6 td > div {
+#pageStyle .part6 td > div {
   margin-bottom: 5px;
 }
 
-.part6 td span {
+#pageStyle .part6 td span {
   display: inline-block;
   width: 100px;
   text-align: center;
 }
 
-.tc {
+#pageStyle .tc {
   text-align: center;
 }
 
-.part8 td {
+#pageStyle .part8 td {
   text-align: center;
 }
 
-.red {
+#pageStyle .red {
   color: red;
   margin-right: 5px;
 }
 
-#table1 td, #table2 td, #table3 td, #table4 td {
+#pageStyle #table1 td, #pageStyle #table2 td, #pageStyle #table3 td, #pageStyle #table4 td {
   padding: 20px 10px;
 }
 
-#table1 .ivu-form-item, #table2 .ivu-form-item, #table3 .ivu-form-item, #table4 .ivu-form-item, #table5 .ivu-form-item {
+#table1 .ivu-form-item, #pageStyle #table2 .ivu-form-item, #pageStyle #table3 .ivu-form-item, #pageStyle #table4 .ivu-form-item, #pageStyle #table5 .ivu-form-item {
   margin-bottom: 0 !important;
 }
 
-#table2 .ivu-form-item, #table3 .ivu-form-item, #table4 .ivu-form-item, #table5 .ivu-form-item {
+#table2 .ivu-form-item, #pageStyle #table3 .ivu-form-item, #pageStyle #table4 .ivu-form-item, #pageStyle #table5 .ivu-form-item {
   display: inline-block;
 }
 
@@ -91,51 +97,51 @@
   content: "\F446";
 }
 
-.diffList {
+#pageStyle .diffList {
   margin: 20px 0;
 }
 
-.diffList table {
+#pageStyle .diffList table {
   width: 100%;
 }
 
-.lookOver {
+#pageStyle .lookOver {
   margin-bottom: 10px;
 }
 
-.org,.basic-info dl {
+#pageStyle .org, #pageStyle .basic-info dl {
   font-size: 16px;
 }
 
-.basic-info .valid {
+#pageStyle .basic-info .valid {
   width: 100%;
   margin: 10px 0;
 }
 
-.textarea-annotation,.color-red {
+#pageStyle .textarea-annotation, #pageStyle .color-red {
   font-weight: normal;
   font-size: 14px;
 }
 
-.color-red {
+#pageStyle .color-red {
   color: red;
 }
 
-.pro-info,.basic-info .record-number {
+#pageStyle .pro-info,#pageStyle .basic-info .record-number {
   height: auto;
   line-height: 40px;
 }
 
-.basic-info span[class^="f-"],.pro-info span[class^="f-"] {
+#pageStyle .basic-info span[class^="f-"],#pageStyle .pro-info span[class^="f-"] {
   font-weight: bold;
   padding: 0px 5px;
 }
 
-.application {
+#pageStyle .application {
   margin: 10px 0;
 }
 
-.w70 {
+#pageStyle .w70 {
   height: 52px;
 }
 

@@ -645,7 +645,7 @@
                   <Upload
                     id=76
                     :show-upload-list=false
-                    :format="['jpg','jpeg','png']"
+                    :format="['jpg','jpeg','png','pdf']"
                     :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
                     :on-success="(res,file)=>getFile(res,file, 76)"
@@ -716,7 +716,8 @@
       <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic"/>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>

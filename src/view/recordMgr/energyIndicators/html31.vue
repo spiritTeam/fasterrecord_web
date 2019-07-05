@@ -67,8 +67,8 @@
         <table id="table1">
           <tr>
             <th>项目</th>
-            <th>标称值</th>
-            <th>实测值</th>
+            <th><i class="red">*</i>标称值</th>
+            <th><i class="red">*</i>实测值</th>
             <th>备注</th>
           </tr>
           <tr>
@@ -177,7 +177,7 @@
         <h2>五、样品描述</h2>
         <table id="table3">
           <tr>
-            <td rowspan="3" width="20%">产品类型</td>
+            <td rowspan="3" width="20%"><i class="red">*</i>产品类型</td>
             <td colspan="3">
               <FormItem prop="c27">
                 <RadioGroup v-model="formRecord.c27">
@@ -214,7 +214,7 @@
             </td>
           </tr>
           <tr>
-            <td>电源类型</td>
+            <td><i class="red">*</i>电源类型</td>
             <td width="30%">
               <FormItem prop="c41">
                 <RadioGroup v-model="formRecord.c41">
@@ -223,7 +223,7 @@
                 </RadioGroup>
               </FormItem>
             </td>
-            <td width="20%">控制方式</td>
+            <td width="20%"><i class="red">*</i>控制方式</td>
             <td width="30%">
               <FormItem prop="c25">
                 <RadioGroup v-model="formRecord.c25">
@@ -234,7 +234,7 @@
             </td>
           </tr>
           <tr>
-            <td>电容器</td>
+            <td><i class="red">*</i>电容器</td>
             <td>
               <FormItem prop="c45">
                 <RadioGroup v-model="formRecord.c45">
@@ -243,7 +243,7 @@
                 </RadioGroup>
               </FormItem>
             </td>
-            <td>电动机</td>
+            <td><i class="red">*</i>电动机</td>
             <td>
               <FormItem prop="c46">
                 <RadioGroup v-model="formRecord.c46">
@@ -256,7 +256,7 @@
             </td>
           </tr>
           <tr>
-            <td>进水阀</td>
+            <td><i class="red">*</i>进水阀</td>
             <td>
               <FormItem prop="c47">
                 <RadioGroup v-model="formRecord.c47">
@@ -265,7 +265,7 @@
                 </RadioGroup>
               </FormItem>
             </td>
-            <td>定时器</td>
+            <td><i class="red">*</i>定时器</td>
             <td>
               <FormItem prop="c50">
                 <RadioGroup v-model="formRecord.c50">
@@ -276,7 +276,7 @@
             </td>
           </tr>
           <tr>
-            <td>排水方式</td>
+            <td><i class="red">*</i>排水方式</td>
             <td>
               <FormItem prop="c48">
                 <RadioGroup v-model="formRecord.c48">
@@ -289,7 +289,7 @@
                 <Input type="text" v-model="formRecord.c49" :disabled="disabledoff"/>
               </FormItem>
             </td>
-            <td>加热功能</td>
+            <td><i class="red">*</i>加热功能</td>
             <td>
               <FormItem prop="c28">
                 <RadioGroup v-model="formRecord.c28">
@@ -309,7 +309,7 @@
                 <Input type="text" v-model="formRecord.c31" :disabled="disabledoff"/>
               </FormItem>
             </td>
-            <td>波轮材料</td>
+            <td><i class="red">*</i>波轮材料</td>
             <td>
               <FormItem prop="c32">
                 <Input type="text" v-model="formRecord.c32" :disabled="disabledoff"/>
@@ -317,27 +317,41 @@
             </td>
           </tr>
           <tr>
-            <td>内筒直径</td>
-            <td>
+            <td rowspan="2" class="right-align"><span class="color-red">*</span>内桶</td>
+            <td colspan="3">
+              <label>直径（mm）：</label>
               <FormItem prop="c51">
                 <Input type="text" v-model="formRecord.c51" :disabled="disabledoff"/>
               </FormItem>
-            </td>
-            <td>内筒材料</td>
-            <td>
+              <label>材料：</label>
               <FormItem prop="c34">
                 <Input type="text" v-model="formRecord.c34" :disabled="disabledoff"/>
               </FormItem>
             </td>
           </tr>
           <tr>
-            <td>额定电压(V)</td>
+            <td colspan="3" class="w19"><label>尺寸（mm×mm×mm）：</label>
+              <FormItem prop="c33">
+                <Input type="text" v-model="formRecord.c33" style="width:80px;" :disabled="disabledoff"/>
+              </FormItem>
+              <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+              <FormItem prop="c57">
+                <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled="disabledoff"/>
+              </FormItem>
+              <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+              <FormItem prop="c58">
+                <Input type="text" v-model="formRecord.c58" style="width:80px;" :disabled="disabledoff"/>
+              </FormItem>
+            </td>
+          </tr>
+          <tr>
+            <td><i class="red">*</i>额定电压(V)</td>
             <td>
               <FormItem prop="c52">
                 <Input type="text" v-model="formRecord.c52" :disabled="disabledoff"/>
               </FormItem>
             </td>
-            <td>额定频率(Hz)</td>
+            <td><i class="red">*</i>额定频率(Hz)</td>
             <td>
               <FormItem prop="c53">
                 <Input type="text" v-model="formRecord.c53" :disabled="disabledoff"/>
@@ -373,22 +387,8 @@
             </td>
           </tr>
           <tr>
-            <td>内桶尺寸（mm×mm×mm）</td>
-            <td>
-              <FormItem prop="c33">
-                <Input type="text" v-model="formRecord.c33" style="width:80px;" :disabled="disabledoff"/>
-              </FormItem>
-              <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
-              <FormItem prop="c57">
-                <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled="disabledoff"/>
-              </FormItem>
-              <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
-              <FormItem prop="c58">
-                <Input type="text" v-model="formRecord.c58" style="width:80px;" :disabled="disabledoff"/>
-              </FormItem>
-            </td>
-            <td>外形尺寸（长×宽×高）（mm×mm×mm）</td>
-            <td>
+            <td><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm）</td>
+            <td colspan="3">
               <FormItem prop="c35">
                 <Input type="text" v-model="formRecord.c35" style="width:80px;" :disabled="disabledoff"/>
               </FormItem>
@@ -876,7 +876,7 @@
                   <Upload
                     id=76
                     :show-upload-list=false
-                    :format="['jpg','jpeg','png']"
+                    :format="['jpg','jpeg','png','pdf']"
                     :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
                     :on-success="(res,file)=>getFile(res,file, 76)"
@@ -944,9 +944,10 @@
     <Modal v-model="modal3" :width=820 :footer-hide=true>
       <img :src="templatePic" />
     </Modal>
-    <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
-    </Modal>
+  <Modal v-model="modal4" :width=820 :footer-hide=true>
+    <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+    <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+  </Modal>
      <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
@@ -1230,6 +1231,9 @@
       submitRecord() {
         return XsubmitRecord(this)
       },
+      viewClose() {
+        return XviewClose(this)
+      },
       /* 保存草稿箱 */
       saveRecord() {
         return XsaveRecord(this)
@@ -1255,8 +1259,6 @@
         return this.$store.state.app.pltPic
       },
       ruleRecord () {
-        console.log(this.formRecord.c15)
-        console.log(this.$store.state.app.dateinit)
         let decimal1 =/^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
         let decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
         let decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
