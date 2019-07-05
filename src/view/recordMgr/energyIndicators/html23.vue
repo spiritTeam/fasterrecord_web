@@ -17,8 +17,8 @@
           <table>
             <thead>
             <tr>
-               <th><i class="red">*</i>实验室名称</th>
-               <th><i class="red">*</i>检测报告条形码</th>
+              <th><i class="red">*</i>实验室名称</th>
+              <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" disabled />
+            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" disabled/>
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位"/>
@@ -64,7 +64,7 @@
             </RadioGroup>
           </FormItem>
           <FormItem prop="c62" style="margin-top:-55.8px;" :label-width="440">
-              <Input type="text" v-model="formRecord.c62" style="width:200px;" :disabled='disabledoff || forbidden.c62'/>
+            <Input type="text" v-model="formRecord.c62" style="width:200px;" :disabled='disabledoff || forbidden.c62'/>
           </FormItem>
           <FormItem prop="c51" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c51">
@@ -75,7 +75,7 @@
           </FormItem>
           <span class="span-red">不能编辑的参数可以去标识样式下载列表修改</span>
           <table id="table1">
-             <tr>
+            <tr>
               <th>项目</th>
               <th>额定值</th>
               <th>实测值</th>
@@ -182,7 +182,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>开关（全极断开）</td>
               <td>
-               <FormItem prop="c19" style="width:100%;" :label-width="30">
+                <FormItem prop="c19" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c19">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -202,7 +202,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>温控器以外的其他控制装置</td>
               <td>
-               <FormItem prop="c21" style="width:100%;" :label-width="30">
+                <FormItem prop="c21" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c21">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -222,7 +222,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>电子控制线路</td>
               <td>
-               <FormItem prop="c23" style="width:100%;" :label-width="30">
+                <FormItem prop="c23" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c23">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -242,7 +242,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>单独的控制面板</td>
               <td>
-               <FormItem prop="c25" style="width:100%;" :label-width="30">
+                <FormItem prop="c25" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c25">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -262,7 +262,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>遥控器</td>
               <td>
-               <FormItem prop="c27" style="width:100%;" :label-width="30">
+                <FormItem prop="c27" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c27">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -500,7 +500,7 @@
       <div class="part part6">
         <Card :bordered="false">
           <h2>六、产品基本配置清单</h2>
-           <table id="table4">
+          <table id="table4">
             <tr>
               <th width="50">序号</th>
               <th width="100">名称</th>
@@ -519,82 +519,82 @@
             </tr>
             <tr>
               <td>
-                <FormItem prop="c63" style="width:100%;" >
-                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff' />
+                <FormItem prop="c63" style="width:100%;">
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c64" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c65" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c66" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c67" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
                 <FormItem prop="c68" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c69" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c70" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c71" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
                 <FormItem prop="c73" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c74" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c76" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c77" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -874,79 +874,80 @@
       <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
       <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
-     <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
-       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
-       <p class="org">中国标准化研究院能效标识管理中心：</p>
-       <div class="pro-info">
-          我 <span  class="f-company">{{formRecord.c1}}</span>
-          公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
-       </div>
-       <dl v-if="pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
-          <dd>a) 其与基础型号同属一个系列；</dd>
-          <dd>b) 其整机结构与基础型号基本相同；</dd>
-          <dd>c) 其产品的能效性能与基础型号一致；</dd>
-          <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
-              <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
-          </dd>
-          <dd>
-              特提出免检备案申请，扩展型号的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
-          </dd>
-          <dd>请中国标准化研究院能效标识管理中心核准。</dd>
+    <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+      <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
+      <p class="org">中国标准化研究院能效标识管理中心：</p>
+      <div class="pro-info">
+        我 <span  class="f-company">{{formRecord.c1}}</span>
+        公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
+        品牌的 <span  class="f-model">{{formRecord.c3}}</span>
+        型号的 <span  class="f-product">房间空气调节器 2010版</span>产品。
+      </div>
+      <dl v-if="pageType==='extend'">
+        <dt>
+          现提出型号扩展备案申请的 <span class="f-model"></span>
+          型号是以上述型号为基础开发扩展的型号：
+        </dt>
+        <dd>a) 其与基础型号同属一个系列；</dd>
+        <dd>b) 其整机结构与基础型号基本相同；</dd>
+        <dd>c) 其产品的能效性能与基础型号一致；</dd>
+        <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
+        </dd>
+        <dd>
+          特提出免检备案申请，扩展型号的初始使用日期：
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+        </dd>
+        <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
-              (描述信息产品技术参数等信息)
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
-              <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
-          </dd>
-          <dd>
-              该型号的相关信息变更后的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
-          </dd>
-          <dd>请中国标准化研究院能效标识管理中心核准。</dd>
+        <dd>现申请该幸好申请的备案信息如下变更：<br>
+          (描述信息产品技术参数等信息)
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
+        </dd>
+        <dd>
+          该型号的相关信息变更后的初始使用日期：
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+        </dd>
+        <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
   import {
-      getImgPath,
-      XfillExtendData,
-      XfillDraftData,
-      XfillDefaultData,
-      XhandleFormatError,
-      XfileHandleBeforeUpload,
-      XshowConfirm,
-      XviewClose,
-      diffRecord,
-      XsubmitRecord,
-      XsaveRecord,
-      XformatDate,
-      threeDecimals,
-      twoDecimals,
-      oneDecimals,
-      significantDigits22,
-      significantDigits33,
-      atLeastOneDecimals,
-      atLeastTwoDecimals,
-      isInteger,
-      isNumber,
-      check,
-      numberCheck
-    } from '@/libs/utilExt'
-    export default {
-      data () {
-        const timeDate = this.$store.state.app.dateinit
+    getImgPath,
+    XfillExtendData,
+    XfillDraftData,
+    XfillDefaultData,
+    XhandleFormatError,
+    XfileHandleBeforeUpload,
+    XshowConfirm,
+    XviewClose,
+    diffRecord,
+    XsubmitRecord,
+    XsaveRecord,
+    XformatDate,
+    threeDecimals,
+    twoDecimals,
+    oneDecimals,
+    significantDigits22,
+    significantDigits33,
+    atLeastOneDecimals,
+    atLeastTwoDecimals,
+    isInteger,
+    isNumber,
+    check,
+    numberCheck
+  } from '@/libs/utilExt'
+
+  export default {
+    data() {
+      const timeDate = parseInt(this.$store.state.app.dateinit);
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: 'c15',
@@ -967,7 +968,7 @@
         saveDisabled: false,
         submitDisabled: false,
         dataInit: {
-          disabledDate (date) {
+          disabledDate(date) {
             return date && date.valueOf() < timeDate
           }
         },
@@ -1105,86 +1106,86 @@
           c44: true,
           c45: true,
         },
-        xdz1:''
+        xdz1: ''
       }
     },
-    mounted () {
+    mounted() {
     },
     methods: {
       showTemplate() {
         this.templatePic = this.$store.state.app.pltPic
         this.modal3 = true
-        },
-        prevStep() {
-          this.$emit('prevStep')
-        },
-        getRandom(type) {
-          return (Math.random().toString().slice(2)) + type
-        },
-        handleFormatError(file, id) {
-          return XhandleFormatError(file, id, this)
-        },
-        /* 数据来源  扩展备案 */
-        fileHandleBeforeUpload(file, id) {
-          return XfileHandleBeforeUpload(file, id, this)
-        },
-        /* 数据来源  扩展备案 */
-        fillExtendData(params) {
-          return XfillExtendData(params, this)
-        },
-        /* 数据来源 草稿箱 */
-        fillDraftData(params) {
-          return XfillDraftData(params, this)
-        },
-        showImg(path) {
-          this.uploadPic = path;
-          this.modal4 = true
-        },
-        /* 数据来源 新增备案 */
-        fillDefaultData(params) {
-          return XfillDefaultData(params, this)
-        },
-        showConfirm() {
-          return XshowConfirm(this)
-        },
-        submitBasic() {
-        },
-        submitRecord() {
-          return XsubmitRecord(this)
-        },
-        viewClose() {
-          return XviewClose(this)
-        },
-        /* 保存草稿箱 */
-        saveRecord() {
-          return XsaveRecord(this)
-        },
-        formatDate(d) {
-          return XformatDate(d)
-        },
-        getFile(res, file, id) {
-          this['checkmark' + id] = true
-        },
-        getNxdj(z, a, b, c) {
-          if (z >= a) {
-              return "1";
-          } else if (z >= b && z < a) {
-              this.xdz1 = a;
-              return "2";
-          } else if (z >= c && z < b) {
-              this.xdz1 = b;
-              return "3";
-          } else {
-              return "0";
-          }
+      },
+      prevStep() {
+        this.$emit('prevStep')
+      },
+      getRandom(type) {
+        return (Math.random().toString().slice(2)) + type
+      },
+      handleFormatError(file, id) {
+        return XhandleFormatError(file, id, this)
+      },
+      /* 数据来源  扩展备案 */
+      fileHandleBeforeUpload(file, id) {
+        return XfileHandleBeforeUpload(file, id, this)
+      },
+      /* 数据来源  扩展备案 */
+      fillExtendData(params) {
+        return XfillExtendData(params, this)
+      },
+      /* 数据来源 草稿箱 */
+      fillDraftData(params) {
+        return XfillDraftData(params, this)
+      },
+      showImg(path) {
+        this.uploadPic = path;
+        this.modal4 = true
+      },
+      /* 数据来源 新增备案 */
+      fillDefaultData(params) {
+        return XfillDefaultData(params, this)
+      },
+      showConfirm() {
+        return XshowConfirm(this)
+      },
+      submitBasic() {
+      },
+      submitRecord() {
+        return XsubmitRecord(this)
+      },
+      viewClose() {
+        return XviewClose(this)
+      },
+      /* 保存草稿箱 */
+      saveRecord() {
+        return XsaveRecord(this)
+      },
+      formatDate(d) {
+        return XformatDate(d)
+      },
+      getFile(res, file, id) {
+        this['checkmark' + id] = true
+      },
+      getNxdj(z, a, b, c) {
+        if (z >= a) {
+          return "1";
+        } else if (z >= b && z < a) {
+          this.xdz1 = a;
+          return "2";
+        } else if (z >= c && z < b) {
+          this.xdz1 = b;
+          return "3";
+        } else {
+          return "0";
         }
+      }
     },
     computed: {
       ...mapGetters([
         'pageType'
       ]),
-      disabledoff(){
-        return  this.pageType==='extend';
+      disabledoff() {
+        return this.pageType === 'extend';
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1195,66 +1196,66 @@
       requiredStr() {
         return this.$store.state.app.requiredStr
       },
-      ruleRecord () {
+      ruleRecord() {
         //产品结构-其他 禁用
         if (this.formRecord.c5 == '其他') {
-            this.forbidden.c62 = false
+          this.forbidden.c62 = false
         } else {
-            this.formRecord.c62 = ''
-            this.forbidden.c62 = true
+          this.formRecord.c62 = ''
+          this.forbidden.c62 = true
         }
         //制热功能-有、无 禁用
         if (this.formRecord.c61 == '有') {
-            this.forbidden.c35 = false
-            this.forbidden.c36 = false
-            this.forbidden.c37 = false
-            this.forbidden.c38 = false
-            this.forbidden.c39 = false
-            this.forbidden.c43 = false
-            this.forbidden.c44 = false
-            this.forbidden.c45 = false
+          this.forbidden.c35 = false
+          this.forbidden.c36 = false
+          this.forbidden.c37 = false
+          this.forbidden.c38 = false
+          this.forbidden.c39 = false
+          this.forbidden.c43 = false
+          this.forbidden.c44 = false
+          this.forbidden.c45 = false
         } else {
-            this.formRecord.c35 = ''
-            this.forbidden.c35 = true
-            this.formRecord.c36 = ''
-            this.forbidden.c36 = true
-            this.formRecord.c37 = ''
-            this.forbidden.c37 = true
-            this.formRecord.c38 = ''
-            this.forbidden.c38 = true
-            this.formRecord.c39 = ''
-            this.forbidden.c39 = true
-            this.formRecord.c43 = ''
-            this.forbidden.c43 = true
-            this.formRecord.c44 = ''
-            this.forbidden.c44 = true
-            this.formRecord.c45 = ''
-            this.forbidden.c45 = true
+          this.formRecord.c35 = ''
+          this.forbidden.c35 = true
+          this.formRecord.c36 = ''
+          this.forbidden.c36 = true
+          this.formRecord.c37 = ''
+          this.forbidden.c37 = true
+          this.formRecord.c38 = ''
+          this.forbidden.c38 = true
+          this.formRecord.c39 = ''
+          this.forbidden.c39 = true
+          this.formRecord.c43 = ''
+          this.forbidden.c43 = true
+          this.formRecord.c44 = ''
+          this.forbidden.c44 = true
+          this.formRecord.c45 = ''
+          this.forbidden.c45 = true
         }
 
         const callback = (rule, value, callback) => {
-            callback()
+          callback()
         }
 
         //制冷量（C7）实测值≥制冷量（C6）标注值的95%
-        var c6=parseFloat(this.formRecord.c6);
-        var c7=parseFloat(this.formRecord.c7);
+        var c6 = parseFloat(this.formRecord.c6);
+        var c7 = parseFloat(this.formRecord.c7);
         const checkc7 = (rule, value, callback) => {
-            if (c7 < (c6 * 0.95)) {
-              callback('实测制冷量不应小于额定制冷量的95%')
-            } else {
-              callback()
-            }
+          if (c7 < (c6 * 0.95)) {
+            callback('实测制冷量不应小于额定制冷量的95%')
+          } else {
+            callback()
+          }
         }
         //输入功率（C10）实测值≤输入功率（C9）标注值的110%
-        var c9=parseFloat(this.formRecord.c9);
-        var c10=parseFloat(this.formRecord.c10);
+        var c9 = parseFloat(this.formRecord.c9);
+        var c10 = parseFloat(this.formRecord.c10);
         const checkc10 = (rule, value, callback) => {
-            if (c10 > (c9 * 1.1)) {
-              callback('实测制冷消耗功率不应大于额定制冷消耗功率的110%')
-            } else {
-              callback()
-            }
+          if (c10 > (c9 * 1.1)) {
+            callback('实测制冷消耗功率不应大于额定制冷消耗功率的110%')
+          } else {
+            callback()
+          }
         }
 
         //能效比：C12 ＝ C6／C9，保留两位小数
@@ -1271,15 +1272,15 @@
 
         var dj;
         if (c16 == "分体式") {
-            if (c6 <= 4500) {
-                dj = this.getNxdj(c12, 3.60, 3.40, 3.20);
-            } else if (c6 > 4500 && c6 <= 7100) {
-                dj = this.getNxdj(c12, 3.50, 3.30, 3.10);
-            } else if (c6 > 7100 && c6 <= 14000) {
-                dj = this.getNxdj(c12, 3.40, 3.20, 3.00);
-            }
+          if (c6 <= 4500) {
+            dj = this.getNxdj(c12, 3.60, 3.40, 3.20);
+          } else if (c6 > 4500 && c6 <= 7100) {
+            dj = this.getNxdj(c12, 3.50, 3.30, 3.10);
+          } else if (c6 > 7100 && c6 <= 14000) {
+            dj = this.getNxdj(c12, 3.40, 3.20, 3.00);
+          }
         } else {
-            dj = this.getNxdj(c12, 3.30, 3.10, 2.90);
+          dj = this.getNxdj(c12, 3.30, 3.10, 2.90);
         }
 
         const checkc12 = (rule, value, callback) => {
@@ -1289,7 +1290,7 @@
             } else {
               callback()
             }
-          }else{
+          } else {
             callback()
           }
         }
@@ -1298,63 +1299,63 @@
         var c13 = parseFloat(this.formRecord.c13);
         var xdz = 0;
         if (c16 == "分体式") {
-            if (dj == "1") {
-                if (c6 <= 4500) {
-                    xdz = 3.60;
-                } else if (c6 > 4500 && c6 <= 7100) {
-                    xdz = 3.50;
-                } else if (c6 > 7100 && c6 <= 14000) {
-                    xdz = 3.40;
-                }
+          if (dj == "1") {
+            if (c6 <= 4500) {
+              xdz = 3.60;
+            } else if (c6 > 4500 && c6 <= 7100) {
+              xdz = 3.50;
+            } else if (c6 > 7100 && c6 <= 14000) {
+              xdz = 3.40;
             }
-            if (dj == "2") {
-                if (c6 <= 4500) {
-                    xdz = 3.40;
-                } else if (c6 > 4500 && c6 <= 7100) {
-                    xdz = 3.30;
-                } else if (c6 > 7100 && c6 <= 14000) {
-                    xdz = 3.20;
-                }
+          }
+          if (dj == "2") {
+            if (c6 <= 4500) {
+              xdz = 3.40;
+            } else if (c6 > 4500 && c6 <= 7100) {
+              xdz = 3.30;
+            } else if (c6 > 7100 && c6 <= 14000) {
+              xdz = 3.20;
             }
-            if (dj == "3") {
-                if (c6 <= 4500) {
-                    xdz = 3.20;
-                } else if (c6 > 4500 && c6 <= 7100) {
-                    xdz = 3.10;
-                } else if (c6 > 7100 && c6 <= 14000) {
-                    xdz = 3.00;
-                }
+          }
+          if (dj == "3") {
+            if (c6 <= 4500) {
+              xdz = 3.20;
+            } else if (c6 > 4500 && c6 <= 7100) {
+              xdz = 3.10;
+            } else if (c6 > 7100 && c6 <= 14000) {
+              xdz = 3.00;
             }
+          }
         } else {
-            if (dj == "1") {
-                xdz = 3.30;
-            }
-            if (dj == "2") {
-                xdz = 3.10;
-            }
-            if (dj == "3") {
-                xdz = 2.90;
-            }
+          if (dj == "1") {
+            xdz = 3.30;
+          }
+          if (dj == "2") {
+            xdz = 3.10;
+          }
+          if (dj == "3") {
+            xdz = 2.90;
+          }
         }
 
         const checkc13 = (rule, value, callback) => {
-            if (c13 < xdz) {
-              callback('实测能效比不应小于能效限定值')
-            } else {
-              callback()
-            }
+          if (c13 < xdz) {
+            callback('实测能效比不应小于能效限定值')
+          } else {
+            callback()
+          }
         }
 
         const checkc51 = (rule, value, callback) => {
-            if (dj == "0") {
-                callback('计算所得能效等级与页面中选择的能效等级不符')
-            }else{
-                if (c51 != dj) {
-                  callback('计算所得能效等级与页面中选择的能效等级不符')
-                } else {
-                  callback()
-                }
+          if (dj == "0") {
+            callback('计算所得能效等级与页面中选择的能效等级不符')
+          } else {
+            if (c51 != dj) {
+              callback('计算所得能效等级与页面中选择的能效等级不符')
+            } else {
+              callback()
             }
+          }
         }
 
         return {
@@ -1715,7 +1716,7 @@
               trigger: 'change,blur'
             },
             {
-              validator: this.formRecord.c61 == '有'?oneDecimals:callback,
+              validator: this.formRecord.c61 == '有' ? oneDecimals : callback,
               trigger: 'change,blur'
             }
           ],
@@ -1862,10 +1863,10 @@
   }
 </script>
 <style>
-@import '../../../css/comm.css';
-</style >
+  @import '../../../css/comm.css';
+</style>
 <style lang="less" scoped>
-  .span-red{
+  .span-red {
     color: red;
     font-size: 13px;
   }

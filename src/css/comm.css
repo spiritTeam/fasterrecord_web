@@ -127,12 +127,12 @@
   color: red;
 }
 
-#pageStyle .pro-info,#pageStyle .basic-info .record-number {
+.pro-info, .basic-info .record-number {
   height: auto;
   line-height: 40px;
 }
 
-#pageStyle .basic-info span[class^="f-"],#pageStyle .pro-info span[class^="f-"] {
+#pageStyle .basic-info span[class^="f-"],.pro-info span[class^="f-"] {
   font-weight: bold;
   padding: 0px 5px;
 }
