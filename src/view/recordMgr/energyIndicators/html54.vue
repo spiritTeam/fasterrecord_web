@@ -241,7 +241,7 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <FormItem prop="c31" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :Options="dataInit" style="width: 200px" v-model="formRecord.c31" :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :Options="dataInit" style="width: 200px" v-model="formRecord.c31"></DatePicker>
           </FormItem>
         </Card>
       </div>
@@ -1760,7 +1760,6 @@ export default {
         c46: 'M1',
         c224: '',
         c225: '',
-        c202: '',
         c47: '',
         c48: '',
         c74: '',

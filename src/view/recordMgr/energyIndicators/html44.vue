@@ -219,8 +219,7 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <FormItem prop="c24" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :Options="dataInit" style="width: 200px" v-model="formRecord.c24"
-                        :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :Options="dataInit" style="width: 200px" v-model="formRecord.c24"></DatePicker>
           </FormItem>
         </Card>
       </div>
