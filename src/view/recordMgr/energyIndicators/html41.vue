@@ -915,7 +915,7 @@
                   <Upload
                     id=76
                     :show-upload-list=false
-                    :format="['jpg','jpeg','png']"
+                    :format="['jpg','jpeg','png','pdf']"
                     :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
                     :on-success="(res,file)=>getFile(res,file, 76)"
