@@ -1242,7 +1242,8 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
+     <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+     <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
      <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -2905,6 +2906,12 @@ h2{
   background:#eee;
   padding: 15px;
   margin: 15px 0;
+}
+.lookPdf{
+
+  margin: 40px auto;
+  display: block;
+  border: 1px solid #ccc; 
 }
 .part1 p{
   text-indent:2em;
