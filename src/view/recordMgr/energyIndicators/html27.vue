@@ -1332,7 +1332,7 @@
               required: this.formRecord.c17.join('').indexOf('以太网接口共') > -1,
               trigger: 'change,blur',
               message: '不能为空'
-            },
+            }, 
             {
               validator: this.formRecord.c17.join('').indexOf('以太网接口共') > -1 ? numberCheck : check,
               trigger: 'change,blur'
