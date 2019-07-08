@@ -17,8 +17,8 @@
           <table>
             <thead>
               <tr>
-                <th>实验室名称</th>
-                <th>检测报告条形码</th>
+                <th><i class="red">*</i>实验室名称</th>
+                <th><i class="red">*</i>检测报告条形码</th>
               </tr>
             </thead>
             <tbody>
@@ -88,8 +88,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>额定值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>额定值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -178,13 +178,13 @@
           </table>
           <table id="table2">
             <tr>
-              <th>间室名称</th>
-              <th>类型</th>
-              <th>标称容积值L</th>
-              <th>实测容积值L</th>
-              <th width="150px;">设计温度℃</th>
-              <th>特性温度℃</th>
-              <th>隔热层厚度(mm)</th>
+              <th><i class="red">*</i>间室名称</th>
+              <th><i class="red">*</i>类型</th>
+              <th><i class="red">*</i>标称容积值L</th>
+              <th><i class="red">*</i>实测容积值L</th>
+              <th width="150px;"><i class="red">*</i>设计温度℃</th>
+              <th><i class="red">*</i>特性温度℃</th>
+              <th><i class="red">*</i>隔热层厚度(mm)</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -500,7 +500,7 @@
           </table>
           <table id="table5">
             <tr>
-              <td>总容积</td>
+              <td><i class="red">*</i>总容积</td>
               <td>
                 <Button type="info" @click="count43">计算标称值</Button>
                 <FormItem prop="c43">
@@ -531,7 +531,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td>电源性质</td>
+              <td><i class="red">*</i>电源性质</td>
               <td width="40%">
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
@@ -543,7 +543,7 @@
               </td>
             </tr>
             <tr>
-              <td>气候类型</td>
+              <td><i class="red">*</i>气候类型</td>
               <td>
                 <FormItem prop="c23">
                   <CheckboxGroup v-model="formRecord.c23">
@@ -557,7 +557,7 @@
               </td>
             </tr>
             <tr>
-              <td>含有15 L及以上容积、具有冰温区功能的变温室</td>
+              <td><i class="red">*</i>含有15 L及以上容积、具有冰温区功能的变温室</td>
               <td>
                 <FormItem prop="c44">
                   <RadioGroup v-model="formRecord.c44">
@@ -569,7 +569,7 @@
               </td>
             </tr>
             <tr>
-              <td>含有15 L及以上容积、具有冰温区功能同时具备冷藏功能和三星级或四星级冷冻功能的变温室</td>
+              <td><i class="red">*</i>含有15 L及以上容积、具有冰温区功能同时具备冷藏功能和三星级或四星级冷冻功能的变温室</td>
               <td>
                 <FormItem prop="c45">
                   <RadioGroup v-model="formRecord.c45">
@@ -581,7 +581,7 @@
               </td>
             </tr>
             <tr>
-              <td>间室容积大于400 L并带有穿透式自动制冰功能</td>
+              <td><i class="red">*</i>间室容积大于400 L并带有穿透式自动制冰功能</td>
               <td>
                 <FormItem prop="c46">
                   <RadioGroup v-model="formRecord.c46">
@@ -593,7 +593,7 @@
               </td>
             </tr>
             <tr>
-              <td>当器具类型为1、2、3、4类型，所有门体均采用透明门体，且从内部往外投影的透明区域总投影面积占所有门体总投影面积的50%以上</td>
+              <td><i class="red">*</i>当器具类型为1、2、3、4类型，所有门体均采用透明门体，且从内部往外投影的透明区域总投影面积占所有门体总投影面积的50%以上</td>
               <td>
                 <FormItem prop="c47">
                   <RadioGroup v-model="formRecord.c47">
@@ -605,7 +605,7 @@
               </td>
             </tr>
             <tr>
-              <td>当器具类型为5、6、7、8、9类型，至少有一个门体采用透明门体，且从内部往外投影的透明区域总投影面积大于所有门体总投影面积的25%</td>
+              <td><i class="red">*</i>当器具类型为5、6、7、8、9类型，至少有一个门体采用透明门体，且从内部往外投影的透明区域总投影面积大于所有门体总投影面积的25%</td>
               <td>
                 <FormItem prop="c48">
                   <RadioGroup v-model="formRecord.c48">
@@ -617,7 +617,7 @@
               </td>
             </tr>
             <tr>
-              <td>嵌入式制冷器具</td>
+              <td><i class="red">*</i>嵌入式制冷器具</td>
               <td>
                 <FormItem prop="c49">
                   <RadioGroup v-model="formRecord.c49">
@@ -629,7 +629,7 @@
               </td>
             </tr>
             <tr>
-              <td>具有环境可控型防凝露加热器</td>
+              <td><i class="red">*</i>具有环境可控型防凝露加热器</td>
               <td>
                 <FormItem prop="c50">
                   <RadioGroup v-model="formRecord.c50">
@@ -641,7 +641,7 @@
               </td>
             </tr>
             <tr>
-              <td>冷凝器形式</td>
+              <td><i class="red">*</i>冷凝器形式</td>
               <td>
                 <FormItem prop="c51">
                   <CheckboxGroup v-model="formRecord.c51" style="display:inline-block;">
@@ -659,7 +659,7 @@
               </td>
             </tr>
             <tr>
-              <td>温控器形式</td>
+              <td><i class="red">*</i>温控器形式</td>
               <td>
                 <FormItem prop="c53">
                   <RadioGroup v-model="formRecord.c53">
@@ -671,7 +671,7 @@
               </td>
             </tr>
             <tr>
-              <td>冰箱门数</td>
+              <td><i class="red">*</i>冰箱门数</td>
               <td>
                 <FormItem prop="c54">
                   <RadioGroup v-model="formRecord.c54" style="display:inline-block;">
@@ -689,7 +689,7 @@
               </td>
             </tr>
             <tr>
-              <td>温控器安装位置</td>
+              <td><i class="red">*</i>温控器安装位置</td>
               <td>
                 <FormItem prop="c56">
                   <CheckboxGroup v-model="formRecord.c56" style="display:inline-block;">
@@ -706,7 +706,7 @@
               </td>
             </tr>
             <tr>
-              <td>照明灯安装位置</td>
+              <td><i class="red">*</i>照明灯安装位置</td>
               <td>
                 <FormItem prop="c58">
                   <CheckboxGroup v-model="formRecord.c58" style="display:inline-block;">
@@ -723,7 +723,7 @@
               </td>
             </tr>
             <tr>
-              <td>照明灯额定输入功率（W）</td>
+              <td><i class="red">*</i>照明灯额定输入功率（W）</td>
               <td>
                 <FormItem prop="c60">
                   <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' ></Input>
@@ -732,7 +732,7 @@
               </td>
             </tr>
             <tr>
-              <td>输入总功率（W）</td>
+              <td><i class="red">*</i>输入总功率（W）</td>
               <td>
                 <FormItem prop="c61">
                   <Input type="text" v-model="formRecord.c61" :disabled='disabledoff'></Input>
@@ -741,7 +741,7 @@
               </td>
             </tr>
             <tr>
-              <td>冷冻能力（kg/12h）</td>
+              <td><i class="red">*</i>冷冻能力（kg/12h）</td>
               <td>
                 <FormItem prop="c67">
                   <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'></Input>
@@ -750,7 +750,7 @@
               </td>
             </tr>
             <tr>
-              <td>外形尺寸(长×宽×高)（mm×mm×mm）</td>
+              <td><i class="red">*</i>外形尺寸(长×宽×高)（mm×mm×mm）</td>
               <td>
                 <span style="display: inline-block;height: 32px;line-height: 32px;">长</span>
                 <FormItem prop="c68">
@@ -795,30 +795,35 @@
             <tr>
               <td>
                 <FormItem prop="c71">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c71" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c73">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c73" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c74">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c74" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c75" :disabled='disabledoff' ></Input>
 
                 </FormItem>
@@ -851,26 +856,29 @@
               <td>制冷剂</td>
               <td>
                 <FormItem prop="c76">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c76" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td colspan="3">
                 <div style="margin-bottom:25px">
-                  <span>主要成分：</span>
+                  <span><i class="red">*</i>主要成分：</span>
                   <FormItem prop="c77">
                     <Input type="text" v-model="formRecord.c77" :disabled='disabledoff' style="width:300px;" ></Input>
 
                   </FormItem>
                 </div>
                 <div>
-                  <span>重量：</span>
-                  <Input type="text" v-model="formRecord.c92" :disabled='disabledoff' style="width:300px;" ></Input>
-
+                  <span><i class="red">*</i>重量：</span>
+                  <FormItem prop="c92">
+                    <Input type="text" v-model="formRecord.c92" :disabled='disabledoff' style="width:300px;" ></Input>
+                  </FormItem>
                 </div>
               </td>
               <td>
                 <FormItem prop="c78">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c78" :disabled='disabledoff' ></Input>
 
                 </FormItem>
@@ -905,26 +913,29 @@
               <td>发泡材料</td>
               <td>
                 <FormItem prop="c79">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c79" :disabled='disabledoff' ></Input>
 
                 </FormItem>
               </td>
               <td colspan="3">
                 <div style="margin-bottom:25px">
-                  <span>主要成分：</span>
+                  <span><i class="red">*</i>主要成分：</span>
                   <FormItem prop="c80">
                     <Input type="text" v-model="formRecord.c80" :disabled='disabledoff' style="width:300px;" ></Input>
 
                   </FormItem>
                 </div>
                 <div>
-                  <span>比例：</span>
-                  <Input type="text" v-model="formRecord.c93" :disabled='disabledoff' style="width:300px;" ></Input>
-
+                  <span><i class="red">*</i>比例：</span>
+                  <FormItem prop="c93">
+                    <Input type="text" v-model="formRecord.c93" :disabled='disabledoff' style="width:300px;" ></Input>
+                  </FormItem>
                 </div>
               </td>
               <td>
                 <FormItem prop="c81">
+                  <i class="red">*</i>
                   <Input type="text" v-model="formRecord.c81" :disabled='disabledoff' ></Input>
 
                 </FormItem>
@@ -1001,13 +1012,13 @@
                 </div>
               </td>
               <td colspan="3" v-if="pltId != 244">
-                根据企业提交的相关信息，系统直接生成能效表示样本，请提交备案后在"备案查询"功能中下载
+                根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
             <tr>
-              <td>OEM声明<p class="red" v-if="pageType!='view'">请企业根据自身情况自行上传该附件</p></td>
+              <td>OEM声明<p class="red" v-if="pageType!='view'">请生产者根据自身情况自行上传该附件</p></td>
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
@@ -1026,7 +1037,7 @@
                   </Upload>
                 </div>
               </td>
-              <td>关系证明</td>
+              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p></td>
               <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
@@ -1040,7 +1051,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
-                    
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -1088,8 +1099,8 @@
               </td>
             </tr>
             <tr>
-              <td>进口商企业信息表
-                <p class="red" v-if="pageType!='view'">境外企业请自行上传该附件</p>
+              <td>生产者和进口商企业信息表
+                <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p>
               </td>
               <td>(PDF)</td>
               <td>
@@ -1109,8 +1120,8 @@
                   </Upload>
                 </div>
               </td>
-              <td>进口商营业执照或登记注册证明复印件
-                <p class="red" v-if="pageType!='view'">境外企业请自行上传该附件</p>
+              <td>生产者和进口商营业执照或登记注册证明复印件
+                <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p>
               </td>
               <td>（PDF）</td>
               <td>
@@ -1133,7 +1144,7 @@
             </tr>
             <tr>
               <td>进口商与境外生产者订立的相关合同副本
-                <p class="red" v-if="pageType!='view'">境外企业请自行上传该附件</p>
+                <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p>
               </td>
               <td>(PDF)</td>
               <td>
@@ -1161,7 +1172,7 @@
                   <Upload
                     id=76
                     :show-upload-list=false
-                    :format="['jpg','jpeg','png']"
+                    :format="['jpg','jpeg','png','pdf']"
                     :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
                     :on-success="(res,file)=>getFile(res,file, 76)"
@@ -1175,7 +1186,8 @@
               </td>
             </tr>
           </table>
-          <p class="red" v-if="pageType!='view'">注：保存到草稿时，不保存附件！<br />所有附件上传文件大小需要控制在2M以内。</p>
+          <p class="red" v-if="pageType!='view'">注：<br />1、标“*”内容为必填项；
+                  <br />2、所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div v-if="pageType!='view'">
@@ -1186,14 +1198,14 @@
       <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
-        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
-        <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交申请</Button> -->
+        <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
       <div class="tc" v-else>
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
@@ -1230,9 +1242,10 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
-     <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+     <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
        <div class="pro-info">
@@ -1274,7 +1287,7 @@
       <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
-  
+
 </template>
 <script>
 import axios from 'axios'
@@ -1472,7 +1485,7 @@ export default {
   },
   mounted () {
     //console.log(this.pageType)
-   
+
   },
   methods: {
     showTemplate () {
@@ -1517,7 +1530,7 @@ export default {
       Object.defineProperty(file, 'name', {
         writable: true,
         value: gname
-      })      
+      })
       return new Promise(function (resolve, reject) {
         axios.get('/oss/token.do').then(res => {
           if (_this.uploadParam['uploadFileList'+id].length > 0) {
@@ -1595,7 +1608,7 @@ export default {
           }
         })
       }
-      
+
       if(params.lab){
         that.$store.commit('setDefaultData', params.lab.params)
       }
@@ -1714,7 +1727,7 @@ export default {
       count_s = Math.round(count_s * vv) / vv;
       this.formRecord.c123 = count_s
     },
-    
+
     showConfirm () {
       let _this = this
       let pageType=_this.pageType;
@@ -1739,10 +1752,10 @@ export default {
           }
           return;
       }
-     
+
       _this.count43()
       _this.count123()
-      
+
       this.$refs['formRecord'].validate((valid) => {
         if (valid) {
           if (_this.confirmData.join('') == 1) {
@@ -1813,7 +1826,7 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId || 0
+      _this.formRecord.id=this.formRecord.id || _this.$store.state.app.updateId || 0
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -1847,7 +1860,7 @@ export default {
           }
         })
       }else{
-        
+
         axios({
           url: '/marking/save.do',
           method: 'POST',
@@ -1904,10 +1917,10 @@ export default {
         url: '/marking/saveDraft.do',
         method: 'POST',
         data: _this.formRecord,
-        // 只适用于 POST,PUT,PATCH，transformRequest` 
+        // 只适用于 POST,PUT,PATCH，transformRequest`
         //允许在向服务器发送前，修改请求数据。后面数组中的函数必须返回一个字符串，
         //或 ArrayBuffer，或 Stream
-        transformRequest: [function (data) { 
+        transformRequest: [function (data) {
           let ret = ''
           for (let it in data) {
             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
@@ -2302,6 +2315,12 @@ export default {
         }
       }
       return {
+        c1: [
+          {
+            required: true,
+            message: '不能为空'
+          }
+        ],
         c2: [
           {
             required: true,
@@ -2312,6 +2331,18 @@ export default {
           {
             required: true,
             message: '请填写备案方'
+          }
+        ],
+        c4: [
+          {
+            required: true,
+            message: '不能为空'
+          }
+        ],
+        c21: [
+          {
+            required: true,
+            message: '不能为空'
           }
         ],
         c5: [
@@ -2796,6 +2827,19 @@ export default {
             message: '不能为空'
           }
         ],
+        c92: [
+          {
+            required: true,
+            message: '不能为空'
+          }
+        ],
+        c93: [
+          {
+            required: true,
+            message: '不能为空'
+          }
+        ],
+
         c80: [
           {
             required: true,
@@ -2848,6 +2892,7 @@ export default {
   }
 }
 </script>
+
 <style lang="less" scoped>
 h1{
   font-size:20px;
@@ -2856,11 +2901,17 @@ h2{
   font-size:18px;
   margin:10px 0;
 }
-
+/deep/  #table4  .ivu-form-item-content{ display: flex;}
 .part{
   background:#eee;
   padding: 15px;
   margin: 15px 0;
+}
+.lookPdf{
+
+  margin: 40px auto;
+  display: block;
+  border: 1px solid #ccc;
 }
 .part1 p{
   text-indent:2em;
@@ -2893,6 +2944,7 @@ table td,table th{
 }
 .red{
   color:red;
+  margin-right: 5px;
 }
 .submitTips{
   font-size:16px;font-weight: bolder; text-align: center
@@ -2906,6 +2958,7 @@ table td,table th{
 #table2 .ivu-form-item,#table3 .ivu-form-item,#table4 .ivu-form-item,#table5 .ivu-form-item{
   display:inline-block;
 }
+
 .ivu-icon-ios-help-circle-outline{
   position:absolute;
   top:-8px;

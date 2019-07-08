@@ -8,10 +8,13 @@
         </Select>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model="formQuery.model_name" placeholder="产品型号"></Input>
+        <Input type="text" v-model.trim="formQuery.model_name" placeholder="产品型号"></Input>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model="formQuery.bar_code" placeholder="实验室报告条码"></Input>
+        <Input type="text" v-model.trim="formQuery.bar_code" placeholder="实验室报告条码"></Input>
+      </FormItem>
+       <FormItem>
+        <Input type="text" v-model.trim="formQuery.record_no" placeholder="备案号"></Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="searchFun">搜索</Button>
@@ -28,12 +31,14 @@
       v-model="modal1"
       title="上传标识图">
       <Upload
-        :format="['jpg','jpeg','png']"
+        :format="['png']"
         :before-upload="fileHandleBeforeUpload"
         :data="uploadParam.fileData"
         :on-success="getFile"
         style="display:inline-block;"
+        :on-format-error="handleFormatError"
         :action="uploadUrl">
+        
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
         <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
       </Upload>
@@ -172,6 +177,7 @@ export default {
         category_id: '',
         model_name: '',
         bar_code: '',
+        record_no:'',
         pageSize: 10,
         pageNum: 1
       },
@@ -223,6 +229,11 @@ export default {
           // }
         },
         {
+          title: '公告时间',
+          key: 'publish_time',
+          align: 'center'
+        },
+        {
           title: '备案类型',
           key: 'type_name',
           align: 'center'
@@ -231,6 +242,7 @@ export default {
           title: '操作',
           key: 'action',
           align: 'center',
+          width:160,
           render: (h, params) => {
             return h('div',[
                 viewBtn(h,params),
@@ -265,6 +277,12 @@ export default {
         this.total = res.data.total
       })
     },
+    handleFormatError(){
+       this.$Notice.warning({
+            title: '上传文件，类型错误',
+            desc: '请选择正确的类型文件'
+        });
+    },
     changeList (pNum) {
       this.formQuery.pageNum = pNum
       this.reqData()
@@ -277,6 +295,7 @@ export default {
       this.formQuery.category_id = ''
       this.formQuery.model_name = ''
       this.formQuery.bar_code = ''
+      this.formQuery.record_no=''
       this.searchFun()
     },
     downloadQrcode (id) {
@@ -429,6 +448,7 @@ export default {
               }
             })
             this.$store.commit('setModelNo',res.data.marking.ec_model_no)
+            this.$store.commit('setDateInit', res.data.lab.upddate)
             //this.$store.commit('setOem',res.data.lab.oem)
           }
       })

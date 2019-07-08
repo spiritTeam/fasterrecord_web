@@ -1,7 +1,7 @@
 <template>
   <Card>
     <p slot="title">添加备案</p>
-    <div>
+    <div class="pageStyle">
       <ReportCode v-show="step === 1" @toStep2="showTemple"></ReportCode>
       <SelectSample ref="selectSample" v-show="step === 2" @toStep3="showRecordTab"></SelectSample>
       <Tabs type="card" v-show="step === 3">
@@ -10,7 +10,9 @@
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
+          <Html27 v-if="category == 27" ref="energyIndicators27" @prevStep="step = 2"></Html27>
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
+          <Html30 v-if="category == 30" ref="energyIndicators30" @prevStep="step = 2"></Html30>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
           <Html33 v-if="category == 33" ref="energyIndicators33" @prevStep="step = 2"></Html33>
           <Html34 v-if="category == 34" ref="energyIndicators34" @prevStep="step = 2"></Html34>
@@ -24,6 +26,7 @@
           <Html46 v-if="category == 46" ref="energyIndicators46" @prevStep="step = 2"></Html46>
           <Html47 v-if="category == 47" ref="energyIndicators47" @prevStep="step = 2"></Html47>
           <Html48 v-if="category == 48" ref="energyIndicators48" @prevStep="step = 2"></Html48>
+          <Html49 v-if="category == 49" ref="energyIndicators49" @prevStep="step = 2"></Html49>
           <Html50 v-if="category == 50" ref="energyIndicators50" @prevStep="step = 2"></Html50>
           <Html53 v-if="category == 53" ref="energyIndicators53" @prevStep="step = 2"></Html53>
           <Html51 v-if="category == 51" ref="energyIndicators51" @prevStep="step = 2"></Html51>
@@ -55,7 +58,9 @@ import SecurityIndicators from './securityIndicators'
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
+import Html27 from './energyIndicators/html27'
 import Html29 from './energyIndicators/html29'
+import Html30 from './energyIndicators/html30'
 import Html31 from './energyIndicators/html31'
 import Html33 from './energyIndicators/html33'
 import Html34 from './energyIndicators/html34'
@@ -69,6 +74,7 @@ import Html44 from './energyIndicators/html44'
 import Html46 from './energyIndicators/html46'
 import Html47 from './energyIndicators/html47'
 import Html48 from './energyIndicators/html48'
+import Html49 from './energyIndicators/html49'
 import Html50 from './energyIndicators/html50'
 import Html53 from './energyIndicators/html53'
 import Html51 from './energyIndicators/html51'
@@ -93,7 +99,9 @@ export default {
     Html13,
     Html17,
     Html23,
+    Html27,
     Html29,
+    Html30,
     Html31,
     Html33,
     Html34,
@@ -107,6 +115,7 @@ export default {
     Html46,
     Html47,
     Html48,
+    Html49,
     Html50,
     Html53,
     Html51,

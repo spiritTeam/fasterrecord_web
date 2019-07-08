@@ -17,8 +17,8 @@
           <table>
             <thead>
             <tr>
-              <th>实验室名称</th>
-              <th>检测报告条形码</th>
+              <th><i class="red">*</i>实验室名称</th>
+              <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
@@ -38,7 +38,7 @@
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
           <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" readonly disabled />
+            <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" disabled/>
           </FormItem>
           <FormItem prop="c2" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="制造单位"/>
@@ -53,7 +53,7 @@
             <Input type="text" v-model="formRecord.c4" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
           </FormItem>
           <FormItem prop="c5" label="产品结构" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c5">
@@ -64,7 +64,7 @@
             </RadioGroup>
           </FormItem>
           <FormItem prop="c62" style="margin-top:-55.8px;" :label-width="440">
-              <Input type="text" v-model="formRecord.c62" style="width:200px;" :disabled='disabledoff || forbidden.c62'/>
+            <Input type="text" v-model="formRecord.c62" style="width:200px;" :disabled='disabledoff || forbidden.c62'/>
           </FormItem>
           <FormItem prop="c51" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c51">
@@ -75,7 +75,7 @@
           </FormItem>
           <span class="span-red">不能编辑的参数可以去标识样式下载列表修改</span>
           <table id="table1">
-             <tr>
+            <tr>
               <th>项目</th>
               <th>额定值</th>
               <th>实测值</th>
@@ -142,14 +142,13 @@
         <Card :bordered="false">
           <h2>四、初始使用日期</h2>
           <FormItem prop="c15" label="备案标识开始使用日期" style="width:100%;">
-            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c15" :disabled='disabledoff'></DatePicker>
+            <DatePicker type="date" :options="dataInit" style="width: 200px" v-model="formRecord.c15"></DatePicker>
           </FormItem>
         </Card>
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
-          <h3>样品描述</h3>
+          <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
               <td align="right"><span style="color:red">*</span>产品类型</td>
@@ -183,7 +182,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>开关（全极断开）</td>
               <td>
-               <FormItem prop="c19" style="width:100%;" :label-width="30">
+                <FormItem prop="c19" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c19">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -203,7 +202,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>温控器以外的其他控制装置</td>
               <td>
-               <FormItem prop="c21" style="width:100%;" :label-width="30">
+                <FormItem prop="c21" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c21">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -223,7 +222,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>电子控制线路</td>
               <td>
-               <FormItem prop="c23" style="width:100%;" :label-width="30">
+                <FormItem prop="c23" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c23">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -243,7 +242,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>单独的控制面板</td>
               <td>
-               <FormItem prop="c25" style="width:100%;" :label-width="30">
+                <FormItem prop="c25" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c25">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -263,7 +262,7 @@
               </td>
               <td align="right"><span style="color:red">*</span>遥控器</td>
               <td>
-               <FormItem prop="c27" style="width:100%;" :label-width="30">
+                <FormItem prop="c27" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c27">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -501,7 +500,7 @@
       <div class="part part6">
         <Card :bordered="false">
           <h2>六、产品基本配置清单</h2>
-           <table id="table4">
+          <table id="table4">
             <tr>
               <th width="50">序号</th>
               <th width="100">名称</th>
@@ -520,82 +519,82 @@
             </tr>
             <tr>
               <td>
-                <FormItem prop="c63" style="width:100%;" >
-                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff' />
+                <FormItem prop="c63" style="width:100%;">
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c64" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c65" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c65" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c66" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c66" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c67" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
                 <FormItem prop="c68" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c69" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c69" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c70" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c70" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c71" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td>
                 <FormItem prop="c73" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c73" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c74" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c74" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c76" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c77" style="width:100%;">
-                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff' />
+                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -616,9 +615,9 @@
       <div class="part part8">
         <Card :bordered="false">
           <h2>八、附件部分</h2>
-          <div class="application" v-if='$store.state.app.pageType && $store.state.app.pageType!="view"'>
-            <span><i class="red">*</i>{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</span>
-            <Button type="primary" @click="modal5=true">填写{{$store.state.app.pageType==="extend"?'扩展':'变更'}}申请书</Button>
+          <div class="application" v-if='pageType && pageType!="view"'>
+            <span><i class="red">*</i>{{pageType==="extend"?'扩展':'变更'}}申请书</span>
+            <Button type="primary" @click="modal5=true">填写{{pageType==="extend"?'扩展':'变更'}}申请书</Button>
             <span>{{formRecord.ec_master_kuozhan_text===''?'未填写':'已填写'}}</span>
           </div>
           <table>
@@ -627,7 +626,7 @@
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -642,17 +641,18 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">根据企业提交的相关能效指标，系统直接生成能效表示样本
-                <Button type="primary" @click="showTemplate">查看</Button>
+              <td colspan="3" v-if="pltId != 244">
+                根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
+                <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
             <tr>
-              <td><span v-if='$store.state.app.oem' class="red">*</span>OEM声明</td>
+              <td>OEM声明<p class="red" v-if="pageType!='view'">请生产者根据自身情况自行上传该附件</p></td>
               <td>(JPG/PNG)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['jpg','jpeg','png']"
@@ -667,11 +667,11 @@
                   </Upload>
                 </div>
               </td>
-              <td>关系证明</td>
-              <td>(PDF)</td>
+              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p ></td>
+              <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -681,6 +681,7 @@
                     :on-format-error="file=>handleFormatError(file,27)"
                     style="display:inline-block;"
                     :action="uploadUrl">
+
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
                     <Icon type="ios-checkmark" v-show="checkmark27" />
                   </Upload>
@@ -692,7 +693,7 @@
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -708,10 +709,10 @@
                 </div>
               </td>
               <td>委托代理文件</td>
-              <td>(PDF)</td>
+              <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -728,11 +729,13 @@
               </td>
             </tr>
             <tr>
-              <td>进口商企业信息表</td>
+              <td>生产者和进口商企业信息表
+                <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p>
+              </td>
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -747,11 +750,13 @@
                   </Upload>
                 </div>
               </td>
-              <td>进口商营业执照或登记注册证明复印件</td>
-              <td>(PDF)</td>
+              <td>生产者和进口商营业执照或登记注册证明复印件
+                <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p>
+              </td>
+              <td>（PDF）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -768,11 +773,13 @@
               </td>
             </tr>
             <tr>
-              <td>进口商与境外生产者订立的相关合同副本</td>
+              <td>生产者和进口商与境外生产者订立的相关合同副本
+                <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p>
+              </td>
               <td>(PDF)</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
                     :format="['pdf']"
@@ -788,14 +795,14 @@
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
-              <td>(PDF/JPG/PNG)</td>
+              <td>（PDF/JPG/PNG）</td>
               <td>
                 <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
-                <div v-if='$store.state.app.pageType!="view"'>
+                <div v-if="pageType!='view'">
                   <Upload
                     id=76
                     :show-upload-list=false
-                    :format="['jpg','jpeg','png']"
+                    :format="['jpg','jpeg','png','pdf']"
                     :before-upload="file=>fileHandleBeforeUpload(file,76)"
                     :data="uploadParam.fileData76"
                     :on-success="(res,file)=>getFile(res,file, 76)"
@@ -809,32 +816,32 @@
               </td>
             </tr>
           </table>
-          <p class="red">注：保存到草稿时，不保存附件！<br />所有附件上传文件大小需要控制在2M以内。</p>
+          <p class="red" v-if="pageType!='view'">注：<br />1、标“*”内容为必填项；<br />2、所有附件上传文件大小需要控制在2M以内。</p >
         </Card>
       </div>
-      <div>
+      <div v-if="pageType!='view'">
         <CheckboxGroup v-model="confirmData">
           <Checkbox label="1"><span style="color:red;font-weight:bold;">我已确认以上数据填写无误！</span></Checkbox>
         </CheckboxGroup>
       </div>
-      <div class="tc" v-if="$store.state.app.pageType!='view'">
+      <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!$store.state.app.pageType' :disabled="saveDisabled">保存到草稿</Button>
-        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
-        <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+        <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
+        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交申请</Button> -->
+        <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
       <div class="tc" v-else>
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
-          <thead>
+          <thead> 
           <tr>
             <th>名称</th>
-            <th>原始值</th>
+            <th>实验室报告带入值</th>
             <th>修改值</th>
           </tr>
           </thead>
@@ -853,8 +860,8 @@
           </tbody>
         </table>
       </div>
-      <p v-if="!boolFlag.length" style="font-size:16px;font-weight: bolder; text-align: center">请再次确认备案信息填写无误！</p>
-      <p style="font-size:16px;font-weight: bolder;text-align: center">若确认，请点击“提交备案”按钮</p>
+      <p class="red submitTips" v-if="!boolFlag.length">请再次确认备案信息填写无误！</p>
+      <p  class="red submitTips" >若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
@@ -864,18 +871,19 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img :src="uploadPic" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
-    <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
-      <h2>标识型号{{$store.state.app.pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
+    <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+      <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
         我 <span  class="f-company">{{formRecord.c1}}</span>
-        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-        品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-        型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
+        公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
+        品牌的 <span  class="f-model">{{formRecord.c3}}</span>
+        型号的 <span  class="f-product">房间空气调节器 2010版</span>产品。
       </div>
-      <dl v-if="$store.state.app.pageType==='extend'">
+      <dl v-if="pageType==='extend'">
         <dt>
           现提出型号扩展备案申请的 <span class="f-model"></span>
           型号是以上述型号为基础开发扩展的型号：
@@ -884,7 +892,7 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述" />
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -893,10 +901,10 @@
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <dl v-if="$store.state.app.pageType==='update'">
+      <dl v-if="pageType==='update'">
         <dd>现申请该幸好申请的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述" />
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -905,12 +913,13 @@
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">附：{{$store.state.app.pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{$store.state.app.pageType==="extend"?'':'以及检测报告'}}</div>
+      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
     </Modal>
   </div>
 </template>
 <script>
-import {
+  import {mapGetters} from 'vuex';
+  import {
     getImgPath,
     XfillExtendData,
     XfillDraftData,
@@ -935,176 +944,177 @@ import {
     check,
     numberCheck
   } from '@/libs/utilExt'
+
   export default {
-    data () {
-      const timeDate = this.$store.state.app.dateinit
-    return {
-      // 当前初始使用日期 对应的C值
-      thisDateCV: 'c15',
-      // 当前能效等级 对应的C值
-      thisLevelCV: 'c51',
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      templatePic: '',
-      uploadPic: '',
-      modal2: false,
-      currentValue: '',
-      qus: '',
-      boolFlag: [],
-      currentCValue: '',
-      confirmData: [],
-      modal1: false,
-      saveDisabled: false,
-      submitDisabled: false,
-      dataInit: {
-        disabledDate (date) {
-          return date && date.valueOf() < timeDate
-        }
-      },
-      uploadUrl: '',
-      uploadParam: {
-        fileData24: {},
-        filePath24: '',
-        uploadFileList24: [],
-        fileData26: {},
-        filePath26: '',
-        uploadFileList26: [],
-        fileData27: {},
-        filePath27: '',
-        uploadFileList27: [],
-        fileData28: {},
-        filePath28: '',
-        uploadFileList28: [],
-        fileData29: {},
-        filePath29: '',
-        uploadFileList29: [],
-        fileData30: {},
-        filePath30: '',
-        uploadFileList30: [],
-        fileData31: {},
-        filePath31: '',
-        uploadFileList31: [],
-        fileData32: {},
-        filePath32: '',
-        uploadFileList32: [],
-        fileData76: {},
-        filePath76: '',
-        uploadFileList76: []
-      },
-      filesArr: [],
-      checkmark24: false,
-      checkmark26: false,
-      checkmark27: false,
-      checkmark28: false,
-      checkmark29: false,
-      checkmark30: false,
-      checkmark31: false,
-      checkmark32: false,
-      checkmark76: false,
-      formRecord: {
-        ec_master_kuozhan_text: '',
-        c1: '',
-        c2: '',
-        c3: '',
-        c4: '',
-        c5: '',
-        c6: '',
-        c7: '',
-        c8: '',
-        c9: '',
-        c10: '',
-        c11: '',
-        c12: '',
-        c13: '',
-        c14: '',
-        c15: new Date(),
-        c16: '',
-        c17: '',
-        c18: '',
-        c19: '',
-        c20: '',
-        c21: '',
-        c22: '',
-        c23: '',
-        c24: '',
-        c25: '',
-        c26: '',
-        c27: '',
-        c28: '',
-        c29: '',
-        c30: '',
-        c31: '',
-        c32: '',
-        c33: '',
-        c34: '',
-        c35: '',
-        c36: '',
-        c37: '',
-        c38: '',
-        c39: '',
-        c40: '',
-        c41: '',
-        c42: '',
-        c43: '',
-        c44: '',
-        c45: '',
-        c46: '',
-        c47: '',
-        c48: '',
-        c49: '',
-        c50: '',
-        c51: '',
-        c52: '',
-        c53: '',
-        c54: '',
-        c55: '',
-        c56: '',
-        c57: '',
-        c58: '',
-        c59: '',
-        c61: '',
-        c62: '',
-        c63: '',
-        c64: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
-        c71: '',
-        c72: '',
-        c73: '',
-        c74: '',
-        c75: '',
-        c76: '',
-        c77: '',
-        c200: '',
-        c202: '',
-        ec_model_no: 23,
-        attach_list: ''
-      },
-      forbidden: {
-        c62: true,
-        c35: true,
-        c36: true,
-        c37: true,
-        c38: true,
-        c39: true,
-        c43: true,
-        c44: true,
-        c45: true,
-      },
-      xdz1:''
-    }
-  },
-  mounted () {
-  },
-  methods: {
-     showTemplate() {
-      this.templatePic = this.$store.state.app.pltPic
-      this.modal3 = true
+    data() {
+      const timeDate = parseInt(this.$store.state.app.dateinit);
+      return {
+        // 当前初始使用日期 对应的C值
+        thisDateCV: 'c15',
+        // 当前能效等级 对应的C值
+        thisLevelCV: 'c51',
+        modal3: false,
+        modal4: false,
+        modal5: false,
+        templatePic: '',
+        uploadPic: '',
+        modal2: false,
+        currentValue: '',
+        qus: '',
+        boolFlag: [],
+        currentCValue: '',
+        confirmData: [],
+        modal1: false,
+        saveDisabled: false,
+        submitDisabled: false,
+        dataInit: {
+          disabledDate(date) {
+            return date && date.valueOf() < timeDate
+          }
+        },
+        uploadUrl: '',
+        uploadParam: {
+          fileData24: {},
+          filePath24: '',
+          uploadFileList24: [],
+          fileData26: {},
+          filePath26: '',
+          uploadFileList26: [],
+          fileData27: {},
+          filePath27: '',
+          uploadFileList27: [],
+          fileData28: {},
+          filePath28: '',
+          uploadFileList28: [],
+          fileData29: {},
+          filePath29: '',
+          uploadFileList29: [],
+          fileData30: {},
+          filePath30: '',
+          uploadFileList30: [],
+          fileData31: {},
+          filePath31: '',
+          uploadFileList31: [],
+          fileData32: {},
+          filePath32: '',
+          uploadFileList32: [],
+          fileData76: {},
+          filePath76: '',
+          uploadFileList76: []
+        },
+        filesArr: [],
+        checkmark24: false,
+        checkmark26: false,
+        checkmark27: false,
+        checkmark28: false,
+        checkmark29: false,
+        checkmark30: false,
+        checkmark31: false,
+        checkmark32: false,
+        checkmark76: false,
+        formRecord: {
+          ec_master_kuozhan_text: '',
+          c1: '',
+          c2: '',
+          c3: '',
+          c4: '',
+          c5: '',
+          c6: '',
+          c7: '',
+          c8: '',
+          c9: '',
+          c10: '',
+          c11: '',
+          c12: '',
+          c13: '',
+          c14: '',
+          c15: new Date(),
+          c16: '',
+          c17: '',
+          c18: '',
+          c19: '',
+          c20: '',
+          c21: '',
+          c22: '',
+          c23: '',
+          c24: '',
+          c25: '',
+          c26: '',
+          c27: '',
+          c28: '',
+          c29: '',
+          c30: '',
+          c31: '',
+          c32: '',
+          c33: '',
+          c34: '',
+          c35: '',
+          c36: '',
+          c37: '',
+          c38: '',
+          c39: '',
+          c40: '',
+          c41: '',
+          c42: '',
+          c43: '',
+          c44: '',
+          c45: '',
+          c46: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c51: '',
+          c52: '',
+          c53: '',
+          c54: '',
+          c55: '',
+          c56: '',
+          c57: '',
+          c58: '',
+          c59: '',
+          c61: '',
+          c62: '',
+          c63: '',
+          c64: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c69: '',
+          c70: '',
+          c71: '',
+          c72: '',
+          c73: '',
+          c74: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c200: '',
+          c202: '',
+          ec_model_no: 23,
+          attach_list: ''
+        },
+        forbidden: {
+          c62: true,
+          c35: true,
+          c36: true,
+          c37: true,
+          c38: true,
+          c39: true,
+          c43: true,
+          c44: true,
+          c45: true,
+        },
+        xdz1: ''
+      }
+    },
+    mounted() {
+    },
+    methods: {
+      showTemplate() {
+        this.templatePic = this.$store.state.app.pltPic
+        this.modal3 = true
       },
       prevStep() {
         this.$emit('prevStep')
@@ -1158,41 +1168,44 @@ import {
       },
       getNxdj(z, a, b, c) {
         if (z >= a) {
-            return "1";
+          return "1";
         } else if (z >= b && z < a) {
-            this.xdz1 = a;
-            return "2";
+          this.xdz1 = a;
+          return "2";
         } else if (z >= c && z < b) {
-            this.xdz1 = b;
-            return "3";
+          this.xdz1 = b;
+          return "3";
         } else {
-            return "0";
+          return "0";
         }
       }
-  },
-  computed: {
-    disabledoff(){
-      return  this.$store.state.app.pageType==='extend';
     },
-    pltId() {
-      return this.$store.state.app.pltId
-    },
-    pltPic() {
-      return this.$store.state.app.pltPic
-    },
-    requiredStr() {
-      return this.$store.state.app.requiredStr
-    },
-    ruleRecord () {
-      //产品结构-其他 禁用
-      if (this.formRecord.c5 == '其他') {
+    computed: {
+      ...mapGetters([
+        'pageType'
+      ]),
+      disabledoff() {
+        return this.pageType === 'extend';
+      },
+      pltId() {
+        return this.$store.state.app.pltId
+      },
+      pltPic() {
+        return this.$store.state.app.pltPic
+      },
+      requiredStr() {
+        return this.$store.state.app.requiredStr
+      },
+      ruleRecord() {
+        //产品结构-其他 禁用
+        if (this.formRecord.c5 == '其他') {
           this.forbidden.c62 = false
-      } else {
+        } else {
           this.formRecord.c62 = ''
           this.forbidden.c62 = true
-      }
-      //制热功能-有、无 禁用
-      if (this.formRecord.c61 == '有') {
+        }
+        //制热功能-有、无 禁用
+        if (this.formRecord.c61 == '有') {
           this.forbidden.c35 = false
           this.forbidden.c36 = false
           this.forbidden.c37 = false
@@ -1201,7 +1214,7 @@ import {
           this.forbidden.c43 = false
           this.forbidden.c44 = false
           this.forbidden.c45 = false
-      } else {
+        } else {
           this.formRecord.c35 = ''
           this.forbidden.c35 = true
           this.formRecord.c36 = ''
@@ -1218,636 +1231,642 @@ import {
           this.forbidden.c44 = true
           this.formRecord.c45 = ''
           this.forbidden.c45 = true
-      }
+        }
 
-      const callback = (rule, value, callback) => {
+        const callback = (rule, value, callback) => {
           callback()
-      }
+        }
 
-      //制冷量（C7）实测值≥制冷量（C6）标注值的95%
-      var c6=parseFloat(this.formRecord.c6);
-      var c7=parseFloat(this.formRecord.c7);
-      const checkc7 = (rule, value, callback) => {
+        //制冷量（C7）实测值≥制冷量（C6）标注值的95%
+        var c6 = parseFloat(this.formRecord.c6);
+        var c7 = parseFloat(this.formRecord.c7);
+        const checkc7 = (rule, value, callback) => {
           if (c7 < (c6 * 0.95)) {
             callback('实测制冷量不应小于额定制冷量的95%')
           } else {
             callback()
           }
-      }
-      //输入功率（C10）实测值≤输入功率（C9）标注值的110%
-      var c9=parseFloat(this.formRecord.c9);
-      var c10=parseFloat(this.formRecord.c10);
-      const checkc10 = (rule, value, callback) => {
+        }
+        //输入功率（C10）实测值≤输入功率（C9）标注值的110%
+        var c9 = parseFloat(this.formRecord.c9);
+        var c10 = parseFloat(this.formRecord.c10);
+        const checkc10 = (rule, value, callback) => {
           if (c10 > (c9 * 1.1)) {
             callback('实测制冷消耗功率不应大于额定制冷消耗功率的110%')
           } else {
             callback()
           }
-      }
+        }
 
-      //能效比：C12 ＝ C6／C9，保留两位小数
-      var c12 = parseFloat(this.formRecord.c12);
-      var _c12 = c6 / c9 + "";
-      var _c12val = _c12.substring(0, _c12.lastIndexOf('.') + 3);
+        //能效比：C12 ＝ C6／C9，保留两位小数
+        var c12 = parseFloat(this.formRecord.c12);
+        var _c12 = c6 / c9 + "";
+        var _c12val = _c12.substring(0, _c12.lastIndexOf('.') + 3);
 
-      // // //能效比标注值和国标比对
-      var c16 = this.formRecord.c16;
-      var c51 = this.formRecord.c51;
+        // // //能效比标注值和国标比对
+        var c16 = this.formRecord.c16;
+        var c51 = this.formRecord.c51;
 
-      // // //20160520 等级限定值
-      var xdz1 = this.xdz1;
+        // // //20160520 等级限定值
+        var xdz1 = this.xdz1;
 
-      var dj;
-      if (c16 == "分体式") {
+        var dj;
+        if (c16 == "分体式") {
           if (c6 <= 4500) {
-              dj = this.getNxdj(c12, 3.60, 3.40, 3.20);
+            dj = this.getNxdj(c12, 3.60, 3.40, 3.20);
           } else if (c6 > 4500 && c6 <= 7100) {
-              dj = this.getNxdj(c12, 3.50, 3.30, 3.10);
+            dj = this.getNxdj(c12, 3.50, 3.30, 3.10);
           } else if (c6 > 7100 && c6 <= 14000) {
-              dj = this.getNxdj(c12, 3.40, 3.20, 3.00);
+            dj = this.getNxdj(c12, 3.40, 3.20, 3.00);
           }
-      } else {
+        } else {
           dj = this.getNxdj(c12, 3.30, 3.10, 2.90);
-      }
+        }
 
-      const checkc12 = (rule, value, callback) => {
-        if (xdz1 != "") {
-          if (c12 >= xdz1 || c12 < _c12val) {
-            callback('能效比（EER）标准值不正确')
+        const checkc12 = (rule, value, callback) => {
+          if (xdz1 != "") {
+            if (c12 >= xdz1 || c12 < _c12val) {
+              callback('能效比（EER）标准值不正确')
+            } else {
+              callback()
+            }
           } else {
             callback()
           }
-        }else{
-          callback()
         }
-      }
 
-      // // //实测能效比不应小于能效限定值
-      var c13 = parseFloat(this.formRecord.c13);
-      var xdz = 0;
-      if (c16 == "分体式") {
+        // // //实测能效比不应小于能效限定值
+        var c13 = parseFloat(this.formRecord.c13);
+        var xdz = 0;
+        if (c16 == "分体式") {
           if (dj == "1") {
-              if (c6 <= 4500) {
-                  xdz = 3.60;
-              } else if (c6 > 4500 && c6 <= 7100) {
-                  xdz = 3.50;
-              } else if (c6 > 7100 && c6 <= 14000) {
-                  xdz = 3.40;
-              }
+            if (c6 <= 4500) {
+              xdz = 3.60;
+            } else if (c6 > 4500 && c6 <= 7100) {
+              xdz = 3.50;
+            } else if (c6 > 7100 && c6 <= 14000) {
+              xdz = 3.40;
+            }
           }
           if (dj == "2") {
-              if (c6 <= 4500) {
-                  xdz = 3.40;
-              } else if (c6 > 4500 && c6 <= 7100) {
-                  xdz = 3.30;
-              } else if (c6 > 7100 && c6 <= 14000) {
-                  xdz = 3.20;
-              }
-          }
-          if (dj == "3") {
-              if (c6 <= 4500) {
-                  xdz = 3.20;
-              } else if (c6 > 4500 && c6 <= 7100) {
-                  xdz = 3.10;
-              } else if (c6 > 7100 && c6 <= 14000) {
-                  xdz = 3.00;
-              }
-          }
-      } else {
-          if (dj == "1") {
+            if (c6 <= 4500) {
+              xdz = 3.40;
+            } else if (c6 > 4500 && c6 <= 7100) {
               xdz = 3.30;
-          }
-          if (dj == "2") {
-              xdz = 3.10;
+            } else if (c6 > 7100 && c6 <= 14000) {
+              xdz = 3.20;
+            }
           }
           if (dj == "3") {
-              xdz = 2.90;
+            if (c6 <= 4500) {
+              xdz = 3.20;
+            } else if (c6 > 4500 && c6 <= 7100) {
+              xdz = 3.10;
+            } else if (c6 > 7100 && c6 <= 14000) {
+              xdz = 3.00;
+            }
           }
-      }
-       
-      const checkc13 = (rule, value, callback) => {
+        } else {
+          if (dj == "1") {
+            xdz = 3.30;
+          }
+          if (dj == "2") {
+            xdz = 3.10;
+          }
+          if (dj == "3") {
+            xdz = 2.90;
+          }
+        }
+
+        const checkc13 = (rule, value, callback) => {
           if (c13 < xdz) {
             callback('实测能效比不应小于能效限定值')
           } else {
             callback()
           }
-      }
+        }
 
-      const checkc51 = (rule, value, callback) => {
-           if (dj == "0") {
+        const checkc51 = (rule, value, callback) => {
+          if (dj == "0") {
+            callback('计算所得能效等级与页面中选择的能效等级不符')
+          } else {
+            if (c51 != dj) {
               callback('计算所得能效等级与页面中选择的能效等级不符')
-           }else{
-              if (c51 != dj) {
-                callback('计算所得能效等级与页面中选择的能效等级不符')
-              } else {
-                callback()
-              }
-           }
-      }
+            } else {
+              callback()
+            }
+          }
+        }
 
-      return {
-        c1: [
-          {
-            required: true,
-            message: '生产者名称不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c2: [
-          {
-            required: true,
-            message: '制造单位不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c50: [
-          {
-            required: true,
-            message: '备案方不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c4: [
-          {
-            required: true,
-            message: '商标不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c5: [
-          {
-            required: true,
-            message: '产品结构不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c62: [
-          {
-            required: this.formRecord.c5 === '其他',
-            message: '其他不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c51: [
-          {
-            required: true,
-            message: '能效等级不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc51,
-            trigger: 'change,blur'
-          }
-        ],
-        c6: [
-          {
-            required: true,
-            message: '标称值不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c7: [
-          {
-            required: true,
-            message: '实测值不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc7,
-            trigger: 'change,blur'
-          }
-        ],
-        c9: [
-          {
-            required: true,
-            message: '标称值不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c10: [
-          {
-            required: true,
-            message: '实测值不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc10,
-            trigger: 'change,blur'
-          }
-        ],
-        c12: [
-          {
-            required: true,
-            message: '标称值不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc12,
-            trigger: 'change,blur'
-          }
-        ],
-        c13: [
-          {
-            required: true,
-            message: '实测值不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc13,
-            trigger: 'change,blur'
-          }
-        ],
-        c16: [
-          {
-            required: true,
-            message: '产品类型不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c17: [
-          {
-            required: true,
-            message: '电源类型不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c18: [
-          {
-            required: true,
-            message: '电热元件不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c19: [
-          {
-            required: true,
-            message: '开关不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c20: [
-          {
-            required: true,
-            message: '机械温控器不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c21: [
-          {
-            required: true,
-            message: '温控器以外的其他控制装置不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c22: [
-          {
-            required: true,
-            message: '用于非正常工作保护的薄弱零件不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c23: [
-          {
-            required: true,
-            message: '电子控制线路不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c24: [
-          {
-            required: true,
-            message: '不可拆卸插头的电源线不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c25: [
-          {
-            required: true,
-            message: '单独的控制面板不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c26: [
-          {
-            required: true,
-            message: '线控器不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c27: [
-          {
-            required: true,
-            message: '遥控器不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c59: [
-          {
-            required: true,
-            message: '是否接风管不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c28: [
-          {
-            required: true,
-            message: '额定电压不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c29: [
-          {
-            required: true,
-            message: '额定频率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c30: [
-          {
-            required: true,
-            message: '额定电流不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c31: [
-          {
-            required: true,
-            message: '防触电保护类别不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c32: [
-          {
-            required: true,
-            message: '防水等级不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c33: [
-          {
-            required: true,
-            message: '最大制冷输入功率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c34: [
-          {
-            required: true,
-            message: '最大制冷输入电流不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'change,blur'
-          }
-        ],
-        c40: [
-          {
-            required: true,
-            message: '室内机噪声dB不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c41: [
-          {
-            required: true,
-            message: '室外机噪声dB不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c42: [
-          {
-            required: true,
-            message: '适用面积不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c56: [
-          {
-            required: true,
-            message: '循环风量不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c57: [
-          {
-            required: true,
-            message: '室内机质量不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c58: [
-          {
-            required: true,
-            message: '室外机质量不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c61: [
-          {
-            required: true,
-            message: '制热功能不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c35: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '热泵制热量不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c36: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '热泵制热消耗功率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c37: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '电加热装置制热消耗功率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c38: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '最大制热输入功率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c39: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '最大制热输入电流不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: this.formRecord.c61 == '有'?oneDecimals:callback,
-            trigger: 'change,blur'
-          }
-        ],
-        c43: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '制热量不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c44: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '制热消耗功率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c45: [
-          {
-            required: this.formRecord.c61 == '有',
-            message: '性能系数不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c46: [
-          {
-            required: true,
-            message: '长不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c52: [
-          {
-            required: true,
-            message: '宽不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c53: [
-          {
-            required: true,
-            message: '高不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c47: [
-          {
-            required: true,
-            message: '长不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c54: [
-          {
-            required: true,
-            message: '宽不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c55: [
-          {
-            required: true,
-            message: '高不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c48: [
-          {
-            required: true,
-            message: '制冷剂名称不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c49: [
-          {
-            required: true,
-            message: '制冷剂灌注量不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c63: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c64: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c65: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c66: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c67: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
+        return {
+          c1: [
+            {
+              required: true,
+              message: '生产者名称不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c2: [
+            {
+              required: true,
+              message: '制造单位不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c50: [
+            {
+              required: true,
+              message: '备案方不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c4: [
+            {
+              required: true,
+              message: '商标不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c5: [
+            {
+              required: true,
+              message: '产品结构不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c62: [
+            {
+              required: this.formRecord.c5 === '其他',
+              message: '其他不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c51: [
+            {
+              required: true,
+              message: '能效等级不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc51,
+              trigger: 'change,blur'
+            }
+          ],
+          c6: [
+            {
+              required: true,
+              message: '标称值不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c7: [
+            {
+              required: true,
+              message: '实测值不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc7,
+              trigger: 'change,blur'
+            }
+          ],
+          c9: [
+            {
+              required: true,
+              message: '标称值不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c10: [
+            {
+              required: true,
+              message: '实测值不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc10,
+              trigger: 'change,blur'
+            }
+          ],
+          c12: [
+            {
+              required: true,
+              message: '标称值不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc12,
+              trigger: 'change,blur'
+            }
+          ],
+          c13: [
+            {
+              required: true,
+              message: '实测值不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc13,
+              trigger: 'change,blur'
+            }
+          ],
+          c15: [
+            {
+              required: true,
+              message: '不能为空',
+            }
+          ],
+          c16: [
+            {
+              required: true,
+              message: '产品类型不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c17: [
+            {
+              required: true,
+              message: '电源类型不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c18: [
+            {
+              required: true,
+              message: '电热元件不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c19: [
+            {
+              required: true,
+              message: '开关不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c20: [
+            {
+              required: true,
+              message: '机械温控器不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c21: [
+            {
+              required: true,
+              message: '温控器以外的其他控制装置不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c22: [
+            {
+              required: true,
+              message: '用于非正常工作保护的薄弱零件不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c23: [
+            {
+              required: true,
+              message: '电子控制线路不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c24: [
+            {
+              required: true,
+              message: '不可拆卸插头的电源线不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c25: [
+            {
+              required: true,
+              message: '单独的控制面板不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c26: [
+            {
+              required: true,
+              message: '线控器不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c27: [
+            {
+              required: true,
+              message: '遥控器不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c59: [
+            {
+              required: true,
+              message: '是否接风管不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c28: [
+            {
+              required: true,
+              message: '额定电压不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c29: [
+            {
+              required: true,
+              message: '额定频率不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c30: [
+            {
+              required: true,
+              message: '额定电流不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'change,blur'
+            }
+          ],
+          c31: [
+            {
+              required: true,
+              message: '防触电保护类别不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c32: [
+            {
+              required: true,
+              message: '防水等级不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c33: [
+            {
+              required: true,
+              message: '最大制冷输入功率不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c34: [
+            {
+              required: true,
+              message: '最大制冷输入电流不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'change,blur'
+            }
+          ],
+          c40: [
+            {
+              required: true,
+              message: '室内机噪声dB不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c41: [
+            {
+              required: true,
+              message: '室外机噪声dB不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c42: [
+            {
+              required: true,
+              message: '适用面积不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c56: [
+            {
+              required: true,
+              message: '循环风量不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c57: [
+            {
+              required: true,
+              message: '室内机质量不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c58: [
+            {
+              required: true,
+              message: '室外机质量不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c61: [
+            {
+              required: true,
+              message: '制热功能不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c35: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '热泵制热量不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c36: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '热泵制热消耗功率不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c37: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '电加热装置制热消耗功率不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c38: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '最大制热输入功率不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c39: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '最大制热输入电流不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: this.formRecord.c61 == '有' ? oneDecimals : callback,
+              trigger: 'change,blur'
+            }
+          ],
+          c43: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '制热量不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c44: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '制热消耗功率不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c45: [
+            {
+              required: this.formRecord.c61 == '有',
+              message: '性能系数不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c46: [
+            {
+              required: true,
+              message: '长不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            }
+          ],
+          c52: [
+            {
+              required: true,
+              message: '宽不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            }
+          ],
+          c53: [
+            {
+              required: true,
+              message: '高不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            }
+          ],
+          c47: [
+            {
+              required: true,
+              message: '长不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            }
+          ],
+          c54: [
+            {
+              required: true,
+              message: '宽不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            }
+          ],
+          c55: [
+            {
+              required: true,
+              message: '高不能为空',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            }
+          ],
+          c48: [
+            {
+              required: true,
+              message: '制冷剂名称不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c49: [
+            {
+              required: true,
+              message: '制冷剂灌注量不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c63: [
+            {
+              required: true,
+              message: '不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c64: [
+            {
+              required: true,
+              message: '不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c65: [
+            {
+              required: true,
+              message: '不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c66: [
+            {
+              required: true,
+              message: '不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+          c67: [
+            {
+              required: true,
+              message: '不能为空',
+              trigger: 'change,blur'
+            }
+          ],
 
+        }
       }
     }
   }
-}
 </script>
 <style>
-@import '../../../css/comm.css';
+  @import '../../../css/comm.css';
 </style>
 <style lang="less" scoped>
-  .span-red{
+  .span-red {
     color: red;
     font-size: 13px;
   }

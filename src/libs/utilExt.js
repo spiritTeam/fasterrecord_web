@@ -35,7 +35,6 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
       reader.readAsDataURL(file)
       reader.onloadend = (e) => {
         file.url = reader.result
-        //console.log(that.uploadParam['uploadFileList'+id])
         that.uploadParam['uploadFileList' + id].push(file)
       }
       getImgPath(res.data.dir, that)
@@ -78,7 +77,8 @@ export const XfillExtendData = (params, that) => {
         that.formRecord[i].push(v)
       })
     } else if (i === that.thisDateCV) {
-      if (data[i] != undefined) that.formRecord[i] = that.formatDate(data[i]);
+      if (data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]))
+      //console.log(that)
     } else {
       that.formRecord[i] = data[i]
     }
@@ -116,7 +116,6 @@ export const XfillDraftData = (params, that) => {
         that.formRecord[i].push(v)
       })
     } else if (i === that.thisDateCV) {
-      //this.$store.commit('setDateInit', data[i])
       if (data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]));
     } else {
       that.formRecord[i] = data[i]
@@ -147,7 +146,9 @@ export const XfillDefaultData = (params, that) => {
           }
         } else if (e.recId === that.thisDateCV && isNaN(labVal)) {
           that.formRecord[e.recId] = new Date()
-        } else {
+        } else if(e.recId==='c1' || e.recId==='c2'|| e.recId==='c3'){
+          that.formRecord[e.recId] =e.labValue
+        }else {
           that.formRecord[e.recId] = labVal
         }
       }
@@ -156,39 +157,37 @@ export const XfillDefaultData = (params, that) => {
 }
 
 export const XshowConfirm = (that) => {
-  // if (that.$store.state.app.requiredStr){
-  //   console.log(that.$store.state.app.requiredStr)
-  //   that.$store.state.app.requiredStr.substring(0,that.$store.state.app.requiredStr.length - 1).split(",").forEach((e) => {
-  //     if (!that.formRecord[e]) {
-  //       // that.$Message.warning(e + " 不能为空" + that.formRecord[e])
-  //       console.log("值为" + e + " 不能为空" + that.formRecord[e])
-  //       return false
-  //     }
-  //   })
+  let _this = that
+  let pageType=_this.pageType;
+  if (_this.uploadParam.filePath24 === '') {
+    _this.$Message.warning('请上传产品正面图片！')
+    return false
+  }
+  if (_this.uploadParam.filePath76 === '') {
+    _this.$Message.warning('请上传铭牌图片！')
+    return false
+  }
+  // if (_this.$store.state.app.oem &&_this.uploadParam.filePath26 === '') {
+  //   _this.$Message.warning('请上传oem声明！')
+  //   return false
   // }
-  let pageType = that.$store.state.app.pageType;
-  if (that.uploadParam.filePath24 === '') {
-    that.$Message.warning('请上传产品正面图片！')
-    return false
-  }
-  if (that.uploadParam.filePath76 === '') {
-    that.$Message.warning('请上传铭牌图片！')
-    return false
-  }
-  if (pageType === "extend" || pageType === "update") {
-    if (that.formRecord.ec_master_kuozhan_text === '') {
-      let text = pageType === "extend" ? '扩展' : '变更'
-      that.$Message.warning('请填写' + text + '申请书！')
-      return false
+  if(pageType==="extend" || pageType==="update" ){
+    if (_this.formRecord.ec_master_kuozhan_text===''){
+      let text=pageType==="extend"?'扩展':'变更'
+      _this.$Message.warning('请填写'+text+'申请书！')
+    }else {
+      _this.modal1 = true;
     }
+    return;
   }
-  that.$refs['formRecord'].validate((valid) => {
+
+  this.$refs['formRecord'].validate((valid) => {
     if (valid) {
-      if (that.confirmData.join('') == 1) {
-        that.boolFlag = XdiffRecord(that.$store.state.app.defaultData, that.formRecord, that);
-        that.modal1 = true
+      if (_this.confirmData.join('') == 1) {
+        _this.boolFlag= _this.diffRecord(_this.$store.state.app.defaultData,_this.formRecord);
+        _this.modal1 = true
       } else {
-        that.$Message.warning('请勾选我已确认以上数据填写无误选项')
+        _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
       }
     }
   })
@@ -224,7 +223,7 @@ export const XdiffRecord = (orgin, target, that) => {
 }
 
 export const XsubmitRecord = (that) => {
-  let pageType = that.$store.state.app.pageType;
+  let pageType = that.pageType;
   that.formRecord[that.thisDateCV] = that.formatDate(that.formRecord[that.thisDateCV])
   that.formRecord.ptid = that.$store.state.app.ptId
   that.formRecord.pltId = that.$store.state.app.pltId
@@ -248,7 +247,7 @@ export const XsubmitRecord = (that) => {
     that.filesArr.push(file25)
   }
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
-  that.formRecord.id = that.$store.state.app.updateId || 0
+  that.formRecord.id = that.formRecord.id || that.$store.state.app.updateId || 0
   if (pageType === "extend" || pageType === "update") {
     let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do';
     axios({
@@ -267,7 +266,6 @@ export const XsubmitRecord = (that) => {
       }
     }).then(res => {
       if (res.data.result_code === '1') {
-        //let txt = that.$store.state.app.pltId === 244 ? '请自行上传标识图' : '备案正在自动公告中。'
         that.$Modal.success({
           title: '提交成功',
           content: '<p>备案数据已经提交成功！</p>',
@@ -278,7 +276,6 @@ export const XsubmitRecord = (that) => {
         })
       } else {
         that.$Message.warning(res.data.message)
-        //that.submitDisabled = false
       }
     })
   } else {
