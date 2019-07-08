@@ -1331,7 +1331,7 @@
             {
               required: this.formRecord.c17.join('').indexOf('以太网接口共') > -1,
               trigger: 'change,blur',
-              message: '以太网接口个数不能为空'
+              message: '不能为空'
             },
             {
               validator: this.formRecord.c17.join('').indexOf('以太网接口共') > -1 ? numberCheck : check,
@@ -1342,7 +1342,7 @@
             {
               required: this.formRecord.c17.join('').indexOf('USB接口共') > -1,
               trigger: 'change,blur',
-              message: 'USB接口个数不能为空'
+              message: '不能为空'
             },
             {
               validator: this.formRecord.c17.join('').indexOf('USB接口共') > -1 ? numberCheck : check,
