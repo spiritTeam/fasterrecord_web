@@ -39,7 +39,7 @@
             </tbody>
           </table>
         </Card>
-      </div>
+      </div> 
       <div class="part part3">
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
