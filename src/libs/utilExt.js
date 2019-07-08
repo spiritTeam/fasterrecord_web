@@ -249,7 +249,7 @@ export const XsubmitRecord = (that) => {
     that.filesArr.push(file25)
   }
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
-  that.formRecord.id = that.$store.state.app.updateId || 0
+  that.formRecord.id = that.formRecord.id || that.$store.state.app.updateId || 0
   if (pageType === "extend" || pageType === "update") {
     let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do';
     axios({
