@@ -86,15 +86,15 @@
             <tbody>
             <tr>
               <td rowspan="2">序号</td>
-              <td rowspan="2">灶眼名称</td>
-              <td colspan="2">热负荷(KW)</td>
-              <td colspan="2">热效率(%)</td>
+              <td rowspan="2"><i class="red">*</i>灶眼名称</td>
+              <td colspan="2"><i class="red">*</i>热负荷(KW)</td>
+              <td colspan="2"><i class="red">*</i>热效率(%)</td>
             </tr>
             <tr>
-              <td>额定值(保留一位小数)</td>
-              <td>实测值(至少保留两位小数)</td>
-              <td>额定值(整数)</td>
-              <td>实测值(保留一位小数)</td>
+              <td><i class="red">*</i>额定值(保留一位小数)</td>
+              <td><i class="red">*</i>实测值(至少保留两位小数)</td>
+              <td><i class="red">*</i>额定值(整数)</td>
+              <td><i class="red">*</i>实测值(保留一位小数)</td>
             </tr>
             <tr>
               <td>1</td>
@@ -309,7 +309,7 @@
           <table id="table3">
             <tbody>
             <tr>
-              <td>灶眼数量</td>
+              <td><i class="red">*</i>灶眼数量</td>
               <td colspan="3">
                 <FormItem prop="c6">
                   <RadioGroup v-model="formRecord.c6">
@@ -325,7 +325,7 @@
               </td>
             </tr>
             <tr>
-              <td>燃气类别</td>
+              <td><i class="red">*</i>燃气类别</td>
               <td>
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
@@ -358,7 +358,7 @@
               </td>
             </tr>
             <tr>
-              <td><span class="color-red">*</span>点火方式</td>
+              <td><i class="red">*</i>点火方式</td>
               <td colspan="3">
                 <FormItem prop="c23">
                   <RadioGroup v-model="formRecord.c23">
@@ -374,7 +374,7 @@
               </td>
             </tr>
             <tr>
-              <td><span class="color-red">*</span>熄火保护装置</td>
+              <td><i class="red">*</i>熄火保护装置</td>
               <td>
                 <FormItem prop="c25">
                   <RadioGroup v-model="formRecord.c25">
@@ -383,7 +383,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td><span class="color-red">*</span>调风装置</td>
+              <td><i class="red">*</i>调风装置</td>
               <td>
                 <FormItem prop="c26">
                   <RadioGroup v-model="formRecord.c26">
@@ -394,13 +394,13 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>额定电压(V)</td>
+              <td class="right-align"><i class="red">*</i>额定电压(V)</td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="right-align"><span class="color-red">*</span>额定频率(Hz)</td>
+              <td class="right-align"><i class="red">*</i>额定频率(Hz)</td>
               <td>
                 <FormItem prop="c28">
                   <Input type="text" v-model="formRecord.checkmark28" :disabled='disabledoff'/>
@@ -408,7 +408,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>额定燃气供气压力(Pa)
+              <td class="right-align"><i class="red">*</i>额定燃气供气压力(Pa)
               </td>
               <td colspan="3">
                 <FormItem prop="c29">
@@ -425,7 +425,7 @@
               </td>
             </tr>
             <tr>
-              <td><span class="color-red">*</span>挖孔尺寸(长×宽)(mm×mm)
+              <td><i class="red">*</i>挖孔尺寸(长×宽)(mm×mm)
               </td>
               <td colspan="3">
                 <FormItem prop="c32">
@@ -438,7 +438,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>外形尺寸(长×宽×高)(mm×mm×mm)</td>
+              <td class="right-align"><i class="red">*</i>外形尺寸(长×宽×高)(mm×mm×mm)</td>
               <td colspan="3" class="w19">
                 <FormItem prop="c35">
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff' style="width:80px;"/>

@@ -74,8 +74,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>额定值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>额定值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>

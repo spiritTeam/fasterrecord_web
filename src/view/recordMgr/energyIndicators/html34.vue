@@ -80,8 +80,8 @@
             <tr>
               <th></th>
               <th>项目</th>
-              <th>标注值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>标注值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -175,7 +175,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td>屏幕有效尺寸（长×宽）（mm×mm）</td>
+              <td><i class="red">*</i>屏幕有效尺寸（长×宽）（mm×mm）</td>
               <td colspan="3" class="w19">
                 <FormItem prop="c14">
                   <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
@@ -187,7 +187,7 @@
               </td>
             </tr>
             <tr>
-              <td>附加功能</td>
+              <td><i class="red">*</i>附加功能</td>
               <td colspan="3">
                 <FormItem prop="c18">
                   <CheckboxGroup v-model="formRecord.c18">
@@ -204,7 +204,7 @@
               </td>
             </tr>
             <tr>
-              <td>固有分辨率（像素数）（水平×垂直）</td>
+              <td><i class="red">*</i>固有分辨率（像素数）（水平×垂直）</td>
               <td colspan="3">
                 <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
@@ -216,7 +216,7 @@
               </td>
             </tr>
             <tr>
-              <td>供电方式（W）</td>
+              <td><i class="red">*</i>供电方式（W）</td>
               <td colspan="3">
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
@@ -230,7 +230,7 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="2">信号处理功率（W）</td>
+              <td rowspan="2"><i class="red">*</i>信号处理功率（W）</td>
               <td colspan="3" style="border-bottom:none;">
                 <FormItem prop="c24">
                   <CheckboxGroup v-model="formRecord.c24">
@@ -253,13 +253,13 @@
               </td>
             </tr>
             <tr>
-              <td>额定功率（W）</td>
+              <td><i class="red">*</i>额定功率（W）</td>
               <td>
                 <FormItem prop="c25">
                   <Input type="text" v-model="formRecord.c25" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>电压（V）</td>
+              <td><i class="red">*</i>电压（V）</td>
               <td>
                 <FormItem prop="c26">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
@@ -267,13 +267,13 @@
               </td>
             </tr>
             <tr>
-              <td>电流（A）</td>
+              <td><i class="red">*</i>电流（A）</td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>频率（Hz）</td>
+              <td><i class="red">*</i>频率（Hz）</td>
               <td>
                 <FormItem prop="c28">
                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
