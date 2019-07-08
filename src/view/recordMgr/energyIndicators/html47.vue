@@ -1516,7 +1516,6 @@ export default {
         });
     },
     fileHandleBeforeUpload (file,id) {
-      console.log(id)
       let _this = this
       let fileObj = {}
       _this.uploadParam['uploadFileList'+id] = []
@@ -1660,7 +1659,8 @@ export default {
             that.formRecord[e.recId] = ''
           } else {
 
-            let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
+            // let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
+            let labVal = e.labValue;
             if (e.recId === 'c7') {
               if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
                 that.formRecord[e.recId] = '1'
@@ -1670,7 +1670,6 @@ export default {
             } else if (e.recId === 'c20' && isNaN(labVal)) {
               that.formRecord[e.recId] = new Date()
             }else if(e.recId==='c1' || e.recId==='c2'|| e.recId==='c3'){
-                console.log(e.labValue);
                 that.formRecord[e.recId] =e.labValue
             }else {
               that.formRecord[e.recId] = labVal

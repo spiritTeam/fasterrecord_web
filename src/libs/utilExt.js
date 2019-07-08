@@ -137,7 +137,8 @@ export const XfillDefaultData = (params, that) => {
       if (e.labValue === '/' || e.labValue == null || e.labValue == '') {
         that.formRecord[e.recId] = ''
       } else {
-        let labVal = e.labValue.replace(/（/g, '(').replace(/）/g, ')')
+        // let labVal = e.labValue.replace(/（/g, '(').replace(/）/g, ')')
+        let labVal = e.labValue
         if (e.recId === that.thisLevelCV) {
           if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
             that.formRecord[e.recId] = '1'
@@ -376,7 +377,10 @@ export const XformatDate = (d) => {
 
 export const XviewClose= (that) => {
   that.$router.replace({
-    name:'queryRecord'
+    name:'queryRecord',
+    params:{
+      pageNum:that.$route.params.pageNum
+    }
   })
 }
 
