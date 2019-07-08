@@ -68,8 +68,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>标注值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>标注值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -125,7 +125,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td>电源类型</td>
+              <td><i class="red">*</i>电源类型</td>
               <td>
                 <FormItem prop="c11">
                   <RadioGroup v-model="formRecord.c11">
@@ -134,7 +134,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>额定电压（V）</td>
+              <td><i class="red">*</i>额定电压（V）</td>
               <td>
                 <FormItem prop="c26">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c26'/>
@@ -142,13 +142,13 @@
               </td>
             </tr>
             <tr>
-              <td>额定频率（Hz）</td>
+              <td><i class="red">*</i>额定频率（Hz）</td>
               <td>
                 <FormItem prop="c25">
                   <Input type="text" v-model="formRecord.c25" :disabled='disabledoff || forbidden.c26'/>
                 </FormItem>
               </td>
-              <td>额定功率（W）</td>
+              <td><i class="red">*</i>额定功率（W）</td>
               <td>
                 <FormItem prop="c24">
                   <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c26'/>
@@ -156,13 +156,13 @@
               </td>
             </tr>
             <tr>
-              <td>最大功率档位</td>
+              <td><i class="red">*</i>最大功率档位</td>
               <td>
                 <FormItem prop="c32">
                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff || forbidden.c26'/>
                 </FormItem>
               </td>
-              <td>防触电保护类型</td>
+              <td><i class="red">*</i>防触电保护类型</td>
               <td>
                 <FormItem prop="c9">
                   <RadioGroup v-model="formRecord.c9">
@@ -174,14 +174,14 @@
               </td>
             </tr>
             <tr>
-              <td>防护等级</td>
+              <td><i class="red">*</i>防护等级</td>
               <td>
                 <FormItem><label>IP</label></FormItem>
                 <FormItem prop="c10">
                   <Input type="text" v-model="formRecord.c10" :disabled='disabledoff || forbidden.c26'/>
                 </FormItem>
               </td>
-              <td>输入插口</td>
+              <td><i class="red">*</i>输入插口</td>
               <td>
                 <FormItem prop="c12">
                   <RadioGroup v-model="formRecord.c12">
@@ -192,7 +192,7 @@
               </td>
             </tr>
             <tr>
-              <td>温控器</td>
+              <td><i class="red">*</i>温控器</td>
               <td>
                 <FormItem prop="c13">
                   <RadioGroup v-model="formRecord.c13">
@@ -201,7 +201,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>控制方式</td>
+              <td><i class="red">*</i>控制方式</td>
               <td>
                 <FormItem prop="c13">
                   <RadioGroup v-model="formRecord.c13">
@@ -212,7 +212,7 @@
               </td>
             </tr>
             <tr>
-              <td>热断路器类型</td>
+              <td><i class="red">*</i>热断路器类型</td>
               <td colspan="3" style="border-bottom:none;">
                 <FormItem prop="c14">
                   <CheckboxGroup v-model="formRecord.c14">
@@ -229,7 +229,7 @@
               </td>
             </tr>
             <tr>
-              <td>器具类型</td>
+              <td><i class="red">*</i>器具类型</td>
               <td colspan="3">
                 <FormItem prop="c15">
                   <RadioGroup v-model="formRecord.c15">
@@ -249,7 +249,7 @@
               </td>
             </tr>
             <tr>
-              <td>二次供电方式</td>
+              <td><i class="red">*</i>二次供电方式</td>
               <td colspan="3">
                 <FormItem prop="c17">
                   <RadioGroup v-model="formRecord.c17">
@@ -264,7 +264,7 @@
               </td>
             </tr>
             <tr>
-              <td>外形尺寸（长×宽×高）（mm×mm×mm）</td>
+              <td><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3" class="w19">
                 <FormItem prop="c19">
                   <Input style="vertical-align:top" type="text" v-model="formRecord.c19" :disabled='disabledoff'/>

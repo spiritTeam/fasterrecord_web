@@ -68,8 +68,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>标称值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>标称值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -125,7 +125,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td width="120px">电源性质</td>
+              <td width="120px"><i class="red">*</i>电源性质</td>
               <td>
                 <FormItem prop="c10">
                   <RadioGroup v-model="formRecord.c10">
@@ -134,7 +134,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td rowspan="2">电源线插头形式</td>
+              <td rowspan="2"><i class="red">*</i>电源线插头形式</td>
               <td style="border-bottom:none;">
                 <FormItem prop="c11">
                   <RadioGroup v-model="formRecord.c11">
@@ -145,7 +145,7 @@
               </td>
             </tr>
             <tr>
-              <td>种类</td>
+              <td><i class="red">*</i>种类</td>
               <td style="border-bottom:none;">
                 <FormItem prop="c13">
                   <RadioGroup v-model="formRecord.c13">
@@ -170,7 +170,7 @@
               </td>
             </tr>
             <tr>
-              <td>规格（mm）</td>
+              <td><i class="red">*</i>规格（mm）</td>
               <td>
                 <FormItem prop="c14">
                   <Select v-model="formRecord.c14" style="width: 300px">
@@ -192,7 +192,7 @@
                   </Select>
                 </FormItem>
               </td>
-              <td>控制方式</td>
+              <td><i class="red">*</i>控制方式</td>
               <td>
                 <FormItem prop="c15">
                   <RadioGroup v-model="formRecord.c15">
@@ -203,7 +203,7 @@
               </td>
             </tr>
             <tr>
-              <td>定时器</td>
+              <td><i class="red">*</i>定时器</td>
               <td>
                 <FormItem prop="c16">
                   <RadioGroup v-model="formRecord.c16">
@@ -212,7 +212,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>电机电容器</td>
+              <td><i class="red">*</i>电机电容器</td>
               <td>
                 <FormItem prop="c17">
                   <RadioGroup v-model="formRecord.c17">
@@ -223,7 +223,7 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="2">电动机</td>
+              <td rowspan="2"><i class="red">*</i>电动机</td>
               <td style="border-bottom:none;">
                 <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
@@ -232,7 +232,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td rowspan="2">扇叶</td>
+              <td rowspan="2"><i class="red">*</i>扇叶</td>
               <td style="border-bottom:none;">
                 <label>材质</label>
                 <FormItem prop="c20">
@@ -259,13 +259,13 @@
               </td>
             </tr>
             <tr>
-              <td>电压（V）</td>
+              <td><i class="red">*</i>电压（V）</td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>频率（Hz）</td>
+              <td><i class="red">*</i>频率（Hz）</td>
               <td>
                 <FormItem prop="c29">
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
@@ -273,7 +273,7 @@
               </td>
             </tr>
             <tr>
-              <td>外形尺寸<br>（长×宽×高）<br>（mm×mm×mm）</td>
+              <td><i class="red">*</i>外形尺寸<br>（长×宽×高）<br>（mm×mm×mm）</td>
               <td colspan="3">
                 <FormItem prop="c22">
                   <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>

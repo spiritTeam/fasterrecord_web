@@ -70,8 +70,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>标注值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>标注值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -127,7 +127,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td>电源类型</td>
+              <td><i class="red">*</i>电源类型</td>
               <td>
                 <FormItem prop="c9">
                   <RadioGroup v-model="formRecord.c9">
@@ -136,7 +136,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>电源性质</td>
+              <td><i class="red">*</i>电源性质</td>
               <td>
                 <FormItem prop="c10">
                   <RadioGroup v-model="formRecord.c10">
@@ -147,7 +147,7 @@
               </td>
             </tr>
             <tr>
-              <td>结构形式</td>
+              <td><i class="red">*</i>结构形式</td>
               <td colspan="3">
                 <FormItem prop="c11">
                   <RadioGroup v-model="formRecord.c11">
@@ -160,7 +160,7 @@
               </td>
             </tr>
             <tr>
-              <td>安装使用形式</td>
+              <td><i class="red">*</i>安装使用形式</td>
               <td colspan="3">
                 <FormItem prop="c12">
                   <RadioGroup v-model="formRecord.c12">
@@ -177,7 +177,7 @@
               </td>
             </tr>
             <tr>
-              <td>加热方式</td>
+              <td><i class="red">*</i>加热方式</td>
               <td colspan="3">
                 <FormItem prop="c14">
                   <RadioGroup v-model="formRecord.c14">
@@ -192,7 +192,7 @@
               </td>
             </tr>
             <tr>
-              <td>电热元件</td>
+              <td><i class="red">*</i>电热元件</td>
               <td colspan="3">
                 <FormItem prop="c16">
                   <RadioGroup v-model="formRecord.c16">
@@ -203,7 +203,7 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="4">控制及保护装置</td>
+              <td rowspan="4"><i class="red">*</i>控制及保护装置</td>
               <td colspan="3">
                 <FormItem prop="c17">
                   <CheckboxGroup v-model="formRecord.c17">
@@ -261,7 +261,7 @@
               </td>
             </tr>
             <tr>
-              <td>控制方式</td>
+              <td><i class="red">*</i>控制方式</td>
               <td colspan="3">
                 <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
@@ -274,7 +274,7 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="4">主体结构</td>
+              <td rowspan="4"><i class="red">*</i>主体结构</td>
               <td colspan="3">
                 <FormItem prop="c37">
                   <label style="margin: 25px;">外壳:</label>
@@ -320,7 +320,7 @@
               </td>
             </tr>
             <tr>
-              <td>外形尺寸（长×宽×高）（mm×mm×mm</td>
+              <td><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm</td>
               <td colspan="3">
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
@@ -336,7 +336,7 @@
               </td>
             </tr>
             <tr>
-              <td>额定容量（L）</td>
+              <td><i class="red">*</i>额定容量（L）</td>
               <td>
                 <FormItem prop="c29">
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
@@ -350,13 +350,13 @@
               </td>
             </tr>
             <tr>
-              <td>额定功率（W）</td>
+              <td><i class="red">*</i>额定功率（W）</td>
               <td>
                 <FormItem prop="c31">
                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>额定压力（MPa）</td>
+              <td><i class="red">*</i>额定压力（MPa）</td>
               <td>
                 <FormItem prop="c32">
                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff'/>

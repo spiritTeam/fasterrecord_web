@@ -85,8 +85,8 @@
             <tr>
               <th></th>
               <th>项目</th>
-              <th>额定值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>额定值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -573,7 +573,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td rowspan="2" width="170" class="right-align"><span class="color-red">*</span>产品类型
+              <td rowspan="2" width="170" class="right-align"><i class="red">*</i>产品类型
               </td>
               <td colspan="3" width="241">
                 <FormItem prop="c122">
@@ -621,7 +621,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>设备移动性</td>
+              <td class="right-align"><i class="red">*</i>设备移动性</td>
               <td colspan="3">
                 <FormItem prop="c79">
                   <RadioGroup v-model="formRecord.c79">
@@ -633,7 +633,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>输出速度 p(页/分 钟)</td>
+              <td class="right-align"><i class="red">*</i>输出速度 p(页/分 钟)</td>
               <td colspan="3">
                 <FormItem prop="c80">
                   <CheckboxGroup v-model="formRecord.c80">
@@ -654,7 +654,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>最大幅面<br>(最大输出纸路宽度)(mm)</td>
+              <td class="right-align"><i class="red">*</i>最大幅面<br>(最大输出纸路宽度)(mm)</td>
               <td>
                 <FormItem prop="c83">
                   <Input type="text" v-model="formRecord.c83" :disabled='disabledoff'/>
@@ -663,7 +663,7 @@
               <td colspan="2"></td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>基础功能</td>
+              <td class="right-align"><i class="red">*</i>基础功能</td>
               <td colspan="3">
                 <FormItem prop="c84">
                   <CheckboxGroup v-model="formRecord.c84">
@@ -679,7 +679,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>扩展功能</td>
+              <td class="right-align"><i class="red">*</i>扩展功能</td>
               <td colspan="3">
                 <FormItem prop="c86">
                   <CheckboxGroup v-model="formRecord.c86">
@@ -696,7 +696,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>图像输出方式</td>
+              <td class="right-align"><i class="red">*</i>图像输出方式</td>
               <td colspan="3">
                 <FormItem prop="c88">
                   <CheckboxGroup v-model="formRecord.c88">
@@ -709,19 +709,19 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>附加功能功率因子表
+              <td class="right-align"><i class="red">*</i>附加功能功率因子表
               </td>
               <td colspan="3">见附表1</td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>附加功能功率因子之和(W)
+              <td class="right-align"><i class="red">*</i>附加功能功率因子之和(W)
               </td>
               <td>
                 <FormItem prop="c89">
                   <Input type="text" v-model="formRecord.c89" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="right-align"><span class="color-red">*</span>电源直流输出功率
+              <td class="right-align"><i class="red">*</i>电源直流输出功率
                 (W)
               </td>
               <td>
@@ -731,13 +731,13 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>测试接口</td>
+              <td class="right-align"><i class="red">*</i>测试接口</td>
               <td>
                 <FormItem prop="c91">
                   <Input type="text" v-model="formRecord.c91" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="right-align"><span class="color-red">*</span>额定电压(V)</td>
+              <td class="right-align"><i class="red">*</i>额定电压(V)</td>
               <td>
                 <FormItem prop="c92">
                   <Input type="text" v-model="formRecord.c92" :disabled='disabledoff'/>
@@ -745,13 +745,13 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>额定电流(A)</td>
+              <td class="right-align"><i class="red">*</i>额定电流(A)</td>
               <td>
                 <FormItem prop="c93">
                   <Input type="text" v-model="formRecord.c93" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="right-align"><span class="color-red">*</span>额定功率(W)</td>
+              <td class="right-align"><i class="red">*</i>额定功率(W)</td>
               <td>
                 <FormItem prop="c94">
                   <Input type="text" v-model="formRecord.c94" :disabled='disabledoff'/>
@@ -759,7 +759,7 @@
               </td>
             </tr>
             <tr>
-              <td class="right-align"><span class="color-red">*</span>外形尺寸（长×宽×高）（mm×mm×mm）</td>
+              <td class="right-align"><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3" class="w19">
                 <FormItem prop="c95">
                   <Input type="text" v-model="formRecord.c95" :disabled='disabledoff'/>

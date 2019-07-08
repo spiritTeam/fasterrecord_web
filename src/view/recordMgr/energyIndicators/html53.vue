@@ -68,8 +68,8 @@
           <table id="table1">
             <tr>
               <th>项目</th>
-              <th>标称值</th>
-              <th>实测值</th>
+              <th><i class="red">*</i>标称值</th>
+              <th><i class="red">*</i>实测值</th>
               <th>备注</th>
             </tr>
             <tr>
@@ -260,7 +260,7 @@
               </td>
             </tr>
             <tr>
-              <td>外形尺寸（长×宽×高）（mm×mm×mm）</td>
+              <td><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td>
                 <FormItem prop="c31">
                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
