@@ -1,7 +1,7 @@
 <template>
   <Card>
     <p slot="title">添加备案</p>
-    <div id="pageStyle">
+    <div class="pageStyle">
       <ReportCode v-show="step === 1" @toStep2="showTemple"></ReportCode>
       <SelectSample ref="selectSample" v-show="step === 2" @toStep3="showRecordTab"></SelectSample>
       <Tabs type="card" v-show="step === 3">
