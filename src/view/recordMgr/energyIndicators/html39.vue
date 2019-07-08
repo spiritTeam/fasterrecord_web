@@ -667,7 +667,7 @@
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
@@ -707,7 +707,7 @@
     <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
     <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
   </Modal>
-     <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+     <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
        <div class="pro-info">
