@@ -838,7 +838,7 @@
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
-          <thead>
+          <thead> 
           <tr>
             <th>名称</th>
             <th>实验室报告带入值</th>
