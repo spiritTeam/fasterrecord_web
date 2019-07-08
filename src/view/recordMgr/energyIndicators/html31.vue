@@ -1355,7 +1355,19 @@
 
 
         return {
+          c200: [
+            {
+              trigger: 'change,blur',required: true,
+              message: '依据国家标准不能为空'
+            }
+          ],
           c2: [
+            {
+              trigger: 'change,blur',required: true,
+              message: '产品规格型号不能为空'
+            }
+          ],
+          c3: [
             {
               trigger: 'change,blur',required: true,
               message: '请填写制造单位'
@@ -1376,13 +1388,13 @@
           c51: [
             {
               trigger: 'change,blur',required: true,
-              message: '请选择能效等级'
+              message: '內桶直径不能为空'
             }
           ],
           c6: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '能效等级不能为空'
             },
             {
               validator: checkc6a,
@@ -1392,22 +1404,17 @@
           c7: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '标称值不能为空'
             },
             {
               validator: threeDecimals,
               trigger: 'change,blur'
             }
-
-            // {
-            //   pattern: decimal3,
-            //   message: '三位小数'
-            // },
           ],
           c8: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '实测值不能为空'
             },
             {
               validator: atLeastFourDecimals,
@@ -1417,16 +1424,12 @@
               validator: checkc8,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal410,
-            //   message: '至少四位小数'
-            // },
           ],
           c9: [
             {
               trigger: 'change,blur',
               required: true,
-              message: '不能为空'
+              message: '标称值不能为空'
             },
             {
               number: true,
@@ -1437,7 +1440,7 @@
             {
               trigger: 'change,blur',
               required: true,
-              message: '不能为空'
+              message: '实测值不能为空'
             },
             {
               validator: oneDecimals,
@@ -1447,15 +1450,11 @@
               validator: checkc10,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal1,
-            //   message: '一位小数'
-            // },
           ],
           c11: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '标称值不能为空'
             },
             {
               validator: twoDecimals,
@@ -1465,20 +1464,12 @@
               validator: checkc11,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal2,
-            //   message: '两位小数'
-            // },
           ],
           c12: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '实测值不能为空'
             },
-            // {
-            //   pattern: decimal310,
-            //   message: '至少三位小数'
-            // },
             {
               validator: atLeastThreeDecimals,
               trigger: 'change,blur'
@@ -1491,7 +1482,7 @@
           c15: [
             {
               required: true,
-              message: '不能为空'
+              message: '备案标识开始使用日期不能为空'
             }
           ],
           c25: [
@@ -1509,7 +1500,7 @@
           c27: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '产品类型不能为空'
             }
           ],
           c28: [
@@ -1521,30 +1512,22 @@
           c29: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '标称值不能为空'
             },
             {
               validator: oneDecimals,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal1,
-            //   message: '一位小数'
-            // }
           ],
           c30: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '标称值不能为空'
             },
             {
               validator: oneDecimals,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal1,
-            //   message: '一位小数'
-            // }
           ],
           c31: [
             {
@@ -1567,7 +1550,7 @@
           c34: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '內桶材料不能为空'
             }
           ],
           c35: [
@@ -1579,36 +1562,28 @@
           c36: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '备案方不能为空'
             }
           ],
           c37: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '单位功效耗电量不能为空'
             },
             {
               validator: atLeastFourDecimals,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal410,
-            //   message: '至少四位小数'
-            // },
           ],
           c38: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '单位功效用水量不能为空'
             },
             {
               validator: oneDecimals,
               trigger: 'change,blur'
             }
-            // {
-            //   pattern: decimal1,
-            //   message: '一位小数'
-            // },
           ],
           c39: [
             {
