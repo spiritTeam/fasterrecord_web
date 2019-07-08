@@ -1476,14 +1476,14 @@
             {
               trigger: 'change,blur',
               required: true,
-              message: '固有分辨力（像素数）值1不能为空'
+              message: '不能为空'
             }
           ],
           c22: [
             {
               trigger: 'change,blur',
               required: true,
-              message: '固有分辨力（像素数）值2不能为空'
+              message: '不能为空'
             }
           ],
           c23: [
