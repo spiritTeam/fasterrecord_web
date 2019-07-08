@@ -157,39 +157,37 @@ export const XfillDefaultData = (params, that) => {
 }
 
 export const XshowConfirm = (that) => {
-  // if (that.$store.state.app.requiredStr){
-  //   console.log(that.$store.state.app.requiredStr)
-  //   that.$store.state.app.requiredStr.substring(0,that.$store.state.app.requiredStr.length - 1).split(",").forEach((e) => {
-  //     if (!that.formRecord[e]) {
-  //       // that.$Message.warning(e + " 不能为空" + that.formRecord[e])
-  //       console.log("值为" + e + " 不能为空" + that.formRecord[e])
-  //       return false
-  //     }
-  //   })
+  let _this = that
+  let pageType=_this.pageType;
+  if (_this.uploadParam.filePath24 === '') {
+    _this.$Message.warning('请上传产品正面图片！')
+    return false
+  }
+  if (_this.uploadParam.filePath76 === '') {
+    _this.$Message.warning('请上传铭牌图片！')
+    return false
+  }
+  // if (_this.$store.state.app.oem &&_this.uploadParam.filePath26 === '') {
+  //   _this.$Message.warning('请上传oem声明！')
+  //   return false
   // }
-  let pageType = that.pageType;
-  if (that.uploadParam.filePath24 === '') {
-    that.$Message.warning('请上传产品正面图片！')
-    return false
-  }
-  if (that.uploadParam.filePath76 === '') {
-    that.$Message.warning('请上传铭牌图片！')
-    return false
-  }
-  if (pageType === "extend" || pageType === "update") {
-    if (that.formRecord.ec_master_kuozhan_text === '') {
-      let text = pageType === "extend" ? '扩展' : '变更'
-      that.$Message.warning('请填写' + text + '申请书！')
-      return false
+  if(pageType==="extend" || pageType==="update" ){
+    if (_this.formRecord.ec_master_kuozhan_text===''){
+      let text=pageType==="extend"?'扩展':'变更'
+      _this.$Message.warning('请填写'+text+'申请书！')
+    }else {
+      _this.modal1 = true;
     }
+    return;
   }
-  that.$refs['formRecord'].validate((valid) => {
+
+  this.$refs['formRecord'].validate((valid) => {
     if (valid) {
-      if (that.confirmData.join('') == 1) {
-        that.boolFlag = XdiffRecord(that.$store.state.app.defaultData, that.formRecord, that);
-        that.modal1 = true
+      if (_this.confirmData.join('') == 1) {
+        _this.boolFlag= _this.diffRecord(_this.$store.state.app.defaultData,_this.formRecord);
+        _this.modal1 = true
       } else {
-        that.$Message.warning('请勾选我已确认以上数据填写无误选项')
+        _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
       }
     }
   })
