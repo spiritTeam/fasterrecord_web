@@ -176,16 +176,20 @@ export const XshowConfirm = (that) => {
     if (_this.formRecord.ec_master_kuozhan_text===''){
       let text=pageType==="extend"?'扩展':'变更'
       _this.$Message.warning('请填写'+text+'申请书！')
-    }else {
-      _this.modal1 = true;
+      return;
     }
-    return;
+    // }else {
+    //    _this.modal1 = true;
+    // }
+
   }
 
-  this.$refs['formRecord'].validate((valid) => {
+  _this.$refs['formRecord'].validate((valid) => {
     if (valid) {
       if (_this.confirmData.join('') == 1) {
-        _this.boolFlag= _this.diffRecord(_this.$store.state.app.defaultData,_this.formRecord);
+        if(pageType!=="extend"){
+          _this.boolFlag= XdiffRecord(_this.$store.state.app.defaultData,_this.formRecord, _this);
+        }
         _this.modal1 = true
       } else {
         _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
