@@ -5,9 +5,10 @@
       <!--<Col span="4" v-for="(item,idx) in sampleList" :offset="idx === 0 ? offsetNum : 0" :key="item.id">
         <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" />
       </Col>-->
+
     </Row>
-    <Row>
-      <Col span="4" v-for="(item,idx) in sampleList" :offset="idx === 0 ? offsetNum : 0" :key="item.id">
+    <Row type="flex" :justify='sampleList.length > 6? "start":"center"'>
+      <Col span="4" v-for="item in sampleList" :key="item.id">
         <RadioGroup v-model="sample" size="large">
           <Radio class="radioItem"  :label="item.id" :disabled="getFlag(item.id)" :data-pic="item.pic1"> <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" /></Radio>
         </RadioGroup>
@@ -45,6 +46,7 @@ export default {
         case 33 : return 8;break
         case 31 : return 10;break
         case 23 : return 10;break
+        case 46 : return 10;break
         default: return 0
       }
     },
@@ -121,9 +123,10 @@ div,.ivu-col-span-4{
   top:20px!important;
   left:62px!important;
 }
-  .radioItem{
+.radioItem{
     display: flex;
     flex-direction: column-reverse;
   }
 .radioItem img{ margin-bottom: 10px;}
+
 </style>
