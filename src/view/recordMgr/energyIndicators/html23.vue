@@ -290,11 +290,8 @@
             <tr>
               <td align="right"><span style="color:red">*</span>额定频率（Hz）</td>
               <td>
-                <FormItem prop="c29" style="width:100%;" :label-width="30">
-                  <RadioGroup v-model="formRecord.c29">
-                    <Radio label="有" :disabled='disabledoff'>有</Radio>
-                    <Radio label="无" :disabled='disabledoff'>无</Radio>
-                  </RadioGroup>
+                <FormItem prop="c29" style="width:100%;">
+                  <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td align="right"><span style="color:red">*</span>额定电流(A)（一位小数）</td>
@@ -307,11 +304,8 @@
             <tr>
               <td align="right"><span style="color:red">*</span>防触电保护类别</td>
               <td>
-                <FormItem prop="c31" style="width:100%;" :label-width="30">
-                  <RadioGroup v-model="formRecord.c31">
-                    <Radio label="有" :disabled='disabledoff'>有</Radio>
-                    <Radio label="无" :disabled='disabledoff'>无</Radio>
-                  </RadioGroup>
+                <FormItem prop="c31" style="width:100%;">
+                  <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td align="right"><span style="color:red">*</span>防水等级</td>
@@ -838,7 +832,7 @@
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
-          <thead> 
+          <thead>
           <tr>
             <th>名称</th>
             <th>实验室报告带入值</th>

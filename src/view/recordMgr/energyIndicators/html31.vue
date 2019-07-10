@@ -37,25 +37,25 @@
       <div class="part part3">
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
-          <FormItem prop="c1" label="生产者名称" style="width:1000px;" :label-width="180">
+          <FormItem prop="c1" label="生产者名称" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c1" placeholder="生产者名称" disabled/>
           </FormItem>
-          <FormItem prop="c3" label="制造单位" style="width:1000px;" :label-width="180">
+          <FormItem prop="c3" label="制造单位" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c3" placeholder="制造单位" :disabled="disabledoff"/>
           </FormItem>
-          <FormItem prop="c36" label="备案方" style="width:1000px;" :label-width="180">
+          <FormItem prop="c36" label="备案方" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c36" placeholder="备案方" :disabled="disabledoff"/>
           </FormItem>
-          <FormItem prop="c2" label="产品规格型号" style="width:1000px;" :label-width="180">
+          <FormItem prop="c2" label="产品规格型号" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" placeholder="规格型号" :disabled="!disabledoff"/>
           </FormItem>
-          <FormItem prop="c4" label="商标" style="width:1000px;" :label-width="180">
+          <FormItem prop="c4" label="商标" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c4" placeholder="商标" :disabled="disabledoff"/>
           </FormItem>
-          <FormItem prop="c200" label="依据国家标准" style="width:1000px;" :label-width="180">
+          <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
           </FormItem>
-          <FormItem prop="c6" label="能效等级" style="width:1000px;" :label-width="180">
+          <FormItem prop="c6" label="能效等级" style="width:100%" :label-width="180">
             <RadioGroup v-model="formRecord.c6">
               <Radio label="1" :disabled="disabledoff">1级</Radio>
               <Radio label="2" :disabled="disabledoff">2级</Radio>
@@ -285,8 +285,8 @@
               <td>
                 <FormItem prop="c48">
                   <RadioGroup v-model="formRecord.c48">
-                    <Radio label="排水泵" :disabled="disabledoff">排水泵</Radio>
                     <Radio label="排水牵引器" :disabled="disabledoff">排水牵引器</Radio>
+                    <Radio label="排水泵" :disabled="disabledoff">排水泵</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -306,7 +306,7 @@
                   <Radio label="其它" :disabled="disabledoff">其它</Radio>
                 </RadioGroup>
                 <FormItem prop="c49">
-                  <Input type="text" v-model="formRecord.c49" :disabled="disabledoff"/>
+                  <Input type="text" v-model="formRecord.c49" :disabled="disabledoff || forbidden.c49"/>
                 </FormItem>
               </td>
             </tr>
@@ -1225,7 +1225,8 @@
           attach_list: ''
         },
         forbidden: {
-          c59: true
+          c59: true,
+          c49: true
 
         }
       }
@@ -1308,6 +1309,13 @@
         } else {
           this.formRecord.c59 = ''
           this.forbidden.c59 = true
+        }
+
+        if (this.formRecord.c48 === '其它') {
+          this.forbidden.c49 = false
+        } else {
+          this.formRecord.c49 = ''
+          this.forbidden.c49 = true
         }
 
 

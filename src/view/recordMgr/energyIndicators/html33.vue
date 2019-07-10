@@ -426,11 +426,11 @@
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" style="width:80px;" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+                <span style="display: inline-block;height: 32px;line-height: 32px;">×</span>
                 <FormItem prop="c49">
                   <Input type="text" v-model="formRecord.c49" style="width:80px;" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+                <span style="display: inline-block;height: 32px;line-height: 32px;">×</span>
                 <FormItem prop="c50">
                   <Input type="text" v-model="formRecord.c50" style="width:80px;" :disabled='disabledoff'/>
                 </FormItem>
