@@ -23,16 +23,21 @@ export default {
     pageType:'',//新增，扩展，变更
     updateId:0,
     gb: '',
-    oem:0
+    oem:0,
+    recordno:''
   },
   getters: {
     menuList: (state, getters, rootState) => getMenuByRouter(state.routers, rootState.user.access),
-    pageType:(state)=>state.pageType
+    pageType:(state)=>state.pageType,
+    recordno:(state)=>state.recordno
   },
   mutations: {
     updateAppRouter (state, routes) {
       state.routers.push(...routes);
       router.addRoutes(routes);
+    },
+    setRecordNo(state,number){
+      state.recordno=number
     },
     setDefaultData (state, list) {
       state.defaultData = list

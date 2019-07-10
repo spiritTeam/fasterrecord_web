@@ -586,6 +586,7 @@
                     <Radio label="高性能喷墨技术" :disabled='disabledoff'>高性能喷墨技术</Radio>
                   </RadioGroup>
                 </FormItem>
+                <br/><br/>
                 <hr>
                 <FormItem prop="c114">
                   <RadioGroup v-model="formRecord.c114">
@@ -643,7 +644,7 @@
                 <FormItem prop="c81">
                   <Input type="text" v-model="formRecord.c81" :disabled='disabledoff || forbidden.c81'/>
                 </FormItem>
-                <FormItem prop="c80">
+                <FormItem>
                   <CheckboxGroup v-model="formRecord.c80">
                     <Checkbox label="彩色速度" :disabled='disabledoff'>彩色速度</Checkbox>
                   </CheckboxGroup>
@@ -670,7 +671,7 @@
                     <Checkbox label="复印" :disabled='disabledoff'>复印</Checkbox>
                     <Checkbox label="打印" :disabled='disabledoff'>打印</Checkbox>
                     <Checkbox label="传真" :disabled='disabledoff'>传真</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c85">
@@ -687,7 +688,7 @@
                     <Checkbox label="打印" :disabled='disabledoff'>打印</Checkbox>
                     <Checkbox label="传真" :disabled='disabledoff'>传真</Checkbox>
                     <Checkbox label="扫描" :disabled='disabledoff'>扫描</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c87">
@@ -834,7 +835,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>其他有线接口</td>
+              <td>其它有线接口</td>
               <td>0.2</td>
             </tr>
             <tr>
@@ -1639,7 +1640,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1938,7 +1939,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -2049,6 +2050,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
+        mainModel:'',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -2350,7 +2352,8 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
       disabledoff(){
         return  this.pageType==='extend';
@@ -2473,13 +2476,13 @@
           this.formRecord.c82 = ''
           this.forbidden.c82 = true
         }
-        if (this.formRecord.c84.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c84.join('').indexOf('其它') > -1) {
           this.forbidden.c85 = false
         } else {
           this.formRecord.c85 = ''
           this.forbidden.c85 = true
         }
-        if (this.formRecord.c86.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c86.join('').indexOf('其它') > -1) {
           this.forbidden.c87 = false
         } else {
           this.formRecord.c87 = ''
@@ -3708,9 +3711,9 @@
           ],
           c85: [
             {
-              required: this.formRecord.c84.join('').indexOf('其他') > -1,
+              required: this.formRecord.c84.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
-              message: '基础功能其他不能为空'
+              message: '基础功能其它不能为空'
             }
           ],
           c86: [
@@ -3721,9 +3724,9 @@
           ],
           c87: [
             {
-              required: this.formRecord.c86.join('').indexOf('其他') > -1,
+              required: this.formRecord.c86.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
-              message: '扩展功能其他不能为空'
+              message: '扩展功能其它不能为空'
             }
           ],
           c88: [
@@ -3841,7 +3844,7 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '附加因子表8不能为空'
+              message: '附加因子表7不能为空'
             }
           ],
           c105: [
@@ -4258,3 +4261,4 @@
 <style>
   @import '../../../css/comm.css';
 </style>
+

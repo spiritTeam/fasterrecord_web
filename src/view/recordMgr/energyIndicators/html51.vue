@@ -90,7 +90,7 @@
                   <RadioGroup v-model="formRecord.c15">
                     <Radio label="电热元件式" :disabled='disabledoff'>电热元件式</Radio>
                     <Radio label="电磁感应式" :disabled='disabledoff'>电磁感应式</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c16">
                     <Input type="text" v-model="formRecord.c16" style="width:200px;" :disabled='disabledoff || forbidden.c16'/>
@@ -105,7 +105,7 @@
                   <CheckboxGroup v-model="formRecord.c23">
                     <Checkbox label="待机功能" :disabled='disabledoff'>待机功能</Checkbox>
                     <Checkbox label="保温功能" :disabled='disabledoff'>保温功能</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c24">
@@ -120,7 +120,7 @@
                   <CheckboxGroup v-model="formRecord.c90">
                     <Checkbox label="WIFI" :disabled='disabledoff || forbidden.c90_a'>WIFI</Checkbox>
                     <Checkbox label="蓝牙" :disabled='disabledoff || forbidden.c90_b'>蓝牙</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff || forbidden.c90_c'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff || forbidden.c90_c'>其它</Checkbox>
                     <FormItem prop="c91">
                       <Input type="text" v-model="formRecord.c91" style="width:200px;" :disabled='disabledoff || forbidden.c91'/>
                     </FormItem>
@@ -189,7 +189,7 @@
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
+          <h2>五、其它信息</h2>
           <h3>样品描述</h3>
           <table id="table3">
             <tr>
@@ -765,7 +765,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1066,7 +1066,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -1175,6 +1175,7 @@ import {
       checkmark31: false,
       checkmark32: false,
       checkmark76: false,
+      mainModel:'',
       formRecord: {
         ec_master_kuozhan_text: '',
         c1: '',
@@ -1352,7 +1353,8 @@ import {
   },
   computed: {
     ...mapGetters([
-        'pageType'
+      'pageType',
+      'recordno'
     ]),
       disabledoff(){
         return  this.pageType==='extend';
@@ -1368,24 +1370,24 @@ import {
     },
     ruleRecord () {
 
-      //加热方式-其他
-      if (this.formRecord.c15 == '其他') {
+      //加热方式-其它
+      if (this.formRecord.c15 == '其它') {
           this.forbidden.c16 = false
       } else {
           this.formRecord.c16 = ''
           this.forbidden.c16 = true
       }
 
-      //功能-其他
-      if (this.formRecord.c23.join('').indexOf('其他') > -1) {
+      //功能-其它
+      if (this.formRecord.c23.join('').indexOf('其它') > -1) {
           this.forbidden.c24 = false
       } else {
           this.formRecord.c24 = ''
           this.forbidden.c24 = true
       }
 
-      //通讯协议功能-其他
-      if (this.formRecord.c90.join('').indexOf('其他') > -1) {
+      //通讯协议功能-其它
+      if (this.formRecord.c90.join('').indexOf('其它') > -1) {
           this.forbidden.c91 = false
       } else {
           this.formRecord.c91 = ''
@@ -1419,7 +1421,7 @@ import {
 
       const checkc32 = (rule, value, callback) => {
           if(this.formRecord.c32 != ""){
-            if (parseFloat(this.formRecord.c32) < parseFloat(this.formRecord.c7)) {
+            if (parseFloat(this.formRecord.c32) > parseFloat(this.formRecord.c7)) {
                 callback("待机功率（标称值）应不小于待机功率（实测值）！");
             }else{
                 callback()
@@ -1431,7 +1433,7 @@ import {
 
       const checkc33 = (rule, value, callback) => {
           if(this.formRecord.c33 != ""){
-            if (parseFloat(this.formRecord.c33) < parseFloat(this.formRecord.c9)) {
+            if (parseFloat(this.formRecord.c33) > parseFloat(this.formRecord.c9)) {
                 callback("保温能耗（标称值）应不小于保温能耗（实测值）！");
             }else{
                 callback()
@@ -1721,15 +1723,15 @@ import {
       return {
         c16: [
           {
-            required: this.formRecord.c15 === '其他',
-            message: '加热方式选项其他的值不能为空',
+            required: this.formRecord.c15 === '其它',
+            message: '加热方式选项其它的值不能为空',
             trigger: 'change,blur'
           }
         ],
         c24: [
           {
-            required: this.formRecord.c23.join('').indexOf('其他') > -1,
-            message: '功能选项其他的值不能为空',
+            required: this.formRecord.c23.join('').indexOf('其它') > -1,
+            message: '功能选项其它的值不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1816,8 +1818,8 @@ import {
         ],
         c91: [
           {
-            required: this.formRecord.c90.join('').indexOf('其他') > -1,
-            message: '通讯协议其他值不能为空',
+            required: this.formRecord.c90.join('').indexOf('其它') > -1,
+            message: '通讯协议其它值不能为空',
             trigger: 'change,blur'
           }
         ],

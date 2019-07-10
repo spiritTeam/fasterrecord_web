@@ -69,7 +69,7 @@
             <RadioGroup v-model="formRecord.c16">
               <Radio label="LCD" :disabled='disabledoff'>LCD</Radio>
               <Radio label="PDP" :disabled='disabledoff'>PDP</Radio>
-              <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+              <Radio label="其它" :disabled='disabledoff'>其它</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem prop="c17" :label-width="360" style="margin-top: -57px" >
@@ -692,7 +692,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -991,7 +991,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -1101,6 +1101,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
+        mainModel:'',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1252,7 +1253,8 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
       disabledoff(){
         return  this.pageType==='extend';
@@ -1267,7 +1269,7 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c16 === '其他') {
+        if (this.formRecord.c16 === '其它') {
           this.forbidden.c17 = false
         } else {
           this.formRecord.c17 = ''
@@ -1313,7 +1315,7 @@
           this.formRecord.c7 = ''
           this.formRecord.c33 = ''
           this.formRecord.c8 = ''
-        } else if (this.formRecord.c16 === '其他') {
+        } else if (this.formRecord.c16 === '其它') {
           this.forbidden.c16_LCD = false
           this.forbidden.c16_PDP = false
         }
@@ -1463,9 +1465,9 @@
           ],
           c17: [
             {
-              required: this.formRecord.c16 === '其他',
+              required: this.formRecord.c16 === '其它',
               trigger: 'change,blur',
-              message: '其他不能为空'
+              message: '其它不能为空'
             }
           ],
           c5: [
@@ -1610,7 +1612,7 @@
             {
               required: this.formRecord.c18.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
-              message: '其他不能为空'
+              message: '其它不能为空'
             }
           ],
           c20: [
@@ -1651,7 +1653,7 @@
             {
               required: this.formRecord.c24.join('').indexOf('其它接口输入') > -1,
               trigger: 'change,blur',
-              message: '其他接口输入不能为空'
+              message: '其它接口输入不能为空'
             }
           ],
           c25: [

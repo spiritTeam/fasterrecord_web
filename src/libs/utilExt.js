@@ -81,6 +81,7 @@ export const XfillExtendData = (params, that) => {
       //console.log(that)
     } else {
       that.formRecord[i] = data[i]
+      if(i==that.thisGZXHCV) that.mainModel= data[i];
     }
   }
 }
@@ -137,7 +138,8 @@ export const XfillDefaultData = (params, that) => {
       if (e.labValue === '/' || e.labValue == null || e.labValue == '') {
         that.formRecord[e.recId] = ''
       } else {
-        let labVal = e.labValue.replace(/（/g, '(').replace(/）/g, ')')
+        // let labVal = e.labValue.replace(/（/g, '(').replace(/）/g, ')')
+        let labVal = e.labValue
         if (e.recId === that.thisLevelCV) {
           if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
             that.formRecord[e.recId] = '1'
@@ -175,16 +177,20 @@ export const XshowConfirm = (that) => {
     if (_this.formRecord.ec_master_kuozhan_text===''){
       let text=pageType==="extend"?'扩展':'变更'
       _this.$Message.warning('请填写'+text+'申请书！')
-    }else {
-      _this.modal1 = true;
+      return;
     }
-    return;
+    // }else {
+    //    _this.modal1 = true;
+    // }
+
   }
 
-  this.$refs['formRecord'].validate((valid) => {
+  _this.$refs['formRecord'].validate((valid) => {
     if (valid) {
       if (_this.confirmData.join('') == 1) {
-        _this.boolFlag= _this.diffRecord(_this.$store.state.app.defaultData,_this.formRecord);
+        if(pageType!=="extend"){
+          _this.boolFlag= XdiffRecord(_this.$store.state.app.defaultData,_this.formRecord, _this);
+        }
         _this.modal1 = true
       } else {
         _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
@@ -376,7 +382,10 @@ export const XformatDate = (d) => {
 
 export const XviewClose= (that) => {
   that.$router.replace({
-    name:'queryRecord'
+    name:'queryRecord',
+    params:{
+      pageNum:that.$route.params.pageNum
+    }
   })
 }
 

@@ -5,7 +5,7 @@
 }
 
 .pageStyle h1 {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 
 .pageStyle h2 {
@@ -129,7 +129,7 @@
 
 .pro-info, .basic-info .record-number {
   height: auto;
-  line-height: 40px;
+  line-height: 24px;
 }
 
 .pageStyle .basic-info span[class^="f-"],.pro-info span[class^="f-"] {
@@ -139,6 +139,17 @@
 
 .pageStyle .application {
   margin: 10px 0;
+}
+
+.pageStyle .regress span{
+  display:inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  border: 1px solid #2b85e4;
+}
+.pageStyle .regress .bgs{
+  background-color: #2b85e4;
 }
 
 .pageStyle .w70 {
