@@ -1014,7 +1014,7 @@
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-        <dd>现申请该幸好申请的备案信息如下变更：<br>
+        <dd>现申请该型号产品的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
           <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
                  :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
@@ -1127,6 +1127,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
+        mainModel:'',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1292,7 +1293,8 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
       disabledoff() {
         return this.pageType === 'extend';
