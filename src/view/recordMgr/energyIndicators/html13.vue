@@ -1072,7 +1072,7 @@
          <p><span class="bgs"></span>已通过能效标识备案</p>
        </div>
        <div class="org">备案编号:{{recordno}}</div>
-       <dl v-if="pageType==='extend'">
+       <dl v-if="pageType==='extend'"> 
           <dt>
               现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
