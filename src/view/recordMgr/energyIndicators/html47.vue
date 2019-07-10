@@ -260,7 +260,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室1<br /><Input type="text" v-model="formRecord.c29" :disabled='disabledoff' ></Input></td>
+              <td>其它间室1<br /><Input type="text" v-model="formRecord.c29" :disabled='disabledoff' ></Input></td>
               <td>
                 <FormItem prop="c28">
                   <RadioGroup v-model="formRecord.c28">
@@ -316,7 +316,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室2<br />
+              <td>其它间室2<br />
                 <FormItem prop="c34">
                   <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'></Input>
 
@@ -377,7 +377,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室3<br />
+              <td>其它间室3<br />
                 <FormItem prop="c39">
                   <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'></Input>
 
@@ -436,7 +436,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室4<br />
+              <td>其它间室4<br />
                 <FormItem prop="c124">
                   <Input type="text" v-model="formRecord.c124" :disabled='disabledoff'></Input>
 
@@ -648,7 +648,7 @@
                     <Checkbox label="外挂式" :disabled='disabledoff'>外挂式</Checkbox>
                     <Checkbox label="平背式" :disabled='disabledoff'>平背式</Checkbox>
                     <Checkbox label="底冷式" :disabled='disabledoff'>底冷式</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
 
                 </FormItem>
@@ -695,7 +695,7 @@
                   <CheckboxGroup v-model="formRecord.c56" style="display:inline-block;">
                     <Checkbox label="冷藏室" :disabled='disabledoff'>冷藏室</Checkbox>
                     <Checkbox label="冷冻室" :disabled='disabledoff'>冷冻室</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
 
                 </FormItem>
@@ -712,7 +712,7 @@
                   <CheckboxGroup v-model="formRecord.c58" style="display:inline-block;">
                     <Checkbox label="冷藏室" :disabled='disabledoff'>冷藏室</Checkbox>
                     <Checkbox label="冷冻室" :disabled='disabledoff'>冷冻室</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
 
                 </FormItem>
@@ -973,7 +973,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1199,13 +1199,13 @@
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
-        <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
+        <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
       <div class="tc" v-else>
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
@@ -1245,7 +1245,7 @@
      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
-     <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+     <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
        <div class="pro-info">
@@ -1667,7 +1667,8 @@ export default {
             that.formRecord[e.recId] = ''
           } else {
 
-            let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
+            //let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
+			let labVal = e.labValue;
             if (e.recId === 'c7') {
               if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
                 that.formRecord[e.recId] = '1'
@@ -1837,7 +1838,7 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=_this.$store.state.app.updateId || 0
+      _this.formRecord.id=this.formRecord.id || _this.$store.state.app.updateId || 0
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -2703,7 +2704,7 @@ export default {
         ],
         c52: [
           {
-            required: this.formRecord.c51.join('').indexOf('其他') > -1,
+            required: this.formRecord.c51.join('').indexOf('其它') > -1,
             message: '不能为空'
           }
         ],
@@ -2733,7 +2734,7 @@ export default {
         ],
         c57: [
           {
-            required: this.formRecord.c56.join('').indexOf('其他') > -1,
+            required: this.formRecord.c56.join('').indexOf('其它') > -1,
             message: '不能为空'
           }
         ],
@@ -2745,7 +2746,7 @@ export default {
         ],
         c59: [
           {
-            required: this.formRecord.c58.join('').indexOf('其他') > -1,
+            required: this.formRecord.c58.join('').indexOf('其它') > -1,
             message: '不能为空'
           }
         ],
