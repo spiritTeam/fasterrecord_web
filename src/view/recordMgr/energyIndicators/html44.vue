@@ -995,14 +995,19 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">水（地）源热泵机组 2014版</span>产品。
+         品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+         型号的 <span class="f-product">水（地）源热泵机组 2014版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
+         <dt>
+           现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
+           型号是以上述型号为基础开发扩展的型号：
+         </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
           <dd>b) 其整机结构与基础型号基本相同；</dd>
           <dd>c) 其产品的能效性能与基础型号一致；</dd>
@@ -1070,6 +1075,7 @@ export default {
       checkComplex: "",
       thisDateCV: "c24",  //当前初始使用日期 对应的C值
       thisLevelCV: "c7", //当前能效等级 对应的C值
+      thisGZXHCV: "c4",// 当前规格型号 对应的C值
       modal3: false,
       modal4: false,
       modal5: false,
