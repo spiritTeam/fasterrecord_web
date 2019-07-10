@@ -69,7 +69,7 @@
             <RadioGroup v-model="formRecord.c16">
               <Radio label="LCD" :disabled='disabledoff'>LCD</Radio>
               <Radio label="PDP" :disabled='disabledoff'>PDP</Radio>
-              <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+              <Radio label="其它" :disabled='disabledoff'>其它</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem prop="c17" :label-width="360" style="margin-top: -57px" >
@@ -692,7 +692,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1267,7 +1267,7 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c16 === '其他') {
+        if (this.formRecord.c16 === '其它') {
           this.forbidden.c17 = false
         } else {
           this.formRecord.c17 = ''
@@ -1313,7 +1313,7 @@
           this.formRecord.c7 = ''
           this.formRecord.c33 = ''
           this.formRecord.c8 = ''
-        } else if (this.formRecord.c16 === '其他') {
+        } else if (this.formRecord.c16 === '其它') {
           this.forbidden.c16_LCD = false
           this.forbidden.c16_PDP = false
         }
@@ -1463,9 +1463,9 @@
           ],
           c17: [
             {
-              required: this.formRecord.c16 === '其他',
+              required: this.formRecord.c16 === '其它',
               trigger: 'change,blur',
-              message: '其他不能为空'
+              message: '其它不能为空'
             }
           ],
           c5: [
@@ -1610,7 +1610,7 @@
             {
               required: this.formRecord.c18.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
-              message: '其他不能为空'
+              message: '其它不能为空'
             }
           ],
           c20: [
@@ -1651,7 +1651,7 @@
             {
               required: this.formRecord.c24.join('').indexOf('其它接口输入') > -1,
               trigger: 'change,blur',
-              message: '其他接口输入不能为空'
+              message: '其它接口输入不能为空'
             }
           ],
           c25: [

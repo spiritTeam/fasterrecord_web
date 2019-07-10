@@ -220,7 +220,7 @@
                     <Checkbox label="双金属片式" :disabled='disabledoff'>双金属片式</Checkbox>
                     <Checkbox label="自复位式" :disabled='disabledoff'>自复位式</Checkbox>
                     <Checkbox label="软件" :disabled='disabledoff'>软件</Checkbox>
-                     <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c21">
@@ -255,7 +255,7 @@
                   <RadioGroup v-model="formRecord.c17">
                     <Radio label="安全隔离变压器" :disabled='disabledoff'>安全隔离变压器</Radio>
                     <Radio label="开关电源" :disabled='disabledoff'>开关电源</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c18">
@@ -468,7 +468,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1022,13 +1022,13 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c17 === '其他') {
+        if (this.formRecord.c17 === '其它') {
           this.forbidden.c18 = false
         } else {
           this.formRecord.c18 = ''
           this.forbidden.c18 = true
         }
-        if (this.formRecord.c14.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c14.join('').indexOf('其它') > -1) {
           this.forbidden.c21 = false
         } else {
           this.formRecord.c21 = ''
@@ -1296,8 +1296,8 @@
           c21: [
             {
               trigger: 'change,blur',
-              required: this.formRecord.c14.join('').indexOf('其他') > -1,
-              message: '其他不能为空'
+              required: this.formRecord.c14.join('').indexOf('其它') > -1,
+              message: '其它不能为空'
             }
           ],
           c15: [
@@ -1324,8 +1324,8 @@
           c18: [
             {
               trigger: 'change,blur',
-              required: this.formRecord.c17 === '其他',
-              message: '其他不能为空'
+              required: this.formRecord.c17 === '其它',
+              message: '其它不能为空'
             },
 
           ],

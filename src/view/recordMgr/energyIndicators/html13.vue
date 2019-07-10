@@ -168,7 +168,7 @@
                     <Radio label="卧式" :disabled='disabledoff'>卧式</Radio>
                     <Radio label="壁挂式" :disabled='disabledoff'>壁挂式</Radio>
                     <Radio label="落地式" :disabled='disabledoff'>落地式</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c13">
@@ -183,7 +183,7 @@
                   <RadioGroup v-model="formRecord.c14">
                     <Radio label="电热管加热" :disabled='disabledoff'>电热管加热</Radio>
                     <Radio label="电磁加热" :disabled='disabledoff'>电磁加热</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c15">
@@ -303,7 +303,7 @@
                   <RadioGroup v-model="formRecord.c38">
                     <Radio label="不锈钢内胆" :disabled='disabledoff'>不锈钢内胆</Radio>
                     <Radio label="搪瓷内胆" :disabled='disabledoff'>搪瓷内胆</Radio>
-                    <Radio label="其他内胆" :disabled='disabledoff'>其他内胆</Radio>
+                    <Radio label="其它内胆" :disabled='disabledoff'>其它内胆</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -787,7 +787,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1381,13 +1381,13 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c12 === '其他') {
+        if (this.formRecord.c12 === '其它') {
           this.forbidden.c13 = false
         } else {
           this.formRecord.c13 = ''
           this.forbidden.c13 = true
         }
-        if (this.formRecord.c14 === '其他') {
+        if (this.formRecord.c14 === '其它') {
           this.forbidden.c15 = false
         } else {
           this.formRecord.c15 = ''
@@ -1641,7 +1641,7 @@
           ],
           c13: [
             {
-              required: this.formRecord.c12 === '其他',
+              required: this.formRecord.c12 === '其它',
               message: '其它不能为空',
               trigger: 'change,blur'
             }
@@ -1655,8 +1655,8 @@
           ],
           c15: [
             {
-              required: this.formRecord.c14 === '其他',
-              message: '其他不能为空',
+              required: this.formRecord.c14 === '其它',
+              message: '其它不能为空',
               trigger: 'change,blur'
             }
           ],

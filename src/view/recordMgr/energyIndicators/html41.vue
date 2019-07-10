@@ -94,7 +94,7 @@
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
+          <h2>五、其它信息</h2>
           <h3>样品描述</h3>
           <table id="table3">
             <tr>
@@ -650,7 +650,7 @@
                     <Checkbox label="金属网" :disabled='disabledoff' class="overwrite2">金属网</Checkbox>
                     <Checkbox label="硬质不锈钢" :disabled='disabledoff' class="overwrite2">硬质不锈钢</Checkbox>
                     <Checkbox label="铁质" :disabled='disabledoff' class="overwrite2">铁质</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff' class="overwrite2">其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff' class="overwrite2">其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -673,7 +673,7 @@
                     <Checkbox label="金属网" :disabled='disabledoff' class="overwrite2">金属网</Checkbox>
                     <Checkbox label="硬质不锈钢" :disabled='disabledoff' class="overwrite2">硬质不锈钢</Checkbox>
                     <Checkbox label="铁质" :disabled='disabledoff' class="overwrite2">铁质</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff' class="overwrite2">其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff' class="overwrite2">其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -696,7 +696,7 @@
                     <Checkbox label="金属网" :disabled='disabledoff' class="overwrite2">金属网</Checkbox>
                     <Checkbox label="硬质不锈钢" :disabled='disabledoff' class="overwrite2">硬质不锈钢</Checkbox>
                     <Checkbox label="铁质" :disabled='disabledoff' class="overwrite2">铁质</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff' class="overwrite2">其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff' class="overwrite2">其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -712,7 +712,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>

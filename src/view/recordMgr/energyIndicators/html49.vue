@@ -149,7 +149,7 @@
                   <RadioGroup v-model="formRecord.c17">
                     <Radio label="LCD" :disabled='disabledoff'>LCD</Radio>
                     <Radio label="DLP" :disabled='disabledoff'>DLP</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c18">
@@ -194,7 +194,7 @@
                 <FormItem prop="c24">
                   <RadioGroup v-model="formRecord.c24">
                     <Radio label="网络" :disabled='disabledoff'>网络</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c25">
@@ -838,7 +838,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1451,13 +1451,13 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c17 === '其他') {
+        if (this.formRecord.c17 === '其它') {
           this.forbidden.c18 = false
         } else {
           this.formRecord.c18 = ''
           this.forbidden.c18 = true
         }
-        if (this.formRecord.c24 === '其他') {
+        if (this.formRecord.c24 === '其它') {
           this.forbidden.c25 = false
         } else {
           this.formRecord.c25 = ''
@@ -1676,9 +1676,9 @@
           ],
           c18: [
             {
-              required: this.formRecord.c17 === '其他',
+              required: this.formRecord.c17 === '其它',
               trigger: 'change,blur',
-              message: '显示器件类型其他不能为空'
+              message: '显示器件类型其它不能为空'
             }
           ],
           c19: [
@@ -1725,9 +1725,9 @@
           ],
           c25: [
             {
-              required: this.formRecord.c24 === '其他',
+              required: this.formRecord.c24 === '其它',
               trigger: 'change,blur',
-              message: '附加功能其他不能为空'
+              message: '附加功能其它不能为空'
             }
           ],
           c26: [

@@ -182,7 +182,7 @@
                     <Checkbox label="触摸" :disabled='disabledoff'>触摸</Checkbox>
                     <Checkbox label="无线接收" :disabled='disabledoff'>无线接收</Checkbox>
                     <Checkbox label="摄像头" :disabled='disabledoff'>摄像头</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c24">
@@ -619,7 +619,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1214,7 +1214,7 @@
         var sleepValsh = parseFloat(this.formRecord.c14);
         var nxdjst = "";
 
-        if (this.formRecord.c23.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c23.join('').indexOf('其它') > -1) {
           this.forbidden.c24 = false
         } else {
           this.formRecord.c24 = ''
@@ -1495,8 +1495,8 @@
           c24: [
             {
               trigger: 'change,blur',
-              required: this.formRecord.c23.join('').indexOf('其他') > -1,
-              message: '附加功能其他不能为空'
+              required: this.formRecord.c23.join('').indexOf('其它') > -1,
+              message: '附加功能其它不能为空'
             }
           ],
           c25: [

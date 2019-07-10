@@ -270,11 +270,11 @@
                     <Checkbox label="板式"  :disabled='disabledoff'></Checkbox>
                     <Checkbox label="套管式" :disabled='disabledoff'></Checkbox>
                     <Checkbox label="壳管式" :disabled='disabledoff'></Checkbox>
-                    <Checkbox label="其他"  :disabled='disabledoff'></Checkbox>
+                    <Checkbox label="其它"  :disabled='disabledoff'></Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c29">
-                  <Input type="text" style="width:200px;" v-model="formRecord.c29" :disabled="disabledoff||formRecord.c28.join('').indexOf('其他')==-1"/>
+                  <Input type="text" style="width:200px;" v-model="formRecord.c29" :disabled="disabledoff||formRecord.c28.join('').indexOf('其它')==-1"/>
                 </FormItem>
               </td>
             </tr>
@@ -287,11 +287,11 @@
                     <Checkbox label="热力膨胀阀" :disabled='disabledoff'></Checkbox>
                     <Checkbox label="电动调节阀" :disabled='disabledoff'></Checkbox>
                     <Checkbox label="毛细管" :disabled='disabledoff'></Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'></Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'></Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c31">
-                  <Input type="text" v-model="formRecord.c31" :disabled="disabledoff||formRecord.c30.join('').indexOf('其他')==-1"/>
+                  <Input type="text" v-model="formRecord.c31" :disabled="disabledoff||formRecord.c30.join('').indexOf('其它')==-1"/>
                 </FormItem>
               </td>
             </tr>
@@ -353,11 +353,11 @@
                   <RadioGroup v-model="formRecord.c37">
                     <Radio label="单片机" :disabled='disabledoff'></Radio>
                     <Radio label="可编程(PLC)控制" :disabled='disabledoff'></Radio>
-                    <Radio label="其他" :disabled='disabledoff'></Radio>
+                    <Radio label="其它" :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c38">
-                  <Input type="text" v-model="formRecord.c38" :disabled="disabledoff||formRecord.c37!='其他'"/>
+                  <Input type="text" v-model="formRecord.c38" :disabled="disabledoff||formRecord.c37!='其它'"/>
                 </FormItem>
               </td>
             </tr>
@@ -370,11 +370,11 @@
                     <Radio label="交流380V" :disabled='disabledoff'></Radio>
                     <Radio label="交流6000V" :disabled='disabledoff'></Radio>
                     <Radio label="交流10000V" :disabled='disabledoff'></Radio>
-                    <Radio label="其他" :disabled='disabledoff'></Radio>
+                    <Radio label="其它" :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c40">
-                  <Input type="text" v-model="formRecord.c40" :disabled="disabledoff||formRecord.c39!='其他'"/>
+                  <Input type="text" v-model="formRecord.c40" :disabled="disabledoff||formRecord.c39!='其它'"/>
                 </FormItem>
               </td>
             </tr>
@@ -718,7 +718,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1633,23 +1633,23 @@ export default {
           required:true, message:'换热器(水/制冷剂)不能为空'
         }, {
           validator: (rule, value, callback) => {
-            if (value.join('').indexOf('其他')==-1) this.formRecord.c29="";
+            if (value.join('').indexOf('其它')==-1) this.formRecord.c29="";
             callback();
           }, trigger:'change'
         }],
         c29: [{
-          required:this.formRecord.c28.join('').indexOf('其他')>-1, message:'其他换热器(水/制冷剂)不能为空', trigger:'change,blur'
+          required:this.formRecord.c28.join('').indexOf('其它')>-1, message:'其它换热器(水/制冷剂)不能为空', trigger:'change,blur'
         }],
         c30: [{
           required:true, message:'节流装置不能为空'
         }, {
           validator: (rule, value, callback) => {
-            if (value.join('').indexOf('其他')==-1) this.formRecord.c31="";
+            if (value.join('').indexOf('其它')==-1) this.formRecord.c31="";
             callback();
           }, trigger:'change'
         }],
         c31: [{
-          required:this.formRecord.c30.join('').indexOf('其他')>-1, message:'其他节流装置不能为空', trigger:'change,blur'
+          required:this.formRecord.c30.join('').indexOf('其它')>-1, message:'其它节流装置不能为空', trigger:'change,blur'
         }],
         c32: [{
           required:true, message:'模块化不能为空'
@@ -1670,23 +1670,23 @@ export default {
           required:true, message:'控制类型不能为空', trigger:'change'
         }, {
           validator: (rule, value, callback) => {
-            if (value!='其他') this.formRecord.c38="";
+            if (value!='其它') this.formRecord.c38="";
             callback();
           }, trigger:'change'
         }],
         c38: [{
-          required:this.formRecord.c37=='其他', message:'其他控制类型不能为空', trigger:'change,blur'
+          required:this.formRecord.c37=='其它', message:'其它控制类型不能为空', trigger:'change,blur'
         }],
         c39: [{
           required:true, message:'电源类型不能为空', trigger:'change'
         }, {
           validator: (rule, value, callback) => {
-            if (value!='其他') this.formRecord.c40="";
+            if (value!='其它') this.formRecord.c40="";
             callback();
           }, trigger:'change'
         }],
         c40: [{
-          required:this.formRecord.c39=='其他', message:'其他电源类型不能为空', trigger:'change,blur'
+          required:this.formRecord.c39=='其它', message:'其它电源类型不能为空', trigger:'change,blur'
         }],
         c41: [{
           required:true, message:'制冷剂不能为空'

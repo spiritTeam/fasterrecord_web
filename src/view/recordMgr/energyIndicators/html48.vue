@@ -488,7 +488,7 @@
                     <Checkbox label="燃烧室损伤安全装置" :disabled='disabledoff'>燃烧室损伤安全装置</Checkbox>
                     <Checkbox label="自动防冻安全装置" :disabled='disabledoff'>自动防冻安全装置</Checkbox>
                     <br>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                     <FormItem prop="c57">
                       <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'
                              style="width:80px;"/>
@@ -708,7 +708,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">生产许可证证书编号</td>
@@ -1334,7 +1334,7 @@
           this.formRecord.c42 = ''
           this.forbidden.c42 = true
         }
-        if (this.formRecord.c56.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c56.join('').indexOf('其它') > -1) {
           this.forbidden.c57 = false
         } else {
           this.formRecord.c57 = ''
@@ -1861,8 +1861,8 @@
           ],
           c57: [
             {
-              trigger: 'change,blur', required: this.formRecord.c56.join('').indexOf('其他') > -1,
-              message: '安全装置其他值不能为空'
+              trigger: 'change,blur', required: this.formRecord.c56.join('').indexOf('其它') > -1,
+              message: '安全装置其它值不能为空'
             }
           ],
           c58: [
