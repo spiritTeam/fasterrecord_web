@@ -311,13 +311,13 @@
               </td>
             </tr>
             <tr>
-              <td>波轮</td>
+              <td><i class="red">*</i>波轮</td>
               <td colspan="3">
-                <label>直径（mm）：</label>
+                <FormItem>直径（mm）：</FormItem>
                 <FormItem prop="c31">
                   <Input type="text" v-model="formRecord.c31" :disabled="disabledoff"/>
                 </FormItem>
-                <label>材料：</label>
+                <FormItem>材料：</FormItem>
                 <FormItem prop="c32">
                   <Input type="text" v-model="formRecord.c32" :disabled="disabledoff"/>
                 </FormItem>
@@ -326,29 +326,27 @@
             <tr>
               <td rowspan="2" class="right-align"><i class="red">*</i>内桶</td>
               <td colspan="3">
-                <div class="radio i-checks">
-                  <label>直径（mm）：</label> <label>
-                  <FormItem prop="c51">
-                    <Input type="text" v-model="formRecord.c51" :disabled="disabledoff"/>
-                  </FormItem>
-                </label> <label>材料：</label> <label>
-                  <FormItem prop="c34">
-                    <Input type="text" v-model="formRecord.c34" :disabled="disabledoff"/>
-                  </FormItem>
-                </label>
-                </div>
+                <FormItem>直径（mm）：</FormItem>
+                <FormItem prop="c51">
+                  <Input type="text" v-model="formRecord.c51" :disabled="disabledoff"/>
+                </FormItem>
+                <FormItem>材料：</FormItem>
+                <FormItem prop="c34">
+                  <Input type="text" v-model="formRecord.c34" :disabled="disabledoff"/>
+                </FormItem>
               </td>
             </tr>
             <tr>
-              <td colspan="3" class="w19"><label>尺寸（mm×mm×mm）：</label>
+              <td colspan="3" class="w19">
+                <FormItem>尺寸（mm×mm×mm）：</FormItem>
                 <FormItem prop="c33">
                   <Input type="text" v-model="formRecord.c33" style="width:80px;" :disabled="disabledoff"/>
                 </FormItem>
-                <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+                <FormItem>×</FormItem>
                 <FormItem prop="c57">
                   <Input type="text" v-model="formRecord.c57" style="width:80px;" :disabled="disabledoff"/>
                 </FormItem>
-                <span style="display: inline-block;height: 32px;line-height: 32px;">x</span>
+                <FormItem>×</FormItem>
                 <FormItem prop="c58">
                   <Input type="text" v-model="formRecord.c58" style="width:80px;" :disabled="disabledoff"/>
                 </FormItem>
@@ -357,49 +355,39 @@
             <tr>
               <td class="right-align"><i class="red">*</i>额定电压/频率</td>
               <td colspan="3">
-                <div class="radio i-checks">
-                  <label>电压（V）：</label> <label>
-                  <FormItem prop="c52">
-                    <Input type="text" v-model="formRecord.c52" :disabled="disabledoff"/>
-                  </FormItem>
-                </label>
-                  <label>频率（Hz）：</label> <label>
-                  <FormItem prop="c53">
-                    <Input type="text" v-model="formRecord.c53" :disabled="disabledoff"/>
-                  </FormItem>
-                </label>
-                </div>
+                <FormItem>电压（V）：</FormItem>
+                <FormItem prop="c52">
+                  <Input type="text" v-model="formRecord.c52" :disabled="disabledoff"/>
+                </FormItem>
+                <FormItem>频率（Hz）：</FormItem>
+                <FormItem prop="c53">
+                  <Input type="text" v-model="formRecord.c53" :disabled="disabledoff"/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td rowspan="2" class="right-align"><i class="red">*</i>额定功率（W）<br>（按铭牌填写）</td>
               <td colspan="3">
-                <div class="radio i-checks">
-                  <label>额定洗涤功率：</label> <label>
-                  <FormItem prop="c62">
-                    <Input type="text" v-model="formRecord.c62" :disabled="disabledoff"/>
-                  </FormItem>
-                </label> <label>额定脱水功率：</label> <label>
-                  <FormItem prop="c63">
-                    <Input type="text" v-model="formRecord.c63" :disabled="disabledoff"/>
-                  </FormItem>
-                </label>
-                </div>
+                <FormItem>额定洗涤功率：</FormItem>
+                <FormItem prop="c62">
+                  <Input type="text" v-model="formRecord.c62" :disabled="disabledoff"/>
+                </FormItem>
+                <FormItem>额定脱水功率：</FormItem>
+                <FormItem prop="c63">
+                  <Input type="text" v-model="formRecord.c63" :disabled="disabledoff"/>
+                </FormItem>
               </td>
             </tr>
             <tr>
               <td colspan="3">
-                <div class="radio i-checks">
-                  <label>额定烘干功率：</label> <label>
-                  <FormItem prop="c64">
-                    <Input type="text" v-model="formRecord.c64" :disabled="disabledoff"/>
-                  </FormItem>
-                </label> <label>额定功率：</label> <label>
-                  <FormItem prop="c66">
-                    <Input type="text" v-model="formRecord.c66" :disabled="disabledoff"/>
-                  </FormItem>
-                </label>
-                </div>
+                <FormItem>额定烘干功率：</FormItem>
+                <FormItem prop="c64">
+                  <Input type="text" v-model="formRecord.c64" :disabled="disabledoff"/>
+                </FormItem>
+                <FormItem>额定功率：</FormItem>
+                <FormItem prop="c66">
+                  <Input type="text" v-model="formRecord.c66" :disabled="disabledoff"/>
+                </FormItem>
               </td>
             </tr>
             <tr>
@@ -995,10 +983,10 @@
         型号的 <span class="f-product">电动洗衣机 2013版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
       </div>
       <div v-if="pageType==='extend'" class="org regress">
-         <p><span></span>正在办理能效标识备案</p>
-         <p><span class="bgs"></span>已通过能效标识备案</p>
-       </div>
-       <div class="org">备案编号:{{recordno}}</div>
+        <p><span></span>正在办理能效标识备案</p>
+        <p><span class="bgs"></span>已通过能效标识备案</p>
+      </div>
+      <div class="org">备案编号:{{recordno}}</div>
       <dl v-if="pageType==='extend'">
         <dt>
           现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
@@ -1134,7 +1122,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
-        mainModel:'',
+        mainModel: '',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
