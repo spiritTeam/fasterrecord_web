@@ -1103,7 +1103,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
-    </Modal>
+     </Modal>
   </div>
 </template>
 <script>

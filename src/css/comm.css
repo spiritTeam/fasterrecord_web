@@ -109,7 +109,7 @@
   margin-bottom: 10px;
 }
 
-.pageStyle .org, .pageStyle .basic-info dl {
+.org, .basic-info dl {
   font-size: 16px;
 }
 
@@ -127,12 +127,12 @@
   color: red;
 }
 
-.pro-info, .basic-info .record-number {
+.pageStyle .pro-info, .pageStyle .basic-info .record-number {
   height: auto;
   line-height: 24px;
 }
 
-.pageStyle .basic-info span[class^="f-"],.pro-info span[class^="f-"] {
+.basic-info span[class^="f-"],.pro-info span[class^="f-"] {
   font-weight: bold;
   padding: 0px 5px;
 }
