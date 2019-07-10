@@ -1068,7 +1068,7 @@
           型号的 <span  class="f-product">储水式电热水器 2008版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
        <div v-if="pageType==='extend'" class="org regress">
-         <p><span></span>正在办理能效标识备案</p>
+         <p><span></span>正在办理能效标识备案</p> 
          <p><span class="bgs"></span>已通过能效标识备案</p>
        </div>
        <div class="org">备案编号:{{recordno}}</div>
