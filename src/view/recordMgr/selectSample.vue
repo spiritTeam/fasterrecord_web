@@ -6,8 +6,8 @@
         <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" />
       </Col>-->
     </Row>
-    <Row>
-      <Col span="4" v-for="(item,idx) in sampleList" :offset="idx === 0 ? offsetNum : 0" :key="item.id">
+    <Row type="flex" :justify="sampleList.size>6?start:center">
+      <Col span="4" v-for="(item) in sampleList" :key="item.id">
         <RadioGroup v-model="sample" size="large">
           <Radio class="radioItem"  :label="item.id" :disabled="getFlag(item.id)" :data-pic="item.pic1"> <img :src="item.pic2 == null ? defaultImg : item.pic2" @click="viewImg(item.pic1)" /></Radio>
         </RadioGroup>
