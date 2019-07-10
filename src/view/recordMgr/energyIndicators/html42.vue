@@ -1350,7 +1350,7 @@
             } else if (rxlz >= 55) {
               nxdj = "3";
             }
-          }
+          } 
         }
         const checkc7a = (rule, value, callback) => {
           if (rxlz > 100 || nxdj == "") {
