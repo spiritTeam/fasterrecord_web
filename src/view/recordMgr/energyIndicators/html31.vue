@@ -311,7 +311,7 @@
               </td>
             </tr>
             <tr>
-              <td><i class="red">*</i>波轮</td>
+              <td>波轮</td>
               <td colspan="3">
                 <FormItem>直径（mm）：</FormItem>
                 <FormItem prop="c31">
@@ -1584,18 +1584,6 @@
             {
               validator: oneDecimals,
               trigger: 'change,blur'
-            }
-          ],
-          c31: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c32: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
             }
           ],
           c33: [
