@@ -120,7 +120,7 @@
                       <Checkbox :disabled='disabledoff' label="WIFI">WIFI</Checkbox>
                       <Checkbox :disabled='disabledoff' label="蓝牙">蓝牙</Checkbox>
                       <Checkbox :disabled='disabledoff' label="无">无</Checkbox>
-                      <Checkbox :disabled='disabledoff' label="其他">其他</Checkbox>
+                      <Checkbox :disabled='disabledoff' label="其它">其它</Checkbox>
                     </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c101" style="margin-top:-34px; margin-left:227px">
@@ -214,7 +214,7 @@
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
+          <h2>五、其它信息</h2>
           <br/>
           <h3>样品描述</h3>
           <br/>
@@ -248,7 +248,7 @@
                     <Radio :disabled='disabledoff' label="便携式">便携式</Radio>
                     <Radio :disabled='disabledoff' label="驻立式">驻立式</Radio>
                     <Radio :disabled='disabledoff' label="固定式">固定式</Radio>
-                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                    <Radio :disabled='disabledoff' label="其它">其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c16">
@@ -303,7 +303,7 @@
                   <RadioGroup v-model="formRecord.c25">
                     <Radio :disabled='disabledoff' label="不锈钢">不锈钢</Radio>
                     <Radio :disabled='disabledoff' label="钢板喷涂">钢板喷涂</Radio>
-                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                    <Radio :disabled='disabledoff' label="其它">其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c26" style="margin-top:-34px; margin-left:227px">
@@ -732,7 +732,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1479,7 +1479,7 @@
           }
         }
 
-        if (this.formRecord.c100.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c100.join('').indexOf('其它') > -1) {
           this.forbidden.c101 = false
         } else {
           this.formRecord.c101 = ''
@@ -1519,14 +1519,14 @@
           this.forbidden.c12 = true
         }
 
-        if (this.formRecord.c15 === '其他') {
+        if (this.formRecord.c15 === '其它') {
           this.forbidden.c16 = false
         } else {
           this.formRecord.c16 = ''
           this.forbidden.c16 = true
         }
 
-        if (this.formRecord.c25 === '其他') {
+        if (this.formRecord.c25 === '其它') {
           this.forbidden.c26 = false
         } else {
           this.formRecord.c26 = ''
@@ -1616,7 +1616,7 @@
           ],
           c101: [
             {
-              required: this.formRecord.c100.join('').indexOf('其他') > -1,
+              required: this.formRecord.c100.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
               message: '其它不能为空'
             }
@@ -1712,7 +1712,7 @@
           ],
           c16: [
             {
-              required: this.formRecord.c15 === '其他',
+              required: this.formRecord.c15 === '其它',
               trigger: 'change,blur',
               message: '其它不能为空'
             }
@@ -1782,9 +1782,9 @@
           ],
           c26: [
             {
-              required: this.formRecord.c25 === '其他',
+              required: this.formRecord.c25 === '其它',
               trigger: 'change,blur',
-              message: '其他不能为空'
+              message: '其它不能为空'
             }
           ],
           c41: [

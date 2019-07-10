@@ -671,7 +671,7 @@
                     <Checkbox label="复印" :disabled='disabledoff'>复印</Checkbox>
                     <Checkbox label="打印" :disabled='disabledoff'>打印</Checkbox>
                     <Checkbox label="传真" :disabled='disabledoff'>传真</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c85">
@@ -688,7 +688,7 @@
                     <Checkbox label="打印" :disabled='disabledoff'>打印</Checkbox>
                     <Checkbox label="传真" :disabled='disabledoff'>传真</Checkbox>
                     <Checkbox label="扫描" :disabled='disabledoff'>扫描</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c87">
@@ -835,7 +835,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>其他有线接口</td>
+              <td>其它有线接口</td>
               <td>0.2</td>
             </tr>
             <tr>
@@ -1640,7 +1640,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -2474,13 +2474,13 @@
           this.formRecord.c82 = ''
           this.forbidden.c82 = true
         }
-        if (this.formRecord.c84.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c84.join('').indexOf('其它') > -1) {
           this.forbidden.c85 = false
         } else {
           this.formRecord.c85 = ''
           this.forbidden.c85 = true
         }
-        if (this.formRecord.c86.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c86.join('').indexOf('其它') > -1) {
           this.forbidden.c87 = false
         } else {
           this.formRecord.c87 = ''
@@ -3709,9 +3709,9 @@
           ],
           c85: [
             {
-              required: this.formRecord.c84.join('').indexOf('其他') > -1,
+              required: this.formRecord.c84.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
-              message: '基础功能其他不能为空'
+              message: '基础功能其它不能为空'
             }
           ],
           c86: [
@@ -3722,9 +3722,9 @@
           ],
           c87: [
             {
-              required: this.formRecord.c86.join('').indexOf('其他') > -1,
+              required: this.formRecord.c86.join('').indexOf('其它') > -1,
               trigger: 'change,blur',
-              message: '扩展功能其他不能为空'
+              message: '扩展功能其它不能为空'
             }
           ],
           c88: [

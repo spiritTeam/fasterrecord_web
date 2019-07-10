@@ -76,7 +76,7 @@
               <Radio :disabled='disabledoff' label="台式">台式</Radio>
               <Radio :disabled='disabledoff' label="嵌入式">嵌入式</Radio>
               <Radio :disabled='disabledoff' label="集成灶">集成灶</Radio>
-              <Radio :disabled='disabledoff' label="其他">其他</Radio>
+              <Radio :disabled='disabledoff' label="其它">其它</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem prop="c20" style="margin-top:-55.8px" :label-width="440">
@@ -365,7 +365,7 @@
                     <Radio label="人工点火" :disabled='disabledoff'>人工点火</Radio>
                     <Radio label="脉冲点火" :disabled='disabledoff'>脉冲点火</Radio>
                     <Radio label="压电点火" :disabled='disabledoff'>压电点火</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                     <FormItem prop="c24">
                       <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c24'/>
                     </FormItem>
@@ -416,7 +416,7 @@
                     <Radio label="2000" :disabled='disabledoff'>2000</Radio>
                     <Radio label="2800" :disabled='disabledoff'>2800</Radio>
                     <Radio label="1000" :disabled='disabledoff'>1000</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                     <FormItem prop="c30">
                       <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c30'/>
                     </FormItem>
@@ -648,7 +648,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1240,21 +1240,21 @@
       },
       ruleRecord() {
 
-        if (this.formRecord.c19 === '其他') {
+        if (this.formRecord.c19 === '其它') {
           this.forbidden.c20 = false
         } else {
           this.formRecord.c20 = ''
           this.forbidden.c20 = true
         }
 
-        if (this.formRecord.c29 === '其他') {
+        if (this.formRecord.c29 === '其它') {
           this.forbidden.c30 = false
         } else {
           this.formRecord.c30 = ''
           this.forbidden.c30 = true
         }
 
-        if (this.formRecord.c23 === '其他') {
+        if (this.formRecord.c23 === '其它') {
           this.forbidden.c24 = false
         } else {
           this.formRecord.c24 = ''
@@ -1419,7 +1419,7 @@
           ],
           c20: [
             {
-              trigger: 'change,blur', required: this.formRecord.c19 === '其他',
+              trigger: 'change,blur', required: this.formRecord.c19 === '其它',
               message: '请输入其它结构形式'
             }
           ],
@@ -1496,8 +1496,8 @@
           ],
           c24: [
             {
-              trigger: 'change,blur', required: this.formRecord.c23 === '其他',
-              message: '请输入其他点火方式'
+              trigger: 'change,blur', required: this.formRecord.c23 === '其它',
+              message: '请输入其它点火方式'
             }
           ],
           c25: [
@@ -1532,8 +1532,8 @@
           ],
           c30: [
             {
-              trigger: 'change,blur', required: this.formRecord.c29 === '其他',
-              message: '请输入额定燃气供气压力其他值'
+              trigger: 'change,blur', required: this.formRecord.c29 === '其它',
+              message: '请输入额定燃气供气压力其它值'
             }
           ],
           c31: [

@@ -247,7 +247,7 @@
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
+          <h2>五、其它信息</h2>
           <table id="table3">
             <tr>
               <td class="t_label"><span class="red">*</span>产品类型</td>
@@ -1317,7 +1317,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -2150,7 +2150,7 @@ export default {
           required: true, message: '请选择产品类型', trigger: 'change,blur'
         }],
         c33: [{
-          required: this.formRecord.c32 == '其它', message: '请输入其他产品类型'
+          required: this.formRecord.c32 == '其它', message: '请输入其它产品类型'
         }],
         c34: [{
           required: true, message: '请选择独立间室数量', trigger: 'change,blur'

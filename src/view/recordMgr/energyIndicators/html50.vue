@@ -178,7 +178,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td align="right"><span class="red">*</span>其他载冷剂</td>
+              <td align="right"><span class="red">*</span>其它载冷剂</td>
               <td>
                 <FormItem prop="c14" style="width:100%">
                   <RadioGroup v-model="formRecord.c14">
@@ -234,7 +234,7 @@
                         <Checkbox label="喷淋式" :disabled='disabledoff'>喷淋式&nbsp;&nbsp;)</Checkbox>
                       </CheckboxGroup>
                     </FormItem>
-                     <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c57">
@@ -250,7 +250,7 @@
                     <Checkbox label="板式换热器" :disabled='disabledoff'>板式换热器</Checkbox>
                     <Checkbox label="套管式换热器" :disabled='disabledoff'>套管式换热器</Checkbox>
                     <Checkbox label="壳管式换热器" :disabled='disabledoff'>壳管式换热器</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c58">
@@ -267,7 +267,7 @@
                     <Radio :disabled='disabledoff' label="热力膨胀阀">热力膨胀阀</Radio>
                     <Radio :disabled='disabledoff' label="电动调节阀">电动调节阀</Radio>
                     <Radio :disabled='disabledoff' label="毛细管">毛细管</Radio>
-                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                    <Radio :disabled='disabledoff' label="其它">其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c59">
@@ -353,7 +353,7 @@
                     <Radio :disabled='disabledoff' label="交流220V">交流220V</Radio>
                     <Radio :disabled='disabledoff' label="交流380V">交流380V</Radio>
                     <Radio :disabled='disabledoff' label="直流">直流</Radio>
-                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                    <Radio :disabled='disabledoff' label="其它">其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c60">
@@ -368,7 +368,7 @@
                   <RadioGroup v-model="formRecord.c30">
                     <Radio :disabled='disabledoff' label="单片机">单片机</Radio>
                     <Radio :disabled='disabledoff' label="可编程(PLC)控制">可编程(PLC)控制</Radio>
-                    <Radio :disabled='disabledoff' label="其他">其他</Radio>
+                    <Radio :disabled='disabledoff' label="其它">其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c61">
@@ -689,7 +689,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1560,33 +1560,33 @@
           this.forbidden.c28 = true
         }
 
-        if (this.formRecord.c18.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c18.join('').indexOf('其它') > -1) {
           this.forbidden.c57 = false
         } else {
           this.formRecord.c57 = ''
           this.forbidden.c57 = true
         }
-        if (this.formRecord.c19.join('').indexOf('其他') > -1) {
+        if (this.formRecord.c19.join('').indexOf('其它') > -1) {
           this.forbidden.c58 = false
         } else {
           this.formRecord.c58 = ''
           this.forbidden.c58 = true
         }
-        if (this.formRecord.c20 === '其他') {
+        if (this.formRecord.c20 === '其它') {
           this.forbidden.c59 = false
         } else {
           this.formRecord.c59 = ''
           this.forbidden.c59 = true
         }
 
-        if (this.formRecord.c29 === '其他') {
+        if (this.formRecord.c29 === '其它') {
           this.forbidden.c60 = false
         } else {
           this.formRecord.c60 = ''
           this.forbidden.c60 = true
         }
 
-        if (this.formRecord.c30 === '其他') {
+        if (this.formRecord.c30 === '其它') {
           this.forbidden.c61 = false
         } else {
           this.formRecord.c61 = ''
@@ -1761,7 +1761,7 @@
           c14: [
             {
               required: true,
-              message: '其他载冷剂不能为空',
+              message: '其它载冷剂不能为空',
               trigger: 'change,blur'
             }
           ],

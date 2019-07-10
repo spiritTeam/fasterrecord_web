@@ -60,7 +60,7 @@
               <Radio label="挂壁式" :disabled='disabledoff'>挂壁式</Radio>
               <Radio label="落地式" :disabled='disabledoff'>落地式</Radio>
               <Radio label="窗式" :disabled='disabledoff'>窗式</Radio>
-              <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+              <Radio label="其它" :disabled='disabledoff'>其它</Radio>
             </RadioGroup>
           </FormItem>
           <FormItem prop="c62" style="margin-top:-55.8px;" :label-width="440">
@@ -200,7 +200,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td align="right"><span style="color:red">*</span>温控器以外的其他控制装置</td>
+              <td align="right"><span style="color:red">*</span>温控器以外的其它控制装置</td>
               <td>
                 <FormItem prop="c21" style="width:100%;" :label-width="30">
                   <RadioGroup v-model="formRecord.c21">
@@ -603,7 +603,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1197,8 +1197,8 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        //产品结构-其他 禁用
-        if (this.formRecord.c5 == '其他') {
+        //产品结构-其它 禁用
+        if (this.formRecord.c5 == '其它') {
           this.forbidden.c62 = false
         } else {
           this.formRecord.c62 = ''
@@ -1396,8 +1396,8 @@
           ],
           c62: [
             {
-              required: this.formRecord.c5 === '其他',
-              message: '其他不能为空',
+              required: this.formRecord.c5 === '其它',
+              message: '其它不能为空',
               trigger: 'change,blur'
             }
           ],
@@ -1522,7 +1522,7 @@
           c21: [
             {
               required: true,
-              message: '温控器以外的其他控制装置不能为空',
+              message: '温控器以外的其它控制装置不能为空',
               trigger: 'change,blur'
             }
           ],

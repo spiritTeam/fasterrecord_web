@@ -240,7 +240,7 @@
                   <RadioGroup v-model="formRecord.c12">
                     <Radio label="交流变频" :disabled='disabledoff'>交流变频</Radio>
                     <Radio label="直流变频" :disabled='disabledoff'>直流变频</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
                 <FormItem prop="c13">
@@ -576,7 +576,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1202,7 +1202,7 @@
           this.forbidden.c6 = true
         }
 
-        if (this.formRecord.c12 === '其他') {
+        if (this.formRecord.c12 === '其它') {
           this.forbidden.c13 = false
         } else {
           this.formRecord.c13 = ''
@@ -1499,7 +1499,7 @@
           c13: [
             {
               trigger: 'change,blur',
-              required: this.formRecord.c12 === '其他',
+              required: this.formRecord.c12 === '其它',
               message: '不能为空'
             }
           ],

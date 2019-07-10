@@ -260,7 +260,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室1<br /><Input type="text" v-model="formRecord.c29" :disabled='disabledoff' ></Input></td>
+              <td>其它间室1<br /><Input type="text" v-model="formRecord.c29" :disabled='disabledoff' ></Input></td>
               <td>
                 <FormItem prop="c28">
                   <RadioGroup v-model="formRecord.c28">
@@ -316,7 +316,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室2<br />
+              <td>其它间室2<br />
                 <FormItem prop="c34">
                   <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'></Input>
 
@@ -377,7 +377,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室3<br />
+              <td>其它间室3<br />
                 <FormItem prop="c39">
                   <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'></Input>
 
@@ -436,7 +436,7 @@
               </td>
             </tr>
             <tr>
-              <td>其他间室4<br />
+              <td>其它间室4<br />
                 <FormItem prop="c124">
                   <Input type="text" v-model="formRecord.c124" :disabled='disabledoff'></Input>
 
@@ -648,7 +648,7 @@
                     <Checkbox label="外挂式" :disabled='disabledoff'>外挂式</Checkbox>
                     <Checkbox label="平背式" :disabled='disabledoff'>平背式</Checkbox>
                     <Checkbox label="底冷式" :disabled='disabledoff'>底冷式</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
 
                 </FormItem>
@@ -695,7 +695,7 @@
                   <CheckboxGroup v-model="formRecord.c56" style="display:inline-block;">
                     <Checkbox label="冷藏室" :disabled='disabledoff'>冷藏室</Checkbox>
                     <Checkbox label="冷冻室" :disabled='disabledoff'>冷冻室</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
 
                 </FormItem>
@@ -712,7 +712,7 @@
                   <CheckboxGroup v-model="formRecord.c58" style="display:inline-block;">
                     <Checkbox label="冷藏室" :disabled='disabledoff'>冷藏室</Checkbox>
                     <Checkbox label="冷冻室" :disabled='disabledoff'>冷冻室</Checkbox>
-                    <Checkbox label="其他" :disabled='disabledoff'>其他</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
 
                 </FormItem>
@@ -973,7 +973,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -2694,7 +2694,7 @@ export default {
         ],
         c52: [
           {
-            required: this.formRecord.c51.join('').indexOf('其他') > -1,
+            required: this.formRecord.c51.join('').indexOf('其它') > -1,
             message: '不能为空'
           }
         ],
@@ -2724,7 +2724,7 @@ export default {
         ],
         c57: [
           {
-            required: this.formRecord.c56.join('').indexOf('其他') > -1,
+            required: this.formRecord.c56.join('').indexOf('其它') > -1,
             message: '不能为空'
           }
         ],
@@ -2736,7 +2736,7 @@ export default {
         ],
         c59: [
           {
-            required: this.formRecord.c58.join('').indexOf('其他') > -1,
+            required: this.formRecord.c58.join('').indexOf('其它') > -1,
             message: '不能为空'
           }
         ],
