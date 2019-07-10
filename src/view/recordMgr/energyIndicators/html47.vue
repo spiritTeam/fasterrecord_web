@@ -1198,14 +1198,14 @@
       <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
         <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
-        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交申请</Button> -->
-        <Button type="primary" @click="showConfirm">提交申请</Button>
+        <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
+        <Button type="primary" @click="showConfirm">提交备案审核申请</Button>
       </div>
       <div class="tc" v-else>
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
+    <Modal v-model="modal1" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
       <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
         <table >
@@ -1245,18 +1245,23 @@
      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
     </Modal>
-     <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+     <Modal v-model="modal5" class="basic-info"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
        <p class="org">中国标准化研究院能效标识管理中心：</p>
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">家用电冰箱-2015版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+          型号的 <span  class="f-product">家用电冰箱-2015版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+          <p><span></span>正在办理能效标识备案</p>
+          <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord.c4}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -1273,7 +1278,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -1356,6 +1361,7 @@ export default {
       checkmark31: false,
       checkmark32: false,
       checkmark76: false,
+      mainModel:'',
       formRecord: {
         ec_master_kuozhan_text:'',
         c1: '',
@@ -1516,6 +1522,7 @@ export default {
         });
     },
     fileHandleBeforeUpload (file,id) {
+      console.log(id)
       let _this = this
       let fileObj = {}
       _this.uploadParam['uploadFileList'+id] = []
@@ -1588,6 +1595,7 @@ export default {
               if(data[i] != undefined) that.formRecord[i] = that.formatDate(parseInt(data[i]));
           } else {
             that.formRecord[i] = data[i]
+            if(i=="c4") that.mainModel= data[i];
           }
       }
     },
@@ -1659,8 +1667,7 @@ export default {
             that.formRecord[e.recId] = ''
           } else {
 
-            // let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
-            let labVal = e.labValue;
+            let labVal = e.labValue.replace(/（/g,'(').replace(/）/g,')')
             if (e.recId === 'c7') {
               if (parseInt(labVal) !== 1 && parseInt(labVal) !== 2 && parseInt(labVal) !== 3 && parseInt(labVal) !== 4 && parseInt(labVal) !== 5) {
                 that.formRecord[e.recId] = '1'
@@ -1670,6 +1677,7 @@ export default {
             } else if (e.recId === 'c20' && isNaN(labVal)) {
               that.formRecord[e.recId] = new Date()
             }else if(e.recId==='c1' || e.recId==='c2'|| e.recId==='c3'){
+                console.log(e.labValue);
                 that.formRecord[e.recId] =e.labValue
             }else {
               that.formRecord[e.recId] = labVal
@@ -1829,7 +1837,7 @@ export default {
         _this.filesArr.push(file25)
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.formRecord.id=this.formRecord.id || _this.$store.state.app.updateId || 0
+      _this.formRecord.id=_this.$store.state.app.updateId || 0
       if(pageType==="extend" || pageType==="update" ){
         let submitUrl= pageType==='extend'? '/marking/saveExpand.do':'/marking/saveChange.do';
         axios({
@@ -1963,7 +1971,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'pageType'
+      'pageType',
+      'recordno'
     ]),
     disabledoff(){
       return  this.pageType==='extend';
@@ -2991,11 +3000,21 @@ table td,table th{
 }
 .pro-info, .basic-info .record-number {
     height: auto;
-    line-height: 40px;
+    line-height: 24px;
 }
 .basic-info span[class^="f-"],.pro-info span[class^="f-"]{
     font-weight: bold;
     padding: 0px 5px;
 }
 .application{ margin: 10px 0;}
+.regress span{
+  display:inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  border: 1px solid #2b85e4;
+}
+.regress .bgs{
+  background-color: #2b85e4;
+}
 </style>

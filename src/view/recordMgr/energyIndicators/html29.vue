@@ -136,7 +136,7 @@
       </div>
       <div class="part part5">
         <Card :bordered="false">
-          <h2>五、其他信息</h2>
+          <h2>五、其它信息</h2>
           <h3>样品描述</h3>
           <table id="table3">
             <tr>
@@ -148,7 +148,7 @@
                     <Radio label="燃气" :disabled='disabledoff'>燃气</Radio>
                     <Radio label="热泵" :disabled='disabledoff'>热泵</Radio>
                     <Radio label="无辅助能源" :disabled='disabledoff'>无辅助能源</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c63">
                     <Input type="text" v-model="formRecord.c63" style="width:200px;" :disabled='disabledoff || forbidden.c63'/>
@@ -188,7 +188,7 @@
                 <FormItem prop="c16" style="width:100%;" :label-width="10">
                   <RadioGroup v-model="formRecord.c16">
                     <Radio label="全玻璃" :disabled='disabledoff || forbidden.zkgx'>全玻璃</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.zkgx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.zkgx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c17">
                      <Input type="text" v-model="formRecord.c17" style="width:200px;" :disabled='disabledoff || forbidden.c17'/>
@@ -205,7 +205,7 @@
                     <Radio label="内置带翅片的金属热管" :disabled='disabledoff || forbidden.zkgx'>内置带翅片的金属热管</Radio>
                     <Radio label="全玻璃热管" :disabled='disabledoff || forbidden.zkgx'>全玻璃热管</Radio>
                     <br>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.zkgx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.zkgx'>其它</Radio>
                     <FormItem prop="c19">
                       <Input type="text" v-model="formRecord.c19" style="width:200px;" :disabled='disabledoff || forbidden.c19'/>
                     </FormItem>
@@ -236,7 +236,7 @@
                   <RadioGroup v-model="formRecord.c23">
                     <Radio label="铜板" :disabled='disabledoff || forbidden.pbx'>铜板</Radio>
                     <Radio label="铝板" :disabled='disabledoff || forbidden.pbx'>铝板</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c24">
                     <Input type="text" v-model="formRecord.c24" style="width:200px;" :disabled='disabledoff || forbidden.c24'/>
@@ -261,7 +261,7 @@
                     <Radio label="阳极氧化" :disabled='disabledoff || forbidden.pbx'>阳极氧化</Radio>
                     <Radio label="镀铬" :disabled='disabledoff || forbidden.pbx'>镀铬</Radio>
                     <Radio label="磁控溅射" :disabled='disabledoff || forbidden.pbx'>磁控溅射</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c27">
                     <Input type="text" v-model="formRecord.c27" style="width:200px;" :disabled='disabledoff || forbidden.c27'/>
@@ -277,7 +277,7 @@
                   <RadioGroup v-model="formRecord.c28">
                     <Radio label="铜管" :disabled='disabledoff || forbidden.pbx'>铜管</Radio>
                     <Radio label="铝管" :disabled='disabledoff || forbidden.pbx'>铝管</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c29">
                     <Input type="text" v-model="formRecord.c29" style="width:200px;" :disabled='disabledoff || forbidden.c29'/>
@@ -303,7 +303,7 @@
                     <Radio label="钢化玻璃" :disabled='disabledoff || forbidden.pbx'>钢化玻璃</Radio>
                     <Radio label="普通玻璃" :disabled='disabledoff || forbidden.pbx'>普通玻璃</Radio>
                     <Radio label="布纹玻璃" :disabled='disabledoff || forbidden.pbx'>布纹玻璃</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c32">
                     <Input type="text" v-model="formRecord.c32" style="width:200px;" :disabled='disabledoff || forbidden.c32'/>
@@ -320,7 +320,7 @@
                     <Radio label="3 mm" :disabled='disabledoff || forbidden.pbx'>3 mm</Radio>
                     <Radio label="4 mm" :disabled='disabledoff || forbidden.pbx'>4 mm</Radio>
                     <Radio label="5 mm" :disabled='disabledoff || forbidden.pbx'>5 mm</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他（mm）</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它（mm）</Radio>
                   </RadioGroup>
                   <FormItem prop="c34">
                     <Input type="text" v-model="formRecord.c34" style="width:200px;" :disabled='disabledoff || forbidden.c34'/>
@@ -337,7 +337,7 @@
                     <Radio label="岩棉" :disabled='disabledoff || forbidden.pbx'>岩棉</Radio>
                     <Radio label="玻璃棉" :disabled='disabledoff || forbidden.pbx'>玻璃棉</Radio>
                     <Radio label="聚氨酯" :disabled='disabledoff || forbidden.pbx'>聚氨酯</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c36">
                     <Input type="text" v-model="formRecord.c36" style="width:200px;" :disabled='disabledoff || forbidden.c36'/>
@@ -353,7 +353,7 @@
                     <Radio label="镀锌板" :disabled='disabledoff || forbidden.pbx'>镀锌板</Radio>
                     <Radio label="铝板" :disabled='disabledoff || forbidden.pbx'>铝板</Radio>
                     <Radio label="彩板" :disabled='disabledoff || forbidden.pbx'>彩板</Radio>
-                    <Radio label="其他" :disabled='disabledoff || forbidden.pbx'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c38">
                     <Input type="text" v-model="formRecord.c38" style="width:200px;" :disabled='disabledoff || forbidden.c38'/>
@@ -408,7 +408,7 @@
                     <Radio label="铝及铝合金板" :disabled='disabledoff'>铝及铝合金板</Radio>
                     <Radio label="碳钢管" :disabled='disabledoff'>碳钢管</Radio>
                     <Radio label="碳钢板" :disabled='disabledoff'>碳钢板</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c43">
                     <Input type="text" v-model="formRecord.c43" style="width:200px;" :disabled='disabledoff || forbidden.c43'/>
@@ -424,7 +424,7 @@
                     <Radio label="夹层水箱" :disabled='disabledoff'>夹层水箱</Radio>
                     <Radio label="外置板换" :disabled='disabledoff'>外置板换</Radio>
                     <Radio label="盘管" :disabled='disabledoff'>盘管</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c45">
                     <Input type="text" v-model="formRecord.c45" style="width:200px;" :disabled='disabledoff || forbidden.c45'/>
@@ -439,7 +439,7 @@
                   <RadioGroup v-model="formRecord.c46">
                     <Radio label="聚氨酯泡沫塑料" :disabled='disabledoff'>聚氨酯泡沫塑料</Radio>
                     <Radio label="聚苯乙烯泡沫塑料" :disabled='disabledoff'>聚苯乙烯泡沫塑料</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c47">
                     <Input type="text" v-model="formRecord.c47" style="width:200px;" :disabled='disabledoff || forbidden.c47'/>
@@ -463,7 +463,7 @@
                   <RadioGroup v-model="formRecord.c48">
                     <Radio label="圆柱形" :disabled='disabledoff'>圆柱形</Radio>
                     <Radio label="非圆柱形" :disabled='disabledoff'>非圆柱形</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c49">
                     <Input type="text" v-model="formRecord.c49" style="width:200px;" :disabled='disabledoff || forbidden.c49'/>
@@ -479,7 +479,7 @@
                     <Radio label="不锈钢" :disabled='disabledoff'>不锈钢</Radio>
                     <Radio label="搪瓷" :disabled='disabledoff'>搪瓷</Radio>
                     <Radio label="塑料" :disabled='disabledoff'>塑料</Radio>
-                    <Radio label="其他" :disabled='disabledoff'>其他</Radio>
+                    <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                   <FormItem prop="c51">
                     <Input type="text" v-model="formRecord.c51" style="width:200px;" :disabled='disabledoff || forbidden.c51'/>
@@ -739,7 +739,7 @@
       </div>
       <div class="part part7">
         <Card :bordered="false">
-          <h2>七、其他认证信息</h2>
+          <h2>七、其它认证信息</h2>
           <table>
             <tr>
               <td class="tc">3C认证证书编号</td>
@@ -1042,7 +1042,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -1150,6 +1150,7 @@
       checkmark31: false,
       checkmark32: false,
       checkmark76: false,
+      mainModel:'',
       formRecord: {
         ec_master_kuozhan_text: '',
         c1: '',
@@ -1381,7 +1382,8 @@
   },
   computed: {
     ...mapGetters([
-      'pageType'
+      'pageType',
+      'recordno'
     ]),
     disabledoff(){
       return  this.pageType==='extend';
@@ -1397,8 +1399,8 @@
     },
     ruleRecord () {
       //let _c5=this.formRecord.c5;
-      //辅助能源类别-其他 启用/禁用
-      if (this.formRecord.c12 == '其他') {
+      //辅助能源类别-其它 启用/禁用
+      if (this.formRecord.c12 == '其它') {
           this.forbidden.c63 = false
       } else {
           this.formRecord.c63 = ''
@@ -1406,7 +1408,7 @@
       }
 
       //真空管型集热器-类型 启用/禁用
-      if (this.formRecord.c16 == '其他') {
+      if (this.formRecord.c16 == '其它') {
           this.forbidden.c17 = false
       } else {
           this.formRecord.c17 = ''
@@ -1414,7 +1416,7 @@
       }
 
       //热管型 启用/禁用
-      if (this.formRecord.c18 == '其他') {
+      if (this.formRecord.c18 == '其它') {
           this.forbidden.c19 = false
       } else {
           this.formRecord.c19 = ''
@@ -1422,7 +1424,7 @@
       }
 
       //吸热板材质 启用/禁用
-      if (this.formRecord.c23 == '其他') {
+      if (this.formRecord.c23 == '其它') {
           this.forbidden.c24 = false
       } else {
           this.formRecord.c24 = ''
@@ -1430,7 +1432,7 @@
       }
 
       //吸收涂层工艺 启用/禁用
-      if (this.formRecord.c26 == '其他') {
+      if (this.formRecord.c26 == '其它') {
           this.forbidden.c27 = false
       } else {
           this.formRecord.c27 = ''
@@ -1438,7 +1440,7 @@
       }
 
       //集热器用户传热工质接触部位的材料 启用/禁用
-      if (this.formRecord.c28 == '其他') {
+      if (this.formRecord.c28 == '其它') {
           this.forbidden.c29 = false
       } else {
           this.formRecord.c29 = ''
@@ -1446,7 +1448,7 @@
       }
 
       //集热器盖板类型 启用/禁用
-      if (this.formRecord.c31 == '其他') {
+      if (this.formRecord.c31 == '其它') {
           this.forbidden.c32 = false
       } else {
           this.formRecord.c32 = ''
@@ -1454,7 +1456,7 @@
       }
 
       //集热器盖板厚度 启用/禁用
-      if (this.formRecord.c33 == '其他') {
+      if (this.formRecord.c33 == '其它') {
           this.forbidden.c34 = false
       } else {
           this.formRecord.c34 = ''
@@ -1462,7 +1464,7 @@
       }
 
       //保温棉材料 启用/禁用
-      if (this.formRecord.c35 == '其他') {
+      if (this.formRecord.c35 == '其它') {
           this.forbidden.c36 = false
       } else {
           this.formRecord.c36 = ''
@@ -1470,7 +1472,7 @@
       }
 
       //集热器背板材料 启用/禁用
-      if (this.formRecord.c37 == '其他') {
+      if (this.formRecord.c37 == '其它') {
           this.forbidden.c38 = false
       } else {
           this.formRecord.c38 = ''
@@ -1478,7 +1480,7 @@
       }
 
       //贮热水箱换热器材质 启用/禁用
-      if (this.formRecord.c42 == '其他') {
+      if (this.formRecord.c42 == '其它') {
           this.forbidden.c43 = false
       } else {
           this.formRecord.c43 = ''
@@ -1486,7 +1488,7 @@
       }
 
       //贮热水箱换热器结构 启用/禁用
-      if (this.formRecord.c44 == '其他') {
+      if (this.formRecord.c44 == '其它') {
           this.forbidden.c45 = false
       } else {
           this.formRecord.c45 = ''
@@ -1494,7 +1496,7 @@
       }
 
       //贮热水箱用于隔热体材料 启用/禁用
-      if (this.formRecord.c46 == '其他') {
+      if (this.formRecord.c46 == '其它') {
           this.forbidden.c47 = false
       } else {
           this.formRecord.c47 = ''
@@ -1502,7 +1504,7 @@
       }
 
       //内胆形状 启用/禁用
-      if (this.formRecord.c48 == '其他') {
+      if (this.formRecord.c48 == '其它') {
           this.forbidden.c49 = false
       } else {
           this.formRecord.c49 = ''
@@ -1510,7 +1512,7 @@
       }
 
       //内胆材质 启用/禁用
-      if (this.formRecord.c50 == '其他') {
+      if (this.formRecord.c50 == '其它') {
           this.forbidden.c51 = false
       } else {
           this.formRecord.c51 = ''
@@ -1717,8 +1719,8 @@
         ],
         c63: [
           {
-            required: this.formRecord.c12 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c12 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1756,8 +1758,8 @@
         ],
         c17: [
           {
-            required: this.formRecord.c16 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c16 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1770,8 +1772,8 @@
         ],
         c19: [
           {
-            required: this.formRecord.c18 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c18 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1809,8 +1811,8 @@
         ],
         c24: [
           {
-            required: this.formRecord.c23 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c23 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1830,8 +1832,8 @@
         ],
         c27: [
           {
-            required: this.formRecord.c26 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c26 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1844,8 +1846,8 @@
         ],
         c29: [
           {
-            required: this.formRecord.c28 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c28 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1865,8 +1867,8 @@
         ],
         c32: [
           {
-            required: this.formRecord.c31 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c31 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1879,8 +1881,8 @@
         ],
         c34: [
           {
-            required: this.formRecord.c33 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c33 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1893,8 +1895,8 @@
         ],
         c36: [
           {
-            required: this.formRecord.c35 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c35 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1907,8 +1909,8 @@
         ],
         c38: [
           {
-            required: this.formRecord.c37 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c37 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1974,8 +1976,8 @@
         ],
         c43: [
           {
-            required: this.formRecord.c42 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c42 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -1988,12 +1990,12 @@
         ],
         c45: [
           {
-            required: this.formRecord.c44 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c44 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           },
           {
-            validator: this.formRecord.c44 === '其他' ? twoDecimals : check,
+            validator: this.formRecord.c44 === '其它' ? twoDecimals : check,
             trigger: 'change,blur'
           }
         ],
@@ -2006,8 +2008,8 @@
         ],
         c47: [
           {
-            required: this.formRecord.c46 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c46 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -2020,8 +2022,8 @@
         ],
         c49: [
           {
-            required: this.formRecord.c48 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c48 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],
@@ -2034,8 +2036,8 @@
         ],
         c51: [
           {
-            required: this.formRecord.c50 === '其他',
-            message: '其他不能为空',
+            required: this.formRecord.c50 === '其它',
+            message: '其它不能为空',
             trigger: 'change,blur'
           }
         ],

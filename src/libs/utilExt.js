@@ -81,6 +81,7 @@ export const XfillExtendData = (params, that) => {
       //console.log(that)
     } else {
       that.formRecord[i] = data[i]
+      if(i==that.thisGZXHCV) that.mainModel= data[i];
     }
   }
 }
