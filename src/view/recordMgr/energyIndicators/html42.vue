@@ -1545,31 +1545,31 @@
           c32: [
             {
               trigger: 'change,blur', required: true,
-              message: '请输入挖孔尺寸（长）'
+              message: '长不能为空'
             }
           ],
           c33: [
             {
               trigger: 'change,blur', required: true,
-              message: '请输入挖孔尺寸（宽）'
+              message: '宽不能为空'
             }
           ],
           c35: [
             {
               trigger: 'change,blur', required: true,
-              message: '请输入外形尺寸（长）'
+              message: '长不能为空'
             }
           ],
           c36: [
             {
               trigger: 'change,blur', required: true,
-              message: '请输入外形尺寸（宽）'
+              message: '宽不能为空'
             }
           ],
           c37: [
             {
               trigger: 'change,blur', required: true,
-              message: '请输入外形尺寸（高）'
+              message: '高不能为空'
             }
           ],
           c66: [
