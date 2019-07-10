@@ -586,6 +586,7 @@
                     <Radio label="高性能喷墨技术" :disabled='disabledoff'>高性能喷墨技术</Radio>
                   </RadioGroup>
                 </FormItem>
+                <br/><br/>
                 <hr>
                 <FormItem prop="c114">
                   <RadioGroup v-model="formRecord.c114">
@@ -643,7 +644,7 @@
                 <FormItem prop="c81">
                   <Input type="text" v-model="formRecord.c81" :disabled='disabledoff || forbidden.c81'/>
                 </FormItem>
-                <FormItem prop="c80">
+                <FormItem>
                   <CheckboxGroup v-model="formRecord.c80">
                     <Checkbox label="彩色速度" :disabled='disabledoff'>彩色速度</Checkbox>
                   </CheckboxGroup>
@@ -3841,7 +3842,7 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '附加因子表8不能为空'
+              message: '附加因子表7不能为空'
             }
           ],
           c105: [
@@ -4258,3 +4259,4 @@
 <style>
   @import '../../../css/comm.css';
 </style>
+

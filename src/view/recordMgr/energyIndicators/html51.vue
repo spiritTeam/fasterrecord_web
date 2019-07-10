@@ -1419,7 +1419,7 @@ import {
 
       const checkc32 = (rule, value, callback) => {
           if(this.formRecord.c32 != ""){
-            if (parseFloat(this.formRecord.c32) < parseFloat(this.formRecord.c7)) {
+            if (parseFloat(this.formRecord.c32) > parseFloat(this.formRecord.c7)) {
                 callback("待机功率（标称值）应不小于待机功率（实测值）！");
             }else{
                 callback()
@@ -1431,7 +1431,7 @@ import {
 
       const checkc33 = (rule, value, callback) => {
           if(this.formRecord.c33 != ""){
-            if (parseFloat(this.formRecord.c33) < parseFloat(this.formRecord.c9)) {
+            if (parseFloat(this.formRecord.c33) > parseFloat(this.formRecord.c9)) {
                 callback("保温能耗（标称值）应不小于保温能耗（实测值）！");
             }else{
                 callback()

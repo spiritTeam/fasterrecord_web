@@ -1,10 +1,10 @@
 <template>
   <Card>
     <p slot="title">添加备案</p>
-    <div class="pageStyle">
+    <div>
       <ReportCode v-show="step === 1" @toStep2="showTemple"></ReportCode>
       <SelectSample ref="selectSample" v-show="step === 2" @toStep3="showRecordTab"></SelectSample>
-      <Tabs type="card" v-show="step === 3">
+      <Tabs type="card" v-show="step === 3" class="pageStyle">
         <TabPane label="能效指标">
           <!-- <EnergyIndicators ref="energyIndicators"></EnergyIndicators> -->
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>

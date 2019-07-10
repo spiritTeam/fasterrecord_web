@@ -1648,13 +1648,13 @@
           c52: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '额定电压不能为空'
             }
           ],
           c53: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '额定频率不能为空'
             }
           ],
           c55: [
@@ -1690,19 +1690,19 @@
           c62: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '额定洗涤功率不能为空'
             }
           ],
           c63: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '额定脱水功率不能为空'
             }
           ],
           c64: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '额定烘干功率不能为空'
             }
           ],
           c65: [
@@ -1714,7 +1714,7 @@
           c66: [
             {
               trigger: 'change,blur',required: true,
-              message: '不能为空'
+              message: '额定功率不能为空'
             }
           ],
           c67: [
