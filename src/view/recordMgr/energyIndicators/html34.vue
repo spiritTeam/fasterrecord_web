@@ -242,7 +242,7 @@
             </tr>
             <tr>
               <td colspan="3" style="border-top:none;">
-                <FormItem prop="c24">
+                <FormItem>
                   <CheckboxGroup v-model="formRecord.c24">
                     <Checkbox label="其它接口输入" :disabled='disabledoff'>其它接口输入</Checkbox>
                   </CheckboxGroup>

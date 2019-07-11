@@ -160,29 +160,29 @@
             <tr>
               <td>光源</td>
               <td class="w19">
-                <FormItem><b>光源类型</b></FormItem>
+                <FormItem><b style="font-size: 12px">光源类型</b></FormItem>
                 <FormItem prop="c19">
                   <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>功率</b></FormItem>
+                <FormItem><b style="font-size: 12px">功率</b></FormItem>
                 <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>（W） × </b></FormItem>
+                <FormItem><b style="font-size: 12px">（W） × </b></FormItem>
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>（个）</b></FormItem>
+                <FormItem><b style="font-size: 12px">（个）</b></FormItem>
               </td>
             </tr>
             <tr>
               <td>固有分辨力<br>（像素数）</td>
               <td class="w19">
-                <FormItem><b>水平</b></FormItem>
+                <FormItem><b style="font-size: 12px">水平</b></FormItem>
                 <FormItem prop="c22">
                   <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>× 垂直</b></FormItem>
+                <FormItem><b style="font-size: 12px">× 垂直</b></FormItem>
                 <FormItem prop="c23">
                   <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
                 </FormItem>
@@ -267,15 +267,15 @@
             <tr>
               <td>整机尺寸（长×宽×高）<br>（mm × mm × mm）</td>
               <td class="w19">
-                <FormItem><b>长</b></FormItem>
+                <FormItem><b style="font-size: 12px">长</b></FormItem>
                 <FormItem prop="c34">
                   <Input type="text" v-model="formRecord.c34" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>× 宽</b></FormItem>
+                <FormItem><b style="font-size: 12px">× 宽</b></FormItem>
                 <FormItem prop="c35">
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>× 高</b></FormItem>
+                <FormItem><b style="font-size: 12px">× 高</b></FormItem>
                 <FormItem prop="c36">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
                 </FormItem>
@@ -615,17 +615,17 @@
                 <div class="radio i-checks">
                   <label class="mb7"><span class="w90">固有分辨力：</span>
                     <FormItem prop="c48">
-                      <Input type="text" v-model="formRecord.c48" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c48" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
-                  </label><br>
+                  </label><br><br>
                   <label class="mb7"><span class="w90">尺寸：</span>
                     <FormItem prop="c49">
-                      <Input type="text" v-model="formRecord.c49" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c49" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
-                  </label><br>
+                  </label><br><br>
                   <label><span class="w90">英寸：</span>
                     <FormItem prop="c50">
-                      <Input type="text" v-model="formRecord.c50" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c50" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
@@ -650,17 +650,17 @@
                 <div class="radio i-checks">
                   <label class="mb7"><span class="w90">固有分辨力：</span>
                     <FormItem prop="c76">
-                      <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c76" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7"><span class="w90">尺寸：</span>
                     <FormItem prop="c77">
-                      <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c77" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label><span class="w90">英寸：</span>
                     <FormItem prop="c78">
-                      <Input type="text" v-model="formRecord.c78" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c78" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>
@@ -685,17 +685,17 @@
                 <div class="radio i-checks">
                   <label class="mb7"><span class="w90">固有分辨力：</span>
                     <FormItem prop="c80">
-                      <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c80" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label class="mb7"><span class="w90">尺寸：</span>
                     <FormItem prop="c81">
-                      <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c81" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label><br>
                   <label><span class="w90">英寸：</span>
                     <FormItem prop="c82">
-                      <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                      <Input type="text" v-model="formRecord.c82" style="width: 200px" :disabled='disabledoff'/>
                     </FormItem>
                   </label>
                 </div>

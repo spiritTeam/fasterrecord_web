@@ -151,11 +151,11 @@
             <tr>
               <td>屏幕尺寸（长 × 宽）（mm × mm）</td>
               <td>
-                <FormItem><b>长</b></FormItem>
+                <FormItem><b style="font-size: 12px">长</b></FormItem>
                 <FormItem prop="c19">
                   <Input style="vertical-align:top" type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>宽</b></FormItem>
+                <FormItem><b style="font-size: 12px">× 宽</b></FormItem>
                 <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                 </FormItem>
@@ -171,7 +171,7 @@
                 <FormItem prop="c22">
                   <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>
                 </FormItem>
-                <FormItem><b>(像素数)</b></FormItem>
+                <FormItem><b style="font-size: 12px">(像素数)</b></FormItem>
               </td>
             </tr>
             <tr>

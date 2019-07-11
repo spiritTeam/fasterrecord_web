@@ -234,8 +234,8 @@
               </td>
               <td rowspan="2"><i class="red">*</i>扇叶</td>
               <td style="border-bottom:none;">
+                <FormItem>材质:</FormItem>
                 <FormItem prop="c20">
-                  材质:
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                 </FormItem>
               </td>
@@ -252,8 +252,8 @@
                 </FormItem>
               </td>
               <td style="border-top:none;">
+                <FormItem>叶数:</FormItem>
                 <FormItem prop="c21">
-                  叶数:
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
                 </FormItem>
               </td>
@@ -278,11 +278,11 @@
                 <FormItem prop="c22">
                   <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>
                 </FormItem>
-                <b>×</b>
+                <FormItem><b>×</b></FormItem>
                 <FormItem prop="c30">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
                 </FormItem>
-                <b>×</b>
+                <FormItem><b>×</b></FormItem>
                 <FormItem prop="c31">
                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                 </FormItem>
@@ -857,7 +857,7 @@
 <script>
   import { mapGetters } from 'vuex';
   import {
-    getImgPath, 
+    getImgPath,
     XfillExtendData,
     XfillDraftData,
     XfillDefaultData,

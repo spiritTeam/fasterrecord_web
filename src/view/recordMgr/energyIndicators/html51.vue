@@ -101,6 +101,7 @@
             <tr>
               <td align="center">功能</td>
               <td colspan="3">
+                <i class="red">*</i>
                 <FormItem prop="c23">
                   <CheckboxGroup v-model="formRecord.c23">
                     <Checkbox label="待机功能" :disabled='disabledoff'>待机功能</Checkbox>
@@ -116,6 +117,7 @@
             <tr>
               <td align="center">通讯协议功能</td>
               <td colspan="3">
+                <i class="red">*</i>
                 <FormItem prop="c90">
                   <CheckboxGroup v-model="formRecord.c90">
                     <Checkbox label="WIFI" :disabled='disabledoff || forbidden.c90_a'>WIFI</Checkbox>
@@ -168,6 +170,7 @@
             <tr>
               <td align="center">内锅材质（金属或非金属）</td>
               <td colspan="3">
+                <i class="red">*</i>
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
                     <Radio label="金属" :disabled='disabledoff'>金属</Radio>
