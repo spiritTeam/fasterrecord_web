@@ -398,11 +398,11 @@
                 <FormItem prop="c42" style="width:90px;">
                   <Input type="text" v-model="formRecord.c42" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="margin:0 10px;">×</span>
+                <FormItem>×</FormItem>
                 <FormItem prop="c43" style="width:90px;">
                   <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="margin:0 10px;">×</span>
+                <FormItem>×</FormItem>
                 <FormItem prop="c44" style="width:90px;">
                   <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
                 </FormItem>
@@ -412,11 +412,11 @@
                 <FormItem prop="c46" style="width:90px;">
                   <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="margin:0 10px;">×</span>
+                <FormItem>×</FormItem>
                 <FormItem prop="c47" style="width:90px;">
                   <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>
                 </FormItem>
-                <span style="margin:0 10px;">×</span>
+                <FormItem>×</FormItem>
                 <FormItem prop="c48" style="width:90px;">
                   <Input type="text" v-model="formRecord.c48" :disabled='disabledoff'/>
                 </FormItem>

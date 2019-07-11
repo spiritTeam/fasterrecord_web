@@ -20,8 +20,8 @@
           <table>
             <thead>
             <tr>
-               <th><i class="red">*</i>实验室名称</th>
-               <th><i class="red">*</i>检测报告条形码</th>
+              <th><i class="red">*</i>实验室名称</th>
+              <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
@@ -87,8 +87,8 @@
             <tr>
               <td rowspan="2">序号</td>
               <td rowspan="2"><i class="red">*</i>灶眼名称</td>
-              <td colspan="2"><i class="red">*</i>热负荷(KW)</td>
-              <td colspan="2"><i class="red">*</i>热效率(%)</td>
+              <td colspan="2">热负荷(KW)</td>
+              <td colspan="2">热效率(%)</td>
             </tr>
             <tr>
               <td><i class="red">*</i>额定值(保留一位小数)</td>
@@ -317,8 +317,9 @@
                     <Radio label="双眼灶" :disabled='disabledoff'>双眼灶</Radio>
                     <Radio label="多眼灶" :disabled='disabledoff'>
                       <FormItem prop="c15">
-                        <Input type="text" v-model="formRecord.c15" :disabled='disabledoff || forbidden.c15'/> 眼灶
+                        <Input type="text" v-model="formRecord.c15" :disabled='disabledoff || forbidden.c15'/>
                       </FormItem>
+                      眼灶
                     </Radio>
                   </RadioGroup>
                 </FormItem>
@@ -330,7 +331,7 @@
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
                     <FormItem prop="c22">
-                      <Radio label="人工煤气灶具" :disabled='disabledoff'>人工煤气</Radio>
+                    <Radio label="人工煤气灶具" :disabled='disabledoff'>人工煤气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="5R" :disabled='disabledoff || forbidden.c22_a'>5R</Radio>
                         <Radio label="6R" :disabled='disabledoff || forbidden.c22_a'>6R</Radio>
@@ -431,7 +432,7 @@
                 <FormItem prop="c32">
                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
-                x
+                <FormItem>×</FormItem>
                 <FormItem prop="c33">
                   <Input type="text" v-model="formRecord.c33" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
@@ -443,11 +444,11 @@
                 <FormItem prop="c35">
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
-                x
+                <FormItem>×</FormItem>
                 <FormItem prop="c36">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
-                x
+                <FormItem>×</FormItem>
                 <FormItem prop="c37">
                   <Input type="text" v-model="formRecord.c37" :disabled='disabledoff' style="width:80px;"/>
                 </FormItem>
@@ -670,7 +671,9 @@
               <td><span class="red">*</span>产品正面图片</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath24">
+                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -682,7 +685,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark24" />
+                    <Icon type="ios-checkmark" v-show="checkmark24"/>
                   </Upload>
                 </div>
               </td>
@@ -696,7 +699,9 @@
               <td>OEM声明<p class="red" v-if="pageType!='view'">请生产者根据自身情况自行上传该附件</p></td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath26">
+                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -708,14 +713,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark26" />
+                    <Icon type="ios-checkmark" v-show="checkmark26"/>
                   </Upload>
                 </div>
               </td>
-              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p ></td>
+              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p></td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath27">
+                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -728,7 +735,7 @@
                     :action="uploadUrl">
 
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark27" />
+                    <Icon type="ios-checkmark" v-show="checkmark27"/>
                   </Upload>
                 </div>
               </td>
@@ -737,7 +744,9 @@
               <td>品牌使用授权书</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath28">
+                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -749,14 +758,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark28" />
+                    <Icon type="ios-checkmark" v-show="checkmark28"/>
                   </Upload>
                 </div>
               </td>
               <td>委托代理文件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath29">
+                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -768,7 +779,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark29" />
+                    <Icon type="ios-checkmark" v-show="checkmark29"/>
                   </Upload>
                 </div>
               </td>
@@ -779,7 +790,9 @@
               </td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath30">
+                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -791,7 +804,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark30" />
+                    <Icon type="ios-checkmark" v-show="checkmark30"/>
                   </Upload>
                 </div>
               </td>
@@ -800,7 +813,9 @@
               </td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath31">
+                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -812,7 +827,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark31" />
+                    <Icon type="ios-checkmark" v-show="checkmark31"/>
                   </Upload>
                 </div>
               </td>
@@ -823,7 +838,9 @@
               </td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath32">
+                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -835,14 +852,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark32" />
+                    <Icon type="ios-checkmark" v-show="checkmark32"/>
                   </Upload>
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
               <td>（PDF/JPG/PNG）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath76">
+                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     id=76
@@ -855,13 +874,13 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark76" />
+                    <Icon type="ios-checkmark" v-show="checkmark76"/>
                   </Upload>
                 </div>
               </td>
             </tr>
           </table>
-          <p class="red" v-if="pageType!='view'">注：<br />1、标“*”内容为必填项；<br />2、所有附件上传文件大小需要控制在2M以内。</p >
+          <p class="red" v-if="pageType!='view'">注：<br/>1、标“*”内容为必填项；<br/>2、所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div v-if="pageType!='view'">
@@ -879,10 +898,12 @@
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
-      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看"
+           @on-ok="submitRecord">
+      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">
+        以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
-        <table >
+        <table>
           <thead>
           <tr>
             <th>名称</th>
@@ -891,7 +912,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(item,idx) in boolFlag" :key='idx' >
+          <tr v-for="(item,idx) in boolFlag" :key='idx'>
             <td width="50%">
               {{item.recName}}
             </td>
@@ -906,24 +927,25 @@
         </table>
       </div>
       <p class="red submitTips" v-if="!boolFlag.length">请再次确认备案信息填写无误！</p>
-      <p  class="red submitTips" >若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
+      <p class="red submitTips">若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
       <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
-      <img :src="templatePic" />
+      <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
+             internalinstanceid="81"/>
     </Modal>
-    <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+    <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
-        我 <span  class="f-company">{{formRecord.c1}}</span>
+        我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
         品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
         型号的 <span class="f-product">家用燃气灶具 2014版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
@@ -942,7 +964,8 @@
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -954,7 +977,8 @@
       <dl v-if="pageType==='update'">
         <dd>现申请该型号产品的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -963,13 +987,14 @@
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
+      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}
+      </div>
     </Modal>
   </div>
 
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
   import {
     getImgPath,
     XfillExtendData,
@@ -1064,7 +1089,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
-        mainModel:'',
+        mainModel: '',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1167,7 +1192,8 @@
           c22_a: true,
           c22_b: true,
           c22_c: true
-        }
+        },
+        c21 : ''
       }
     },
     mounted() {
@@ -1234,8 +1260,8 @@
         'pageType',
         'recordno'
       ]),
-      disabledoff(){
-        return  this.pageType==='extend';
+      disabledoff() {
+        return this.pageType === 'extend';
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1290,6 +1316,10 @@
           this.forbidden.c22_c = false
         }
 
+        if (this.formRecord.c21 !== this.c21) {
+          this.formRecord.c22 = ''
+        }
+        this.c21 = this.formRecord.c21
 
         //0803
         var biaozhu = this.formRecord.c8
@@ -1358,7 +1388,7 @@
             } else if (rxlz >= 55) {
               nxdj = "3";
             }
-          } 
+          }
         }
         const checkc7a = (rule, value, callback) => {
           if (rxlz > 100 || nxdj == "") {
@@ -1411,6 +1441,12 @@
             {
               trigger: 'change,blur', required: true,
               message: '请输入规格型号'
+            }
+          ],
+          c17: [
+            {
+              required: true,
+              message: '不能为空'
             }
           ],
           c18: [

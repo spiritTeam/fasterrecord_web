@@ -234,8 +234,8 @@
               </td>
               <td rowspan="2"><i class="red">*</i>扇叶</td>
               <td style="border-bottom:none;">
-                <label>材质</label>
                 <FormItem prop="c20">
+                  材质:
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                 </FormItem>
               </td>
@@ -252,8 +252,8 @@
                 </FormItem>
               </td>
               <td style="border-top:none;">
-                <label>叶数</label>
                 <FormItem prop="c21">
+                  叶数:
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
                 </FormItem>
               </td>

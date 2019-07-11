@@ -277,7 +277,7 @@
               <td rowspan="4"><i class="red">*</i>主体结构</td>
               <td colspan="3">
                 <FormItem prop="c37">
-                  <label style="margin: 25px;">外壳:</label>
+                  <label style="margin: 25px;font-size: 14px!important;">外壳:</label>
                   <RadioGroup v-model="formRecord.c37">
                     <Radio label="金属外壳(两端部为非金属材料)" :disabled='disabledoff'>金属外壳(两端部为非金属材料)</Radio>
                     <Radio label="非金属外壳" :disabled='disabledoff'>非金属外壳</Radio>
@@ -288,7 +288,7 @@
             <tr>
               <td colspan="3">
                 <FormItem prop="c38">
-                  <label style="margin: 25px;">内胆形状:</label>
+                  <label style="margin: 25px;font-size: 14px!important;">内胆形状:</label>
                   <RadioGroup v-model="formRecord.c38">
                     <Radio label="圆形内胆" :disabled='disabledoff'>圆形内胆</Radio>
                     <Radio label="非圆形内胆" :disabled='disabledoff'>非圆形内胆</Radio>
@@ -298,13 +298,16 @@
             </tr>
             <tr>
               <td colspan="3">
-                <FormItem prop="c38">
-                  <label style="margin: 25px;">内胆材质:</label>
-                  <RadioGroup v-model="formRecord.c38">
+                <FormItem prop="c39">
+                  <label style="margin: 25px;font-size: 14px!important;">内胆材质:</label>
+                  <RadioGroup v-model="formRecord.c39">
                     <Radio label="不锈钢内胆" :disabled='disabledoff'>不锈钢内胆</Radio>
                     <Radio label="搪瓷内胆" :disabled='disabledoff'>搪瓷内胆</Radio>
                     <Radio label="其它内胆" :disabled='disabledoff'>其它内胆</Radio>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c20">
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20'/>
                 </FormItem>
               </td>
             </tr>
@@ -342,7 +345,7 @@
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>额定电压（V）</td>
+              <td><i class="red">*</i>额定电压（V）</td>
               <td>
                 <FormItem prop="c30">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
@@ -1306,6 +1309,7 @@
         forbidden: {
           c13: true,
           c15: true,
+          c20: true,
           c33: true,
           c34: true,
           c35: true
@@ -1396,11 +1400,19 @@
           this.formRecord.c13 = ''
           this.forbidden.c13 = true
         }
+
         if (this.formRecord.c14 === '其它') {
           this.forbidden.c15 = false
         } else {
           this.formRecord.c15 = ''
           this.forbidden.c15 = true
+        }
+
+        if (this.formRecord.c39 === '其它内胆') {
+          this.forbidden.c20 = false
+        } else {
+          this.formRecord.c20 = ''
+          this.forbidden.c20 = true
         }
 
         if (this.formRecord.c17.join('').indexOf('带有开关') > -1) {
