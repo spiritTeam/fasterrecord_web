@@ -162,7 +162,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right"><span class="red">*</span>附加功能</td>
+              <td align="right"></span>附加功能</td>
               <td colspan="3">
                 <FormItem prop="c17">
                     <CheckboxGroup  v-model="formRecord.c17">
@@ -242,10 +242,10 @@
               <td colspan="3">
                 <FormItem prop="c26">
                   <Input type="text" style="width:100px" v-model="formRecord.c26" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c29">
                   <Input type="text" style="width:100px" v-model="formRecord.c29" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c30">
                   <Input type="text" style="width:100px" v-model="formRecord.c30" :disabled='disabledoff'/>
                 </FormItem>
