@@ -857,7 +857,7 @@
 <script>
   import { mapGetters } from 'vuex';
   import {
-    getImgPath,
+    getImgPath, 
     XfillExtendData,
     XfillDraftData,
     XfillDefaultData,

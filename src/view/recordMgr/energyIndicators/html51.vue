@@ -1990,21 +1990,21 @@ import {
         c27: [
           {
             required: true,
-            message: '外形尺寸长不能为空',
+            message: '长不能为空',
             trigger: 'change,blur'
           }
         ],
         c37: [
           {
             required: true,
-            message: '外形尺寸宽不能为空',
+            message: '宽不能为空',
             trigger: 'change,blur'
           }
         ],
         c38: [
           {
             required: true,
-            message: '外形尺寸高不能为空',
+            message: '高不能为空',
             trigger: 'change,blur'
           }
         ],
