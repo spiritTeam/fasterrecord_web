@@ -46,6 +46,9 @@
     <Modal v-model="modal2" title="撤销申请" @on-ok="submitWorkorder" ok-text="提交">
         <Input type="textarea" :rows="3" placeholder="撤销申请" v-model="qus"></Input>
     </Modal>
+    <Modal v-model="modal3" width='615' title="备案证明" >
+        <img :src=' zmImgUrl' width="583" height="728" />
+    </Modal>
   </Card>
 </template>
 <script>
@@ -144,6 +147,21 @@ export default {
         }
       }
     }, '查看')
+    const zmBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+        long: 'long'
+      },
+      style: {
+        margin: '1px'
+      },
+      on: {
+        click: () => {
+          this.viewZmHandle(params.row.uid)
+        }
+      }
+    }, '备案证明')
     const cancleBtn = (h, params) => h('Button', {
       props: {
         type: 'primary',
@@ -165,9 +183,11 @@ export default {
       fileObj: {},
       modal1: false,
       modal2: false,
+      modal3: false,
       qus: '',
       id: '',
       rowId: 0,
+      zmImgUrl:'',
       uploadUrl: '',
       uploadParam: {
         fileData: {},
@@ -249,7 +269,8 @@ export default {
               params.row.state === 2 ? uploadBtn(h, params) : downLoadRecord(h, params),
               params.row.kz ? extendBtn(h, params) : '',
               params.row.bg ? updateBtn(h, params) : '',
-              params.row.cx ? cancleBtn(h, params) : ''
+              params.row.cx ? cancleBtn(h, params) : '',
+              params.row.zm ? zmBtn(h, params):''
             ])
           }
         }
@@ -423,6 +444,11 @@ export default {
           this.$store.commit('setModelNo', res.data.marking.ec_model_no)
         }
       })
+    },
+    viewZmHandle(uid){
+        this.modal3=true;
+
+        this.zmImgUrl=`http://m3.bbqkimg.cn/cert/${uid}.jpg`;
     },
     updateHandle (id,record_no) {
       this.$store.commit('setRecordNo', record_no)
