@@ -300,10 +300,10 @@
                 整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;
                  <FormItem prop="c37" >
                   <Input type="text" style="width:100px" v-model="formRecord.c37" :disabled='disabledoff'/>
-                </FormItem> &nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem> &nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c38" >
                   <Input type="text" style="width:100px" v-model="formRecord.c38" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c39" >
                   <Input type="text" style="width:100px" v-model="formRecord.c39" :disabled='disabledoff'/>
                 </FormItem>
@@ -314,10 +314,10 @@
                  储水箱 &nbsp;&nbsp;&nbsp;
                   <FormItem prop="c40" >
                   <Input type="text" style="width:100px" v-model="formRecord.c40" :disabled='disabledoff'/>
-                </FormItem> &nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem> &nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c41" >
                   <Input type="text" style="width:100px" v-model="formRecord.c41" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c42" >
                   <Input type="text" style="width:100px" v-model="formRecord.c42" :disabled='disabledoff'/>
                 </FormItem>
@@ -1416,10 +1416,17 @@
         }
 
         return {
-         c3: [
+         c2: [
             {
               required: true,
               message: '制造单位不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+         c3: [
+            {
+              required: true,
+              message: '备案方不能为空',
               trigger: 'change,blur'
             }
           ],
