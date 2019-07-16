@@ -1999,7 +1999,7 @@ import {
             trigger: 'change,blur',
             message: '高不能为空'
           },
-          {
+          { 
             validator: isIntegerNotZero,
             trigger: 'change,blur'
           } 
