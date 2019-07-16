@@ -448,7 +448,7 @@ export default {
     viewZmHandle(uid){
         this.modal3=true;
 
-        this.zmImgUrl=`http://m3.bbqkimg.cn/cert/bcxoq.jpg`;
+        this.zmImgUrl=`http://m3.bbqkimg.cn/cert/${uid}.jpg`;
     },
     updateHandle (id,record_no) {
       this.$store.commit('setRecordNo', record_no)
