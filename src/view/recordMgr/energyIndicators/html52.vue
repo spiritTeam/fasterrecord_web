@@ -364,10 +364,10 @@
               <td>
                 <FormItem prop="c31" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c31" :disabled='disabledoff'/>
-                </FormItem>x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c44" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c44" :disabled='disabledoff'/>
-                </FormItem>x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c45" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c45" :disabled='disabledoff'/>
                 </FormItem>

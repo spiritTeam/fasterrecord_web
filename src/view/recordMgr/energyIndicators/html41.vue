@@ -1975,7 +1975,7 @@ import {
           {
             required: true,
             trigger: 'change,blur',
-            message: '请输入外形尺寸(长)'
+            message: '长不能为空'
           },
           {
             validator: isIntegerNotZero,
@@ -1986,7 +1986,7 @@ import {
           {
             required: true,
             trigger: 'change,blur',
-            message: '请输入外形尺寸(宽)'
+            message: '宽不能为空'
           },
           {
             validator: isIntegerNotZero,
@@ -1997,7 +1997,7 @@ import {
           {
             required: true,
             trigger: 'change,blur',
-            message: '请输入外形尺寸(高)'
+            message: '高不能为空'
           },
           {
             validator: isIntegerNotZero,
