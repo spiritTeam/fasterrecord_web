@@ -391,8 +391,8 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label">融霜方式</td>
-              <td><span class="red">*</span>
+              <td class="t_label"><span class="red">*</span>融霜方式</td>
+              <td>
                 <FormItem prop="c100">
                   <RadioGroup v-model="formRecord.c100">
                     <Radio label="敞开式" :disabled='disabledoff'></Radio>

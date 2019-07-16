@@ -80,134 +80,131 @@
           </div>
           <table id="table1">
             <tr>
-              <td class="t_label">全年综合性能系数/(W/W)</td>
-              <td style="text-align:center">/</td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>标注值:</td>
-              <td style="border-left:none;">
+              <th>项目</th>
+              <th width="200">单位</th>
+              <th><i class="red">*</i>额定值</th>
+              <th><i class="red">*</i>实测值</th>
+              <th>备注</th>
+            </tr>
+            <tr>
+              <td >全年综合性能系数/(W/W)</td>
+              <td>/</td>
+              <td>
                 <FormItem prop="c9">
                   <Input type="text" v-model="formRecord.c9" :disabled='disabledoff' placeholder="两位小数"/>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>实测值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c10">
                   <Input type="text" v-model="formRecord.c10" :disabled='disabledoff' placeholder="三位小数"/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c11" label="备注:" :label-width="70">
+                <FormItem prop="c11">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td class="t_label">名义制冷量</td>
-              <td class="t_label">
-                <FormItem prop="c49" label="单位" style="width:100%;" :label-width="100">
+              <td >名义制冷量</td>
+              <td >
+                <FormItem prop="c49">
                   <RadioGroup v-model="formRecord.c49">
                     <Radio label="kW" :disabled='disabledoff'></Radio>
                     <Radio label="W"  :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>标注值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c12">
                   <Input type="text" v-model="formRecord.c12" :disabled='disabledoff' :placeholder='formRecord.c49=="kW"?"一位小数":"整数"'/>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>实测值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c13">
                   <Input type="text" v-model="formRecord.c13" :disabled='disabledoff' :placeholder='formRecord.c49=="kW"?"至少两位小数":"至少一位小数"'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c14" label="备注:" :label-width="70">
+                <FormItem prop="c14">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td class="t_label">名义制冷消耗功率</td>
-              <td class="t_label">
-                <FormItem prop="c50" label="单位" style="width:100%;" :label-width="100">
+              <td>名义制冷消耗功率</td>
+              <td>
+                <FormItem prop="c50">
                   <RadioGroup v-model="formRecord.c50">
                     <Radio label="kW" :disabled='disabledoff'></Radio>
                     <Radio label="W"  :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>标注值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c15">
                   <Input type="text" v-model="formRecord.c15" :disabled='disabledoff' :placeholder='formRecord.c50=="kW"?"一位小数":"整数"'/>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>实测值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c16">
                   <Input type="text" v-model="formRecord.c16" :disabled='disabledoff' :placeholder='formRecord.c50=="kW"?"至少两位小数":"至少一位小数"'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c17" label="备注:" :label-width="70">
+                <FormItem prop="c17">
                   <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td class="t_label">名义制热量</td>
-              <td class="t_label">
-                <FormItem prop="c51" label="单位" style="width:100%;" :label-width="100">
+              <td >名义制热量</td>
+              <td >
+                <FormItem prop="c51">
                   <RadioGroup v-model="formRecord.c51">
                     <Radio label="kW" :disabled='disabledoff'></Radio>
                     <Radio label="W"  :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>标注值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c18">
                   <Input type="text" v-model="formRecord.c18" :disabled='disabledoff' :placeholder='formRecord.c51=="kW"?"一位小数":"整数"'/>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>实测值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c19">
                   <Input type="text" v-model="formRecord.c19" :disabled='disabledoff' :placeholder='formRecord.c51=="kW"?"至少两位小数":"至少一位小数"'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c20" label="备注:" :label-width="70">
+                <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td class="t_label">名义制热消耗功率</td>
-              <td class="t_label">
-                <FormItem prop="c52" label="单位" style="width:100%;" :label-width="100">
+              <td >名义制热消耗功率</td>
+              <td >
+                <FormItem prop="c52">
                   <RadioGroup v-model="formRecord.c52">
                     <Radio label="kW" :disabled='disabledoff'></Radio>
                     <Radio label="W"  :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>标注值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff' :placeholder='formRecord.c52=="kW"?"一位小数":"整数"'/>
                 </FormItem>
               </td>
-              <td class="t_label" style="border-right:none;"><span class="red">*</span>实测值:</td>
-              <td style="border-left:none;">
+              <td>
                 <FormItem prop="c22">
                   <Input type="text" v-model="formRecord.c22" :disabled='disabledoff' :placeholder='formRecord.c52=="kW"?"至少两位小数":"至少一位小数"'/>
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c23" label="备注:" :label-width="70">
+                <FormItem prop="c23">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
                 </FormItem>
               </td>
@@ -228,7 +225,7 @@
           <h2>五、样品描述</h2>
           <table id="table3">
             <tr>
-              <td class="t_label"><span class="red">*</span>机器类型</td>
+              <td><span class="red">*</span>机器类型</td>
               <td colspan="3">
                 <FormItem prop="c25">
                   <RadioGroup v-model="formRecord.c25">
@@ -239,7 +236,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>冷(热)源类型</td>
+              <td><span class="red">*</span>冷(热)源类型</td>
               <td colspan="3">
                 <FormItem prop="c26">
                   <CheckboxGroup v-model="formRecord.c26">
@@ -252,7 +249,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>结构形式</td>
+              <td><span class="red">*</span>结构形式</td>
               <td colspan="3">
                 <FormItem prop="c27">
                   <RadioGroup v-model="formRecord.c27">
@@ -263,7 +260,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>换热器(水/制冷剂)</td>
+              <td><span class="red">*</span>换热器(水/制冷剂)</td>
               <td colspan="3">
                 <FormItem prop="c28">
                   <CheckboxGroup v-model="formRecord.c28">
@@ -279,7 +276,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>节流装置</td>
+              <td><span class="red">*</span>节流装置</td>
               <td colspan="3">
                 <FormItem prop="c30">
                   <CheckboxGroup v-model="formRecord.c30">
@@ -296,7 +293,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>模块化</td>
+              <td><span class="red">*</span>模块化</td>
               <td>
                 <FormItem prop="c32">
                   <RadioGroup v-model="formRecord.c32">
@@ -305,7 +302,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td class="t_label"><span class="red">*</span>部分负荷运行</td>
+              <td><span class="red">*</span>部分负荷运行</td>
               <td>
                 <FormItem prop="c33">
                   <RadioGroup v-model="formRecord.c33">
@@ -316,7 +313,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>油分离器</td>
+              <td><span class="red">*</span>油分离器</td>
               <td>
                 <FormItem prop="c34">
                   <RadioGroup v-model="formRecord.c34">
@@ -325,7 +322,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td class="t_label"><span class="red">*</span>储液器</td>
+              <td><span class="red">*</span>储液器</td>
               <td>
                 <FormItem prop="c35">
                   <RadioGroup v-model="formRecord.c35">
@@ -336,7 +333,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>辅助电加热器</td>
+              <td><span class="red">*</span>辅助电加热器</td>
               <td colspan="3">
                 <FormItem prop="c36">
                   <RadioGroup v-model="formRecord.c36">
@@ -347,7 +344,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>控制类型</td>
+              <td><span class="red">*</span>控制类型</td>
               <td colspan="3">
                 <FormItem prop="c37">
                   <RadioGroup v-model="formRecord.c37">
@@ -362,7 +359,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>电源类型</td>
+              <td><span class="red">*</span>电源类型</td>
               <td colspan="3">
                 <FormItem prop="c39">
                   <RadioGroup v-model="formRecord.c39">
@@ -379,13 +376,13 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>制冷剂</td>
+              <td><span class="red">*</span>制冷剂</td>
               <td>
                 <FormItem prop="c41">
                   <Input type="text" v-model="formRecord.c41" :disabled="disabledoff"/>
                 </FormItem>
               </td>
-              <td class="t_label"><span class="red">*</span>灌注量(kg)</td>
+              <td><span class="red">*</span>灌注量(kg)</td>
               <td>
                 <FormItem prop="c45">
                   <Input type="text" v-model="formRecord.c45" :disabled="disabledoff"/>
@@ -393,7 +390,7 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>整体或室外机外形尺寸<br/>(长×宽×高)(mm×mm×mm)</td>
+              <td><span class="red">*</span>整体或室外机外形尺寸<br/>(长×宽×高)(mm×mm×mm)</td>
               <td>
                 <FormItem prop="c42" style="width:90px;">
                   <Input type="text" v-model="formRecord.c42" :disabled='disabledoff'/>
@@ -407,7 +404,7 @@
                   <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="t_label"><span class="red">*</span>室内机外形尺寸<br/>(长×宽×高)(mm×mm×mm)</td>
+              <td><span class="red">*</span>室内机外形尺寸<br/>(长×宽×高)(mm×mm×mm)</td>
               <td>
                 <FormItem prop="c46" style="width:90px;">
                   <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
@@ -440,8 +437,8 @@
             </thead>
             <tbody>
             <tr>
-              <td rowspan="4" class="t_label">1</td>
-              <td rowspan="4" class="t_label">压缩机</td>
+              <td rowspan="4">1</td>
+              <td rowspan="4">压缩机</td>
               <td style="text-align:center">具体型号</td>
               <td style="text-align:center">制冷量（瓦）</td>
               <td style="text-align:center">输入功率（瓦）</td>
@@ -530,8 +527,8 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="4" class="t_label">2</td>
-              <td rowspan="4" class="t_label">风机</td>
+              <td rowspan="4">2</td>
+              <td rowspan="4">风机</td>
               <td style="text-align:center">具体型号</td>
               <td style="text-align:center">风量（m3/h）</td>
               <td style="text-align:center">全压（Pa）</td>
@@ -620,8 +617,8 @@
               </td>
             </tr>
             <tr>
-              <td rowspan="4" class="t_label">3</td>
-              <td rowspan="4" class="t_label">换热器（水）</td>
+              <td rowspan="4">3</td>
+              <td rowspan="4">换热器（水）</td>
               <td style="text-align:center">具体型号</td>
               <td style="text-align:center">换热管内表面积（m2）</td>
               <td style="text-align:center">换热器形式</td>

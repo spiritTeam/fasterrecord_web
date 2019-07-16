@@ -281,8 +281,9 @@
                     <Radio :disabled='disabledoff' label="有">有</Radio>
                   </RadioGroup>
                 </FormItem>
+                <FormItem>辅助热源类型&nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c35">
-                   辅助热源类型 &nbsp;&nbsp;&nbsp; <Input type="text" style="width: 50%" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                   <Input type="text"v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
                 </FormItem>
               </td>
             </tr>
@@ -297,7 +298,7 @@
             <tr>
               <td align="right" rowspan="2"><span class="red">*</span>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3">
-                整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;
+                <FormItem>整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;</FormItem>
                  <FormItem prop="c37" >
                   <Input type="text" style="width:100px" v-model="formRecord.c37" :disabled='disabledoff'/>
                 </FormItem> &nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
@@ -311,7 +312,7 @@
             </tr>
             <tr>
               <td colspan="3">
-                 储水箱 &nbsp;&nbsp;&nbsp;
+                <FormItem>储水箱 &nbsp;&nbsp;&nbsp;</FormItem>
                   <FormItem prop="c40" >
                   <Input type="text" style="width:100px" v-model="formRecord.c40" :disabled='disabledoff'/>
                 </FormItem> &nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
@@ -327,11 +328,11 @@
             <tr>
               <td align="right"><span class="red">*</span>噪声（声压级）dB（A）</td>
               <td colspan="3">
-                整机或热泵机组  &nbsp;&nbsp;&nbsp;
+                <FormItem>整机或热泵机组  &nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c43">
                   <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
                 </FormItem>
-                &nbsp;&nbsp;&nbsp;储水箱&nbsp;&nbsp;&nbsp;
+                <FormItem>&nbsp;&nbsp;&nbsp;储水箱&nbsp;&nbsp;&nbsp;</FormItem>
                  <FormItem prop="c44">
                   <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
                 </FormItem>
@@ -340,11 +341,11 @@
             <tr>
               <td align="right"><span class="red">*</span>制冷剂/灌注量（Kg）</td>
               <td colspan="3">
-                制冷量  &nbsp;&nbsp;&nbsp;
+                <FormItem>制冷量  &nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c45">
                   <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
                 </FormItem>
-                &nbsp;&nbsp;&nbsp;灌注量（Kg）&nbsp;&nbsp;&nbsp;
+                <FormItem>&nbsp;&nbsp;&nbsp;灌注量（Kg）&nbsp;&nbsp;&nbsp;</FormItem>
                  <FormItem prop="c46">
                   <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
                 </FormItem>

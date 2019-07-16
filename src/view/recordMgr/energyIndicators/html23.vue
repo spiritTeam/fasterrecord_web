@@ -1108,7 +1108,7 @@
           c44: true,
           c45: true,
         },
-        xdz1: ''
+        xdz1: 0
       }
     },
     mounted() {
@@ -1264,7 +1264,7 @@
         //能效比：C12 ＝ C6／C9，保留两位小数
         var c12 = parseFloat(this.formRecord.c12);
         var _c12 = c6 / c9 + "";
-        var _c12val = _c12.substring(0, _c12.lastIndexOf('.') + 3);
+        var _c12val = parseFloat(_c12.substring(0, _c12.lastIndexOf('.') + 3));
 
         // // //能效比标注值和国标比对
         var c16 = this.formRecord.c16;
@@ -1287,7 +1287,7 @@
         }
 
         const checkc12 = (rule, value, callback) => {
-          if (xdz1 != "") {
+          if (xdz1 != 0) {
             if (c12 >= xdz1 || c12 < _c12val) {
               callback('能效比（EER）标准值不正确')
             } else {

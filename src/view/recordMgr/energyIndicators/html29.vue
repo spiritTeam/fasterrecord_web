@@ -142,7 +142,7 @@
             <tr>
               <td align="right"><span style="color:red">*</span>辅助能源类别</td>
               <td colspan="3">
-                <FormItem prop="c12" style="width:100%;" :label-width="10">
+                <FormItem prop="c12">
                   <RadioGroup v-model="formRecord.c12">
                     <Radio label="电" :disabled='disabledoff'>电</Radio>
                     <Radio label="燃气" :disabled='disabledoff'>燃气</Radio>
@@ -150,9 +150,9 @@
                     <Radio label="无辅助能源" :disabled='disabledoff'>无辅助能源</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
-                  <FormItem prop="c63">
-                    <Input type="text" v-model="formRecord.c63" style="width:200px;" :disabled='disabledoff || forbidden.c63'/>
-                  </FormItem>
+                </FormItem>
+                <FormItem prop="c63">
+                  <Input type="text" v-model="formRecord.c63" style="width:200px;" :disabled='disabledoff || forbidden.c63'/>
                 </FormItem>
               </td>
             </tr>
@@ -172,44 +172,48 @@
             <tr>
               <td align="right"><span style="color:red">*</span>集热器类型及面积</td>
               <td colspan="3">`
-                <FormItem prop="c14" style="width:100%;" :label-width="10">
+                <FormItem prop="c14">
                   <RadioGroup v-model="formRecord.c14">
                     <Radio label="真空管型" :disabled='disabledoff'>真空管型</Radio>
                     <Radio label="平板型" :disabled='disabledoff'>平板型</Radio>
-                    面积&nbsp;&nbsp;<Input type="text" v-model="formRecord.c15" style="width:200px;" :disabled='disabledoff'/>m²(两位小数)
                   </RadioGroup>
                 </FormItem>
+                <FormItem>面积&nbsp;&nbsp;</FormItem>
+                <FormItem prop="c15">
+                  <Input type="text" v-model="formRecord.c15" style="width:200px;" :disabled='disabledoff'/>
+                </FormItem>
+                <FormItem>m²(两位小数)</FormItem>
               </td>
             </tr>
             <tr>
               <td align="right" rowspan="3"><span style="color:red">*</span>真空管型集热器</td>
               <td align="left">类型</td>
               <td colspan="2">
-                <FormItem prop="c16" style="width:100%;" :label-width="10">
+                <FormItem prop="c16">
                   <RadioGroup v-model="formRecord.c16">
                     <Radio label="全玻璃" :disabled='disabledoff || forbidden.zkgx'>全玻璃</Radio>
                     <Radio label="其它" :disabled='disabledoff || forbidden.zkgx'>其它</Radio>
                   </RadioGroup>
-                  <FormItem prop="c17">
-                     <Input type="text" v-model="formRecord.c17" style="width:200px;" :disabled='disabledoff || forbidden.c17'/>
-                  </FormItem>
+                </FormItem>
+                <FormItem prop="c17">
+                  <Input type="text" v-model="formRecord.c17" style="width:200px;" :disabled='disabledoff || forbidden.c17'/>
                 </FormItem>
               </td>
              </tr>
              <tr>
               <td align="left">热管型</td>
               <td colspan="2">
-                <FormItem prop="c18" style="width:100%;" :label-width="10">
+                <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
                     <Radio label="玻璃-金属封接" :disabled='disabledoff || forbidden.zkgx'>玻璃-金属封接</Radio>
                     <Radio label="内置带翅片的金属热管" :disabled='disabledoff || forbidden.zkgx'>内置带翅片的金属热管</Radio>
                     <Radio label="全玻璃热管" :disabled='disabledoff || forbidden.zkgx'>全玻璃热管</Radio>
-                    <br>
+                    <br/>
                     <Radio label="其它" :disabled='disabledoff || forbidden.zkgx'>其它</Radio>
-                    <FormItem prop="c19">
-                      <Input type="text" v-model="formRecord.c19" style="width:200px;" :disabled='disabledoff || forbidden.c19'/>
-                    </FormItem>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c19">
+                  <Input type="text" v-model="formRecord.c19" style="width:200px;" :disabled='disabledoff || forbidden.c19'/>
                 </FormItem>
               </td>
              </tr>
