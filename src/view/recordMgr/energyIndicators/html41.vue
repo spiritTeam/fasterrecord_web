@@ -2002,7 +2002,7 @@ import {
           {
             validator: isIntegerNotZero,
             trigger: 'change,blur'
-          }
+          } 
         ],
         c118: [
           {
