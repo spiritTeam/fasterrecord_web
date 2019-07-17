@@ -314,11 +314,11 @@
             <tr>
               <td colspan="3">
                 <FormItem prop="c19">
-                  <RadioGroup v-model="formRecord.c19">
-                    <Radio label="带有阳极保护材料" :disabled='disabledoff'>带有阳极保护材料</Radio>
-                    <Radio label="整体发泡层" :disabled='disabledoff'>整体发泡层</Radio>
-                    <Radio label="预制保温层" :disabled='disabledoff'>预制保温层</Radio>
-                  </RadioGroup>
+                  <CheckboxGroup v-model="formRecord.c19">
+                    <Checkbox label="带有阳极保护材料" :disabled='disabledoff'>带有阳极保护材料</Checkbox>
+                    <Checkbox label="整体发泡层" :disabled='disabledoff'>整体发泡层</Checkbox>
+                    <Checkbox label="预制保温层" :disabled='disabledoff'>预制保温层</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
             </tr>
@@ -1071,11 +1071,11 @@
           型号的 <span  class="f-product">储水式电热水器 2008版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
        <div v-if="pageType==='extend'" class="org regress">
-         <p><span></span>正在办理能效标识备案</p> 
+         <p><span></span>正在办理能效标识备案</p>
          <p><span class="bgs"></span>已通过能效标识备案</p>
        </div>
        <div class="org">备案编号:{{recordno}}</div>
-       <dl v-if="pageType==='extend'"> 
+       <dl v-if="pageType==='extend'">
           <dt>
               现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
@@ -1226,7 +1226,7 @@
           c16: '',
           c17: [],
           c18: '',
-          c19: '',
+          c19: [],
           c20: '',
           c21: '',
           c22: '',

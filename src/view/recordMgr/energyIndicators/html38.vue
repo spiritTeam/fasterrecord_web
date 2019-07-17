@@ -576,8 +576,8 @@
               <td rowspan="2" width="170" class="right-align"><i class="red">*</i>产品类型
               </td>
               <td colspan="3" width="241">
-                <FormItem prop="c122">
-                  <RadioGroup v-model="formRecord.c122">
+                <FormItem prop="c112">
+                  <RadioGroup v-model="formRecord.c112">
                     <Radio label="热敏" :disabled='disabledoff'>热敏</Radio>
                     <Radio label="热升华" :disabled='disabledoff'>热升华</Radio>
                     <Radio label="电子映像" :disabled='disabledoff'>电子映像</Radio>

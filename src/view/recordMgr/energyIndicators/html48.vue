@@ -490,8 +490,7 @@
                     <br>
                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                     <FormItem prop="c57">
-                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'
-                             style="width:80px;"/>
+                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'/>
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
@@ -1330,17 +1329,17 @@
           this.formRecord.c36 = ''
           this.forbidden.c36 = true
         }
-        if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
-          this.forbidden.c43 = false
-        } else {
-          this.formRecord.c43 = ''
-          this.forbidden.c43 = true
-        }
         if (this.formRecord.c41.join('').indexOf('热水') > -1) {
           this.forbidden.c42 = false
         } else {
           this.formRecord.c42 = ''
           this.forbidden.c42 = true
+        }
+        if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
+          this.forbidden.c43 = false
+        } else {
+          this.formRecord.c43 = ''
+          this.forbidden.c43 = true
         }
         if (this.formRecord.c56.join('').indexOf('其它') > -1) {
           this.forbidden.c57 = false
@@ -1719,7 +1718,7 @@
           ],
           c26: [
             {
-              trigger: 'change,blur', required: this.formRecord.c25 === '2',
+              required: true,
               message: '初始使用日期不能为空'
             }
           ],
@@ -1797,7 +1796,7 @@
           ],
           c41: [
             {
-              trigger: 'change,blur', required: true,
+              required: true,
               message: '系统适用水压不能为空'
             }
           ],
@@ -1863,7 +1862,7 @@
           ],
           c56: [
             {
-              trigger: 'change,blur', required: true,
+              required: true,
               message: '安全装置不能为空'
             }
           ],
