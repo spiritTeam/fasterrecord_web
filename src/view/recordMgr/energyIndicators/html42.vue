@@ -689,9 +689,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
