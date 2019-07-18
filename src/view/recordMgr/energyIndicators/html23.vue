@@ -414,7 +414,7 @@
                   <Input type="text" v-model="formRecord.c57" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td align="right"><span style="color:red">*</span>室外机质量</td>
+              <td align="right"><span style="color:red">*</span>室外机质量（kg）</td>
               <td>
                 <FormItem prop="c58" style="width:100%;">
                   <Input type="text" v-model="formRecord.c58" :disabled='disabledoff'/>

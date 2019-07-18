@@ -1476,7 +1476,7 @@
           this.formRecord.c25 = ''
           this.forbidden.c25 = true
         }
-        if (this.formRecord.c26 === '外部电源，输出功率（W）') {
+        if (this.formRecord.c26 === '外部电源,输出功率(W)') {
           this.forbidden.c27 = false
         } else {
           this.formRecord.c27 = ''
@@ -1752,7 +1752,7 @@
           ],
           c27: [
             {
-              required: this.formRecord.c26 === '外部电源，输出功率（W）',
+              required: this.formRecord.c26 === '外部电源,输出功率(W)',
               trigger: 'change,blur',
               message: '供电方式外部电源值不能为空'
             }

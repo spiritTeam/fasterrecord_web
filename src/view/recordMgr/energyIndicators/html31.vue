@@ -228,21 +228,25 @@
             <tr>
               <td><i class="red">*</i>加热功能</td>
               <td colspan="3">
-                <FormItem prop="c25">
-                  <RadioGroup v-model="formRecord.c25">
-                    <Radio label="机械" :disabled="disabledoff">机械</Radio>
-                    <Radio label="电子" :disabled="disabledoff">电子</Radio>
+                <FormItem prop="c28">
+                  <RadioGroup v-model="formRecord.c28">
+                    <Radio label="有" :disabled="disabledoff">有</Radio>
+                    <Radio label="无" :disabled="disabledoff">无</Radio>
                   </RadioGroup>
+                </FormItem>
+                <FormItem>额定洗涤加热功率（W）</FormItem>
+                <FormItem prop="c65">
+                  <Input type="text" v-model="formRecord.c65" :disabled="disabledoff || forbidden.c65"/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td><i class="red">*</i>控制方式</td>
               <td colspan="3">
-                <FormItem prop="c45">
-                  <RadioGroup v-model="formRecord.c45">
-                    <Radio label="有" :disabled="disabledoff">有</Radio>
-                    <Radio label="无" :disabled="disabledoff">无</Radio>
+                <FormItem prop="c25">
+                  <RadioGroup v-model="formRecord.c25">
+                    <Radio label="机械" :disabled="disabledoff">机械</Radio>
+                    <Radio label="电子" :disabled="disabledoff">电子</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -1227,6 +1231,7 @@
         },
         forbidden: {
           c59: true,
+          c65: true,
           c49: true
 
         }
@@ -1306,6 +1311,13 @@
         return this.$store.state.app.pltPic
       },
       ruleRecord() {
+        if (this.formRecord.c28 === '有') {
+          this.forbidden.c65 = false
+        } else {
+          this.formRecord.c65 = ''
+          this.forbidden.c65 = true
+        }
+
         if (this.formRecord.c27 === '其它') {
           this.forbidden.c59 = false
         } else {

@@ -1369,7 +1369,7 @@
         }
 
         const checkc33 = (rule, value, callback) => {
-          if (parseFloat(c33) != null && parseFloat(c33) < parseFloat(c33)) {
+          if (parseFloat(c33) != null && parseFloat(c33) < parseFloat(c7)) {
             callback("LCD能效指数实测值应大于或等于标准规定值!");
           } else {
             callback()

@@ -162,7 +162,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right"></span>附加功能</td>
+              <td align="right">附加功能</td>
               <td colspan="3">
                 <FormItem prop="c17">
                     <CheckboxGroup  v-model="formRecord.c17">
@@ -173,11 +173,13 @@
                       <Checkbox :disabled='disabledoff' label="双调谐器">双调谐器</Checkbox>
                       <Checkbox :disabled='disabledoff' label="有线调制解调器">有线调制解调器</Checkbox>
                       <br/>
-                      <Checkbox :disabled='disabledoff' label="以太网接口共">以太网接口共</Checkbox>
+                      <Checkbox :disabled='disabledoff' label="以太网接口">以太网接口</Checkbox>
+                      共
                       <FormItem prop="c18" style="width:70px">
                         <Input type="text" style="width:50px" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>个
                       </FormItem>
-                      <Checkbox :disabled='disabledoff' label="USB接口共">USB接口共</Checkbox>
+                      <Checkbox :disabled='disabledoff' label="USB接口">USB接口</Checkbox>
+                      共
                       <FormItem prop="c19" style="width:70px">
                         <Input type="text"  style="width:50px" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>个
                       </FormItem>
@@ -1107,13 +1109,13 @@
           this.formRecord.c22 = ''
           this.forbidden.c22 = true
         }
-        if (this.formRecord.c17.join('').indexOf('以太网接口共') > -1) {
+        if (this.formRecord.c17.join('').indexOf('以太网接口') > -1) {
           this.forbidden.c18 = false
         } else {
           this.formRecord.c18 = ''
           this.forbidden.c18 = true
         }
-        if (this.formRecord.c17.join('').indexOf('USB接口共') > -1) {
+        if (this.formRecord.c17.join('').indexOf('USB接口') > -1) {
           this.forbidden.c19 = false
         } else {
           this.formRecord.c19 = ''
@@ -1343,23 +1345,23 @@
           ],
           c18: [
             {
-              required: this.formRecord.c17.join('').indexOf('以太网接口共') > -1,
+              required: this.formRecord.c17.join('').indexOf('以太网接口') > -1,
               trigger: 'change,blur',
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c17.join('').indexOf('以太网接口共') > -1 ? numberCheck : check,
+              validator: this.formRecord.c17.join('').indexOf('以太网接口') > -1 ? numberCheck : check,
               trigger: 'change,blur'
             }
           ],
           c19: [
             {
-              required: this.formRecord.c17.join('').indexOf('USB接口共') > -1,
+              required: this.formRecord.c17.join('').indexOf('USB接口') > -1,
               trigger: 'change,blur',
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c17.join('').indexOf('USB接口共') > -1 ? numberCheck : check,
+              validator: this.formRecord.c17.join('').indexOf('USB接口') > -1 ? numberCheck : check,
               trigger: 'change,blur'
             }
           ],
