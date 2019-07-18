@@ -1018,7 +1018,7 @@
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
               </td>
               <td v-else-if="pageType==='view'">
-                <Button v-show="templatePic" type="primary" @click="showTemplate">查看</Button>
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -2874,7 +2874,8 @@ export default {
           {
             required: true,
             message: '不能为空'
-          },
+          },
+
           {
             validator: checkc123,
             trigger: 'blur'
