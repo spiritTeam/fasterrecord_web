@@ -67,8 +67,8 @@
           </FormItem>
           <FormItem prop="c8" label="产品类型" :label-width="180">
             <RadioGroup v-model="formRecord.c8">
-              <Radio :disabled='disabledoff' label="标准显示器">标准显示器</Radio>
-              <Radio :disabled='disabledoff' label="高性能显示器">高性能显示器</Radio>
+              <Radio :disabled='disabledoff || pageType === "update"' label="标准显示器">标准显示器</Radio>
+              <Radio :disabled='disabledoff || pageType === "update"' label="高性能显示器">高性能显示器</Radio>
             </RadioGroup>
           </FormItem>
           <table id="table1">
