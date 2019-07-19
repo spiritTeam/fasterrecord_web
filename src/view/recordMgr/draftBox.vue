@@ -8,10 +8,10 @@
         </Select>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model="formDraft.model_name" placeholder="产品型号"></Input>
+        <Input type="text" v-model.trim="formDraft.model_name" placeholder="产品型号"></Input>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model="formDraft.bar_code" placeholder="实验室报告条码"></Input>
+        <Input type="text" v-model.trim="formDraft.bar_code" placeholder="实验室报告条码"></Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="searchFun">搜索</Button>
