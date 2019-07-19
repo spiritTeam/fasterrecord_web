@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>请输入实验室报告条码</h1>
-    <Input type="text" v-model="reportCode" placeholder="请输入实验室报告条码"></Input>
+    <Input type="text" v-model.trim="reportCode" placeholder="请输入实验室报告条码"></Input>
     <Button type="primary" @click="confirmCode">确定</Button>
   </div>
 </template>

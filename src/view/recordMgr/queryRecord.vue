@@ -8,13 +8,13 @@
         </Select>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model="formQuery.model_name" placeholder="产品型号"></Input>
+        <Input type="text" v-model.trim="formQuery.model_name" placeholder="产品型号"></Input>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model="formQuery.bar_code" placeholder="实验室报告条码"></Input>
+        <Input type="text" v-model.trim="formQuery.bar_code" placeholder="实验室报告条码"></Input>
       </FormItem>
        <FormItem>
-        <Input type="text" v-model="formQuery.record_no" placeholder="备案号"></Input>
+        <Input style="width: 300px" type="text" v-model.trim="formQuery.record_no" placeholder="备案号"></Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="searchFun">搜索</Button>
