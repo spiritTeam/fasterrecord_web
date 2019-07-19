@@ -1150,7 +1150,10 @@
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
-        return XfillDefaultData(params, this)
+        let flag = XfillDefaultData(params, this)
+        let _c12 = parseFloat(this.formRecord.c6) / parseFloat(this.formRecord.c9) + "";
+        this.formRecord.c12 = _c12.substring(0, _c12.lastIndexOf('.') + 3);
+        return flag
       },
       showConfirm() {
         return XshowConfirm(this)
@@ -1193,7 +1196,7 @@
         'recordno'
       ]),
       disabledoff() {
-        return this.pageType === 'extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId

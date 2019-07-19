@@ -1451,8 +1451,7 @@
         'recordno'
       ]),
       disabledoff(){
-
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
