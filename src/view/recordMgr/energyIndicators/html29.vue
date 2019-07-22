@@ -280,9 +280,9 @@
                     <Radio label="铝管" :disabled='disabledoff || forbidden.pbx'>铝管</Radio>
                     <Radio label="其它" :disabled='disabledoff || forbidden.pbx'>其它</Radio>
                   </RadioGroup>
-                  <FormItem prop="c29">
-                    <Input type="text" v-model="formRecord.c29" style="width:200px;" :disabled='disabledoff || forbidden.c29'/>
-                  </FormItem>
+                </FormItem>
+                <FormItem prop="c29">
+                  <Input type="text" v-model="formRecord.c29" style="width:200px;" :disabled='disabledoff || forbidden.c29'/>
                 </FormItem>
               </td>
             </tr>
