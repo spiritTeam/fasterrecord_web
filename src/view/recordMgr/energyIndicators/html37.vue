@@ -75,7 +75,7 @@
               <td align="center">制热量（W）</td>
               <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff || forbidden.c7'/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -93,7 +93,7 @@
               <td align="center">制热消耗功率（W）</td>
                 <td>
                  <FormItem prop="c10" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c10"  :disabled='disabledoff || forbidden.c10'/>
+                   <Input type="text" v-model="formRecord.c10"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -111,7 +111,7 @@
               <td align="center">性能系数(COP)(W/W)</td>
                <td>
                  <FormItem prop="c13" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c13"  :disabled='disabledoff || forbidden.c13'/>
+                   <Input type="text" v-model="formRecord.c13"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -1155,7 +1155,6 @@
         attach_list: ''
       },
       forbidden: {
-        c7: true,
         c10: true,
         c13: true,
         c35: true
