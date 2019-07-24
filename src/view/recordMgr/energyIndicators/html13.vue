@@ -264,12 +264,12 @@
               <td><i class="red">*</i>控制方式</td>
               <td colspan="3">
                 <FormItem prop="c18">
-                  <RadioGroup v-model="formRecord.c18">
-                    <Radio label="使用电源软线" :disabled='disabledoff'>使用电源软线</Radio>
-                    <Radio label="软线上带有不可重接插头" :disabled='disabledoff'>软线上带有不可重接插头</Radio>
-                    <Radio label="提供电源引线" :disabled='disabledoff'>提供电源引线</Radio>
-                    <Radio label="提供接线端子" :disabled='disabledoff'>提供接线端子</Radio>
-                  </RadioGroup>
+                  <CheckboxGroup v-model="formRecord.c18">
+                    <Checkbox label="使用电源软线" :disabled='disabledoff'>使用电源软线</Checkbox>
+                    <Checkbox label="软线上带有不可重接插头" :disabled='disabledoff'>软线上带有不可重接插头</Checkbox>
+                    <Checkbox label="提供电源引线" :disabled='disabledoff'>提供电源引线</Checkbox>
+                    <Checkbox label="提供接线端子" :disabled='disabledoff'>提供接线端子</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
             </tr>
@@ -301,8 +301,8 @@
                 <FormItem prop="c39">
                   <label style="margin: 25px;font-size: 14px!important;">内胆材质:</label>
                   <RadioGroup v-model="formRecord.c39">
-                    <Radio label="不锈钢内胆" :disabled='disabledoff'>不锈钢内胆</Radio>
                     <Radio label="搪瓷内胆" :disabled='disabledoff'>搪瓷内胆</Radio>
+                    <Radio label="不锈钢内胆" :disabled='disabledoff'>不锈钢内胆</Radio>
                     <Radio label="其它内胆" :disabled='disabledoff'>其它内胆</Radio>
                   </RadioGroup>
                 </FormItem>
@@ -1230,7 +1230,7 @@
           c15: '',
           c16: '',
           c17: [],
-          c18: '',
+          c18: [],
           c19: [],
           c20: '',
           c21: '',
@@ -1722,7 +1722,6 @@
             {
               required: true,
               message: '控制方式不能为空',
-              trigger: 'change,blur'
             }
           ],
           c37: [

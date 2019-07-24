@@ -173,7 +173,7 @@
               <td><i class="red">*</i>规格（mm）</td>
               <td>
                 <FormItem prop="c14">
-                  <Select v-model="formRecord.c14" style="width: 300px">
+                  <Select v-model="formRecord.c14" style="width: 300px" disabled>
                     <Option value="200">200</Option>
                     <Option value="230">230</Option>
                     <Option value="250">250</Option>

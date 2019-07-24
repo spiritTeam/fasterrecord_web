@@ -1703,6 +1703,13 @@
               message: '电源线插头形式不能为空'
             }
           ],
+          c18: [
+            {
+              required: this.formRecord.c17 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
           c19: [
             {
               trigger: 'change,blur',

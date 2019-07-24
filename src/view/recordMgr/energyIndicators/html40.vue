@@ -219,8 +219,9 @@
                     <Checkbox label="热敏电阻" :disabled='disabledoff'>热敏电阻</Checkbox>
                     <Checkbox label="双金属片式" :disabled='disabledoff'>双金属片式</Checkbox>
                     <Checkbox label="自复位式" :disabled='disabledoff'>自复位式</Checkbox>
+                    <Checkbox label="非自复位式" :disabled='disabledoff'>非自复位式</Checkbox>
                     <Checkbox label="软件" :disabled='disabledoff'>软件</Checkbox>
-                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
+                    <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
                 <FormItem prop="c21">
