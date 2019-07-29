@@ -1043,7 +1043,7 @@ export default {
       }
       let checkC15C16=(rule, value, callback) => {
         let _msg=null;
-        if (_c15&&_c16&&(_c15*0.95<_c16)) _msg="常态气味降低度实测值必须大于等于标称值的95%";
+        if (_c15&&_c16&&(_c15*0.95>=_c16)) _msg="常态气味降低度实测值必须大于等于标称值的95%";
         if (_msg) callback(_msg);
         else callback();
       }

@@ -1151,8 +1151,7 @@
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         let flag = XfillDefaultData(params, this)
-        let _c12 = parseFloat(this.formRecord.c6) / parseFloat(this.formRecord.c9) + "";
-        this.formRecord.c12 = _c12.substring(0, _c12.lastIndexOf('.') + 3);
+        this.formRecord.c12 = Math.round(parseFloat(this.formRecord.c6) / parseFloat(this.formRecord.c9) * 100) /100 + "";
         return flag
       },
       showConfirm() {

@@ -1710,6 +1710,34 @@
               message: '不能为空'
             }
           ],
+          c30: [
+            {
+              required: this.formRecord.c29 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c23: [
+            {
+              required: this.formRecord.c22 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c25: [
+            {
+              required: this.formRecord.c24 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c28: [
+            {
+              required: this.formRecord.c27 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
           c19: [
             {
               trigger: 'change,blur',

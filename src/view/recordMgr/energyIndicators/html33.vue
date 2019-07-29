@@ -238,8 +238,8 @@
               <td colspan="3">
                 <FormItem prop="c12">
                   <RadioGroup v-model="formRecord.c12">
-                    <Radio label="交流变频" :disabled='disabledoff'>交流变频</Radio>
-                    <Radio label="直流变频" :disabled='disabledoff'>直流变频</Radio>
+                    <Radio label="交流调速" :disabled='disabledoff'>交流调速</Radio>
+                    <Radio label="直流调速" :disabled='disabledoff'>直流调速</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
                 </FormItem>
