@@ -516,6 +516,7 @@
           <FormItem style="width:100%;" :label-width="70" prop="c64">
             <Input v-model="formRecord.c64" :disabled='disabledoff' type="textarea" :autosize="{minRows: 5,maxRows: 5}" />
           </FormItem>
+          <label style="color: red;margin-left: 70px">多个型号, 使用“;”分隔</label>
         </Card>
       </div>
       <div class="part part6">

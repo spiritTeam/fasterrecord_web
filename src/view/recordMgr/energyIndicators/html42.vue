@@ -281,7 +281,7 @@
               <td width="" colspan="2">灶具类型<br>(如：台式大气式灶)</td>
               <td width="" colspan="3">
                 <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c14" disabled/>
                 </FormItem>
               </td>
               <td width="">备注:
@@ -331,7 +331,7 @@
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
                     <FormItem prop="c22">
-                    <Radio label="人工煤气灶具" :disabled='disabledoff'>人工煤气</Radio>
+                      <Radio label="人工煤气灶具" :disabled='disabledoff'>人工煤气</Radio>
                       <RadioGroup v-model="formRecord.c22">
                         <Radio label="5R" :disabled='disabledoff || forbidden.c22_a'>5R</Radio>
                         <Radio label="6R" :disabled='disabledoff || forbidden.c22_a'>6R</Radio>
@@ -404,7 +404,7 @@
               <td class="right-align"><i class="red">*</i>额定频率(Hz)</td>
               <td>
                 <FormItem prop="c28">
-                  <Input type="text" v-model="formRecord.checkmark28" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -1198,7 +1198,7 @@
           c22_b: true,
           c22_c: true
         },
-        c21 : ''
+        c21: ''
       }
     },
     mounted() {
@@ -1236,7 +1236,23 @@
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
-        return XfillDefaultData(params, this)
+        var d = XfillDefaultData(params, this);
+        let arr = [this.formRecord.c11, this.formRecord.c44, this.formRecord.c45, this.formRecord.c46, this.formRecord.c47, this.formRecord.c48]
+        let arr2 = [this.formRecord.c60, this.formRecord.c61, this.formRecord.c62, this.formRecord.c63, this.formRecord.c64, this.formRecord.c65]
+        this.formRecord.c8 = arr[0]
+        this.formRecord.c9 = arr2[0]
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] != '' && arr[i] > this.formRecord.c8){
+            this.formRecord.c8 = arr[i]
+          }
+        }
+        for (let i = 0; i < arr.length; i++) {
+          console.log(arr2[i]);
+          if (arr2[i] != '' && arr2[i] < this.formRecord.c9){
+            this.formRecord.c9 = arr2[i]
+          }
+        }
+        return d
       },
       showConfirm() {
         return XshowConfirm(this)
@@ -1321,10 +1337,12 @@
           this.forbidden.c22_c = false
         }
 
-        if (this.formRecord.c21 !== this.c21) {
+        if (this.c21 !== '' && this.formRecord.c21 !== this.c21) {
           this.formRecord.c22 = ''
         }
         this.c21 = this.formRecord.c21
+
+        this.formRecord.c14 = this.formRecord.c19 + this.formRecord.c18
 
         //0803
         var biaozhu = this.formRecord.c8
