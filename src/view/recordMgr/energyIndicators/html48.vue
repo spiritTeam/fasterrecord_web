@@ -85,7 +85,7 @@
               <td>额定热水热负荷</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c8'/>
                 </FormItem>
               </td>
               <td>
@@ -103,7 +103,7 @@
               <td>额定供暖热负荷</td>
               <td>
                 <FormItem prop="c11">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.c11'/>
                 </FormItem>
               </td>
               <td>
@@ -121,7 +121,7 @@
               <td>额定热负荷热水热效率</td>
               <td>
                 <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff || forbidden.c14'/>
                 </FormItem>
               </td>
               <td>
@@ -139,7 +139,7 @@
               <td>50%额定热负荷热水热效率</td>
               <td>
                 <FormItem prop="c17">
-                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff || forbidden.c17'/>
                 </FormItem>
               </td>
               <td>
@@ -157,7 +157,7 @@
               <td>额定热负荷供暖热效率</td>
               <td>
                 <FormItem prop="c20">
-                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20'/>
                 </FormItem>
               </td>
               <td>
@@ -175,7 +175,7 @@
               <td>30%额定热负荷供暖热效率</td>
               <td>
                 <FormItem prop="c23">
-                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c23'/>
                 </FormItem>
               </td>
               <td>
@@ -1071,7 +1071,9 @@
     XformatDate,
     threeDecimals,
     twoDecimals,
+    numberOr1,
     oneDecimals,
+    check,
     significantDigits22,
     significantDigits33
   } from '@/libs/utilExt'
@@ -1244,16 +1246,22 @@
           c30: true,
           c31: true,
           c32: true,
+          c8: true,
           c9: true,
           c10: true,
+          c11: true,
           c12: true,
           c13: true,
+          c14: true,
           c15: true,
           c16: true,
+          c17: true,
           c18: true,
           c19: true,
+          c20: true,
           c21: true,
           c22: true,
+          c23: true,
           c24: true,
           c25: true,
 
@@ -1379,54 +1387,78 @@
         }
 
         if (this.formRecord.c27 === '家用燃气快速热水器') {
+          this.forbidden.c8 = false
           this.forbidden.c9 = false
           this.forbidden.c10 = false
+          this.forbidden.c11 = true
+          this.formRecord.c11 = ''
           this.forbidden.c12 = true
           this.formRecord.c12 = ''
           this.forbidden.c13 = true
           this.formRecord.c13 = ''
+          this.forbidden.c14 = false
           this.forbidden.c15 = false
           this.forbidden.c16 = false
+          this.forbidden.c17 = false
           this.forbidden.c18 = false
           this.forbidden.c19 = false
+          this.forbidden.c20 = true
+          this.formRecord.c20 = ''
           this.forbidden.c21 = true
           this.formRecord.c21 = ''
           this.forbidden.c22 = true
           this.formRecord.c22 = ''
+          this.forbidden.c23 = true
+          this.formRecord.c23 = ''
           this.forbidden.c24 = true
           this.formRecord.c24 = ''
           this.forbidden.c25 = true
           this.formRecord.c25 = ''
         } else if (this.formRecord.c27 === '燃气采暖热水炉(单采暖型)') {
+          this.forbidden.c8 = true
+          this.formRecord.c8 = ''
           this.forbidden.c9 = true
           this.formRecord.c9 = ''
           this.forbidden.c10 = true
           this.formRecord.c10 = ''
+          this.forbidden.c11 = false
           this.forbidden.c12 = false
           this.forbidden.c13 = false
+          this.forbidden.c14 = true
+          this.formRecord.c14 = ''
           this.forbidden.c15 = true
           this.formRecord.c15 = ''
           this.forbidden.c16 = true
           this.formRecord.c16 = ''
+          this.forbidden.c17 = true
+          this.formRecord.c17 = ''
           this.forbidden.c18 = true
           this.formRecord.c18 = ''
           this.forbidden.c19 = true
           this.formRecord.c19 = ''
+          this.forbidden.c20 = false
           this.forbidden.c21 = false
           this.forbidden.c22 = false
+          this.forbidden.c23 = false
           this.forbidden.c24 = false
           this.forbidden.c25 = false
         } else if (this.formRecord.c27 === '燃气采暖热水炉(两用型)') {
+          this.forbidden.c8 = false
           this.forbidden.c9 = false
           this.forbidden.c10 = false
+          this.forbidden.c11 = false
           this.forbidden.c12 = false
           this.forbidden.c13 = false
+          this.forbidden.c14 = false
           this.forbidden.c15 = false
           this.forbidden.c16 = false
+          this.forbidden.c17 = false
           this.forbidden.c18 = false
           this.forbidden.c19 = false
+          this.forbidden.c20 = false
           this.forbidden.c21 = false
           this.forbidden.c22 = false
+          this.forbidden.c23 = false
           this.forbidden.c24 = false
           this.forbidden.c25 = false
         }
@@ -1445,7 +1477,7 @@
           this.forbidden.c32 = false
         }
 
-        if (this.c29 !== this.formRecord.c29) {
+        if (this.c29 != "" && this.c29 !== this.formRecord.c29) {
           this.formRecord.c30 = ""
           this.formRecord.c31 = ""
           this.formRecord.c32 = ""
@@ -1641,6 +1673,7 @@
             callback()
           }
         }
+
         return {
           c1: [
             {
@@ -1682,74 +1715,130 @@
           ],
           c8: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c8,
               message: '额定热水热负荷额定值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c8) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c9: [
             {
               trigger: 'change,blur', required: !this.forbidden.c9,
               message: '额定热水热负荷实测值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c9) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c11: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c11,
               message: '额定供暖热负荷额定值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c11) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c12: [
             {
               trigger: 'change,blur', required: !this.forbidden.c12,
               message: '额定供暖热负荷实测值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c12) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c14: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c14,
               message: '额定热负荷热水热效率额定值不能为空'
             },
+            {
+              validator:!this.forbidden.c14? numberOr1 : check,
+              trigger: 'change,blur'
+            }
           ],
           c15: [
             {
               trigger: 'change,blur', required: !this.forbidden.c15,
               message: '额定热负荷热水热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c15? this.formRecord.c14.toString().split(".")[1] != undefined && this.formRecord.c14.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c17: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c17,
               message: '50%额定热负荷热水热效率额定值不能为空'
+            },
+            {
+              validator:!this.forbidden.c17? numberOr1 : check,
+              trigger: 'change,blur'
             }
           ],
           c18: [
             {
               trigger: 'change,blur', required: !this.forbidden.c18,
               message: '50%额定热负荷热水热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c18? this.formRecord.c17.toString().split(".")[1] != undefined && this.formRecord.c17.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c20: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c20,
               message: '额定热负荷供暖热效率额定值不能为空'
+            },
+            {
+              validator:!this.forbidden.c20? numberOr1 : check,
+              trigger: 'change,blur'
             }
           ],
           c21: [
             {
               trigger: 'change,blur', required: !this.forbidden.c21,
               message: '额定热负荷供暖热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c21? this.formRecord.c20.toString().split(".")[1] != undefined && this.formRecord.c20.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c23: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c23,
               message: '30%额定热负荷供暖热效率额定值不能为空'
+            },
+            {
+              validator:!this.forbidden.c23? numberOr1 : check,
+              trigger: 'change,blur'
             }
           ],
           c24: [
             {
               trigger: 'change,blur', required: !this.forbidden.c24,
               message: '30%额定热负荷供暖热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c24? this.formRecord.c23.toString().split(".")[1] != undefined && this.formRecord.c23.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c26: [

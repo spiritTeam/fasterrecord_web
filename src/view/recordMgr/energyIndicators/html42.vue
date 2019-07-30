@@ -75,7 +75,7 @@
             <RadioGroup v-model="formRecord.c19">
               <Radio :disabled='disabledoff' label="台式">台式</Radio>
               <Radio :disabled='disabledoff' label="嵌入式">嵌入式</Radio>
-              <Radio :disabled='disabledoff' label="集成灶">集成灶</Radio>
+              <Radio :disabled='disabledoff' label="集成式">集成式</Radio>
               <Radio :disabled='disabledoff' label="其它">其它</Radio>
             </RadioGroup>
           </FormItem>
