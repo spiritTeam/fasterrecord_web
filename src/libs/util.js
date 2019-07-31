@@ -221,7 +221,22 @@ export const initRouter = (vm) => {
   let otherRoute = []
   //
   axios.get('/function/mylist.do').then((res) => {
-    initRouterNode(otherRoute, res.data)
+    let help = {
+      'path': '/help',
+      'name': 'help',
+      'meta': {
+        'icon': 'ios-paper',
+        'title': '帮助'
+      },
+      'component': 'view/main/main',
+      'children': [{
+        'path': '/help',
+        'name': 'help',
+        'component': 'view/help/help'
+      }]
+    }
+    initRouterNode(otherRoute, [...res.data, help])
+
     // console.log(otherRoute);
     // 添加主界面路由
     vm.$store.commit('updateAppRouter', otherRoute)
