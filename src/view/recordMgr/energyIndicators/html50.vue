@@ -80,7 +80,7 @@
               <td align="center">制冷量(千瓦)</td>
               <td>
                  <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff || forbidden.c5'/>
+                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -93,7 +93,7 @@
               <td align="center">消耗总电功率(千瓦)</td>
                 <td>
                  <FormItem prop="c6" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff || forbidden.c6'/>
+                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -106,7 +106,7 @@
               <td align="center">性能系数</td>
                <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff || forbidden.c7'/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -119,7 +119,7 @@
               <td align="center">综合部分负荷性能系数</td>
                <td>
                  <FormItem prop="c8" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff || forbidden.c8'/>
+                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -248,6 +248,7 @@
                 <FormItem prop="c19">
                   <CheckboxGroup v-model="formRecord.c19">
                     <Checkbox label="板式换热器" :disabled='disabledoff'>板式换热器</Checkbox>
+                    <Checkbox label="翅片式换热器" :disabled='disabledoff'>翅片式换热器</Checkbox>
                     <Checkbox label="套管式换热器" :disabled='disabledoff'>套管式换热器</Checkbox>
                     <Checkbox label="壳管式换热器" :disabled='disabledoff'>壳管式换热器</Checkbox>
                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
@@ -1202,10 +1203,6 @@
         attach_list: ''
       },
       forbidden: {
-        c5: true,
-        c6: true,
-        c7: true,
-        c8: true,
         c26: true,
         c27: true,
         c28: true,
