@@ -248,9 +248,9 @@
                 <FormItem prop="c19">
                   <CheckboxGroup v-model="formRecord.c19">
                     <Checkbox label="板式换热器" :disabled='disabledoff'>板式换热器</Checkbox>
-                    <Checkbox label="翅片式换热器" :disabled='disabledoff'>翅片式换热器</Checkbox>
                     <Checkbox label="套管式换热器" :disabled='disabledoff'>套管式换热器</Checkbox>
                     <Checkbox label="壳管式换热器" :disabled='disabledoff'>壳管式换热器</Checkbox>
+                    <Checkbox label="翅片式换热器" :disabled='disabledoff'>翅片式换热器</Checkbox>
                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
