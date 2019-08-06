@@ -1130,28 +1130,28 @@
 
         var res = 0;
         var val = this.formRecord.c17;
-        if (val == "内部硬盘") {
+        if (val.join('').indexOf('内部硬盘') > -1) {
             res = res + 2.2;
         }
-        if (val == "高清输出功能") {
+        if (val.join('').indexOf('高清输出功能') > -1) {
             res = res + 3.0;
         }
-        if (val == "HDMI接口") {
+        if (val.join('').indexOf('HDMI接口') > -1) {
             res = res + 1.0;
         }
-        if (val == "ADSL调制解调器") {
+        if (val.join('').indexOf('ADSL调制解调器') > -1) {
             res = res + 2.0;
         }
-        if (val == "双调谐器") {
+        if (val.join('').indexOf('双调谐器') > -1) {
             res = res + 2.0;
         }
-        if (val == "有线调制解调器") {
+        if (val.join('').indexOf('有线调制解调器') > -1) {
             res = res + 4.5;
         }
-        if (val == "以太网接口") {
+        if (val.join('').indexOf('以太网接口') > -1) {
             res = res + 0.4 * parseInt(this.formRecord.c18);
         }
-        if (val == "USB接口") {
+        if (val.join('').indexOf('USB接口') > -1) {
             res = res + 0.3 * parseInt(this.formRecord.c19);
         }
 

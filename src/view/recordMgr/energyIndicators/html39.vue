@@ -52,13 +52,13 @@
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方"/>
           </FormItem>
           <FormItem prop="c4" label="规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号" readonly/>
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:100%" :label-width="180">
             <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
           </FormItem>
           <FormItem prop="c21" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c21">
@@ -70,7 +70,7 @@
             </RadioGroup>
           </FormItem>
           <FormItem prop="c40" label="产品类型" style="width:100%;" :label-width="180">
-            <Select v-model="formRecord.c40" style="width:200px">
+            <Select v-model="formRecord.c40" style="width:200px" :disabled='disabledoff' >
               <Option value="全部都有">全部都有</Option>
               <Option value="无待机功率">无待机功率</Option>
               <Option value="无关机功率">无关机功率</Option>

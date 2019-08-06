@@ -1237,7 +1237,7 @@
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         var d = XfillDefaultData(params, this);
-        let arr = [this.formRecord.c11, this.formRecord.c44, this.formRecord.c45, this.formRecord.c46, this.formRecord.c47, this.formRecord.c48]
+        let arr = [this.formRecord.c54, this.formRecord.c55, this.formRecord.c56, this.formRecord.c57, this.formRecord.c58, this.formRecord.c59]
         let arr2 = [this.formRecord.c60, this.formRecord.c61, this.formRecord.c62, this.formRecord.c63, this.formRecord.c64, this.formRecord.c65]
         this.formRecord.c8 = arr[0]
         this.formRecord.c9 = arr2[0]
@@ -1358,7 +1358,7 @@
         var nxdjch = this.formRecord.c7
         var zjlx = this.formRecord.c18
         var jgxs = this.formRecord.c19
-        var rxlz = this.formRecord.c8
+        var rxlz = parseFloat(this.formRecord.c8)
         var nxdj = "";
         if (zjlx == "大气式灶") {
           if (jgxs == "台式") {
@@ -1377,7 +1377,7 @@
             } else if (rxlz >= 55) {
               nxdj = "3";
             }
-          } else if (jgxs == "集成灶") {
+          } else if (jgxs == "集成式") {
             if (rxlz >= 59) {
               nxdj = "1";
             } else if (rxlz >= 56) {
@@ -1403,7 +1403,7 @@
             } else if (rxlz >= 57) {
               nxdj = "3";
             }
-          } else if (jgxs == "集成灶") {
+          } else if (jgxs == "集成式") {
             if (rxlz >= 61) {
               nxdj = "1";
             } else if (rxlz >= 58) {
@@ -1413,6 +1413,8 @@
             }
           }
         }
+        console.log(rxlz);
+        console.log(nxdj);
         const checkc7a = (rule, value, callback) => {
           if (rxlz > 100 || nxdj == "") {
             callback('能效数据不在备案范围')

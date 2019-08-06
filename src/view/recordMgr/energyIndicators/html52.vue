@@ -121,15 +121,15 @@
               <td colspan="3">
                 <FormItem prop="c100">
                   <CheckboxGroup v-model="formRecord.c100">
-                    <Checkbox :disabled='disabledoff' label="WIFI">WIFI</Checkbox>
-                    <Checkbox :disabled='disabledoff' label="蓝牙">蓝牙</Checkbox>
-                    <Checkbox :disabled='disabledoff' label="无">无</Checkbox>
-                    <Checkbox :disabled='disabledoff' label="其它">其它</Checkbox>
+                    <Checkbox :disabled='disabledoff || forbidden.c100' label="WIFI">WIFI</Checkbox>
+                    <Checkbox :disabled='disabledoff || forbidden.c100' label="蓝牙">蓝牙</Checkbox>
+                    <Checkbox :disabled='disabledoff || forbidden.c100' label="其它">其它</Checkbox>
+                    <FormItem prop="c101" style="margin-top: -33px;margin-left: 175px;width: 150px">
+                      <Input type="text" v-model="formRecord.c101"
+                             :disabled='disabledoff || forbidden.c101 || forbidden.c100'/>
+                    </FormItem>
+                    <Checkbox :disabled='disabledoff' style="margin-left: 345px;position: relative;top: -33px;" label="无">无</Checkbox>
                   </CheckboxGroup>
-                </FormItem>
-                <FormItem prop="c101" style="margin-top:-34px; margin-left:227px">
-                  <Input type="text" style="width:20%" v-model="formRecord.c101"
-                         :disabled='disabledoff || forbidden.c101'/>
                 </FormItem>
               </td>
             </tr>
@@ -1280,7 +1280,6 @@
           c89: '',
           c90: '',
           c91: '',
-          c91: '',
           c92: '',
           c93: '',
           c94: '',
@@ -1295,12 +1294,16 @@
         },
         forbidden: {
           c101: true,
+          c100: true,
           c36: true,
           c38: true,
           c40: true,
           c12: true,
+          c11: true,
           c10: true,
           c8: true,
+          c7: true,
+          c9: true,
           c37: true,
           c16: true,
         }
@@ -1384,6 +1387,78 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        if (this.formRecord.c100.join('').indexOf('无') > -1) {
+          this.formRecord.c100=['无']
+          this.forbidden.c100 = true
+          this.forbidden.c91 = true
+          this.formRecord.c91 = ''
+        } else {
+          this.forbidden.c100 = false
+        }
+
+        if (this.formRecord.c100.join('').indexOf('其它') > -1) {
+          this.forbidden.c101 = false
+        } else {
+          this.formRecord.c101 = ''
+          this.forbidden.c101 = true
+        }
+
+        if (this.formRecord.c35 === '有') {
+          this.forbidden.c18 = false
+          this.forbidden.c36 = false
+          this.forbidden.c8 = false
+          this.forbidden.c7 = false
+        } else {
+          this.formRecord.c18 = ''
+          this.forbidden.c18 = true
+          this.formRecord.c36 = ''
+          this.forbidden.c36 = true
+          this.formRecord.c8 = ''
+          this.forbidden.c8 = true
+          this.formRecord.c7 = ''
+          this.forbidden.c7 = true
+        }
+
+        if (this.formRecord.c37 === '有') {
+          this.forbidden.c9 = false
+          this.forbidden.c38 = false
+          this.forbidden.c10 = false
+        } else {
+          this.formRecord.c38 = ''
+          this.forbidden.c38 = true
+          this.formRecord.c10 = ''
+          this.forbidden.c10 = true
+          this.formRecord.c9 = ''
+          this.forbidden.c9 = true
+        }
+
+        if (this.formRecord.c39 === '有') {
+          this.forbidden.c40 = false
+          this.forbidden.c12 = false
+          this.forbidden.c11 = false
+        } else {
+          this.formRecord.c40 = ''
+          this.forbidden.c40 = true
+          this.formRecord.c12 = ''
+          this.forbidden.c12 = true
+          this.formRecord.c11 = ''
+          this.forbidden.c11 = true
+        }
+
+        if (this.formRecord.c15 === '其它') {
+          this.forbidden.c16 = false
+        } else {
+          this.formRecord.c16 = ''
+          this.forbidden.c16 = true
+        }
+
+        if (this.formRecord.c25 === '其它') {
+          this.forbidden.c26 = false
+        } else {
+          this.formRecord.c26 = ''
+          this.forbidden.c26 = true
+        }
+
         var nxhs;
         var checkc34 = null;
         var checkc36 = null;
@@ -1522,61 +1597,6 @@
             callback("所填效率值与所选能效等级不符！");
           }
         }
-
-        if (this.formRecord.c100.join('').indexOf('其它') > -1) {
-          this.forbidden.c101 = false
-        } else {
-          this.formRecord.c101 = ''
-          this.forbidden.c101 = true
-        }
-
-        if (this.formRecord.c35 === '有') {
-          this.forbidden.c18 = false
-          this.forbidden.c36 = false
-          this.forbidden.c8 = false
-        } else {
-          this.formRecord.c18 = ''
-          this.forbidden.c18 = true
-          this.formRecord.c36 = ''
-          this.forbidden.c36 = true
-          this.formRecord.c8 = ''
-          this.forbidden.c8 = true
-        }
-
-        if (this.formRecord.c37 === '有') {
-          this.forbidden.c38 = false
-          this.forbidden.c10 = false
-        } else {
-          this.formRecord.c38 = ''
-          this.forbidden.c38 = true
-          this.formRecord.c10 = ''
-          this.forbidden.c10 = true
-        }
-
-        if (this.formRecord.c39 === '有') {
-          this.forbidden.c40 = false
-          this.forbidden.c12 = false
-        } else {
-          this.formRecord.c40 = ''
-          this.forbidden.c40 = true
-          this.formRecord.c12 = ''
-          this.forbidden.c12 = true
-        }
-
-        if (this.formRecord.c15 === '其它') {
-          this.forbidden.c16 = false
-        } else {
-          this.formRecord.c16 = ''
-          this.forbidden.c16 = true
-        }
-
-        if (this.formRecord.c25 === '其它') {
-          this.forbidden.c26 = false
-        } else {
-          this.formRecord.c26 = ''
-          this.forbidden.c26 = true
-        }
-
         return {
           c2: [
             {

@@ -590,8 +590,8 @@
                 <hr>
                 <FormItem prop="c114">
                   <RadioGroup v-model="formRecord.c114">
-                    <Radio label="喷墨" :disabled='disabledoff'>喷墨</Radio>
-                    <Radio label="针式击打技术" :disabled='disabledoff'>针式击打技术</Radio>
+                    <Radio label="喷墨" :disabled='disabledoff || forbidden.c114'>喷墨</Radio>
+                    <Radio label="针式击打技术" :disabled='disabledoff || forbidden.c114'>针式击打技术</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -2322,6 +2322,7 @@
           c82: true,
           c85: true,
           c87: true,
+          c114: true,
         },
         c7V: ''
       }
@@ -2522,6 +2523,13 @@
         } else {
           this.formRecord.c87 = ''
           this.forbidden.c87 = true
+        }
+
+        if (this.formRecord.c112 == '') {
+          this.forbidden.c114 = false
+        } else {
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
         }
 
         var c11 = parseFloat(this.formRecord.c11);
@@ -3699,7 +3707,7 @@
           ],
           c114: [
             {
-              required: true,
+              required: this.formRecord.c112 == '',
               trigger: 'change,blur',
               message: '不能为空'
             }

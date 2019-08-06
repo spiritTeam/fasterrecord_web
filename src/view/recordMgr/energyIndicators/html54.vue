@@ -2334,5 +2334,8 @@
   .overwrite1 span {
     width: auto !important;
   }
+  .ivu-checkbox-inner{
+    width: 14px !important;
+  }
 
 </style>
