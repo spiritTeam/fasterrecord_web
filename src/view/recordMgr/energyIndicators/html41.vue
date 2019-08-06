@@ -2101,15 +2101,10 @@
 <style lang="less" scoped>
   @import '../../../css/comm.css';
 
-  .overwrite2 > span > span {
-    width: 14px !important;
-  }
-
-  .overwrite1 span {
+  .overwrite1 /deep/ span {
     width: auto !important;
   }
-
-  .ivu-checkbox-inner{
+  .overwrite2 /deep/ .ivu-checkbox-inner{
     width: 14px !important;
   }
 </style>
