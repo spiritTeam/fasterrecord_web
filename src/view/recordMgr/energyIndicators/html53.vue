@@ -575,9 +575,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -814,14 +819,19 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">家用和类似用途交流换气扇 2015版</span>产品。
+         品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+         型号的 <span class="f-product">家用和类似用途交流换气扇 2015版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
+         <dt>
+           现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
+           型号是以上述型号为基础开发扩展的型号：
+         </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
           <dd>b) 其整机结构与基础型号基本相同；</dd>
           <dd>c) 其产品的能效性能与基础型号一致；</dd>
@@ -836,7 +846,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -891,6 +901,7 @@
         thisDateCV: "c16",
         // 当前能效等级 对应的C值
         thisLevelCV: "c6",
+        thisGZXHCV: "c4",// 当前规格型号 对应的C值
         modal3: false,
         modal4: false,
         modal5: false,
@@ -950,6 +961,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
+        mainModel:'',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1091,10 +1103,11 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1677,11 +1690,52 @@
               trigger: 'blur'
             }
           ],
+          c16: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
           c17: [
             {
               trigger: 'change,blur',
               required: true,
               message: '电源线插头形式不能为空'
+            }
+          ],
+          c18: [
+            {
+              required: this.formRecord.c17 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c30: [
+            {
+              required: this.formRecord.c29 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c23: [
+            {
+              required: this.formRecord.c22 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c25: [
+            {
+              required: this.formRecord.c24 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
+            }
+          ],
+          c28: [
+            {
+              required: this.formRecord.c27 === '其它',
+              trigger: 'change,blur',
+              message: '不能为空'
             }
           ],
           c19: [

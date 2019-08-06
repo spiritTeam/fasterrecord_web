@@ -39,7 +39,7 @@
             </tbody>
           </table>
         </Card>
-      </div> 
+      </div>
       <div class="part part3">
         <Card :bordered="false">
           <h2>三、能源效率标识备案信息</h2>
@@ -75,7 +75,7 @@
               <td align="center">制热量（W）</td>
               <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff || forbidden.c7'/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -93,7 +93,7 @@
               <td align="center">制热消耗功率（W）</td>
                 <td>
                  <FormItem prop="c10" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c10"  :disabled='disabledoff || forbidden.c10'/>
+                   <Input type="text" v-model="formRecord.c10"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -111,7 +111,7 @@
               <td align="center">性能系数(COP)(W/W)</td>
                <td>
                  <FormItem prop="c13" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c13"  :disabled='disabledoff || forbidden.c13'/>
+                   <Input type="text" v-model="formRecord.c13"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -281,8 +281,9 @@
                     <Radio :disabled='disabledoff' label="有">有</Radio>
                   </RadioGroup>
                 </FormItem>
+                <FormItem>辅助热源类型&nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c35">
-                   辅助热源类型 &nbsp;&nbsp;&nbsp; <Input type="text" style="width: 50%" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                   <Input type="text"v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
                 </FormItem>
               </td>
             </tr>
@@ -297,13 +298,13 @@
             <tr>
               <td align="right" rowspan="2"><span class="red">*</span>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3">
-                整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;
+                <FormItem>整机或热泵机组 &nbsp;&nbsp;&nbsp;&nbsp;</FormItem>
                  <FormItem prop="c37" >
                   <Input type="text" style="width:100px" v-model="formRecord.c37" :disabled='disabledoff'/>
-                </FormItem> &nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem> &nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c38" >
                   <Input type="text" style="width:100px" v-model="formRecord.c38" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c39" >
                   <Input type="text" style="width:100px" v-model="formRecord.c39" :disabled='disabledoff'/>
                 </FormItem>
@@ -311,13 +312,13 @@
             </tr>
             <tr>
               <td colspan="3">
-                 储水箱 &nbsp;&nbsp;&nbsp;
+                <FormItem>储水箱 &nbsp;&nbsp;&nbsp;</FormItem>
                   <FormItem prop="c40" >
                   <Input type="text" style="width:100px" v-model="formRecord.c40" :disabled='disabledoff'/>
-                </FormItem> &nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem> &nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c41" >
                   <Input type="text" style="width:100px" v-model="formRecord.c41" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;
                 <FormItem prop="c42" >
                   <Input type="text" style="width:100px" v-model="formRecord.c42" :disabled='disabledoff'/>
                 </FormItem>
@@ -327,11 +328,11 @@
             <tr>
               <td align="right"><span class="red">*</span>噪声（声压级）dB（A）</td>
               <td colspan="3">
-                整机或热泵机组  &nbsp;&nbsp;&nbsp;
+                <FormItem>整机或热泵机组  &nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c43">
                   <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
                 </FormItem>
-                &nbsp;&nbsp;&nbsp;储水箱&nbsp;&nbsp;&nbsp;
+                <FormItem>&nbsp;&nbsp;&nbsp;储水箱&nbsp;&nbsp;&nbsp;</FormItem>
                  <FormItem prop="c44">
                   <Input type="text" v-model="formRecord.c44" :disabled='disabledoff'/>
                 </FormItem>
@@ -340,11 +341,11 @@
             <tr>
               <td align="right"><span class="red">*</span>制冷剂/灌注量（Kg）</td>
               <td colspan="3">
-                制冷量  &nbsp;&nbsp;&nbsp;
+                <FormItem>制冷量  &nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c45">
                   <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
                 </FormItem>
-                &nbsp;&nbsp;&nbsp;灌注量（Kg）&nbsp;&nbsp;&nbsp;
+                <FormItem>&nbsp;&nbsp;&nbsp;灌注量（Kg）&nbsp;&nbsp;&nbsp;</FormItem>
                  <FormItem prop="c46">
                   <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
                 </FormItem>
@@ -677,9 +678,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -916,12 +922,17 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">热泵热水机（器）2013版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+          型号的 <span  class="f-product">热泵热水机（器）2013版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -938,7 +949,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -989,6 +1000,8 @@
       thisDateCV: 'c17',
       // 当前能效等级 对应的C值
       thisLevelCV: 'c16',
+      // 当前规格型号 对应的C值
+      thisGZXHCV: "c4",
       modal3: false,
       modal4: false,
       modal5: false,
@@ -1048,6 +1061,7 @@
       checkmark31: false,
       checkmark32: false,
       checkmark76: false,
+      mainModel:'',
       formRecord: {
         ec_master_kuozhan_text: '',
         c1: '',
@@ -1141,7 +1155,6 @@
         attach_list: ''
       },
       forbidden: {
-        c7: true,
         c10: true,
         c13: true,
         c35: true
@@ -1210,10 +1223,11 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1407,10 +1421,17 @@
         }
 
         return {
-         c3: [
+         c2: [
             {
               required: true,
               message: '制造单位不能为空',
+              trigger: 'change,blur'
+            }
+          ],
+         c3: [
+            {
+              required: true,
+              message: '备案方不能为空',
               trigger: 'change,blur'
             }
           ],

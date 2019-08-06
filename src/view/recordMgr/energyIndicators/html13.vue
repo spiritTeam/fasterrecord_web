@@ -264,12 +264,12 @@
               <td><i class="red">*</i>控制方式</td>
               <td colspan="3">
                 <FormItem prop="c18">
-                  <RadioGroup v-model="formRecord.c18">
-                    <Radio label="使用电源软线" :disabled='disabledoff'>使用电源软线</Radio>
-                    <Radio label="软线上带有不可重接插头" :disabled='disabledoff'>软线上带有不可重接插头</Radio>
-                    <Radio label="提供电源引线" :disabled='disabledoff'>提供电源引线</Radio>
-                    <Radio label="提供接线端子" :disabled='disabledoff'>提供接线端子</Radio>
-                  </RadioGroup>
+                  <CheckboxGroup v-model="formRecord.c18">
+                    <Checkbox label="使用电源软线" :disabled='disabledoff'>使用电源软线</Checkbox>
+                    <Checkbox label="软线上带有不可重接插头" :disabled='disabledoff'>软线上带有不可重接插头</Checkbox>
+                    <Checkbox label="提供电源引线" :disabled='disabledoff'>提供电源引线</Checkbox>
+                    <Checkbox label="提供接线端子" :disabled='disabledoff'>提供接线端子</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
             </tr>
@@ -277,7 +277,7 @@
               <td rowspan="4"><i class="red">*</i>主体结构</td>
               <td colspan="3">
                 <FormItem prop="c37">
-                  <label style="margin: 25px;">外壳:</label>
+                  <label style="margin: 25px;font-size: 14px!important;">外壳:</label>
                   <RadioGroup v-model="formRecord.c37">
                     <Radio label="金属外壳(两端部为非金属材料)" :disabled='disabledoff'>金属外壳(两端部为非金属材料)</Radio>
                     <Radio label="非金属外壳" :disabled='disabledoff'>非金属外壳</Radio>
@@ -288,7 +288,7 @@
             <tr>
               <td colspan="3">
                 <FormItem prop="c38">
-                  <label style="margin: 25px;">内胆形状:</label>
+                  <label style="margin: 25px;font-size: 14px!important;">内胆形状:</label>
                   <RadioGroup v-model="formRecord.c38">
                     <Radio label="圆形内胆" :disabled='disabledoff'>圆形内胆</Radio>
                     <Radio label="非圆形内胆" :disabled='disabledoff'>非圆形内胆</Radio>
@@ -298,24 +298,27 @@
             </tr>
             <tr>
               <td colspan="3">
-                <FormItem prop="c38">
-                  <label style="margin: 25px;">内胆材质:</label>
-                  <RadioGroup v-model="formRecord.c38">
-                    <Radio label="不锈钢内胆" :disabled='disabledoff'>不锈钢内胆</Radio>
+                <FormItem prop="c39">
+                  <label style="margin: 25px;font-size: 14px!important;">内胆材质:</label>
+                  <RadioGroup v-model="formRecord.c39">
                     <Radio label="搪瓷内胆" :disabled='disabledoff'>搪瓷内胆</Radio>
+                    <Radio label="不锈钢内胆" :disabled='disabledoff'>不锈钢内胆</Radio>
                     <Radio label="其它内胆" :disabled='disabledoff'>其它内胆</Radio>
                   </RadioGroup>
+                </FormItem>
+                <FormItem prop="c20">
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td colspan="3">
                 <FormItem prop="c19">
-                  <RadioGroup v-model="formRecord.c19">
-                    <Radio label="带有阳极保护材料" :disabled='disabledoff'>带有阳极保护材料</Radio>
-                    <Radio label="整体发泡层" :disabled='disabledoff'>整体发泡层</Radio>
-                    <Radio label="预制保温层" :disabled='disabledoff'>预制保温层</Radio>
-                  </RadioGroup>
+                  <CheckboxGroup v-model="formRecord.c19">
+                    <Checkbox label="带有阳极保护材料" :disabled='disabledoff'>带有阳极保护材料</Checkbox>
+                    <Checkbox label="整体发泡层" :disabled='disabledoff'>整体发泡层</Checkbox>
+                    <Checkbox label="预制保温层" :disabled='disabledoff'>预制保温层</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
             </tr>
@@ -342,7 +345,7 @@
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>额定电压（V）</td>
+              <td><i class="red">*</i>额定电压（V）</td>
               <td>
                 <FormItem prop="c30">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
@@ -825,9 +828,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -1064,12 +1072,17 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">储水式电热水器 2008版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+          型号的 <span  class="f-product">储水式电热水器 2008版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -1086,7 +1099,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -1098,7 +1111,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
-    </Modal>
+     </Modal>
   </div>
 </template>
 <script>
@@ -1137,6 +1150,8 @@
         thisDateCV: "c8",
         // 当前能效等级 对应的C值
         thisLevelCV: "c7",
+        // 当前规格型号 对应的C值
+        thisGZXHCV: "c4",
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1196,6 +1211,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
+        mainModel:'',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1214,8 +1230,8 @@
           c15: '',
           c16: '',
           c17: [],
-          c18: '',
-          c19: '',
+          c18: [],
+          c19: [],
           c20: '',
           c21: '',
           c22: '',
@@ -1298,6 +1314,7 @@
         forbidden: {
           c13: true,
           c15: true,
+          c20: true,
           c33: true,
           c34: true,
           c35: true
@@ -1366,10 +1383,11 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1387,11 +1405,19 @@
           this.formRecord.c13 = ''
           this.forbidden.c13 = true
         }
+
         if (this.formRecord.c14 === '其它') {
           this.forbidden.c15 = false
         } else {
           this.formRecord.c15 = ''
           this.forbidden.c15 = true
+        }
+
+        if (this.formRecord.c39 === '其它内胆') {
+          this.forbidden.c20 = false
+        } else {
+          this.formRecord.c20 = ''
+          this.forbidden.c20 = true
         }
 
         if (this.formRecord.c17.join('').indexOf('带有开关') > -1) {
@@ -1696,7 +1722,6 @@
             {
               required: true,
               message: '控制方式不能为空',
-              trigger: 'change,blur'
             }
           ],
           c37: [

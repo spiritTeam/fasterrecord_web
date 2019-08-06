@@ -101,6 +101,7 @@
             <tr>
               <td align="center">功能</td>
               <td colspan="3">
+                <i class="red">*</i>
                 <FormItem prop="c23">
                   <CheckboxGroup v-model="formRecord.c23">
                     <Checkbox label="待机功能" :disabled='disabledoff'>待机功能</Checkbox>
@@ -116,6 +117,7 @@
             <tr>
               <td align="center">通讯协议功能</td>
               <td colspan="3">
+                <i class="red">*</i>
                 <FormItem prop="c90">
                   <CheckboxGroup v-model="formRecord.c90">
                     <Checkbox label="WIFI" :disabled='disabledoff || forbidden.c90_a'>WIFI</Checkbox>
@@ -168,6 +170,7 @@
             <tr>
               <td align="center">内锅材质（金属或非金属）</td>
               <td colspan="3">
+                <i class="red">*</i>
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
                     <Radio label="金属" :disabled='disabledoff'>金属</Radio>
@@ -805,9 +808,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
-                根据企业提交的相关信息，系统直接生成能效表示样本，请提交备案后在"备案查询"功能中下载
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
+                根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -1044,14 +1052,19 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c3}}</span>
-          型号的 <span  class="f-product">电饭锅 2017版</span>产品。
+         品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c3}}</span>
+         型号的 <span class="f-product">电饭锅 2017版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
+         <dt>
+           现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
+           型号是以上述型号为基础开发扩展的型号：
+         </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
           <dd>b) 其整机结构与基础型号基本相同；</dd>
           <dd>c) 其产品的能效性能与基础型号一致；</dd>
@@ -1066,7 +1079,7 @@
           <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
+          <dd>现申请该型号产品的备案信息如下变更：<br>
               (描述信息产品技术参数等信息)
               <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
               <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
@@ -1116,6 +1129,7 @@ import {
       thisDateCV: 'c13',
       // 当前能效等级 对应的C值
       thisLevelCV: 'c29',
+      thisGZXHCV: "c3",// 当前规格型号 对应的C值
       modal3: false,
       modal4: false,
       modal5: false,
@@ -1175,6 +1189,7 @@ import {
       checkmark31: false,
       checkmark32: false,
       checkmark76: false,
+      mainModel:'',
       formRecord: {
         ec_master_kuozhan_text: '',
         c1: '',
@@ -1352,10 +1367,11 @@ import {
   },
   computed: {
     ...mapGetters([
-        'pageType'
+      'pageType',
+      'recordno'
     ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
     },
     pltId() {
       return this.$store.state.app.pltId
@@ -1982,21 +1998,21 @@ import {
         c27: [
           {
             required: true,
-            message: '外形尺寸长不能为空',
+            message: '长不能为空',
             trigger: 'change,blur'
           }
         ],
         c37: [
           {
             required: true,
-            message: '外形尺寸宽不能为空',
+            message: '宽不能为空',
             trigger: 'change,blur'
           }
         ],
         c38: [
           {
             required: true,
-            message: '外形尺寸高不能为空',
+            message: '高不能为空',
             trigger: 'change,blur'
           }
         ],

@@ -22,8 +22,8 @@
           <table>
             <thead>
             <tr>
-               <th><i class="red">*</i>实验室名称</th>
-               <th><i class="red">*</i>检测报告条形码</th>
+              <th><i class="red">*</i>实验室名称</th>
+              <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
@@ -85,7 +85,7 @@
               <td>额定热水热负荷</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c8'/>
                 </FormItem>
               </td>
               <td>
@@ -103,7 +103,7 @@
               <td>额定供暖热负荷</td>
               <td>
                 <FormItem prop="c11">
-                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.c11'/>
                 </FormItem>
               </td>
               <td>
@@ -121,7 +121,7 @@
               <td>额定热负荷热水热效率</td>
               <td>
                 <FormItem prop="c14">
-                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c14" :disabled='disabledoff || forbidden.c14'/>
                 </FormItem>
               </td>
               <td>
@@ -139,7 +139,7 @@
               <td>50%额定热负荷热水热效率</td>
               <td>
                 <FormItem prop="c17">
-                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c17" :disabled='disabledoff || forbidden.c17'/>
                 </FormItem>
               </td>
               <td>
@@ -157,7 +157,7 @@
               <td>额定热负荷供暖热效率</td>
               <td>
                 <FormItem prop="c20">
-                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c20'/>
                 </FormItem>
               </td>
               <td>
@@ -175,7 +175,7 @@
               <td>30%额定热负荷供暖热效率</td>
               <td>
                 <FormItem prop="c23">
-                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c23'/>
                 </FormItem>
               </td>
               <td>
@@ -231,7 +231,7 @@
                       </RadioGroup>
                     </FormItem>
                     ）<br><br>
-                    <Radio label="天然气" :disabled='disabledoff'> 天然气</Radio>
+                    <Radio label="天然气" :disabled='disabledoff'>天然气</Radio>
                     （
                     <FormItem prop="c31">
                       <RadioGroup v-model="formRecord.c31">
@@ -386,7 +386,7 @@
             <tr>
               <td>热水系统自动恒温功能</td>
               <td>
-                <FormItem prop="c48">
+                <FormItem prop="c48" style="width: 100%">
                   <RadioGroup v-model="formRecord.c48">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -397,7 +397,7 @@
             <tr>
               <td>热水系统温度显示</td>
               <td>
-                <FormItem prop="c49">
+                <FormItem prop="c49" style="width: 100%">
                   <RadioGroup v-model="formRecord.c49">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -408,7 +408,7 @@
             <tr>
               <td>燃气稳压装置</td>
               <td>
-                <FormItem prop="c50">
+                <FormItem prop="c50" style="width: 100%">
                   <RadioGroup v-model="formRecord.c50">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -419,7 +419,7 @@
             <tr>
               <td>烟气倒流保护装置</td>
               <td>
-                <FormItem prop="c51">
+                <FormItem prop="c51" style="width: 100%">
                   <RadioGroup v-model="formRecord.c51">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -490,8 +490,7 @@
                     <br>
                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                     <FormItem prop="c57">
-                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'
-                             style="width:80px;"/>
+                      <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c57'/>
                     </FormItem>
                   </CheckboxGroup>
                 </FormItem>
@@ -730,7 +729,9 @@
               <td><span class="red">*</span>产品正面图片</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath24">
+                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -742,13 +743,18 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark24" />
+                    <Icon type="ios-checkmark" v-show="checkmark24"/>
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -756,7 +762,9 @@
               <td>OEM声明<p class="red" v-if="pageType!='view'">请生产者根据自身情况自行上传该附件</p></td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath26">
+                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -768,14 +776,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark26" />
+                    <Icon type="ios-checkmark" v-show="checkmark26"/>
                   </Upload>
                 </div>
               </td>
-              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p ></td>
+              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p></td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath27">
+                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -788,7 +798,7 @@
                     :action="uploadUrl">
 
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark27" />
+                    <Icon type="ios-checkmark" v-show="checkmark27"/>
                   </Upload>
                 </div>
               </td>
@@ -797,7 +807,9 @@
               <td>品牌使用授权书</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath28">
+                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -809,14 +821,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark28" />
+                    <Icon type="ios-checkmark" v-show="checkmark28"/>
                   </Upload>
                 </div>
               </td>
               <td>委托代理文件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath29">
+                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -828,7 +842,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark29" />
+                    <Icon type="ios-checkmark" v-show="checkmark29"/>
                   </Upload>
                 </div>
               </td>
@@ -839,7 +853,9 @@
               </td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath30">
+                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -851,7 +867,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark30" />
+                    <Icon type="ios-checkmark" v-show="checkmark30"/>
                   </Upload>
                 </div>
               </td>
@@ -860,7 +876,9 @@
               </td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath31">
+                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -872,7 +890,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark31" />
+                    <Icon type="ios-checkmark" v-show="checkmark31"/>
                   </Upload>
                 </div>
               </td>
@@ -883,7 +901,9 @@
               </td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath32">
+                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -895,14 +915,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark32" />
+                    <Icon type="ios-checkmark" v-show="checkmark32"/>
                   </Upload>
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
               <td>（PDF/JPG/PNG）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath76">
+                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     id=76
@@ -915,13 +937,13 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark76" />
+                    <Icon type="ios-checkmark" v-show="checkmark76"/>
                   </Upload>
                 </div>
               </td>
             </tr>
           </table>
-          <p class="red" v-if="pageType!='view'">注：<br />1、标“*”内容为必填项；<br />2、所有附件上传文件大小需要控制在2M以内。</p >
+          <p class="red" v-if="pageType!='view'">注：<br/>1、标“*”内容为必填项；<br/>2、所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div v-if="pageType!='view'">
@@ -939,10 +961,12 @@
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
-      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看"
+           @on-ok="submitRecord">
+      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">
+        以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
-        <table >
+        <table>
           <thead>
           <tr>
             <th>名称</th>
@@ -951,7 +975,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(item,idx) in boolFlag" :key='idx' >
+          <tr v-for="(item,idx) in boolFlag" :key='idx'>
             <td width="50%">
               {{item.recName}}
             </td>
@@ -966,64 +990,73 @@
         </table>
       </div>
       <p class="red submitTips" v-if="!boolFlag.length">请再次确认备案信息填写无误！</p>
-      <p  class="red submitTips" >若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
+      <p class="red submitTips">若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
       <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
-      <img :src="templatePic" />
+      <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
+             internalinstanceid="81"/>
     </Modal>
-     <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
-       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
-       <p class="org">中国标准化研究院能效标识管理中心：</p>
-       <div class="pro-info">
-          我 <span  class="f-company">{{formRecord.c1}}</span>
-          公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">家用燃气快速热水器燃气采暖热水炉 2015版</span>产品。
-       </div>
-       <dl v-if="pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
-          <dd>a) 其与基础型号同属一个系列；</dd>
-          <dd>b) 其整机结构与基础型号基本相同；</dd>
-          <dd>c) 其产品的能效性能与基础型号一致；</dd>
-          <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
-              <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
-          </dd>
-          <dd>
-              特提出免检备案申请，扩展型号的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
-          </dd>
-          <dd>请中国标准化研究院能效标识管理中心核准。</dd>
+    <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
+      <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
+      <p class="org">中国标准化研究院能效标识管理中心：</p>
+      <div class="pro-info">
+        我 <span class="f-company">{{formRecord.c1}}</span>
+        公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
+        品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+        型号的 <span class="f-product">家用燃气快速热水器燃气采暖热水炉 2015版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
+      </div>
+      <div v-if="pageType==='extend'" class="org regress">
+        <p><span></span>正在办理能效标识备案</p>
+        <p><span class="bgs"></span>已通过能效标识备案</p>
+      </div>
+      <div class="org">备案编号:{{recordno}}</div>
+      <dl v-if="pageType==='extend'">
+        <dt>
+          现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
+          型号是以上述型号为基础开发扩展的型号：
+        </dt>
+        <dd>a) 其与基础型号同属一个系列；</dd>
+        <dd>b) 其整机结构与基础型号基本相同；</dd>
+        <dd>c) 其产品的能效性能与基础型号一致；</dd>
+        <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
+        </dd>
+        <dd>
+          特提出免检备案申请，扩展型号的初始使用日期：
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+        </dd>
+        <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
       <dl v-if="pageType==='update'">
-          <dd>现申请该幸好申请的备案信息如下变更：<br>
-              (描述信息产品技术参数等信息)
-              <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
-              <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
-          </dd>
-          <dd>
-              该型号的相关信息变更后的初始使用日期：
-              <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
-          </dd>
-          <dd>请中国标准化研究院能效标识管理中心核准。</dd>
+        <dd>现申请该型号产品的备案信息如下变更：<br>
+          (描述信息产品技术参数等信息)
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
+        </dd>
+        <dd>
+          该型号的相关信息变更后的初始使用日期：
+          <span class="f-date">{{formatDate(formRecord[thisDateCV])}}</span>
+        </dd>
+        <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
+      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}
+      </div>
     </Modal>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
   import {
     getImgPath,
     XfillExtendData,
@@ -1038,19 +1071,22 @@
     XformatDate,
     threeDecimals,
     twoDecimals,
+    numberOr1,
     oneDecimals,
+    check,
     significantDigits22,
     significantDigits33
   } from '@/libs/utilExt'
 
   export default {
     data() {
-      const timeDate=parseInt(this.$store.state.app.dateinit);
+      const timeDate = parseInt(this.$store.state.app.dateinit);
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: 'c26',
         // 当前能效等级 对应的C值
         thisLevelCV: 'c7',
+        thisGZXHCV: "c4",// 当前规格型号 对应的C值
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1111,6 +1147,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
+        mainModel: '',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1209,20 +1246,27 @@
           c30: true,
           c31: true,
           c32: true,
+          c8: true,
           c9: true,
           c10: true,
+          c11: true,
           c12: true,
           c13: true,
+          c14: true,
           c15: true,
           c16: true,
+          c17: true,
           c18: true,
           c19: true,
+          c20: true,
           c21: true,
           c22: true,
+          c23: true,
           c24: true,
           c25: true,
 
-        }
+        },
+        c29: ''
       }
     },
     mounted() {
@@ -1283,10 +1327,11 @@
     },
     computed: {
       ...mapGetters([
-        'pageType'
+        'pageType',
+        'recordno'
       ]),
-      disabledoff(){
-        return  this.pageType==='extend';
+      disabledoff() {
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1322,17 +1367,17 @@
           this.formRecord.c36 = ''
           this.forbidden.c36 = true
         }
-        if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
-          this.forbidden.c43 = false
-        } else {
-          this.formRecord.c43 = ''
-          this.forbidden.c43 = true
-        }
         if (this.formRecord.c41.join('').indexOf('热水') > -1) {
           this.forbidden.c42 = false
         } else {
           this.formRecord.c42 = ''
           this.forbidden.c42 = true
+        }
+        if (this.formRecord.c41.join('').indexOf('供暖') > -1) {
+          this.forbidden.c43 = false
+        } else {
+          this.formRecord.c43 = ''
+          this.forbidden.c43 = true
         }
         if (this.formRecord.c56.join('').indexOf('其它') > -1) {
           this.forbidden.c57 = false
@@ -1342,54 +1387,78 @@
         }
 
         if (this.formRecord.c27 === '家用燃气快速热水器') {
+          this.forbidden.c8 = false
           this.forbidden.c9 = false
           this.forbidden.c10 = false
+          this.forbidden.c11 = true
+          this.formRecord.c11 = ''
           this.forbidden.c12 = true
           this.formRecord.c12 = ''
           this.forbidden.c13 = true
           this.formRecord.c13 = ''
+          this.forbidden.c14 = false
           this.forbidden.c15 = false
           this.forbidden.c16 = false
+          this.forbidden.c17 = false
           this.forbidden.c18 = false
           this.forbidden.c19 = false
+          this.forbidden.c20 = true
+          this.formRecord.c20 = ''
           this.forbidden.c21 = true
           this.formRecord.c21 = ''
           this.forbidden.c22 = true
           this.formRecord.c22 = ''
+          this.forbidden.c23 = true
+          this.formRecord.c23 = ''
           this.forbidden.c24 = true
           this.formRecord.c24 = ''
           this.forbidden.c25 = true
           this.formRecord.c25 = ''
         } else if (this.formRecord.c27 === '燃气采暖热水炉(单采暖型)') {
+          this.forbidden.c8 = true
+          this.formRecord.c8 = ''
           this.forbidden.c9 = true
           this.formRecord.c9 = ''
           this.forbidden.c10 = true
           this.formRecord.c10 = ''
+          this.forbidden.c11 = false
           this.forbidden.c12 = false
           this.forbidden.c13 = false
+          this.forbidden.c14 = true
+          this.formRecord.c14 = ''
           this.forbidden.c15 = true
           this.formRecord.c15 = ''
           this.forbidden.c16 = true
           this.formRecord.c16 = ''
+          this.forbidden.c17 = true
+          this.formRecord.c17 = ''
           this.forbidden.c18 = true
           this.formRecord.c18 = ''
           this.forbidden.c19 = true
           this.formRecord.c19 = ''
+          this.forbidden.c20 = false
           this.forbidden.c21 = false
           this.forbidden.c22 = false
+          this.forbidden.c23 = false
           this.forbidden.c24 = false
           this.forbidden.c25 = false
         } else if (this.formRecord.c27 === '燃气采暖热水炉(两用型)') {
+          this.forbidden.c8 = false
           this.forbidden.c9 = false
           this.forbidden.c10 = false
+          this.forbidden.c11 = false
           this.forbidden.c12 = false
           this.forbidden.c13 = false
+          this.forbidden.c14 = false
           this.forbidden.c15 = false
           this.forbidden.c16 = false
+          this.forbidden.c17 = false
           this.forbidden.c18 = false
           this.forbidden.c19 = false
+          this.forbidden.c20 = false
           this.forbidden.c21 = false
           this.forbidden.c22 = false
+          this.forbidden.c23 = false
           this.forbidden.c24 = false
           this.forbidden.c25 = false
         }
@@ -1408,6 +1477,12 @@
           this.forbidden.c32 = false
         }
 
+        if (this.c29 != "" && this.c29 !== this.formRecord.c29) {
+          this.formRecord.c30 = ""
+          this.formRecord.c31 = ""
+          this.formRecord.c32 = ""
+        }
+        this.c29 = this.formRecord.c29
 
         var nxdj = "";
         var n1 = "";
@@ -1598,6 +1673,7 @@
             callback()
           }
         }
+
         return {
           c1: [
             {
@@ -1639,79 +1715,135 @@
           ],
           c8: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c8,
               message: '额定热水热负荷额定值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c8) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c9: [
             {
               trigger: 'change,blur', required: !this.forbidden.c9,
               message: '额定热水热负荷实测值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c9) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c11: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c11,
               message: '额定供暖热负荷额定值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c11) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c12: [
             {
               trigger: 'change,blur', required: !this.forbidden.c12,
               message: '额定供暖热负荷实测值不能为空'
+            },
+            {
+              validator : (rule, value, callback) => {
+                parseFloat(this.formRecord.c12) > 70 ? callback('不能大于70'):callback()
+              },
+              trigger: 'change,blur'
             }
           ],
           c14: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c14,
               message: '额定热负荷热水热效率额定值不能为空'
             },
+            {
+              validator:!this.forbidden.c14? numberOr1 : check,
+              trigger: 'change,blur'
+            }
           ],
           c15: [
             {
               trigger: 'change,blur', required: !this.forbidden.c15,
               message: '额定热负荷热水热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c15? this.formRecord.c14.toString().split(".")[1] != undefined && this.formRecord.c14.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c17: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c17,
               message: '50%额定热负荷热水热效率额定值不能为空'
+            },
+            {
+              validator:!this.forbidden.c17? numberOr1 : check,
+              trigger: 'change,blur'
             }
           ],
           c18: [
             {
               trigger: 'change,blur', required: !this.forbidden.c18,
               message: '50%额定热负荷热水热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c18? this.formRecord.c17.toString().split(".")[1] != undefined && this.formRecord.c17.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c20: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c20,
               message: '额定热负荷供暖热效率额定值不能为空'
+            },
+            {
+              validator:!this.forbidden.c20? numberOr1 : check,
+              trigger: 'change,blur'
             }
           ],
           c21: [
             {
               trigger: 'change,blur', required: !this.forbidden.c21,
               message: '额定热负荷供暖热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c21? this.formRecord.c20.toString().split(".")[1] != undefined && this.formRecord.c20.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c23: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: !this.forbidden.c23,
               message: '30%额定热负荷供暖热效率额定值不能为空'
+            },
+            {
+              validator:!this.forbidden.c23? numberOr1 : check,
+              trigger: 'change,blur'
             }
           ],
           c24: [
             {
               trigger: 'change,blur', required: !this.forbidden.c24,
               message: '30%额定热负荷供暖热效率实测值不能为空'
+            },
+            {
+              validator : !this.forbidden.c24? this.formRecord.c23.toString().split(".")[1] != undefined && this.formRecord.c23.toString().split(".")[1].length == 1 ? twoDecimals: oneDecimals:check,
+              trigger: 'change,blur'
             }
           ],
           c26: [
             {
-              trigger: 'change,blur', required: this.formRecord.c25 === '2',
+              required: true,
               message: '初始使用日期不能为空'
             }
           ],
@@ -1735,19 +1867,19 @@
           ],
           c30: [
             {
-              trigger: 'change,blur', required: this.formRecord.c29 === '人工煤气',
+              trigger: 'change,blur', required: !this.forbidden.c30,
               message: '人工煤气不能为空'
             }
           ],
           c31: [
             {
-              trigger: 'change,blur', required: this.formRecord.c29 === '天然气',
+              trigger: 'change,blur', required: !this.forbidden.c31,
               message: '天然气不能为空'
             }
           ],
           c32: [
             {
-              trigger: 'change,blur', required: this.formRecord.c29 === '液化石油气',
+              trigger: 'change,blur', required: !this.forbidden.c32,
               message: '液化石油气不能为空'
             }
           ],
@@ -1789,7 +1921,7 @@
           ],
           c41: [
             {
-              trigger: 'change,blur', required: true,
+              required: true,
               message: '系统适用水压不能为空'
             }
           ],
@@ -1855,7 +1987,7 @@
           ],
           c56: [
             {
-              trigger: 'change,blur', required: true,
+              required: true,
               message: '安全装置不能为空'
             }
           ],
@@ -1868,19 +2000,19 @@
           c58: [
             {
               trigger: 'change,blur', required: true,
-              message: '外形尺寸(长)不能为空'
+              message: '长不能为空'
             }
           ],
           c59: [
             {
               trigger: 'change,blur', required: true,
-              message: '外形尺寸(宽)不能为空'
+              message: '宽不能为空'
             }
           ],
           c60: [
             {
               trigger: 'change,blur', required: true,
-              message: '外形尺寸(高)不能为空'
+              message: '高不能为空'
             }
           ],
           c61: [
