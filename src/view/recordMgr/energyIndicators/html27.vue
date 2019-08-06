@@ -162,7 +162,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right"><span class="red">*</span>附加功能</td>
+              <td align="right">附加功能</td>
               <td colspan="3">
                 <FormItem prop="c17">
                     <CheckboxGroup  v-model="formRecord.c17">
@@ -173,11 +173,13 @@
                       <Checkbox :disabled='disabledoff' label="双调谐器">双调谐器</Checkbox>
                       <Checkbox :disabled='disabledoff' label="有线调制解调器">有线调制解调器</Checkbox>
                       <br/>
-                      <Checkbox :disabled='disabledoff' label="以太网接口共">以太网接口共</Checkbox>
+                      <Checkbox :disabled='disabledoff' label="以太网接口">以太网接口</Checkbox>
+                      共
                       <FormItem prop="c18" style="width:70px">
                         <Input type="text" style="width:50px" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c18'/>个
                       </FormItem>
-                      <Checkbox :disabled='disabledoff' label="USB接口共">USB接口共</Checkbox>
+                      <Checkbox :disabled='disabledoff' label="USB接口">USB接口</Checkbox>
+                      共
                       <FormItem prop="c19" style="width:70px">
                         <Input type="text"  style="width:50px" v-model="formRecord.c19" :disabled='disabledoff || forbidden.c19'/>个
                       </FormItem>
@@ -242,10 +244,10 @@
               <td colspan="3">
                 <FormItem prop="c26">
                   <Input type="text" style="width:100px" v-model="formRecord.c26" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c29">
                   <Input type="text" style="width:100px" v-model="formRecord.c29" :disabled='disabledoff'/>
-                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>&nbsp;&nbsp;&nbsp;&nbsp;×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c30">
                   <Input type="text" style="width:100px" v-model="formRecord.c30" :disabled='disabledoff'/>
                 </FormItem>
@@ -560,9 +562,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -799,12 +806,17 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c3}}</span>
-          型号的 <span  class="f-product">数字电视接收器 2010版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c3}}</span>
+          型号的 <span  class="f-product">数字电视接收器 2010版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -872,6 +884,8 @@
       thisDateCV: 'c14',
       // 当前能效等级 对应的C值
       thisLevelCV: 'c28',
+      // 当前规格型号 对应的C值
+      thisGZXHCV: "c3",
       modal3: false,
       modal4: false,
       modal5: false,
@@ -1077,7 +1091,7 @@
         'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1095,13 +1109,13 @@
           this.formRecord.c22 = ''
           this.forbidden.c22 = true
         }
-        if (this.formRecord.c17.join('').indexOf('以太网接口共') > -1) {
+        if (this.formRecord.c17.join('').indexOf('以太网接口') > -1) {
           this.forbidden.c18 = false
         } else {
           this.formRecord.c18 = ''
           this.forbidden.c18 = true
         }
-        if (this.formRecord.c17.join('').indexOf('USB接口共') > -1) {
+        if (this.formRecord.c17.join('').indexOf('USB接口') > -1) {
           this.forbidden.c19 = false
         } else {
           this.formRecord.c19 = ''
@@ -1116,28 +1130,28 @@
 
         var res = 0;
         var val = this.formRecord.c17;
-        if (val == "内部硬盘") {
+        if (val.join('').indexOf('内部硬盘') > -1) {
             res = res + 2.2;
         }
-        if (val == "高清输出功能") {
+        if (val.join('').indexOf('高清输出功能') > -1) {
             res = res + 3.0;
         }
-        if (val == "HDMI接口") {
+        if (val.join('').indexOf('HDMI接口') > -1) {
             res = res + 1.0;
         }
-        if (val == "ADSL调制解调器") {
+        if (val.join('').indexOf('ADSL调制解调器') > -1) {
             res = res + 2.0;
         }
-        if (val == "双调谐器") {
+        if (val.join('').indexOf('双调谐器') > -1) {
             res = res + 2.0;
         }
-        if (val == "有线调制解调器") {
+        if (val.join('').indexOf('有线调制解调器') > -1) {
             res = res + 4.5;
         }
-        if (val == "以太网接口") {
+        if (val.join('').indexOf('以太网接口') > -1) {
             res = res + 0.4 * parseInt(this.formRecord.c18);
         }
-        if (val == "USB接口") {
+        if (val.join('').indexOf('USB接口') > -1) {
             res = res + 0.3 * parseInt(this.formRecord.c19);
         }
 
@@ -1331,23 +1345,23 @@
           ],
           c18: [
             {
-              required: this.formRecord.c17.join('').indexOf('以太网接口共') > -1,
+              required: this.formRecord.c17.join('').indexOf('以太网接口') > -1,
               trigger: 'change,blur',
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c17.join('').indexOf('以太网接口共') > -1 ? numberCheck : check,
+              validator: this.formRecord.c17.join('').indexOf('以太网接口') > -1 ? numberCheck : check,
               trigger: 'change,blur'
             }
           ],
           c19: [
             {
-              required: this.formRecord.c17.join('').indexOf('USB接口共') > -1,
+              required: this.formRecord.c17.join('').indexOf('USB接口') > -1,
               trigger: 'change,blur',
               message: '不能为空'
             },
             {
-              validator: this.formRecord.c17.join('').indexOf('USB接口共') > -1 ? numberCheck : check,
+              validator: this.formRecord.c17.join('').indexOf('USB接口') > -1 ? numberCheck : check,
               trigger: 'change,blur'
             }
           ],

@@ -1,9 +1,9 @@
 /*
- * 家用和类似用途微波炉 2017版
- * 创建日期：2019年6月14号
- * 创建人：wlq
- * 1556854411400282556
- */
+* 家用和类似用途微波炉 2017版
+* 创建日期：2019年6月14号
+* 创建人：wlq
+* 1556854411400282556
+*/
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
@@ -23,17 +23,17 @@
           <table>
             <thead>
             <tr>
-               <th><i class="red">*</i>实验室名称</th>
-               <th><i class="red">*</i>检测报告条形码</th>
+              <th><i class="red">*</i>实验室名称</th>
+              <th><i class="red">*</i>检测报告条形码</th>
             </tr>
             </thead>
             <tbody>
             <tr>
               <td width="40%">
-                <Input type="text" :value="$store.state.app.labName" />
+                <Input type="text" :value="$store.state.app.labName"/>
               </td>
               <td>
-                <Input type="text" :value="$store.state.app.barcode" />
+                <Input type="text" :value="$store.state.app.barcode"/>
               </td>
             </tr>
             </tbody>
@@ -72,7 +72,7 @@
             <tr>
               <td align="center"><span class="red">*</span>待机功能</td>
               <td>
-                 <FormItem prop="c35">
+                <FormItem prop="c35">
                   <RadioGroup v-model="formRecord.c35">
                     <Radio :disabled='disabledoff' label="有">有</Radio>
                     <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -81,7 +81,7 @@
               </td>
               <td align="center"><span class="red">*</span> 关机功能</td>
               <td>
-                 <FormItem prop="c37">
+                <FormItem prop="c37">
                   <RadioGroup v-model="formRecord.c37">
                     <Radio :disabled='disabledoff' label="有">有</Radio>
                     <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -91,12 +91,16 @@
             </tr>
             <tr>
               <td align="center"><span class="red">*</span> 待机模式（信息或状态显示）</td>
-               <td colspan="3">
-                 <FormItem prop="c18">
+              <td colspan="3">
+                <FormItem prop="c18">
                   <RadioGroup v-model="formRecord.c18">
-                    <Radio :disabled='disabledoff || forbidden.c18' label="待机模式时具有信息或状态显示（包括时钟）功能">待机模式时具有信息或状态显示（包括时钟）功能</Radio>
+                    <Radio :disabled='disabledoff || forbidden.c18' label="待机模式时具有信息或状态显示（包括时钟）功能">
+                      待机模式时具有信息或状态显示（包括时钟）功能
+                    </Radio>
                     <br/>
-                    <Radio :disabled='disabledoff || forbidden.c18' label="待机模式时没有信息或状态显示（包括时钟）功能">待机模式时没有信息或状态显示（包括时钟）功能</Radio>
+                    <Radio :disabled='disabledoff || forbidden.c18' label="待机模式时没有信息或状态显示（包括时钟）功能">
+                      待机模式时没有信息或状态显示（包括时钟）功能
+                    </Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -104,7 +108,7 @@
             <tr>
               <td align="center"><span class="red">*</span> 烧烤功能</td>
               <td colspan="3">
-                 <FormItem prop="c39">
+                <FormItem prop="c39">
                   <RadioGroup v-model="formRecord.c39">
                     <Radio :disabled='disabledoff' label="有">有</Radio>
                     <Radio :disabled='disabledoff' label="无">无</Radio>
@@ -115,88 +119,89 @@
             <tr>
               <td align="center">通讯协议功能</td>
               <td colspan="3">
-                 <FormItem prop="c100">
-                    <CheckboxGroup  v-model="formRecord.c100">
-                      <Checkbox :disabled='disabledoff' label="WIFI">WIFI</Checkbox>
-                      <Checkbox :disabled='disabledoff' label="蓝牙">蓝牙</Checkbox>
-                      <Checkbox :disabled='disabledoff' label="无">无</Checkbox>
-                      <Checkbox :disabled='disabledoff' label="其它">其它</Checkbox>
-                    </CheckboxGroup>
-                </FormItem>
-                <FormItem prop="c101" style="margin-top:-34px; margin-left:227px">
-                   <Input type="text" style="width:20%" v-model="formRecord.c101" :disabled='disabledoff || forbidden.c101'/>
+                <FormItem prop="c100">
+                  <CheckboxGroup v-model="formRecord.c100">
+                    <Checkbox :disabled='disabledoff || forbidden.c100' label="WIFI">WIFI</Checkbox>
+                    <Checkbox :disabled='disabledoff || forbidden.c100' label="蓝牙">蓝牙</Checkbox>
+                    <Checkbox :disabled='disabledoff || forbidden.c100' label="其它">其它</Checkbox>
+                    <FormItem prop="c101" style="margin-top: -33px;margin-left: 175px;width: 150px">
+                      <Input type="text" v-model="formRecord.c101"
+                             :disabled='disabledoff || forbidden.c101 || forbidden.c100'/>
+                    </FormItem>
+                    <Checkbox :disabled='disabledoff' style="margin-left: 345px;position: relative;top: -33px;" label="无">无</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td align="center">效率值（%） </td>
-               <td>
-                 <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff || forbidden.c5'/>
-                 </FormItem>
+              <td align="center">效率值（%）</td>
+              <td>
+                <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c5" :disabled='disabledoff || forbidden.c5'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c34" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c34" :disabled='disabledoff || forbidden.c34'/>
-                 </FormItem>
+                <FormItem prop="c34" label="实测值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c34" :disabled='disabledoff || forbidden.c34'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c6" label="备注："  style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c6" :disabled='disabledoff || forbidden.c6'/>
+                <FormItem prop="c6" label="备注：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c6" :disabled='disabledoff || forbidden.c6'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="center">待机功率（W）</td>
-               <td>
-                 <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff || forbidden.c7'/>
-                 </FormItem>
+              <td>
+                <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c7" :disabled='disabledoff || forbidden.c7'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c36" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c36'/>
-                 </FormItem>
+                <FormItem prop="c36" label="实测值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c36'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c8" label="备注："  style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c8'/>
+                <FormItem prop="c8" label="备注：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c8'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
-              <td align="center">关机功率（W） </td>
-               <td>
-                 <FormItem prop="c9" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c9"  :disabled='disabledoff || forbidden.c9'/>
-                 </FormItem>
+              <td align="center">关机功率（W）</td>
+              <td>
+                <FormItem prop="c9" label="标注值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c9" :disabled='disabledoff || forbidden.c9'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c38" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c38" :disabled='disabledoff || forbidden.c38'/>
-                 </FormItem>
+                <FormItem prop="c38" label="实测值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c38" :disabled='disabledoff || forbidden.c38'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c10" label="备注："  style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c10" :disabled='disabledoff || forbidden.c10'/>
+                <FormItem prop="c10" label="备注：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c10" :disabled='disabledoff || forbidden.c10'/>
                 </FormItem>
               </td>
             </tr>
             <tr>
               <td align="center">烧烤能耗（W·h）</td>
-               <td>
-                 <FormItem prop="c11" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c11"  :disabled='disabledoff || forbidden.c11'/>
-                 </FormItem>
+              <td>
+                <FormItem prop="c11" label="标注值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.c11'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c40" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c40" :disabled='disabledoff || forbidden.c40'/>
-                 </FormItem>
+                <FormItem prop="c40" label="实测值：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c40" :disabled='disabledoff || forbidden.c40'/>
+                </FormItem>
               </td>
               <td>
-                 <FormItem prop="c12" label="备注："  style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c12'/>
+                <FormItem prop="c12" label="备注：" style="width:100%;" :label-width="80">
+                  <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c12'/>
                 </FormItem>
               </td>
             </tr>
@@ -256,7 +261,7 @@
                 </FormItem>
               </td>
             </tr>
-             <tr>
+            <tr>
               <td align="right"><span class="red">*</span>热断路器</td>
               <td>
                 <FormItem prop="c21" style="width:100%">
@@ -340,7 +345,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right"><span class="red">*</span>微波额定输出功率（W） </td>
+              <td align="right"><span class="red">*</span>微波额定输出功率（W）</td>
               <td>
                 <FormItem prop="c28" style="width: 100%">
                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
@@ -364,10 +369,12 @@
               <td>
                 <FormItem prop="c31" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c31" :disabled='disabledoff'/>
-                </FormItem>x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>
+                ×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c44" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c44" :disabled='disabledoff'/>
-                </FormItem>x&nbsp;&nbsp;&nbsp;&nbsp;
+                </FormItem>
+                ×&nbsp;&nbsp;&nbsp;&nbsp;
                 <FormItem prop="c45" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c45" :disabled='disabledoff'/>
                 </FormItem>
@@ -754,7 +761,9 @@
               <td><span class="red">*</span>产品正面图片</td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath24"><Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath24">
+                  <Button @click="showImg(uploadParam.filePath24)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -766,13 +775,18 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark24" />
+                    <Icon type="ios-checkmark" v-show="checkmark24"/>
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -780,7 +794,9 @@
               <td>OEM声明<p class="red" v-if="pageType!='view'">请生产者根据自身情况自行上传该附件</p></td>
               <td>(JPG/PNG)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath26"><Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath26">
+                  <Button @click="showImg(uploadParam.filePath26)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -792,14 +808,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark26" />
+                    <Icon type="ios-checkmark" v-show="checkmark26"/>
                   </Upload>
                 </div>
               </td>
-              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p ></td>
+              <td>关系证明 <p class="red" v-if="pageType!='view'">境外生产者请上传该附件</p></td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath27"><Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath27">
+                  <Button @click="showImg(uploadParam.filePath27)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -812,7 +830,7 @@
                     :action="uploadUrl">
 
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark27" />
+                    <Icon type="ios-checkmark" v-show="checkmark27"/>
                   </Upload>
                 </div>
               </td>
@@ -821,7 +839,9 @@
               <td>品牌使用授权书</td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath28"><Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath28">
+                  <Button @click="showImg(uploadParam.filePath28)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -833,14 +853,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark28" />
+                    <Icon type="ios-checkmark" v-show="checkmark28"/>
                   </Upload>
                 </div>
               </td>
               <td>委托代理文件</td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath29"><Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath29">
+                  <Button @click="showImg(uploadParam.filePath29)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -852,7 +874,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark29" />
+                    <Icon type="ios-checkmark" v-show="checkmark29"/>
                   </Upload>
                 </div>
               </td>
@@ -863,7 +885,9 @@
               </td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath30"><Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath30">
+                  <Button @click="showImg(uploadParam.filePath30)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -875,7 +899,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark30" />
+                    <Icon type="ios-checkmark" v-show="checkmark30"/>
                   </Upload>
                 </div>
               </td>
@@ -884,7 +908,9 @@
               </td>
               <td>（PDF）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath31"><Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath31">
+                  <Button @click="showImg(uploadParam.filePath31)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -896,7 +922,7 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark31" />
+                    <Icon type="ios-checkmark" v-show="checkmark31"/>
                   </Upload>
                 </div>
               </td>
@@ -907,7 +933,9 @@
               </td>
               <td>(PDF)</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath32"><Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath32">
+                  <Button @click="showImg(uploadParam.filePath32)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     :show-upload-list=false
@@ -919,14 +947,16 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark32" />
+                    <Icon type="ios-checkmark" v-show="checkmark32"/>
                   </Upload>
                 </div>
               </td>
               <td><span class="red">*</span>铭牌照片</td>
               <td>（PDF/JPG/PNG）</td>
               <td>
-                <div class="lookOver" v-show="uploadParam.filePath76"><Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline"  type="primary">查看</Button></div>
+                <div class="lookOver" v-show="uploadParam.filePath76">
+                  <Button @click="showImg(uploadParam.filePath76)" icon="ios-glasses-outline" type="primary">查看</Button>
+                </div>
                 <div v-if="pageType!='view'">
                   <Upload
                     id=76
@@ -939,13 +969,13 @@
                     style="display:inline-block;"
                     :action="uploadUrl">
                     <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-                    <Icon type="ios-checkmark" v-show="checkmark76" />
+                    <Icon type="ios-checkmark" v-show="checkmark76"/>
                   </Upload>
                 </div>
               </td>
             </tr>
           </table>
-          <p class="red" v-if="pageType!='view'">注：<br />1、标“*”内容为必填项；<br />2、所有附件上传文件大小需要控制在2M以内。</p >
+          <p class="red" v-if="pageType!='view'">注：<br/>1、标“*”内容为必填项；<br/>2、所有附件上传文件大小需要控制在2M以内。</p>
         </Card>
       </div>
       <div v-if="pageType!='view'">
@@ -963,10 +993,12 @@
         <Button type="primary" @click="viewClose">关闭</Button>
       </div>
     </Form>
-    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看" @on-ok="submitRecord">
-      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
+    <Modal v-model="modal1" class="pageStyle" title="提交确认" width="960" ok-text="提交备案" cancel-text="再看看"
+           @on-ok="submitRecord">
+      <p v-if="boolFlag.length" style="font-size:16px;font-weight: bolder;text-align: center">
+        以下是实验室报告带入项数值被修改的地方，请您再次确认！</p>
       <div v-if="boolFlag.length" class="diffList">
-        <table >
+        <table>
           <thead>
           <tr>
             <th>名称</th>
@@ -975,7 +1007,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(item,idx) in boolFlag" :key='idx' >
+          <tr v-for="(item,idx) in boolFlag" :key='idx'>
             <td width="50%">
               {{item.recName}}
             </td>
@@ -990,38 +1022,45 @@
         </table>
       </div>
       <p class="red submitTips" v-if="!boolFlag.length">请再次确认备案信息填写无误！</p>
-      <p  class="red submitTips" >若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
+      <p class="red submitTips">若确认，请点击“提交备案”按钮，系统将直接公告备案信息，请务必再次确认信息无误。</p>
     </Modal>
     <!--<Modal v-model="modal2" title="提交工单" @on-ok="submitWorkorder">
       <p style="font-size:18px;margin-bottom:10px;">实验室数值：{{currentValue}}</p>
       <Input type="textarea" :rows="3" placeholder="请描述问题" v-model="qus"></Input>
     </Modal>-->
     <Modal v-model="modal3" :width=820 :footer-hide=true>
-      <img :src="templatePic" />
+      <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
+             internalinstanceid="81"/>
     </Modal>
-    <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
+    <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
       <p class="org">中国标准化研究院能效标识管理中心：</p>
       <div class="pro-info">
-        我 <span  class="f-company">{{formRecord.c1}}</span>
+        我 <span class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
-        品牌的 <span  class="f-model">{{formRecord.c3}}</span>
-        型号的 <span  class="f-product">家用和类似用途微波炉 2017版</span>产品。
+        品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c3}}</span>
+        型号的 <span class="f-product">家用和类似用途微波炉 2017版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
       </div>
+      <div v-if="pageType==='extend'" class="org regress">
+        <p><span></span>正在办理能效标识备案</p>
+        <p><span class="bgs"></span>已通过能效标识备案</p>
+      </div>
+      <div class="org">备案编号:{{recordno}}</div>
       <dl v-if="pageType==='extend'">
         <dt>
-          现提出型号扩展备案申请的 <span class="f-model"></span>
+          现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
           型号是以上述型号为基础开发扩展的型号：
         </dt>
         <dd>a) 其与基础型号同属一个系列；</dd>
         <dd>b) 其整机结构与基础型号基本相同；</dd>
         <dd>c) 其产品的能效性能与基础型号一致；</dd>
         <dd>d) 其在基础型号上只作如下变更（差异描述）：<br>
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <span class="textarea-annotation">（注：提供相应证明材料） </span><b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -1033,7 +1072,8 @@
       <dl v-if="pageType==='update'">
         <dd>现申请该型号产品的备案信息如下变更：<br>
           (描述信息产品技术参数等信息)
-          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text"  type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
+          <Input class="valid" v-model="formRecord.ec_master_kuozhan_text" type="textarea"
+                 :autosize="{minRows: 2,maxRows: 5}" placeholder="描述"></Input>
           <b class="color-red">（请删除上述描述中多余的空格和空行，否则可能打印不完整。）</b>
         </dd>
         <dd>
@@ -1042,12 +1082,13 @@
         </dd>
         <dd>请中国标准化研究院能效标识管理中心核准。</dd>
       </dl>
-      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}</div>
+      <div class="record-attached">附：{{pageType==="extend"?'扩展':'变更'}}型号产品的能效标识样本{{pageType==="extend"?'':'以及检测报告'}}
+      </div>
     </Modal>
   </div>
 </template>
 <script>
-  import { mapGetters } from 'vuex';
+  import {mapGetters} from 'vuex';
   import {
     getImgPath,
     XfillExtendData,
@@ -1075,198 +1116,202 @@
   } from '@/libs/utilExt'
 
   export default {
-    data () {
-    const timeDate=parseInt(this.$store.state.app.dateinit);
-    return {
-      // 当前初始使用日期 对应的C值
-      thisDateCV: 'c13',
-      // 当前能效等级 对应的C值
-      thisLevelCV: 'c33',
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      templatePic: '',
-      uploadPic: '',
-      modal2: false,
-      currentValue: '',
-      qus: '',
-      boolFlag: [],
-      currentCValue: '',
-      confirmData: [],
-      modal1: false,
-      saveDisabled: false,
-      submitDisabled: false,
-      dataInit: {
-        disabledDate (date) {
-          return date && date.valueOf() < timeDate
+    data() {
+      const timeDate = parseInt(this.$store.state.app.dateinit);
+      return {
+        // 当前初始使用日期 对应的C值
+        thisDateCV: 'c13',
+        // 当前能效等级 对应的C值
+        thisLevelCV: 'c33',
+        thisGZXHCV: "c3",// 当前规格型号 对应的C值
+        modal3: false,
+        modal4: false,
+        modal5: false,
+        templatePic: '',
+        uploadPic: '',
+        modal2: false,
+        currentValue: '',
+        qus: '',
+        boolFlag: [],
+        currentCValue: '',
+        confirmData: [],
+        modal1: false,
+        saveDisabled: false,
+        submitDisabled: false,
+        dataInit: {
+          disabledDate(date) {
+            return date && date.valueOf() < timeDate
+          }
+        },
+        uploadUrl: '',
+        uploadParam: {
+          fileData24: {},
+          filePath24: '',
+          uploadFileList24: [],
+          fileData26: {},
+          filePath26: '',
+          uploadFileList26: [],
+          fileData27: {},
+          filePath27: '',
+          uploadFileList27: [],
+          fileData28: {},
+          filePath28: '',
+          uploadFileList28: [],
+          fileData29: {},
+          filePath29: '',
+          uploadFileList29: [],
+          fileData30: {},
+          filePath30: '',
+          uploadFileList30: [],
+          fileData31: {},
+          filePath31: '',
+          uploadFileList31: [],
+          fileData32: {},
+          filePath32: '',
+          uploadFileList32: [],
+          fileData76: {},
+          filePath76: '',
+          uploadFileList76: []
+        },
+        filesArr: [],
+        checkmark24: false,
+        checkmark26: false,
+        checkmark27: false,
+        checkmark28: false,
+        checkmark29: false,
+        checkmark30: false,
+        checkmark31: false,
+        checkmark32: false,
+        checkmark76: false,
+        mainModel: '',
+        formRecord: {
+          ec_master_kuozhan_text: '',
+          c1: '',
+          c2: '',
+          c32: '',
+          c3: '',
+          c4: '',
+          c200: '',
+          c33: '',
+          c35: '',
+          c37: '',
+          c18: '',
+          c39: '',
+          c100: [],
+          c101: '',
+          c5: '',
+          c34: '',
+          c6: '',
+          c7: '',
+          c36: '',
+          c8: '',
+          c9: '',
+          c38: '',
+          c10: '',
+          c11: '',
+          c40: '',
+          c12: '',
+          c13: new Date(),
+          c14: '',
+          c17: '',
+          c15: '',
+          c16: '',
+          c19: '',
+          c20: '',
+          c21: '',
+          c22: '',
+          c23: '',
+          c24: '',
+          c25: '',
+          c26: '',
+          c41: '',
+          c42: '',
+          c43: '',
+          c27: '',
+          c28: '',
+          c29: '',
+          c30: '',
+          c31: '',
+          c44: '',
+          c45: '',
+          c46: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c51: '',
+          c52: '',
+          c53: '',
+          c54: '',
+          c55: '',
+          c56: '',
+          c57: '',
+          c58: '',
+          c59: '',
+          c60: '',
+          c61: '',
+          c62: '',
+          c63: '',
+          c64: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c69: '',
+          c70: '',
+          c71: '',
+          c72: '',
+          c73: '',
+          c74: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c78: '',
+          c79: '',
+          c80: '',
+          c81: '',
+          c82: '',
+          c83: '',
+          c84: '',
+          c85: '',
+          c86: '',
+          c87: '',
+          c88: '',
+          c89: '',
+          c90: '',
+          c91: '',
+          c92: '',
+          c93: '',
+          c94: '',
+          c95: '',
+          c96: '',
+          c97: '',
+          c98: '',
+          c99: '',
+          c202: '',
+          ec_model_no: 52,
+          attach_list: ''
+        },
+        forbidden: {
+          c101: true,
+          c100: true,
+          c36: true,
+          c38: true,
+          c40: true,
+          c12: true,
+          c11: true,
+          c10: true,
+          c8: true,
+          c7: true,
+          c9: true,
+          c37: true,
+          c16: true,
         }
-      },
-      uploadUrl: '',
-      uploadParam: {
-        fileData24: {},
-        filePath24: '',
-        uploadFileList24: [],
-        fileData26: {},
-        filePath26: '',
-        uploadFileList26: [],
-        fileData27: {},
-        filePath27: '',
-        uploadFileList27: [],
-        fileData28: {},
-        filePath28: '',
-        uploadFileList28: [],
-        fileData29: {},
-        filePath29: '',
-        uploadFileList29: [],
-        fileData30: {},
-        filePath30: '',
-        uploadFileList30: [],
-        fileData31: {},
-        filePath31: '',
-        uploadFileList31: [],
-        fileData32: {},
-        filePath32: '',
-        uploadFileList32: [],
-        fileData76: {},
-        filePath76: '',
-        uploadFileList76: []
-      },
-      filesArr: [],
-      checkmark24: false,
-      checkmark26: false,
-      checkmark27: false,
-      checkmark28: false,
-      checkmark29: false,
-      checkmark30: false,
-      checkmark31: false,
-      checkmark32: false,
-      checkmark76: false,
-      mainModel:'',
-      formRecord: {
-        ec_master_kuozhan_text: '',
-        c1: '',
-        c2: '',
-        c32: '',
-        c3: '',
-        c4: '',
-        c200: '',
-        c33: '',
-        c35: '',
-        c37: '',
-        c18: '',
-        c39: '',
-        c100: [],
-        c101: '',
-        c5: '',
-        c34: '',
-        c6: '',
-        c7: '',
-        c36: '',
-        c8: '',
-        c9: '',
-        c38: '',
-        c10: '',
-        c11: '',
-        c40: '',
-        c12: '',
-        c13: new Date(),
-        c14: '',
-        c17: '',
-        c15: '',
-        c16: '',
-        c19: '',
-        c20: '',
-        c21: '',
-        c22: '',
-        c23: '',
-        c24: '',
-        c25: '',
-        c26: '',
-        c41: '',
-        c42: '',
-        c43: '',
-        c27: '',
-        c28: '',
-        c29: '',
-        c30: '',
-        c31: '',
-        c44: '',
-        c45: '',
-        c46: '',
-        c47: '',
-        c48: '',
-        c49: '',
-        c50: '',
-        c51: '',
-        c52: '',
-        c53: '',
-        c54: '',
-        c55: '',
-        c56: '',
-        c57: '',
-        c58: '',
-        c59: '',
-        c60: '',
-        c61: '',
-        c62: '',
-        c63: '',
-        c64: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
-        c71: '',
-        c72: '',
-        c73: '',
-        c74: '',
-        c75: '',
-        c76: '',
-        c77: '',
-        c78: '',
-        c79: '',
-        c80: '',
-        c81: '',
-        c82: '',
-        c83: '',
-        c84: '',
-        c85: '',
-        c86: '',
-        c87: '',
-        c88: '',
-        c89: '',
-        c90: '',
-        c91: '',
-        c91: '',
-        c92: '',
-        c93: '',
-        c94: '',
-        c95: '',
-        c96: '',
-        c97: '',
-        c98: '',
-        c99: '',
-        c202: '',
-        ec_model_no: 52,
-        attach_list: ''
-      },
-      forbidden: {
-        c101: true,
-        c36: true,
-        c38: true,
-        c40: true,
-        c12: true,
-        c10: true,
-        c8: true,
-        c37: true,
-        c16: true,
       }
-    }
-  },
+    },
 
     mounted() {
-     // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: {
       showTemplate() {
@@ -1310,7 +1355,7 @@
       submitRecord() {
         return XsubmitRecord(this)
       },
-       viewClose() {
+      viewClose() {
         return XviewClose(this)
       },
       /* 保存草稿箱 */
@@ -1329,8 +1374,8 @@
         'pageType',
         'recordno'
       ]),
-      disabledoff(){
-        return  this.pageType==='extend';
+      disabledoff() {
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1342,143 +1387,13 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        var nxhs;
-        var checkc34 = null;
-        var checkc36 = null;
-        var checkc38 = null;
-        var checkc40 = null;
-        var checknxdj = null;
-        var checkc9 = null;
-        var checkc7 = null;
-        var checkc11 = null;
-        var gjgn = this.formRecord.c37;
-        var djgn = this.formRecord.c35;
-
-        if ("" != (parseFloat(this.formRecord.c34))) {
-          if (parseFloat(this.formRecord.c34) < parseFloat(this.formRecord.c5)) {
-             checkc34 = (rule, value, callback) => {
-             callback("效率值（实测值）应大于等于效率值（标称值）！");
-            }
-          }
-        }
-
-        if ("" != (parseFloat(this.formRecord.c36))) {
-          if (parseFloat(this.formRecord.c36) > parseFloat(this.formRecord.c7)) {
-            checkc36 = (rule, value, callback) => {
-             callback("待机功耗（实测值）应小于等于待机功耗（标称值）！");
-            }
-          }
-        }
-
-        if ("" != (parseFloat(this.formRecord.c38))) {
-          if (parseFloat(this.formRecord.c38) > parseFloat(this.formRecord.c9)) {
-            checkc38 = (rule, value, callback) => {
-             callback("关机功耗（实测值）应小于等于关机功耗（标称值）！");
-            }
-          }
-        }
-
-        if ("" != (parseFloat(this.formRecord.c40))) {
-          if (parseFloat(this.formRecord.c40) > parseFloat(this.formRecord.c11)) {
-            checkc40 = (rule, value, callback) => {
-             callback("烧烤功耗（实测值）应小于等于烧烤功耗（标称值）！");
-            }
-          }
-        }
-
-        //效率值换算能效等级
-        if (parseFloat(this.formRecord.c5) >= 60) {
-            nxhs = "1";
-        } else if (parseFloat(this.formRecord.c5) < 52) {
-          checknxdj = (rule, value, callback) => {
-            callback("备案数据不在备案范围");
-          }
-        } else if (parseFloat(this.formRecord.c5) >= 56 && parseFloat(this.formRecord.c5) < 60) {
-            nxhs = "2";
-        } else if (parseFloat(this.formRecord.c5) >= 52 && parseFloat(this.formRecord.c5) < 56) {
-            nxhs = "3";
-        }
-
-        //有关机功能时判断
-        if (gjgn == "有") {
-          if (parseFloat(this.formRecord.c9) > 0.5) {
-            checkc9 = (rule, value, callback) => {
-              callback("关机功率应小于0.5!");
-            }
-          }
-        }
-       //有待机功能时判断
-        if (djgn == "有") {
-          var nodisplay = this.formRecord.c18;
-          if (nodisplay == "待机模式时具有信息或状态显示（包括时钟）功能") {
-            if (parseFloat(this.formRecord.c7) > 1) {
-              checkc7 = (rule, value, callback) => {
-                callback("待机功率应小于1.0");
-              }
-            }
-          }
-          if (nodisplay == "待机模式时没有信息或状态显示（包括时钟）功能") {
-            if (parseFloat(this.formRecord.c7) > 0.5) {
-                checkc7 = (rule, value, callback) => {
-                callback("待机功率应小于0.5");
-              }
-            }
-          }
-        }
-
-        //具有通讯协议功能的微波炉，有待机功能和关机功能，但是一旦选择了具有通讯协议功能，那些待机功率和关机功率是不允许填写数值的。
-        if (djgn == "有" && gjgn == "有") {
-            var txxy = this.formRecord.c100;
-            if (txxy == "" || txxy == null || txxy == "无") {
-                var djgl = this.formRecord.c7;
-                var gjgl = this.formRecord.c9;
-                if (djgn == "有") {
-                    if (djgl == null || djgl == "") {
-                      checkc7 = (rule, value, callback) => {
-                        callback("待机功率不能为空");
-                      }
-                    }
-                }
-                if (gjgn == "有") {
-                    if (gjgl == null || gjgl == "") {
-                      checkc9 = (rule, value, callback) => {
-                        callback("关机功率不能为空");
-                      }
-                    }
-                }
-            } else {
-                var gjgl = this.formRecord.c9;
-                var djgl = this.formRecord.c7;
-                if (gjgl != null && gjgl != "") {
-                  checkc9 = (rule, value, callback) => {
-                    callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
-                  }
-                }
-                if(djgl != null && djgl != ""){
-                  checkc7 = (rule, value, callback) => {
-                    callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
-                  }
-                }
-            }
-        }
-
-        //有烧烤功能时判断
-        var skgn = this.formRecord.c39;
-        if (skgn == "有") {
-          if (parseFloat(this.formRecord.c11) > 1.2) {
-            checkc11 = (rule, value, callback) => {
-              callback("烧烤功能应小于1.2");
-           }
-          }
-        }
-
-        //能效等级
-        var nxdj = this.formRecord.c33;
-        //一致性校验
-        if (nxhs != nxdj) {
-          checknxdj = (rule, value, callback) => {
-            callback("所填效率值与所选能效等级不符！");
-          }
+        if (this.formRecord.c100.join('').indexOf('无') > -1) {
+          this.formRecord.c100=['无']
+          this.forbidden.c100 = true
+          this.forbidden.c91 = true
+          this.formRecord.c91 = ''
+        } else {
+          this.forbidden.c100 = false
         }
 
         if (this.formRecord.c100.join('').indexOf('其它') > -1) {
@@ -1492,6 +1407,7 @@
           this.forbidden.c18 = false
           this.forbidden.c36 = false
           this.forbidden.c8 = false
+          this.forbidden.c7 = false
         } else {
           this.formRecord.c18 = ''
           this.forbidden.c18 = true
@@ -1499,9 +1415,12 @@
           this.forbidden.c36 = true
           this.formRecord.c8 = ''
           this.forbidden.c8 = true
+          this.formRecord.c7 = ''
+          this.forbidden.c7 = true
         }
 
         if (this.formRecord.c37 === '有') {
+          this.forbidden.c9 = false
           this.forbidden.c38 = false
           this.forbidden.c10 = false
         } else {
@@ -1509,16 +1428,21 @@
           this.forbidden.c38 = true
           this.formRecord.c10 = ''
           this.forbidden.c10 = true
+          this.formRecord.c9 = ''
+          this.forbidden.c9 = true
         }
 
         if (this.formRecord.c39 === '有') {
           this.forbidden.c40 = false
           this.forbidden.c12 = false
+          this.forbidden.c11 = false
         } else {
           this.formRecord.c40 = ''
           this.forbidden.c40 = true
           this.formRecord.c12 = ''
           this.forbidden.c12 = true
+          this.formRecord.c11 = ''
+          this.forbidden.c11 = true
         }
 
         if (this.formRecord.c15 === '其它') {
@@ -1535,6 +1459,144 @@
           this.forbidden.c26 = true
         }
 
+        var nxhs;
+        var checkc34 = null;
+        var checkc36 = null;
+        var checkc38 = null;
+        var checkc40 = null;
+        var checknxdj = null;
+        var checkc9 = null;
+        var checkc7 = null;
+        var checkc11 = null;
+        var gjgn = this.formRecord.c37;
+        var djgn = this.formRecord.c35;
+
+        if ("" != (parseFloat(this.formRecord.c34))) {
+          if (parseFloat(this.formRecord.c34) < parseFloat(this.formRecord.c5)) {
+            checkc34 = (rule, value, callback) => {
+              callback("效率值（实测值）应大于等于效率值（标称值）！");
+            }
+          }
+        }
+
+        if ("" != (parseFloat(this.formRecord.c36))) {
+          if (parseFloat(this.formRecord.c36) > parseFloat(this.formRecord.c7)) {
+            checkc36 = (rule, value, callback) => {
+              callback("待机功耗（实测值）应小于等于待机功耗（标称值）！");
+            }
+          }
+        }
+
+        if ("" != (parseFloat(this.formRecord.c38))) {
+          if (parseFloat(this.formRecord.c38) > parseFloat(this.formRecord.c9)) {
+            checkc38 = (rule, value, callback) => {
+              callback("关机功耗（实测值）应小于等于关机功耗（标称值）！");
+            }
+          }
+        }
+
+        if ("" != (parseFloat(this.formRecord.c40))) {
+          if (parseFloat(this.formRecord.c40) > parseFloat(this.formRecord.c11)) {
+            checkc40 = (rule, value, callback) => {
+              callback("烧烤功耗（实测值）应小于等于烧烤功耗（标称值）！");
+            }
+          }
+        }
+
+        //效率值换算能效等级
+        if (parseFloat(this.formRecord.c5) >= 60) {
+          nxhs = "1";
+        } else if (parseFloat(this.formRecord.c5) < 52) {
+          checknxdj = (rule, value, callback) => {
+            callback("备案数据不在备案范围");
+          }
+        } else if (parseFloat(this.formRecord.c5) >= 56 && parseFloat(this.formRecord.c5) < 60) {
+          nxhs = "2";
+        } else if (parseFloat(this.formRecord.c5) >= 52 && parseFloat(this.formRecord.c5) < 56) {
+          nxhs = "3";
+        }
+
+        //有关机功能时判断
+        if (gjgn == "有") {
+          if (parseFloat(this.formRecord.c9) > 0.5) {
+            checkc9 = (rule, value, callback) => {
+              callback("关机功率应小于0.5!");
+            }
+          }
+        }
+        //有待机功能时判断
+        if (djgn == "有") {
+          var nodisplay = this.formRecord.c18;
+          if (nodisplay == "待机模式时具有信息或状态显示（包括时钟）功能") {
+            if (parseFloat(this.formRecord.c7) > 1) {
+              checkc7 = (rule, value, callback) => {
+                callback("待机功率应小于1.0");
+              }
+            }
+          }
+          if (nodisplay == "待机模式时没有信息或状态显示（包括时钟）功能") {
+            if (parseFloat(this.formRecord.c7) > 0.5) {
+              checkc7 = (rule, value, callback) => {
+                callback("待机功率应小于0.5");
+              }
+            }
+          }
+        }
+
+        //具有通讯协议功能的微波炉，有待机功能和关机功能，但是一旦选择了具有通讯协议功能，那些待机功率和关机功率是不允许填写数值的。
+        if (djgn == "有" && gjgn == "有") {
+          var txxy = this.formRecord.c100;
+          if (txxy == "" || txxy == null || txxy == "无") {
+            var djgl = this.formRecord.c7;
+            var gjgl = this.formRecord.c9;
+            if (djgn == "有") {
+              if (djgl == null || djgl == "") {
+                checkc7 = (rule, value, callback) => {
+                  callback("待机功率不能为空");
+                }
+              }
+            }
+            if (gjgn == "有") {
+              if (gjgl == null || gjgl == "") {
+                checkc9 = (rule, value, callback) => {
+                  callback("关机功率不能为空");
+                }
+              }
+            }
+          } else {
+            var gjgl = this.formRecord.c9;
+            var djgl = this.formRecord.c7;
+            if (gjgl != null && gjgl != "") {
+              checkc9 = (rule, value, callback) => {
+                callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
+              }
+            }
+            if (djgl != null && djgl != "") {
+              checkc7 = (rule, value, callback) => {
+                callback("选择有待机功能、有关机功能、选择具有通讯协议功能,待机功率和关机功率不允许填写");
+              }
+            }
+          }
+        }
+
+        //有烧烤功能时判断
+        var skgn = this.formRecord.c39;
+        if (skgn == "有") {
+          if (parseFloat(this.formRecord.c11) > 1.2) {
+            checkc11 = (rule, value, callback) => {
+              callback("烧烤功能应小于1.2");
+            }
+          }
+        }
+
+        //能效等级
+        var nxdj = this.formRecord.c33;
+        //一致性校验
+        if (nxhs != nxdj) {
+          checknxdj = (rule, value, callback) => {
+            callback("所填效率值与所选能效等级不符！");
+          }
+        }
         return {
           c2: [
             {
@@ -1655,7 +1717,7 @@
               trigger: 'change,blur'
             },*/
             {
-              validator: checkc9,
+              validator: !this.forbidden.c10 ? checkc9 : check,
               trigger: 'change,blur'
             }
           ],
@@ -1671,7 +1733,7 @@
           ],
           c11: [
             {
-              required: true,
+              required: !this.forbidden.c40,
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
@@ -1680,7 +1742,7 @@
               trigger: 'change,blur'
             },*/
             {
-              validator: checkc11,
+              validator: !this.forbidden.c40 ? checkc11 : check,
               trigger: 'change,blur'
             }
           ],
@@ -1690,10 +1752,10 @@
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
-           /* {
-              validator: !this.forbidden.c40 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },*/
+            /* {
+               validator: !this.forbidden.c40 ? atLeastTwoDecimals : check,
+               trigger: 'change,blur'
+             },*/
             {
               validator: checkc40,
               trigger: 'change,blur'
@@ -1877,13 +1939,13 @@
             }
           ],
           c46: [
-          {
+            {
               required: true,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
-            c47: [
+          c47: [
             {
               required: true,
               trigger: 'change,blur',
@@ -1896,15 +1958,15 @@
               trigger: 'change,blur'
             },*/
             {
-              validator: checkc7,
+              validator: !this.forbidden.c8 ? checkc7 : check,
               trigger: 'change,blur'
             }
           ],
           c36: [
-           /* {
-              validator: !this.forbidden.c36 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },*/
+            /* {
+               validator: !this.forbidden.c36 ? atLeastTwoDecimals : check,
+               trigger: 'change,blur'
+             },*/
             {
               validator: checkc36,
               trigger: 'change,blur'

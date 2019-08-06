@@ -242,7 +242,7 @@
             </tr>
             <tr>
               <td colspan="3" style="border-top:none;">
-                <FormItem prop="c24">
+                <FormItem>
                   <CheckboxGroup v-model="formRecord.c24">
                     <Checkbox label="其它接口输入" :disabled='disabledoff'>其它接口输入</Checkbox>
                   </CheckboxGroup>
@@ -730,9 +730,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -969,12 +974,17 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c4}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c3}}</span>
-          型号的 <span  class="f-product">平板电视 2013版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c3}}</span>
+          型号的 <span  class="f-product">平板电视 2013版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -1042,6 +1052,8 @@
         thisDateCV: "c13",
         // 当前能效等级 对应的C值
         thisLevelCV: "c31",
+        // 当前规格型号 对应的C值
+        thisGZXHCV: "c4",
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1257,7 +1269,7 @@
         'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
@@ -1357,7 +1369,7 @@
         }
 
         const checkc33 = (rule, value, callback) => {
-          if (parseFloat(c33) != null && parseFloat(c33) < parseFloat(c33)) {
+          if (parseFloat(c33) != null && parseFloat(c33) < parseFloat(c7)) {
             callback("LCD能效指数实测值应大于或等于标准规定值!");
           } else {
             callback()

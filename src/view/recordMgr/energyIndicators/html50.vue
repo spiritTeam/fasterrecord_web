@@ -80,7 +80,7 @@
               <td align="center">制冷量(千瓦)</td>
               <td>
                  <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff || forbidden.c5'/>
+                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -93,7 +93,7 @@
               <td align="center">消耗总电功率(千瓦)</td>
                 <td>
                  <FormItem prop="c6" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff || forbidden.c6'/>
+                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -106,7 +106,7 @@
               <td align="center">性能系数</td>
                <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff || forbidden.c7'/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -119,7 +119,7 @@
               <td align="center">综合部分负荷性能系数</td>
                <td>
                  <FormItem prop="c8" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff || forbidden.c8'/>
+                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
               <td>
@@ -250,6 +250,7 @@
                     <Checkbox label="板式换热器" :disabled='disabledoff'>板式换热器</Checkbox>
                     <Checkbox label="套管式换热器" :disabled='disabledoff'>套管式换热器</Checkbox>
                     <Checkbox label="壳管式换热器" :disabled='disabledoff'>壳管式换热器</Checkbox>
+                    <Checkbox label="翅片式换热器" :disabled='disabledoff'>翅片式换热器</Checkbox>
                     <Checkbox label="其它" :disabled='disabledoff'>其它</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
@@ -727,9 +728,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -966,14 +972,19 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">冷水机组 2015版</span>产品。
+         品牌的 <span class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+         型号的 <span class="f-product">冷水机组 2015版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
-          <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
-              型号是以上述型号为基础开发扩展的型号：
-          </dt>
+         <dt>
+           现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
+           型号是以上述型号为基础开发扩展的型号：
+         </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
           <dd>b) 其整机结构与基础型号基本相同；</dd>
           <dd>c) 其产品的能效性能与基础型号一致；</dd>
@@ -1038,6 +1049,7 @@
       thisDateCV: 'c10',
       // 当前能效等级 对应的C值
       thisLevelCV: 'c9',
+      thisGZXHCV: "c4",// 当前规格型号 对应的C值
       modal3: false,
       modal4: false,
       modal5: false,
@@ -1191,10 +1203,6 @@
         attach_list: ''
       },
       forbidden: {
-        c5: true,
-        c6: true,
-        c7: true,
-        c8: true,
         c26: true,
         c27: true,
         c28: true,
@@ -1272,7 +1280,7 @@
         'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId

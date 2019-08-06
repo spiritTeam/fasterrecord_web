@@ -52,13 +52,13 @@
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方"/>
           </FormItem>
           <FormItem prop="c4" label="规格型号" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号" readonly/>
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:100%" :label-width="180">
             <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
+            <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
           </FormItem>
           <FormItem prop="c21" label="能效等级" style="width:100%;" :label-width="180">
             <RadioGroup v-model="formRecord.c21">
@@ -70,7 +70,7 @@
             </RadioGroup>
           </FormItem>
           <FormItem prop="c40" label="产品类型" style="width:100%;" :label-width="180">
-            <Select v-model="formRecord.c40" style="width:200px">
+            <Select v-model="formRecord.c40" style="width:200px" :disabled='disabledoff' >
               <Option value="全部都有">全部都有</Option>
               <Option value="无待机功率">无待机功率</Option>
               <Option value="无关机功率">无关机功率</Option>
@@ -474,9 +474,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -713,12 +718,17 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c5}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c4}}</span>
-          型号的 <span  class="f-product">吸油烟机 2013版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
+          型号的 <span  class="f-product">吸油烟机 2013版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -788,6 +798,7 @@ export default {
       checkC21C40Msg: "",
       thisDateCV: "c22",  //当前初始使用日期 对应的C值
       thisLevelCV: "c21", //当前能效等级 对应的C值
+      thisGZXHCV: "c4",   // 当前规格型号 对应的C值
       modal3: false,
       modal4: false,
       modal5: false,
@@ -961,7 +972,7 @@ export default {
       'recordno'
     ]),
     disabledoff(){
-      return  this.pageType==='extend';
+      return this.pageType === 'extend' || this.pageType === 'view'
     },
     pltId() {
       return this.$store.state.app.pltId
@@ -1032,7 +1043,7 @@ export default {
       }
       let checkC15C16=(rule, value, callback) => {
         let _msg=null;
-        if (_c15&&_c16&&(_c15*0.95<_c16)) _msg="常态气味降低度实测值必须大于等于标称值的95%";
+        if (_c15&&_c16&&(_c15*0.95>_c16)) _msg="常态气味降低度实测值必须大于等于标称值的95%";
         if (_msg) callback(_msg);
         else callback();
       }

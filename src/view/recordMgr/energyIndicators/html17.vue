@@ -173,7 +173,7 @@
               <td><i class="red">*</i>规格（mm）</td>
               <td>
                 <FormItem prop="c14">
-                  <Select v-model="formRecord.c14" style="width: 300px">
+                  <Select v-model="formRecord.c14" style="width: 300px" disabled>
                     <Option value="200">200</Option>
                     <Option value="230">230</Option>
                     <Option value="250">250</Option>
@@ -234,7 +234,7 @@
               </td>
               <td rowspan="2"><i class="red">*</i>扇叶</td>
               <td style="border-bottom:none;">
-                <label>材质</label>
+                <FormItem>材质:</FormItem>
                 <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff'/>
                 </FormItem>
@@ -252,7 +252,7 @@
                 </FormItem>
               </td>
               <td style="border-top:none;">
-                <label>叶数</label>
+                <FormItem>叶数:</FormItem>
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
                 </FormItem>
@@ -278,11 +278,11 @@
                 <FormItem prop="c22">
                   <Input type="text" v-model="formRecord.c22" :disabled='disabledoff'/>
                 </FormItem>
-                <b>×</b>
+                <FormItem><b>×</b></FormItem>
                 <FormItem prop="c30">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
                 </FormItem>
-                <b>×</b>
+                <FormItem><b>×</b></FormItem>
                 <FormItem prop="c31">
                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                 </FormItem>
@@ -573,9 +573,14 @@
                   </Upload>
                 </div>
               </td>
-              <td colspan="3" v-if="pltId != 244">
+              <td v-show="pageType==='view'">能效标识样本</td>
+              <td v-show="pageType==='view'">(PNG)</td>
+              <td colspan="3" v-if="pageType !=='view' && pltId != 244">
                 根据企业提交的相关信息，系统直接生成能效标识样本，请提交备案后在"备案查询"功能中下载
                 <!-- <Button type="primary" @click="showTemplate">查看</Button> -->
+              </td>
+              <td v-else-if="pageType==='view'">
+                <Button v-show="pltPic" type="primary" @click="showTemplate">查看</Button>
               </td>
               <td colspan="3" v-else>提交备案后，需企业自行上传能效标识样本</td>
             </tr>
@@ -812,12 +817,17 @@
        <div class="pro-info">
           我 <span  class="f-company">{{formRecord.c1}}</span>
           公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
-          品牌的 <span  class="f-model">{{formRecord.c3}}</span>
-          型号的 <span  class="f-product">交流电风扇 2008版</span>产品。
+          品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c3}}</span>
+          型号的 <span  class="f-product">交流电风扇 2008版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
        </div>
+       <div v-if="pageType==='extend'" class="org regress">
+         <p><span></span>正在办理能效标识备案</p>
+         <p><span class="bgs"></span>已通过能效标识备案</p>
+       </div>
+       <div class="org">备案编号:{{recordno}}</div>
        <dl v-if="pageType==='extend'">
           <dt>
-              现提出型号扩展备案申请的 <span class="f-model"></span>
+              现提出型号扩展备案申请的 <span class="f-model">{{formRecord[thisGZXHCV]}}</span>
               型号是以上述型号为基础开发扩展的型号：
           </dt>
           <dd>a) 其与基础型号同属一个系列；</dd>
@@ -887,6 +897,8 @@
         thisDateCV: "c9",
         // 当前能效等级 对应的C值
         thisLevelCV: "c24",
+        // 当前规格型号 对应的C值
+        thisGZXHCV: "c3",
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1089,7 +1101,7 @@
         'recordno'
       ]),
       disabledoff(){
-        return  this.pageType==='extend';
+        return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
         return this.$store.state.app.pltId
