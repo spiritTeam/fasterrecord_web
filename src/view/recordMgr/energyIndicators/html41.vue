@@ -1508,7 +1508,7 @@
           this.forbidden.c16_c = false
         }
 
-        if (this.formRecord.c15 !== this.c15) {
+        if (this.c15 !== '' && this.formRecord.c15 !== this.c15) {
           this.formRecord.c16 = ''
         }
         this.c15 = this.formRecord.c15
@@ -1630,7 +1630,6 @@
             callback()
           }
         }
-
         return {
           c3: [
             {
@@ -2102,11 +2101,10 @@
 <style lang="less" scoped>
   @import '../../../css/comm.css';
 
-  .overwrite2 > span > span {
-    width: 14px !important;
-  }
-
-  .overwrite1 span {
+  .overwrite1 /deep/ span {
     width: auto !important;
+  }
+  .overwrite2 /deep/ .ivu-checkbox-inner{
+    width: 14px !important;
   }
 </style>

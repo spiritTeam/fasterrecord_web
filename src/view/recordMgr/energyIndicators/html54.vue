@@ -483,7 +483,7 @@
               <td>
                 <FormItem prop="c92">
                   <CheckboxGroup v-model="formRecord.c92">
-                    <Checkbox label="LED" :disabled='disabledoff'></Checkbox>
+                    <Checkbox label="是" :disabled='disabledoff'>LED</Checkbox>
                   </CheckboxGroup>
                 </FormItem>
               </td>
@@ -561,7 +561,7 @@
               <td>
                 <FormItem prop="c105">
                   <RadioGroup v-model="formRecord.c105">
-                    <Radio label="玻璃" :disabled='disabledoff'></Radio>
+                    <Radio label="实体" :disabled='disabledoff'></Radio>
                     <Radio label="玻璃" :disabled='disabledoff'></Radio>
                   </RadioGroup>
                 </FormItem>
@@ -2327,12 +2327,11 @@
 <style lang="less" scoped>
   @import '../../../css/comm.css';
 
-  .overwrite2 > span > span {
-    width: 14px !important;
-  }
-
-  .overwrite1 span {
+  .overwrite1 /deep/ span {
     width: auto !important;
+  }
+  .overwrite2 /deep/ .ivu-checkbox-inner{
+    width: 14px !important;
   }
 
 </style>
