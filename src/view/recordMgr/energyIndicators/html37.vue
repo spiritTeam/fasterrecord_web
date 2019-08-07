@@ -202,7 +202,7 @@
                 </FormItem>
               </td>
             </tr>
-             <tr>
+            <tr>
               <td align="right"><span class="red">*</span>额定电流（A）</td>
               <td>
                 <FormItem prop="c24" >
@@ -283,7 +283,7 @@
                 </FormItem>
                 <FormItem>辅助热源类型&nbsp;&nbsp;&nbsp;</FormItem>
                 <FormItem prop="c35">
-                   <Input type="text"v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
+                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c35'/>
                 </FormItem>
               </td>
             </tr>
