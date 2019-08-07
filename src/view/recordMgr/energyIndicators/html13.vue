@@ -166,6 +166,10 @@
                   <RadioGroup v-model="formRecord.c12">
                     <Radio label="立式" :disabled='disabledoff'>立式</Radio>
                     <Radio label="卧式" :disabled='disabledoff'>卧式</Radio>
+                  </RadioGroup>
+                </FormItem>
+                <FormItem prop="c40">
+                  <RadioGroup v-model="formRecord.c40">
                     <Radio label="壁挂式" :disabled='disabledoff'>壁挂式</Radio>
                     <Radio label="落地式" :disabled='disabledoff'>落地式</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
@@ -323,7 +327,7 @@
               </td>
             </tr>
             <tr>
-              <td><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm</td>
+              <td><i class="red">*</i>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td colspan="3">
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
@@ -1399,7 +1403,7 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c12 === '其它') {
+        if (this.formRecord.c40 === '其它') {
           this.forbidden.c13 = false
         } else {
           this.formRecord.c13 = ''
@@ -1667,7 +1671,7 @@
           ],
           c13: [
             {
-              required: this.formRecord.c12 === '其它',
+              required: this.formRecord.c40 === '其它',
               message: '其它不能为空',
               trigger: 'change,blur'
             }

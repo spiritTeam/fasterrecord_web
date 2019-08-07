@@ -565,7 +565,7 @@
             </tr>
             <tr>
               <td>6</td>
-              <td>电脑版</td>
+              <td>电脑板</td>
               <td>
                 <FormItem prop="c89">
                   <Input type="text" v-model="formRecord.c89" :disabled="disabledoff"/>

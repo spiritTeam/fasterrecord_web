@@ -510,13 +510,13 @@
               </td>
             </tr>
             <tr>
-              <td align="right"><span style="color:red">*</span>最大试验压力(×106Pa)</td>
+              <td align="right"><span style="color:red">*</span>最大试验压力(×10<sup>6</sup>Pa)</td>
               <td>
                 <FormItem prop="c54" :label-width="10">
                   <Input type="text" v-model="formRecord.c54" style="width:200px;" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td align="right"><span style="color:red">*</span>额定工作压力(×106Pa)</td>
+              <td align="right"><span style="color:red">*</span>额定工作压力(×10<sup>6</sup>Pa)</td>
               <td>
                 <FormItem prop="c55" :label-width="10">
                   <Input type="text" v-model="formRecord.c55" style="width:200px;" :disabled='disabledoff'/>
