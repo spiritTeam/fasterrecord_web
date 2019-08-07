@@ -203,10 +203,10 @@
               </td>
               <td><i class="red">*</i>控制方式</td>
               <td>
-                <FormItem prop="c13">
-                  <RadioGroup v-model="formRecord.c13">
-                    <Radio label="机械控制" :disabled='disabledoff'>机械控制</Radio>
-                    <Radio label="电子控制" :disabled='disabledoff'>电子控制</Radio>
+                <FormItem prop="c16">
+                  <RadioGroup v-model="formRecord.c16">
+                    <Radio label="机械控制" :disabled='disabledoff || forbidden.c16'>机械控制</Radio>
+                    <Radio label="电子控制" :disabled='disabledoff || forbidden.c16'>电子控制</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -1049,6 +1049,12 @@
           this.formRecord.c21 = ''
           this.forbidden.c21 = true
         }
+        if (this.formRecord.c13 === '有') {
+          this.forbidden.c16 = false
+        } else {
+          this.formRecord.c16 = ''
+          this.forbidden.c16 = true
+        }
 
         var c29 = parseFloat(this.formRecord.c29);
         var c5 = parseFloat(this.formRecord.c5);
@@ -1056,7 +1062,7 @@
         var c6 = parseFloat(this.formRecord.c6);
         var nxdj = 0;
         var c24 = parseFloat(this.formRecord.c24);
-        var c7 = this.formRecord.c7;
+        var c7 = parseInt(this.formRecord.c7);
 
         const checkc29 = (rule, value, callback) => {
           if (c29 < c5) {
@@ -1298,7 +1304,7 @@
           c16: [
             {
               trigger: 'change,blur',
-              required: true,
+              required: this.formRecord.c13 === '有',
               message: '控制方式不能为空'
             }
           ],

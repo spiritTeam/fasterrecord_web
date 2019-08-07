@@ -168,6 +168,7 @@
                     <Radio label="卧式" :disabled='disabledoff'>卧式</Radio>
                   </RadioGroup>
                 </FormItem>
+                <br/>
                 <FormItem prop="c40">
                   <RadioGroup v-model="formRecord.c40">
                     <Radio label="壁挂式" :disabled='disabledoff'>壁挂式</Radio>
