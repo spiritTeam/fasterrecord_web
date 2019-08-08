@@ -6,7 +6,7 @@
  */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
       <h1>数字电视接收器-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -72,7 +72,7 @@
             <tr>
               <td align="center">工作状态功率</td>
                <td>
-                 <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
+                 <FormItem prop="c5" label="标称值：" style="width:100%;" :label-width="80">
                    <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
@@ -90,7 +90,7 @@
             <tr>
               <td align="center">被动待机功率</td>
                <td>
-                 <FormItem prop="c8" label="标注值：" style="width:100%;" :label-width="80">
+                 <FormItem prop="c8" label="标称值：" style="width:100%;" :label-width="80">
                    <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
@@ -108,7 +108,7 @@
             <tr>
               <td align="center">附加功能功率因子之和 </td>
                <td>
-                 <FormItem prop="c11" label="标注值：" style="width:100%;" :label-width="80">
+                 <FormItem prop="c11" label="标称值：" style="width:100%;" :label-width="80">
                    <Input type="text" v-model="formRecord.c11"  :disabled='disabledoff'/>
                  </FormItem>
               </td>
@@ -297,7 +297,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center">输入电压</td>
+                <td align="center">输入电流</td>
                 <td>
                   <FormItem prop="c35">
                     <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'/>
@@ -305,7 +305,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center">输入电压</td>
+                <td align="center">输入功率</td>
                 <td>
                   <FormItem prop="c36">
                     <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
@@ -313,7 +313,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center">输入电流</td>
+                <td align="center">输入频率</td>
                 <td>
                   <FormItem prop="c37">
                     <Input type="text" v-model="formRecord.c37" :disabled='disabledoff'/>
@@ -370,7 +370,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center">输入电压</td>
+                <td align="center">输入电流</td>
                 <td>
                   <FormItem prop="c45">
                     <Input type="text" v-model="formRecord.c45" :disabled='disabledoff'/>
@@ -378,7 +378,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center">输入电压</td>
+                <td align="center">输入功率</td>
                 <td>
                   <FormItem prop="c46">
                     <Input type="text" v-model="formRecord.c46" :disabled='disabledoff'/>
@@ -386,7 +386,7 @@
                 </td>
               </tr>
               <tr>
-                <td align="center">输入电流</td>
+                <td align="center">输入频率</td>
                 <td>
                   <FormItem prop="c47">
                     <Input type="text" v-model="formRecord.c47" :disabled='disabledoff'/>

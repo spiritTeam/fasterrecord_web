@@ -6,7 +6,7 @@
 */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
       <h1>家用和类似用途微波炉-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -262,6 +262,26 @@
               </td>
             </tr>
             <tr>
+              <td align="right"><span class="red">*</span>控制方式</td>
+              <td>
+                <FormItem prop="c19" style="width:100%">
+                  <RadioGroup v-model="formRecord.c19">
+                    <Radio :disabled='disabledoff' label="机械式">机械式</Radio>
+                    <Radio :disabled='disabledoff' label="电子式">电子式</Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+              <td align="right"><span class="red">*</span>温控器</td>
+              <td>
+                <FormItem prop="c20" style="width:100%">
+                  <RadioGroup v-model="formRecord.c20">
+                    <Radio :disabled='disabledoff' label="有">有</Radio>
+                    <Radio :disabled='disabledoff' label="无">无</Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
               <td align="right"><span class="red">*</span>热断路器</td>
               <td>
                 <FormItem prop="c21" style="width:100%">
@@ -365,7 +385,7 @@
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td align="right"><span class="red">*</span>外形尺寸（长×宽×高）mm×mm×mm）</td>
+              <td align="right"><span class="red">*</span>外形尺寸（长×宽×高）（mm×mm×mm）</td>
               <td>
                 <FormItem prop="c31" style="width:25%">
                   <Input type="text" style="width:40px" v-model="formRecord.c31" :disabled='disabledoff'/>

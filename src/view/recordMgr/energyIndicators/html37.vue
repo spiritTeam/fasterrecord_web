@@ -6,7 +6,7 @@
  */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
       <h1>热泵热水机（器）-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">

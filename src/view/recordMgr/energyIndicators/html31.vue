@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
       <h1>电动洗衣机 修订-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -565,7 +565,7 @@
             </tr>
             <tr>
               <td>6</td>
-              <td>电脑版</td>
+              <td>电脑板</td>
               <td>
                 <FormItem prop="c89">
                   <Input type="text" v-model="formRecord.c89" :disabled="disabledoff"/>
