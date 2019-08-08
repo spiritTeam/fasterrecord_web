@@ -1711,10 +1711,10 @@
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
-            /*{
-              validator: isInteger,
+            {
+              validator: numberCheck,
               trigger: 'change,blur'
-            }*/
+            }
           ],
           c34: [
             {
@@ -1722,30 +1722,30 @@
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
-            /*{
+            {
               validator: atLeastTwoDecimals,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: checkc34,
               trigger: 'change,blur'
             }
           ],
           c9: [
-            /*{
-              validator: oneDecimals,
+            {
+              validator: !this.forbidden.c10 ? oneDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: !this.forbidden.c10 ? checkc9 : check,
               trigger: 'change,blur'
             }
           ],
           c38: [
-            /*{
+            {
               validator: !this.forbidden.c38 ? atLeastTwoDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: checkc38,
               trigger: 'change,blur'
@@ -1757,10 +1757,10 @@
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
-            /*{
-              validator: oneDecimals,
+            {
+              validator: !this.forbidden.c40 ? oneDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: !this.forbidden.c40 ? checkc11 : check,
               trigger: 'change,blur'
@@ -1772,10 +1772,10 @@
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
-            /* {
+             {
                validator: !this.forbidden.c40 ? atLeastTwoDecimals : check,
                trigger: 'change,blur'
-             },*/
+             },
             {
               validator: checkc40,
               trigger: 'change,blur'
@@ -1973,20 +1973,20 @@
             }
           ],
           c7: [
-            /*{
-              validator: oneDecimals,
+            {
+              validator: !this.forbidden.c8 ? oneDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: !this.forbidden.c8 ? checkc7 : check,
               trigger: 'change,blur'
             }
           ],
           c36: [
-            /* {
+             {
                validator: !this.forbidden.c36 ? atLeastTwoDecimals : check,
                trigger: 'change,blur'
-             },*/
+             },
             {
               validator: checkc36,
               trigger: 'change,blur'

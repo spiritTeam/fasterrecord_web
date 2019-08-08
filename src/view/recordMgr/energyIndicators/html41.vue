@@ -1723,6 +1723,20 @@
             }
 
           ],
+          c63: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c64: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
           c14: [
             {
               required: true,
@@ -2049,6 +2063,160 @@
             {
               validator: isIntegerNotZero,
               trigger: 'change,blur'
+            }
+          ],
+          c67: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c68: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c71: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c72: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c75: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c76: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c81: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c82: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c87: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c88: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c91: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c92: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c95: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c96: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c99: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c100: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c103: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c104: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c109: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c110: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            }
+          ],
+          c115: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            }
+          ],
+          c116: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
             }
           ],
           c118: [

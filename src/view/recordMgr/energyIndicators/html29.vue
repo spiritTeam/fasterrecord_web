@@ -1761,12 +1761,20 @@
               required: true,
               message: '请输入',
               trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
             }
           ],
           c10: [
             {
               required: true,
               message: '请输入',
+              trigger: 'change,blur'
+            },
+            {
+              validator: numberCheck,
               trigger: 'change,blur'
             }
           ],

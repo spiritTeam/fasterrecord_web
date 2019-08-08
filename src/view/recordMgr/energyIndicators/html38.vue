@@ -94,14 +94,13 @@
               <td>输出速度p(页/分钟)</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="两位有效数字"/>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c7_1'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c9">
                   <Input type="text" v-model="formRecord.c9" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="三位有效数字"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -115,13 +114,13 @@
               <td>
                 <FormItem prop="c11">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c12">
                   <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -136,13 +135,13 @@
               <td>
                 <FormItem prop="c14">
                   <Input type="text" v-model="formRecord.c14" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c15">
                   <Input type="text" v-model="formRecord.c15" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -156,13 +155,13 @@
               <td>
                 <FormItem prop="c17">
                   <Input type="text" v-model="formRecord.c17" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c18">
                   <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -177,13 +176,13 @@
               <td>
                 <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -197,13 +196,13 @@
               <td>
                 <FormItem prop="c23">
                   <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c24">
                   <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -218,13 +217,13 @@
               <td>
                 <FormItem prop="c26">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -238,13 +237,13 @@
               <td>
                 <FormItem prop="c29">
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c30">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -259,13 +258,13 @@
               <td>
                 <FormItem prop="c32">
                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c33">
                   <Input type="text" v-model="formRecord.c33" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -279,13 +278,13 @@
               <td>
                 <FormItem prop="c35">
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c36">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -299,13 +298,13 @@
               <td>
                 <FormItem prop="c38">
                   <Input type="text" v-model="formRecord.c38" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c39">
                   <Input type="text" v-model="formRecord.c39" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -319,13 +318,13 @@
               <td>
                 <FormItem prop="c41">
                   <Input type="text" v-model="formRecord.c41" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c42">
                   <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -339,13 +338,13 @@
               <td>
                 <FormItem prop="c44">
                   <Input type="text" v-model="formRecord.c44" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c45">
                   <Input type="text" v-model="formRecord.c45" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -360,13 +359,13 @@
               <td>
                 <FormItem prop="c47">
                   <Input type="text" v-model="formRecord.c47" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c48">
                   <Input type="text" v-model="formRecord.c48" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -380,13 +379,13 @@
               <td>
                 <FormItem prop="c50">
                   <Input type="text" v-model="formRecord.c50" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c51">
                   <Input type="text" v-model="formRecord.c51" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -400,13 +399,13 @@
               <td>
                 <FormItem prop="c53">
                   <Input type="text" v-model="formRecord.c53" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c54">
                   <Input type="text" v-model="formRecord.c54" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -420,13 +419,13 @@
               <td>
                 <FormItem prop="c56">
                   <Input type="text" v-model="formRecord.c56" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c57">
                   <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -440,13 +439,13 @@
               <td>
                 <FormItem prop="c59">
                   <Input type="text" v-model="formRecord.c59" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c60">
                   <Input type="text" v-model="formRecord.c60" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -461,13 +460,13 @@
               <td>
                 <FormItem prop="c62">
                   <Input type="text" v-model="formRecord.c62" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c63">
                   <Input type="text" v-model="formRecord.c63" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -481,13 +480,13 @@
               <td>
                 <FormItem prop="c65">
                   <Input type="text" v-model="formRecord.c65" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c66">
                   <Input type="text" v-model="formRecord.c66" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -501,13 +500,13 @@
               <td>
                 <FormItem prop="c68">
                   <Input type="text" v-model="formRecord.c68" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c69">
                   <Input type="text" v-model="formRecord.c69" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -521,13 +520,13 @@
               <td>
                 <FormItem prop="c71">
                   <Input type="text" v-model="formRecord.c71" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72">
                   <Input type="text" v-model="formRecord.c72" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -541,13 +540,13 @@
               <td>
                 <FormItem prop="c74">
                   <Input type="text" v-model="formRecord.c74" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75">
                   <Input type="text" v-model="formRecord.c75" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -2010,6 +2009,7 @@
     atLeastOneDecimals,
     atLeastTwoDecimals,
     atLeastThreeDecimals,
+    isIntegerNotZero,
     isInteger,
     isNumber,
     numberCheck,
@@ -3191,6 +3191,10 @@
               required: !this.forbidden.c7_1,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_1 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c9: [
@@ -3231,6 +3235,10 @@
               required: !this.forbidden.c7_2,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_2 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c15: [
@@ -3271,6 +3279,10 @@
               required: !this.forbidden.c7_3,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_3 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c21: [
@@ -3311,6 +3323,10 @@
               required: !this.forbidden.c7_4,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_4 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c27: [
@@ -3541,6 +3557,10 @@
               message: '标称值不能为空'
             },
             {
+              validator: !this.forbidden.c7_6 ? numberCheck : check,
+              trigger: 'change,blur'
+            },
+            {
               validator: checkc56,
               trigger: 'change,blur'
             }
@@ -3653,6 +3673,10 @@
               required: !this.forbidden.c7_7,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_7 ? numberCheck : check,
+              trigger: 'change,blur'
             },
             {
               validator: checkc71,
