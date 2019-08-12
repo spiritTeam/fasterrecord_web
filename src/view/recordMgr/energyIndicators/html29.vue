@@ -1135,6 +1135,7 @@
     significantDigits33,
     atLeastOneDecimals,
     atLeastTwoDecimals,
+    numberCheck,
     isInteger,
     isNumber,
     check

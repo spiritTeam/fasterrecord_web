@@ -1354,6 +1354,67 @@
             callback()
           }
         }
+
+        var c54 = parseFloat(this.formRecord.c54)
+        var c60 = parseFloat(this.formRecord.c60)
+        const checkc54 = (rule, value, callback) => {
+          if (c54 > c60) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c55 = parseFloat(this.formRecord.c55)
+        var c61 = parseFloat(this.formRecord.c61)
+        const checkc55 = (rule, value, callback) => {
+          if (c55 > c61) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c56 = parseFloat(this.formRecord.c56)
+        var c62 = parseFloat(this.formRecord.c62)
+        const checkc56 = (rule, value, callback) => {
+          if (c56 > c62) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c57 = parseFloat(this.formRecord.c57)
+        var c63 = parseFloat(this.formRecord.c63)
+        const checkc57 = (rule, value, callback) => {
+          if (c57 > c63) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c58 = parseFloat(this.formRecord.c58)
+        var c64 = parseFloat(this.formRecord.c64)
+        const checkc58 = (rule, value, callback) => {
+          if (c58 > c64) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c59 = parseFloat(this.formRecord.c59)
+        var c65 = parseFloat(this.formRecord.c65)
+        const checkc59 = (rule, value, callback) => {
+          if (c59 > c65) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
         //0803
         var nxdjch = this.formRecord.c7
         var zjlx = this.formRecord.c18
@@ -1639,6 +1700,66 @@
             {
               trigger: 'change,blur', required: true,
               message: '高不能为空'
+            }
+          ],
+          c54: [
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc54,
+              trigger: 'blur'
+            }
+          ],
+          c55: [
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc55,
+              trigger: 'blur'
+            }
+          ],
+          c56: [
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc56,
+              trigger: 'blur'
+            }
+          ],
+          c57: [
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc57,
+              trigger: 'blur'
+            }
+          ],
+          c58: [
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc58,
+              trigger: 'blur'
+            }
+          ],
+          c59: [
+            {
+              validator: numberCheck,
+              trigger: 'blur'
+            },
+            {
+              validator: checkc59,
+              trigger: 'blur'
             }
           ],
           c66: [

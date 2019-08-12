@@ -1463,8 +1463,8 @@ import {
       //c5 热效率值
       var nxdj = "";
       var c9 = parseInt(this.formRecord.c9);
-      var c5 = this.formRecord.c5;
-      var c25 = this.formRecord.c25;
+      var c5 = parseInt(this.formRecord.c5);
+      var c25 = parseFloat(this.formRecord.c25);
       if (c25 <= 400) {
           if (c9 != '' && c9) {
               if (c9 <= 19) {
@@ -1632,8 +1632,8 @@ import {
       }
 
       //绑定加入方式 c15
-      var nxdjch = this.formRecord.c29;
-      var djgl = this.formRecord.c7;
+      var nxdjch = parseFloat(this.formRecord.c29);
+      var djgl = parseFloat(this.formRecord.c7);
       var djglCheck = this.formRecord.c15;
       const checkc15 = (rule, value, callback) => {
           if (djglCheck == "电热元件式") {

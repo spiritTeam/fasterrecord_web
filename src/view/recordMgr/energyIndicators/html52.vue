@@ -1723,7 +1723,7 @@
               message: '实测值不能为空'
             },
             {
-              validator: atLeastTwoDecimals,
+              validator: atLeastOneDecimals,
               trigger: 'change,blur'
             },
             {

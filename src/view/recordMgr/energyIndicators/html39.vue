@@ -70,7 +70,7 @@
             </RadioGroup>
           </FormItem>
           <FormItem prop="c40" label="产品类型" style="width:100%;" :label-width="180">
-            <Select v-model="formRecord.c40" style="width:200px" disabled >
+            <Select v-model="formRecord.c40" style="width:200px">
               <Option value="全部都有">全部都有</Option>
               <Option value="无待机功率">无待机功率</Option>
               <Option value="无关机功率">无关机功率</Option>

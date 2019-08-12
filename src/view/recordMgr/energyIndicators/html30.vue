@@ -2166,7 +2166,7 @@
             trigger: 'change,blur'
           }
         ],
-        c5: [
+       /* c5: [
           {
             required: true,
             trigger: 'change,blur',
@@ -2176,7 +2176,7 @@
             validator: oneDecimals,
             trigger: 'change,blur'
           }
-        ],
+        ],*/
         c6: [
           {
             required: true,

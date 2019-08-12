@@ -80,12 +80,12 @@
               <td align="center">制冷量(千瓦)</td>
               <td>
                  <FormItem prop="c5" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c5"  :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
               <td>
                  <FormItem prop="c50" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c50" :disabled='disabledoff' />
+                   <Input type="text" v-model="formRecord.c50" :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
             </tr>
@@ -93,12 +93,12 @@
               <td align="center">消耗总电功率(千瓦)</td>
                 <td>
                  <FormItem prop="c6" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c6"  :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
               <td>
                  <FormItem prop="c51" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c51" :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
             </tr>
@@ -106,12 +106,12 @@
               <td align="center">性能系数</td>
                <td>
                  <FormItem prop="c7" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c7"  :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
               <td>
                  <FormItem prop="c52" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c52" :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c52" :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
             </tr>
@@ -119,12 +119,12 @@
               <td align="center">综合部分负荷性能系数</td>
                <td>
                  <FormItem prop="c8" label="标注值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c8"  :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
               <td>
                  <FormItem prop="c53" label="实测值：" style="width:100%;" :label-width="80">
-                   <Input type="text" v-model="formRecord.c53" :disabled='disabledoff'/>
+                   <Input type="text" v-model="formRecord.c53" :disabled='disabledoff && pageType!="extend"'/>
                  </FormItem>
               </td>
             </tr>
