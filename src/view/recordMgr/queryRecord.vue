@@ -71,7 +71,7 @@ export default {
           this.downloadQrcode(params.row.id)
         }
       }
-    }, '下载二维码')
+    }, '二维码下载')
     const uploadBtn = (h, params) => h('Button', {
       props: {
         type: 'primary',
@@ -101,7 +101,7 @@ export default {
           this.downloadElImg(params.row.id)
         }
       }
-    }, '下载能效标识图')
+    }, '标识下载')
     const extendBtn = (h, params) => h('Button', {
       props: {
         type: 'primary',
