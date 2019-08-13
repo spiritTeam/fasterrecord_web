@@ -577,12 +577,12 @@
               <td colspan="3" width="241">
                 <FormItem prop="c112">
                   <RadioGroup v-model="formRecord.c112">
-                    <Radio label="热敏" :disabled='disabledoff'>热敏</Radio>
-                    <Radio label="热升华" :disabled='disabledoff'>热升华</Radio>
-                    <Radio label="电子映像" :disabled='disabledoff'>电子映像</Radio>
-                    <Radio label="固体喷蜡" :disabled='disabledoff'>固体喷蜡</Radio>
-                    <Radio label="热转印技术" :disabled='disabledoff'>热转印技术</Radio>
-                    <Radio label="高性能喷墨技术" :disabled='disabledoff'>高性能喷墨技术</Radio>
+                    <Radio label="热敏" :disabled='disabledoff || forbidden.c112'>热敏</Radio>
+                    <Radio label="热升华" :disabled='disabledoff || forbidden.c112'>热升华</Radio>
+                    <Radio label="电子映像" :disabled='disabledoff || forbidden.c112'>电子映像</Radio>
+                    <Radio label="固体喷蜡" :disabled='disabledoff || forbidden.c112'>固体喷蜡</Radio>
+                    <Radio label="热转印技术" :disabled='disabledoff || forbidden.c112'>热转印技术</Radio>
+                    <Radio label="高性能喷墨技术" :disabled='disabledoff || forbidden.c112'>高性能喷墨技术</Radio>
                   </RadioGroup>
                 </FormItem>
                 <br/><br/>
@@ -2322,6 +2322,7 @@
           c82: true,
           c85: true,
           c87: true,
+          c112: true,
           c114: true,
         },
         c7V: ''
@@ -2487,30 +2488,51 @@
         if (this.formRecord.c7 === '单色复印机' || this.formRecord.c7 === '单色打印机' || this.formRecord.c7 === '单色传真机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_1 = false
         } else if (this.formRecord.c7 === '彩色复印机' || this.formRecord.c7 === '彩色打印机' || this.formRecord.c7 === '彩色传真机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_2 = false
         } else if (this.formRecord.c7 === '单色多功能一体机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_3 = false
         } else if (this.formRecord.c7 === '彩色多功能一体机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_4 = false
         } else if (this.formRecord.c7 === '喷墨打印机' || this.formRecord.c7 === '针式打印机') {
           this.formRecord.c113 = ''
           this.formRecord.c115 = this.formRecord.c7
+          this.forbidden.c114 = false
+          this.formRecord.c112 = ''
+          this.forbidden.c112 = true
           this.forbidden.c7_5 = false
         } else if (this.formRecord.c7 === '喷墨多功能一体机') {
           this.formRecord.c113 = ''
           this.formRecord.c115 = this.formRecord.c7
+          this.forbidden.c114 = false
+          this.formRecord.c112 = ''
+          this.forbidden.c112 = true
           this.forbidden.c7_6 = false
         } else if (this.formRecord.c7 === '喷墨传真机') {
           this.formRecord.c113 = ''
           this.formRecord.c115 = this.formRecord.c7
+          this.forbidden.c114 = false
+          this.formRecord.c112 = ''
+          this.forbidden.c112 = true
           this.forbidden.c7_7 = false
         }
 
@@ -2537,13 +2559,6 @@
         } else {
           this.formRecord.c87 = ''
           this.forbidden.c87 = true
-        }
-
-        if (this.formRecord.c112 == '') {
-          this.forbidden.c114 = false
-        } else {
-          this.formRecord.c114 = ''
-          this.forbidden.c114 = true
         }
 
         var c11 = parseFloat(this.formRecord.c11);
@@ -3741,14 +3756,14 @@
           ],
           c112: [
             {
-              required: true,
+              required: !this.forbidden.c112,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
           c114: [
             {
-              required: this.formRecord.c112 == '',
+              required: !this.forbidden.c114,
               trigger: 'change,blur',
               message: '不能为空'
             }
