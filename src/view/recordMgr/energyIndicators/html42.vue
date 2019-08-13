@@ -1704,6 +1704,10 @@
           ],
           c54: [
             {
+              trigger: 'change,blur', required: true,
+              message: '不能为空'
+            },
+            {
               validator: numberCheck,
               trigger: 'change,blur'
             },
@@ -1760,6 +1764,13 @@
             {
               validator: checkc59,
               trigger: 'change,blur'
+            }
+          ],
+          c60: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '不能为空'
             }
           ],
           c66: [

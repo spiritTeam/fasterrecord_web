@@ -2068,11 +2068,11 @@
               required: this.formRecord.c44 === '其它',
               message: '其它不能为空',
               trigger: 'change,blur'
-            },
-            {
+            }
+           /* , {
               validator: this.formRecord.c44 === '其它' ? twoDecimals : check,
               trigger: 'change,blur'
-            }
+            }*/
           ],
           c46: [
             {

@@ -2065,6 +2065,13 @@
               trigger: 'change,blur'
             }
           ],
+          c66: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            }
+          ],
           c67: [
             {
               required: !this.forbidden.zcrqccz,
@@ -2077,6 +2084,13 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            }
+          ],
+          c70: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
             }
           ],
           c71: [
@@ -2093,6 +2107,13 @@
               message: '请输入实测热效率值'
             }
           ],
+          c74: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            }
+          ],
           c75: [
             {
               required: !this.forbidden.zcrqccz,
@@ -2107,32 +2128,11 @@
               message: '请输入实测热效率值'
             }
           ],
-          c81: [
+          c90: [
             {
-              required: !this.forbidden.zcrqccz,
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
-              message: '请输入额定热效率值'
-            }
-          ],
-          c82: [
-            {
-              required: !this.forbidden.zcrqccz,
-              trigger: 'change,blur',
-              message: '请输入实测热效率值'
-            }
-          ],
-          c87: [
-            {
-              required: !this.forbidden.zcrqccz,
-              trigger: 'change,blur',
-              message: '请输入额定热效率值'
-            }
-          ],
-          c88: [
-            {
-              required: !this.forbidden.zcrqccz,
-              trigger: 'change,blur',
-              message: '请输入实测热效率值'
+              message: '请输入热负荷实测值'
             }
           ],
           c91: [
@@ -2149,6 +2149,13 @@
               message: '请输入实测热效率值'
             }
           ],
+          c94: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            }
+          ],
           c95: [
             {
               required: !this.forbidden.yyrqdgz,
@@ -2161,6 +2168,13 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            }
+          ],
+          c98: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
             }
           ],
           c99: [
@@ -2177,6 +2191,13 @@
               message: '请输入实测热效率值'
             }
           ],
+          c102: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            }
+          ],
           c103: [
             {
               required: !this.forbidden.yyrqdgz,
@@ -2191,32 +2212,11 @@
               message: '请输入实测热效率值'
             }
           ],
-          c109: [
+          c117: [
             {
-              required: !this.forbidden.yyrqdgz,
+              required: !this.forbidden.rqzx,
               trigger: 'change,blur',
-              message: '请输入额定热效率值'
-            }
-          ],
-          c110: [
-            {
-              required: !this.forbidden.yyrqdgz,
-              trigger: 'change,blur',
-              message: '请输入实测热效率值'
-            }
-          ],
-          c115: [
-            {
-              required: !this.forbidden.yyrqdgz,
-              trigger: 'change,blur',
-              message: '请输入额定热效率值'
-            }
-          ],
-          c116: [
-            {
-              required: !this.forbidden.yyrqdgz,
-              trigger: 'change,blur',
-              message: '请输入实测热效率值'
+              message: '请输入热负荷实测值'
             }
           ],
           c118: [
