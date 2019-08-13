@@ -1704,7 +1704,7 @@
           ],
           c54: [
             {
-              trigger: 'change,blur', required: true,
+              trigger: 'change,blur', required: this.formRecord.c60 !== '',
               message: '不能为空'
             },
             {
@@ -1718,6 +1718,10 @@
           ],
           c55: [
             {
+              trigger: 'change,blur', required: this.formRecord.c61 !== '',
+              message: '不能为空'
+            },
+            {
               validator: numberCheck,
               trigger: 'change,blur'
             },
@@ -1727,6 +1731,10 @@
             }
           ],
           c56: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c62 !== '',
+              message: '不能为空'
+            },
             {
               validator: numberCheck,
               trigger: 'change,blur'
@@ -1738,6 +1746,10 @@
           ],
           c57: [
             {
+              trigger: 'change,blur', required: this.formRecord.c63 !== '',
+              message: '不能为空'
+            },
+            {
               validator: numberCheck,
               trigger: 'change,blur'
             },
@@ -1748,6 +1760,10 @@
           ],
           c58: [
             {
+              trigger: 'change,blur', required: this.formRecord.c64 !== '',
+              message: '不能为空'
+            },
+            {
               validator: numberCheck,
               trigger: 'change,blur'
             },
@@ -1757,6 +1773,10 @@
             }
           ],
           c59: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c65 !== '',
+              message: '不能为空'
+            },
             {
               validator: numberCheck,
               trigger: 'change,blur'
