@@ -1705,61 +1705,61 @@
           c54: [
             {
               validator: numberCheck,
-              trigger: 'blur'
+              trigger: 'change,blur'
             },
             {
               validator: checkc54,
-              trigger: 'blur'
+              trigger: 'change,blur'
             }
           ],
           c55: [
             {
               validator: numberCheck,
-              trigger: 'blur'
+              trigger: 'change,blur'
             },
             {
               validator: checkc55,
-              trigger: 'blur'
+              trigger: 'change,blur'
             }
           ],
           c56: [
             {
               validator: numberCheck,
-              trigger: 'blur'
+              trigger: 'change,blur'
             },
             {
               validator: checkc56,
-              trigger: 'blur'
+              trigger: 'change,blur'
             }
           ],
           c57: [
             {
               validator: numberCheck,
-              trigger: 'blur'
+              trigger: 'change,blur'
             },
             {
               validator: checkc57,
-              trigger: 'blur'
+              trigger: 'change,blur'
             }
           ],
           c58: [
             {
               validator: numberCheck,
-              trigger: 'blur'
+              trigger: 'change,blur'
             },
             {
               validator: checkc58,
-              trigger: 'blur'
+              trigger: 'change,blur'
             }
           ],
           c59: [
             {
               validator: numberCheck,
-              trigger: 'blur'
+              trigger: 'change,blur'
             },
             {
               validator: checkc59,
-              trigger: 'blur'
+              trigger: 'change,blur'
             }
           ],
           c66: [

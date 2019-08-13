@@ -423,6 +423,9 @@ export const significantDigits33 = (rule, vaule, callback) => {
 }
 
 export const numberCheck = (rule, vaule, callback) => {//整数中包含0
+  if (!vaule) {
+    callback()
+  }
   inputNumber.test(vaule) ? callback() : callback('请输入整数');
 }
 export const atLeastOneDecimals = (rule, vaule, callback) => {
