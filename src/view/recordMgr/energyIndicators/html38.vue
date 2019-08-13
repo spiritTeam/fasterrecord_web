@@ -599,23 +599,23 @@
               <td colspan="3">
                 <FormItem prop="c113">
                   <RadioGroup v-model="formRecord.c113">
-                    <Radio label="单色复印机" :disabled='disabledoff'>单色复印机</Radio>
-                    <Radio label="单色打印机" :disabled='disabledoff'>单色打印机</Radio>
-                    <Radio label="单色传真机" :disabled='disabledoff'>单色传真机</Radio>
-                    <Radio label="彩色复印机" :disabled='disabledoff'>彩色复印机</Radio>
-                    <Radio label="彩色传真机" :disabled='disabledoff'>彩色传真机</Radio>
-                    <Radio label="彩色打印机" :disabled='disabledoff'>彩色打印机</Radio>
-                    <Radio label="单色多功能一体机" :disabled='disabledoff'>单色多功能一体机</Radio>
-                    <Radio label="彩色多功能一体机" :disabled='disabledoff'>彩色多功能一体机</Radio>
+                    <Radio label="单色复印机" disabled>单色复印机</Radio>
+                    <Radio label="单色打印机" disabled>单色打印机</Radio>
+                    <Radio label="单色传真机" disabled>单色传真机</Radio>
+                    <Radio label="彩色复印机" disabled>彩色复印机</Radio>
+                    <Radio label="彩色传真机" disabled>彩色传真机</Radio>
+                    <Radio label="彩色打印机" disabled>彩色打印机</Radio>
+                    <Radio label="单色多功能一体机" disabled>单色多功能一体机</Radio>
+                    <Radio label="彩色多功能一体机" disabled>彩色多功能一体机</Radio>
                   </RadioGroup>
                 </FormItem>
                 <hr>
                 <FormItem prop="c115">
                   <RadioGroup v-model="formRecord.c115">
-                    <Radio label="喷墨打印机" :disabled='disabledoff'>喷墨打印机</Radio>
-                    <Radio label="针式打印机" :disabled='disabledoff'>针式打印机</Radio>
-                    <Radio label="喷墨传真机" :disabled='disabledoff'>喷墨传真机</Radio>
-                    <Radio label="喷墨多功能一体机" :disabled='disabledoff'>喷墨多功能一体机</Radio>
+                    <Radio label="喷墨打印机" disabled>喷墨打印机</Radio>
+                    <Radio label="针式打印机" disabled>针式打印机</Radio>
+                    <Radio label="喷墨传真机" disabled>喷墨传真机</Radio>
+                    <Radio label="喷墨多功能一体机" disabled>喷墨多功能一体机</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -2485,18 +2485,32 @@
         }
         this.c7V = this.formRecord.c7
         if (this.formRecord.c7 === '单色复印机' || this.formRecord.c7 === '单色打印机' || this.formRecord.c7 === '单色传真机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
           this.forbidden.c7_1 = false
         } else if (this.formRecord.c7 === '彩色复印机' || this.formRecord.c7 === '彩色打印机' || this.formRecord.c7 === '彩色传真机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
           this.forbidden.c7_2 = false
         } else if (this.formRecord.c7 === '单色多功能一体机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
           this.forbidden.c7_3 = false
         } else if (this.formRecord.c7 === '彩色多功能一体机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
           this.forbidden.c7_4 = false
         } else if (this.formRecord.c7 === '喷墨打印机' || this.formRecord.c7 === '针式打印机') {
+          this.formRecord.c113 = ''
+          this.formRecord.c115 = this.formRecord.c7
           this.forbidden.c7_5 = false
         } else if (this.formRecord.c7 === '喷墨多功能一体机') {
+          this.formRecord.c113 = ''
+          this.formRecord.c115 = this.formRecord.c7
           this.forbidden.c7_6 = false
         } else if (this.formRecord.c7 === '喷墨传真机') {
+          this.formRecord.c113 = ''
+          this.formRecord.c115 = this.formRecord.c7
           this.forbidden.c7_7 = false
         }
 
@@ -2556,9 +2570,6 @@
         var c7 = this.formRecord.c7;//产品类型
         var c50 = parseFloat(this.formRecord.c50);
         var c59 = parseFloat(this.formRecord.c59);
-        var cz = Math.round(c50 * 100);//操作模式功率Pom标称值2.2*100=220
-        var dj = Math.round(c53 * 100);//待机功率（W）标称值0.5*100=50
-        var yz = Math.round(c59 * 100);//附加功能功率因子之和(W)标称值1.6*100=160
         var c65 = parseFloat(this.formRecord.c65);
         var c74 = parseFloat(this.formRecord.c74);
 
@@ -3023,7 +3034,9 @@
             callback()
           }
 
-
+          let yz = Math.round(c44 * 100);
+          let cz = Math.round(c35 * 100);
+          let dj = Math.round(c38 * 100);
           if (c7 === "喷墨打印机") {
             if (cz <= 60 + yz) {
               if (dj <= 50) {
@@ -3085,7 +3098,9 @@
             }
             callback()
           }
-
+          let cz = Math.round(c50 * 100);//操作模式功率Pom标称值2.2*100=220
+          let dj = Math.round(c53 * 100);//待机功率（W）标称值0.5*100=50
+          let yz = Math.round(c59 * 100);//附加功能功率因子之和(W)标称值1.6*100=160
           if (cz <= 60 + yz) {
             if (dj <= 50) {
               nxdj = 1;
@@ -3113,7 +3128,9 @@
               callback()
             }
           }
-
+          let cz = Math.round(c65 * 100);
+          let dj = Math.round(c68 * 100);
+          let yz = Math.round(c74 * 100);
           if (cz <= 60 + yz) {
             if (dj <= 50) {
               nxdj = 1;
@@ -3128,9 +3145,9 @@
             }
           }
         }
-        var c6 = this.formRecord.c6;
+        var c6 = parseFloat(this.formRecord.c6);
         let checkc6 = (rule, value, callback) => {
-          if (nxdj === 0) {
+          if (nxdj == 0) {
             callback("能效数据不再备案范围");
           }
           if (nxdj != c6) {
