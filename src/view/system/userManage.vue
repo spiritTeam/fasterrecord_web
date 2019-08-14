@@ -25,7 +25,13 @@
             @on-cancel="">
             <Tree ref="tree" :data="dataTree" show-checkbox></Tree>
         </Modal>
-
+        <Modal
+            v-model="resetModal"
+            title="重置密码"
+            @on-ok="okHandle"
+            @on-cancel="">
+            {{resetPassword}}
+        </Modal>
 
 
     </Card>
@@ -67,20 +73,39 @@
                 }
             }
         }, '角色分配');
-            const delBtn=(h,params)=>h('Button', {
-                props: {
-                    type: 'error',
-                    size: 'small'
-                },
-                on: {
-                    click: () => {
-                    this.remove(params.index,params.row)
+        const resetBtn=(h,params)=>h('Button', {
+            props: {
+                type: 'primary',
+                size: 'small'
+            },
+            style: {
+                marginRight: '5px'
+            },
+            on: {
+                click: () => {
+                    //console.log(params)
+                    //this.roleHandle(params.row.id);
+                    //this.modal=true;
+                    this.resetHandle(params.row.loginName);
+                }
             }
-        }
+        }, '重置密码');
+        const delBtn=(h,params)=>h('Button', {
+            props: {
+                type: 'error',
+                size: 'small'
+            },
+            on: {
+                click: () => {
+                    this.remove(params.index,params.row)
+                }
+            }
         }, '删除');
             return {
                 totals:10,
                 modal:false,
+                resetModal:false,
+                resetPassword:'',
                 currId:0,
                 search:{
                     loginName:'',
@@ -124,7 +149,9 @@
                                 //params.row.state=='1'?pubDetailBtn(h,params):'',
                                 //previewBtn(h,params),
                                 updateBtn(h,params),
+                                resetBtn(h,params),
                                 delBtn(h,params)
+
                             ]);
                         }
                     }
@@ -170,6 +197,22 @@
             },
             show (index) {
 
+            },
+            resetHandle(rowloginname){
+                axios({
+                    url:'/user/reset.do',
+                    params:{
+                        loginName:rowloginname
+                    },
+                    methods:"get"
+                }).then(res => {
+                    if(res.data.result){
+                        this.resetModal=true;
+                    }else{
+                        this.resetModal=false
+                    }
+                    this.resetPassword=res.data.msg;
+                })
             },
             roleHandle(rowid){
                 this.currId=rowid;
