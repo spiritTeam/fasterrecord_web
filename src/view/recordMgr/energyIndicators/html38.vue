@@ -2325,7 +2325,8 @@
           c112: true,
           c114: true,
         },
-        c7V: ''
+        c7V: '',
+        fjyzV: false
       }
     },
     mounted() {
@@ -2485,6 +2486,7 @@
           this.formRecord.c76 = ''
         }
         this.c7V = this.formRecord.c7
+
         if (this.formRecord.c7 === '单色复印机' || this.formRecord.c7 === '单色打印机' || this.formRecord.c7 === '单色传真机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
@@ -2492,6 +2494,7 @@
           this.formRecord.c114 = ''
           this.forbidden.c114 = true
           this.forbidden.c7_1 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '彩色复印机' || this.formRecord.c7 === '彩色打印机' || this.formRecord.c7 === '彩色传真机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
@@ -2499,6 +2502,7 @@
           this.formRecord.c114 = ''
           this.forbidden.c114 = true
           this.forbidden.c7_2 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '单色多功能一体机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
@@ -2506,6 +2510,7 @@
           this.formRecord.c114 = ''
           this.forbidden.c114 = true
           this.forbidden.c7_3 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '彩色多功能一体机') {
           this.formRecord.c113 = this.formRecord.c7
           this.formRecord.c115 = ''
@@ -2513,6 +2518,7 @@
           this.formRecord.c114 = ''
           this.forbidden.c114 = true
           this.forbidden.c7_4 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '喷墨打印机' || this.formRecord.c7 === '针式打印机') {
           this.formRecord.c113 = ''
           this.formRecord.c115 = this.formRecord.c7
@@ -2520,6 +2526,7 @@
           this.formRecord.c112 = ''
           this.forbidden.c112 = true
           this.forbidden.c7_5 = false
+          this.fjyzV = true
         } else if (this.formRecord.c7 === '喷墨多功能一体机') {
           this.formRecord.c113 = ''
           this.formRecord.c115 = this.formRecord.c7
@@ -2527,6 +2534,7 @@
           this.formRecord.c112 = ''
           this.forbidden.c112 = true
           this.forbidden.c7_6 = false
+          this.fjyzV = true
         } else if (this.formRecord.c7 === '喷墨传真机') {
           this.formRecord.c113 = ''
           this.formRecord.c115 = this.formRecord.c7
@@ -2534,6 +2542,7 @@
           this.formRecord.c112 = ''
           this.forbidden.c112 = true
           this.forbidden.c7_7 = false
+          this.fjyzV = true
         }
 
         if (this.formRecord.c80.join('').indexOf('黑白速度') > -1) {
@@ -3899,91 +3908,91 @@
           ],
           c98: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表1不能为空'
             }
           ],
           c99: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表2不能为空'
             }
           ],
           c100: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表3不能为空'
             }
           ],
           c101: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表4不能为空'
             }
           ],
           c102: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表5不能为空'
             }
           ],
           c103: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表6不能为空'
             }
           ],
           c104: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表7不能为空'
             }
           ],
           c105: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表8不能为空'
             }
           ],
           c106: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表9不能为空'
             }
           ],
           c107: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表10不能为空'
             }
           ],
           c108: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表11不能为空'
             }
           ],
           c109: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表12不能为空'
             }
           ],
           c110: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表13不能为空'
             }

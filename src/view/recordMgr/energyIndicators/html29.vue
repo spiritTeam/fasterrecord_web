@@ -1652,6 +1652,36 @@
         }
         var c13 = this.formRecord.c13
         var c5 = parseFloat(this.formRecord.c5)
+        var c6 = parseFloat(this.formRecord.c6)
+        var c7 = parseFloat(this.formRecord.c7)
+        var c8 = parseFloat(this.formRecord.c8)
+        var c9 = parseFloat(this.formRecord.c9)
+        var c10 = parseFloat(this.formRecord.c10)
+
+
+        const checkc6 = (rule, value, callback) => {
+          if (c5 > c6) {
+            callback('能效系数的标称值≤能效系数的实测值')
+          } else {
+              callback()
+          }
+        }
+        const checkc8 = (rule, value, callback) => {
+          if (c7 > c8) {
+            callback('日有用得热量的标称值≤日有用得热量的实测值')
+          } else {
+              callback()
+          }
+        }
+        const checkc10 = (rule, value, callback) => {
+          if (c9 < c10) {
+            callback('平均热损因数的标称值≥平均热损因数的实测值')
+          } else {
+              callback()
+          }
+        }
+
+
         var result = this.getNxdj(c13, c5);
         var nxdj = this.formRecord.c64;
         const checkc64 = (rule, value, callback) => {
@@ -1733,6 +1763,10 @@
             {
               validator: twoDecimals,
               trigger: 'change,blur'
+            },
+            {
+              validator: checkc6,
+              trigger: 'change,blur'
             }
           ],
           c7: [
@@ -1755,6 +1789,10 @@
             {
               validator: oneDecimals,
               trigger: 'change,blur'
+            },
+            {
+              validator: checkc8,
+              trigger: 'change,blur'
             }
           ],
           c9: [
@@ -1776,6 +1814,10 @@
             },
             {
               validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc10,
               trigger: 'change,blur'
             }
           ],
