@@ -1101,6 +1101,7 @@
     isInteger,
     isNumber,
     isIntegerNotZero,
+    numberCheck,
     check
   } from '@/libs/utilExt'
 
@@ -1718,16 +1719,19 @@
               message: '请输入热负荷实测值'
             },
             {
-              validator: this.formRecord.c12 != '' ? oneDecimals : check,
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
               trigger: 'change,blur'
             }
-
           ],
           c63: [
             {
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c64: [
@@ -1735,6 +1739,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c14: [
@@ -1929,9 +1937,13 @@
           ],
           c43: [
             {
-              required: this.formRecord.c23 === '中餐燃气炒菜灶',
+              required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c44: [
@@ -1943,9 +1955,13 @@
           ],
           c45: [
             {
-              required: this.formRecord.c23 === '中餐燃气炒菜灶',
+              required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c46: [
@@ -1957,9 +1973,13 @@
           ],
           c47: [
             {
-              required: this.formRecord.c23 === '中餐燃气炒菜灶',
+              required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c48: [
@@ -1971,9 +1991,13 @@
           ],
           c49: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c50: [
@@ -1985,9 +2009,13 @@
           ],
           c51: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c52: [
@@ -1999,9 +2027,13 @@
           ],
           c53: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c54: [
@@ -2013,23 +2045,31 @@
           ],
           c55: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c56: [
             {
-              required: this.formRecord.c23 === '燃气蒸箱',
+              required: !this.forbidden.rqzx,
               trigger: 'change,blur',
               message: '请输入水胆容量'
             }
           ],
           c57: [
             {
-              required: this.formRecord.c23 === '燃气蒸箱',
+              required: !this.forbidden.rqzx,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.rqzx ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c58: [
@@ -2070,6 +2110,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c67: [
@@ -2077,6 +2121,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c68: [
@@ -2084,6 +2132,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c70: [
@@ -2091,6 +2143,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c71: [
@@ -2098,6 +2154,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c72: [
@@ -2105,6 +2165,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c74: [
@@ -2112,6 +2176,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c75: [
@@ -2119,6 +2187,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c76: [
@@ -2126,6 +2198,10 @@
               required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c90: [
@@ -2133,6 +2209,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c91: [
@@ -2140,6 +2220,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c92: [
@@ -2147,6 +2231,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c94: [
@@ -2154,6 +2242,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c95: [
@@ -2161,6 +2253,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c96: [
@@ -2168,6 +2264,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c98: [
@@ -2175,6 +2275,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c99: [
@@ -2182,6 +2286,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c100: [
@@ -2189,6 +2297,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c102: [
@@ -2196,6 +2308,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c103: [
@@ -2203,6 +2319,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c104: [
@@ -2210,6 +2330,10 @@
               required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c117: [
@@ -2217,6 +2341,10 @@
               required: !this.forbidden.rqzx,
               trigger: 'change,blur',
               message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.rqzx ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
             }
           ],
           c118: [

@@ -1264,7 +1264,6 @@
           c23: true,
           c24: true,
           c25: true,
-
         },
         c29: ''
       }
@@ -1343,18 +1342,6 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        //产品类型
-        var lx = this.formRecord.c27
-        //能效等级
-        var nxdjch = this.formRecord.c7
-        //额定热负荷热水热效率
-        var valueers = parseFloat(this.formRecord.c14);
-        //额定热负荷供暖热效率
-        var valueegn = parseFloat(this.formRecord.c20);
-        //50%额定热负荷效率值
-        var value50 = parseFloat(this.formRecord.c17);
-        //30%额定热负荷效率值
-        var value30 = parseFloat(this.formRecord.c23);
         if (this.formRecord.c34.join('').indexOf('热水') > -1) {
           this.forbidden.c35 = false
         } else {
@@ -1484,19 +1471,32 @@
         }
         this.c29 = this.formRecord.c29
 
-        var nxdj = "";
-        var n1 = "";
-        var n2 = "";
-        var n3 = "";
-        var n4 = "";
-        var n1val = "";
-        var n2val = "";
-        var nxdj1 = "";
-        var nxdj2 = "";
-        var nxdj3 = "";
-        var nxdj4 = "";
-        var nxdjMidd1 = "";
-        var nxdjMidd2 = "";
+        let nxdj = "";
+        let n1 = "";
+        let n2 = "";
+        let n3 = "";
+        let n4 = "";
+        let n1val = "";
+        let n2val = "";
+        let nxdj1 = "";
+        let nxdj2 = "";
+        let nxdj3 = "";
+        let nxdj4 = "";
+        let nxdjMidd1 = "";
+        let nxdjMidd2 = "";
+
+        //产品类型
+        let lx = this.formRecord.c27
+        //能效等级
+        let nxdjch = this.formRecord.c7
+        //额定热负荷热水热效率
+        let valueers = parseFloat(this.formRecord.c14);
+        //额定热负荷供暖热效率
+        let valueegn = parseFloat(this.formRecord.c20);
+        //50%额定热负荷效率值
+        let value50 = parseFloat(this.formRecord.c17);
+        //30%额定热负荷效率值
+        let value30 = parseFloat(this.formRecord.c23);
         if (lx != "") {
           if (lx == "家用燃气快速热水器") {
             if (valueers > value50) {
@@ -1537,7 +1537,7 @@
                 }
               }
             }
-          } else if (lx == "燃气采暖热水炉单采暖型") {
+          } else if (lx == "燃气采暖热水炉(单采暖型)") {
             if (valueegn > value30) {
               n1val = valueegn;
               n2val = value30;
@@ -1577,7 +1577,7 @@
               }
 
             }
-          } else if (lx == "燃气采暖热水炉两用型") {
+          } else if (lx == "燃气采暖热水炉(两用型)") {
             //热水
             if (valueers > value50) {
               n1 = valueers;
@@ -1609,6 +1609,7 @@
             //采暖
             if (valueegn > value30) {
               n3 = valueegn;
+              n4 = value30;
             } else {
               n3 = value30;
               n4 = valueegn;
@@ -1656,7 +1657,7 @@
               }
             }
           } else {
-            var nxdj = "";
+            nxdj = "";
           }
         }
         const checkc7a = (rule, value, callback) => {
