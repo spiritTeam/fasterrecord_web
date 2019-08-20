@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
       <h1>家用电冰箱-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -53,7 +53,7 @@
 
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标" ></Input>
+            <Input type="text" v-model="formRecord.c5" :disabled='!disabledoff' placeholder="商标" ></Input>
 
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:1000px;" :label-width="180">
