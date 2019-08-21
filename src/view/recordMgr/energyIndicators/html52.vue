@@ -6,7 +6,7 @@
 */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
       <h1>家用和类似用途微波炉-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -56,7 +56,7 @@
             <Input type="text" v-model="formRecord.c3" :disabled='!disabledoff' placeholder="产品规格型号"/>
           </FormItem>
           <FormItem prop="c4" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>

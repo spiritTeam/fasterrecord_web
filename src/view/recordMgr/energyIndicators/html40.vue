@@ -3,7 +3,7 @@
 <!--创建人:YCL-->
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
       <h1>家用电磁灶-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -53,7 +53,7 @@
             <Input type="text" v-model="formRecord.c4" placeholder="规格型号" :disabled='!disabledoff'/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c2" placeholder="商标" :disabled='disabledoff'/>
+            <Input type="text" v-model="formRecord.c2" placeholder="商标" :disabled='!disabledoff'/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled readonly/>
