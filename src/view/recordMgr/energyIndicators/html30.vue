@@ -50,7 +50,7 @@
             <Input type="text" v-model="formRecord.c2" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c3" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c3" :disabled='!disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c3" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
