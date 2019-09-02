@@ -181,12 +181,12 @@ export default {
       'recordno'
     ]),
     titleValue () {
-      let v = '主型号'
+      let v = '“主型号“'
       if (this.pageType === "extend"){
-        v = '扩展'
+        v = '“扩展“'
       }
       if (this.pageType === "update"){
-        v = '变更'
+        v = '“变更“'
       }
       return "新增" + v + "备案"
     }
