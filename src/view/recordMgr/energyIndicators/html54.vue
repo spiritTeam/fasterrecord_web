@@ -6,7 +6,7 @@
 */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
       <h1>商用制冷器具-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -1689,9 +1689,9 @@
     XsubmitRecord,
     XsaveRecord,
     XformatDate,
+    oneDecimals,
     threeDecimals,
     twoDecimals,
-    oneDecimals,
     significantDigits22,
     significantDigits33,
     atLeastOneDecimals,
@@ -2215,7 +2215,7 @@
           c44: [{
             required: true, message: '请输入实测值', trigger: 'change,blur'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change,blur'
+            validator: oneDecimals, trigger: 'change,blur'
           }],
           c222: [{
             required: true, message: '请输入标准规定值', trigger: 'change,blur'
@@ -2223,7 +2223,7 @@
           c223: [{
             required: true, message: '请输入实测值', trigger: 'change,blur'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change,blur'
+            validator: oneDecimals, trigger: 'change,blur'
           }],
           c45: [{
             required: true, message: '请选择额定气候类型', trigger: 'change,blur'
@@ -2237,7 +2237,7 @@
           c225: [{
             required: true, message: '请输入实测值', trigger: 'change,blur'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change,blur'
+            validator: oneDecimals, trigger: 'change,blur'
           }],
           c47: [{
             required: true, message: '请输入标准规定值', trigger: 'change,blur'
@@ -2245,7 +2245,7 @@
           c48: [{
             required: true, message: '请输入实测值', trigger: 'change,blur'
           }, {
-            validator: atLeastOneDecimals, trigger: 'change,blur'
+            validator: oneDecimals, trigger: 'change,blur'
           }],
           c74: [{
             required: true, message: '请输入基准耗电量', trigger: 'change,blur'

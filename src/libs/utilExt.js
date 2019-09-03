@@ -389,16 +389,16 @@ export const XviewClose= (that) => {
   })
 }
 
-var integer = /^[1-9][0-9]*$/;
-var number = /^[+-]?\d+(\.\d+)?$/;
-var decimal1 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
-var decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
-var decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
-var atLeast1 = /^[0-9]\+?(\d*\.\d{1,5})$/;
-var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
-var inputNumber = /^[0-9]\d*$/ //不包括0
-var numberOr11 = /^[0-9]+([.]{1}[0-9]{1,1})?$/
-var decimalOr22 = /^[0-9]+[.]{1}[0-9]{1,2}?$/
+var integer = /^[-]?[1-9][0-9]*$/;
+var number = /^[-]?\d+(\.\d+)?$/;
+var decimal1 = /^[-]?(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
+var decimal2 = /^[-]?(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
+var decimal3 = /^[-]?(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
+var atLeast1 = /^[-]?[0-9]\+?(\d*\.\d{1,5})$/;
+var atLeast2 = /^[-]?[0-9]\+?(\d*\.\d{2,5})$/;
+var inputNumber = /^[-]?[0-9]\d*$/ //不包括0
+var numberOr11 = /^[-]?[0-9]+([.]{1}[0-9]{1,1})?$/
+var decimalOr22 = /^[-]?[0-9]+[.]{1}[0-9]{1,2}?$/
 
 // 空校验规则
 export const check = (rule, value, callback) => {
@@ -414,11 +414,11 @@ export const oneDecimals = (rule, vaule, callback) => {
   decimal1.test(vaule) ? callback() : callback('一位小数');
 }
 export const significantDigits22 = (rule, vaule, callback) => {
-  let significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
+  let significantDigits2 = /^[-]?[1-9]\d{1}$|^[-]?[1-9]\.\d{1}$|^[-]?0\.0*[0-9]{2}$/
   significantDigits2.test(vaule) ? callback() : callback('两位有效数字');
 }
 export const significantDigits33 = (rule, vaule, callback) => {
-  let tel = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
+  let tel = /^[-]?[1-9]\.?\d{2}$|^[-]?[1-9]{2}\.\d{1}$|^[-]?0\.0*[0-9]{3}$/
   tel.test(vaule) ? callback() : callback('三位有效数字');
 }
 
@@ -435,11 +435,11 @@ export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
 }
 export const atLeastThreeDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{3,})$/;
+  var atLeast3=/^[-]?[0-9]\+?(\d*\.\d{3,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少三位小数');
 }
 export const atLeastFourDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{4,})$/;
+  var atLeast3=/^[-]?[0-9]\+?(\d*\.\d{4,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
 export const isInteger = (rule, vaule, callback) => {//整数中不包含0,提示整数
@@ -458,6 +458,6 @@ export const decimalOr2 = (rule, vaule, callback) => {
   decimalOr22.test(vaule) ? callback() : callback('一位小数或两位小数');
 }
 export const numberOrn = (rule, vaule, callback) => {
-  let tel = /^[0-9]+([.]{1}[0-9]{1,5})?$/;
+  let tel = /^[-]?[0-9]+([.]{1}[0-9]{1,5})?$/;
   tel.test(vaule) ? callback() : callback('整数或小数');
 }
