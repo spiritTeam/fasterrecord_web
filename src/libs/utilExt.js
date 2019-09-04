@@ -43,6 +43,7 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
       that.uploadParam['fileData' + id]['OSSAccessKeyId'] = res.data.accessid
       that.uploadParam['fileData' + id]['success_action_status'] = '200'
       that.uploadParam['fileData' + id]['signature'] = res.data.signature
+      that.uploadParam['fileData' + id]['callback']=res.data.callback
       that.uploadUrl = res.data.host
       fileObj.ec_attach_path = that.uploadParam['filePath' + id] = res.data.host + that.dir + file.name
       that.filesArr.push(fileObj)
