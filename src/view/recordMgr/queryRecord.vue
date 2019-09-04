@@ -35,12 +35,13 @@
         :before-upload="fileHandleBeforeUpload"
         :data="uploadParam.fileData"
         :on-success="getFile"
+        :show-upload-list='false'
         style="display:inline-block;"
         :on-format-error="handleFormatError"
         :action="uploadUrl">
 
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-        <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
+         <Icon type="ios-checkmark" v-show="checkmark" /> 
       </Upload>
     </Modal>
     <Modal v-model="modal2" title="撤销申请" @on-ok="submitWorkorder" ok-text="提交">
@@ -189,6 +190,7 @@ export default {
       rowId: 0,
       zmImgUrl:'',
       uploadUrl: '',
+      checkmark:false,
       uploadParam: {
         fileData: {},
         uploadFileList: []
@@ -370,6 +372,7 @@ export default {
           _this.uploadParam.fileData['OSSAccessKeyId'] = res.data.accessid
           _this.uploadParam.fileData['success_action_status'] = '200'
           _this.uploadParam.fileData['signature'] = res.data.signature
+          _this.uploadParam.fileData['callback']=res.data.callback
           _this.uploadUrl = res.data.host
           _this.fileObj.ec_attach_path = res.data.host + _this.dir + file.name
           resolve()
@@ -382,15 +385,26 @@ export default {
       this.id = id
     },
     getFile (res, file) {
-      axios.get('/marking/uploadQrcode.do', {
-        params: this.fileObj
-      }).then(res => {
-        if (res.data.result_code === '1') {
-          this.modal1 = false
-          this.pageNum = 1
-          this.reqData()
-        }
-      })
+      if(res.Status==='OK'){
+        axios.get('/marking/uploadQrcode.do', {
+          params: this.fileObj
+        }).then(res => {
+          if (res.data.result_code === '1') {
+            //this.modal1 = false
+            this.pageNum = 1
+            this.checkmark=true;
+            this.$Message.success('上传成功')
+            this.reqData()
+          }else{
+            this.checkmark=false;
+            this.$Message.error('上传失败')
+          }
+        })
+      }else{
+        this.checkmark=false;
+        this.$Message.error('上传失败')
+      }
+      
     },
     getCategoryList () {
       axios.get('/marking/getCategoryList.do').then(res => {
