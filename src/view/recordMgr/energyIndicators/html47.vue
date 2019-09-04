@@ -1563,6 +1563,7 @@ export default {
           _this.uploadParam['fileData' + id]['OSSAccessKeyId'] = res.data.accessid
           _this.uploadParam['fileData' + id]['success_action_status'] = '200'
           _this.uploadParam['fileData' + id]['signature'] = res.data.signature
+          _this.uploadParam['fileData' + id]['callback']=res.data.callback
           _this.uploadUrl = res.data.host
           fileObj.ec_attach_path = _this.uploadParam['filePath' + id] = res.data.host + _this.dir + file.name
           _this.filesArr.push(fileObj)
@@ -1967,7 +1968,15 @@ export default {
       return year + '-' + month + '-' + day
     },
     getFile (res, file, id) {
-      this['checkmark' + id] = true
+      console.log(res);
+      if(res.Status){
+        this['checkmark' + id] = true
+      }else{
+        this['checkmark' + id] = false
+        this.uploadParam['filePath'+id]=''
+        this.$Message.warning('上传失败')
+      }
+      
     }
   },
   computed: {
