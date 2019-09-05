@@ -1492,9 +1492,16 @@ export default {
         c200: '',
         c202: '',
         ec_model_no: 47,
-        attach_list: ''
+        attach_list: '',
+        action_token:''
       }
     }
+  },
+  created(){
+    let that=this;
+    axios.get('/ads/getToken.do').then(res => {
+      that.action_token=res.data.action_token
+    })
   },
   mounted () {
     // console.log(this.pageType)
@@ -1847,7 +1854,7 @@ export default {
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id = this.formRecord.id || _this.$store.state.app.updateId || 0
       if (pageType === 'extend' || pageType === 'update') {
-        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do'
+        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token='+this.action_token : '/marking/saveChange.do?action_token='+this.action_token
         axios({
           url: submitUrl,
           method: 'POST',
@@ -1880,7 +1887,7 @@ export default {
         })
       } else {
         axios({
-          url: '/marking/save.do',
+          url: '/marking/save.do?action_token='+this.action_token,
           method: 'POST',
           data: _this.formRecord,
           transformRequest: [function (data) {
