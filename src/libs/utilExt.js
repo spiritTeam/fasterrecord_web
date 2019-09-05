@@ -295,7 +295,12 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } else if (res.data.msg) {
+      } if (res.data.result_code === '0') {
+        that.$Message.warning(res.data.message)
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
+      }else if (res.data.msg) {
         that.$Message.warning(res.data.msg)
         that.saveDisabled = false
       } else {
@@ -327,6 +332,12 @@ export const XsubmitRecord = (that) => {
           onOk() {
             that.$router.push('/queryRecord')
           }
+        })
+      } if (res.data.result_code === '0') {
+        that.$Message.warning(res.data.message)
+        that.submitDisabled = false
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
         })
       } else if (res.data.msg) {
         that.$Message.warning(res.data.msg)
@@ -385,6 +396,12 @@ export const XsaveRecord = (that) => {
           onOk() {
             that.$router.push('/draftBox')
           }
+        })
+      } if (res.data.result_code === '0') {
+        that.$Message.warning(res.data.message)
+        that.saveDisabled = false
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
         })
       } else if (res.data.msg) {
         that.$Message.warning(res.data.msg)

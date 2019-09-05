@@ -92,9 +92,9 @@
                     <Radio label="电磁感应式" :disabled='disabledoff'>电磁感应式</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
-                  <FormItem prop="c16">
-                    <Input type="text" v-model="formRecord.c16" style="width:200px;" :disabled='disabledoff || forbidden.c16'/>
-                  </FormItem>
+                </FormItem>
+                <FormItem prop="c16">
+                  <Input type="text" v-model="formRecord.c16" style="width:200px;" :disabled='disabledoff || forbidden.c16'/>
                 </FormItem>
               </td>
             </tr>
