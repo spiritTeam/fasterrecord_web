@@ -1939,7 +1939,7 @@ export default {
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
 
       axios({
-        url: '/marking/saveDraft.do',
+        url: '/marking/saveDraft.do?action_token='+this.action_token,
         method: 'POST',
         data: _this.formRecord,
         // 只适用于 POST,PUT,PATCH，transformRequest`
