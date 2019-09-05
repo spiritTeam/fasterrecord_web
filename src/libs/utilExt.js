@@ -64,7 +64,7 @@ export const getImgPath = (dir, that) => {
 // /* 数据来源  扩展备案 */
 export const XfillExtendData = (params, that) => {
   axios.get('/ads/getToken.do').then(res => {
-    console.log(res);
+    that.$store.commit('action_token', res.data.action_token)
   })
 
   let data = params.data;
@@ -94,8 +94,7 @@ export const XfillExtendData = (params, that) => {
 /* 数据来源 草稿箱 */
 export const XfillDraftData = (params, that) => {
   axios.get('/ads/getToken.do').then(res => {
-    console.log(res);
-    return res.data
+    that.$store.commit('action_token', res.data.action_token)
   })
 
   let data = params.data;
@@ -137,8 +136,7 @@ export const XfillDraftData = (params, that) => {
 /* 数据来源 新增备案 */
 export const XfillDefaultData = (params, that) => {
   axios.get('/ads/getToken.do').then(res => {
-    console.log(res);
-    return res.data
+    that.$store.commit('action_token', res.data.action_token)
   })
 
   that.formRecord.c200 = that.$store.state.app.gb
@@ -269,7 +267,7 @@ export const XsubmitRecord = (that) => {
   }
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
   that.formRecord.id = that.formRecord.id || that.$store.state.app.updateId || 0
-  let action_token = ''
+  let action_token = that.$store.state.app.action_token
   if (pageType === "extend" || pageType === "update") {
     let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token=' + action_token : '/marking/saveChange.do?' + action_token;
     axios({
@@ -296,13 +294,16 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
+      } else if (res.data.msg) {
+        that.$Message.warning(res.data.msg)
+        that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
       }
     })
   } else {
     axios({
-      url: '/marking/save.do',
+      url: '/marking/save.do?action_token=' + action_token,
       method: 'POST',
       data: that.formRecord,
       transformRequest: [function (data) {
@@ -326,6 +327,9 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
+      } else if (res.data.msg) {
+        that.$Message.warning(res.data.msg)
+        that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
         that.submitDisabled = false
@@ -352,9 +356,9 @@ export const XsaveRecord = (that) => {
   }
   that.filesArr.push(file25)
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
-
+  let action_token = that.$store.state.app.action_token
   axios({
-    url: '/marking/saveDraft.do',
+    url: '/marking/saveDraft.do?action_token' + action_token,
     method: 'POST',
     data: that.formRecord,
     // 只适用于 POST,PUT,PATCH，transformRequest`
@@ -381,6 +385,9 @@ export const XsaveRecord = (that) => {
             that.$router.push('/draftBox')
           }
         })
+      } else if (res.data.msg) {
+        that.$Message.warning(res.data.msg)
+        that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
         that.saveDisabled = false
@@ -402,13 +409,6 @@ export const XviewClose= (that) => {
     params:{
       pageNum:that.$route.params.pageNum
     }
-  })
-}
-
-const getToken =() => {
-  axios.get('/ads/getToken.do').then(res => {
-    console.log(res);
-    return res.data
   })
 }
 
