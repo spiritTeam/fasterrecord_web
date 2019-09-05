@@ -63,6 +63,10 @@ export const getImgPath = (dir, that) => {
 
 // /* 数据来源  扩展备案 */
 export const XfillExtendData = (params, that) => {
+  axios.get('/ads/getToken.do').then(res => {
+    console.log(res);
+  })
+
   let data = params.data;
   let mark = params.marking;
   that.$store.commit('setPtId', mark.ptid)
@@ -89,6 +93,11 @@ export const XfillExtendData = (params, that) => {
 
 /* 数据来源 草稿箱 */
 export const XfillDraftData = (params, that) => {
+  axios.get('/ads/getToken.do').then(res => {
+    console.log(res);
+    return res.data
+  })
+
   let data = params.data;
   let mark = params.marking;
   let attachList = that.filesArr = params.attachList;
@@ -127,6 +136,11 @@ export const XfillDraftData = (params, that) => {
 }
 /* 数据来源 新增备案 */
 export const XfillDefaultData = (params, that) => {
+  axios.get('/ads/getToken.do').then(res => {
+    console.log(res);
+    return res.data
+  })
+
   that.formRecord.c200 = that.$store.state.app.gb
   that.$store.state.app.defaultData.forEach((e) => {
     if (that.formRecord[e.recId] != null && that.formRecord[e.recId].constructor === Array) {
@@ -255,8 +269,9 @@ export const XsubmitRecord = (that) => {
   }
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
   that.formRecord.id = that.formRecord.id || that.$store.state.app.updateId || 0
+  let action_token = ''
   if (pageType === "extend" || pageType === "update") {
-    let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do';
+    let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token=' + action_token : '/marking/saveChange.do?' + action_token;
     axios({
       url: submitUrl,
       method: 'POST',
@@ -387,6 +402,13 @@ export const XviewClose= (that) => {
     params:{
       pageNum:that.$route.params.pageNum
     }
+  })
+}
+
+const getToken =() => {
+  axios.get('/ads/getToken.do').then(res => {
+    console.log(res);
+    return res.data
   })
 }
 

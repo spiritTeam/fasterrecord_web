@@ -41,7 +41,7 @@
         :action="uploadUrl">
 
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-         <Icon type="ios-checkmark" v-show="checkmark" /> 
+         <Icon type="ios-checkmark" v-show="checkmark" />
       </Upload>
     </Modal>
     <Modal v-model="modal2" title="撤销申请" @on-ok="submitWorkorder" ok-text="提交">
@@ -268,7 +268,8 @@ export default {
             return h('div', [
               viewBtn(h, params),
               downLoadCode(h, params),
-              params.row.state === 2 ? uploadBtn(h, params) : downLoadRecord(h, params),
+              params.row.state === 2 ? uploadBtn(h, params) : '',
+              params.row.bs === 1 ? downLoadRecord(h, params) : '',
               params.row.kz ? extendBtn(h, params) : '',
               params.row.bg ? updateBtn(h, params) : '',
               params.row.cx ? cancleBtn(h, params) : '',
@@ -404,7 +405,7 @@ export default {
         this.checkmark=false;
         this.$Message.error('上传失败')
       }
-      
+
     },
     getCategoryList () {
       axios.get('/marking/getCategoryList.do').then(res => {
