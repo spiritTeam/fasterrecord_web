@@ -1498,9 +1498,10 @@ export default {
     }
   },
   created(){
-    let that=this;
-    axios.get('/ads/getToken.do').then(res => {
-      that.action_token=res.data.action_token
+    let that=this
+    that.getActionToken().then(res=>{
+        that.action_token=res.data.action_token
+        console.log(res.data.action_token)
     })
   },
   mounted () {
@@ -1511,6 +1512,9 @@ export default {
     showTemplate () {
       this.templatePic = this.$store.state.app.pltPic
       this.modal3 = true
+    },
+    getActionToken(){
+        return axios.get('/ads/getToken.do')
     },
     prevStep () {
       this.$emit('prevStep')
@@ -1853,8 +1857,10 @@ export default {
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id = this.formRecord.id || _this.$store.state.app.updateId || 0
+      _this.getActionToken().then(res=>{
+        _this.action_token=res.data.action_token
       if (pageType === 'extend' || pageType === 'update') {
-        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token='+this.action_token : '/marking/saveChange.do?action_token='+this.action_token
+        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token='+_this.action_token : '/marking/saveChange.do?action_token='+_this.action_token
         axios({
           url: submitUrl,
           method: 'POST',
@@ -1917,6 +1923,7 @@ export default {
           }
         })
       }
+    })
     },
     /* 保存草稿箱 */
     saveRecord () {
@@ -1937,9 +1944,11 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-
+      _this.getActionToken().then(res=>{
+        _this.action_token=res.data.action_token
+      
       axios({
-        url: '/marking/saveDraft.do?action_token='+this.action_token,
+        url: '/marking/saveDraft.do?action_token='+_this.action_token,
         method: 'POST',
         data: _this.formRecord,
         // 只适用于 POST,PUT,PATCH，transformRequest`
@@ -1971,6 +1980,7 @@ export default {
             _this.saveDisabled = false
           }
         })
+      })
     },
     formatDate (d) {
       let date = new Date(d)
