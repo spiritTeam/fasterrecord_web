@@ -1247,8 +1247,9 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-     <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-     <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+     <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+     <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+     <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
      <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1311,6 +1312,7 @@ export default {
       modal4: false,
       modal5: false,
       templatePic: '',
+      loadText:true,
       uploadPic: '',
       modal2: false,
       currentValue: '',
@@ -1647,6 +1649,9 @@ export default {
     showImg (path) {
       this.uploadPic = path
       this.modal4 = true
+    },
+     templateLoad(){
+      this.loadText=false;
     },
     /* 数据来源 新增备案 */
     fillDefaultData () {
