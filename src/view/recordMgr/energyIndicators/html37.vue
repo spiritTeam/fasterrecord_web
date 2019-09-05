@@ -1275,7 +1275,7 @@
         } else {
             if (parseFloat(this.formRecord.c7) < 10000) {
                 if (this.formRecord.c20 == "普通式") {
-                    if (this.formRecord.c19== "一次加热" || $("input:radio[name=c19]:checked").val() == "循环加热式") {
+                    if (this.formRecord.c19 == "一次加热" || this.formRecord.c19 == "循环加热式") {
                         if (parseFloat(this.formRecord.c13) >= 4.60) {
                             nxdj = "1";
                         } else if (parseFloat(this.formRecord.c13) >= 4.40) {
