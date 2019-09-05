@@ -65,7 +65,7 @@ export const getImgPath = (dir, that) => {
 // /* 数据来源  扩展备案 */
 export const XfillExtendData = (params, that) => {
   axios.get('/ads/getToken.do').then(res => {
-    that.$store.commit('action_token', res.data.action_token)
+    that.$store.state.app.action_token = res.data.action_token
   })
 
   let data = params.data;
@@ -95,7 +95,7 @@ export const XfillExtendData = (params, that) => {
 /* 数据来源 草稿箱 */
 export const XfillDraftData = (params, that) => {
   axios.get('/ads/getToken.do').then(res => {
-    that.$store.commit('action_token', res.data.action_token)
+    that.$store.state.app.action_token = res.data.action_token
   })
 
   let data = params.data;
@@ -137,7 +137,7 @@ export const XfillDraftData = (params, that) => {
 /* 数据来源 新增备案 */
 export const XfillDefaultData = (params, that) => {
   axios.get('/ads/getToken.do').then(res => {
-    that.$store.commit('action_token', res.data.action_token)
+    that.$store.state.app.action_token = res.data.action_token
   })
 
   that.formRecord.c200 = that.$store.state.app.gb
@@ -270,7 +270,7 @@ export const XsubmitRecord = (that) => {
   that.formRecord.id = that.formRecord.id || that.$store.state.app.updateId || 0
   let action_token = that.$store.state.app.action_token
   if (pageType === "extend" || pageType === "update") {
-    let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token=' + action_token : '/marking/saveChange.do?' + action_token;
+    let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token=' + action_token : '/marking/saveChange.do?action_token=' + action_token;
     axios({
       url: submitUrl,
       method: 'POST',
@@ -359,7 +359,7 @@ export const XsaveRecord = (that) => {
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
   let action_token = that.$store.state.app.action_token
   axios({
-    url: '/marking/saveDraft.do?action_token' + action_token,
+    url: '/marking/saveDraft.do?action_token=' + action_token,
     method: 'POST',
     data: that.formRecord,
     // 只适用于 POST,PUT,PATCH，transformRequest`
