@@ -43,7 +43,7 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
       that.uploadParam['fileData' + id]['OSSAccessKeyId'] = res.data.accessid
       that.uploadParam['fileData' + id]['success_action_status'] = '200'
       that.uploadParam['fileData' + id]['signature'] = res.data.signature
-      that.uploadParam['fileData' + id]['callback']=res.data.callback
+      that.uploadParam['fileData' + id]['callback'] = res.data.callback
       that.uploadUrl = res.data.host
       fileObj.ec_attach_path = that.uploadParam['filePath' + id] = res.data.host + that.dir + file.name
       that.filesArr.push(fileObj)
@@ -86,7 +86,7 @@ export const XfillExtendData = (params, that) => {
       //console.log(that)
     } else {
       that.formRecord[i] = data[i]
-      if(i==that.thisGZXHCV) that.mainModel= data[i];
+      if (i == that.thisGZXHCV) that.mainModel = data[i];
     }
   }
 }
@@ -161,9 +161,9 @@ export const XfillDefaultData = (params, that) => {
           }
         } else if (e.recId === that.thisDateCV && isNaN(labVal)) {
           that.formRecord[e.recId] = new Date()
-        } else if(e.recId==='c1' || e.recId==='c2'|| e.recId==='c3'){
-          that.formRecord[e.recId] =e.labValue
-        }else {
+        } else if (e.recId === 'c1' || e.recId === 'c2' || e.recId === 'c3') {
+          that.formRecord[e.recId] = e.labValue
+        } else {
           that.formRecord[e.recId] = labVal
         }
       }
@@ -173,7 +173,7 @@ export const XfillDefaultData = (params, that) => {
 
 export const XshowConfirm = (that) => {
   let _this = that
-  let pageType=_this.pageType;
+  let pageType = _this.pageType;
   if (_this.uploadParam.filePath24 === '') {
     _this.$Message.warning('请上传产品正面图片！')
     return false
@@ -186,10 +186,10 @@ export const XshowConfirm = (that) => {
   //   _this.$Message.warning('请上传oem声明！')
   //   return false
   // }
-  if(pageType==="extend" || pageType==="update" ){
-    if (_this.formRecord.ec_master_kuozhan_text===''){
-      let text=pageType==="extend"?'扩展':'变更'
-      _this.$Message.warning('请填写'+text+'申请书！')
+  if (pageType === "extend" || pageType === "update") {
+    if (_this.formRecord.ec_master_kuozhan_text === '') {
+      let text = pageType === "extend" ? '扩展' : '变更'
+      _this.$Message.warning('请填写' + text + '申请书！')
       return;
     }
     // }else {
@@ -201,8 +201,8 @@ export const XshowConfirm = (that) => {
   _this.$refs['formRecord'].validate((valid) => {
     if (valid) {
       if (_this.confirmData.join('') == 1) {
-        if(pageType!=="extend"){
-          _this.boolFlag= XdiffRecord(_this.$store.state.app.defaultData,_this.formRecord, _this);
+        if (pageType !== "extend") {
+          _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord, _this);
         }
         _this.modal1 = true
       } else {
@@ -294,12 +294,12 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } if (res.data.result_code === '0') {
+      } else if (res.data.result_code === '0') {
         that.$Message.warning(res.data.message)
         axios.get('/ads/getToken.do').then(res => {
           that.$store.state.app.action_token = res.data.action_token
         })
-      }else if (res.data.msg) {
+      } else if (res.data.msg) {
         that.$Message.warning(res.data.msg)
         that.saveDisabled = false
       } else {
@@ -332,7 +332,7 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } if (res.data.result_code === '0') {
+      } else if (res.data.result_code === '0') {
         that.$Message.warning(res.data.message)
         that.submitDisabled = false
         axios.get('/ads/getToken.do').then(res => {
@@ -396,7 +396,7 @@ export const XsaveRecord = (that) => {
             that.$router.push('/draftBox')
           }
         })
-      } if (res.data.result_code === '0') {
+      } else if (res.data.result_code === '0') {
         that.$Message.warning(res.data.message)
         that.saveDisabled = false
         axios.get('/ads/getToken.do').then(res => {
@@ -420,11 +420,11 @@ export const XformatDate = (d) => {
   return year + '-' + month + '-' + day
 }
 
-export const XviewClose= (that) => {
+export const XviewClose = (that) => {
   that.$router.replace({
-    name:'queryRecord',
-    params:{
-      pageNum:that.$route.params.pageNum
+    name: 'queryRecord',
+    params: {
+      pageNum: that.$route.params.pageNum
     }
   })
 }
@@ -475,11 +475,11 @@ export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
 }
 export const atLeastThreeDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[-]?[0-9]\+?(\d*\.\d{3,})$/;
+  var atLeast3 = /^[-]?[0-9]\+?(\d*\.\d{3,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少三位小数');
 }
 export const atLeastFourDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[-]?[0-9]\+?(\d*\.\d{4,})$/;
+  var atLeast3 = /^[-]?[0-9]\+?(\d*\.\d{4,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
 export const isInteger = (rule, vaule, callback) => {//整数中不包含0,提示整数

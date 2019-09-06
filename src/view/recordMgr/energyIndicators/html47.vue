@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>家用电冰箱-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -1499,9 +1499,8 @@ export default {
   },
   created(){
     let that=this
-    that.getActionToken().then(res=>{
+    this.getActionToken().then(res=>{
         that.action_token=res.data.action_token
-        console.log(res.data.action_token)
     })
   },
   mounted () {
@@ -1857,8 +1856,6 @@ export default {
       }
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id = this.formRecord.id || _this.$store.state.app.updateId || 0
-      _this.getActionToken().then(res=>{
-        _this.action_token=res.data.action_token
       if (pageType === 'extend' || pageType === 'update') {
         let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token='+_this.action_token : '/marking/saveChange.do?action_token='+_this.action_token
         axios({
@@ -1886,6 +1883,15 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
+          } else if (res.data.result_code === '0') {
+            _this.$Message.warning(res.data.message)
+            _this.submitDisabled = false
+            _this.getActionToken().then(res => {
+              _this.action_token = res.data.action_token
+            })
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
           } else {
             _this.$Message.warning(res.data.message)
             // _this.submitDisabled = false
@@ -1917,13 +1923,21 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
+          } else if (res.data.result_code === '0') {
+            _this.$Message.warning(res.data.message)
+            _this.submitDisabled = false
+            _this.getActionToken().then(res => {
+              _this.action_token = res.data.action_token
+            })
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
           } else {
             _this.$Message.warning(res.data.message)
             _this.submitDisabled = false
           }
         })
       }
-    })
     },
     /* 保存草稿箱 */
     saveRecord () {
@@ -1944,9 +1958,6 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-      _this.getActionToken().then(res=>{
-        _this.action_token=res.data.action_token
-      
       axios({
         url: '/marking/saveDraft.do?action_token='+_this.action_token,
         method: 'POST',
@@ -1975,12 +1986,20 @@ export default {
                 _this.$router.push('/draftBox')
               }
             })
+          } else if (res.data.result_code === '0') {
+            _this.$Message.warning(res.data.message)
+            _this.submitDisabled = false
+            _this.getActionToken().then(res => {
+              _this.action_token = res.data.action_token
+            })
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
           } else {
             _this.$Message.warning(res.data.message)
             _this.saveDisabled = false
           }
         })
-      })
     },
     formatDate (d) {
       let date = new Date(d)
@@ -1998,7 +2017,7 @@ export default {
         this.uploadParam['filePath'+id]=''
         this.$Message.warning('上传失败')
       }
-      
+
     }
   },
   computed: {
@@ -2052,6 +2071,22 @@ export default {
         return true
       } else {
         return false
+      }
+    },
+    extendRule() {
+      return {
+        c4: [
+          {
+            trigger: 'change,blur', required: true,
+            message: '产品规格型号不能为空'
+          },
+          {
+            validator: (rule, value, callback) => {
+              this.pageType === 'extend' && this.mainModel === this.formRecord.c4? callback('扩展备案需要变更型号名称') : callback()
+            },
+            trigger: 'change,blur'
+          }
+        ]
       }
     },
     ruleRecord () {
