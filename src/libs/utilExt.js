@@ -204,6 +204,7 @@ export const XshowConfirm = (that) => {
         if (pageType !== "extend") {
           _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord, _this);
         }
+        _this.$store.state.app.subDisabled = true
         _this.modal1 = true
       } else {
         _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
@@ -242,6 +243,10 @@ export const XdiffRecord = (orgin, target, that) => {
 }
 
 export const XsubmitRecord = (that) => {
+  if (!that.$store.state.app.subDisabled){
+    return false
+  }
+  that.$store.state.app.subDisabled = false
   let pageType = that.pageType;
   that.formRecord[that.thisDateCV] = that.formatDate(that.formRecord[that.thisDateCV])
   that.formRecord.ptid = that.$store.state.app.ptId
@@ -294,16 +299,16 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } else if (res.data.result_code === '0') {
-        that.$Message.warning(res.data.message)
-        axios.get('/ads/getToken.do').then(res => {
-          that.$store.state.app.action_token = res.data.action_token
-        })
       } else if (res.data.msg) {
         that.$Message.warning(res.data.msg)
         that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
+      }
+      if (res.data.result_code !== '1'){
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
       }
     })
   } else {
@@ -332,18 +337,17 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } else if (res.data.result_code === '0') {
-        that.$Message.warning(res.data.message)
-        that.submitDisabled = false
-        axios.get('/ads/getToken.do').then(res => {
-          that.$store.state.app.action_token = res.data.action_token
-        })
       } else if (res.data.msg) {
         that.$Message.warning(res.data.msg)
         that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
         that.submitDisabled = false
+      }
+      if (res.data.result_code !== '1'){
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
       }
     })
   }
@@ -396,18 +400,17 @@ export const XsaveRecord = (that) => {
             that.$router.push('/draftBox')
           }
         })
-      } else if (res.data.result_code === '0') {
-        that.$Message.warning(res.data.message)
-        that.saveDisabled = false
-        axios.get('/ads/getToken.do').then(res => {
-          that.$store.state.app.action_token = res.data.action_token
-        })
       } else if (res.data.msg) {
         that.$Message.warning(res.data.msg)
         that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
         that.saveDisabled = false
+      }
+      if (res.data.result_code !== '1'){
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
       }
     })
 }

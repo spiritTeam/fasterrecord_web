@@ -25,7 +25,8 @@ export default {
     gb: '',
     oem:0,
     recordno:'',
-    action_token: ''
+    action_token: '',
+    subDisabled: false,
   },
   getters: {
     menuList: (state, getters, rootState) => getMenuByRouter(state.routers, rootState.user.access),
