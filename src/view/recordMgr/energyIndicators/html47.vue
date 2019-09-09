@@ -1897,7 +1897,7 @@ export default {
           }
           if (res.data.result_code !== '1'){
             axios.get('/ads/getToken.do').then(res => {
-              that.$store.state.app.action_token = res.data.action_token
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -1936,7 +1936,7 @@ export default {
           }
           if (res.data.result_code !== '1'){
             axios.get('/ads/getToken.do').then(res => {
-              that.$store.state.app.action_token = res.data.action_token
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -1998,7 +1998,7 @@ export default {
           }
           if (res.data.result_code !== '1'){
             axios.get('/ads/getToken.do').then(res => {
-              that.$store.state.app.action_token = res.data.action_token
+              _this.action_token = res.data.action_token
             })
           }
         })
