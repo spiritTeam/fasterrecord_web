@@ -3,7 +3,7 @@
 <!--创建人:YPH-->
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>家用燃气灶具能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -53,7 +53,7 @@
             <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c2" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
@@ -75,7 +75,7 @@
             <RadioGroup v-model="formRecord.c19">
               <Radio :disabled='disabledoff' label="台式">台式</Radio>
               <Radio :disabled='disabledoff' label="嵌入式">嵌入式</Radio>
-              <Radio :disabled='disabledoff' label="集成式">集成式</Radio>
+              <Radio :disabled='disabledoff' label="集成灶">集成灶</Radio>
               <Radio :disabled='disabledoff' label="其它">其它</Radio>
             </RadioGroup>
           </FormItem>
@@ -942,9 +942,9 @@
       <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
-             internalinstanceid="81"/>
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1039,6 +1039,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
+        loadText:true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1234,6 +1235,9 @@
         this.uploadPic = path;
         this.modal4 = true
       },
+      templateLoad(){
+        this.loadText=false;
+      },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         var d = XfillDefaultData(params, this);
@@ -1273,7 +1277,15 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        console.log(res);
+        if(res.Status){
+          this['checkmark' + id] = true
+        }else{
+          this['checkmark' + id] = false
+          this.uploadParam['filePath'+id]=''
+          this.$Message.warning('上传失败')
+        }
+
       }
     },
     computed: {
@@ -1292,6 +1304,22 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
+      },
+      extendRule() {
+        return {
+          c4: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
       },
       ruleRecord() {
 
@@ -1354,6 +1382,67 @@
             callback()
           }
         }
+
+        var c54 = parseFloat(this.formRecord.c54)
+        var c60 = parseFloat(this.formRecord.c60)
+        const checkc54 = (rule, value, callback) => {
+          if (c54 > c60) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c55 = parseFloat(this.formRecord.c55)
+        var c61 = parseFloat(this.formRecord.c61)
+        const checkc55 = (rule, value, callback) => {
+          if (c55 > c61) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c56 = parseFloat(this.formRecord.c56)
+        var c62 = parseFloat(this.formRecord.c62)
+        const checkc56 = (rule, value, callback) => {
+          if (c56 > c62) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c57 = parseFloat(this.formRecord.c57)
+        var c63 = parseFloat(this.formRecord.c63)
+        const checkc57 = (rule, value, callback) => {
+          if (c57 > c63) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c58 = parseFloat(this.formRecord.c58)
+        var c64 = parseFloat(this.formRecord.c64)
+        const checkc58 = (rule, value, callback) => {
+          if (c58 > c64) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
+        var c59 = parseFloat(this.formRecord.c59)
+        var c65 = parseFloat(this.formRecord.c65)
+        const checkc59 = (rule, value, callback) => {
+          if (c59 > c65) {
+            callback('热效率的额定值不得大于实测值！')
+          } else {
+            callback()
+          }
+        }
+
         //0803
         var nxdjch = this.formRecord.c7
         var zjlx = this.formRecord.c18
@@ -1377,7 +1466,7 @@
             } else if (rxlz >= 55) {
               nxdj = "3";
             }
-          } else if (jgxs == "集成式") {
+          } else if (jgxs == "集成灶") {
             if (rxlz >= 59) {
               nxdj = "1";
             } else if (rxlz >= 56) {
@@ -1403,7 +1492,7 @@
             } else if (rxlz >= 57) {
               nxdj = "3";
             }
-          } else if (jgxs == "集成式") {
+          } else if (jgxs == "集成灶") {
             if (rxlz >= 61) {
               nxdj = "1";
             } else if (rxlz >= 58) {
@@ -1639,6 +1728,97 @@
             {
               trigger: 'change,blur', required: true,
               message: '高不能为空'
+            }
+          ],
+          c54: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c60 !== '',
+              message: '不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc54,
+              trigger: 'change,blur'
+            }
+          ],
+          c55: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c61 !== '',
+              message: '不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc55,
+              trigger: 'change,blur'
+            }
+          ],
+          c56: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c62 !== '',
+              message: '不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc56,
+              trigger: 'change,blur'
+            }
+          ],
+          c57: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c63 !== '',
+              message: '不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc57,
+              trigger: 'change,blur'
+            }
+          ],
+          c58: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c64 !== '',
+              message: '不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc58,
+              trigger: 'change,blur'
+            }
+          ],
+          c59: [
+            {
+              trigger: 'change,blur', required: this.formRecord.c65 !== '',
+              message: '不能为空'
+            },
+            {
+              validator: numberCheck,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc59,
+              trigger: 'change,blur'
+            }
+          ],
+          c60: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '不能为空'
             }
           ],
           c66: [

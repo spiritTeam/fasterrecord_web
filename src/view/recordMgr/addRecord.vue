@@ -1,6 +1,6 @@
 <template>
   <Card>
-    <p slot="title">添加备案</p>
+    <p slot="title" v-if="step === 2 || step === 1">{{titleValue}}</p>
     <div>
       <ReportCode v-show="step === 1" @toStep2="showTemple"></ReportCode>
       <SelectSample ref="selectSample" v-show="step === 2" @toStep3="showRecordTab"></SelectSample>
@@ -55,6 +55,7 @@ import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
+import {mapGetters} from 'vuex';
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
@@ -145,6 +146,12 @@ export default {
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.viewData)
       }
     }
+    let box = document.getElementsByClassName("ivu-card-head")[0]
+    if (box && this.step === 3) {
+      box.style.display='none'
+    }else {
+      box.style.display='block'
+    }
   },
   methods: {
     setNoTips () {
@@ -162,6 +169,26 @@ export default {
         //this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()
+      var box = document.getElementsByClassName("ivu-card-head")[0]
+      if (box) {
+        box.style.display='none'
+      }
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'pageType',
+      'recordno'
+    ]),
+    titleValue () {
+      let v = '“主型号“'
+      if (this.pageType === "extend"){
+        v = '“扩展“'
+      }
+      if (this.pageType === "update"){
+        v = '“变更“'
+      }
+      return "新增" + v + "备案"
     }
   }
 }

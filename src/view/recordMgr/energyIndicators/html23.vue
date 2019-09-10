@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>房间空气调节器 修订-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -50,7 +50,7 @@
             <Input type="text" v-model="formRecord.c3" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c4" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c4" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
@@ -73,7 +73,6 @@
               <Radio label="3" :disabled='disabledoff'>3级</Radio>
             </RadioGroup>
           </FormItem>
-          <span class="span-red">不能编辑的参数可以去标识样式下载列表修改</span>
           <table id="table1">
             <tr>
               <th>项目</th>
@@ -870,8 +869,9 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -963,6 +963,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
+        loadText:true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1148,6 +1149,9 @@
         this.uploadPic = path;
         this.modal4 = true
       },
+      templateLoad(){
+        this.loadText=false;
+      },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         let flag = XfillDefaultData(params, this)
@@ -1173,7 +1177,15 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        console.log(res);
+        if(res.Status){
+          this['checkmark' + id] = true
+        }else{
+          this['checkmark' + id] = false
+          this.uploadParam['filePath'+id]=''
+          this.$Message.warning('上传失败')
+        }
+
       },
       getNxdj(z, a, b, c) {
         if (z >= a) {
@@ -1205,6 +1217,22 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
+      },
+      extendRule() {
+        return {
+          c3: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
       },
       ruleRecord() {
         //产品结构-其它 禁用

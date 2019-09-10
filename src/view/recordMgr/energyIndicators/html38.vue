@@ -3,7 +3,7 @@
 <!--创建人:YCL-->
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>复印机、打印机和传真机-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -53,7 +53,7 @@
             <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c5" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
@@ -94,14 +94,13 @@
               <td>输出速度p(页/分钟)</td>
               <td>
                 <FormItem prop="c8">
-                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="两位有效数字"/>
+                  <Input type="text" v-model="formRecord.c8" :disabled='disabledoff || forbidden.c7_1'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c9">
                   <Input type="text" v-model="formRecord.c9" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="三位有效数字"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -115,13 +114,13 @@
               <td>
                 <FormItem prop="c11">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c12">
                   <Input type="text" v-model="formRecord.c12" :disabled='disabledoff || forbidden.c7_1'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -136,13 +135,13 @@
               <td>
                 <FormItem prop="c14">
                   <Input type="text" v-model="formRecord.c14" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c15">
                   <Input type="text" v-model="formRecord.c15" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -156,13 +155,13 @@
               <td>
                 <FormItem prop="c17">
                   <Input type="text" v-model="formRecord.c17" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c18">
                   <Input type="text" v-model="formRecord.c18" :disabled='disabledoff || forbidden.c7_2'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -177,13 +176,13 @@
               <td>
                 <FormItem prop="c20">
                   <Input type="text" v-model="formRecord.c20" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c21">
                   <Input type="text" v-model="formRecord.c21" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -197,13 +196,13 @@
               <td>
                 <FormItem prop="c23">
                   <Input type="text" v-model="formRecord.c23" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c24">
                   <Input type="text" v-model="formRecord.c24" :disabled='disabledoff || forbidden.c7_3'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -218,13 +217,13 @@
               <td>
                 <FormItem prop="c26">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -238,13 +237,13 @@
               <td>
                 <FormItem prop="c29">
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c30">
                   <Input type="text" v-model="formRecord.c30" :disabled='disabledoff || forbidden.c7_4'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -259,13 +258,13 @@
               <td>
                 <FormItem prop="c32">
                   <Input type="text" v-model="formRecord.c32" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c33">
                   <Input type="text" v-model="formRecord.c33" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -279,13 +278,13 @@
               <td>
                 <FormItem prop="c35">
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c36">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -299,13 +298,13 @@
               <td>
                 <FormItem prop="c38">
                   <Input type="text" v-model="formRecord.c38" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c39">
                   <Input type="text" v-model="formRecord.c39" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -319,13 +318,13 @@
               <td>
                 <FormItem prop="c41">
                   <Input type="text" v-model="formRecord.c41" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c42">
                   <Input type="text" v-model="formRecord.c42" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -339,13 +338,13 @@
               <td>
                 <FormItem prop="c44">
                   <Input type="text" v-model="formRecord.c44" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c45">
                   <Input type="text" v-model="formRecord.c45" :disabled='disabledoff || forbidden.c7_5'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -360,13 +359,13 @@
               <td>
                 <FormItem prop="c47">
                   <Input type="text" v-model="formRecord.c47" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c48">
                   <Input type="text" v-model="formRecord.c48" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -380,13 +379,13 @@
               <td>
                 <FormItem prop="c50">
                   <Input type="text" v-model="formRecord.c50" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c51">
                   <Input type="text" v-model="formRecord.c51" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -400,13 +399,13 @@
               <td>
                 <FormItem prop="c53">
                   <Input type="text" v-model="formRecord.c53" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c54">
                   <Input type="text" v-model="formRecord.c54" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -420,13 +419,13 @@
               <td>
                 <FormItem prop="c56">
                   <Input type="text" v-model="formRecord.c56" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c57">
                   <Input type="text" v-model="formRecord.c57" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -440,13 +439,13 @@
               <td>
                 <FormItem prop="c59">
                   <Input type="text" v-model="formRecord.c59" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c60">
                   <Input type="text" v-model="formRecord.c60" :disabled='disabledoff || forbidden.c7_6'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -461,13 +460,13 @@
               <td>
                 <FormItem prop="c62">
                   <Input type="text" v-model="formRecord.c62" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c63">
                   <Input type="text" v-model="formRecord.c63" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -481,13 +480,13 @@
               <td>
                 <FormItem prop="c65">
                   <Input type="text" v-model="formRecord.c65" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c66">
                   <Input type="text" v-model="formRecord.c66" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -501,13 +500,13 @@
               <td>
                 <FormItem prop="c68">
                   <Input type="text" v-model="formRecord.c68" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c69">
                   <Input type="text" v-model="formRecord.c69" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -521,13 +520,13 @@
               <td>
                 <FormItem prop="c71">
                   <Input type="text" v-model="formRecord.c71" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c72">
                   <Input type="text" v-model="formRecord.c72" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -541,13 +540,13 @@
               <td>
                 <FormItem prop="c74">
                   <Input type="text" v-model="formRecord.c74" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="两位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c75">
                   <Input type="text" v-model="formRecord.c75" :disabled='disabledoff || forbidden.c7_7'
-                         placeholder="三位小数"/>
+                  />
                 </FormItem>
               </td>
               <td>
@@ -578,12 +577,12 @@
               <td colspan="3" width="241">
                 <FormItem prop="c112">
                   <RadioGroup v-model="formRecord.c112">
-                    <Radio label="热敏" :disabled='disabledoff'>热敏</Radio>
-                    <Radio label="热升华" :disabled='disabledoff'>热升华</Radio>
-                    <Radio label="电子映像" :disabled='disabledoff'>电子映像</Radio>
-                    <Radio label="固体喷蜡" :disabled='disabledoff'>固体喷蜡</Radio>
-                    <Radio label="热转印技术" :disabled='disabledoff'>热转印技术</Radio>
-                    <Radio label="高性能喷墨技术" :disabled='disabledoff'>高性能喷墨技术</Radio>
+                    <Radio label="热敏" :disabled='disabledoff || forbidden.c112'>热敏</Radio>
+                    <Radio label="热升华" :disabled='disabledoff || forbidden.c112'>热升华</Radio>
+                    <Radio label="电子映像" :disabled='disabledoff || forbidden.c112'>电子映像</Radio>
+                    <Radio label="固体喷蜡" :disabled='disabledoff || forbidden.c112'>固体喷蜡</Radio>
+                    <Radio label="热转印技术" :disabled='disabledoff || forbidden.c112'>热转印技术</Radio>
+                    <Radio label="高性能喷墨技术" :disabled='disabledoff || forbidden.c112'>高性能喷墨技术</Radio>
                   </RadioGroup>
                 </FormItem>
                 <br/><br/>
@@ -600,23 +599,23 @@
               <td colspan="3">
                 <FormItem prop="c113">
                   <RadioGroup v-model="formRecord.c113">
-                    <Radio label="单色复印机" :disabled='disabledoff'>单色复印机</Radio>
-                    <Radio label="单色打印机" :disabled='disabledoff'>单色打印机</Radio>
-                    <Radio label="单色传真机" :disabled='disabledoff'>单色传真机</Radio>
-                    <Radio label="彩色复印机" :disabled='disabledoff'>彩色复印机</Radio>
-                    <Radio label="彩色传真机" :disabled='disabledoff'>彩色传真机</Radio>
-                    <Radio label="彩色打印机" :disabled='disabledoff'>彩色打印机</Radio>
-                    <Radio label="单色多功能一体机" :disabled='disabledoff'>单色多功能一体机</Radio>
-                    <Radio label="彩色多功能一体机" :disabled='disabledoff'>彩色多功能一体机</Radio>
+                    <Radio label="单色复印机" disabled>单色复印机</Radio>
+                    <Radio label="单色打印机" disabled>单色打印机</Radio>
+                    <Radio label="单色传真机" disabled>单色传真机</Radio>
+                    <Radio label="彩色复印机" disabled>彩色复印机</Radio>
+                    <Radio label="彩色传真机" disabled>彩色传真机</Radio>
+                    <Radio label="彩色打印机" disabled>彩色打印机</Radio>
+                    <Radio label="单色多功能一体机" disabled>单色多功能一体机</Radio>
+                    <Radio label="彩色多功能一体机" disabled>彩色多功能一体机</Radio>
                   </RadioGroup>
                 </FormItem>
                 <hr>
                 <FormItem prop="c115">
                   <RadioGroup v-model="formRecord.c115">
-                    <Radio label="喷墨打印机" :disabled='disabledoff'>喷墨打印机</Radio>
-                    <Radio label="针式打印机" :disabled='disabledoff'>针式打印机</Radio>
-                    <Radio label="喷墨传真机" :disabled='disabledoff'>喷墨传真机</Radio>
-                    <Radio label="喷墨多功能一体机" :disabled='disabledoff'>喷墨多功能一体机</Radio>
+                    <Radio label="喷墨打印机" disabled>喷墨打印机</Radio>
+                    <Radio label="针式打印机" disabled>针式打印机</Radio>
+                    <Radio label="喷墨传真机" disabled>喷墨传真机</Radio>
+                    <Radio label="喷墨多功能一体机" disabled>喷墨多功能一体机</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
@@ -1932,9 +1931,9 @@
       <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
-             internalinstanceid="81"/>
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -2010,6 +2009,7 @@
     atLeastOneDecimals,
     atLeastTwoDecimals,
     atLeastThreeDecimals,
+    isIntegerNotZero,
     isInteger,
     isNumber,
     numberCheck,
@@ -2030,6 +2030,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
+        loadText:true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -2322,9 +2323,11 @@
           c82: true,
           c85: true,
           c87: true,
+          c112: true,
           c114: true,
         },
-        c7V: ''
+        c7V: '',
+        fjyzV: false
       }
     },
     mounted() {
@@ -2360,6 +2363,9 @@
         this.uploadPic = path;
         this.modal4 = true
       },
+      templateLoad(){
+        this.loadText=false;
+      },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         return XfillDefaultData(params, this)
@@ -2383,7 +2389,15 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        console.log(res);
+        if(res.Status){
+          this['checkmark' + id] = true
+        }else{
+          this['checkmark' + id] = false
+          this.uploadParam['filePath'+id]=''
+          this.$Message.warning('上传失败')
+        }
+
       }
     },
     computed: {
@@ -2402,6 +2416,22 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
+      },
+      extendRule() {
+        return {
+          c4: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
       },
       ruleRecord() {
         this.forbidden.c7_1 = true
@@ -2484,20 +2514,63 @@
           this.formRecord.c76 = ''
         }
         this.c7V = this.formRecord.c7
+
         if (this.formRecord.c7 === '单色复印机' || this.formRecord.c7 === '单色打印机' || this.formRecord.c7 === '单色传真机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_1 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '彩色复印机' || this.formRecord.c7 === '彩色打印机' || this.formRecord.c7 === '彩色传真机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_2 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '单色多功能一体机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_3 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '彩色多功能一体机') {
+          this.formRecord.c113 = this.formRecord.c7
+          this.formRecord.c115 = ''
+          this.forbidden.c112 = false
+          this.formRecord.c114 = ''
+          this.forbidden.c114 = true
           this.forbidden.c7_4 = false
+          this.fjyzV = false
         } else if (this.formRecord.c7 === '喷墨打印机' || this.formRecord.c7 === '针式打印机') {
+          this.formRecord.c113 = ''
+          this.formRecord.c115 = this.formRecord.c7
+          this.forbidden.c114 = false
+          this.formRecord.c112 = ''
+          this.forbidden.c112 = true
           this.forbidden.c7_5 = false
+          this.fjyzV = true
         } else if (this.formRecord.c7 === '喷墨多功能一体机') {
+          this.formRecord.c113 = ''
+          this.formRecord.c115 = this.formRecord.c7
+          this.forbidden.c114 = false
+          this.formRecord.c112 = ''
+          this.forbidden.c112 = true
           this.forbidden.c7_6 = false
+          this.fjyzV = true
         } else if (this.formRecord.c7 === '喷墨传真机') {
+          this.formRecord.c113 = ''
+          this.formRecord.c115 = this.formRecord.c7
+          this.forbidden.c114 = false
+          this.formRecord.c112 = ''
+          this.forbidden.c112 = true
           this.forbidden.c7_7 = false
+          this.fjyzV = true
         }
 
         if (this.formRecord.c80.join('').indexOf('黑白速度') > -1) {
@@ -2525,13 +2598,6 @@
           this.forbidden.c87 = true
         }
 
-        if (this.formRecord.c112 == '') {
-          this.forbidden.c114 = false
-        } else {
-          this.formRecord.c114 = ''
-          this.forbidden.c114 = true
-        }
-
         var c11 = parseFloat(this.formRecord.c11);
         var c12 = parseFloat(this.formRecord.c12);
         var c17 = parseFloat(this.formRecord.c17);
@@ -2556,9 +2622,6 @@
         var c7 = this.formRecord.c7;//产品类型
         var c50 = parseFloat(this.formRecord.c50);
         var c59 = parseFloat(this.formRecord.c59);
-        var cz = Math.round(c50 * 100);//操作模式功率Pom标称值2.2*100=220
-        var dj = Math.round(c53 * 100);//待机功率（W）标称值0.5*100=50
-        var yz = Math.round(c59 * 100);//附加功能功率因子之和(W)标称值1.6*100=160
         var c65 = parseFloat(this.formRecord.c65);
         var c74 = parseFloat(this.formRecord.c74);
 
@@ -3023,7 +3086,9 @@
             callback()
           }
 
-
+          let yz = Math.round(c44 * 100);
+          let cz = Math.round(c35 * 100);
+          let dj = Math.round(c38 * 100);
           if (c7 === "喷墨打印机") {
             if (cz <= 60 + yz) {
               if (dj <= 50) {
@@ -3085,7 +3150,9 @@
             }
             callback()
           }
-
+          let cz = Math.round(c50 * 100);//操作模式功率Pom标称值2.2*100=220
+          let dj = Math.round(c53 * 100);//待机功率（W）标称值0.5*100=50
+          let yz = Math.round(c59 * 100);//附加功能功率因子之和(W)标称值1.6*100=160
           if (cz <= 60 + yz) {
             if (dj <= 50) {
               nxdj = 1;
@@ -3113,7 +3180,9 @@
               callback()
             }
           }
-
+          let cz = Math.round(c65 * 100);
+          let dj = Math.round(c68 * 100);
+          let yz = Math.round(c74 * 100);
           if (cz <= 60 + yz) {
             if (dj <= 50) {
               nxdj = 1;
@@ -3128,9 +3197,9 @@
             }
           }
         }
-        var c6 = this.formRecord.c6;
+        var c6 = parseFloat(this.formRecord.c6);
         let checkc6 = (rule, value, callback) => {
-          if (nxdj === 0) {
+          if (nxdj == 0) {
             callback("能效数据不再备案范围");
           }
           if (nxdj != c6) {
@@ -3191,6 +3260,10 @@
               required: !this.forbidden.c7_1,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_1 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c9: [
@@ -3231,6 +3304,10 @@
               required: !this.forbidden.c7_2,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_2 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c15: [
@@ -3271,6 +3348,10 @@
               required: !this.forbidden.c7_3,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_3 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c21: [
@@ -3311,6 +3392,10 @@
               required: !this.forbidden.c7_4,
               trigger: 'change,blur',
               message: '标称值不能为空'
+            },
+            {
+              validator: !this.forbidden.c7_4 ? isIntegerNotZero : check,
+              trigger: 'change,blur'
             }
           ],
           c27: [
@@ -3541,6 +3626,10 @@
               message: '标称值不能为空'
             },
             {
+              validator: !this.forbidden.c7_6 ? numberCheck : check,
+              trigger: 'change,blur'
+            },
+            {
               validator: checkc56,
               trigger: 'change,blur'
             }
@@ -3655,6 +3744,10 @@
               message: '标称值不能为空'
             },
             {
+              validator: !this.forbidden.c7_7 ? numberCheck : check,
+              trigger: 'change,blur'
+            },
+            {
               validator: checkc71,
               trigger: 'change,blur'
             }
@@ -3700,14 +3793,14 @@
           ],
           c112: [
             {
-              required: true,
+              required: !this.forbidden.c112,
               trigger: 'change,blur',
               message: '不能为空'
             }
           ],
           c114: [
             {
-              required: this.formRecord.c112 == '',
+              required: !this.forbidden.c114,
               trigger: 'change,blur',
               message: '不能为空'
             }
@@ -3843,91 +3936,91 @@
           ],
           c98: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表1不能为空'
             }
           ],
           c99: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表2不能为空'
             }
           ],
           c100: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表3不能为空'
             }
           ],
           c101: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表4不能为空'
             }
           ],
           c102: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表5不能为空'
             }
           ],
           c103: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表6不能为空'
             }
           ],
           c104: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表7不能为空'
             }
           ],
           c105: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表8不能为空'
             }
           ],
           c106: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表9不能为空'
             }
           ],
           c107: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表10不能为空'
             }
           ],
           c108: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表11不能为空'
             }
           ],
           c109: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表12不能为空'
             }
           ],
           c110: [
             {
-              required: true,
+              required: this.fjyzV,
               trigger: 'change,blur',
               message: '附加因子表13不能为空'
             }
