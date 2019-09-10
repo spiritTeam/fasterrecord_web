@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>商用燃气灶具能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -50,7 +50,7 @@
             <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c2" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
@@ -1021,9 +1021,9 @@
       <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
-             internalinstanceid="81"/>
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1101,6 +1101,7 @@
     isInteger,
     isNumber,
     isIntegerNotZero,
+    numberCheck,
     check
   } from '@/libs/utilExt'
 
@@ -1117,6 +1118,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
+        loadText:true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1351,6 +1353,9 @@
         this.uploadPic = path;
         this.modal4 = true
       },
+      templateLoad(){
+        this.loadText=false;
+      },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         return XfillDefaultData(params, this)
@@ -1374,7 +1379,15 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        console.log(res);
+        if(res.Status){
+          this['checkmark' + id] = true
+        }else{
+          this['checkmark' + id] = false
+          this.uploadParam['filePath'+id]=''
+          this.$Message.warning('上传失败')
+        }
+
       },
       clearZcrqcczData() {//中餐燃气炒菜灶
         this.formRecord.c24 = ''
@@ -1490,6 +1503,22 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
+      },
+      extendRule() {
+        return {
+          c4: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
       },
       ruleRecord() {
 
@@ -1718,10 +1747,31 @@
               message: '请输入热负荷实测值'
             },
             {
-              validator: this.formRecord.c12 != '' ? oneDecimals : check,
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
               trigger: 'change,blur'
             }
-
+          ],
+          c63: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c64: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
           ],
           c14: [
             {
@@ -1915,9 +1965,13 @@
           ],
           c43: [
             {
-              required: this.formRecord.c23 === '中餐燃气炒菜灶',
+              required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c44: [
@@ -1929,9 +1983,13 @@
           ],
           c45: [
             {
-              required: this.formRecord.c23 === '中餐燃气炒菜灶',
+              required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c46: [
@@ -1943,9 +2001,13 @@
           ],
           c47: [
             {
-              required: this.formRecord.c23 === '中餐燃气炒菜灶',
+              required: !this.forbidden.zcrqccz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c48: [
@@ -1957,9 +2019,13 @@
           ],
           c49: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c50: [
@@ -1971,9 +2037,13 @@
           ],
           c51: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c52: [
@@ -1985,9 +2055,13 @@
           ],
           c53: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c54: [
@@ -1999,23 +2073,31 @@
           ],
           c55: [
             {
-              required: this.formRecord.c23 === '炊用燃气大锅灶',
+              required: !this.forbidden.yyrqdgz,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c56: [
             {
-              required: this.formRecord.c23 === '燃气蒸箱',
+              required: !this.forbidden.rqzx,
               trigger: 'change,blur',
               message: '请输入水胆容量'
             }
           ],
           c57: [
             {
-              required: this.formRecord.c23 === '燃气蒸箱',
+              required: !this.forbidden.rqzx,
               trigger: 'change,blur',
               message: '请输入额定热负荷值'
+            },
+            {
+              validator: !this.forbidden.rqzx ? numberCheck : check,
+              trigger: 'change,blur'
             }
           ],
           c58: [
@@ -2048,6 +2130,248 @@
             },
             {
               validator: isIntegerNotZero,
+              trigger: 'change,blur'
+            }
+          ],
+          c66: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c67: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c68: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c70: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c71: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c72: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c74: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c75: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c76: [
+            {
+              required: !this.forbidden.zcrqccz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.zcrqccz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c90: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c91: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c92: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c94: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c95: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c96: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c98: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c99: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c100: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c102: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c103: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入额定热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? numberCheck : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c104: [
+            {
+              required: !this.forbidden.yyrqdgz,
+              trigger: 'change,blur',
+              message: '请输入实测热效率值'
+            },
+            {
+              validator: !this.forbidden.yyrqdgz ? atLeastOneDecimals : check,
+              trigger: 'change,blur'
+            }
+          ],
+          c117: [
+            {
+              required: !this.forbidden.rqzx,
+              trigger: 'change,blur',
+              message: '请输入热负荷实测值'
+            },
+            {
+              validator: !this.forbidden.rqzx ? atLeastOneDecimals : check,
               trigger: 'change,blur'
             }
           ],

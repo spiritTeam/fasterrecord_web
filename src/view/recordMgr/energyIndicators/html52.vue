@@ -6,7 +6,7 @@
 */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>家用和类似用途微波炉-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -56,7 +56,7 @@
             <Input type="text" v-model="formRecord.c3" :disabled='!disabledoff' placeholder="产品规格型号"/>
           </FormItem>
           <FormItem prop="c4" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c4" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c4" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" disabled/>
@@ -1052,9 +1052,9 @@
       <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
-             internalinstanceid="81"/>
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1148,6 +1148,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
+        loadText:true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1363,6 +1364,9 @@
         this.uploadPic = path;
         this.modal4 = true
       },
+      templateLoad(){
+        this.loadText=false;
+      },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         return XfillDefaultData(params, this)
@@ -1386,7 +1390,15 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        console.log(res);
+        if(res.Status){
+          this['checkmark' + id] = true
+        }else{
+          this['checkmark' + id] = false
+          this.uploadParam['filePath'+id]=''
+          this.$Message.warning('上传失败')
+        }
+
       }
     },
     computed: {
@@ -1405,6 +1417,22 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
+      },
+      extendRule() {
+        return {
+          c3: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
       },
       ruleRecord() {
         if (this.formRecord.c100.join('').indexOf('无') > -1) {
@@ -1711,10 +1739,10 @@
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
-            /*{
-              validator: isInteger,
+            {
+              validator: numberCheck,
               trigger: 'change,blur'
-            }*/
+            }
           ],
           c34: [
             {
@@ -1722,30 +1750,30 @@
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
-            /*{
-              validator: atLeastTwoDecimals,
+            {
+              validator: atLeastOneDecimals,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: checkc34,
               trigger: 'change,blur'
             }
           ],
           c9: [
-            /*{
-              validator: oneDecimals,
+            {
+              validator: !this.forbidden.c10 ? oneDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: !this.forbidden.c10 ? checkc9 : check,
               trigger: 'change,blur'
             }
           ],
           c38: [
-            /*{
+            {
               validator: !this.forbidden.c38 ? atLeastTwoDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: checkc38,
               trigger: 'change,blur'
@@ -1757,10 +1785,10 @@
               trigger: 'change,blur',
               message: '标称值不能为空'
             },
-            /*{
-              validator: oneDecimals,
+            {
+              validator: !this.forbidden.c40 ? oneDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: !this.forbidden.c40 ? checkc11 : check,
               trigger: 'change,blur'
@@ -1772,10 +1800,10 @@
               trigger: 'change,blur',
               message: '实测值不能为空'
             },
-            /* {
+             {
                validator: !this.forbidden.c40 ? atLeastTwoDecimals : check,
                trigger: 'change,blur'
-             },*/
+             },
             {
               validator: checkc40,
               trigger: 'change,blur'
@@ -1973,20 +2001,20 @@
             }
           ],
           c7: [
-            /*{
-              validator: oneDecimals,
+            {
+              validator: !this.forbidden.c8 ? oneDecimals : check,
               trigger: 'change,blur'
-            },*/
+            },
             {
               validator: !this.forbidden.c8 ? checkc7 : check,
               trigger: 'change,blur'
             }
           ],
           c36: [
-            /* {
+             {
                validator: !this.forbidden.c36 ? atLeastTwoDecimals : check,
                trigger: 'change,blur'
-             },*/
+             },
             {
               validator: checkc36,
               trigger: 'change,blur'

@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>电饭锅-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -50,7 +50,7 @@
             <Input type="text" v-model="formRecord.c3" :disabled='!disabledoff' placeholder="产品规格型号"/>
           </FormItem>
           <FormItem prop="c2" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c2" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c2" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
@@ -92,9 +92,9 @@
                     <Radio label="电磁感应式" :disabled='disabledoff'>电磁感应式</Radio>
                     <Radio label="其它" :disabled='disabledoff'>其它</Radio>
                   </RadioGroup>
-                  <FormItem prop="c16">
-                    <Input type="text" v-model="formRecord.c16" style="width:200px;" :disabled='disabledoff || forbidden.c16'/>
-                  </FormItem>
+                </FormItem>
+                <FormItem prop="c16">
+                  <Input type="text" v-model="formRecord.c16" style="width:200px;" :disabled='disabledoff || forbidden.c16'/>
                 </FormItem>
               </td>
             </tr>
@@ -1043,8 +1043,9 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
      <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1134,6 +1135,7 @@ import {
       modal4: false,
       modal5: false,
       templatePic: '',
+      loadText:true,
       uploadPic: '',
       modal2: false,
       currentValue: '',
@@ -1339,6 +1341,9 @@ import {
       this.uploadPic = path;
       this.modal4 = true
     },
+    templateLoad(){
+      this.loadText=false;
+    },
     /* 数据来源 新增备案 */
     fillDefaultData(params) {
       return XfillDefaultData(params, this)
@@ -1362,7 +1367,15 @@ import {
       return XformatDate(d)
     },
     getFile(res, file, id) {
-      this['checkmark' + id] = true
+      console.log(res);
+      if(res.Status){
+        this['checkmark' + id] = true
+      }else{
+        this['checkmark' + id] = false
+        this.uploadParam['filePath'+id]=''
+        this.$Message.warning('上传失败')
+      }
+
     }
   },
   computed: {
@@ -1381,6 +1394,22 @@ import {
     },
     requiredStr() {
       return this.$store.state.app.requiredStr
+    },
+    extendRule() {
+      return {
+        c3: [
+          {
+            trigger: 'change,blur', required: true,
+            message: '产品规格型号不能为空'
+          },
+          {
+            validator: (rule, value, callback) => {
+              this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+            },
+            trigger: 'change,blur'
+          }
+        ]
+      }
     },
     ruleRecord () {
 
@@ -1463,8 +1492,8 @@ import {
       //c5 热效率值
       var nxdj = "";
       var c9 = parseInt(this.formRecord.c9);
-      var c5 = this.formRecord.c5;
-      var c25 = this.formRecord.c25;
+      var c5 = parseInt(this.formRecord.c5);
+      var c25 = parseFloat(this.formRecord.c25);
       if (c25 <= 400) {
           if (c9 != '' && c9) {
               if (c9 <= 19) {
@@ -1632,8 +1661,8 @@ import {
       }
 
       //绑定加入方式 c15
-      var nxdjch = this.formRecord.c29;
-      var djgl = this.formRecord.c7;
+      var nxdjch = parseFloat(this.formRecord.c29);
+      var djgl = parseFloat(this.formRecord.c7);
       var djglCheck = this.formRecord.c15;
       const checkc15 = (rule, value, callback) => {
           if (djglCheck == "电热元件式") {

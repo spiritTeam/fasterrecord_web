@@ -35,12 +35,13 @@
         :before-upload="fileHandleBeforeUpload"
         :data="uploadParam.fileData"
         :on-success="getFile"
+        :show-upload-list='false'
         style="display:inline-block;"
         :on-format-error="handleFormatError"
         :action="uploadUrl">
 
         <Button icon="ios-cloud-upload-outline" type="primary">上传</Button>
-        <!-- <Icon type="ios-checkmark" v-show="checkmark" /> -->
+         <Icon type="ios-checkmark" v-show="checkmark" />
       </Upload>
     </Modal>
     <Modal v-model="modal2" title="撤销申请" @on-ok="submitWorkorder" ok-text="提交">
@@ -71,7 +72,7 @@ export default {
           this.downloadQrcode(params.row.id)
         }
       }
-    }, '下载二维码')
+    }, '二维码下载')
     const uploadBtn = (h, params) => h('Button', {
       props: {
         type: 'primary',
@@ -101,7 +102,7 @@ export default {
           this.downloadElImg(params.row.id)
         }
       }
-    }, '下载能效标识图')
+    }, '标识下载')
     const extendBtn = (h, params) => h('Button', {
       props: {
         type: 'primary',
@@ -189,6 +190,7 @@ export default {
       rowId: 0,
       zmImgUrl:'',
       uploadUrl: '',
+      checkmark:false,
       uploadParam: {
         fileData: {},
         uploadFileList: []
@@ -266,7 +268,8 @@ export default {
             return h('div', [
               viewBtn(h, params),
               downLoadCode(h, params),
-              params.row.state === 2 ? uploadBtn(h, params) : downLoadRecord(h, params),
+              params.row.state === 2 ? uploadBtn(h, params) : '',
+              params.row.bs === 1 ? downLoadRecord(h, params) : '',
               params.row.kz ? extendBtn(h, params) : '',
               params.row.bg ? updateBtn(h, params) : '',
               params.row.cx ? cancleBtn(h, params) : '',
@@ -370,6 +373,7 @@ export default {
           _this.uploadParam.fileData['OSSAccessKeyId'] = res.data.accessid
           _this.uploadParam.fileData['success_action_status'] = '200'
           _this.uploadParam.fileData['signature'] = res.data.signature
+          _this.uploadParam.fileData['callback']=res.data.callback
           _this.uploadUrl = res.data.host
           _this.fileObj.ec_attach_path = res.data.host + _this.dir + file.name
           resolve()
@@ -382,15 +386,26 @@ export default {
       this.id = id
     },
     getFile (res, file) {
-      axios.get('/marking/uploadQrcode.do', {
-        params: this.fileObj
-      }).then(res => {
-        if (res.data.result_code === '1') {
-          this.modal1 = false
-          this.pageNum = 1
-          this.reqData()
-        }
-      })
+      if(res.Status==='OK'){
+        axios.get('/marking/uploadQrcode.do', {
+          params: this.fileObj
+        }).then(res => {
+          if (res.data.result_code === '1') {
+            //this.modal1 = false
+            this.pageNum = 1
+            this.checkmark=true;
+            this.$Message.success('上传成功')
+            this.reqData()
+          }else{
+            this.checkmark=false;
+            this.$Message.error('上传失败')
+          }
+        })
+      }else{
+        this.checkmark=false;
+        this.$Message.error('上传失败')
+      }
+
     },
     getCategoryList () {
       axios.get('/marking/getCategoryList.do').then(res => {

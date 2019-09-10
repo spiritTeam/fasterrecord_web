@@ -43,6 +43,7 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
       that.uploadParam['fileData' + id]['OSSAccessKeyId'] = res.data.accessid
       that.uploadParam['fileData' + id]['success_action_status'] = '200'
       that.uploadParam['fileData' + id]['signature'] = res.data.signature
+      that.uploadParam['fileData' + id]['callback'] = res.data.callback
       that.uploadUrl = res.data.host
       fileObj.ec_attach_path = that.uploadParam['filePath' + id] = res.data.host + that.dir + file.name
       that.filesArr.push(fileObj)
@@ -62,6 +63,10 @@ export const getImgPath = (dir, that) => {
 
 // /* 数据来源  扩展备案 */
 export const XfillExtendData = (params, that) => {
+  axios.get('/ads/getToken.do').then(res => {
+    that.$store.state.app.action_token = res.data.action_token
+  })
+
   let data = params.data;
   let mark = params.marking;
   that.$store.commit('setPtId', mark.ptid)
@@ -81,13 +86,17 @@ export const XfillExtendData = (params, that) => {
       //console.log(that)
     } else {
       that.formRecord[i] = data[i]
-      if(i==that.thisGZXHCV) that.mainModel= data[i];
+      if (i == that.thisGZXHCV) that.mainModel = data[i];
     }
   }
 }
 
 /* 数据来源 草稿箱 */
 export const XfillDraftData = (params, that) => {
+  axios.get('/ads/getToken.do').then(res => {
+    that.$store.state.app.action_token = res.data.action_token
+  })
+
   let data = params.data;
   let mark = params.marking;
   let attachList = that.filesArr = params.attachList;
@@ -126,6 +135,10 @@ export const XfillDraftData = (params, that) => {
 }
 /* 数据来源 新增备案 */
 export const XfillDefaultData = (params, that) => {
+  axios.get('/ads/getToken.do').then(res => {
+    that.$store.state.app.action_token = res.data.action_token
+  })
+
   that.formRecord.c200 = that.$store.state.app.gb
   that.$store.state.app.defaultData.forEach((e) => {
     if (that.formRecord[e.recId] != null && that.formRecord[e.recId].constructor === Array) {
@@ -148,9 +161,9 @@ export const XfillDefaultData = (params, that) => {
           }
         } else if (e.recId === that.thisDateCV && isNaN(labVal)) {
           that.formRecord[e.recId] = new Date()
-        } else if(e.recId==='c1' || e.recId==='c2'|| e.recId==='c3'){
-          that.formRecord[e.recId] =e.labValue
-        }else {
+        } else if (e.recId === 'c1' || e.recId === 'c2' || e.recId === 'c3') {
+          that.formRecord[e.recId] = e.labValue
+        } else {
           that.formRecord[e.recId] = labVal
         }
       }
@@ -160,7 +173,7 @@ export const XfillDefaultData = (params, that) => {
 
 export const XshowConfirm = (that) => {
   let _this = that
-  let pageType=_this.pageType;
+  let pageType = _this.pageType;
   if (_this.uploadParam.filePath24 === '') {
     _this.$Message.warning('请上传产品正面图片！')
     return false
@@ -173,10 +186,10 @@ export const XshowConfirm = (that) => {
   //   _this.$Message.warning('请上传oem声明！')
   //   return false
   // }
-  if(pageType==="extend" || pageType==="update" ){
-    if (_this.formRecord.ec_master_kuozhan_text===''){
-      let text=pageType==="extend"?'扩展':'变更'
-      _this.$Message.warning('请填写'+text+'申请书！')
+  if (pageType === "extend" || pageType === "update") {
+    if (_this.formRecord.ec_master_kuozhan_text === '') {
+      let text = pageType === "extend" ? '扩展' : '变更'
+      _this.$Message.warning('请填写' + text + '申请书！')
       return;
     }
     // }else {
@@ -188,9 +201,10 @@ export const XshowConfirm = (that) => {
   _this.$refs['formRecord'].validate((valid) => {
     if (valid) {
       if (_this.confirmData.join('') == 1) {
-        if(pageType!=="extend"){
-          _this.boolFlag= XdiffRecord(_this.$store.state.app.defaultData,_this.formRecord, _this);
+        if (pageType !== "extend") {
+          _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord, _this);
         }
+        _this.$store.state.app.subDisabled = true
         _this.modal1 = true
       } else {
         _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
@@ -229,6 +243,10 @@ export const XdiffRecord = (orgin, target, that) => {
 }
 
 export const XsubmitRecord = (that) => {
+  if (!that.$store.state.app.subDisabled){
+    return false
+  }
+  that.$store.state.app.subDisabled = false
   let pageType = that.pageType;
   that.formRecord[that.thisDateCV] = that.formatDate(that.formRecord[that.thisDateCV])
   that.formRecord.ptid = that.$store.state.app.ptId
@@ -254,8 +272,9 @@ export const XsubmitRecord = (that) => {
   }
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
   that.formRecord.id = that.formRecord.id || that.$store.state.app.updateId || 0
+  let action_token = that.$store.state.app.action_token
   if (pageType === "extend" || pageType === "update") {
-    let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do';
+    let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token=' + action_token : '/marking/saveChange.do?action_token=' + action_token;
     axios({
       url: submitUrl,
       method: 'POST',
@@ -280,13 +299,21 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
+      } else if (res.data.msg) {
+        that.$Message.warning(res.data.msg)
+        that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
+      }
+      if (res.data.result_code !== '1'){
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
       }
     })
   } else {
     axios({
-      url: '/marking/save.do',
+      url: '/marking/save.do?action_token=' + action_token,
       method: 'POST',
       data: that.formRecord,
       transformRequest: [function (data) {
@@ -310,9 +337,17 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
+      } else if (res.data.msg) {
+        that.$Message.warning(res.data.msg)
+        that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
         that.submitDisabled = false
+      }
+      if (res.data.result_code !== '1'){
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
       }
     })
   }
@@ -336,9 +371,9 @@ export const XsaveRecord = (that) => {
   }
   that.filesArr.push(file25)
   that.formRecord.attach_list = JSON.stringify(that.filesArr)
-
+  let action_token = that.$store.state.app.action_token
   axios({
-    url: '/marking/saveDraft.do',
+    url: '/marking/saveDraft.do?action_token=' + action_token,
     method: 'POST',
     data: that.formRecord,
     // 只适用于 POST,PUT,PATCH，transformRequest`
@@ -365,9 +400,17 @@ export const XsaveRecord = (that) => {
             that.$router.push('/draftBox')
           }
         })
+      } else if (res.data.msg) {
+        that.$Message.warning(res.data.msg)
+        that.saveDisabled = false
       } else {
         that.$Message.warning(res.data.message)
         that.saveDisabled = false
+      }
+      if (res.data.result_code !== '1'){
+        axios.get('/ads/getToken.do').then(res => {
+          that.$store.state.app.action_token = res.data.action_token
+        })
       }
     })
 }
@@ -380,25 +423,25 @@ export const XformatDate = (d) => {
   return year + '-' + month + '-' + day
 }
 
-export const XviewClose= (that) => {
+export const XviewClose = (that) => {
   that.$router.replace({
-    name:'queryRecord',
-    params:{
-      pageNum:that.$route.params.pageNum
+    name: 'queryRecord',
+    params: {
+      pageNum: that.$route.params.pageNum
     }
   })
 }
 
-var integer = /^[1-9][0-9]*$/;
-var number = /^[+-]?\d+(\.\d+)?$/;
-var decimal1 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
-var decimal2 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
-var decimal3 = /^(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
-var atLeast1 = /^[0-9]\+?(\d*\.\d{1,5})$/;
-var atLeast2 = /^[0-9]\+?(\d*\.\d{2,5})$/;
-var inputNumber = /^[0-9]\d*$/ //不包括0
-var numberOr11 = /^[0-9]+([.]{1}[0-9]{1,1})?$/
-var decimalOr22 = /^[0-9]+[.]{1}[0-9]{1,2}?$/
+var integer = /^[-]?[1-9][0-9]*$/;
+var number = /^[-]?\d+(\.\d+)?$/;
+var decimal1 = /^[-]?(([1-9]{1}\d*)|(0{1}))(\.\d{1})$/
+var decimal2 = /^[-]?(([1-9]{1}\d*)|(0{1}))(\.\d{2})$/
+var decimal3 = /^[-]?(([1-9]{1}\d*)|(0{1}))(\.\d{3})$/
+var atLeast1 = /^[-]?[0-9]\+?(\d*\.\d{1,5})$/;
+var atLeast2 = /^[-]?[0-9]\+?(\d*\.\d{2,5})$/;
+var inputNumber = /^[-]?[0-9]\d*$/ //不包括0
+var numberOr11 = /^[-]?[0-9]+([.]{1}[0-9]{1,1})?$/
+var decimalOr22 = /^[-]?[0-9]+[.]{1}[0-9]{1,2}?$/
 
 // 空校验规则
 export const check = (rule, value, callback) => {
@@ -414,15 +457,18 @@ export const oneDecimals = (rule, vaule, callback) => {
   decimal1.test(vaule) ? callback() : callback('一位小数');
 }
 export const significantDigits22 = (rule, vaule, callback) => {
-  let significantDigits2 = /^[1-9]\d{1}$|^[1-9]\.\d{1}$|^0\.0*[0-9]{2}$/
+  let significantDigits2 = /^[-]?[1-9]\d{1}$|^[-]?[1-9]\.\d{1}$|^[-]?0\.0*[0-9]{2}$/
   significantDigits2.test(vaule) ? callback() : callback('两位有效数字');
 }
 export const significantDigits33 = (rule, vaule, callback) => {
-  let tel = /^[1-9]\.?\d{2}$|^[1-9]{2}\.\d{1}$|^0\.0*[0-9]{3}$/
+  let tel = /^[-]?[1-9]\.?\d{2}$|^[-]?[1-9]{2}\.\d{1}$|^[-]?0\.0*[0-9]{3}$/
   tel.test(vaule) ? callback() : callback('三位有效数字');
 }
 
 export const numberCheck = (rule, vaule, callback) => {//整数中包含0
+  if (!vaule) {
+    callback()
+  }
   inputNumber.test(vaule) ? callback() : callback('请输入整数');
 }
 export const atLeastOneDecimals = (rule, vaule, callback) => {
@@ -432,11 +478,11 @@ export const atLeastTwoDecimals = (rule, vaule, callback) => {
   atLeast2.test(vaule) ? callback() : callback('至少两位小数');
 }
 export const atLeastThreeDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{3,})$/;
+  var atLeast3 = /^[-]?[0-9]\+?(\d*\.\d{3,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少三位小数');
 }
 export const atLeastFourDecimals = (rule, vaule, callback) => {
-  var atLeast3=/^[0-9]\+?(\d*\.\d{4,})$/;
+  var atLeast3 = /^[-]?[0-9]\+?(\d*\.\d{4,})$/;
   atLeast3.test(vaule) ? callback() : callback('至少四位小数');
 }
 export const isInteger = (rule, vaule, callback) => {//整数中不包含0,提示整数
@@ -455,6 +501,6 @@ export const decimalOr2 = (rule, vaule, callback) => {
   decimalOr22.test(vaule) ? callback() : callback('一位小数或两位小数');
 }
 export const numberOrn = (rule, vaule, callback) => {
-  let tel = /^[0-9]+([.]{1}[0-9]{1,5})?$/;
+  let tel = /^[-]?[0-9]+([.]{1}[0-9]{1,5})?$/;
   tel.test(vaule) ? callback() : callback('整数或小数');
 }

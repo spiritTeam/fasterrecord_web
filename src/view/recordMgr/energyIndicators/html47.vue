@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>家用电冰箱-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -53,7 +53,7 @@
 
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:1000px;" :label-width="180">
-            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标" ></Input>
+            <Input type="text" v-model="formRecord.c5" :disabled='pageType=="view"' placeholder="商标" ></Input>
 
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:1000px;" :label-width="180">
@@ -1247,8 +1247,9 @@
       <img :src="templatePic" />
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-     <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic" />
-     <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"  internalinstanceid="81" />
+     <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+     <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+     <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
      <Modal v-model="modal5" class="basic-info pageStyle"  :width=650 ok-text="保存"  @on-ok="submitBasic" cancel-text="关闭">
        <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1311,6 +1312,7 @@ export default {
       modal4: false,
       modal5: false,
       templatePic: '',
+      loadText:true,
       uploadPic: '',
       modal2: false,
       currentValue: '',
@@ -1490,9 +1492,16 @@ export default {
         c200: '',
         c202: '',
         ec_model_no: 47,
-        attach_list: ''
+        attach_list: '',
+        action_token:''
       }
     }
+  },
+  created(){
+    let that=this
+    this.getActionToken().then(res=>{
+        that.action_token=res.data.action_token
+    })
   },
   mounted () {
     // console.log(this.pageType)
@@ -1502,6 +1511,9 @@ export default {
     showTemplate () {
       this.templatePic = this.$store.state.app.pltPic
       this.modal3 = true
+    },
+    getActionToken(){
+        return axios.get('/ads/getToken.do')
     },
     prevStep () {
       this.$emit('prevStep')
@@ -1563,6 +1575,7 @@ export default {
           _this.uploadParam['fileData' + id]['OSSAccessKeyId'] = res.data.accessid
           _this.uploadParam['fileData' + id]['success_action_status'] = '200'
           _this.uploadParam['fileData' + id]['signature'] = res.data.signature
+          _this.uploadParam['fileData' + id]['callback']=res.data.callback
           _this.uploadUrl = res.data.host
           fileObj.ec_attach_path = _this.uploadParam['filePath' + id] = res.data.host + _this.dir + file.name
           _this.filesArr.push(fileObj)
@@ -1646,6 +1659,9 @@ export default {
     showImg (path) {
       this.uploadPic = path
       this.modal4 = true
+    },
+     templateLoad(){
+      this.loadText=false;
     },
     /* 数据来源 新增备案 */
     fillDefaultData () {
@@ -1773,6 +1789,7 @@ export default {
             if (pageType !== 'extend') {
               _this.boolFlag = _this.diffRecord(_this.$store.state.app.defaultData, _this.formRecord)
             }
+            _this.$store.state.app.subDisabled = true
             _this.modal1 = true
           } else {
             _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
@@ -1814,6 +1831,10 @@ export default {
     },
 
     submitRecord () {
+      if (!this.$store.state.app.subDisabled){
+        return false
+      }
+      this.$store.state.app.subDisabled = false
       let _this = this
       let pageType = _this.pageType
       _this.formRecord.c20 = _this.formatDate(this.formRecord.c20)
@@ -1841,7 +1862,7 @@ export default {
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
       _this.formRecord.id = this.formRecord.id || _this.$store.state.app.updateId || 0
       if (pageType === 'extend' || pageType === 'update') {
-        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do' : '/marking/saveChange.do'
+        let submitUrl = pageType === 'extend' ? '/marking/saveExpand.do?action_token='+_this.action_token : '/marking/saveChange.do?action_token='+_this.action_token
         axios({
           url: submitUrl,
           method: 'POST',
@@ -1867,14 +1888,22 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
           } else {
             _this.$Message.warning(res.data.message)
             // _this.submitDisabled = false
           }
+          if (res.data.result_code !== '1'){
+            axios.get('/ads/getToken.do').then(res => {
+              _this.action_token = res.data.action_token
+            })
+          }
         })
       } else {
         axios({
-          url: '/marking/save.do',
+          url: '/marking/save.do?action_token='+this.action_token,
           method: 'POST',
           data: _this.formRecord,
           transformRequest: [function (data) {
@@ -1898,9 +1927,17 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
           } else {
             _this.$Message.warning(res.data.message)
             _this.submitDisabled = false
+          }
+          if (res.data.result_code !== '1'){
+            axios.get('/ads/getToken.do').then(res => {
+              _this.action_token = res.data.action_token
+            })
           }
         })
       }
@@ -1924,9 +1961,8 @@ export default {
       }
       _this.filesArr.push(file25)
       _this.formRecord.attach_list = JSON.stringify(_this.filesArr)
-
       axios({
-        url: '/marking/saveDraft.do',
+        url: '/marking/saveDraft.do?action_token='+_this.action_token,
         method: 'POST',
         data: _this.formRecord,
         // 只适用于 POST,PUT,PATCH，transformRequest`
@@ -1953,9 +1989,17 @@ export default {
                 _this.$router.push('/draftBox')
               }
             })
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
           } else {
             _this.$Message.warning(res.data.message)
             _this.saveDisabled = false
+          }
+          if (res.data.result_code !== '1'){
+            axios.get('/ads/getToken.do').then(res => {
+              _this.action_token = res.data.action_token
+            })
           }
         })
     },
@@ -1967,7 +2011,15 @@ export default {
       return year + '-' + month + '-' + day
     },
     getFile (res, file, id) {
-      this['checkmark' + id] = true
+      console.log(res);
+      if(res.Status){
+        this['checkmark' + id] = true
+      }else{
+        this['checkmark' + id] = false
+        this.uploadParam['filePath'+id]=''
+        this.$Message.warning('上传失败')
+      }
+
     }
   },
   computed: {
@@ -2021,6 +2073,22 @@ export default {
         return true
       } else {
         return false
+      }
+    },
+    extendRule() {
+      return {
+        c4: [
+          {
+            trigger: 'change,blur', required: true,
+            message: '产品规格型号不能为空'
+          },
+          {
+            validator: (rule, value, callback) => {
+              this.pageType === 'extend' && this.mainModel === this.formRecord.c4? callback('扩展备案需要变更型号名称') : callback()
+            },
+            trigger: 'change,blur'
+          }
+        ]
       }
     },
     ruleRecord () {

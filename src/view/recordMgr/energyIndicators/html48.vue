@@ -5,7 +5,7 @@
 */
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:{}">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
       <h1>家用燃气快速热水器/燃气采暖热水炉-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -55,7 +55,7 @@
             <Input type="text" v-model="formRecord.c4" :disabled='!disabledoff' placeholder="规格型号"/>
           </FormItem>
           <FormItem prop="c5" label="商标" style="width:100%" :label-width="180">
-            <Input type="text" v-model="formRecord.c5" :disabled='disabledoff' placeholder="商标"/>
+            <Input type="text" v-model="formRecord.c5" :disabled='pageType=="view"' placeholder="商标"/>
           </FormItem>
           <FormItem prop="c200" label="依据国家标准" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c200" placeholder="依据国家标准" readonly disabled/>
@@ -1000,9 +1000,9 @@
       <img :src="templatePic"/>
     </Modal>
     <Modal v-model="modal4" :width=820 :footer-hide=true>
-      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" :src="uploadPic"/>
-      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" type="application/pdf"
-             internalinstanceid="81"/>
+      <p v-show="loadText && !uploadPic.includes('.pdf')" style="text-align:center">加载中···</p>
+      <img class="lookPdf" v-if="!uploadPic.includes('.pdf')" width="790" :src="uploadPic" @load="templateLoad" />
+      <embed class="lookPdf" v-else :src="uploadPic" width="600" height="400" @load="templateLoad" type="application/pdf"  internalinstanceid="81" />
     </Modal>
     <Modal v-model="modal5" class="basic-info pageStyle" :width=650 ok-text="保存" @on-ok="submitBasic" cancel-text="关闭">
       <h2>标识型号{{pageType==="extend"?'扩展':'变更'}}备案申请书</h2>
@@ -1091,6 +1091,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
+        loadText:true,
         //disabledoff: true,
         uploadPic: '',
         modal2: false,
@@ -1264,7 +1265,6 @@
           c23: true,
           c24: true,
           c25: true,
-
         },
         c29: ''
       }
@@ -1302,6 +1302,9 @@
         this.uploadPic = path;
         this.modal4 = true
       },
+      templateLoad(){
+        this.loadText=false;
+      },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
         return XfillDefaultData(params, this)
@@ -1322,7 +1325,15 @@
         return XformatDate(d)
       },
       getFile(res, file, id) {
-        this['checkmark' + id] = true
+        console.log(res);
+        if(res.Status){
+          this['checkmark' + id] = true
+        }else{
+          this['checkmark' + id] = false
+          this.uploadParam['filePath'+id]=''
+          this.$Message.warning('上传失败')
+        }
+
       }
     },
     computed: {
@@ -1342,19 +1353,23 @@
       requiredStr() {
         return this.$store.state.app.requiredStr
       },
+      extendRule() {
+        return {
+          c4: [
+            {
+              trigger: 'change,blur', required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
+      },
       ruleRecord() {
-        //产品类型
-        var lx = this.formRecord.c27
-        //能效等级
-        var nxdjch = this.formRecord.c7
-        //额定热负荷热水热效率
-        var valueers = parseFloat(this.formRecord.c14);
-        //额定热负荷供暖热效率
-        var valueegn = parseFloat(this.formRecord.c20);
-        //50%额定热负荷效率值
-        var value50 = parseFloat(this.formRecord.c17);
-        //30%额定热负荷效率值
-        var value30 = parseFloat(this.formRecord.c23);
         if (this.formRecord.c34.join('').indexOf('热水') > -1) {
           this.forbidden.c35 = false
         } else {
@@ -1484,19 +1499,32 @@
         }
         this.c29 = this.formRecord.c29
 
-        var nxdj = "";
-        var n1 = "";
-        var n2 = "";
-        var n3 = "";
-        var n4 = "";
-        var n1val = "";
-        var n2val = "";
-        var nxdj1 = "";
-        var nxdj2 = "";
-        var nxdj3 = "";
-        var nxdj4 = "";
-        var nxdjMidd1 = "";
-        var nxdjMidd2 = "";
+        let nxdj = "";
+        let n1 = "";
+        let n2 = "";
+        let n3 = "";
+        let n4 = "";
+        let n1val = "";
+        let n2val = "";
+        let nxdj1 = "";
+        let nxdj2 = "";
+        let nxdj3 = "";
+        let nxdj4 = "";
+        let nxdjMidd1 = "";
+        let nxdjMidd2 = "";
+
+        //产品类型
+        let lx = this.formRecord.c27
+        //能效等级
+        let nxdjch = this.formRecord.c7
+        //额定热负荷热水热效率
+        let valueers = parseFloat(this.formRecord.c14);
+        //额定热负荷供暖热效率
+        let valueegn = parseFloat(this.formRecord.c20);
+        //50%额定热负荷效率值
+        let value50 = parseFloat(this.formRecord.c17);
+        //30%额定热负荷效率值
+        let value30 = parseFloat(this.formRecord.c23);
         if (lx != "") {
           if (lx == "家用燃气快速热水器") {
             if (valueers > value50) {
@@ -1537,7 +1565,7 @@
                 }
               }
             }
-          } else if (lx == "燃气采暖热水炉单采暖型") {
+          } else if (lx == "燃气采暖热水炉(单采暖型)") {
             if (valueegn > value30) {
               n1val = valueegn;
               n2val = value30;
@@ -1577,7 +1605,7 @@
               }
 
             }
-          } else if (lx == "燃气采暖热水炉两用型") {
+          } else if (lx == "燃气采暖热水炉(两用型)") {
             //热水
             if (valueers > value50) {
               n1 = valueers;
@@ -1609,6 +1637,7 @@
             //采暖
             if (valueegn > value30) {
               n3 = valueegn;
+              n4 = value30;
             } else {
               n3 = value30;
               n4 = valueegn;
@@ -1656,7 +1685,7 @@
               }
             }
           } else {
-            var nxdj = "";
+            nxdj = "";
           }
         }
         const checkc7a = (rule, value, callback) => {
