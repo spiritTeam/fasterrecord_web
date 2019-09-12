@@ -1531,6 +1531,7 @@ export default {
       this.dir = imgDir
     },
     handleFormatError (file, id) {
+      this.$Spin.hide();
       this.uploadParam['filePath' + id] = ''
       this.filesArr.splice(this.filesArr.indexOf(id), 1)
       this.$Notice.warning({
@@ -1562,6 +1563,7 @@ export default {
             })
             return false
           }
+          _this.handleSpinCustom()
           let reader = new FileReader()
           reader.readAsDataURL(file)
           reader.onloadend = (e) => {
@@ -1582,6 +1584,22 @@ export default {
           resolve()
         })
       })
+    },
+    handleSpinCustom () {
+        this.$Spin.show({
+            render: (h) => {
+                return h('div', [
+                    h('Icon', {
+                        'class': 'demo-spin-icon-load',
+                        props: {
+                            type: 'ios-loading',
+                            size: 18
+                        }
+                    }),
+                    h('div', '上传中···')
+                ])
+            }
+        });
     },
     viewClose () {
       this.$router.replace({
@@ -2013,7 +2031,9 @@ export default {
     getFile (res, file, id) {
       console.log(res);
       if(res.Status){
+        this.$Spin.hide();
         this['checkmark' + id] = true
+        
       }else{
         this['checkmark' + id] = false
         this.uploadParam['filePath'+id]=''
@@ -3085,4 +3105,5 @@ table td,table th{
 .regress .bgs{
   background-color: #2b85e4;
 }
+
 </style>
