@@ -1099,6 +1099,7 @@
       getFile(res, file, id) {
         console.log(res);
         if(res.Status){
+          this.$Spin.hide();
           this['checkmark' + id] = true
         }else{
           this['checkmark' + id] = false

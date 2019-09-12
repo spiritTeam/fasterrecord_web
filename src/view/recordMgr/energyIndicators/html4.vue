@@ -1365,13 +1365,13 @@
       getFile(res, file, id) {
         console.log(res);
         if (res.Status) {
+          this.$Spin.hide();
           this['checkmark' + id] = true
         } else {
           this['checkmark' + id] = false
           this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
-
       }
     },
     computed: {
