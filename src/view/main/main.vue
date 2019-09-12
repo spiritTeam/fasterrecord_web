@@ -114,6 +114,10 @@ export default {
     this.setTagNavList()
     //this.addTag(this.$store.state.app.homeRoute)
     this.setBreadCrumb(this.$route.matched)
+    this.$Message.config({
+        top: 50,
+        duration: 5
+    });
   }
 }
 </script>
