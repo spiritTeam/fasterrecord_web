@@ -909,7 +909,7 @@
       </div>
       <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
+        <!--<Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>-->
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交申请</Button> -->
         <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
@@ -1044,7 +1044,7 @@
       // 当前能效等级 对应的C值
       thisLevelCV: 'c65',
       // 当前规格型号 对应的C值
-      thisGZXHCV: "c4",
+      thisGZXHCV: "c2",
       modal3: false,
       modal4: false,
       modal5: false,
@@ -1208,7 +1208,7 @@
         c62:false
       },
       extendRule: {
-        c4: [
+        c2: [
           {
             trigger: 'change,blur',
             required: true,
