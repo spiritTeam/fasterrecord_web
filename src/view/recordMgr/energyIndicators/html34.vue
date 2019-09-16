@@ -1057,7 +1057,7 @@
         // 当前能效等级 对应的C值
         thisLevelCV: "c31",
         // 当前规格型号 对应的C值
-        thisGZXHCV: "c4",
+        thisGZXHCV: "c3",
         modal3: false,
         modal4: false,
         modal5: false,
@@ -1208,7 +1208,7 @@
           c16_PDP: true,
         },
         extendRule: {
-          c4: [
+          c3: [
             {
               trigger: 'change,blur',
               required: true,
