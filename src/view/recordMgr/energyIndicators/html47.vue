@@ -1307,6 +1307,9 @@ export default {
 
   data () {
     const timeDate = parseInt(this.$store.state.app.dateinit)
+    const changeVal = (rule, value, callback) => {
+      this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
+    }
     return {
       modal3: false,
       modal4: false,
@@ -1494,6 +1497,19 @@ export default {
         ec_model_no: 47,
         attach_list: '',
         action_token:''
+      },
+      extendRule: {
+        c4: [
+          {
+            trigger: 'change,blur',
+            required: true,
+            message: '产品规格型号不能为空'
+          },
+          {
+            validator: changeVal,
+            trigger: 'change,blur'
+          }
+        ]
       }
     }
   },
@@ -2033,7 +2049,7 @@ export default {
       if(res.Status){
         this.$Spin.hide();
         this['checkmark' + id] = true
-        
+
       }else{
         this['checkmark' + id] = false
         this.uploadParam['filePath'+id]=''
@@ -2093,22 +2109,6 @@ export default {
         return true
       } else {
         return false
-      }
-    },
-    extendRule() {
-      return {
-        c4: [
-          {
-            trigger: 'change,blur', required: true,
-            message: '产品规格型号不能为空'
-          },
-          {
-            validator: (rule, value, callback) => {
-              this.pageType === 'extend' && this.mainModel === this.formRecord.c4? callback('扩展备案需要变更型号名称') : callback()
-            },
-            trigger: 'change,blur'
-          }
-        ]
       }
     },
     ruleRecord () {

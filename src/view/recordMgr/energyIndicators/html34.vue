@@ -1048,6 +1048,9 @@
   export default {
     data() {
       const timeDate=parseInt(this.$store.state.app.dateinit);
+      const changeVal = (rule, value, callback) => {
+        this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
+      }
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: "c13",
@@ -1203,6 +1206,19 @@
           c30: true,
           c16_LCD: true,
           c16_PDP: true,
+        },
+        extendRule: {
+          c4: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: changeVal,
+              trigger: 'change,blur'
+            }
+          ]
         }
       }
     },
@@ -1293,22 +1309,6 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
-      },
-      extendRule() {
-        return {
-          c3: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: (rule, value, callback) => {
-                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
-              },
-              trigger: 'change,blur'
-            }
-          ]
-        }
       },
       ruleRecord() {
         if (this.formRecord.c16 === '其它') {

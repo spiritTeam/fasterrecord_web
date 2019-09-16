@@ -32,7 +32,7 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
         })
         return false
       }
-      handleSpinCustom()
+      handleSpinCustom(that)
       let reader = new FileReader()
       reader.readAsDataURL(file)
       reader.onloadend = (e) => {
@@ -53,8 +53,8 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
     })
   })
   }
-export const handleSpinCustom = () => {
-  this.$Spin.show({
+export const handleSpinCustom = (that) => {
+  that.$Spin.show({
     render: (h) => {
       return h('div', [
         h('Icon', {

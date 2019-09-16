@@ -93,6 +93,13 @@ module.exports = {
         // 路径重写
         pathRewrite: {'^/function': '/function'},
         changeOrigin: true
+      },
+      '/ads': {
+        // 目标服务器地址
+        target: apiRoot,
+        // 路径重写
+        pathRewrite: {'^/ads': '/ads'},
+        changeOrigin: true
       }
     }
   }
