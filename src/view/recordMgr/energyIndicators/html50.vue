@@ -1,13 +1,13 @@
-/*
-* 4、冷水机组 2015版
-* 创建日期：2019年5月28号
-* 创建人：wlq
-* 1557110254357282414
-*
-*/
+<!--/*-->
+<!--* 4、冷水机组 2015版-->
+<!--* 创建日期：2019年5月28号-->
+<!--* 创建人：wlq-->
+<!--* 1557110254357282414-->
+<!--*-->
+<!--*/-->
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule1">
       <h1>冷水机组 修订-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -1070,6 +1070,7 @@
     data() {
       const timeDate = parseInt(this.$store.state.app.dateinit);
       const changeVal = (rule, value, callback) => {
+        console.log(rule);
         this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
       }
       return {
@@ -1245,7 +1246,7 @@
           c4: [
             {
               required: true,
-              trigger: 'change,blur',
+              trigger: 'change',
               message: '产品规格型号不能为空'
             },
             {
@@ -1256,7 +1257,6 @@
         }
       }
     },
-
     mounted() {
       // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
@@ -1344,6 +1344,27 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
+      },
+      extendRule1() {
+        return {
+          c4: [
+            {
+              required: true,
+              trigger: 'change',
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                debugger;
+                console.log(rule);
+                console.log(this.mainModel);
+                console.log(value);
+                this.mainModel === value ? callback('扩展备案需要234sss变更型号名称') : callback("")
+              },
+              trigger: 'change,blur'
+            }
+          ]
+        }
       },
       ruleRecord() {
         var jsonPdyj = [{

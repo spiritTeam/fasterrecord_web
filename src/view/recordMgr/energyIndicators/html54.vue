@@ -336,7 +336,7 @@
                 </Select>
                 <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
                 <Select v-model="formRecord.c46" style="width:200px">
-                  <Option v-for="item in wddjOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                  <Option v-for="item in wddjOptions2" :value="item.value" :key="item.value">{{ item.value }}</Option>
                 </Select>
               </td>
             </tr>
@@ -1974,7 +1974,19 @@
           {value: "L4"},
           {value: "L5"},
           {value: "S"},
-          {value: "H3"}
+          {value: "H3"},
+        ],
+        wddjOptions2: [
+          {value: "M1"}, {value: "M2"},
+          {value: "H1"}, {value: "H2"},
+          {value: "L1"}, {value: "L2"}, {value: "L3"},
+          {value: "HA"},
+          {value: "VHA"},
+          {value: "L4"},
+          {value: "L5"},
+          {value: "S"},
+          {value: "H3"},
+          {value: "NA"}
         ],
         extendRule: {
           c4: [

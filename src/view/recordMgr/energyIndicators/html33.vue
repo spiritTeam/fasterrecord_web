@@ -3,7 +3,21 @@
 <!--创建人:YCL-->
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
+    <Form ref="formRecord" :model="formRecord" label-position="right"  :rules='pageType!="extend"?ruleRecord:({
+          c4: [
+            {
+              required: true,
+              trigger: "change,blur",
+              message: "产品规格型号不能为空"
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.mainModel === value ? callback("扩展备案需要变更型号名称") : callback()
+              },
+              trigger: "change"
+            }
+          ]
+        })'>
       <h1>转速可控型房间空气调节器-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -1202,7 +1216,7 @@
       ruleRecord() {
         //能效等级
         var nxdj = this.formRecord.c8
-        var c5 = parseFloat(parseFloat(this.formRecord.c5))
+        var c5 = parseFloat(this.formRecord.c5)
         var c8 = this.formRecord.c8
         var c6 = parseFloat(this.formRecord.c6)
         var c37 = parseFloat(this.formRecord.c37)
