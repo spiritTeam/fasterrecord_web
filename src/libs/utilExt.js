@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const XhandleFormatError = (file, id, that) => {
+  that.$Spin.hide();
   that.uploadParam['filePath' + id] = ''
   that.filesArr.splice(that.filesArr.indexOf(id), 1)
   that.$Notice.warning({
@@ -31,6 +32,7 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
         })
         return false
       }
+      handleSpinCustom(that)
       let reader = new FileReader()
       reader.readAsDataURL(file)
       reader.onloadend = (e) => {
@@ -50,6 +52,22 @@ export const XfileHandleBeforeUpload = (file, id, that) => {
       resolve()
     })
   })
+  }
+export const handleSpinCustom = (that) => {
+  that.$Spin.show({
+    render: (h) => {
+      return h('div', [
+        h('Icon', {
+          'class': 'demo-spin-icon-load',
+          props: {
+            type: 'ios-loading',
+            size: 18
+          }
+        }),
+        h('div', '上传中···')
+      ])
+    }
+  });
 }
 export const getImgPath = (dir, that) => {
   let imgDir = dir

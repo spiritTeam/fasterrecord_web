@@ -1202,7 +1202,7 @@
       </div>
       <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
+        <!--<Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>-->
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交备案审核申请</Button> -->
         <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
@@ -1307,6 +1307,9 @@ export default {
 
   data () {
     const timeDate = parseInt(this.$store.state.app.dateinit)
+    const changeVal = (rule, value, callback) => {
+      this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
+    }
     return {
       modal3: false,
       modal4: false,
@@ -1494,6 +1497,19 @@ export default {
         ec_model_no: 47,
         attach_list: '',
         action_token:''
+      },
+      extendRule: {
+        c4: [
+          {
+            trigger: 'change,blur',
+            required: true,
+            message: '产品规格型号不能为空'
+          },
+          {
+            validator: changeVal,
+            trigger: 'change,blur'
+          }
+        ]
       }
     }
   },
@@ -1531,6 +1547,7 @@ export default {
       this.dir = imgDir
     },
     handleFormatError (file, id) {
+      this.$Spin.hide();
       this.uploadParam['filePath' + id] = ''
       this.filesArr.splice(this.filesArr.indexOf(id), 1)
       this.$Notice.warning({
@@ -1562,6 +1579,7 @@ export default {
             })
             return false
           }
+          _this.handleSpinCustom()
           let reader = new FileReader()
           reader.readAsDataURL(file)
           reader.onloadend = (e) => {
@@ -1582,6 +1600,22 @@ export default {
           resolve()
         })
       })
+    },
+    handleSpinCustom () {
+        this.$Spin.show({
+            render: (h) => {
+                return h('div', [
+                    h('Icon', {
+                        'class': 'demo-spin-icon-load',
+                        props: {
+                            type: 'ios-loading',
+                            size: 18
+                        }
+                    }),
+                    h('div', '上传中···')
+                ])
+            }
+        });
     },
     viewClose () {
       this.$router.replace({
@@ -1897,7 +1931,7 @@ export default {
           }
           if (res.data.result_code !== '1'){
             axios.get('/ads/getToken.do').then(res => {
-              that.$store.state.app.action_token = res.data.action_token
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -1936,7 +1970,7 @@ export default {
           }
           if (res.data.result_code !== '1'){
             axios.get('/ads/getToken.do').then(res => {
-              that.$store.state.app.action_token = res.data.action_token
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -1998,7 +2032,7 @@ export default {
           }
           if (res.data.result_code !== '1'){
             axios.get('/ads/getToken.do').then(res => {
-              that.$store.state.app.action_token = res.data.action_token
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -2013,7 +2047,9 @@ export default {
     getFile (res, file, id) {
       console.log(res);
       if(res.Status){
+        this.$Spin.hide();
         this['checkmark' + id] = true
+
       }else{
         this['checkmark' + id] = false
         this.uploadParam['filePath'+id]=''
@@ -2073,22 +2109,6 @@ export default {
         return true
       } else {
         return false
-      }
-    },
-    extendRule() {
-      return {
-        c4: [
-          {
-            trigger: 'change,blur', required: true,
-            message: '产品规格型号不能为空'
-          },
-          {
-            validator: (rule, value, callback) => {
-              this.pageType === 'extend' && this.mainModel === this.formRecord.c4? callback('扩展备案需要变更型号名称') : callback()
-            },
-            trigger: 'change,blur'
-          }
-        ]
       }
     },
     ruleRecord () {
@@ -3085,4 +3105,5 @@ table td,table th{
 .regress .bgs{
   background-color: #2b85e4;
 }
+
 </style>

@@ -7,7 +7,8 @@
       <Tabs type="card" v-show="step === 3" class="pageStyle">
         <TabPane label="能效指标">
           <!-- <EnergyIndicators ref="energyIndicators"></EnergyIndicators> -->
-          <Html8  v-if="category == 8"  ref="energyIndicators8"  @prevStep="step = 2"></Html8>
+          <Html4 v-if="category == 4" ref="energyIndicators4" @prevStep="step = 2"></Html4>
+          <Html6 v-if="category == 6" ref="energyIndicators6" @prevStep="step = 2"></Html6>
           <Html13 v-if="category == 13" ref="energyIndicators13" @prevStep="step = 2"></Html13>
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
@@ -57,7 +58,8 @@ import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
 import {mapGetters} from 'vuex';
-import Html8  from './energyIndicators/html8'
+import Html4 from './energyIndicators/html4'
+import Html6 from './energyIndicators/html6'
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
@@ -99,7 +101,8 @@ export default {
     SelectSample,
     PerformanceIndicators,
     SecurityIndicators,
-    Html8,
+    Html4,
+    Html6,
     Html13,
     Html17,
     Html23,

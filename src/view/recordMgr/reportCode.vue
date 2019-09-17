@@ -39,7 +39,11 @@ export default {
           //this.$store.commit('setOem',res.data.msg.oem)
           this.$emit('toStep2')
         } else {
-          this.$Message.warning(res.data.msg)
+          //this.$Message.warning(res.data.msg)
+          this.$Modal.warning({
+              title: '提示',
+              content: res.data.msg
+          });
           this.reportCode = ''
         }
       })

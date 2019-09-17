@@ -868,7 +868,7 @@
       </div>
       <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
+        <!--<Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>-->
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交申请</Button> -->
         <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
@@ -996,6 +996,9 @@
   export default {
     data () {
     const timeDate=parseInt(this.$store.state.app.dateinit);
+      const changeVal = (rule, value, callback) => {
+        this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
+      }
     return {
       // 当前初始使用日期 对应的C值
       thisDateCV: 'c17',
@@ -1160,6 +1163,19 @@
         c10: true,
         c13: true,
         c35: true
+      },
+      extendRule: {
+        c4: [
+          {
+            trigger: 'change,blur',
+            required: true,
+            message: '产品规格型号不能为空'
+          },
+          {
+            validator: changeVal,
+            trigger: 'change,blur'
+          }
+        ]
       }
     }
   },
@@ -1225,6 +1241,7 @@
       getFile(res, file, id) {
         console.log(res);
         if(res.Status){
+          this.$Spin.hide();
           this['checkmark' + id] = true
         }else{
           this['checkmark' + id] = false
@@ -1250,22 +1267,6 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
-      },
-      extendRule() {
-        return {
-          c4: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: (rule, value, callback) => {
-                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
-              },
-              trigger: 'change,blur'
-            }
-          ]
-        }
       },
       ruleRecord() {
         if (this.formRecord.c34 === '有' ) {
