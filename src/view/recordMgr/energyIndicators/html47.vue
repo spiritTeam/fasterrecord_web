@@ -1828,6 +1828,11 @@ export default {
           } else {
             _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
           }
+        }else{
+          this.$Modal.error({
+              title: '提示',
+              content: '表单项有错误，请检查表单!'
+          });
         }
       })
     },
