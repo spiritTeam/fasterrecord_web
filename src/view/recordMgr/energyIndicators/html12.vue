@@ -1306,7 +1306,7 @@
         我 <span  class="f-company">{{formRecord.c1}}</span>
         公司生产的 <span class="f-brand">{{formRecord.c2}}</span>
         品牌的 <span  class="f-model">{{pageType==='extend'?mainModel:formRecord.c4}}</span>
-        型号的 <span  class="f-product">冷水机组 2004版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
+        型号的 <span  class="f-product">多联式空调（热泵）机组 2008版</span>产品{{pageType==="update"?'已通过能效标识备案':''}}。
       </div>
        <div v-if="pageType==='extend'" class="org regress">
          <p><span></span>正在办理能效标识备案</p>
@@ -1604,6 +1604,21 @@
           c28: true,
           c33: true,
           c41: true
+        },
+        extendRule: {
+          c4: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: (rule, value, callback) => {
+                this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
+              },
+              trigger: 'change,blur'
+            }
+          ]
         }
       }
     },
@@ -1690,23 +1705,6 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
-      },
-      extendRule() {
-        return {
-          c4: [
-            {
-              required: true,
-              trigger: 'change,blur', 
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: (rule, value, callback) => {
-                this.pageType === 'extend' && this.mainModel === this.formRecord[this.thisGZXHCV]? callback('扩展备案需要变更型号名称') : callback()
-              },
-              trigger: 'change,blur'
-            }
-          ]
-        }
       },
       ruleRecord() {
 
