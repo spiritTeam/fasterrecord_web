@@ -641,7 +641,7 @@
               <td class="t_label">功率(W)</td>
               <td>
                 <FormItem prop="c114" style="width:100%">
-                  <Input type="text" v-model="formRecord.c113" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c114" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td rowspan="3">

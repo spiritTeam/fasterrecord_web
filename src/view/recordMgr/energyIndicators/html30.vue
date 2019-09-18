@@ -518,7 +518,7 @@
           </table>
           <h3>扩展型号</h3>
           <FormItem style="width:100%;" :label-width="70" prop="c64">
-            <Input v-model="formRecord.c64" :disabled='disabledoff' type="textarea"
+            <Input v-model="formRecord.c64" :disabled="pageType==='view'" type="textarea"
                    :autosize="{minRows: 5,maxRows: 5}"/>
           </FormItem>
           <label style="color: red;margin-left: 70px">多个型号, 使用“;”分隔</label>
@@ -1068,6 +1068,32 @@
       const changeVal = (rule, value, callback) => {
         this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
       }
+      const repeat = (rule, value, callback) => {
+        var c64 = this.formRecord.c64;
+        var split = c64.split(";");
+        split = split.filter(item => item !== "")
+        if (this.mainModel) {
+          split.push(this.mainModel)
+        }
+        if (this.mainModel) {
+          split.push(this.formRecord.c2)
+        }
+        console.log(split)
+        let is = false
+        for (let i = 0; i < split.length; i++) {
+          for (let j = i + 1; j < split.length; j++) {
+            if (split[i] === split[j]) {
+              is = true
+              break
+            }
+          }
+        }
+        if (is) {
+          callback("扩展型号不能重复")
+        } else {
+          callback()
+        }
+      }
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: 'c14',
@@ -1195,6 +1221,7 @@
           c61: [],
           c62: '',
           c63: '',
+          c64: '',
           c65: '',
           c200: '',
           ec_model_no: 30,
@@ -1248,6 +1275,12 @@
               validator: changeVal,
               trigger: 'change,blur'
             }
+          ],
+          c64: [
+            {
+              validator: repeat,
+              trigger: 'change,blur'
+            }
           ]
         }
       }
@@ -1274,7 +1307,9 @@
       },
       /* 数据来源  扩展备案 */
       fillExtendData(params) {
-        return XfillExtendData(params, this)
+        var extendData = XfillExtendData(params, this);
+        this.formRecord.c64 = ''
+        return extendData
       },
       /* 数据来源 草稿箱 */
       fillDraftData(params) {
@@ -1748,6 +1783,32 @@
             callback()
           }
         }
+        const repeat = (rule, value, callback) => {
+          var c64 = this.formRecord.c64;
+          var split = c64.split(";");
+          split = split.filter(item => item !== "")
+          if (this.mainModel) {
+            split.push(this.mainModel)
+          }
+          if (this.mainModel) {
+            split.push(this.formRecord.c2)
+          }
+          // let s = split.join(",")+",";
+          let is = false
+          for (let i = 0; i < split.length; i++) {
+            for (let j = 0; j < split.length; j++) {
+              if (split[i] === split[j]) {
+                is = true
+                break
+              }
+            }
+          }
+          if (is) {
+            callback("扩展型号不能重复")
+          } else {
+            callback()
+          }
+        }
 
         var c15 = this.formRecord.c15;
         var c22 = parseFloat(this.formRecord.c22);
@@ -2160,6 +2221,12 @@
               required: true,
               trigger: 'change,blur',
               message: '请输入备案方'
+            }
+          ],
+          c64: [
+            {
+              validator: repeat,
+              trigger: 'change,blur'
             }
           ],
           c2: [

@@ -1086,18 +1086,9 @@
           c73: '',
           c74: '',
           c202: '',
-          ec_model_no: 13,
+          ec_model_no: 6,
           attach_list: ''
         },
-        forbidden: {
-          c13: true,
-          c15: true,
-          c20: true,
-          c33: true,
-          c34: true,
-          c35: true
-        },
-        click_c35: [],
         extendRule: {
           c4: [
             {
@@ -1202,7 +1193,102 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        const checkc17 = (rule, value, callback) => {
+          if (parseFloat(this.formRecord.c17) < parseFloat(this.formRecord.c7)) {
+            callback("初始光效（实测值）应大于等于初始光效（标称值）！");
+          } else {
+            callback()
+          }
+        }
 
+        var nxhs;
+        var nxdj = this.formRecord.c8
+
+        if (parseFloat(this.formRecord.c6) == 50) {
+          if (parseFloat(this.formRecord.c7) >= 78) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 68
+            && parseFloat(this.formRecord.c7) < 78) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 61
+            && parseFloat(this.formRecord.c7) < 68) {
+            nxhs = "3";
+          }
+        }
+        if (parseFloat(this.formRecord.c6) == 70) {
+          if (parseFloat(this.formRecord.c7) >= 85) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 77
+            && parseFloat(this.formRecord.c7) < 85) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 70
+            && parseFloat(this.formRecord.c7) < 77) {
+            nxhs = "3";
+          }
+        }
+        if (parseFloat(this.formRecord.c6) == 100) {
+          if (parseFloat(this.formRecord.c7) >= 93) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 83
+            && parseFloat(this.formRecord.c7) < 93) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 75
+            && parseFloat(this.formRecord.c7) < 83) {
+            nxhs = "3";
+          }
+        }
+        if (parseFloat(this.formRecord.c6) == 150) {
+          if (parseFloat(this.formRecord.c7) >= 103) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 93
+            && parseFloat(this.formRecord.c7) < 103) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 85
+            && parseFloat(this.formRecord.c7) < 93) {
+            nxhs = "3";
+          }
+        }
+        if (parseFloat(this.formRecord.c6) == 250) {
+          if (parseFloat(this.formRecord.c7) >= 110) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 100
+            && parseFloat(this.formRecord.c7) < 110) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 90
+            && parseFloat(this.formRecord.c7) < 100) {
+            nxhs = "3";
+          }
+        }
+        if (parseFloat(this.formRecord.c6) == 400) {
+          if (parseFloat(this.formRecord.c7) >= 120) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 110
+            && parseFloat(this.formRecord.c7) < 120) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 100
+            && parseFloat(this.formRecord.c7) < 110) {
+            nxhs = "3";
+          }
+        }
+        if (parseFloat(this.formRecord.c6) == 1000) {
+          if (parseFloat(this.formRecord.c7) >= 130) {
+            nxhs = "1";
+          } else if (parseFloat(this.formRecord.c7) >= 120
+            && parseFloat(this.formRecord.c7) < 130) {
+            nxhs = "2";
+          } else if (parseFloat(this.formRecord.c7) >= 108
+            && parseFloat(this.formRecord.c7) < 120) {
+            nxhs = "3";
+          }
+        }
+
+        const checkc8 = (rule, value, callback) => {
+          if (nxhs != nxdj) {
+            callback("初始光效标注值与所选能效等级不符！");
+          } else {
+            callback()
+          }
+        }
 
         return {
           c1: [
@@ -1252,13 +1338,21 @@
               required: true,
               trigger: 'change,blur',
               message: '实测值不能为空'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'change,blur'
             }
           ],
           c7: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '初始光效不能为空 请输入数字'
+              message: '初始光效不能为空'
+            },
+            {
+              validator: isNumber,
+              trigger: 'change,blur'
             }
           ],
           c17: [
@@ -1266,6 +1360,14 @@
               required: true,
               trigger: 'change,blur',
               message: '实测值不能为空'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'change,blur'
+            },
+            {
+              validator: checkc17,
+              trigger: 'change,blur'
             }
           ],
           c8: [
@@ -1273,12 +1375,15 @@
               required: true,
               trigger: 'change,blur',
               message: '能效等级不能为空'
+            },
+            {
+              validator: checkc8,
+              trigger: 'change,blur'
             }
           ],
           c9: [
             {
               required: true,
-              trigger: 'change,blur',
               message: '初始使用日期不能为空'
             }
           ],
@@ -1307,7 +1412,11 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '外形尺寸 玻壳直径 不能为空 请输入数字'
+              message: '外形尺寸(mm)玻壳直径D:不能为空'
+            },
+            {
+              validator: isNumber,
+              trigger: 'change,blur'
             }
           ],
           c14: [
@@ -1321,14 +1430,22 @@
             {
               required: true,
               trigger: 'change,blur',
-              message: '外形尺寸 总长度 不能为空 请输入数字'
+              message: '外形尺寸(mm)总长度L:不能为空'
+            },
+            {
+              validator: isNumber,
+              trigger: 'change,blur'
             }
           ],
           c20: [
             {
               required: true,
               trigger: 'change,blur',
-              message: '外形尺寸 光中心高度 不能为空 请输入数字'
+              message: '外形尺寸(mm)光中心高度H:不能为空'
+            },
+            {
+              validator: isNumber,
+              trigger: 'change,blur'
             }
           ],
           c21: [
