@@ -92,11 +92,11 @@
                     },
                     {
                         title: '功能名称',
-                        key: 'functionName'
+                        key: 'title'
                     },
                     {
                         title: '请求路径',
-                        key: 'action',
+                        key: 'path',
                         width:300,
                     },
                     {
