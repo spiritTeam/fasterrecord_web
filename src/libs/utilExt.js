@@ -220,7 +220,7 @@ export const XshowConfirm = (that) => {
     if (valid) {
       if (_this.confirmData.join('') == 1) {
         if (pageType !== 'extend') {
-          _this.boolFlag = _this.diffRecord(_this.$store.state.app.defaultData, _this.formRecord)
+          _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord)
         }
         _this.$store.state.app.subDisabled = true
         _this.modal1 = true
@@ -228,7 +228,7 @@ export const XshowConfirm = (that) => {
         _this.$Message.warning('请勾选我已确认以上数据填写无误选项')
       }
     }else{
-      this.$Modal.error({
+      _this.$Modal.error({
         title: '提示',
         content: '表单项有错误，请检查表单!'
       });

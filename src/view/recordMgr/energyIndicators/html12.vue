@@ -1681,6 +1681,7 @@
       },
       getFile(res, file, id) {
         if(res.Status){
+          this.$Spin.hide();
           this['checkmark' + id] = true
         }else{
           this['checkmark' + id] = false
@@ -1844,7 +1845,7 @@
               }
           }
         }
-        
+
         //能效等级
         var c8=this.formRecord.c8;
         const checkc8 = (rule, value, callback) => {

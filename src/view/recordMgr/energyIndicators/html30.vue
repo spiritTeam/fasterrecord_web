@@ -1066,19 +1066,23 @@
     data() {
       const timeDate = parseInt(this.$store.state.app.dateinit);
       const changeVal = (rule, value, callback) => {
+        if (this.c2 !== this.formRecord.c2){
+          this.c2 = this.formRecord.c2
+          this.$refs['formRecord'].validate((valid) => {})
+        }
         this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
       }
       const repeat = (rule, value, callback) => {
-        var c64 = this.formRecord.c64;
+        this.c2 = this.formRecord.c2
+        let c64 = this.formRecord.c64;
         var split = c64.split(";");
         split = split.filter(item => item !== "")
         if (this.mainModel) {
           split.push(this.mainModel)
         }
-        if (this.mainModel) {
+        if (this.formRecord.c2) {
           split.push(this.formRecord.c2)
         }
-        console.log(split)
         let is = false
         for (let i = 0; i < split.length; i++) {
           for (let j = i + 1; j < split.length; j++) {
@@ -1264,6 +1268,7 @@
           c61: false,
           c62: false
         },
+        c2: '',
         extendRule: {
           c2: [
             {
@@ -1783,20 +1788,20 @@
             callback()
           }
         }
+        var c64 = this.formRecord.c64;
+        var c2 = this.formRecord.c2;
         const repeat = (rule, value, callback) => {
-          var c64 = this.formRecord.c64;
           var split = c64.split(";");
           split = split.filter(item => item !== "")
           if (this.mainModel) {
             split.push(this.mainModel)
           }
-          if (this.mainModel) {
-            split.push(this.formRecord.c2)
+          if (c2) {
+            split.push(c2)
           }
-          // let s = split.join(",")+",";
           let is = false
           for (let i = 0; i < split.length; i++) {
-            for (let j = 0; j < split.length; j++) {
+            for (let j = i + 1; j < split.length; j++) {
               if (split[i] === split[j]) {
                 is = true
                 break
