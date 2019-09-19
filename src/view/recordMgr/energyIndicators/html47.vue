@@ -2572,7 +2572,12 @@ export default {
             message: '不能为空'
           },
           {
-            validator: oneDecimals,
+            validator: 
+            (this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜')
+            ?oneDecimals
+            :(rule, vaule, callback) => {
+                callback()
+            },
             trigger: 'blur'
           }
         ],
