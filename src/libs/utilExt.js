@@ -220,7 +220,7 @@ export const XshowConfirm = (that) => {
     if (valid) {
       if (_this.confirmData.join('') == 1) {
         if (pageType !== 'extend') {
-          _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord)
+          _this.boolFlag = XdiffRecord(_this.$store.state.app.defaultData, _this.formRecord, _this)
         }
         _this.$store.state.app.subDisabled = true
         _this.modal1 = true

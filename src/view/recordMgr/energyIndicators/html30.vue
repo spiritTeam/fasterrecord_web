@@ -1074,29 +1074,30 @@
       }
       const repeat = (rule, value, callback) => {
         this.c2 = this.formRecord.c2
-        let c64 = this.formRecord.c64;
-        var split = c64.split(";");
-        split = split.filter(item => item !== "")
-        if (this.mainModel) {
-          split.push(this.mainModel)
-        }
-        if (this.formRecord.c2) {
-          split.push(this.formRecord.c2)
-        }
-        let is = false
-        for (let i = 0; i < split.length; i++) {
-          for (let j = i + 1; j < split.length; j++) {
-            if (split[i] === split[j]) {
-              is = true
-              break
+        let split1 = this.c64.split(";").filter(item => item !== "")
+        let split2 = this.formRecord.c64.split(";").filter(item => item !== "")
+        for (let i = 0; i < split1.length; i++) {
+          for (let j = 0; j < split2.length; j++) {
+            if (split1[i] === split2[j]) {
+              callback("扩展型号与主型号备案中的规格型号或扩展型号重复")
             }
           }
         }
-        if (is) {
-          callback("扩展型号不能重复")
-        } else {
-          callback()
+
+        for (let i = 0; i < split2.length; i++) {
+          if (split2[i] === this.formRecord.c2) {
+            callback("扩展型号与规格型号重复。")
+          }
         }
+
+        for (let i = 0; i < split2.length; i++) {
+          for (let j = i + 1; j < split2.length; j++) {
+            if (split2[i] === split2[j]) {
+              callback("扩展型号重复。")
+            }
+          }
+        }
+        callback()
       }
       return {
         // 当前初始使用日期 对应的C值
@@ -1269,6 +1270,7 @@
           c62: false
         },
         c2: '',
+        c64: '',
         extendRule: {
           c2: [
             {
@@ -1313,6 +1315,8 @@
       /* 数据来源  扩展备案 */
       fillExtendData(params) {
         var extendData = XfillExtendData(params, this);
+        this.c64 = this.formRecord.c64
+        this.c64 += ";" + this.mainModel
         this.formRecord.c64 = ''
         return extendData
       },
@@ -1791,28 +1795,30 @@
         var c64 = this.formRecord.c64;
         var c2 = this.formRecord.c2;
         const repeat = (rule, value, callback) => {
-          var split = c64.split(";");
-          split = split.filter(item => item !== "")
-          if (this.mainModel) {
-            split.push(this.mainModel)
-          }
-          if (c2) {
-            split.push(c2)
-          }
-          let is = false
-          for (let i = 0; i < split.length; i++) {
-            for (let j = i + 1; j < split.length; j++) {
-              if (split[i] === split[j]) {
-                is = true
-                break
+          let split1 = this.c64.split(";").filter(item => item !== "")
+          let split2 = c64.split(";").filter(item => item !== "")
+          for (let i = 0; i < split1.length; i++) {
+            for (let j = 0; j < split2.length; j++) {
+              if (split1[i] === split2[j]) {
+                callback("扩展型号与主型号备案中的规格型号或扩展型号重复")
               }
             }
           }
-          if (is) {
-            callback("扩展型号不能重复")
-          } else {
-            callback()
+
+          for (let i = 0; i < split2.length; i++) {
+            if (split2[i] === c2) {
+              callback("扩展型号与规格型号重复。")
+            }
           }
+
+          for (let i = 0; i < split2.length; i++) {
+            for (let j = i + 1; j < split2.length; j++) {
+              if (split2[i] === split2[j]) {
+                callback("扩展型号重复。")
+              }
+            }
+          }
+          callback()
         }
 
         var c15 = this.formRecord.c15;
