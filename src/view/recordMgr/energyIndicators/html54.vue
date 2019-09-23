@@ -2123,6 +2123,10 @@
           if (_msg) callback(_msg);
           else callback();
         }
+        var isNum = (num) => {
+          var number = /^[-]?\d+(\.\d+)?$/;
+          return number.test(num)
+        }
 
         return {
           c2: [{
@@ -2157,10 +2161,10 @@
             validator: checkC6C7, trigger: 'change,blur'
           }],
           c9: [{
-            validator: twoDecimals, trigger: 'change,blur'
+            validator: isNum(this.formRecord.c9) ? twoDecimals : check, trigger: 'change,blur'
           }],
           c10: [{
-            validator: atLeastTwoDecimals, trigger: 'change,blur'
+            validator: isNum(this.formRecord.c10) ? atLeastTwoDecimals : check, trigger: 'change,blur'
           }],
           c15: [{
             required: true, message: '请输入间室净容积标称值', trigger: 'change,blur'
