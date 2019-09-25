@@ -322,15 +322,21 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } else if (res.data.msg) {
-        that.$Message.warning(res.data.msg)
-        that.saveDisabled = false
-      } else {
+      }else if (res.data.result_code === '0' || res.data.result_code === '-1'){
         that.$Message.warning(res.data.message)
-      }
-      if (res.data.result_code !== '1'){
-        axios.get('/ads/getToken.do').then(res => {
-          that.$store.state.app.action_token = res.data.action_token
+        if (res.data.refresh_token === '1') {
+          axios.get('/ads/getToken.do').then(res => {
+            that.$store.state.app.action_token = res.data.action_token
+          })
+        }
+      } else if (res.data.result_code === '-2') {
+        that.$Modal.success({
+          title: '提交失败',
+          content: '<p>' + res.data.message + '</p>',
+          okText: '重新登录',
+          onOk () {
+            window.location.href = '/base_html/index/login.jsp'
+          }
         })
       }
     })
@@ -360,16 +366,21 @@ export const XsubmitRecord = (that) => {
             that.$router.push('/queryRecord')
           }
         })
-      } else if (res.data.msg) {
-        that.$Message.warning(res.data.msg)
-        that.saveDisabled = false
-      } else {
+      } else if (res.data.result_code === '0' || res.data.result_code === '-1'){
         that.$Message.warning(res.data.message)
-        that.submitDisabled = false
-      }
-      if (res.data.result_code !== '1'){
-        axios.get('/ads/getToken.do').then(res => {
-          that.$store.state.app.action_token = res.data.action_token
+        if (res.data.refresh_token === '1') {
+          axios.get('/ads/getToken.do').then(res => {
+            that.$store.state.app.action_token = res.data.action_token
+          })
+        }
+      } else if (res.data.result_code === '-2') {
+        that.$Modal.success({
+          title: '提交失败',
+          content: '<p>' + res.data.message + '</p>',
+          okText: '重新登录',
+          onOk () {
+            window.location.href = '/base_html/index/login.jsp'
+          }
         })
       }
     })
