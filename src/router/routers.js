@@ -129,6 +129,11 @@ menuArr = [
   //   ]
   // },
   {
+    path: '/resetPwd',
+    name: 'resetPwd',
+    component: () => import('@/view/enterpriseInfoMgr/resetPwd.vue')
+  },
+  {
     path: '/401',
     name: 'error_401',
     component: () => import('@/view/error-page/401.vue')
