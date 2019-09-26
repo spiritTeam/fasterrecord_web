@@ -5,13 +5,18 @@ menuArr = [
   {
     path: '/',
     name: 'recordMgr',
-    redirect: '/addRecord',
+    redirect: '/home',
     component: Main,
     meta: {
       hideInMenu: true,
       notCache: true
     },
     children: [
+      {
+        path: 'home',
+        name: 'home',
+        component: () => import('@/view/single-page/home')
+      },
       {
         path: '/addRecord',
         name: 'addRecord',
