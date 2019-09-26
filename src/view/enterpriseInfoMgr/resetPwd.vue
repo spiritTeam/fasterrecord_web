@@ -1,6 +1,6 @@
 <template>
   <Card>
-    <p slot="title">登录密码修改</p>
+    <p slot="title" style="text-align: center;">密码被重置后，需要先修改密码才能正常使用系统</p>
     <Form class="form" ref="formModify" :model="formModify" label-position="right" :label-width="100">
       <FormItem prop="pwd1" label="当前密码" style="width:400px;">
         <Input type="password" v-model="formModify.pwd1"></Input>
@@ -52,13 +52,19 @@ export default {
         }
       }).then(res => {
         if (res.data.result) {
-          this.$Message.success('修改成功！')
           this.formModify.pwd1 = ''
           this.formModify.pwd2 = ''
           this.formModify.pwd3 = ''
-          window.location.href = '/dist/index.html?r=' + Math.random();
+          this.$Modal.success({
+            title: '提交成功',
+            content: '<p>修改成功！</p>',
+            okText: '确定',
+            onOk() {
+              window.location.href = '/dist/index.html?r=' + Math.random();
+            }
+          })
         } else {
-          this.$Message.warning(res.data.err_msg)
+          this.$Message.warning(res.data.msg)
         }
       })
     }

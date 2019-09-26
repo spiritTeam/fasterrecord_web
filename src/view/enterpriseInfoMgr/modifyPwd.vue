@@ -57,7 +57,7 @@ export default {
           this.formModify.pwd2 = ''
           this.formModify.pwd3 = ''
         } else {
-          this.$Message.warning(res.data.err_msg)
+          this.$Message.warning(res.data.msg)
         }
       })
     }
