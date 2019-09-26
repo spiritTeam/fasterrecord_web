@@ -521,7 +521,7 @@
             <Input v-model="formRecord.c64" :disabled="pageType==='view'" type="textarea"
                    :autosize="{minRows: 5,maxRows: 5}"/>
           </FormItem>
-          <label style="color: red;margin-left: 70px">多个型号, 使用“;”分隔</label>
+          <label style="color: red;margin-left: 70px">多个型号, 使用英文“;”分隔</label>
         </Card>
       </div>
       <div class="part part6">
@@ -1073,6 +1073,9 @@
         this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
       }
       const repeat = (rule, value, callback) => {
+        if (this.formRecord.c64.indexOf("；") > -1 || this.formRecord.c64.indexOf(";") > -1) {
+          callback('扩展型号分隔符有非法字符，请使用英文输入法下的分号";"')
+        }
         this.c2 = this.formRecord.c2
         let split1 = this.c64.split(";").filter(item => item !== "")
         let split2 = this.formRecord.c64.split(";").filter(item => item !== "")
@@ -1795,6 +1798,9 @@
         var c64 = this.formRecord.c64;
         var c2 = this.formRecord.c2;
         const repeat = (rule, value, callback) => {
+          if (this.formRecord.c64.indexOf("；") > -1 || this.formRecord.c64.indexOf(";") > -1) {
+            callback('扩展型号分隔符有非法字符，请使用英文输入法下的分号";"')
+          }
           let split1 = this.c64.split(";").filter(item => item !== "")
           let split2 = c64.split(";").filter(item => item !== "")
           for (let i = 0; i < split1.length; i++) {
