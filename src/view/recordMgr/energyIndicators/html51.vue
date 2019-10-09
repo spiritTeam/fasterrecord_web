@@ -1123,1049 +1123,1055 @@ import {
     check
   } from '@/libs/utilExt'
   export default {
-    data () {
-      const timeDate=parseInt(this.$store.state.app.dateinit);
-    return {
-      // 当前初始使用日期 对应的C值
-      thisDateCV: 'c13',
-      // 当前能效等级 对应的C值
-      thisLevelCV: 'c29',
-      thisGZXHCV: "c3",// 当前规格型号 对应的C值
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      templatePic: '',
-      loadText:true,
-      uploadPic: '',
-      modal2: false,
-      currentValue: '',
-      qus: '',
-      boolFlag: [],
-      currentCValue: '',
-      confirmData: [],
-      modal1: false,
-      saveDisabled: false,
-      submitDisabled: false,
-      dataInit: {
-        disabledDate (date) {
-          return date && date.valueOf() < timeDate
-        }
-      },
-      uploadUrl: '',
-      uploadParam: {
-        fileData24: {},
-        filePath24: '',
-        uploadFileList24: [],
-        fileData26: {},
-        filePath26: '',
-        uploadFileList26: [],
-        fileData27: {},
-        filePath27: '',
-        uploadFileList27: [],
-        fileData28: {},
-        filePath28: '',
-        uploadFileList28: [],
-        fileData29: {},
-        filePath29: '',
-        uploadFileList29: [],
-        fileData30: {},
-        filePath30: '',
-        uploadFileList30: [],
-        fileData31: {},
-        filePath31: '',
-        uploadFileList31: [],
-        fileData32: {},
-        filePath32: '',
-        uploadFileList32: [],
-        fileData76: {},
-        filePath76: '',
-        uploadFileList76: []
-      },
-      filesArr: [],
-      checkmark24: false,
-      checkmark26: false,
-      checkmark27: false,
-      checkmark28: false,
-      checkmark29: false,
-      checkmark30: false,
-      checkmark31: false,
-      checkmark32: false,
-      checkmark76: false,
-      mainModel:'',
-      formRecord: {
-        ec_master_kuozhan_text: '',
-        c1: '',
-        c2: '',
-        c3: '',
-        c4: '',
-        c5: '',
-        c6: '',
-        c7: '',
-        c8: '',
-        c9: '',
-        c10: '',
-        c13: new Date(),
-        c14: '',
-        c15: '',
-        c16: '',
-        c17: '',
-        c18: '',
-        c19: '',
-        c20: '',
-        c21: '',
-        c22: '',
-        c23: [],
-        c24: '',
-        c25: '',
-        c26: '',
-        c27: '',
-        c28: '',
-        c29: '',
-        c30: '',
-        c32: '',
-        c33: '',
-        c34: '',
-        c35: '',
-        c37: '',
-        c38: '',
-        c39: '',
-        c40: '',
-        c41: '',
-        c42: '',
-        c43: '',
-        c44: '',
-        c45: '',
-        c46: '',
-        c47: '',
-        c48: '',
-        c49: '',
-        c50: '',
-        c51: '',
-        c52: '',
-        c53: '',
-        c54: '',
-        c55: '',
-        c56: '',
-        c57: '',
-        c58: '',
-        c59: '',
-        c60: '',
-        c61: '',
-        c62: '',
-        c63: '',
-        c64: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
-        c71: '',
-        c72: '',
-        c73: '',
-        c74: '',
-        c75: '',
-        c76: '',
-        c77: '',
-        c78: '',
-        c79: '',
-        c80: '',
-        c81: '',
-        c82: '',
-        c83: '',
-        c84: '',
-        c85: '',
-        c86: '',
-        c87: '',
-        c88: '',
-        c89: '',
-        c90: [],
-        c91: '',
-        c92: '',
-        c93: '',
-        c94: '',
-        c95: '',
-        c96: '',
-        c97: '',
-        c98: '',
-        c99: '',
-        c100: '',
-        c101: '',
-        c102: '',
-        c103: '',
-        c200: '',
-        c202: '',
-        ec_model_no: 51,
-        attach_list: ''
-      },
-      forbidden: {
-        c16: true,
-        c24: true,
-        c91: true,
-        c90_a: false,
-        c90_b: false,
-        c90_c: false
-      },
-      extendRule: {
-        c3: [
-          {
-            trigger: 'change,blur',
-            required: true,
-            message: '产品规格型号不能为空'
-          },
-          {
-            validator: changeVal,
-            trigger: 'change,blur'
+    data() {
+      const timeDate = parseInt(this.$store.state.app.dateinit);
+      return {
+        // 当前初始使用日期 对应的C值
+        thisDateCV: 'c13',
+        // 当前能效等级 对应的C值
+        thisLevelCV: 'c29',
+        thisGZXHCV: "c3",// 当前规格型号 对应的C值
+        modal3: false,
+        modal4: false,
+        modal5: false,
+        templatePic: '',
+        loadText: true,
+        uploadPic: '',
+        modal2: false,
+        currentValue: '',
+        qus: '',
+        boolFlag: [],
+        currentCValue: '',
+        confirmData: [],
+        modal1: false,
+        saveDisabled: false,
+        submitDisabled: false,
+        dataInit: {
+          disabledDate(date) {
+            return date && date.valueOf() < timeDate
           }
-        ]
+        },
+        uploadUrl: '',
+        uploadParam: {
+          fileData24: {},
+          filePath24: '',
+          uploadFileList24: [],
+          fileData26: {},
+          filePath26: '',
+          uploadFileList26: [],
+          fileData27: {},
+          filePath27: '',
+          uploadFileList27: [],
+          fileData28: {},
+          filePath28: '',
+          uploadFileList28: [],
+          fileData29: {},
+          filePath29: '',
+          uploadFileList29: [],
+          fileData30: {},
+          filePath30: '',
+          uploadFileList30: [],
+          fileData31: {},
+          filePath31: '',
+          uploadFileList31: [],
+          fileData32: {},
+          filePath32: '',
+          uploadFileList32: [],
+          fileData76: {},
+          filePath76: '',
+          uploadFileList76: []
+        },
+        filesArr: [],
+        checkmark24: false,
+        checkmark26: false,
+        checkmark27: false,
+        checkmark28: false,
+        checkmark29: false,
+        checkmark30: false,
+        checkmark31: false,
+        checkmark32: false,
+        checkmark76: false,
+        mainModel: '',
+        formRecord: {
+          ec_master_kuozhan_text: '',
+          c1: '',
+          c2: '',
+          c3: '',
+          c4: '',
+          c5: '',
+          c6: '',
+          c7: '',
+          c8: '',
+          c9: '',
+          c10: '',
+          c13: new Date(),
+          c14: '',
+          c15: '',
+          c16: '',
+          c17: '',
+          c18: '',
+          c19: '',
+          c20: '',
+          c21: '',
+          c22: '',
+          c23: [],
+          c24: '',
+          c25: '',
+          c26: '',
+          c27: '',
+          c28: '',
+          c29: '',
+          c30: '',
+          c32: '',
+          c33: '',
+          c34: '',
+          c35: '',
+          c37: '',
+          c38: '',
+          c39: '',
+          c40: '',
+          c41: '',
+          c42: '',
+          c43: '',
+          c44: '',
+          c45: '',
+          c46: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c51: '',
+          c52: '',
+          c53: '',
+          c54: '',
+          c55: '',
+          c56: '',
+          c57: '',
+          c58: '',
+          c59: '',
+          c60: '',
+          c61: '',
+          c62: '',
+          c63: '',
+          c64: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c69: '',
+          c70: '',
+          c71: '',
+          c72: '',
+          c73: '',
+          c74: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c78: '',
+          c79: '',
+          c80: '',
+          c81: '',
+          c82: '',
+          c83: '',
+          c84: '',
+          c85: '',
+          c86: '',
+          c87: '',
+          c88: '',
+          c89: '',
+          c90: [],
+          c91: '',
+          c92: '',
+          c93: '',
+          c94: '',
+          c95: '',
+          c96: '',
+          c97: '',
+          c98: '',
+          c99: '',
+          c100: '',
+          c101: '',
+          c102: '',
+          c103: '',
+          c200: '',
+          c202: '',
+          ec_model_no: 51,
+          attach_list: ''
+        },
+        forbidden: {
+          c16: true,
+          c24: true,
+          c91: true,
+          c90_a: false,
+          c90_b: false,
+          c90_c: false
+        },
+        extendRule: {
+          c3: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: changeVal,
+              trigger: 'change,blur'
+            }
+          ]
+        }
       }
-    }
-  },
-  mounted () {
+    },
+    mounted() {
 
-  },
-  methods: {
-    showTemplate() {
-      this.templatePic = this.$store.state.app.pltPic
-      this.modal3 = true
     },
-    prevStep() {
-      this.$emit('prevStep')
-    },
-    getRandom(type) {
-      return (Math.random().toString().slice(2)) + type
-    },
-    handleFormatError(file, id) {
-      return XhandleFormatError(file, id, this)
-    },
-    /* 数据来源  扩展备案 */
-    fileHandleBeforeUpload(file, id) {
-      return XfileHandleBeforeUpload(file, id, this)
-    },
-    /* 数据来源  扩展备案 */
-    fillExtendData(params) {
-      return XfillExtendData(params, this)
-    },
-    /* 数据来源 草稿箱 */
-    fillDraftData(params) {
-      return XfillDraftData(params, this)
-    },
-    showImg(path) {
-      this.uploadPic = path;
-      this.modal4 = true
-    },
-    templateLoad(){
-      this.loadText=false;
-    },
-    /* 数据来源 新增备案 */
-    fillDefaultData(params) {
-      return XfillDefaultData(params, this)
-    },
-    showConfirm() {
-      return XshowConfirm(this)
-    },
-    submitBasic() {
-    },
-    submitRecord() {
-      return XsubmitRecord(this)
-    },
-    viewClose() {
-      return XviewClose(this)
-    },
-    /* 保存草稿箱 */
-    saveRecord() {
-      return XsaveRecord(this)
-    },
-    formatDate(d) {
-      return XformatDate(d)
-    },
-    getFile(res, file, id) {
-      console.log(res);
-      if(res.Status){
-        this.$Spin.hide();
-        this['checkmark' + id] = true
-      }else{
-        this['checkmark' + id] = false
-        this.uploadParam['filePath'+id]=''
-        this.$Message.warning('上传失败')
+    methods: {
+      showTemplate() {
+        this.templatePic = this.$store.state.app.pltPic
+        this.modal3 = true
+      },
+      prevStep() {
+        this.$emit('prevStep')
+      },
+      getRandom(type) {
+        return (Math.random().toString().slice(2)) + type
+      },
+      handleFormatError(file, id) {
+        return XhandleFormatError(file, id, this)
+      },
+      /* 数据来源  扩展备案 */
+      fileHandleBeforeUpload(file, id) {
+        return XfileHandleBeforeUpload(file, id, this)
+      },
+      /* 数据来源  扩展备案 */
+      fillExtendData(params) {
+        return XfillExtendData(params, this)
+      },
+      /* 数据来源 草稿箱 */
+      fillDraftData(params) {
+        return XfillDraftData(params, this)
+      },
+      showImg(path) {
+        this.uploadPic = path;
+        this.modal4 = true
+      },
+      templateLoad() {
+        this.loadText = false;
+      },
+      /* 数据来源 新增备案 */
+      fillDefaultData(params) {
+        return XfillDefaultData(params, this)
+      },
+      showConfirm() {
+        return XshowConfirm(this)
+      },
+      submitBasic() {
+      },
+      submitRecord() {
+        return XsubmitRecord(this)
+      },
+      viewClose() {
+        return XviewClose(this)
+      },
+      /* 保存草稿箱 */
+      saveRecord() {
+        return XsaveRecord(this)
+      },
+      formatDate(d) {
+        return XformatDate(d)
+      },
+      getFile(res, file, id) {
+        console.log(res);
+        if (res.Status) {
+          this.$Spin.hide();
+          this['checkmark' + id] = true
+        } else {
+          this['checkmark' + id] = false
+          this.uploadParam['filePath' + id] = ''
+          this.$Message.warning('上传失败')
+        }
+
       }
-
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'pageType',
-      'recordno'
-    ]),
-      disabledoff(){
+    },
+    computed: {
+      ...mapGetters([
+        'pageType',
+        'recordno'
+      ]),
+      disabledoff() {
         return this.pageType === 'extend' || this.pageType === 'view'
-    },
-    pltId() {
-      return this.$store.state.app.pltId
-    },
-    pltPic() {
-      return this.$store.state.app.pltPic
-    },
-    requiredStr() {
-      return this.$store.state.app.requiredStr
-    },
-    ruleRecord () {
+      },
+      pltId() {
+        return this.$store.state.app.pltId
+      },
+      pltPic() {
+        return this.$store.state.app.pltPic
+      },
+      requiredStr() {
+        return this.$store.state.app.requiredStr
+      },
+      ruleRecord() {
 
-      //加热方式-其它
-      if (this.formRecord.c15 == '其它') {
+        //加热方式-其它
+        if (this.formRecord.c15 == '其它') {
           this.forbidden.c16 = false
-      } else {
+        } else {
           this.formRecord.c16 = ''
           this.forbidden.c16 = true
-      }
+        }
 
-      //功能-其它
-      if (this.formRecord.c23.join('').indexOf('其它') > -1) {
+        //功能-其它
+        if (this.formRecord.c23.join('').indexOf('其它') > -1) {
           this.forbidden.c24 = false
-      } else {
+        } else {
           this.formRecord.c24 = ''
           this.forbidden.c24 = true
-      }
+        }
 
-      //通讯协议功能-其它
-      if (this.formRecord.c90.join('').indexOf('其它') > -1) {
+        //通讯协议功能-其它
+        if (this.formRecord.c90.join('').indexOf('其它') > -1) {
           this.forbidden.c91 = false
-      } else {
+        } else {
           this.formRecord.c91 = ''
           this.forbidden.c91 = true
-      }
-      if (this.formRecord.c90.join('').indexOf('无') > -1) {
-          this.formRecord.c90=['无']
+        }
+        if (this.formRecord.c90.join('').indexOf('无') > -1) {
+          this.formRecord.c90 = ['无']
           this.forbidden.c90_a = true
           this.forbidden.c90_b = true
           this.forbidden.c90_c = true
           this.forbidden.c91 = true
           this.formRecord.c91 = ''
-      } else {
+        } else {
           this.forbidden.c90_a = false
           this.forbidden.c90_b = false
           this.forbidden.c90_c = false
-      }
+        }
 
 
-      const checkc30 = (rule, value, callback) => {
-          if(this.formRecord.c30 != ""){
+        const checkc30 = (rule, value, callback) => {
+          if (this.formRecord.c30 != "") {
             if (parseFloat(this.formRecord.c30) < parseFloat(this.formRecord.c5)) {
-                callback("热效率值（实测值）应大于等于热效率值（标称值）！");
-            }else{
-                callback()
+              callback("热效率值（实测值）应大于等于热效率值（标称值）！");
+            } else {
+              callback()
             }
-          }else{
-            callback()
-          }
-      }
-
-      const checkc32 = (rule, value, callback) => {
-          if(this.formRecord.c32 != ""){
-            if (parseFloat(this.formRecord.c32) > parseFloat(this.formRecord.c7)) {
-                callback("待机功率（标称值）应不小于待机功率（实测值）！");
-            }else{
-                callback()
-            }
-          }else{
-            callback()
-          }
-      }
-
-      const checkc33 = (rule, value, callback) => {
-          if(this.formRecord.c33 != ""){
-            if (parseFloat(this.formRecord.c33) > parseFloat(this.formRecord.c9)) {
-                callback("保温能耗（标称值）应不小于保温能耗（实测值）！");
-            }else{
-                callback()
-            }
-          }else{
-            callback()
-          }
-      }
-
-      //新版电饭锅增加一些备案条件
-      //c25 额定功率
-      //c9 保温能耗
-      //c5 热效率值
-      var nxdj = "";
-      var c9 = parseInt(this.formRecord.c9);
-      var c5 = parseInt(this.formRecord.c5);
-      var c25 = parseFloat(this.formRecord.c25);
-      if (c25 <= 400) {
-          if (c9 != '' && c9) {
-              if (c9 <= 19) {
-                  if (c5 >= 87) {
-                      nxdj = "1";
-                  }
-                  if (c5 >= 81 && c5 < 87) {
-                      nxdj = "2";
-                  }
-              }
-              if (c9 <= 40) {
-                  if (c5 >= 76 && c5 < 81) {
-                      nxdj = "3";
-                  }
-                  if (c5 >= 72 && c5 < 76) {
-                      nxdj = "4";
-                  }
-                  if (c5 >= 68 && c5 < 72) {
-                      nxdj = "5";
-                  }
-              }
           } else {
+            callback()
+          }
+        }
+
+        const checkc32 = (rule, value, callback) => {
+          if (this.formRecord.c32 != "") {
+            if (parseFloat(this.formRecord.c32) > parseFloat(this.formRecord.c7)) {
+              callback("待机功率（标称值）应不小于待机功率（实测值）！");
+            } else {
+              callback()
+            }
+          } else {
+            callback()
+          }
+        }
+
+        const checkc33 = (rule, value, callback) => {
+          if (this.formRecord.c33 != "") {
+            if (parseFloat(this.formRecord.c33) > parseFloat(this.formRecord.c9)) {
+              callback("保温能耗（标称值）应不小于保温能耗（实测值）！");
+            } else {
+              callback()
+            }
+          } else {
+            callback()
+          }
+        }
+
+        //新版电饭锅增加一些备案条件
+        //c25 额定功率
+        //c9 保温能耗
+        //c5 热效率值
+        var nxdj = "";
+        var c9 = parseInt(this.formRecord.c9);
+        var c5 = parseInt(this.formRecord.c5);
+        var c25 = parseFloat(this.formRecord.c25);
+        if (c25 <= 400) {
+          if (c9 != '' && c9) {
+            if (c9 <= 19) {
               if (c5 >= 87) {
-                  nxdj = "1";
+                nxdj = "1";
               }
               if (c5 >= 81 && c5 < 87) {
-                  nxdj = "2";
+                nxdj = "2";
               }
+            }
+            if (c9 <= 40) {
               if (c5 >= 76 && c5 < 81) {
-                  nxdj = "3";
+                nxdj = "3";
               }
               if (c5 >= 72 && c5 < 76) {
-                  nxdj = "4";
+                nxdj = "4";
               }
               if (c5 >= 68 && c5 < 72) {
-                  nxdj = "5";
+                nxdj = "5";
               }
-          }
-      }
-      if (c25 <= 600 && c25 > 400) {
-          if (c9 != '' && c9) {
-              if (c9 <= 21) {
-                  if (c5 >= 88) {
-                      nxdj = "1";
-                  }
-                  if (c5 >= 82 && c5 < 88) {
-                      nxdj = "2";
-                  }
-              }
-              if (c9 <= 50) {
-                  if (c5 >= 77 && c5 < 82) {
-                      nxdj = "3";
-                  }
-                  if (c5 >= 75 && c5 < 77) {
-                      nxdj = "4";
-                  }
-                  if (c5 >= 71 && c5 < 75) {
-                      nxdj = "5";
-                  }
-              }
+            }
           } else {
+            if (c5 >= 87) {
+              nxdj = "1";
+            }
+            if (c5 >= 81 && c5 < 87) {
+              nxdj = "2";
+            }
+            if (c5 >= 76 && c5 < 81) {
+              nxdj = "3";
+            }
+            if (c5 >= 72 && c5 < 76) {
+              nxdj = "4";
+            }
+            if (c5 >= 68 && c5 < 72) {
+              nxdj = "5";
+            }
+          }
+        }
+        if (c25 <= 600 && c25 > 400) {
+          if (c9 != '' && c9) {
+            if (c9 <= 21) {
               if (c5 >= 88) {
-                  nxdj = "1";
+                nxdj = "1";
               }
               if (c5 >= 82 && c5 < 88) {
-                  nxdj = "2";
+                nxdj = "2";
               }
+            }
+            if (c9 <= 50) {
               if (c5 >= 77 && c5 < 82) {
-                  nxdj = "3";
+                nxdj = "3";
               }
               if (c5 >= 75 && c5 < 77) {
-                  nxdj = "4";
+                nxdj = "4";
               }
               if (c5 >= 71 && c5 < 75) {
-                  nxdj = "5";
+                nxdj = "5";
               }
-          }
-      }
-      if (c25 <= 1000 && c25 > 600) {
-          if (c9 != '' && c9) {
-              if (c9 <= 33) {
-                  if (c5 >= 89) {
-                      nxdj = "1";
-                  }
-                  if (c5 >= 83 && c5 < 89) {
-                      nxdj = "2";
-                  }
-              }
-              if (c9 <= 68) {
-                  if (c5 >= 78 && c5 < 83) {
-                      nxdj = "3";
-                  }
-                  if (c5 >= 76 && c5 < 78) {
-                      nxdj = "4";
-                  }
-                  if (c5 >= 73 && c5 < 76) {
-                      nxdj = "5";
-                  }
-              }
+            }
           } else {
+            if (c5 >= 88) {
+              nxdj = "1";
+            }
+            if (c5 >= 82 && c5 < 88) {
+              nxdj = "2";
+            }
+            if (c5 >= 77 && c5 < 82) {
+              nxdj = "3";
+            }
+            if (c5 >= 75 && c5 < 77) {
+              nxdj = "4";
+            }
+            if (c5 >= 71 && c5 < 75) {
+              nxdj = "5";
+            }
+          }
+        }
+        if (c25 <= 1000 && c25 > 600) {
+          if (c9 != '' && c9) {
+            if (c9 <= 33) {
               if (c5 >= 89) {
-                  nxdj = "1";
+                nxdj = "1";
               }
               if (c5 >= 83 && c5 < 89) {
-                  nxdj = "2";
+                nxdj = "2";
               }
+            }
+            if (c9 <= 68) {
               if (c5 >= 78 && c5 < 83) {
-                  nxdj = "3";
+                nxdj = "3";
               }
               if (c5 >= 76 && c5 < 78) {
-                  nxdj = "4";
+                nxdj = "4";
               }
               if (c5 >= 73 && c5 < 76) {
-                  nxdj = "5";
+                nxdj = "5";
               }
-          }
-      }
-      if (c25 <= 2000 && c25 > 1000) {
-          if (c9 != '' && c9) {
-              if (c9 <= 35) {
-                  if (c5 >= 90) {
-                      nxdj = "1";
-                  }
-                  if (c5 >= 86 && c5 < 90) {
-                      nxdj = "2";
-                  }
-              }
-              if (c9 <= 78) {
-                  if (c5 >= 81 && c5 < 86) {
-                      nxdj = "3";
-                  }
-                  if (c5 >= 78 && c5 < 81) {
-                      nxdj = "4";
-                  }
-                  if (c5 >= 74 && c5 < 78) {
-                      nxdj = "5";
-                  }
-              }
+            }
           } else {
+            if (c5 >= 89) {
+              nxdj = "1";
+            }
+            if (c5 >= 83 && c5 < 89) {
+              nxdj = "2";
+            }
+            if (c5 >= 78 && c5 < 83) {
+              nxdj = "3";
+            }
+            if (c5 >= 76 && c5 < 78) {
+              nxdj = "4";
+            }
+            if (c5 >= 73 && c5 < 76) {
+              nxdj = "5";
+            }
+          }
+        }
+        if (c25 <= 2000 && c25 > 1000) {
+          if (c9 != '' && c9) {
+            if (c9 <= 35) {
               if (c5 >= 90) {
-                  nxdj = "1";
+                nxdj = "1";
               }
               if (c5 >= 86 && c5 < 90) {
-                  nxdj = "2";
+                nxdj = "2";
               }
+            }
+            if (c9 <= 78) {
               if (c5 >= 81 && c5 < 86) {
-                  nxdj = "3";
+                nxdj = "3";
               }
               if (c5 >= 78 && c5 < 81) {
-                  nxdj = "4";
+                nxdj = "4";
               }
               if (c5 >= 74 && c5 < 78) {
-                  nxdj = "5";
+                nxdj = "5";
               }
-          }
-      }
-
-      //绑定额定功率
-      const checkc25 = (rule, value, callback) => {
-          if(c25 > 2000){
-              callback("额定功率不能大于2000");
-          }else{
-              callback()
-          }
-      }
-
-      //绑定加入方式 c15
-      var nxdjch = parseFloat(this.formRecord.c29);
-      var djgl = parseFloat(this.formRecord.c7);
-      var djglCheck = this.formRecord.c15;
-      const checkc15 = (rule, value, callback) => {
-          if (djglCheck == "电热元件式") {
-              if (nxdjch == 1 || nxdjch == 2) {
-                  if (djgl > 1.0) {
-                      callback("能效数据不在备案范围");
-                  }else{
-                      callback()
-                  }
-              }else if (nxdjch == 3 || nxdjch == 4 || nxdjch == 5) {
-                  if (djgl > 1.8) {
-                      callback("能效数据不在备案范围");
-                  }else{
-                      callback()
-                  }
-              }else{
-                  callback()
-              }
-          }else if (djglCheck == "电磁感应式") {
-              if (nxdjch == 1 || nxdjch == 2) {
-                  if (djgl > 1.8) {
-                      callback("能效数据不在备案范围");
-                  }else{
-                      callback();
-                  }
-              }else if (nxdjch == 3 || nxdjch == 4 || nxdjch == 5) {
-                  if (djgl > 2.0) {
-                      callback("能效数据不在备案范围");
-                  }else{
-                      callback("能效数据不在备案范围");
-                  }
-              }else{
-                  callback();
-              }
-          }else{
-              callback();
-          }
-      }
-
-      //待机功能选择有选择通讯协议，待机功率和保温功耗不能填写。
-      var c9 = this.formRecord.c9;
-      var c23 = this.formRecord.c23;
-
-      //绑定功能 c23
-      const checkc23 = (rule, value, callback) => {
-          if(djgl != "" && djgl != undefined){
-              if (c23 == "" || c23 == undefined) {
-                  callback("能效数据不在备案范围");
-              }else{
-                  callback();
-              }
-          }else{
-            callback();
-          }
-      }
-
-     //保温能耗 c9
-     const checkc9 = (rule, value, callback) => {
-          if(c9 != "" && c9 != undefined){
-              if (c23 == "" || c23 == undefined) {
-                  callback("能效数据不在备案范围");
-              }else{
-                callback();
-              }
-          }else{
-            callback();
-          }
-      }
-
-      //绑定待机功率 c7
-      const checkc7 = (rule, value, callback) => {
-          if(c23 == "待机功能"){
-              var txxy = this.formRecord.c90;
-              if (txxy != undefined && txxy != "" && txxy != "无") {
-                  if (djgl != "" && djgl != undefined) {
-                      callback("同时选择待机功能和通讯协议，待机功率不能填写。");
-                  }else{
-                    callback();
-                  }
-              }else{
-                callback();
-              }
-          }else{
-            callback();
-          }
-      }
-
-      //绑定能效等级 c29
-      const checkc29 = (rule, value, callback) => {
-        if (nxdj == "") {
-            callback("能效数据不在备案范围");
-        }else{
-            if(nxdjch != nxdj){
-                callback("所选能效等级与计算结果不符！");
-            }else{
-                callback();
             }
+          } else {
+            if (c5 >= 90) {
+              nxdj = "1";
+            }
+            if (c5 >= 86 && c5 < 90) {
+              nxdj = "2";
+            }
+            if (c5 >= 81 && c5 < 86) {
+              nxdj = "3";
+            }
+            if (c5 >= 78 && c5 < 81) {
+              nxdj = "4";
+            }
+            if (c5 >= 74 && c5 < 78) {
+              nxdj = "5";
+            }
+          }
         }
-      }
 
-      return {
-        c16: [
-          {
-            required: this.formRecord.c15 === '其它',
-            message: '加热方式选项其它的值不能为空',
-            trigger: 'change,blur'
+        //绑定额定功率
+        const checkc25 = (rule, value, callback) => {
+          if (c25 > 2000) {
+            callback("额定功率不能大于2000");
+          } else {
+            callback()
           }
-        ],
-        c24: [
-          {
-            required: this.formRecord.c23.join('').indexOf('其它') > -1,
-            message: '功能选项其它的值不能为空',
-            trigger: 'change,blur'
+        }
+
+        //绑定加入方式 c15
+        var nxdjch = parseFloat(this.formRecord.c29);
+        var djgl = parseFloat(this.formRecord.c7);
+        var djglCheck = this.formRecord.c15;
+        const checkc15 = (rule, value, callback) => {
+          if (djglCheck == "电热元件式") {
+            if (nxdjch == 1 || nxdjch == 2) {
+              if (djgl > 1.0) {
+                callback("能效数据不在备案范围");
+              } else {
+                callback()
+              }
+            } else if (nxdjch == 3 || nxdjch == 4 || nxdjch == 5) {
+              if (djgl > 1.8) {
+                callback("能效数据不在备案范围");
+              } else {
+                callback()
+              }
+            } else {
+              callback()
+            }
+          } else if (djglCheck == "电磁感应式") {
+            if (nxdjch == 1 || nxdjch == 2) {
+              if (djgl > 1.8) {
+                callback("能效数据不在备案范围");
+              } else {
+                callback();
+              }
+            } else if (nxdjch == 3 || nxdjch == 4 || nxdjch == 5) {
+              if (djgl > 2.0) {
+                callback("能效数据不在备案范围");
+              } else {
+                callback("能效数据不在备案范围");
+              }
+            } else {
+              callback();
+            }
+          } else {
+            callback();
           }
-        ],
-        c4: [
-          {
-            required: true,
-            message: '制造单位不能为空',
-            trigger: 'change,blur'
+        }
+
+        //待机功能选择有选择通讯协议，待机功率和保温功耗不能填写。
+        var c9 = this.formRecord.c9;
+        var c23 = this.formRecord.c23;
+
+        //绑定功能 c23
+        const checkc23 = (rule, value, callback) => {
+          if (djgl != "" && djgl != undefined) {
+            if (c23 == "" || c23 == undefined) {
+              callback("能效数据不在备案范围");
+            } else {
+              callback();
+            }
+          } else {
+            callback();
           }
-        ],
-        c28: [
-          {
-            required: true,
-            message: '备案方不能为空',
-            trigger: 'change,blur'
+        }
+
+        //保温能耗 c9
+        const checkc9 = (rule, value, callback) => {
+          if (c9 != "" && c9 != undefined) {
+            if (c23 == "" || c23 == undefined) {
+              callback("能效数据不在备案范围");
+            } else {
+              callback();
+            }
+          } else {
+            callback();
           }
-        ],
-        c3: [
-          {
-            required: true,
-            message: '规格型号不能为空',
-            trigger: 'change,blur'
+        }
+
+        //绑定待机功率 c7
+        const checkc7 = (rule, value, callback) => {
+          if (c23 == "待机功能") {
+            var txxy = this.formRecord.c90;
+            if (txxy != undefined && txxy != "" && txxy != "无") {
+              if (djgl != "" && djgl != undefined) {
+                callback("同时选择待机功能和通讯协议，待机功率不能填写。");
+              } else {
+                callback();
+              }
+            } else {
+              callback();
+            }
+          } else {
+            callback();
           }
-        ],
-        c2: [
-          {
-            required: true,
-            message: '商标不能为空',
-            trigger: 'change,blur'
+        }
+
+        //绑定能效等级 c29
+        const checkc29 = (rule, value, callback) => {
+          if (nxdj == "") {
+            callback("能效数据不在备案范围");
+          } else {
+            if (nxdjch != nxdj) {
+              callback("所选能效等级与计算结果不符！");
+            } else {
+              callback();
+            }
           }
-        ],
-        c29: [
-          {
-            required: true,
-            message: '能效等级不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc29,
-            trigger: 'change,blur'
+        }
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c16: [
+              {
+                required: this.formRecord.c15 === '其它',
+                message: '加热方式选项其它的值不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c24: [
+              {
+                required: this.formRecord.c23.join('').indexOf('其它') > -1,
+                message: '功能选项其它的值不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                message: '制造单位不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c28: [
+              {
+                required: true,
+                message: '备案方不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c3: [
+              {
+                required: true,
+                message: '规格型号不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c2: [
+              {
+                required: true,
+                message: '商标不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c29: [
+              {
+                required: true,
+                message: '能效等级不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc29,
+                trigger: 'change,blur'
+              }
+            ],
+            c5: [
+              {
+                required: true,
+                message: '标称值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              }
+            ],
+            c30: [
+              {
+                required: true,
+                message: '实测值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: atLeastOneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc30,
+                trigger: 'change,blur'
+              }
+            ],
+            c23: [
+              {
+                required: true,
+                message: '功能选项不能为空'
+              },
+              {
+                validator: checkc23,
+                trigger: 'blur'
+              }
+            ],
+            c90: [
+              {
+                required: true,
+                message: '通讯协议功能不能为空'
+              }
+            ],
+            c91: [
+              {
+                required: this.formRecord.c90.join('').indexOf('其它') > -1,
+                message: '通讯协议其它值不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c7: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc7,
+                trigger: 'change,blur'
+              }
+            ],
+            c9: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc9,
+                trigger: 'change,blur'
+              }
+            ],
+            c32: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: atLeastTwoDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc32,
+                trigger: 'change,blur'
+              }
+            ],
+            c33: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: atLeastOneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc33,
+                trigger: 'change,blur'
+              }
+            ],
+            c22: [
+              {
+                required: true,
+                message: '内锅材质不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c13: [
+              {
+                required: true,
+                message: '初始使用日期不能为空'
+              }
+            ],
+            c14: [
+              {
+                required: true,
+                message: '电源类型不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c15: [
+              {
+                required: true,
+                message: '加热方式不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc15,
+                trigger: 'change,blur'
+              }
+            ],
+            c17: [
+              {
+                required: true,
+                message: '附加保温元件不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c18: [
+              {
+                required: true,
+                message: '温控器不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c19: [
+              {
+                required: true,
+                message: '热断路器不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c20: [
+              {
+                required: true,
+                message: '程序控制不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c21: [
+              {
+                required: true,
+                message: '控制方式不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c25: [
+              {
+                required: true,
+                message: '额定功率不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc25,
+                trigger: 'change,blur'
+              }
+            ],
+            c26: [
+              {
+                required: true,
+                message: '额定容积不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c34: [
+              {
+                required: true,
+                message: '额定电压不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c35: [
+              {
+                required: true,
+                message: '额定频率不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c27: [
+              {
+                required: true,
+                message: '长不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c37: [
+              {
+                required: true,
+                message: '宽不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c38: [
+              {
+                required: true,
+                message: '高不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c39: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c40: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c41: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c42: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c51: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c52: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c57: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c58: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c63: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c64: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c65: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c66: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c75: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c76: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c77: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c84: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c85: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ]
           }
-        ],
-        c5: [
-          {
-            required: true,
-            message: '标称值不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          }
-        ],
-        c30: [
-          {
-            required: true,
-            message: '实测值不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: atLeastOneDecimals,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc30,
-            trigger: 'change,blur'
-          }
-        ],
-        c23: [
-          {
-            required: true,
-            message: '功能选项不能为空'
-          },
-          {
-            validator: checkc23,
-            trigger: 'blur'
-          }
-        ],
-        c90: [
-          {
-            required: true,
-            message: '通讯协议功能不能为空'
-          }
-        ],
-        c91: [
-          {
-            required: this.formRecord.c90.join('').indexOf('其它') > -1,
-            message: '通讯协议其它值不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c7: [
-         {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc7,
-            trigger: 'change,blur'
-          }
-        ],
-        c9: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: numberCheck,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc9,
-            trigger: 'change,blur'
-          }
-        ],
-        c32: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: atLeastTwoDecimals,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc32,
-            trigger: 'change,blur'
-          }
-        ],
-        c33: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: atLeastOneDecimals,
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc33,
-            trigger: 'change,blur'
-          }
-        ],
-        c22: [
-          {
-            required: true,
-            message: '内锅材质不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c13: [
-          {
-            required: true,
-            message: '初始使用日期不能为空'
-          }
-        ],
-        c14: [
-          {
-            required: true,
-            message: '电源类型不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c15: [
-          {
-            required: true,
-            message: '加热方式不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc15,
-            trigger: 'change,blur'
-          }
-        ],
-        c17: [
-          {
-            required: true,
-            message: '附加保温元件不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c18: [
-          {
-            required: true,
-            message: '温控器不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c19: [
-          {
-            required: true,
-            message: '热断路器不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c20: [
-          {
-            required: true,
-            message: '程序控制不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c21: [
-          {
-            required: true,
-            message: '控制方式不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c25: [
-          {
-            required: true,
-            message: '额定功率不能为空',
-            trigger: 'change,blur'
-          },
-          {
-            validator: checkc25,
-            trigger: 'change,blur'
-          }
-        ],
-        c26: [
-          {
-            required: true,
-            message: '额定容积不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c34: [
-          {
-            required: true,
-            message: '额定电压不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c35: [
-          {
-            required: true,
-            message: '额定频率不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c27: [
-          {
-            required: true,
-            message: '长不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c37: [
-          {
-            required: true,
-            message: '宽不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c38: [
-          {
-            required: true,
-            message: '高不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c39: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c40: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c41: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c42: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c51: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c52: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c57: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c58: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c63: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c64: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c65: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c66: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c75: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c76: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c77: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c84: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ],
-        c85: [
-          {
-            required: true,
-            message: '不能为空',
-            trigger: 'change,blur'
-          }
-        ]
+        }
       }
     }
   }
-}
 </script>
 <style>
 @import '../../../css/comm.css';

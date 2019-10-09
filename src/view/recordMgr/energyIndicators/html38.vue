@@ -2030,7 +2030,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        loadText:true,
+        loadText: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -2376,8 +2376,8 @@
         this.uploadPic = path;
         this.modal4 = true
       },
-      templateLoad(){
-        this.loadText=false;
+      templateLoad() {
+        this.loadText = false;
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -2403,12 +2403,12 @@
       },
       getFile(res, file, id) {
         console.log(res);
-        if(res.Status){
+        if (res.Status) {
           this.$Spin.hide();
           this['checkmark' + id] = true
-        }else{
+        } else {
           this['checkmark' + id] = false
-          this.uploadParam['filePath'+id]=''
+          this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
 
@@ -3205,1188 +3205,1194 @@
           }
           callback()
         }
-
-        return {
-          c2: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '制造单位不能为空'
-            }
-          ],
-          c3: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '备案方不能为空'
-            }
-          ],
-          c4: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '产品规格型号不能为空'
-            }
-          ],
-          c5: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '商标不能为空'
-            }
-          ],
-          c6: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '能效等级不能为空'
-            },
-            {
-              validator: checkc6,
-              trigger: 'change,blur'
-            }
-          ],
-          c7: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '产品类型不能为空'
-            }
-          ],
-          c8: [
-            {
-              required: !this.forbidden.c7_1,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_1 ? isIntegerNotZero : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c9: [
-            {
-              required: !this.forbidden.c7_1,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c11: [
-            {
-              required: !this.forbidden.c7_1,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_1 ? twoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c12: [
-            {
-              required: !this.forbidden.c7_1,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_1 ? atLeastThreeDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc12,
-              trigger: 'change,blur'
-            }
-          ],
-          c14: [
-            {
-              required: !this.forbidden.c7_2,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_2 ? isIntegerNotZero : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c15: [
-            {
-              required: !this.forbidden.c7_2,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c17: [
-            {
-              required: !this.forbidden.c7_2,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_2 ? twoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c18: [
-            {
-              required: !this.forbidden.c7_2,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_2 ? atLeastThreeDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc18,
-              trigger: 'change,blur'
-            }
-          ],
-          c20: [
-            {
-              required: !this.forbidden.c7_3,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_3 ? isIntegerNotZero : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c21: [
-            {
-              required: !this.forbidden.c7_3,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c23: [
-            {
-              required: !this.forbidden.c7_3,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_3 ? twoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c24: [
-            {
-              required: !this.forbidden.c7_3,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_3 ? atLeastThreeDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc24,
-              trigger: 'change,blur'
-            }
-          ],
-          c26: [
-            {
-              required: !this.forbidden.c7_4,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_4 ? isIntegerNotZero : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c27: [
-            {
-              required: !this.forbidden.c7_4,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c29: [
-            {
-              required: !this.forbidden.c7_4,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_4 ? twoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c30: [
-            {
-              required: !this.forbidden.c7_4,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_4 ? atLeastThreeDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc30,
-              trigger: 'change,blur'
-            }
-          ],
-          c32: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c33: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c35: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c36: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc36,
-              trigger: 'change,blur'
-            }
-          ],
-          c38: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c39: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc39,
-              trigger: 'change,blur'
-            }
-          ],
-          c41: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '标称值应为整数'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? numberCheck : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc41,
-              trigger: 'change,blur'
-            }
-          ],
-          c42: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c44: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c45: [
-            {
-              required: !this.forbidden.c7_5,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_5 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c47: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c48: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c50: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c51: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc51,
-              trigger: 'change,blur'
-            }
-          ],
-          c53: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c54: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc54,
-              trigger: 'change,blur'
-            }
-          ],
-          c56: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? numberCheck : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc56,
-              trigger: 'change,blur'
-            }
-          ],
-          c57: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c59: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c60: [
-            {
-              required: !this.forbidden.c7_6,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_6 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c62: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c63: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            }
-          ],
-          c65: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c66: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc66,
-              trigger: 'change,blur'
-            }
-          ],
-          c68: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c69: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc69,
-              trigger: 'change,blur'
-            }
-          ],
-          c71: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? numberCheck : check,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc71,
-              trigger: 'change,blur'
-            }
-          ],
-          c72: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c74: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c75: [
-            {
-              required: !this.forbidden.c7_7,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: !this.forbidden.c7_7 ? atLeastTwoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c77: [
-            {
-              required: true,
-              message: '备案标识开始使用日期不能为空'
-            }
-          ],
-          c112: [
-            {
-              required: !this.forbidden.c112,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c114: [
-            {
-              required: !this.forbidden.c114,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c79: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '设备移动性不能为空'
-            }
-          ],
-          c80: [
-            {
-              required: true,
-              message: '输出速度不能为空'
-            }
-          ],
-          c81: [
-            {
-              required: this.formRecord.c80.join('').indexOf('黑白速度') > -1,
-              trigger: 'change,blur',
-              message: '黑白速度不能为空'
-            }
-          ],
-          c82: [
-            {
-              required: this.formRecord.c80.join('').indexOf('彩色速度') > -1,
-              trigger: 'change,blur',
-              message: '彩色速度不能为空'
-            }
-          ],
-          c83: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '最大幅面不能为空'
-            }
-          ],
-          c84: [
-            {
-              required: true,
-              message: '基础功能不能为空'
-            }
-          ],
-          c85: [
-            {
-              required: this.formRecord.c84.join('').indexOf('其它') > -1,
-              trigger: 'change,blur',
-              message: '基础功能其它不能为空'
-            }
-          ],
-          c86: [
-            {
-              required: true,
-              message: '扩展功能不能为空'
-            }
-          ],
-          c87: [
-            {
-              required: this.formRecord.c86.join('').indexOf('其它') > -1,
-              trigger: 'change,blur',
-              message: '扩展功能其它不能为空'
-            }
-          ],
-          c88: [
-            {
-              required: true,
-              message: '图像输出方式不能为空'
-            }
-          ],
-          c89: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '附加功能功率因子之和不能为空'
-            }
-          ],
-          c90: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '电源直流输出功率不能为空'
-            }
-          ],
-          c91: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '测试接口不能为空'
-            }
-          ],
-          c92: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定电压不能为空'
-            }
-          ],
-          c93: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定电流不能为空'
-            }
-          ],
-          c94: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定功率不能为空'
-            }
-          ],
-          c95: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '长不能为空'
-            }
-          ],
-          c96: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '宽不能为空'
-            }
-          ],
-          c97: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '高不能为空'
-            }
-          ],
-          c98: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表1不能为空'
-            }
-          ],
-          c99: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表2不能为空'
-            }
-          ],
-          c100: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表3不能为空'
-            }
-          ],
-          c101: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表4不能为空'
-            }
-          ],
-          c102: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表5不能为空'
-            }
-          ],
-          c103: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表6不能为空'
-            }
-          ],
-          c104: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表7不能为空'
-            }
-          ],
-          c105: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表8不能为空'
-            }
-          ],
-          c106: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表9不能为空'
-            }
-          ],
-          c107: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表10不能为空'
-            }
-          ],
-          c108: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表11不能为空'
-            }
-          ],
-          c109: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表12不能为空'
-            }
-          ],
-          c110: [
-            {
-              required: this.fjyzV,
-              trigger: 'change,blur',
-              message: '附加因子表13不能为空'
-            }
-          ],
-          c116: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c117: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c118: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c119: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c124: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c125: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c126: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c127: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c132: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c133: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c134: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c135: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c140: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c141: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c142: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c143: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c148: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c149: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c150: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c151: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c156: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c157: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c158: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c159: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c164: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c165: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c166: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c167: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c168: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c169: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c170: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c171: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c180: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c181: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c182: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c183: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c188: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c189: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c190: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c191: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c196: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c197: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c198: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c199: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c205: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c206: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c207: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c208: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c213: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c214: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c215: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c216: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ]
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c2: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '制造单位不能为空'
+              }
+            ],
+            c3: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '备案方不能为空'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '产品规格型号不能为空'
+              }
+            ],
+            c5: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '商标不能为空'
+              }
+            ],
+            c6: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '能效等级不能为空'
+              },
+              {
+                validator: checkc6,
+                trigger: 'change,blur'
+              }
+            ],
+            c7: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '产品类型不能为空'
+              }
+            ],
+            c8: [
+              {
+                required: !this.forbidden.c7_1,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_1 ? isIntegerNotZero : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c9: [
+              {
+                required: !this.forbidden.c7_1,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c11: [
+              {
+                required: !this.forbidden.c7_1,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_1 ? twoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c12: [
+              {
+                required: !this.forbidden.c7_1,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_1 ? atLeastThreeDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc12,
+                trigger: 'change,blur'
+              }
+            ],
+            c14: [
+              {
+                required: !this.forbidden.c7_2,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_2 ? isIntegerNotZero : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c15: [
+              {
+                required: !this.forbidden.c7_2,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c17: [
+              {
+                required: !this.forbidden.c7_2,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_2 ? twoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c18: [
+              {
+                required: !this.forbidden.c7_2,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_2 ? atLeastThreeDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc18,
+                trigger: 'change,blur'
+              }
+            ],
+            c20: [
+              {
+                required: !this.forbidden.c7_3,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_3 ? isIntegerNotZero : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c21: [
+              {
+                required: !this.forbidden.c7_3,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c23: [
+              {
+                required: !this.forbidden.c7_3,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_3 ? twoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c24: [
+              {
+                required: !this.forbidden.c7_3,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_3 ? atLeastThreeDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc24,
+                trigger: 'change,blur'
+              }
+            ],
+            c26: [
+              {
+                required: !this.forbidden.c7_4,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_4 ? isIntegerNotZero : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c27: [
+              {
+                required: !this.forbidden.c7_4,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c29: [
+              {
+                required: !this.forbidden.c7_4,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_4 ? twoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c30: [
+              {
+                required: !this.forbidden.c7_4,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_4 ? atLeastThreeDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc30,
+                trigger: 'change,blur'
+              }
+            ],
+            c32: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c33: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c35: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c36: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc36,
+                trigger: 'change,blur'
+              }
+            ],
+            c38: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c39: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc39,
+                trigger: 'change,blur'
+              }
+            ],
+            c41: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '标称值应为整数'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? numberCheck : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc41,
+                trigger: 'change,blur'
+              }
+            ],
+            c42: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c44: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c45: [
+              {
+                required: !this.forbidden.c7_5,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_5 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c47: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c48: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c50: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c51: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc51,
+                trigger: 'change,blur'
+              }
+            ],
+            c53: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c54: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc54,
+                trigger: 'change,blur'
+              }
+            ],
+            c56: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? numberCheck : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc56,
+                trigger: 'change,blur'
+              }
+            ],
+            c57: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c59: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c60: [
+              {
+                required: !this.forbidden.c7_6,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_6 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c62: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c63: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              }
+            ],
+            c65: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c66: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc66,
+                trigger: 'change,blur'
+              }
+            ],
+            c68: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c69: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc69,
+                trigger: 'change,blur'
+              }
+            ],
+            c71: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? numberCheck : check,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc71,
+                trigger: 'change,blur'
+              }
+            ],
+            c72: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c74: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c75: [
+              {
+                required: !this.forbidden.c7_7,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: !this.forbidden.c7_7 ? atLeastTwoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c77: [
+              {
+                required: true,
+                message: '备案标识开始使用日期不能为空'
+              }
+            ],
+            c112: [
+              {
+                required: !this.forbidden.c112,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c114: [
+              {
+                required: !this.forbidden.c114,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c79: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '设备移动性不能为空'
+              }
+            ],
+            c80: [
+              {
+                required: true,
+                message: '输出速度不能为空'
+              }
+            ],
+            c81: [
+              {
+                required: this.formRecord.c80.join('').indexOf('黑白速度') > -1,
+                trigger: 'change,blur',
+                message: '黑白速度不能为空'
+              }
+            ],
+            c82: [
+              {
+                required: this.formRecord.c80.join('').indexOf('彩色速度') > -1,
+                trigger: 'change,blur',
+                message: '彩色速度不能为空'
+              }
+            ],
+            c83: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '最大幅面不能为空'
+              }
+            ],
+            c84: [
+              {
+                required: true,
+                message: '基础功能不能为空'
+              }
+            ],
+            c85: [
+              {
+                required: this.formRecord.c84.join('').indexOf('其它') > -1,
+                trigger: 'change,blur',
+                message: '基础功能其它不能为空'
+              }
+            ],
+            c86: [
+              {
+                required: true,
+                message: '扩展功能不能为空'
+              }
+            ],
+            c87: [
+              {
+                required: this.formRecord.c86.join('').indexOf('其它') > -1,
+                trigger: 'change,blur',
+                message: '扩展功能其它不能为空'
+              }
+            ],
+            c88: [
+              {
+                required: true,
+                message: '图像输出方式不能为空'
+              }
+            ],
+            c89: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '附加功能功率因子之和不能为空'
+              }
+            ],
+            c90: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '电源直流输出功率不能为空'
+              }
+            ],
+            c91: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '测试接口不能为空'
+              }
+            ],
+            c92: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定电压不能为空'
+              }
+            ],
+            c93: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定电流不能为空'
+              }
+            ],
+            c94: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定功率不能为空'
+              }
+            ],
+            c95: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '长不能为空'
+              }
+            ],
+            c96: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '宽不能为空'
+              }
+            ],
+            c97: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '高不能为空'
+              }
+            ],
+            c98: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表1不能为空'
+              }
+            ],
+            c99: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表2不能为空'
+              }
+            ],
+            c100: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表3不能为空'
+              }
+            ],
+            c101: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表4不能为空'
+              }
+            ],
+            c102: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表5不能为空'
+              }
+            ],
+            c103: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表6不能为空'
+              }
+            ],
+            c104: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表7不能为空'
+              }
+            ],
+            c105: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表8不能为空'
+              }
+            ],
+            c106: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表9不能为空'
+              }
+            ],
+            c107: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表10不能为空'
+              }
+            ],
+            c108: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表11不能为空'
+              }
+            ],
+            c109: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表12不能为空'
+              }
+            ],
+            c110: [
+              {
+                required: this.fjyzV,
+                trigger: 'change,blur',
+                message: '附加因子表13不能为空'
+              }
+            ],
+            c116: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c117: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c118: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c119: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c124: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c125: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c126: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c127: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c132: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c133: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c134: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c135: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c140: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c141: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c142: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c143: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c148: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c149: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c150: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c151: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c156: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c157: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c158: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c159: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c164: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c165: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c166: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c167: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c168: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c169: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c170: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c171: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c180: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c181: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c182: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c183: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c188: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c189: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c190: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c191: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c196: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c197: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c198: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c199: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c205: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c206: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c207: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c208: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c213: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c214: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c215: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c216: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ]
+          }
         }
       }
     }

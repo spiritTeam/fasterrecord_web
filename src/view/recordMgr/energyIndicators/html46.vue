@@ -973,7 +973,7 @@
 
   export default {
     data() {
-      const timeDate=parseInt(this.$store.state.app.dateinit);
+      const timeDate = parseInt(this.$store.state.app.dateinit);
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: "c18",
@@ -984,7 +984,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        loadText:true,
+        loadText: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1040,7 +1040,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
-        mainModel:'',
+        mainModel: '',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1179,8 +1179,8 @@
         this.uploadPic = path;
         this.modal4 = true
       },
-      templateLoad(){
-        this.loadText=false;
+      templateLoad() {
+        this.loadText = false;
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -1206,12 +1206,12 @@
       },
       getFile(res, file, id) {
         console.log(res);
-        if(res.Status){
+        if (res.Status) {
           this.$Spin.hide();
           this['checkmark' + id] = true
-        }else{
+        } else {
           this['checkmark' + id] = false
-          this.uploadParam['filePath'+id]=''
+          this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
 
@@ -1222,7 +1222,7 @@
         'pageType',
         'recordno'
       ]),
-      disabledoff(){
+      disabledoff() {
         return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
@@ -1365,346 +1365,352 @@
             callback()
           }
         }
-
-        return {
-          c2: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '请填写制造单位'
-            }
-          ],
-          c3: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '请填写备案方'
-            }
-          ],
-          c5: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '请填写商标'
-            }
-          ],
-          c7: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '请选择能效等级'
-            },
-            {
-              validator: checkc7a,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc7b,
-              trigger: 'blur'
-            }
-          ],
-          c9: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '能源效率（cd/W）标注值不能为空',
-            },
-            {
-              validator: significantDigits22,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc9,
-              trigger: 'blur'
-            }
-          ],
-          c10: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '关闭状态功率(W)标注值不能为空',
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc10,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc10a,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc10b,
-              trigger: 'blur'
-            }
-          ],
-          c11: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '睡眠状态功率(W)标注值不能为空',
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc11a,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc11b,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc11,
-              trigger: 'blur'
-            }
-          ],
-          c12: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '能源效率（cd/W）实测值不能为空',
-            },
-            {
-              validator: significantDigits33,
-              trigger: 'blur'
-            }
-          ],
-          c13: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '关闭状态功率(W)实测值不能为空',
-            },
-            {
-              validator: threeDecimals,
-              trigger: 'blur'
-            }
-          ],
-          c14: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '睡眠状态功率(W)实测值不能为空',
-            },
-            {
-              validator: threeDecimals,
-              trigger: 'blur'
-            }
-          ],
-          c19: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '屏幕尺寸长（mm）不能为空'
-            }
-          ],
-          c20: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '屏幕尺寸宽（mm）不能为空'
-            }
-          ],
-          c21: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '不能为空'
-            }
-          ],
-          c22: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '不能为空'
-            }
-          ],
-          c23: [
-            {
-              required: true,
-              message: '附加功能不能为空'
-            }
-          ],
-          c24: [
-            {
-              trigger: 'change,blur',
-              required: this.formRecord.c23.join('').indexOf('其它') > -1,
-              message: '附加功能其它不能为空'
-            }
-          ],
-          c25: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '供电方式不能为空'
-            }
-          ],
-          c26: [
-            {
-              trigger: 'change,blur',
-              required: this.formRecord.c25 === '外部电源，输出功率（W）',
-              message: '外部电源,输出功率(W)的值不能为空'
-            }
-          ],
-          c27: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '额定功率（W）不能为空'
-            }
-          ],
-          c28: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '额定电压（V）不能为空'
-            }
-          ],
-          c29: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '额定电流（A）不能为空'
-            }
-          ],
-          c30: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '额定频率（Hz）不能为空'
-            }
-          ],
-          c31: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '显示屏型号规格不能为空'
-            }
-          ],
-          c32: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '显示屏固有分辨力不能为空'
-            }
-          ],
-          c33: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '显示屏屏幕尺寸不能为空'
-            }
-          ],
-          c34: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '显示屏亮度不能为空'
-            }
-          ],
-          c35: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '显示屏型号规格生产者（全称）不能为空'
-            }
-          ],
-          c36: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '变压器型号规格不能为空'
-            }
-          ],
-          c37: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '变压器技术参数不能为空'
-            }
-          ],
-          c38: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '变压器生产者（全称）不能为空'
-            }
-          ],
-          c39: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '主控IC型号规格不能为空'
-            }
-          ],
-          c40: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '主控IC技术参数不能为空'
-            }
-          ],
-          c41: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '主控IC生产者（全称）不能为空'
-            }
-          ],
-          c42: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '开关管型号规格不能为空'
-            }
-          ],
-          c43: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '开关管技术参数不能为空'
-            }
-          ],
-          c44: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '开关管生产者（全称）不能为空'
-            }
-          ],
-          c18: [
-            {
-              required: true,
-              message: '不能为空'
-            }
-          ],
-          c45: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '外部电源型号规格不能为空'
-            }
-          ],
-          c46: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '外部电源技术参数不能为空'
-            }
-          ],
-          c47: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '外部电源生产者（全称）不能为空'
-            }
-          ]
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c2: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '请填写制造单位'
+              }
+            ],
+            c3: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '请填写备案方'
+              }
+            ],
+            c5: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '请填写商标'
+              }
+            ],
+            c7: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '请选择能效等级'
+              },
+              {
+                validator: checkc7a,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc7b,
+                trigger: 'blur'
+              }
+            ],
+            c9: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '能源效率（cd/W）标注值不能为空',
+              },
+              {
+                validator: significantDigits22,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc9,
+                trigger: 'blur'
+              }
+            ],
+            c10: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '关闭状态功率(W)标注值不能为空',
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc10,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc10a,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc10b,
+                trigger: 'blur'
+              }
+            ],
+            c11: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '睡眠状态功率(W)标注值不能为空',
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc11a,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc11b,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc11,
+                trigger: 'blur'
+              }
+            ],
+            c12: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '能源效率（cd/W）实测值不能为空',
+              },
+              {
+                validator: significantDigits33,
+                trigger: 'blur'
+              }
+            ],
+            c13: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '关闭状态功率(W)实测值不能为空',
+              },
+              {
+                validator: threeDecimals,
+                trigger: 'blur'
+              }
+            ],
+            c14: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '睡眠状态功率(W)实测值不能为空',
+              },
+              {
+                validator: threeDecimals,
+                trigger: 'blur'
+              }
+            ],
+            c19: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '屏幕尺寸长（mm）不能为空'
+              }
+            ],
+            c20: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '屏幕尺寸宽（mm）不能为空'
+              }
+            ],
+            c21: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '不能为空'
+              }
+            ],
+            c22: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '不能为空'
+              }
+            ],
+            c23: [
+              {
+                required: true,
+                message: '附加功能不能为空'
+              }
+            ],
+            c24: [
+              {
+                trigger: 'change,blur',
+                required: this.formRecord.c23.join('').indexOf('其它') > -1,
+                message: '附加功能其它不能为空'
+              }
+            ],
+            c25: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '供电方式不能为空'
+              }
+            ],
+            c26: [
+              {
+                trigger: 'change,blur',
+                required: this.formRecord.c25 === '外部电源，输出功率（W）',
+                message: '外部电源,输出功率(W)的值不能为空'
+              }
+            ],
+            c27: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '额定功率（W）不能为空'
+              }
+            ],
+            c28: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '额定电压（V）不能为空'
+              }
+            ],
+            c29: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '额定电流（A）不能为空'
+              }
+            ],
+            c30: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '额定频率（Hz）不能为空'
+              }
+            ],
+            c31: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '显示屏型号规格不能为空'
+              }
+            ],
+            c32: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '显示屏固有分辨力不能为空'
+              }
+            ],
+            c33: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '显示屏屏幕尺寸不能为空'
+              }
+            ],
+            c34: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '显示屏亮度不能为空'
+              }
+            ],
+            c35: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '显示屏型号规格生产者（全称）不能为空'
+              }
+            ],
+            c36: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '变压器型号规格不能为空'
+              }
+            ],
+            c37: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '变压器技术参数不能为空'
+              }
+            ],
+            c38: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '变压器生产者（全称）不能为空'
+              }
+            ],
+            c39: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '主控IC型号规格不能为空'
+              }
+            ],
+            c40: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '主控IC技术参数不能为空'
+              }
+            ],
+            c41: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '主控IC生产者（全称）不能为空'
+              }
+            ],
+            c42: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '开关管型号规格不能为空'
+              }
+            ],
+            c43: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '开关管技术参数不能为空'
+              }
+            ],
+            c44: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '开关管生产者（全称）不能为空'
+              }
+            ],
+            c18: [
+              {
+                required: true,
+                message: '不能为空'
+              }
+            ],
+            c45: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '外部电源型号规格不能为空'
+              }
+            ],
+            c46: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '外部电源技术参数不能为空'
+              }
+            ],
+            c47: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '外部电源生产者（全称）不能为空'
+              }
+            ]
+          }
         }
       }
     }

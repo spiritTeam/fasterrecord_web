@@ -1039,7 +1039,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        loadText:true,
+        loadText: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1248,8 +1248,8 @@
         this.uploadPic = path;
         this.modal4 = true
       },
-      templateLoad(){
-        this.loadText=false;
+      templateLoad() {
+        this.loadText = false;
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -1259,13 +1259,13 @@
         this.formRecord.c8 = arr[0]
         this.formRecord.c9 = arr2[0]
         for (let i = 0; i < arr.length; i++) {
-          if (arr[i] != '' && arr[i] > this.formRecord.c8){
+          if (arr[i] != '' && arr[i] > this.formRecord.c8) {
             this.formRecord.c8 = arr[i]
           }
         }
         for (let i = 0; i < arr.length; i++) {
           console.log(arr2[i]);
-          if (arr2[i] != '' && arr2[i] < this.formRecord.c9){
+          if (arr2[i] != '' && arr2[i] < this.formRecord.c9) {
             this.formRecord.c9 = arr2[i]
           }
         }
@@ -1291,12 +1291,12 @@
       },
       getFile(res, file, id) {
         console.log(res);
-        if(res.Status){
+        if (res.Status) {
           this.$Spin.hide();
           this['checkmark' + id] = true
-        }else{
+        } else {
           this['checkmark' + id] = false
-          this.uploadParam['filePath'+id]=''
+          this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
 
@@ -1516,363 +1516,370 @@
             callback()
           }
         }
-        return {
-          c3: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入制造单位'
-            }
-          ],
-          c5: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入备案方'
-            }
-          ],
-          c2: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请填写商标'
-            }
-          ],
-          c7: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择能效等级'
-            },
-            {
-              validator: checkc7a,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc7b,
-              trigger: 'blur'
-            }
-          ],
-          c4: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入规格型号'
-            }
-          ],
-          c17: [
-            {
-              required: true,
-              message: '不能为空'
-            }
-          ],
-          c18: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择灶具类型'
-            }
-          ],
-          c19: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择结构形式'
-            }
-          ],
-          c20: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c19 === '其它',
-              message: '请输入其它结构形式'
-            }
-          ],
-          c8: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入热效率标注值'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'blur'
-            }
-          ],
-          c9: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '睡眠状态功率(W)实测值不能为空'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc9,
-              trigger: 'blur'
-            }
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c3: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入制造单位'
+              }
+            ],
+            c5: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入备案方'
+              }
+            ],
+            c2: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请填写商标'
+              }
+            ],
+            c7: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择能效等级'
+              },
+              {
+                validator: checkc7a,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc7b,
+                trigger: 'blur'
+              }
+            ],
+            c4: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入规格型号'
+              }
+            ],
+            c17: [
+              {
+                required: true,
+                message: '不能为空'
+              }
+            ],
+            c18: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择灶具类型'
+              }
+            ],
+            c19: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择结构形式'
+              }
+            ],
+            c20: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c19 === '其它',
+                message: '请输入其它结构形式'
+              }
+            ],
+            c8: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入热效率标注值'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'blur'
+              }
+            ],
+            c9: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '睡眠状态功率(W)实测值不能为空'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc9,
+                trigger: 'blur'
+              }
 
-          ],
-          c11: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入热负荷标注值'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'blur'
-            }
-          ],
-          c12: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入热负荷实测值'
-            }
-          ],
-          c6: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择灶眼数量'
-            }
-          ],
-          c15: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c6 === '多眼灶',
-              message: '请输入多眼灶灶眼数量'
-            }
-          ],
-          c21: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择燃气类别'
-            }
-          ],
-          c22: [
-            {
-              required: true,
-              message: '请选择燃气类别值'
-            }
-          ],
-          c23: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择点火方式'
-            }
-          ],
-          c24: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c23 === '其它',
-              message: '请输入其它点火方式'
-            }
-          ],
-          c25: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择熄火保护装置'
-            }
-          ],
-          c26: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择调风装置'
-            }
-          ],
-          c28: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入额定频率'
-            }
-          ],
-          c27: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入额定电压'
-            }
-          ],
-          c29: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请选择额定燃气供气压力'
-            }
-          ],
-          c30: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c29 === '其它',
-              message: '请输入额定燃气供气压力其它值'
-            }
-          ],
-          c31: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '请输入额定热负荷'
-            }
-          ],
-          c32: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '长不能为空'
-            }
-          ],
-          c33: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '宽不能为空'
-            }
-          ],
-          c35: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '长不能为空'
-            }
-          ],
-          c36: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '宽不能为空'
-            }
-          ],
-          c37: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '高不能为空'
-            }
-          ],
-          c54: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c60 !== '',
-              message: '不能为空'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc54,
-              trigger: 'change,blur'
-            }
-          ],
-          c55: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c61 !== '',
-              message: '不能为空'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc55,
-              trigger: 'change,blur'
-            }
-          ],
-          c56: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c62 !== '',
-              message: '不能为空'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc56,
-              trigger: 'change,blur'
-            }
-          ],
-          c57: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c63 !== '',
-              message: '不能为空'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc57,
-              trigger: 'change,blur'
-            }
-          ],
-          c58: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c64 !== '',
-              message: '不能为空'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc58,
-              trigger: 'change,blur'
-            }
-          ],
-          c59: [
-            {
-              trigger: 'change,blur', required: this.formRecord.c65 !== '',
-              message: '不能为空'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc59,
-              trigger: 'change,blur'
-            }
-          ],
-          c60: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '不能为空'
-            }
-          ],
-          c66: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c67: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c68: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c69: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c70: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c71: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c84: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c85: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ],
-          c86: [
-            {
-              trigger: 'change,blur', required: true,
-              message: '不能为空'
-            }
-          ]
+            ],
+            c11: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入热负荷标注值'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'blur'
+              }
+            ],
+            c12: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入热负荷实测值'
+              }
+            ],
+            c6: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择灶眼数量'
+              }
+            ],
+            c15: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c6 === '多眼灶',
+                message: '请输入多眼灶灶眼数量'
+              }
+            ],
+            c21: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择燃气类别'
+              }
+            ],
+            c22: [
+              {
+                required: true,
+                message: '请选择燃气类别值'
+              }
+            ],
+            c23: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择点火方式'
+              }
+            ],
+            c24: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c23 === '其它',
+                message: '请输入其它点火方式'
+              }
+            ],
+            c25: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择熄火保护装置'
+              }
+            ],
+            c26: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择调风装置'
+              }
+            ],
+            c28: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入额定频率'
+              }
+            ],
+            c27: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入额定电压'
+              }
+            ],
+            c29: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请选择额定燃气供气压力'
+              }
+            ],
+            c30: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c29 === '其它',
+                message: '请输入额定燃气供气压力其它值'
+              }
+            ],
+            c31: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '请输入额定热负荷'
+              }
+            ],
+            c32: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '长不能为空'
+              }
+            ],
+            c33: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '宽不能为空'
+              }
+            ],
+            c35: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '长不能为空'
+              }
+            ],
+            c36: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '宽不能为空'
+              }
+            ],
+            c37: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '高不能为空'
+              }
+            ],
+            c54: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c60 !== '',
+                message: '不能为空'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc54,
+                trigger: 'change,blur'
+              }
+            ],
+            c55: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c61 !== '',
+                message: '不能为空'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc55,
+                trigger: 'change,blur'
+              }
+            ],
+            c56: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c62 !== '',
+                message: '不能为空'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc56,
+                trigger: 'change,blur'
+              }
+            ],
+            c57: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c63 !== '',
+                message: '不能为空'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc57,
+                trigger: 'change,blur'
+              }
+            ],
+            c58: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c64 !== '',
+                message: '不能为空'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc58,
+                trigger: 'change,blur'
+              }
+            ],
+            c59: [
+              {
+                trigger: 'change,blur', required: this.formRecord.c65 !== '',
+                message: '不能为空'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc59,
+                trigger: 'change,blur'
+              }
+            ],
+            c60: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '不能为空'
+              }
+            ],
+            c66: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c67: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c68: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c69: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c70: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c71: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c84: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c85: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ],
+            c86: [
+              {
+                trigger: 'change,blur', required: true,
+                message: '不能为空'
+              }
+            ]
+          }
         }
       }
     }

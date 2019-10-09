@@ -1618,9 +1618,7 @@
           ec_model_no: 28,
           attach_list: ''
         },
-        forbidden: {
-
-        }
+        forbidden: {}
       }
     },
     mounted() {
@@ -1783,632 +1781,638 @@
             callback()
           }
         }
-
-        return {
-          c1: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '生产者名称不能为空'
-            }
-          ],
-          c3: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '制造单位不能为空'
-            }
-          ],
-          c29: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '备案方不能为空'
-            }
-          ],
-          c2: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '产品规格型号不能为空'
-            }
-          ],
-          c4: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '商标不能为空'
-            }
-          ],
-          c35: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '能效等级不能为空'
-            },
-            {
-              validator: checkc35,
-              trigger: 'change,blur'
-            }
-          ],
-          c9: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '陈列柜类型及分级不能为空'
-            }
-          ],
-          c10: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '陈列柜类型及分级不能为空'
-            }
-          ],
-          c13: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '陈列柜类型及分级不能为空'
-            }
-          ],
-          c5: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c6: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: checkc6,
-              trigger: 'change,blur'
-            }
-          ],
-          c30: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '备注不能为空'
-            }
-          ],
-          c7: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '标称值不能为空'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c8: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '实测值不能为空'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc8,
-              trigger: 'change,blur'
-            }
-          ],
-          c31: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '备注不能为空'
-            }
-          ],
-          c11: [
-            {
-              required: true,
-              message: '备案标识开始使用日期不能为空'
-            }
-          ],
-          c18: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '总展示面积'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c20: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '夜盖不能为空'
-            }
-          ],
-          c21: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '手动照明开关不能为空'
-            }
-          ],
-          c22: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '时钟 智能感应器或类似的自动化装置控制照明不能为空'
-            }
-          ],
-          c23: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '时钟 智能感应器或类似的自动化装置控制照明不能为空'
-            }
-          ],
-          c15: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定电压不能为空'
-            }
-          ],
-          c16: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定频率不能为空'
-            }
-          ],
-          c17: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定功率不能为空'
-            }
-          ],
-          c19: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定能效指数不能为空'
-            }
-          ],
-          c24: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '制冷剂国际编号不能为空'
-            }
-          ],
-          c25: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '试验期间最热 包的最高温度不能为空'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c26: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '试验期间所有 包的平均温度不能为空'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc26,
-              trigger: 'change,blur'
-            }
-          ],
-          c36: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '有效容积不能为空'
-            }
-          ],
-          c37: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '试验期间不能为空'
-            }
-          ],
-          c27: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '包的最低温度不能为空'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c28: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '外形尺寸长不能为空'
-            }
-          ],
-          c33: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '外形尺寸宽不能为空'
-            }
-          ],
-          c34: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '外形尺寸高不能为空'
-            }
-          ],
-          c38: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '气候类型 下的能效限定值不能为空'
-            }
-          ],
-          c41: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c42: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c43: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c44: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c45: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c51: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c52: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c53: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c57: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c58: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c59: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c60: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c61: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c62: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c63: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c71: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c72: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c73: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c77: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c78: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c79: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c80: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c81: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c82: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c83: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c91: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c92: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c93: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c97: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c98: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c99: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c103: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c104: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c105: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c109: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c110: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c112: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c113: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c119: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c120: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c121: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c122: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c123: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c129: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c130: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c131: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c132: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c133: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ]
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c1: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '生产者名称不能为空'
+              }
+            ],
+            c3: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '制造单位不能为空'
+              }
+            ],
+            c29: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '备案方不能为空'
+              }
+            ],
+            c2: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '产品规格型号不能为空'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '商标不能为空'
+              }
+            ],
+            c35: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '能效等级不能为空'
+              },
+              {
+                validator: checkc35,
+                trigger: 'change,blur'
+              }
+            ],
+            c9: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '陈列柜类型及分级不能为空'
+              }
+            ],
+            c10: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '陈列柜类型及分级不能为空'
+              }
+            ],
+            c13: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '陈列柜类型及分级不能为空'
+              }
+            ],
+            c5: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c6: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: checkc6,
+                trigger: 'change,blur'
+              }
+            ],
+            c30: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '备注不能为空'
+              }
+            ],
+            c7: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '标称值不能为空'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c8: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '实测值不能为空'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc8,
+                trigger: 'change,blur'
+              }
+            ],
+            c31: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '备注不能为空'
+              }
+            ],
+            c11: [
+              {
+                required: true,
+                message: '备案标识开始使用日期不能为空'
+              }
+            ],
+            c18: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '总展示面积'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c20: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '夜盖不能为空'
+              }
+            ],
+            c21: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '手动照明开关不能为空'
+              }
+            ],
+            c22: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '时钟 智能感应器或类似的自动化装置控制照明不能为空'
+              }
+            ],
+            c23: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '时钟 智能感应器或类似的自动化装置控制照明不能为空'
+              }
+            ],
+            c15: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定电压不能为空'
+              }
+            ],
+            c16: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定频率不能为空'
+              }
+            ],
+            c17: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定功率不能为空'
+              }
+            ],
+            c19: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定能效指数不能为空'
+              }
+            ],
+            c24: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '制冷剂国际编号不能为空'
+              }
+            ],
+            c25: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '试验期间最热 包的最高温度不能为空'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c26: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '试验期间所有 包的平均温度不能为空'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc26,
+                trigger: 'change,blur'
+              }
+            ],
+            c36: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '有效容积不能为空'
+              }
+            ],
+            c37: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '试验期间不能为空'
+              }
+            ],
+            c27: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '包的最低温度不能为空'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c28: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '外形尺寸长不能为空'
+              }
+            ],
+            c33: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '外形尺寸宽不能为空'
+              }
+            ],
+            c34: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '外形尺寸高不能为空'
+              }
+            ],
+            c38: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '气候类型 下的能效限定值不能为空'
+              }
+            ],
+            c41: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c42: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c43: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c44: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c45: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c51: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c52: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c53: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c57: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c58: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c59: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c60: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c61: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c62: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c63: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c71: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c72: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c73: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c77: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c78: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c79: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c80: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c81: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c82: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c83: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c91: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c92: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c93: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c97: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c98: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c99: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c103: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c104: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c105: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c109: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c110: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c112: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c113: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c119: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c120: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c121: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c122: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c123: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c129: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c130: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c131: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c132: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c133: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ]
+          }
         }
       }
     }

@@ -1195,7 +1195,7 @@
 
   export default {
     data() {
-      const timeDate=parseInt(this.$store.state.app.dateinit);
+      const timeDate = parseInt(this.$store.state.app.dateinit);
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: "c14",
@@ -1206,7 +1206,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        loadText:true,
+        loadText: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1262,7 +1262,7 @@
         checkmark31: false,
         checkmark32: false,
         checkmark76: false,
-        mainModel:'',
+        mainModel: '',
         formRecord: {
           ec_master_kuozhan_text: '',
           c1: '',
@@ -1434,8 +1434,8 @@
         this.uploadPic = path;
         this.modal4 = true
       },
-      templateLoad(){
-        this.loadText=false;
+      templateLoad() {
+        this.loadText = false;
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -1461,12 +1461,12 @@
       },
       getFile(res, file, id) {
         console.log(res);
-        if(res.Status){
+        if (res.Status) {
           this.$Spin.hide();
           this['checkmark' + id] = true
-        }else{
+        } else {
           this['checkmark' + id] = false
-          this.uploadParam['filePath'+id]=''
+          this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
 
@@ -1477,7 +1477,7 @@
         'pageType',
         'recordno'
       ]),
-      disabledoff(){
+      disabledoff() {
         return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
@@ -1586,448 +1586,454 @@
           }
         }
 
-
-        return {
-          c1: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '生产者名称不能为空'
-            }
-          ],
-          c2: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '制造单位不能为空'
-            }
-          ],
-          c3: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '备案方不能为空'
-            }
-          ],
-          c4: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '规格型号不能为空'
-            }
-          ],
-          c5: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '商标不能为空'
-            }
-          ],
-          c200: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '依据国家标准不能为空'
-            }
-          ],
-          c7: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '能源效率等级不能为空'
-            },
-            {
-              validator: checkc7,
-              trigger: 'blur'
-            }
-          ],
-          c8: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '投影光效（lm/W）标注值不能为空'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc8,
-              trigger: 'blur'
-            }
-          ],
-          c9: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '投影光效（lm/W）实测值不能为空'
-            },
-            {
-              validator: atLeastTwoDecimals,
-              trigger: 'blur'
-            }
-          ],
-          c11: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '被动待机功率（W）标注值不能为空'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'blur'
-            },
-            {
-              validator: checkc11,
-              trigger: 'blur'
-            }
-          ],
-          c12: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '被动待机功率（W）实测值不能为空'
-            },
-            {
-              validator: atLeastThreeDecimals,
-              trigger: 'blur'
-            }
-          ],
-          c14: [
-            {
-              required: true,
-              message: '初始使用日期不能为空'
-            }
-          ],
-          c15: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '产品类型不能为空'
-            }
-          ],
-          c17: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '显示器件类型不能为空'
-            }
-          ],
-          c18: [
-            {
-              required: this.formRecord.c17 === '其它',
-              trigger: 'change,blur',
-              message: '显示器件类型其它不能为空'
-            }
-          ],
-          c19: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '光源类型不能为空'
-            }
-          ],
-          c20: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '光源功率不能为空'
-            }
-          ],
-          c21: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '光源个数不能为空'
-            }
-          ],
-          c22: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '固有分辨力（像素数）水平不能为空'
-            }
-          ],
-          c23: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '固有分辨力（像素数）垂直不能为空'
-            }
-          ],
-          c24: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '附加功能不能为空'
-            }
-          ],
-          c25: [
-            {
-              required: this.formRecord.c24 === '其它',
-              trigger: 'change,blur',
-              message: '附加功能其它不能为空'
-            }
-          ],
-          c26: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '供电方式不能为空'
-            }
-          ],
-          c27: [
-            {
-              required: this.formRecord.c26 === '外部电源,输出功率(W)',
-              trigger: 'change,blur',
-              message: '供电方式外部电源值不能为空'
-            }
-          ],
-          c28: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定电压（V）不能为空'
-            }
-          ],
-          c29: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定电流（A）不能为空'
-            }
-          ],
-          c30: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定功率（W）不能为空'
-            }
-          ],
-          c31: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定光输出（lm）不能为空'
-            }
-          ],
-          c32: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '额定频率（Hz）不能为空'
-            }
-          ],
-          c33: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '整机质量(kg)不能为空'
-            }
-          ],
-          c34: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '整机尺寸长不能为空'
-            }
-          ],
-          c35: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '整机尺寸宽不能为空'
-            }
-          ],
-          c36: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '整机尺寸高不能为空'
-            }
-          ],
-          c37: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '灯型号规格不能为空'
-            }
-          ],
-          c38: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '灯泡类型不能为空'
-            }
-          ],
-          c39: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '灯泡额定功率不能为空'
-            }
-          ],
-          c40: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '灯泡数量不能为空'
-            }
-          ],
-          c41: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '主电源控制器件型号规格不能为空'
-            }
-          ],
-          c42: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '主电源控制器件技术参数不能为空'
-            }
-          ],
-          c43: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '辅电源控制器件型号规格不能为空'
-            }
-          ],
-          c44: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '辅电源控制器件技术参数不能为空'
-            }
-          ],
-          c45: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '待机控制电路（主板/CPU）型号规格不能为空'
-            }
-          ],
-          c46: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '待机控制电路（主板/CPU）技术参数不能为空'
-            }
-          ],
-          c47: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '液晶板/DMD型号规格不能为空'
-            }
-          ],
-          c48: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '液晶板/DMD固有分辨力不能为空'
-            }
-          ],
-          c49: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '液晶板/DMD尺寸不能为空'
-            }
-          ],
-          c50: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '液晶板/DMD英寸不能为空'
-            }
-          ],
-          c51: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '光学镜头型号规格不能为空'
-            }
-          ],
-          c52: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '光学镜头技术参数不能为空'
-            }
-          ],
-          c53: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '电源板型号规格不能为空'
-            }
-          ],
-          c54: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '电源板技术参数不能为空'
-            }
-          ],
-          c112: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c91: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c94: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c97: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c100: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c103: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c106: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c109: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ]
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c1: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '生产者名称不能为空'
+              }
+            ],
+            c2: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '制造单位不能为空'
+              }
+            ],
+            c3: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '备案方不能为空'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '规格型号不能为空'
+              }
+            ],
+            c5: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '商标不能为空'
+              }
+            ],
+            c200: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '依据国家标准不能为空'
+              }
+            ],
+            c7: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '能源效率等级不能为空'
+              },
+              {
+                validator: checkc7,
+                trigger: 'blur'
+              }
+            ],
+            c8: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '投影光效（lm/W）标注值不能为空'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc8,
+                trigger: 'blur'
+              }
+            ],
+            c9: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '投影光效（lm/W）实测值不能为空'
+              },
+              {
+                validator: atLeastTwoDecimals,
+                trigger: 'blur'
+              }
+            ],
+            c11: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '被动待机功率（W）标注值不能为空'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'blur'
+              },
+              {
+                validator: checkc11,
+                trigger: 'blur'
+              }
+            ],
+            c12: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '被动待机功率（W）实测值不能为空'
+              },
+              {
+                validator: atLeastThreeDecimals,
+                trigger: 'blur'
+              }
+            ],
+            c14: [
+              {
+                required: true,
+                message: '初始使用日期不能为空'
+              }
+            ],
+            c15: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '产品类型不能为空'
+              }
+            ],
+            c17: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '显示器件类型不能为空'
+              }
+            ],
+            c18: [
+              {
+                required: this.formRecord.c17 === '其它',
+                trigger: 'change,blur',
+                message: '显示器件类型其它不能为空'
+              }
+            ],
+            c19: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '光源类型不能为空'
+              }
+            ],
+            c20: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '光源功率不能为空'
+              }
+            ],
+            c21: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '光源个数不能为空'
+              }
+            ],
+            c22: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '固有分辨力（像素数）水平不能为空'
+              }
+            ],
+            c23: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '固有分辨力（像素数）垂直不能为空'
+              }
+            ],
+            c24: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '附加功能不能为空'
+              }
+            ],
+            c25: [
+              {
+                required: this.formRecord.c24 === '其它',
+                trigger: 'change,blur',
+                message: '附加功能其它不能为空'
+              }
+            ],
+            c26: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '供电方式不能为空'
+              }
+            ],
+            c27: [
+              {
+                required: this.formRecord.c26 === '外部电源,输出功率(W)',
+                trigger: 'change,blur',
+                message: '供电方式外部电源值不能为空'
+              }
+            ],
+            c28: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定电压（V）不能为空'
+              }
+            ],
+            c29: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定电流（A）不能为空'
+              }
+            ],
+            c30: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定功率（W）不能为空'
+              }
+            ],
+            c31: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定光输出（lm）不能为空'
+              }
+            ],
+            c32: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '额定频率（Hz）不能为空'
+              }
+            ],
+            c33: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '整机质量(kg)不能为空'
+              }
+            ],
+            c34: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '整机尺寸长不能为空'
+              }
+            ],
+            c35: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '整机尺寸宽不能为空'
+              }
+            ],
+            c36: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '整机尺寸高不能为空'
+              }
+            ],
+            c37: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '灯型号规格不能为空'
+              }
+            ],
+            c38: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '灯泡类型不能为空'
+              }
+            ],
+            c39: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '灯泡额定功率不能为空'
+              }
+            ],
+            c40: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '灯泡数量不能为空'
+              }
+            ],
+            c41: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '主电源控制器件型号规格不能为空'
+              }
+            ],
+            c42: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '主电源控制器件技术参数不能为空'
+              }
+            ],
+            c43: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '辅电源控制器件型号规格不能为空'
+              }
+            ],
+            c44: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '辅电源控制器件技术参数不能为空'
+              }
+            ],
+            c45: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '待机控制电路（主板/CPU）型号规格不能为空'
+              }
+            ],
+            c46: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '待机控制电路（主板/CPU）技术参数不能为空'
+              }
+            ],
+            c47: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '液晶板/DMD型号规格不能为空'
+              }
+            ],
+            c48: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '液晶板/DMD固有分辨力不能为空'
+              }
+            ],
+            c49: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '液晶板/DMD尺寸不能为空'
+              }
+            ],
+            c50: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '液晶板/DMD英寸不能为空'
+              }
+            ],
+            c51: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '光学镜头型号规格不能为空'
+              }
+            ],
+            c52: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '光学镜头技术参数不能为空'
+              }
+            ],
+            c53: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '电源板型号规格不能为空'
+              }
+            ],
+            c54: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '电源板技术参数不能为空'
+              }
+            ],
+            c112: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c91: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c94: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c97: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c100: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c103: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c106: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c109: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ]
+          }
         }
       }
     }

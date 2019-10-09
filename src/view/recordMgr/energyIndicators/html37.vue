@@ -994,191 +994,191 @@
   } from '@/libs/utilExt'
 
   export default {
-    data () {
-    const timeDate=parseInt(this.$store.state.app.dateinit);
-    return {
-      // 当前初始使用日期 对应的C值
-      thisDateCV: 'c17',
-      // 当前能效等级 对应的C值
-      thisLevelCV: 'c16',
-      // 当前规格型号 对应的C值
-      thisGZXHCV: "c4",
-      modal3: false,
-      modal4: false,
-      modal5: false,
-      templatePic: '',
-      loadText:true,
-      uploadPic: '',
-      modal2: false,
-      currentValue: '',
-      qus: '',
-      boolFlag: [],
-      currentCValue: '',
-      confirmData: [],
-      modal1: false,
-      saveDisabled: false,
-      submitDisabled: false,
-      dataInit: {
-        disabledDate (date) {
-          return date && date.valueOf() < timeDate
-        }
-      },
-      uploadUrl: '',
-      uploadParam: {
-        fileData24: {},
-        filePath24: '',
-        uploadFileList24: [],
-        fileData26: {},
-        filePath26: '',
-        uploadFileList26: [],
-        fileData27: {},
-        filePath27: '',
-        uploadFileList27: [],
-        fileData28: {},
-        filePath28: '',
-        uploadFileList28: [],
-        fileData29: {},
-        filePath29: '',
-        uploadFileList29: [],
-        fileData30: {},
-        filePath30: '',
-        uploadFileList30: [],
-        fileData31: {},
-        filePath31: '',
-        uploadFileList31: [],
-        fileData32: {},
-        filePath32: '',
-        uploadFileList32: [],
-        fileData76: {},
-        filePath76: '',
-        uploadFileList76: []
-      },
-      filesArr: [],
-      checkmark24: false,
-      checkmark26: false,
-      checkmark27: false,
-      checkmark28: false,
-      checkmark29: false,
-      checkmark30: false,
-      checkmark31: false,
-      checkmark32: false,
-      checkmark76: false,
-      mainModel:'',
-      formRecord: {
-        ec_master_kuozhan_text: '',
-        c1: '',
-        c2: '',
-        c3: '',
-        c4: '',
-        c5: '',
-        c6: '',
-        c7: '',
-        c8: '',
-        c9: '',
-        c10: '',
-        c11: '',
-        c12: '',
-        c13: '',
-        c14: '',
-        c15: '',
-        c16: '',
-        c17: new Date(),
-        c18: '',
-        c19: '',
-        c20: '',
-        c21: '',
-        c22: '',
-        c23: '',
-        c24: '',
-        c25: '',
-        c26: '',
-        c27: '',
-        c28: '',
-        c29: '',
-        c30: '',
-        c31: '',
-        c32: '',
-        c33: '',
-        c34: '',
-        c35: '',
-        c36: '',
-        c37: '',
-        c38: '',
-        c39: '',
-        c40: '',
-        c41: '',
-        c42: '',
-        c43: '',
-        c44: '',
-        c45: '',
-        c46: '',
-        c47: '',
-        c48: '',
-        c49: '',
-        c50: '',
-        c51: '',
-        c52: '',
-        c53: '',
-        c54: '',
-        c55: '',
-        c56: '',
-        c57: '',
-        c58: '',
-        c59: '',
-        c60: '',
-        c61: '',
-        c62: '',
-        c63: '',
-        c64: '',
-        c65: '',
-        c66: '',
-        c67: '',
-        c68: '',
-        c69: '',
-        c70: '',
-        c71: '',
-        c72: '',
-        c73: '',
-        c74: '',
-        c75: '',
-        c76: '',
-        c77: '',
-        c78: '',
-        c79: '',
-        c80: '',
-        c81: '',
-        c82: '',
-        c83: '',
-        c84: '',
-        c85: '',
-        c86: '',
-        c202: '',
-        ec_model_no: 37,
-        attach_list: ''
-      },
-      forbidden: {
-        c10: true,
-        c13: true,
-        c35: true
-      },
-      extendRule: {
-        c4: [
-          {
-            trigger: 'change,blur',
-            required: true,
-            message: '产品规格型号不能为空'
-          },
-          {
-            validator: changeVal,
-            trigger: 'change,blur'
+    data() {
+      const timeDate = parseInt(this.$store.state.app.dateinit);
+      return {
+        // 当前初始使用日期 对应的C值
+        thisDateCV: 'c17',
+        // 当前能效等级 对应的C值
+        thisLevelCV: 'c16',
+        // 当前规格型号 对应的C值
+        thisGZXHCV: "c4",
+        modal3: false,
+        modal4: false,
+        modal5: false,
+        templatePic: '',
+        loadText: true,
+        uploadPic: '',
+        modal2: false,
+        currentValue: '',
+        qus: '',
+        boolFlag: [],
+        currentCValue: '',
+        confirmData: [],
+        modal1: false,
+        saveDisabled: false,
+        submitDisabled: false,
+        dataInit: {
+          disabledDate(date) {
+            return date && date.valueOf() < timeDate
           }
-        ]
+        },
+        uploadUrl: '',
+        uploadParam: {
+          fileData24: {},
+          filePath24: '',
+          uploadFileList24: [],
+          fileData26: {},
+          filePath26: '',
+          uploadFileList26: [],
+          fileData27: {},
+          filePath27: '',
+          uploadFileList27: [],
+          fileData28: {},
+          filePath28: '',
+          uploadFileList28: [],
+          fileData29: {},
+          filePath29: '',
+          uploadFileList29: [],
+          fileData30: {},
+          filePath30: '',
+          uploadFileList30: [],
+          fileData31: {},
+          filePath31: '',
+          uploadFileList31: [],
+          fileData32: {},
+          filePath32: '',
+          uploadFileList32: [],
+          fileData76: {},
+          filePath76: '',
+          uploadFileList76: []
+        },
+        filesArr: [],
+        checkmark24: false,
+        checkmark26: false,
+        checkmark27: false,
+        checkmark28: false,
+        checkmark29: false,
+        checkmark30: false,
+        checkmark31: false,
+        checkmark32: false,
+        checkmark76: false,
+        mainModel: '',
+        formRecord: {
+          ec_master_kuozhan_text: '',
+          c1: '',
+          c2: '',
+          c3: '',
+          c4: '',
+          c5: '',
+          c6: '',
+          c7: '',
+          c8: '',
+          c9: '',
+          c10: '',
+          c11: '',
+          c12: '',
+          c13: '',
+          c14: '',
+          c15: '',
+          c16: '',
+          c17: new Date(),
+          c18: '',
+          c19: '',
+          c20: '',
+          c21: '',
+          c22: '',
+          c23: '',
+          c24: '',
+          c25: '',
+          c26: '',
+          c27: '',
+          c28: '',
+          c29: '',
+          c30: '',
+          c31: '',
+          c32: '',
+          c33: '',
+          c34: '',
+          c35: '',
+          c36: '',
+          c37: '',
+          c38: '',
+          c39: '',
+          c40: '',
+          c41: '',
+          c42: '',
+          c43: '',
+          c44: '',
+          c45: '',
+          c46: '',
+          c47: '',
+          c48: '',
+          c49: '',
+          c50: '',
+          c51: '',
+          c52: '',
+          c53: '',
+          c54: '',
+          c55: '',
+          c56: '',
+          c57: '',
+          c58: '',
+          c59: '',
+          c60: '',
+          c61: '',
+          c62: '',
+          c63: '',
+          c64: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c69: '',
+          c70: '',
+          c71: '',
+          c72: '',
+          c73: '',
+          c74: '',
+          c75: '',
+          c76: '',
+          c77: '',
+          c78: '',
+          c79: '',
+          c80: '',
+          c81: '',
+          c82: '',
+          c83: '',
+          c84: '',
+          c85: '',
+          c86: '',
+          c202: '',
+          ec_model_no: 37,
+          attach_list: ''
+        },
+        forbidden: {
+          c10: true,
+          c13: true,
+          c35: true
+        },
+        extendRule: {
+          c4: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: changeVal,
+              trigger: 'change,blur'
+            }
+          ]
+        }
       }
-    }
-  },
+    },
 
     mounted() {
-     // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
+      // this.disabledoff = this.$store.state.app.pageType == "extend" ? true : false
     },
     methods: {
       showTemplate() {
@@ -1210,8 +1210,8 @@
         this.uploadPic = path;
         this.modal4 = true
       },
-      templateLoad(){
-        this.loadText=false;
+      templateLoad() {
+        this.loadText = false;
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -1225,7 +1225,7 @@
       submitRecord() {
         return XsubmitRecord(this)
       },
-       viewClose() {
+      viewClose() {
         return XviewClose(this)
       },
       /* 保存草稿箱 */
@@ -1237,12 +1237,12 @@
       },
       getFile(res, file, id) {
         console.log(res);
-        if(res.Status){
+        if (res.Status) {
           this.$Spin.hide();
           this['checkmark' + id] = true
-        }else{
+        } else {
           this['checkmark' + id] = false
-          this.uploadParam['filePath'+id]=''
+          this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
 
@@ -1253,7 +1253,7 @@
         'pageType',
         'recordno'
       ]),
-      disabledoff(){
+      disabledoff() {
         return this.pageType === 'extend' || this.pageType === 'view'
       },
       pltId() {
@@ -1266,7 +1266,7 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        if (this.formRecord.c34 === '有' ) {
+        if (this.formRecord.c34 === '有') {
           this.forbidden.c35 = false
         } else {
           this.formRecord.c35 = ''
@@ -1292,148 +1292,148 @@
             callback("所填性能系数(COP)实测值应不小于性能系数(COP)标准规定值的95%");
           }
         } else {
-            if (parseFloat(this.formRecord.c7) < 10000) {
-                if (this.formRecord.c20 == "普通式") {
-                    if (this.formRecord.c19 == "一次加热" || this.formRecord.c19 == "循环加热式") {
-                        if (parseFloat(this.formRecord.c13) >= 4.60) {
-                            nxdj = "1";
-                        } else if (parseFloat(this.formRecord.c13) >= 4.40) {
-                            nxdj = "2";
-                        } else if (parseFloat(this.formRecord.c13) >= 4.10) {
-                            nxdj = "3";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.90) {
-                            nxdj = "4";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                            nxdj = "5";
-                        }
-                    } else if (this.formRecord.c19 == "静态加热式") {
-                        if (parseFloat(this.formRecord.c13) >= 4.20) {
-                            nxdj = "1";
-                        } else if (parseFloat(this.formRecord.c13) >= 4.00) {
-                            nxdj = "2";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.80) {
-                            nxdj = "3";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                            nxdj = "4";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.40) {
-                            nxdj = "5";
-                        }
-                    }
-                } else {
-                    if (this.formRecord.c19 == "一次加热" || this.formRecord.c19== "循环加热式") {
-                        if (parseFloat(this.formRecord.c13) >= 3.80) {
-                            nxdj = "1";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                            nxdj = "2";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.40) {
-                            nxdj = "3";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.20) {
-                            nxdj = "4";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.00) {
-                            nxdj = "5";
-                        }
-                    }
+          if (parseFloat(this.formRecord.c7) < 10000) {
+            if (this.formRecord.c20 == "普通式") {
+              if (this.formRecord.c19 == "一次加热" || this.formRecord.c19 == "循环加热式") {
+                if (parseFloat(this.formRecord.c13) >= 4.60) {
+                  nxdj = "1";
+                } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                  nxdj = "2";
+                } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                  nxdj = "3";
+                } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                  nxdj = "4";
+                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                  nxdj = "5";
                 }
+              } else if (this.formRecord.c19 == "静态加热式") {
+                if (parseFloat(this.formRecord.c13) >= 4.20) {
+                  nxdj = "1";
+                } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                  nxdj = "2";
+                } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                  nxdj = "3";
+                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                  nxdj = "4";
+                } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                  nxdj = "5";
+                }
+              }
             } else {
-                if (this.formRecord.c20 == "普通式") {
-                    if (this.formRecord.c19== "一次加热") {
-                        if (parseFloat(this.formRecord.c13) >= 4.60) {
-                            nxdj = "1";
-                        } else if (parseFloat(this.formRecord.c13) >= 4.40) {
-                            nxdj = "2";
-                        } else if (parseFloat(this.formRecord.c13) >= 4.10) {
-                            nxdj = "3";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.90) {
-                            nxdj = "4";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                            nxdj = "5";
-                        }
-                    } else if (this.formRecord.c19 == "静态加热式") {
-                        if (parseFloat(this.formRecord.c19) >= 4.20) {
-                            nxdj = "1";
-                        } else if (parseFloat(this.formRecord.c13) >= 4.00) {
-                            nxdj = "2";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.80) {
-                            nxdj = "3";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                            nxdj = "4";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.40) {
-                            nxdj = "5";
-                        }
-                    }
-
-                    if (this.formRecord.c19 == "循环加热式") {
-                        if (this.formRecord.c21 == "否") {
-                            if (parseFloat(this.formRecord.c13) >= 4.60) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.40) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.10) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.90) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                                nxdj = "5";
-                            }
-                        }
-                        if (this.formRecord.c21== "是") {
-                            if (parseFloat(this.formRecord.c13) >= 4.50) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.30) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 4.00) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.80) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                                nxdj = "5";
-                            }
-                        }
-
-                    }
-                } else if (this.formRecord.c20 == "低温式") {
-                    if (this.formRecord.c20 == "一次加热") {
-                        if (parseFloat(this.formRecord.c13) >= 3.90) {
-                            nxdj = "1";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                            nxdj = "2";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.50) {
-                            nxdj = "3";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.30) {
-                            nxdj = "4";
-                        } else if (parseFloat(this.formRecord.c13) >= 3.10) {
-                            nxdj = "5";
-                        }
-                    } else if (this.formRecord.c20 == "低温式") {
-                        if (this.formRecord.c21 == "否") {
-                            if (parseFloat(this.formRecord.c13) >= 3.90) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.70) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.50) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.30) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.10) {
-                                nxdj = "5";
-                            }
-                        }
-                        if (this.formRecord.c21 == "是") {
-                            if (parseFloat(this.formRecord.c13) >= 3.80) {
-                                nxdj = "1";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.60) {
-                                nxdj = "2";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.40) {
-                                nxdj = "3";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.20) {
-                                nxdj = "4";
-                            } else if (parseFloat(this.formRecord.c13) >= 3.00) {
-                                nxdj = "5";
-                            }
-                        }
-                    }
+              if (this.formRecord.c19 == "一次加热" || this.formRecord.c19 == "循环加热式") {
+                if (parseFloat(this.formRecord.c13) >= 3.80) {
+                  nxdj = "1";
+                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                  nxdj = "2";
+                } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                  nxdj = "3";
+                } else if (parseFloat(this.formRecord.c13) >= 3.20) {
+                  nxdj = "4";
+                } else if (parseFloat(this.formRecord.c13) >= 3.00) {
+                  nxdj = "5";
                 }
+              }
             }
+          } else {
+            if (this.formRecord.c20 == "普通式") {
+              if (this.formRecord.c19 == "一次加热") {
+                if (parseFloat(this.formRecord.c13) >= 4.60) {
+                  nxdj = "1";
+                } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                  nxdj = "2";
+                } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                  nxdj = "3";
+                } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                  nxdj = "4";
+                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                  nxdj = "5";
+                }
+              } else if (this.formRecord.c19 == "静态加热式") {
+                if (parseFloat(this.formRecord.c19) >= 4.20) {
+                  nxdj = "1";
+                } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                  nxdj = "2";
+                } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                  nxdj = "3";
+                } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                  nxdj = "4";
+                } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                  nxdj = "5";
+                }
+              }
+
+              if (this.formRecord.c19 == "循环加热式") {
+                if (this.formRecord.c21 == "否") {
+                  if (parseFloat(this.formRecord.c13) >= 4.60) {
+                    nxdj = "1";
+                  } else if (parseFloat(this.formRecord.c13) >= 4.40) {
+                    nxdj = "2";
+                  } else if (parseFloat(this.formRecord.c13) >= 4.10) {
+                    nxdj = "3";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.90) {
+                    nxdj = "4";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                    nxdj = "5";
+                  }
+                }
+                if (this.formRecord.c21 == "是") {
+                  if (parseFloat(this.formRecord.c13) >= 4.50) {
+                    nxdj = "1";
+                  } else if (parseFloat(this.formRecord.c13) >= 4.30) {
+                    nxdj = "2";
+                  } else if (parseFloat(this.formRecord.c13) >= 4.00) {
+                    nxdj = "3";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.80) {
+                    nxdj = "4";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                    nxdj = "5";
+                  }
+                }
+
+              }
+            } else if (this.formRecord.c20 == "低温式") {
+              if (this.formRecord.c20 == "一次加热") {
+                if (parseFloat(this.formRecord.c13) >= 3.90) {
+                  nxdj = "1";
+                } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                  nxdj = "2";
+                } else if (parseFloat(this.formRecord.c13) >= 3.50) {
+                  nxdj = "3";
+                } else if (parseFloat(this.formRecord.c13) >= 3.30) {
+                  nxdj = "4";
+                } else if (parseFloat(this.formRecord.c13) >= 3.10) {
+                  nxdj = "5";
+                }
+              } else if (this.formRecord.c20 == "低温式") {
+                if (this.formRecord.c21 == "否") {
+                  if (parseFloat(this.formRecord.c13) >= 3.90) {
+                    nxdj = "1";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.70) {
+                    nxdj = "2";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.50) {
+                    nxdj = "3";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.30) {
+                    nxdj = "4";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.10) {
+                    nxdj = "5";
+                  }
+                }
+                if (this.formRecord.c21 == "是") {
+                  if (parseFloat(this.formRecord.c13) >= 3.80) {
+                    nxdj = "1";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.60) {
+                    nxdj = "2";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.40) {
+                    nxdj = "3";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.20) {
+                    nxdj = "4";
+                  } else if (parseFloat(this.formRecord.c13) >= 3.00) {
+                    nxdj = "5";
+                  }
+                }
+              }
+            }
+          }
         }
 
         if (nxdj == "") {
@@ -1442,467 +1442,473 @@
           }
         }
         if (this.formRecord.c16 != nxdj) {
-            checkcnxdj = (rule, value, callback) => {
+          checkcnxdj = (rule, value, callback) => {
             callback("所选能效等级与计算结果不符！");
           }
         }
-
-        return {
-         c2: [
-            {
-              required: true,
-              message: '制造单位不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c3: [
-            {
-              required: true,
-              message: '备案方不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c4: [
-            {
-              required: true,
-              message: '产品规格型号不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c5: [
-            {
-              required: true,
-              message: '商标不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c16: [
-            {
-              required: true,
-              message: '能效等级不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c7: [
-            {
-              required: true,
-              message: '标注值不能为空',
-              trigger: 'change,blur'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            }
-          ],
-         c8: [
-            {
-              required: true,
-              message: '标注值不能为空',
-              trigger: 'change,blur'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc8,
-              trigger: 'change,blur'
-            }
-          ],
-         c10: [
-            {
-              required: true,
-              message: '标注值不能为空',
-              trigger: 'change,blur'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            }
-          ],
-         c11: [
-            {
-              required: true,
-              message: '实测值不能为空',
-              trigger: 'change,blur'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc11,
-              trigger: 'change,blur'
-            }
-          ],
-         c13: [
-            {
-              required: true,
-              message: '标注值不能为空',
-              trigger: 'change,blur'
-            },
-            {
-              validator: atLeastTwoDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-         c14: [
-            {
-              required: true,
-              message: '实测值不能为空',
-              trigger: 'change,blur'
-            },
-            {
-              validator: atLeastTwoDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc14,
-              trigger: 'change,blur'
-            }
-          ],
-         c17: [
-            {
-              required: true,
-              message: '备案标识开始使用日期不能为空'
-            }
-          ],
-         c18: [
-            {
-              required: true,
-              message: '机械类型不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c19: [
-            {
-              required: true,
-              message: '加热方式不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c20: [
-            {
-              required: true,
-              message: '产品类型不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c21: [
-            {
-              required: true,
-              message: '是否提供水泵不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c22: [
-            {
-              required: true,
-              message: '电源类型不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c23: [
-            {
-              required: true,
-              message: '额定电压不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c24: [
-            {
-              required: true,
-              message: '额定电流不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c25: [
-            {
-              required: true,
-              message: '额定频率不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c26: [
-            {
-              required: true,
-              message: '制热量不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c27: [
-            {
-              required: true,
-              message: '制热消耗功率不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c29: [
-            {
-              required: true,
-              message: '产水量不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c30: [
-            {
-              required: true,
-              message: '储水箱容量不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c31: [
-            {
-              required: true,
-              message: '储水箱额定压力不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c32: [
-            {
-              required: true,
-              message: '最高出水温度不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c33: [
-            {
-              required: true,
-              message: '最大输入功率不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c34: [
-            {
-              required: true,
-              message: '是否有辅助热源不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c35: [
-            {
-              required: this.formRecord.c34==='有',
-              message: '辅助热源类型不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c36: [
-            {
-              required: true,
-              message: '辅助热源消耗功率不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c37: [
-            {
-              required: true,
-              message: '整机或热泵机组的长不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c38: [
-            {
-              required: true,
-              message: '整机或热泵机组的宽不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c39: [
-            {
-              required: true,
-              message: '整机或热泵机组的高不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c40: [
-            {
-              required: true,
-              message: '储水箱的长不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c41: [
-            {
-              required: true,
-              message: '储水箱的宽不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c42: [
-            {
-              required: true,
-              message: '储水箱的高不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c43: [
-            {
-              required: true,
-              message: '整机或热泵机组声压等级不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c44: [
-            {
-              required: true,
-              message: '储水箱声压等级不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c45: [
-            {
-              required: true,
-              message: '制冷剂不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c46: [
-            {
-              required: true,
-              message: '灌注量不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c47: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c48: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c49: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c50: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c51: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c57: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c58: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c59: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c60: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c65: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c66: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c67: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c68: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c69: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c75: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c76: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c77: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c78: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c79: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-         c80: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ]
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c2: [
+              {
+                required: true,
+                message: '制造单位不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c3: [
+              {
+                required: true,
+                message: '备案方不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                message: '产品规格型号不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c5: [
+              {
+                required: true,
+                message: '商标不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c16: [
+              {
+                required: true,
+                message: '能效等级不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c7: [
+              {
+                required: true,
+                message: '标注值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              }
+            ],
+            c8: [
+              {
+                required: true,
+                message: '标注值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc8,
+                trigger: 'change,blur'
+              }
+            ],
+            c10: [
+              {
+                required: true,
+                message: '标注值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              }
+            ],
+            c11: [
+              {
+                required: true,
+                message: '实测值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc11,
+                trigger: 'change,blur'
+              }
+            ],
+            c13: [
+              {
+                required: true,
+                message: '标注值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: atLeastTwoDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c14: [
+              {
+                required: true,
+                message: '实测值不能为空',
+                trigger: 'change,blur'
+              },
+              {
+                validator: atLeastTwoDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc14,
+                trigger: 'change,blur'
+              }
+            ],
+            c17: [
+              {
+                required: true,
+                message: '备案标识开始使用日期不能为空'
+              }
+            ],
+            c18: [
+              {
+                required: true,
+                message: '机械类型不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c19: [
+              {
+                required: true,
+                message: '加热方式不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c20: [
+              {
+                required: true,
+                message: '产品类型不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c21: [
+              {
+                required: true,
+                message: '是否提供水泵不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c22: [
+              {
+                required: true,
+                message: '电源类型不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c23: [
+              {
+                required: true,
+                message: '额定电压不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c24: [
+              {
+                required: true,
+                message: '额定电流不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c25: [
+              {
+                required: true,
+                message: '额定频率不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c26: [
+              {
+                required: true,
+                message: '制热量不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c27: [
+              {
+                required: true,
+                message: '制热消耗功率不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c29: [
+              {
+                required: true,
+                message: '产水量不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c30: [
+              {
+                required: true,
+                message: '储水箱容量不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c31: [
+              {
+                required: true,
+                message: '储水箱额定压力不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c32: [
+              {
+                required: true,
+                message: '最高出水温度不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c33: [
+              {
+                required: true,
+                message: '最大输入功率不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c34: [
+              {
+                required: true,
+                message: '是否有辅助热源不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c35: [
+              {
+                required: this.formRecord.c34 === '有',
+                message: '辅助热源类型不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c36: [
+              {
+                required: true,
+                message: '辅助热源消耗功率不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c37: [
+              {
+                required: true,
+                message: '整机或热泵机组的长不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c38: [
+              {
+                required: true,
+                message: '整机或热泵机组的宽不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c39: [
+              {
+                required: true,
+                message: '整机或热泵机组的高不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c40: [
+              {
+                required: true,
+                message: '储水箱的长不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c41: [
+              {
+                required: true,
+                message: '储水箱的宽不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c42: [
+              {
+                required: true,
+                message: '储水箱的高不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c43: [
+              {
+                required: true,
+                message: '整机或热泵机组声压等级不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c44: [
+              {
+                required: true,
+                message: '储水箱声压等级不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c45: [
+              {
+                required: true,
+                message: '制冷剂不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c46: [
+              {
+                required: true,
+                message: '灌注量不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c47: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c48: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c49: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c50: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c51: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c57: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c58: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c59: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c60: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c65: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c66: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c67: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c68: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c69: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c75: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c76: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c77: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c78: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c79: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c80: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ]
+          }
         }
       }
     }

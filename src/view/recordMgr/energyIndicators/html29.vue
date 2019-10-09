@@ -1155,7 +1155,7 @@
         modal4: false,
         modal5: false,
         templatePic: '',
-        loadText:true,
+        loadText: true,
         uploadPic: '',
         modal2: false,
         currentValue: '',
@@ -1386,8 +1386,8 @@
         this.uploadPic = path;
         this.modal4 = true
       },
-      templateLoad(){
-        this.loadText=false;
+      templateLoad() {
+        this.loadText = false;
       },
       /* 数据来源 新增备案 */
       fillDefaultData(params) {
@@ -1413,12 +1413,12 @@
       },
       getFile(res, file, id) {
         console.log(res);
-        if(res.Status){
+        if (res.Status) {
           this.$Spin.hide();
           this['checkmark' + id] = true
-        }else{
+        } else {
           this['checkmark' + id] = false
-          this.uploadParam['filePath'+id]=''
+          this.uploadParam['filePath' + id] = ''
           this.$Message.warning('上传失败')
         }
 
@@ -1689,21 +1689,21 @@
           if (c5 > c6) {
             callback('能效系数的标称值≤能效系数的实测值')
           } else {
-              callback()
+            callback()
           }
         }
         const checkc8 = (rule, value, callback) => {
           if (c7 > c8) {
             callback('日有用得热量的标称值≤日有用得热量的实测值')
           } else {
-              callback()
+            callback()
           }
         }
         const checkc10 = (rule, value, callback) => {
           if (c9 < c10) {
             callback('平均热损因数的标称值≥平均热损因数的实测值')
           } else {
-              callback()
+            callback()
           }
         }
 
@@ -1721,643 +1721,649 @@
             }
           }
         }
-
-        return {
-          c3: [
-            {
-              required: true,
-              message: '请输入制造单位',
-              trigger: 'change,blur'
-            }
-          ],
-          c59: [
-            {
-              required: true,
-              message: '请输入备案方',
-              trigger: 'change,blur'
-            }
-          ],
-          c2: [
-            {
-              required: true,
-              message: '请输入产品规格型号',
-              trigger: 'change,blur'
-            }
-          ],
-          c4: [
-            {
-              required: true,
-              message: '请输入商标',
-              trigger: 'change,blur'
-            }
-          ],
-          c200: [
-            {
-              required: true,
-              message: '请输入依据国家标准',
-              trigger: 'change,blur'
-            }
-          ],
-          c64: [
-            {
-              required: true,
-              message: '请选择能效等级',
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc64,
-              trigger: 'change,blur'
-            }
-          ],
-          c5: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c6: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: twoDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc6,
-              trigger: 'change,blur'
-            }
-          ],
-          c7: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c8: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc8,
-              trigger: 'change,blur'
-            }
-          ],
-          c9: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            }
-          ],
-          c10: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: numberCheck,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc10,
-              trigger: 'change,blur'
-            }
-          ],
-          c11: [
-            {
-              required: true,
-              message: '请输入备案起始日期'
-            }
-          ],
-          c12: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c63: [
-            {
-              required: this.formRecord.c12 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c13: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c14: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c15: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: this.formRecord.c14 == '平板型' ? twoDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c16: [
-            {
-              required: this.formRecord.c14 == '真空管型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c17: [
-            {
-              required: this.formRecord.c16 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c18: [
-            {
-              required: this.formRecord.c14 == '真空管型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c19: [
-            {
-              required: this.formRecord.c18 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c20: [
-            {
-              required: this.formRecord.c14 == '真空管型',
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: this.formRecord.c14 === '真空管型' ? oneDecimals : check,
-              trigger: 'change,blur'
-            }
-          ],
-          c21: [
-            {
-              required: this.formRecord.c14 == '真空管型',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c22: [
-            {
-              required: this.formRecord.c14 == '真空管型',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c23: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c24: [
-            {
-              required: this.formRecord.c23 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c25: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c26: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c27: [
-            {
-              required: this.formRecord.c26 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c28: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c29: [
-            {
-              required: this.formRecord.c28 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c30: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c31: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c32: [
-            {
-              required: this.formRecord.c31 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c33: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c34: [
-            {
-              required: this.formRecord.c33 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c35: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c36: [
-            {
-              required: this.formRecord.c35 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c37: [
-            {
-              required: this.formRecord.c14 == '平板型',
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c38: [
-            {
-              required: this.formRecord.c37 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c39: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c73: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c74: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c40: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c76: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c77: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c41: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            },
-            {
-              validator: threeDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          c42: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c43: [
-            {
-              required: this.formRecord.c42 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c44: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c45: [
-            {
-              required: this.formRecord.c44 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-           /* , {
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c3: [
+              {
+                required: true,
+                message: '请输入制造单位',
+                trigger: 'change,blur'
+              }
+            ],
+            c59: [
+              {
+                required: true,
+                message: '请输入备案方',
+                trigger: 'change,blur'
+              }
+            ],
+            c2: [
+              {
+                required: true,
+                message: '请输入产品规格型号',
+                trigger: 'change,blur'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                message: '请输入商标',
+                trigger: 'change,blur'
+              }
+            ],
+            c200: [
+              {
+                required: true,
+                message: '请输入依据国家标准',
+                trigger: 'change,blur'
+              }
+            ],
+            c64: [
+              {
+                required: true,
+                message: '请选择能效等级',
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc64,
+                trigger: 'change,blur'
+              }
+            ],
+            c5: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c6: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc6,
+                trigger: 'change,blur'
+              }
+            ],
+            c7: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c8: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc8,
+                trigger: 'change,blur'
+              }
+            ],
+            c9: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              }
+            ],
+            c10: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: numberCheck,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc10,
+                trigger: 'change,blur'
+              }
+            ],
+            c11: [
+              {
+                required: true,
+                message: '请输入备案起始日期'
+              }
+            ],
+            c12: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c63: [
+              {
+                required: this.formRecord.c12 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c13: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c14: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c15: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: this.formRecord.c14 == '平板型' ? twoDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c16: [
+              {
+                required: this.formRecord.c14 == '真空管型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c17: [
+              {
+                required: this.formRecord.c16 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c18: [
+              {
+                required: this.formRecord.c14 == '真空管型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c19: [
+              {
+                required: this.formRecord.c18 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c20: [
+              {
+                required: this.formRecord.c14 == '真空管型',
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: this.formRecord.c14 === '真空管型' ? oneDecimals : check,
+                trigger: 'change,blur'
+              }
+            ],
+            c21: [
+              {
+                required: this.formRecord.c14 == '真空管型',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c22: [
+              {
+                required: this.formRecord.c14 == '真空管型',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c23: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c24: [
+              {
+                required: this.formRecord.c23 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c25: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c26: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c27: [
+              {
+                required: this.formRecord.c26 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c28: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c29: [
+              {
+                required: this.formRecord.c28 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c30: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c31: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c32: [
+              {
+                required: this.formRecord.c31 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c33: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c34: [
+              {
+                required: this.formRecord.c33 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c35: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c36: [
+              {
+                required: this.formRecord.c35 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c37: [
+              {
+                required: this.formRecord.c14 == '平板型',
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c38: [
+              {
+                required: this.formRecord.c37 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c39: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c73: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c74: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c40: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c76: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c77: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c41: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              },
+              {
+                validator: threeDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            c42: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c43: [
+              {
+                required: this.formRecord.c42 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c44: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c45: [
+              {
+                required: this.formRecord.c44 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+              /* , {
               validator: this.formRecord.c44 === '其它' ? twoDecimals : check,
               trigger: 'change,blur'
             }*/
-          ],
-          c46: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c47: [
-            {
-              required: this.formRecord.c46 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c48: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c49: [
-            {
-              required: this.formRecord.c48 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c50: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c51: [
-            {
-              required: this.formRecord.c50 === '其它',
-              message: '其它不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c54: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c55: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c53: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c71: [
-            {
-              required: true,
-              message: '请选择',
-              trigger: 'change,blur'
-            }
-          ],
-          c56: [
-            {
-              required: this.formRecord.c71 === '是',
-              message: '请输入'
-            }
-          ],
-          c57: [
-            {
-              required: this.formRecord.c71 === '否',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c58: [
-            {
-              required: this.formRecord.c71 === '否',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c65: [
-            {
-              required: this.formRecord.c71 === '是',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c66: [
-            {
-              required: this.formRecord.c71 === '是',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c67: [
-            {
-              required: this.formRecord.c71 === '否',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c68: [
-            {
-              required: this.formRecord.c71 === '否',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c69: [
-            {
-              required: this.formRecord.c71 === '否',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c52: [
-            {
-              required: true,
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c70: [
-            {
-              required: this.formRecord.c71 === '否',
-              message: '请输入',
-              trigger: 'change,blur'
-            }
-          ],
-          c78: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c79: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c80: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c84: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c85: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c86: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c90: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c91: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c92: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c93: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ],
-          c94: [
-            {
-              required: true,
-              message: '不能为空',
-              trigger: 'change,blur'
-            }
-          ]
+            ],
+            c46: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c47: [
+              {
+                required: this.formRecord.c46 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c48: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c49: [
+              {
+                required: this.formRecord.c48 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c50: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c51: [
+              {
+                required: this.formRecord.c50 === '其它',
+                message: '其它不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c54: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c55: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c53: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c71: [
+              {
+                required: true,
+                message: '请选择',
+                trigger: 'change,blur'
+              }
+            ],
+            c56: [
+              {
+                required: this.formRecord.c71 === '是',
+                message: '请输入'
+              }
+            ],
+            c57: [
+              {
+                required: this.formRecord.c71 === '否',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c58: [
+              {
+                required: this.formRecord.c71 === '否',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c65: [
+              {
+                required: this.formRecord.c71 === '是',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c66: [
+              {
+                required: this.formRecord.c71 === '是',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c67: [
+              {
+                required: this.formRecord.c71 === '否',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c68: [
+              {
+                required: this.formRecord.c71 === '否',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c69: [
+              {
+                required: this.formRecord.c71 === '否',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c52: [
+              {
+                required: true,
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c70: [
+              {
+                required: this.formRecord.c71 === '否',
+                message: '请输入',
+                trigger: 'change,blur'
+              }
+            ],
+            c78: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c79: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c80: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c84: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c85: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c86: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c90: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c91: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c92: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c93: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ],
+            c94: [
+              {
+                required: true,
+                message: '不能为空',
+                trigger: 'change,blur'
+              }
+            ]
+          }
         }
       }
     }
