@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
       <h1>家用太阳能热水系统-修订能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">

@@ -1912,16 +1912,21 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
-          } else if (res.data.msg) {
-            _this.$Message.warning(res.data.msg)
-            _this.saveDisabled = false
-          } else {
+          } else if (res.data.result_code === '0' || res.data.result_code === '-1'){
             _this.$Message.warning(res.data.message)
-            // _this.submitDisabled = false
-          }
-          if (res.data.result_code !== '1'){
-            axios.get('/ads/getToken.do').then(res => {
-              _this.action_token = res.data.action_token
+            if (res.data.refresh_token === '1') {
+              axios.get('/ads/getToken.do').then(res => {
+                _this.action_token = res.data.action_token
+              })
+            }
+          } else if (res.data.result_code === '-2') {
+            _this.$Modal.success({
+              title: '提交失败',
+              content: '<p>' + res.data.message + '</p>',
+              okText: '重新登录',
+              onOk () {
+                window.location.href = '/base_html/index/login.jsp'
+              }
             })
           }
         })
@@ -1951,16 +1956,21 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
-          } else if (res.data.msg) {
-            _this.$Message.warning(res.data.msg)
-            _this.saveDisabled = false
-          } else {
+          }  else if (res.data.result_code === '0' || res.data.result_code === '-1'){
             _this.$Message.warning(res.data.message)
-            _this.submitDisabled = false
-          }
-          if (res.data.result_code !== '1'){
-            axios.get('/ads/getToken.do').then(res => {
-              _this.action_token = res.data.action_token
+            if (res.data.refresh_token === '1') {
+              axios.get('/ads/getToken.do').then(res => {
+                _this.action_token = res.data.action_token
+              })
+            }
+          } else if (res.data.result_code === '-2') {
+            _this.$Modal.success({
+              title: '提交失败',
+              content: '<p>' + res.data.message + '</p>',
+              okText: '重新登录',
+              onOk () {
+                window.location.href = '/base_html/index/login.jsp'
+              }
             })
           }
         })
