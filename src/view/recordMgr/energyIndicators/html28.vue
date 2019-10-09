@@ -1412,7 +1412,6 @@
     data() {
       const timeDate = parseInt(this.$store.state.app.dateinit);
       return {
-
         // 当前初始使用日期 对应的C值
         thisDateCV: "c11",
         // 当前能效等级 对应的C值

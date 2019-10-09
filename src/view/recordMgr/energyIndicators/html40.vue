@@ -825,9 +825,6 @@
   export default {
     data() {
       const timeDate=parseInt(this.$store.state.app.dateinit);
-      const changeVal = (rule, value, callback) => {
-        this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
-      }
       return {
         // 当前初始使用日期 对应的C值
         thisDateCV: "c8",
