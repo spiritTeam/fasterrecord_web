@@ -1767,6 +1767,20 @@ import {
           return {};
         } else if (this.pageType === 'extend') {
           return {
+            c3: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '产品规格型号不能为空'
+              },
+              {
+                validator: changeVal,
+                trigger: 'change,blur'
+              }
+            ]
+          }
+        }else{
+          return {
             c16: [
               {
                 required: this.formRecord.c15 === '其它',

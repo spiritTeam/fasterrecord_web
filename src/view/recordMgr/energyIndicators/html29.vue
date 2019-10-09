@@ -1728,6 +1728,20 @@
           return {};
         } else if (this.pageType === 'extend') {
           return {
+            c2: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '产品规格型号不能为空'
+              },
+              {
+                validator: changeVal,
+                trigger: 'change,blur'
+              }
+            ]
+          }
+        }else{
+          return {
             c3: [
               {
                 required: true,

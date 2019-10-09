@@ -1466,6 +1466,20 @@
                 message: '产品规格型号不能为空'
               },
               {
+                validator: changeVal,
+                trigger: 'change,blur'
+              }
+            ]
+          }
+        }else{
+          return {
+            c4: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '产品规格型号不能为空'
+              },
+              {
                 validator: (rule, value, callback) => {
                   this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
                 },

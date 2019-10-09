@@ -1066,9 +1066,10 @@
     data() {
       const timeDate = parseInt(this.$store.state.app.dateinit);
       const changeVal = (rule, value, callback) => {
-        if (this.c2 !== this.formRecord.c2){
+        if (this.c2 !== this.formRecord.c2) {
           this.c2 = this.formRecord.c2
-          this.$refs['formRecord'].validate((valid) => {})
+          this.$refs['formRecord'].validate((valid) => {
+          })
         }
         this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
       }
@@ -1798,33 +1799,63 @@
         var c64 = this.formRecord.c64;
         var c2 = this.formRecord.c2;
         const repeat = (rule, value, callback) => {
-          if (this.formRecord.c64.indexOf("；") > -1) {
-            callback('扩展型号分隔符有非法字符，请使用英文输入法下的分号";"')
-          }
-          let split1 = this.c64.split(";").filter(item => item !== "")
-          let split2 = c64.split(";").filter(item => item !== "")
-          for (let i = 0; i < split1.length; i++) {
-            for (let j = 0; j < split2.length; j++) {
-              if (split1[i] === split2[j]) {
-                callback("扩展型号与主型号备案中的规格型号或扩展型号重复")
+          if (this.pageType === 'extend') {
+            if (c64.indexOf("；") > -1) {
+              callback('扩展型号分隔符有非法字符，请使用英文输入法下的分号";"')
+            }
+            let split1 = this.c64.split(";").filter(item => item !== "")
+            let split2 = c64.split(";").filter(item => item !== "")
+            for (let i = 0; i < split1.length; i++) {
+              for (let j = 0; j < split2.length; j++) {
+                if (split1[i] === split2[j]) {
+                  callback("扩展型号与主型号备案中的规格型号或扩展型号重复")
+                }
               }
             }
-          }
 
-          for (let i = 0; i < split2.length; i++) {
-            if (split2[i] === c2) {
-              callback("扩展型号与规格型号重复。")
-            }
-          }
-
-          for (let i = 0; i < split2.length; i++) {
-            for (let j = i + 1; j < split2.length; j++) {
-              if (split2[i] === split2[j]) {
-                callback("扩展型号重复。")
+            for (let i = 0; i < split2.length; i++) {
+              if (split2[i] === c2) {
+                callback("扩展型号与规格型号重复。")
               }
             }
+
+            for (let i = 0; i < split2.length; i++) {
+              for (let j = i + 1; j < split2.length; j++) {
+                if (split2[i] === split2[j]) {
+                  callback("扩展型号重复。")
+                }
+              }
+            }
+            callback()
+          }else {
+            if (c64.indexOf("；") > -1) {
+              callback('扩展型号分隔符有非法字符，请使用英文输入法下的分号";"')
+            }
+            let split1 = this.c64.split(";").filter(item => item !== "")
+            let split2 = c64.split(";").filter(item => item !== "")
+            for (let i = 0; i < split1.length; i++) {
+              for (let j = 0; j < split2.length; j++) {
+                if (split1[i] === split2[j]) {
+                  callback("扩展型号与主型号备案中的规格型号或扩展型号重复")
+                }
+              }
+            }
+
+            for (let i = 0; i < split2.length; i++) {
+              if (split2[i] === c2) {
+                callback("扩展型号与规格型号重复。")
+              }
+            }
+
+            for (let i = 0; i < split2.length; i++) {
+              for (let j = i + 1; j < split2.length; j++) {
+                if (split2[i] === split2[j]) {
+                  callback("扩展型号重复。")
+                }
+              }
+            }
+            callback()
           }
-          callback()
         }
 
         var c15 = this.formRecord.c15;
@@ -2217,100 +2248,125 @@
 
         //     }
         // }
-
-        return {
-          c1: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入生产者名称'
-            }
-          ],
-          c4: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入制造单位'
-            }
-          ],
-          c63: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入备案方'
-            }
-          ],
-          c64: [
-            {
-              validator: repeat,
-              trigger: 'change,blur'
-            }
-          ],
-          c2: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入产品规格型号'
-            }
-          ],
-          c3: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入商标'
-            }
-          ],
-          c200: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入依据国家标准'
-            }
-          ],
-          c65: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择能效等级'
-            },
-            {
-              validator: checkc65,
-              trigger: 'change,blur'
-            }
-          ],
-          c15: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择产品类型'
-            }
-          ],
-          c16: [
-            {
-              required: this.formRecord.c15 === "台式微型计算机及一体机",
-              trigger: 'change,blur',
-              message: '请选择类型'
-            }
-          ],
-          c17: [
-            {
-              required: this.formRecord.c15 === "便携式计算机",
-              trigger: 'change,blur',
-              message: '请选择类型'
-            }
-          ],
-          c22: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入附加功能功耗因子之和'
-            },
-            {
-              validator: oneDecimals,
-              trigger: 'change,blur'
-            }
-          ],
-          /* c5: [
+        const changeVal = (rule, value, callback) => {
+          this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
+        }
+        if (this.pageType === 'view') {
+          return {};
+        } else if (this.pageType === 'extend') {
+          return {
+            c2: [
+              {
+                trigger: 'change,blur',
+                required: true,
+                message: '产品规格型号不能为空'
+              },
+              {
+                validator: changeVal,
+                trigger: 'change,blur'
+              }
+            ],
+            c64: [
+              {
+                validator: repeat,
+                trigger: 'change,blur'
+              }
+            ]
+          }
+        } else {
+          return {
+            c1: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入生产者名称'
+              }
+            ],
+            c4: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入制造单位'
+              }
+            ],
+            c63: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入备案方'
+              }
+            ],
+            c64: [
+              {
+                validator: repeat,
+                trigger: 'change,blur'
+              }
+            ],
+            c2: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入产品规格型号'
+              }
+            ],
+            c3: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入商标'
+              }
+            ],
+            c200: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入依据国家标准'
+              }
+            ],
+            c65: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择能效等级'
+              },
+              {
+                validator: checkc65,
+                trigger: 'change,blur'
+              }
+            ],
+            c15: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择产品类型'
+              }
+            ],
+            c16: [
+              {
+                required: this.formRecord.c15 === "台式微型计算机及一体机",
+                trigger: 'change,blur',
+                message: '请选择类型'
+              }
+            ],
+            c17: [
+              {
+                required: this.formRecord.c15 === "便携式计算机",
+                trigger: 'change,blur',
+                message: '请选择类型'
+              }
+            ],
+            c22: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入附加功能功耗因子之和'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
+              }
+            ],
+            /* c5: [
              {
                required: true,
                trigger: 'change,blur',
@@ -2321,286 +2377,287 @@
                trigger: 'change,blur'
              }
            ],*/
-          c6: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入典型能源消耗实测值'
-            },
-            {
-              validator: atLeastTwoDecimals,
-              trigger: 'change,blur'
-            },
-            {
-              validator: checkc6,
-              trigger: 'change,blur'
-            }
-          ],
-          c14: [
-            {
-              required: true,
-              message: '请输入备案开始日期'
-            }
-          ],
-          c18: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入内存'
-            }
-          ],
-          c27: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c28: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入 型号'
-            }
-          ],
-          c19: [
-            {
-              required: this.formRecord.c27 === '独立',
-              trigger: 'change,blur',
-              message: '请输入显存等效频率'
-            }
-          ],
-          c20: [
-            {
-              required: this.formRecord.c27 === '独立',
-              trigger: 'change,blur',
-              message: '请输入显存位宽'
-            }
-          ],
-          c21: [
-            {
-              required: this.formRecord.c27 === '独立',
-              trigger: 'change,blur',
-              message: '请输入显存带宽'
-            }
-          ],
-          c23: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入操作系统名称及版本'
-            }
-          ],
-          c24: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入型号'
-            }
-          ],
-          c25: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入最高主频'
-            }
-          ],
-          c26: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入物理核心数量'
-            }
-          ],
-          c29: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入额定功率'
-            }
-          ],
-          c30: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入额定电流'
-            }
-          ],
-          c31: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入硬盘个数'
-            }
-          ],
-          c32: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请输入硬盘大小'
-            }
-          ],
-          c33: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c40: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c43: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c46: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c50: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c54: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c58: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '请选择'
-            }
-          ],
-          c35: [
-            {
-              required: this.formRecord.c34.join('').indexOf('1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
-              trigger: 'change,blur',
-              message: '请输入'
-            }
-          ],
-          c36: [
-            {
-              required: this.formRecord.c34.join('').indexOf('1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
-              trigger: 'change,blur',
-              message: '请输入'
-            }
-          ],
-          c38: [
-            {
-              required: this.formRecord.c37.join('').indexOf('0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
-              trigger: 'change,blur',
-              message: '请输入'
-            }
-          ],
-          c39: [
-            {
-              required: this.formRecord.c37.join('').indexOf('0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
-              trigger: 'change,blur',
-              message: '请输入'
-            }
-          ],
-          c60: [
-            {
-              required: this.formRecord.c59.join('').indexOf('25×附加硬盘数＿＿') > -1,
-              trigger: 'change,blur',
-              message: '请输入'
-            }
-          ],
-          c62: [
-            {
-              required: this.formRecord.c61.join('').indexOf('3×附加硬盘数＿＿') > -1,
-              trigger: 'change,blur',
-              message: '请输入'
-            }
-          ],
-          c66: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c67: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c68: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c72: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c73: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c74: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c75: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c76: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c77: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ],
-          c78: [
-            {
-              required: true,
-              trigger: 'change,blur',
-              message: '不能为空'
-            }
-          ]
+            c6: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入典型能源消耗实测值'
+              },
+              {
+                validator: atLeastTwoDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc6,
+                trigger: 'change,blur'
+              }
+            ],
+            c14: [
+              {
+                required: true,
+                message: '请输入备案开始日期'
+              }
+            ],
+            c18: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入内存'
+              }
+            ],
+            c27: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c28: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入 型号'
+              }
+            ],
+            c19: [
+              {
+                required: this.formRecord.c27 === '独立',
+                trigger: 'change,blur',
+                message: '请输入显存等效频率'
+              }
+            ],
+            c20: [
+              {
+                required: this.formRecord.c27 === '独立',
+                trigger: 'change,blur',
+                message: '请输入显存位宽'
+              }
+            ],
+            c21: [
+              {
+                required: this.formRecord.c27 === '独立',
+                trigger: 'change,blur',
+                message: '请输入显存带宽'
+              }
+            ],
+            c23: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入操作系统名称及版本'
+              }
+            ],
+            c24: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入型号'
+              }
+            ],
+            c25: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入最高主频'
+              }
+            ],
+            c26: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入物理核心数量'
+              }
+            ],
+            c29: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入额定功率'
+              }
+            ],
+            c30: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入额定电流'
+              }
+            ],
+            c31: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入硬盘个数'
+              }
+            ],
+            c32: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请输入硬盘大小'
+              }
+            ],
+            c33: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c40: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c43: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c46: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c50: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c54: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c58: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '请选择'
+              }
+            ],
+            c35: [
+              {
+                required: this.formRecord.c34.join('').indexOf('1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
+                trigger: 'change,blur',
+                message: '请输入'
+              }
+            ],
+            c36: [
+              {
+                required: this.formRecord.c34.join('').indexOf('1.0/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
+                trigger: 'change,blur',
+                message: '请输入'
+              }
+            ],
+            c38: [
+              {
+                required: this.formRecord.c37.join('').indexOf('0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
+                trigger: 'change,blur',
+                message: '请输入'
+              }
+            ],
+            c39: [
+              {
+                required: this.formRecord.c37.join('').indexOf('0.4/（1GB)×（微型计算机总内存容量＿＿GB--基本内存容量＿＿GB）') > -1,
+                trigger: 'change,blur',
+                message: '请输入'
+              }
+            ],
+            c60: [
+              {
+                required: this.formRecord.c59.join('').indexOf('25×附加硬盘数＿＿') > -1,
+                trigger: 'change,blur',
+                message: '请输入'
+              }
+            ],
+            c62: [
+              {
+                required: this.formRecord.c61.join('').indexOf('3×附加硬盘数＿＿') > -1,
+                trigger: 'change,blur',
+                message: '请输入'
+              }
+            ],
+            c66: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c67: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c68: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c72: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c73: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c74: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c75: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c76: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c77: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ],
+            c78: [
+              {
+                required: true,
+                trigger: 'change,blur',
+                message: '不能为空'
+              }
+            ]
+          }
         }
       }
     }
