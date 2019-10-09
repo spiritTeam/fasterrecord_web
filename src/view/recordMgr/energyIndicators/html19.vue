@@ -1107,7 +1107,7 @@
       </div>
       <div class="tc" v-if="pageType!='view'">
         <Button type="primary" @click="prevStep">上一步</Button>
-        <Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>
+        <!--<Button type="primary" @click="saveRecord" v-if='!pageType' :disabled="saveDisabled">保存到草稿</Button>-->
         <!-- <Button type="primary" @click="submitRecord" :disabled="submitDisabled">提交申请</Button> -->
         <Button type="primary" @click="showConfirm">提交申请</Button>
       </div>
