@@ -1,12 +1,13 @@
 <template>
   <div class="user-avator-dropdown">
-    <Dropdown >
+    <a href="../j_spring_security_logout">退出登录</a>
+    <!-- <Dropdown >
       <Avatar :src="userAvator"/>
       <Icon :size="12" type="arrow-down-b"></Icon>
       <DropdownMenu slot="list">
-        <DropdownItem name="logout"><a href="../j_spring_security_logout">退出登录</a></DropdownItem>
+        <DropdownItem name="logout"></DropdownItem>
       </DropdownMenu>
-    </Dropdown>
+    </Dropdown> -->
   </div>
 </template>
 

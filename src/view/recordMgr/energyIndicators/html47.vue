@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="pageType!='extend'?ruleRecord:extendRule">
+    <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
       <h1>家用电冰箱-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
@@ -1307,9 +1307,7 @@ export default {
 
   data () {
     const timeDate = parseInt(this.$store.state.app.dateinit)
-    const changeVal = (rule, value, callback) => {
-      this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
-    }
+
     return {
       modal3: false,
       modal4: false,
@@ -1497,19 +1495,6 @@ export default {
         ec_model_no: 47,
         attach_list: '',
         action_token:''
-      },
-      extendRule: {
-        c4: [
-          {
-            trigger: 'change,blur',
-            required: true,
-            message: '产品规格型号不能为空'
-          },
-          {
-            validator: changeVal,
-            trigger: 'change,blur'
-          }
-        ]
       }
     }
   },
@@ -1927,21 +1912,16 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
-          } else if (res.data.result_code === '0' || res.data.result_code === '-1'){
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
+          } else {
             _this.$Message.warning(res.data.message)
-            if (res.data.refresh_token === '1') {
-              axios.get('/ads/getToken.do').then(res => {
-                _this.action_token = res.data.action_token
-              })
-            }
-          } else if (res.data.result_code === '-2') {
-            _this.$Modal.success({
-              title: '提交失败',
-              content: '<p>' + res.data.message + '</p>',
-              okText: '重新登录',
-              onOk () {
-                window.location.href = '/base_html/index/login.jsp'
-              }
+            // _this.submitDisabled = false
+          }
+          if (res.data.result_code !== '1'){
+            axios.get('/ads/getToken.do').then(res => {
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -1971,21 +1951,16 @@ export default {
                 _this.$router.push('/queryRecord')
               }
             })
-          }  else if (res.data.result_code === '0' || res.data.result_code === '-1'){
+          } else if (res.data.msg) {
+            _this.$Message.warning(res.data.msg)
+            _this.saveDisabled = false
+          } else {
             _this.$Message.warning(res.data.message)
-            if (res.data.refresh_token === '1') {
-              axios.get('/ads/getToken.do').then(res => {
-                _this.action_token = res.data.action_token
-              })
-            }
-          } else if (res.data.result_code === '-2') {
-            _this.$Modal.success({
-              title: '提交失败',
-              content: '<p>' + res.data.message + '</p>',
-              okText: '重新登录',
-              onOk () {
-                window.location.href = '/base_html/index/login.jsp'
-              }
+            _this.submitDisabled = false
+          }
+          if (res.data.result_code !== '1'){
+            axios.get('/ads/getToken.do').then(res => {
+              _this.action_token = res.data.action_token
             })
           }
         })
@@ -2429,590 +2404,612 @@ export default {
           callback()
         }
       }
-      return {
-        c1: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c2: [
-          {
-            required: true,
-            message: '请填写制造单位'
-          }
-        ],
-        c3: [
-          {
-            required: true,
-            message: '请填写备案方'
-          }
-        ],
-        c4: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c21: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c5: [
-          {
-            required: true,
-            message: '请填写商标'
-          }
-        ],
-        c7: [
-          {
-            required: true,
-            message: '请选择能效等级'
-          }
-        ],
-        c8: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写额定值'
-          },
-          {
-            validator: twoDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c14: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写额定值'
-          },
-          {
-            validator: (this.formRecord.c21 === '冷藏冷冻箱' && twoDecimals),
-            trigger: 'blur'
-          }
-        ],
-        c9: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc9,
-            trigger: 'blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c12: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc12,
-            trigger: 'blur'
-          },
-          {
-            validator: threeDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c15: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc15,
-            trigger: 'blur'
-          },
-          {
-            validator: (this.formRecord.c21 === '冷藏冷冻箱' && threeDecimals),
-            trigger: 'blur'
-          }
-        ],
-        c18: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写实测值'
-          },
-          {
-            validator: checkc18,
-            trigger: 'blur'
-          },
-          {
-            validator: (this.formRecord.c21 === '冷藏冷冻箱' && threeDecimals),
-            trigger: 'blur'
-          }
-        ],
-        c11: [
-          {
-            required: this.formRecord.c21 !== '',
-            message: '请填写额定值'
-          },
-          {
-            validator: checkc11,
-            trigger: 'blur'
-          },
-          {
-            validator: oneDecimals,
-            trigger: 'blur'
-          }
-        ],
-        c17: [
-          {
-            required: this.formRecord.c21 === '冷藏冷冻箱',
-            message: '请填写额定值'
-          },
-          {
-            validator: checkc17,
-            trigger: 'blur'
-          },
-          {
-            validator: (this.formRecord.c21 === '冷藏冷冻箱' && oneDecimals),
-            trigger: 'blur'
-          }
-        ],
-        c82: [
-          {
-            required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
-            message: '不能为空'
-          },
-          {
-            validator:
-            (this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜')
-            ?oneDecimals
-            :(rule, vaule, callback) => {
-                callback()
-            },
-            trigger: 'blur'
-          }
-        ],
-        c62: [
-          {
-            required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c84: [
-          {
-            required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
-            message: '不能为空'
-          },
-          {
-             validator:
-            (this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜')
-            ?oneDecimals
-            :(rule, vaule, callback) => {
-                callback()
-            },
-            trigger: 'blur'
-          }
-        ],
-        c63: [
-          {
-            required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c86: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '一位小数'
-          }
-          /* {
-            validator: oneDecimals,
-            trigger: 'blur'
-          } */
-        ],
-        c31: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c32: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c64: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c120: [
-          {
-            required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c88: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '一位小数'
-          }
-          /* {
-            validator: oneDecimals,
-            trigger: 'blur'
-          } */
-        ],
-        c36: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c37: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c65: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c121: [
-          {
-            required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c90: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '一位小数'
-          }
-          /* {
-            validator: oneDecimals,
-            trigger: 'blur'
-          } */
-        ],
-        c41: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c42: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c66: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c122: [
-          {
-            required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c127: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-          /* {
-            validator: oneDecimals,
-            trigger: 'blur'
-          } */
-        ],
-        c128: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c129: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c130: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c131: [
-          {
-            required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
-            message: '不能为空'
-          }
-        ],
-        c22: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c23: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c44: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c45: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c46: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c47: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c48: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c49: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c50: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c51: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c52: [
-          {
-            required: this.formRecord.c51.join('').indexOf('其它') > -1,
-            message: '不能为空'
-          }
-        ],
-        c53: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c54: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c55: [
-          {
-            required: this.formRecord.c54 === '多门',
-            message: '不能为空'
-          }
-        ],
-        c56: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c57: [
-          {
-            required: this.formRecord.c56.join('').indexOf('其它') > -1,
-            message: '不能为空'
-          }
-        ],
-        c58: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c59: [
-          {
-            required: this.formRecord.c58.join('').indexOf('其它') > -1,
-            message: '不能为空'
-          }
-        ],
-        c60: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c61: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c67: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c68: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c69: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c70: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c71: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c72: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c73: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c74: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c75: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c76: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c77: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c78: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c79: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c92: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c93: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-
-        c80: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c81: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c43: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c123: [
-          {
-            required: true,
-            message: '不能为空'
-          },
-
-          {
-            validator: checkc123,
-            trigger: 'blur'
-          }
-        ],
-        c20: [
-          {
-            required: true,
-            message: '不能为空'
-          }
-        ],
-        c25: [
-          {
-            required: this.$store.state.app.requiredStr.indexOf('c25,') > -1,
-            message: '模板要求不能为空'
-          }
-        ],
-        c27: [
-          {
-            required: this.$store.state.app.requiredStr.indexOf('c27,') > -1,
-            message: '模板要求不能为空'
-          }
-        ]
+      const changeVal = (rule, value, callback) => {
+        this.mainModel === value? callback('扩展备案需要变更型号名称') : callback()
       }
+      if(this.pageType==='view'){
+        return {};
+      }else if(this.pageType==='extend'){
+        return {
+          c4: [
+            {
+              trigger: 'change,blur',
+              required: true,
+              message: '产品规格型号不能为空'
+            },
+            {
+              validator: changeVal,
+              trigger: 'change,blur'
+            }
+          ]
+        }
+      }else{
+        return {
+          c1: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c2: [
+            {
+              required: true,
+              message: '请填写制造单位'
+            }
+          ],
+          c3: [
+            {
+              required: true,
+              message: '请填写备案方'
+            }
+          ],
+          c4: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c21: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c5: [
+            {
+              required: true,
+              message: '请填写商标'
+            }
+          ],
+          c7: [
+            {
+              required: true,
+              message: '请选择能效等级'
+            }
+          ],
+          c8: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写额定值'
+            },
+            {
+              validator: twoDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c14: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写额定值'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱' && twoDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c9: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc9,
+              trigger: 'blur'
+            },
+            {
+              validator: threeDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c12: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc12,
+              trigger: 'blur'
+            },
+            {
+              validator: threeDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c15: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc15,
+              trigger: 'blur'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱' && threeDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c18: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写实测值'
+            },
+            {
+              validator: checkc18,
+              trigger: 'blur'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱' && threeDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c11: [
+            {
+              required: this.formRecord.c21 !== '',
+              message: '请填写额定值'
+            },
+            {
+              validator: checkc11,
+              trigger: 'blur'
+            },
+            {
+              validator: oneDecimals,
+              trigger: 'blur'
+            }
+          ],
+          c17: [
+            {
+              required: this.formRecord.c21 === '冷藏冷冻箱',
+              message: '请填写额定值'
+            },
+            {
+              validator: checkc17,
+              trigger: 'blur'
+            },
+            {
+              validator: (this.formRecord.c21 === '冷藏冷冻箱' && oneDecimals),
+              trigger: 'blur'
+            }
+          ],
+          c82: [
+            {
+              required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
+              message: '不能为空'
+            },
+            {
+              validator:
+              (this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜')
+              ?oneDecimals
+              :(rule, vaule, callback) => {
+                  callback()
+              },
+              trigger: 'blur'
+            }
+          ],
+          c62: [
+            {
+              required: this.formRecord.c24 === '有霜' || this.formRecord.c24 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c84: [
+            {
+              required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
+              message: '不能为空'
+            },
+            {
+              validator:
+              (this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜')
+              ?oneDecimals
+              :(rule, vaule, callback) => {
+                  callback()
+              },
+              trigger: 'blur'
+            }
+          ],
+          c63: [
+            {
+              required: this.formRecord.c26 === '有霜' || this.formRecord.c26 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c86: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '一位小数'
+            }
+            /* {
+              validator: oneDecimals,
+              trigger: 'blur'
+            } */
+          ],
+          c31: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c32: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c64: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c120: [
+            {
+              required: this.formRecord.c28 === '有霜' || this.formRecord.c28 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c88: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '一位小数'
+            }
+            /* {
+              validator: oneDecimals,
+              trigger: 'blur'
+            } */
+          ],
+          c36: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c37: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c65: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c121: [
+            {
+              required: this.formRecord.c33 === '有霜' || this.formRecord.c33 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c90: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '一位小数'
+            }
+            /* {
+              validator: oneDecimals,
+              trigger: 'blur'
+            } */
+          ],
+          c41: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c42: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c66: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c122: [
+            {
+              required: this.formRecord.c38 === '有霜' || this.formRecord.c38 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c127: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+            /* {
+              validator: oneDecimals,
+              trigger: 'blur'
+            } */
+          ],
+          c128: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c129: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c130: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c131: [
+            {
+              required: this.formRecord.c125 === '有霜' || this.formRecord.c125 === '无霜',
+              message: '不能为空'
+            }
+          ],
+          c22: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c23: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c44: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c45: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c46: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c47: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c48: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c49: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c50: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c51: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c52: [
+            {
+              required: this.formRecord.c51.join('').indexOf('其它') > -1,
+              message: '不能为空'
+            }
+          ],
+          c53: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c54: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c55: [
+            {
+              required: this.formRecord.c54 === '多门',
+              message: '不能为空'
+            }
+          ],
+          c56: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c57: [
+            {
+              required: this.formRecord.c56.join('').indexOf('其它') > -1,
+              message: '不能为空'
+            }
+          ],
+          c58: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c59: [
+            {
+              required: this.formRecord.c58.join('').indexOf('其它') > -1,
+              message: '不能为空'
+            }
+          ],
+          c60: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c61: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c67: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c68: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c69: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c70: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c71: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c72: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c73: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c74: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c75: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c76: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c77: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c78: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c79: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c92: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c93: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+
+          c80: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c81: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c43: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c123: [
+            {
+              required: true,
+              message: '不能为空'
+            },
+
+            {
+              validator: checkc123,
+              trigger: 'blur'
+            }
+          ],
+          c20: [
+            {
+              required: true,
+              message: '不能为空'
+            }
+          ],
+          c25: [
+            {
+              required: this.$store.state.app.requiredStr.indexOf('c25,') > -1,
+              message: '模板要求不能为空'
+            }
+          ],
+          c27: [
+            {
+              required: this.$store.state.app.requiredStr.indexOf('c27,') > -1,
+              message: '模板要求不能为空'
+            }
+          ]
+        }
+      }
+
     }
   }
 }
