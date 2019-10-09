@@ -1306,19 +1306,6 @@ import {
           c90_b: false,
           c90_c: false
         },
-        extendRule: {
-          c3: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: changeVal,
-              trigger: 'change,blur'
-            }
-          ]
-        }
       }
     },
     mounted() {

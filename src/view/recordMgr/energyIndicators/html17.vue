@@ -1035,19 +1035,6 @@
         forbidden: {
           c19: true,
           c12: true
-        },
-        extendRule: {
-          c3: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: changeVal,
-              trigger: 'change,blur'
-            }
-          ]
         }
       }
     },

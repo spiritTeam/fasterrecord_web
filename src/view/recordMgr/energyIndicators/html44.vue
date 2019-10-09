@@ -73,7 +73,8 @@
               <Option value="冷热水型">冷热水型</Option>
             </Select>
           </FormItem>
-          <div class="ivu-form-item ivu-form-item-required ivu-form-item-error" v-if="checkComplex!='' && pageType !='extend'">
+          <div class="ivu-form-item ivu-form-item-required ivu-form-item-error"
+               v-if="checkComplex!='' && pageType !='extend'">
             <div class="ivu-form-item-content" style="margin-left:100px;">
               <div class="ivu-form-item-error-tip">{{checkComplex}}</div>
             </div>
@@ -1350,7 +1351,7 @@
       requiredStr() {
         return this.$store.state.app.requiredStr
       },
-      extendRule() {
+      ruleRecord() {
         //拿出需要检测的变量
         let _c7 = this.formRecord.c7;//能效等级
         let _c8 = this.formRecord.c8;//类型
@@ -1451,6 +1452,100 @@
           if (_c21 && _c22 && _c22 > _c21 * 1.1) _msg = "名义制热消耗功率实测值不应大于额定值的110%。";
           if (_msg) callback(_msg); else callback();
         }
+        /**1.2-能效等级、产品类型与各实测值标称值之间关系 */
+        let _nxdj = [];
+        var _c10val = [];
+        if (_c8 == "冷热风型") {
+          for (let thisC26 of _c26) {
+            if (thisC26 == "水环式") {
+              if (_c9 >= 4.20) _nxdj.push("1"), _c10val.push("4.20");
+              else if (_c9 >= 3.90 && _c9 < 4.20) _nxdj.push("2"), _c10val.push("3.90");
+              else if (_c9 >= 3.50 && _c9 < 3.90) _nxdj.push("3"), _c10val.push("3.50");
+            }
+            else if (thisC26 == "地下水式") {
+              if (_c9 >= 4.50) _nxdj.push("1"), _c10val.push("4.50");
+              else if (_c9 >= 4.20 && _c9 < 4.50) _nxdj.push("2"), _c10val.push("4.20");
+              else if (_c9 >= 3.80 && _c9 < 4.20) _nxdj.push("3"), _c10val.push("3.8");
+            }
+            else if (thisC26 == "地埋管式") {
+              if (_c9 >= 4.20) _nxdj.push("1"), _c10val.push("4.20");
+              else if (_c9 >= 3.90 && _c9 < 4.20) _nxdj.push("2"), _c10val.push("3.90");
+              else if (_c9 >= 3.50 && _c9 < 3.90) _nxdj.push("3"), _c10val.push("3.50");
+            }
+            else if (thisC26 == "地表水式") {
+              if (_c9 >= 4.20) _nxdj.push("1"), _c10val.push("4.20");
+              else if (_c9 >= 3.90 && _c9 < 4.20) _nxdj.push("2"), _c10val.push("3.90");
+              else if (_c9 >= 3.50 && _c9 < 3.90) _nxdj.push("3"), _c10val.push("3.50");
+            }
+          }
+        } else if (_c8 == "冷热水型") {
+          let str150 = (_c49 == "kW" ? 150 : (_c49 == "W" ? 150 * 1000 : 0));
+          for (let thisC26 of _c26) {
+            if (thisC26 == "水环式") {
+              if (_c12 <= str150) {
+                if (_c9 >= 5.0) _nxdj.push("1"), _c10val.push("5.0");
+                else if (_c9 >= 4.60 && _c9 < 5.00) _nxdj.push("2"), _c10val.push("4.60");
+                else if (_c9 >= 3.80 && _c9 < 4.60) _nxdj.push("3"), _c10val.push("3.80");
+              } else {
+                if (_c9 >= 5.4) _nxdj.push("1"), _c10val.push("5.4");
+                else if (_c9 >= 5.00 && _c9 < 5.40) _nxdj.push("2"), _c10val.push("5.00");
+                else if (_c9 >= 4.00 && _c9 < 5.00) _nxdj.push("3"), _c10val.push("4.00");
+              }
+            } else if (thisC26 == "地下水式") {
+              if (_c12 <= str150) {
+                if (_c9 >= 5.3) _nxdj.push("1"), _c10val.push("5.3");
+                else if (_c9 >= 4.90 && _c9 < 5.30) _nxdj.push("2"), _c10val.push("4.90");
+                else if (_c9 >= 3.90 && _c9 < 4.90) _nxdj.push("3"), _c10val.push("3.90");
+              } else {
+                if (_c9 >= 5.90) _nxdj.push("1"), _c10val.push("5.90");
+                else if (_c9 >= 5.50 && _c9 < 5.90) _nxdj.push("2"), _c10val.push("5.50");
+                else if (_c9 >= 4.40 && _c9 < 5.50) _nxdj.push("3"), _c10val.push("4.40");
+              }
+            } else if (thisC26 == "地埋管式") {
+              if (_c12 <= str150) {
+                if (_c9 >= 5.0) _nxdj.push("1"), _c10val.push("5.0");
+                else if (_c9 >= 4.60 && _c9 < 5.00) _nxdj.push("2"), _c10val.push("4.60");
+                else if (_c9 >= 3.80 && _c9 < 4.60) _nxdj.push("3"), _c10val.push("3.80");
+              } else {
+                if (_c9 >= 5.40) _nxdj.push("1"), _c10val.push("5.4");
+                else if (_c9 >= 5.00 && _c9 < 5.40) _nxdj.push("2"), _c10val.push("5.00");
+                else if (_c9 >= 4.00 && _c9 < 5.00) _nxdj.push("3"), _c10val.push("4.00");
+              }
+            } else if (thisC26 == "地表水式") {
+              if (_c12 <= str150) {
+                if (_c9 >= 5.0) _nxdj.push("1"), _c10val.push("5.0");
+                else if (_c9 >= 4.60 && _c9 < 5.0) _nxdj.push("2"), _c10val.push("4.60");
+                else if (_c9 >= 3.80 && _c9 < 4.60) _nxdj.push("3"), _c10val.push("3.80");
+              } else {
+                if (_c9 >= 5.4) _nxdj.push("1"), _c10val.push("5.4");
+                else if (_c9 >= 5.00 && _c9 < 5.4) _nxdj.push("2"), _c10val.push("5.00");
+                else if (_c9 >= 4.00 && _c9 < 5.00) _nxdj.push("3"), _c10val.push("4.00");
+              }
+            }
+          }
+        }
+        let _nxdjMax = 0;
+        let _c10xd = "";
+        if (_nxdj.length > 0 && _c10val.length > 0 && _nxdj.length == _c10val.length) {
+          _nxdjMax = _nxdj[0];
+          _c10xd = _c10val[0];
+          for (let i = 1; i < _nxdj.length - 1; i++) {
+            if (_nxdj[i] > _nxdjMax) _nxdjMax = nxdjstr[i];
+          }
+          for (let i = 0; i < _c10val.length - 1; i++) {
+            if (_c10xd < _c10val[i]) c10xd = _c10val[i];
+          }
+        }
+        this.checkComplex = "";
+        if (_c10 < _c10xd) this.checkComplex += "全年综合性能系数实测值不应小于该能效等级限定标准值";
+        if (_nxdjMax == 0) this.checkComplex += "能效数据不在备案范围";
+        if (_c7 != _nxdjMax) this.checkComplex += "所选能效等级与计算结果不符！";
+        if (this.checkComplex) this.modal1 = false;
+
+        if (this.formRecord.c25 == '冷热风型') this.formRecord.c8 = '冷热风型';
+        if (this.formRecord.c25 == '冷热水型') this.formRecord.c8 = '冷热水型';
+        if (this.formRecord.c8 == '冷热风型') this.formRecord.c25 = '冷热风型';
+        if (this.formRecord.c8 == '冷热水型') this.formRecord.c25 = '冷热水型';
 
         const changeVal = (rule, value, callback) => {
           this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
@@ -1471,299 +1566,7 @@
               }
             ]
           }
-        }else{
-          return {
-            c4: [
-              {
-                trigger: 'change,blur',
-                required: true,
-                message: '产品规格型号不能为空'
-              },
-              {
-                validator: (rule, value, callback) => {
-                  this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback()
-                },
-                trigger: 'change,blur'
-              }
-            ],
-            c9: [{
-              required: true, message: '标注值不能为空', trigger: 'change,blur'
-            }, {
-              validator: twoDecimals, trigger: 'change,blur'
-            }],
-            c10: [{
-              required: true, message: '实测值不能为空', trigger: 'change,blur'
-            }, {
-              validator: threeDecimals, trigger: 'change,blur'
-            }],
-            c49: [{
-              required: true, message: '请选择名义制冷量单位', trigger: 'change'
-            }],
-            c12: [{
-              required: true, message: '标注值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC12, trigger: 'change,blur'
-            }, {
-              validator: checkC12C13, trigger: 'change,blur'
-            }],
-            c13: [{
-              required: true, message: '实测值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC13, trigger: 'change,blur'
-            }, {
-              validator: checkC12C13, trigger: 'change,blur'
-            }],
-            c50: [{
-              required: true, message: '请选择名义制冷消耗功率单位', trigger: 'change'
-            }],
-            c15: [{
-              required: true, message: '标注值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC15, trigger: 'change,blur'
-            }, {
-              validator: checkC15C16, trigger: 'change,blur'
-            }],
-            c16: [{
-              required: true, message: '实测值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC16, trigger: 'change,blur'
-            }, {
-              validator: checkC15C16, trigger: 'change,blur'
-            }],
-            c51: [{
-              required: true, message: '请选择名义制热量单位', trigger: 'change'
-            }],
-            c18: [{
-              required: true, message: '标注值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC18, trigger: 'change,blur'
-            }, {
-              validator: checkC18C19, trigger: 'change,blur'
-            }],
-            c19: [{
-              required: true, message: '实测值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC19, trigger: 'change,blur'
-            }, {
-              validator: checkC18C19, trigger: 'change,blur'
-            }],
-            c52: [{
-              required: true, message: '请选择名义制热消耗功率单位', trigger: 'change'
-            }],
-            c21: [{
-              required: true, message: '标注值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC21, trigger: 'change,blur'
-            }, {
-              validator: checkC21C22, trigger: 'change,blur'
-            }],
-            c22: [{
-              required: true, message: '实测值不能为空', trigger: 'change,blur'
-            }, {
-              validator: checkC22, trigger: 'change,blur'
-            }, {
-              validator: checkC21C22, trigger: 'change,blur'
-            }]
-          }
-        }
-      ,
-        ruleRecord()
-        {
-          //拿出需要检测的变量
-          let _c7 = this.formRecord.c7;//能效等级
-          let _c8 = this.formRecord.c8;//类型
-          let _c26 = this.formRecord.c26;//冷(热)源类型
-
-          let _c9 = parseFloat(this.formRecord.c9);
-          let _c10 = parseFloat(this.formRecord.c10);
-          let _c49 = this.formRecord.c49;
-          let _c12 = parseFloat(this.formRecord.c12);
-          let _c13 = parseFloat(this.formRecord.c13);
-          let _c50 = this.formRecord.c50;
-          let _c15 = parseFloat(this.formRecord.c15);
-          let _c16 = parseFloat(this.formRecord.c16);
-          let _c51 = this.formRecord.c51;
-          let _c18 = parseFloat(this.formRecord.c18);
-          let _c19 = parseFloat(this.formRecord.c19);
-          let _c52 = this.formRecord.c52;
-          let _c21 = parseFloat(this.formRecord.c21);
-          let _c22 = parseFloat(this.formRecord.c22);
-
-          /**一、以下为检测函数 */
-          /**1.0-基础校验 */
-          let checkC12 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c49 == 'kW' && !sCheck.number.isOneDecimal(value)) _msg = '一位小数';
-            else if (_c49 == 'W' && !sCheck.number.isInteger(value)) _msg = '整数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC13 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c49 == 'kW' && !sCheck.number.atLeastTwoDecimals(value)) _msg = '至少两位小数';
-            else if (_c49 == 'W' && !sCheck.number.atLeastOneDecimals(value)) _msg = '至少一位小数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC15 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c50 == 'kW' && !sCheck.number.isOneDecimal(value)) _msg = '一位小数';
-            else if (_c50 == 'W' && !sCheck.number.isInteger(value)) _msg = '整数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC16 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c50 == 'kW' && !sCheck.number.atLeastTwoDecimals(value)) _msg = '至少两位小数';
-            else if (_c50 == 'W' && !sCheck.number.atLeastOneDecimals(value)) _msg = '至少一位小数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC18 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c51 == 'kW' && !sCheck.number.isOneDecimal(value)) _msg = '一位小数';
-            else if (_c51 == 'W' && !sCheck.number.isInteger(value)) _msg = '整数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC19 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c51 == 'kW' && !sCheck.number.atLeastTwoDecimals(value)) _msg = '至少两位小数';
-            else if (_c51 == 'W' && !sCheck.number.atLeastOneDecimals(value)) _msg = '至少一位小数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC21 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c52 == 'kW' && !sCheck.number.isOneDecimal(value)) _msg = '一位小数';
-            else if (_c52 == 'W' && !sCheck.number.isInteger(value)) _msg = '整数';
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          let checkC22 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c52 == 'kW' && !sCheck.number.atLeastTwoDecimals(value)) _msg = '至少两位小数';
-            else if (_c52 == 'W' && !sCheck.number.atLeastOneDecimals(value)) _msg = '至少一位小数';
-            if (_msg) callback(_msg);
-            if (_msg) callback(_msg);
-            else callback();
-          }
-          /**1.1-实测值与标称值关系 */
-          let checkC12C13 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c12 && _c13 && _c13 < _c12 * 0.95) _msg = "名义制冷量实测值不应小于额定值的95%。";
-            if (_msg) callback(_msg); else callback();
-          }
-          let checkC15C16 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c15 && _c16 && _c16 > _c15 * 1.1) _msg = "名义制冷消耗功率实测值不应大于额定值的110%。";
-            if (_msg) callback(_msg); else callback();
-          }
-          let checkC18C19 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c18 && _c19 && _c19 < _c18 * 0.95) _msg = "名义制热量实测值不应小于额定值的95%。";
-            if (_msg) callback(_msg); else callback();
-          }
-          let checkC21C22 = (rule, value, callback) => {
-            let _msg = null;
-            if (_c21 && _c22 && _c22 > _c21 * 1.1) _msg = "名义制热消耗功率实测值不应大于额定值的110%。";
-            if (_msg) callback(_msg); else callback();
-          }
-          /**1.2-能效等级、产品类型与各实测值标称值之间关系 */
-          let _nxdj = [];
-          var _c10val = [];
-          if (_c8 == "冷热风型") {
-            for (let thisC26 of _c26) {
-              if (thisC26 == "水环式") {
-                if (_c9 >= 4.20) _nxdj.push("1"), _c10val.push("4.20");
-                else if (_c9 >= 3.90 && _c9 < 4.20) _nxdj.push("2"), _c10val.push("3.90");
-                else if (_c9 >= 3.50 && _c9 < 3.90) _nxdj.push("3"), _c10val.push("3.50");
-              }
-              else if (thisC26 == "地下水式") {
-                if (_c9 >= 4.50) _nxdj.push("1"), _c10val.push("4.50");
-                else if (_c9 >= 4.20 && _c9 < 4.50) _nxdj.push("2"), _c10val.push("4.20");
-                else if (_c9 >= 3.80 && _c9 < 4.20) _nxdj.push("3"), _c10val.push("3.8");
-              }
-              else if (thisC26 == "地埋管式") {
-                if (_c9 >= 4.20) _nxdj.push("1"), _c10val.push("4.20");
-                else if (_c9 >= 3.90 && _c9 < 4.20) _nxdj.push("2"), _c10val.push("3.90");
-                else if (_c9 >= 3.50 && _c9 < 3.90) _nxdj.push("3"), _c10val.push("3.50");
-              }
-              else if (thisC26 == "地表水式") {
-                if (_c9 >= 4.20) _nxdj.push("1"), _c10val.push("4.20");
-                else if (_c9 >= 3.90 && _c9 < 4.20) _nxdj.push("2"), _c10val.push("3.90");
-                else if (_c9 >= 3.50 && _c9 < 3.90) _nxdj.push("3"), _c10val.push("3.50");
-              }
-            }
-          } else if (_c8 == "冷热水型") {
-            let str150 = (_c49 == "kW" ? 150 : (_c49 == "W" ? 150 * 1000 : 0));
-            for (let thisC26 of _c26) {
-              if (thisC26 == "水环式") {
-                if (_c12 <= str150) {
-                  if (_c9 >= 5.0) _nxdj.push("1"), _c10val.push("5.0");
-                  else if (_c9 >= 4.60 && _c9 < 5.00) _nxdj.push("2"), _c10val.push("4.60");
-                  else if (_c9 >= 3.80 && _c9 < 4.60) _nxdj.push("3"), _c10val.push("3.80");
-                } else {
-                  if (_c9 >= 5.4) _nxdj.push("1"), _c10val.push("5.4");
-                  else if (_c9 >= 5.00 && _c9 < 5.40) _nxdj.push("2"), _c10val.push("5.00");
-                  else if (_c9 >= 4.00 && _c9 < 5.00) _nxdj.push("3"), _c10val.push("4.00");
-                }
-              } else if (thisC26 == "地下水式") {
-                if (_c12 <= str150) {
-                  if (_c9 >= 5.3) _nxdj.push("1"), _c10val.push("5.3");
-                  else if (_c9 >= 4.90 && _c9 < 5.30) _nxdj.push("2"), _c10val.push("4.90");
-                  else if (_c9 >= 3.90 && _c9 < 4.90) _nxdj.push("3"), _c10val.push("3.90");
-                } else {
-                  if (_c9 >= 5.90) _nxdj.push("1"), _c10val.push("5.90");
-                  else if (_c9 >= 5.50 && _c9 < 5.90) _nxdj.push("2"), _c10val.push("5.50");
-                  else if (_c9 >= 4.40 && _c9 < 5.50) _nxdj.push("3"), _c10val.push("4.40");
-                }
-              } else if (thisC26 == "地埋管式") {
-                if (_c12 <= str150) {
-                  if (_c9 >= 5.0) _nxdj.push("1"), _c10val.push("5.0");
-                  else if (_c9 >= 4.60 && _c9 < 5.00) _nxdj.push("2"), _c10val.push("4.60");
-                  else if (_c9 >= 3.80 && _c9 < 4.60) _nxdj.push("3"), _c10val.push("3.80");
-                } else {
-                  if (_c9 >= 5.40) _nxdj.push("1"), _c10val.push("5.4");
-                  else if (_c9 >= 5.00 && _c9 < 5.40) _nxdj.push("2"), _c10val.push("5.00");
-                  else if (_c9 >= 4.00 && _c9 < 5.00) _nxdj.push("3"), _c10val.push("4.00");
-                }
-              } else if (thisC26 == "地表水式") {
-                if (_c12 <= str150) {
-                  if (_c9 >= 5.0) _nxdj.push("1"), _c10val.push("5.0");
-                  else if (_c9 >= 4.60 && _c9 < 5.0) _nxdj.push("2"), _c10val.push("4.60");
-                  else if (_c9 >= 3.80 && _c9 < 4.60) _nxdj.push("3"), _c10val.push("3.80");
-                } else {
-                  if (_c9 >= 5.4) _nxdj.push("1"), _c10val.push("5.4");
-                  else if (_c9 >= 5.00 && _c9 < 5.4) _nxdj.push("2"), _c10val.push("5.00");
-                  else if (_c9 >= 4.00 && _c9 < 5.00) _nxdj.push("3"), _c10val.push("4.00");
-                }
-              }
-            }
-          }
-          let _nxdjMax = 0;
-          let _c10xd = "";
-          if (_nxdj.length > 0 && _c10val.length > 0 && _nxdj.length == _c10val.length) {
-            _nxdjMax = _nxdj[0];
-            _c10xd = _c10val[0];
-            for (let i = 1; i < _nxdj.length - 1; i++) {
-              if (_nxdj[i] > _nxdjMax) _nxdjMax = nxdjstr[i];
-            }
-            for (let i = 0; i < _c10val.length - 1; i++) {
-              if (_c10xd < _c10val[i]) c10xd = _c10val[i];
-            }
-          }
-          this.checkComplex = "";
-          if (_c10 < _c10xd) this.checkComplex += "全年综合性能系数实测值不应小于该能效等级限定标准值";
-          if (_nxdjMax == 0) this.checkComplex += "能效数据不在备案范围";
-          if (_c7 != _nxdjMax) this.checkComplex += "所选能效等级与计算结果不符！";
-          if (this.checkComplex) this.modal1 = false;
-
-          if (this.formRecord.c25 == '冷热风型') this.formRecord.c8 = '冷热风型';
-          if (this.formRecord.c25 == '冷热水型') this.formRecord.c8 = '冷热水型';
-          if (this.formRecord.c8 == '冷热风型') this.formRecord.c25 = '冷热风型';
-          if (this.formRecord.c8 == '冷热水型') this.formRecord.c25 = '冷热水型';
-
+        } else {
           return {
             c3: [{
               required: true, message: '制造单位不能为空'

@@ -1237,19 +1237,6 @@
           c59: true,
           c60: true,
           c61: true
-        },
-        extendRule: {
-          c4: [
-            {
-              required: true,
-              trigger: 'change',
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: changeVal,
-              trigger: 'change'
-            }
-          ]
         }
       }
     },
@@ -1340,23 +1327,6 @@
       },
       requiredStr() {
         return this.$store.state.app.requiredStr
-      },
-      extendRule1() {
-        return {
-          c4: [
-            {
-              required: true,
-              trigger: 'change',
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: (rule, value, callback) => {
-                this.mainModel === value ? callback('扩展备案需要变更型号名称') : callback("")
-              },
-              trigger: 'change,blur'
-            }
-          ]
-        }
       },
       ruleRecord() {
         var jsonPdyj = [{

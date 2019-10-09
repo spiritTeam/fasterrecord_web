@@ -1274,26 +1274,7 @@
           c62: false
         },
         c2: '',
-        c64: '',
-        extendRule: {
-          c2: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: changeVal,
-              trigger: 'change,blur'
-            }
-          ],
-          c64: [
-            {
-              validator: repeat,
-              trigger: 'change,blur'
-            }
-          ]
-        }
+        c64: ''
       }
     },
     mounted() {

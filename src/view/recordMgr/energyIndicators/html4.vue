@@ -1301,19 +1301,6 @@
           c44: true,
           c45: true,
           c46: true
-        },
-        extendRule: {
-          c2: [
-            {
-              trigger: 'change,blur',
-              required: true,
-              message: '产品规格型号不能为空'
-            },
-            {
-              validator: changeVal,
-              trigger: 'change,blur'
-            }
-          ]
         }
       }
     },
