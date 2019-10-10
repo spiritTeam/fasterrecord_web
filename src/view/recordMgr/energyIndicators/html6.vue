@@ -63,8 +63,6 @@
               <Radio label="1" :disabled='disabledoff'>1级</Radio>
               <Radio label="2" :disabled='disabledoff'>2级</Radio>
               <Radio label="3" :disabled='disabledoff'>3级</Radio>
-              <Radio label="4" :disabled='disabledoff'>4级</Radio>
-              <Radio label="5" :disabled='disabledoff'>5级</Radio>
             </RadioGroup>
           </FormItem>
           <table id="table1">
