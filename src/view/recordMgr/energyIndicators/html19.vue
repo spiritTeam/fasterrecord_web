@@ -69,34 +69,40 @@
             <label class="col-lg-3 control-label"><span class="color-red">*</span>压缩机类型:</label>
             <div class="col-lg-7">
               <Select v-model="formRecord.c10" style="width:200px">
-                <option value="">--请选择--</option>
-                <option value="一般用喷油滑片空气压缩机">一般用喷油滑片空气压缩机</option>
-                <option value="一般用喷油单螺杆空气压缩机">一般用喷油单螺杆空气压缩机</option>
-                <option value="一般用喷油螺杆空气压缩机">一般用喷油螺杆空气压缩机</option>
-                <option data-child="js-cpr" value="一般用固定的往复活塞空气压缩机">一般用固定的往复活塞空气压缩机</option>
-                <option value="全无油润滑往复活塞空气压缩机">全无油润滑往复活塞空气压缩机</option>
-                <option value="微型往复活塞空气压缩机">微型往复活塞空气压缩机</option>
-                <option value="直联便携式往复活塞空气压缩机">直联便携式往复活塞空气压缩机</option>
-                <option value="无油润滑直联便携式往复活塞空气压缩机">无油润滑直联便携式往复活塞空气压缩机</option>
-              </select>
+                <Option value="">--请选择--</Option>
+                <Option value="一般用喷油滑片空气压缩机">一般用喷油滑片空气压缩机</Option>
+                <Option value="一般用喷油单螺杆空气压缩机">一般用喷油单螺杆空气压缩机</Option>
+                <Option value="一般用喷油螺杆空气压缩机">一般用喷油螺杆空气压缩机</Option>
+                <Option data-child="js-cpr" value="一般用固定的往复活塞空气压缩机">一般用固定的往复活塞空气压缩机</Option>
+                <Option value="全无油润滑往复活塞空气压缩机">全无油润滑往复活塞空气压缩机</Option>
+                <Option value="微型往复活塞空气压缩机">微型往复活塞空气压缩机</Option>
+                <Option value="直联便携式往复活塞空气压缩机">直联便携式往复活塞空气压缩机</Option>
+                <Option value="无油润滑直联便携式往复活塞空气压缩机">无油润滑直联便携式往复活塞空气压缩机</Option>
+              </Select>
             </div>
           </div>
           <table id="table1">
             <tr>
+              <th>项目</th>
+              <th><i class="red">*</i>标称值</th>
+              <th><i class="red">*</i>实测值</th>
+              <th>备注</th>
+            </tr>
+            <tr>
               <td>机组输入比功率(kW/(m³/min))</td>
               <td>
                 <FormItem prop="c5">
-                  *标称值:<Input type="text" v-model="formRecord.c5" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c5" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c21">
-                  *实测值:<Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c21" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
                 <FormItem prop="c6">
-                  备注:<Input type="text" v-model="formRecord.c6" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c6" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
@@ -118,19 +124,19 @@
           <table id="table3">
             <tbody>
             <tr>
-              <td>*冷却方式</td>
+              <td><i class="red">*</i>冷却方式</td>
               <td>
                 <FormItem prop="c8">
-                  <RadioGroup v-model="formRecord.c16">
+                  <RadioGroup v-model="formRecord.c8">
                     <Radio label="风冷" :disabled='disabledoff'>风冷</Radio>
                     <Radio label="水冷" :disabled='disabledoff'>水冷</Radio>
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td>*压缩级数</td>
+              <td><i class="red">*</i>压缩级数</td>
               <td>
                 <FormItem prop="c9">
-                  <RadioGroup v-model="formRecord.c16">
+                  <RadioGroup v-model="formRecord.c9">
                     <Radio label="单级" :disabled='disabledoff'>单级</Radio>
                     <Radio label="两级" :disabled='disabledoff'>两级</Radio>
                   </RadioGroup>
@@ -138,7 +144,7 @@
               </td>
             </tr>
             <tr>
-              <td>*额定转速(r/min)</td>
+              <td><i class="red">*</i>额定转速(r/min)</td>
               <td>
                 <FormItem prop="c11">
                   <Input type="text" v-model="formRecord.c11" :disabled='disabledoff'/>
@@ -146,51 +152,51 @@
               </td>
             </tr>
             <tr>
-              <td class="t_label"><span class="red">*</span>驱动电动机输入额定功率(kW)</td>
+              <td><i class="red">*</i>驱动电动机输入额定功率(kW)</td>
               <td colspan="3">
                 <Select v-model="formRecord.c12" style="width:200px">
-                  <option value="0.18">0.18</option>
-                  <option value="0.25">0.25</option>
-                  <option value="0.37">0.37</option>
-                  <option value="0.55">0.55</option>
-                  <option value="0.75">0.75</option>
-                  <option value="1.1">1.1</option>
-                  <option value="1.5">1.5</option>
-                  <option value="1.8">1.8</option>
-                  <option value="2.2">2.2</option>
-                  <option value="2.6">2.6</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5.5">5.5</option>
-                  <option value="7.5">7.5</option>
-                  <option value="11">11</option>
-                  <option value="15">15</option>
-                  <option value="18.5">18.5</option>
-                  <option value="22">22</option>
-                  <option value="30">30</option>
-                  <option value="37">37</option>
-                  <option value="45">45</option>
-                  <option value="55" data-child="js-option21">55</option>
-                  <option value="63">63</option>
-                  <option value="75">75</option>
-                  <option value="90">90</option>
-                  <option value="110">110</option>
-                  <option value="132">132</option>
-                  <option value="160">160</option>
-                  <option value="200">200</option>
-                  <option value="250">250</option>
-                  <option value="315">315</option>
-                  <option value="355">355</option>
-                  <option value="400">400</option>
-                  <option value="450">450</option>
-                  <option value="500">500</option>
-                  <option value="560">560</option>
-                  <option value="630">630</option>
+                  <Option value="0.18">0.18</Option>
+                  <Option value="0.25">0.25</Option>
+                  <Option value="0.37">0.37</Option>
+                  <Option value="0.55">0.55</Option>
+                  <Option value="0.75">0.75</Option>
+                  <Option value="1.1">1.1</Option>
+                  <Option value="1.5">1.5</Option>
+                  <Option value="1.8">1.8</Option>
+                  <Option value="2.2">2.2</Option>
+                  <Option value="2.6">2.6</Option>
+                  <Option value="3">3</Option>
+                  <Option value="4">4</Option>
+                  <Option value="5.5">5.5</Option>
+                  <Option value="7.5">7.5</Option>
+                  <Option value="11">11</Option>
+                  <Option value="15">15</Option>
+                  <Option value="18.5">18.5</Option>
+                  <Option value="22">22</Option>
+                  <Option value="30">30</Option>
+                  <Option value="37">37</Option>
+                  <Option value="45">45</Option>
+                  <Option value="55" data-child="js-option21">55</Option>
+                  <Option value="63">63</Option>
+                  <Option value="75">75</Option>
+                  <Option value="90">90</Option>
+                  <Option value="110">110</Option>
+                  <Option value="132">132</Option>
+                  <Option value="160">160</Option>
+                  <Option value="200">200</Option>
+                  <Option value="250">250</Option>
+                  <Option value="315">315</Option>
+                  <Option value="355">355</Option>
+                  <Option value="400">400</Option>
+                  <Option value="450">450</Option>
+                  <Option value="500">500</Option>
+                  <Option value="560">560</Option>
+                  <Option value="630">630</Option>
                 </Select>
               </td>
               <td>
                 <FormItem prop="c30">
-                  <RadioGroup v-model="formRecord.c16">
+                  <RadioGroup v-model="formRecord.c30">
                     <Radio label="单作用空压机" :disabled='disabledoff'>单作用空压机</Radio>
                     <Radio label="双作用空压机" :disabled='disabledoff'>双作用空压机</Radio>
                   </RadioGroup>
@@ -198,13 +204,13 @@
               </td>
             </tr>
             <tr>
-              <td><span class="red">*</span>额定排气压力(MPa)(至少一位小数)</td>
+              <td><i class="red">*</i>额定排气压力(MPa)(至少一位小数)</td>
               <td class="w19">
                 <FormItem prop=13>
                   <Input type="text" v-model="formRecord.c13" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td><span class="red">*</span>净重(kg)</td>
+              <td><i class="red">*</i>净重(kg)</td>
               <td>
                 <FormItem prop="c23">
                   <Input type="text" v-model="formRecord.c23" :disabled='disabledoff'/>
@@ -212,13 +218,13 @@
               </td>
             </tr>
             <tr>
-              <td>*电压(V)</td>
+              <td><i class="red">*</i>电压(V)</td>
               <td>
                 <FormItem prop="c26">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>*频率(Hz)</td>
+              <td><i class="red">*</i>频率(Hz)</td>
               <td>
                 <FormItem prop="c27">
                   <Input type="text" v-model="formRecord.c27" :disabled='disabledoff'/>
@@ -226,13 +232,13 @@
               </td>
             </tr>
             <tr>
-              <td>*公称容积流量(m³/min)(两位小数)</td>
+              <td><i class="red">*</i>公称容积流量(m³/min)(两位小数)</td>
               <td>
                 <FormItem prop="c14">
                   <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td>*运动机构润滑方式</td>
+              <td><i class="red">*</i>运动机构润滑方式</td>
               <td>
                 <FormItem prop="c15">
                   <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'/>
@@ -240,7 +246,7 @@
               </td>
             </tr>
             <tr>
-              <td>*气缸润滑方式</td>
+              <td><i class="red">*</i>气缸润滑方式</td>
               <td>
                 <FormItem prop="c16">
                   <Input type="text" v-model="formRecord.c16" :disabled='disabledoff'/>
@@ -254,7 +260,7 @@
               </td>
             </tr>
             <tr>
-              <td>*驱动方式</td>
+              <td><i class="red">*</i>驱动方式</td>
               <td>
                 <FormItem prop="c17">
                   <Input type="text" v-model="formRecord.c17" style="width: 500px" :disabled='disabledoff'/>
@@ -270,6 +276,7 @@
                 <FormItem prop="c28">
                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
                 </FormItem>
+                <br/><br/>
                 <FormItem prop="c29">
                   <Input type="text" v-model="formRecord.c29" :disabled='disabledoff'/>
                 </FormItem>
@@ -309,7 +316,7 @@
                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="tl" colspan="2">
+              <td colspan="2">
                 <FormItem prop="c32">
                   <RadioGroup v-model="formRecord.c32">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
@@ -334,7 +341,7 @@
                   <Input type="text" v-model="formRecord.c35" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="tl" colspan="2">
+              <td colspan="2">
                 <FormItem prop="c36">
                   <RadioGroup v-model="formRecord.c36">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
@@ -361,7 +368,7 @@
                   <Input type="text" v-model="formRecord.c39" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="tl" colspan="2">
+              <td colspan="2">
                 <FormItem prop="c40">
                   <RadioGroup v-model="formRecord.c40">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
@@ -386,7 +393,7 @@
                   <Input type="text" v-model="formRecord.c43" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td class="tl" colspan="2">
+              <td colspan="2">
                 <FormItem prop="c44">
                   <RadioGroup v-model="formRecord.c44">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
@@ -1672,7 +1679,7 @@
               {
                 required: true,
                 trigger: 'change,blur',
-                message: '机组输入比功率不能为空'
+                message: '标称值不能为空'
               }
             ],
             c200: [
@@ -1685,7 +1692,6 @@
             c7: [
               {
                 required: true,
-                trigger: 'change,blur',
                 message: '初始使用日期不能为空'
               }
             ],
