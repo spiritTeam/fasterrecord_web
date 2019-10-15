@@ -11,6 +11,7 @@
           <Html17 v-if="category == 17" ref="energyIndicators17" @prevStep="step = 2"></Html17>
           <Html23 v-if="category == 23" ref="energyIndicators23" @prevStep="step = 2"></Html23>
           <Html27 v-if="category == 27" ref="energyIndicators27" @prevStep="step = 2"></Html27>
+          <Html28 v-if="category == 28" ref="energyIndicators28" @prevStep="step = 2"></Html28>
           <Html29 v-if="category == 29" ref="energyIndicators29" @prevStep="step = 2"></Html29>
           <Html30 v-if="category == 30" ref="energyIndicators30" @prevStep="step = 2"></Html30>
           <Html31 v-if="category == 31" ref="energyIndicators31" @prevStep="step = 2"></Html31>
@@ -50,16 +51,17 @@
   </Card>
 </template>
 <script>
-import {setCookie,getCookie} from '@/libs/util.js'
+import {setCookie, getCookie} from '@/libs/util.js'
 import ReportCode from './reportCode'
 import SelectSample from './selectSample'
 import PerformanceIndicators from './performanceIndicators'
 import SecurityIndicators from './securityIndicators'
-import {mapGetters} from 'vuex';
+import {mapGetters} from 'vuex'
 import Html13 from './energyIndicators/html13'
 import Html17 from './energyIndicators/html17'
 import Html23 from './energyIndicators/html23'
 import Html27 from './energyIndicators/html27'
+import Html28 from './energyIndicators/html28'
 import Html29 from './energyIndicators/html29'
 import Html30 from './energyIndicators/html30'
 import Html31 from './energyIndicators/html31'
@@ -82,7 +84,6 @@ import Html51 from './energyIndicators/html51'
 import Html52 from './energyIndicators/html52'
 import Html54 from './energyIndicators/html54'
 
-
 export default {
   data () {
     return {
@@ -101,6 +102,7 @@ export default {
     Html17,
     Html23,
     Html27,
+    Html28,
     Html29,
     Html30,
     Html31,
@@ -124,38 +126,38 @@ export default {
     Html54
   },
   mounted () {
-    if(this.$route.params.type){
-      //if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
-          this.$store.commit('setPageType', this.$route.params.type)
-          this.$store.commit('setUpdateId',this.$route.params.id)
-      //}
-    }else{
-          this.$store.commit('setPageType', '')
-          this.$store.commit('setUpdateId',0)
+    if (this.$route.params.type) {
+      // if(this.$route.params.type==='update' || this.$route.params.type==='extend'){
+      this.$store.commit('setPageType', this.$route.params.type)
+      this.$store.commit('setUpdateId', this.$route.params.id)
+      // }
+    } else {
+      this.$store.commit('setPageType', '')
+      this.$store.commit('setUpdateId', 0)
     };
     if (this.$route.params.step && this.$route.params.step === 3) {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-        //this.modal1 = true
+        // this.modal1 = true
       }
-      if(this.$route.params.draftData){
+      if (this.$route.params.draftData) {
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.draftData)
-      }else if(this.$route.params.extendData){
+      } else if (this.$route.params.extendData) {
         this.$refs['energyIndicators' + this.category].fillExtendData(this.$route.params.extendData)
-      }else if(this.$route.params.viewData){
+      } else if (this.$route.params.viewData) {
         this.$refs['energyIndicators' + this.category].fillDraftData(this.$route.params.viewData)
       }
     }
-    let box = document.getElementsByClassName("ivu-card-head")[0]
+    let box = document.getElementsByClassName('ivu-card-head')[0]
     if (box && this.step === 3) {
-      box.style.display='none'
-    }else {
-      box.style.display='block'
+      box.style.display = 'none'
+    } else {
+      box.style.display = 'block'
     }
   },
   methods: {
     setNoTips () {
-      setCookie('noTips',this.noTips.join(''),1)
+      setCookie('noTips', this.noTips.join(''), 1)
       console.log(this.noTips)
     },
     showTemple () {
@@ -166,12 +168,12 @@ export default {
     showRecordTab () {
       this.step = 3
       if (!getCookie('noTips') || getCookie('noTips') !== '1') {
-        //this.modal1 = true
+        // this.modal1 = true
       }
       this.$refs['energyIndicators' + this.category].fillDefaultData()
-      var box = document.getElementsByClassName("ivu-card-head")[0]
+      var box = document.getElementsByClassName('ivu-card-head')[0]
       if (box) {
-        box.style.display='none'
+        box.style.display = 'none'
       }
     }
   },
@@ -182,13 +184,13 @@ export default {
     ]),
     titleValue () {
       let v = '“主型号“'
-      if (this.pageType === "extend"){
+      if (this.pageType === 'extend') {
         v = '“扩展“'
       }
-      if (this.pageType === "update"){
+      if (this.pageType === 'update') {
         v = '“变更“'
       }
-      return "新增" + v + "备案"
+      return '新增' + v + '备案'
     }
   }
 }
