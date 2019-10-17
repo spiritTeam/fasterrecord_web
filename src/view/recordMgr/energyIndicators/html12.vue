@@ -329,7 +329,7 @@
             </tr>
             <tr>
               <td align="right"><span style="color:red">*</span>室外机外形尺寸<br>(长×宽×高)<br>(mm×mm×mm)</td>
-              <td>
+              <td colspan="3">
                 <FormItem prop="c31" style="width:80px;">
                   <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
                 </FormItem>

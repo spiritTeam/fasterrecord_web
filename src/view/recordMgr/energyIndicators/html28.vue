@@ -293,14 +293,15 @@
               </td>
             </tr>
             <tr>
-              <td align="right">试验期间
+              <td align="right">
                 <FormItem prop="c37">
-                  <Select v-model="formRecord.c37">
-                    <Option value="最冷">最冷</Option>
-                    <Option value="最热">最热</Option>
+                  试验期间
+                  <Select v-model="formRecord.c37" style="width: 120px;text-align: left !important;">
+                    <Option value="最冷" style="text-align: left !important;">最冷</Option>
+                    <Option value="最热" style="text-align: left !important;">最热</Option>
                   </Select>
+                  M-包的最低温度(℃)(一位小数)
                 </FormItem>
-                M-包的最低温度(℃)(一位小数)
               </td>
               <td colspan="3">
                 <FormItem prop="c27" style="width: 80%">
@@ -693,7 +694,11 @@
               <td width="80">11</td>
               <td>节流装置</td>
               <td colspan="2" align="left">
-                <FormItem prop="c91" label="膨胀阀毛细管" style="width: 100%">
+                <FormItem prop="c91">
+                  <CheckboxGroup v-model="formRecord.c91" class="overwrite1">
+                    <Checkbox label="膨胀阀" :disabled='disabledoff' class="overwrite2">膨胀阀</Checkbox>
+                    <Checkbox label="毛细管" :disabled='disabledoff' class="overwrite2">毛细管</Checkbox>
+                  </CheckboxGroup>
                 </FormItem>
               </td>
               <td>膨胀阀芯</td>
@@ -712,7 +717,11 @@
               <td width="80">12</td>
               <td>节流装置</td>
               <td colspan="2" align="left">
-                <FormItem prop="c94" label="膨胀阀毛细管" style="width: 100%">
+                <FormItem prop="c94">
+                    <CheckboxGroup v-model="formRecord.c94" class="overwrite1">
+                      <Checkbox label="膨胀阀" :disabled='disabledoff' class="overwrite2">膨胀阀</Checkbox>
+                      <Checkbox label="毛细管" :disabled='disabledoff' class="overwrite2">毛细管</Checkbox>
+                    </CheckboxGroup>
                 </FormItem>
               </td>
               <td>膨胀阀芯</td>
@@ -1498,7 +1507,7 @@
           c31: '',
           c38: '',
           c39: '',
-          c11: '',
+          c11: new Date(),
           c18: '',
           c15: '',
           c16: '',
@@ -1567,10 +1576,10 @@
           c88: '',
           c89: '',
           c90: '',
-          c91: '',
+          c91: [],
           c92: '',
           c93: '',
-          c94: '',
+          c94: [],
           c95: '',
           c96: '',
           c97: '',
@@ -1731,8 +1740,8 @@
         }
 
         const checkc26 = (rule, value, callback) => {
-          if (parseFloat(this.formRecord.c37) != null && "最冷" != (String.valueOf(parseFloat(this.formRecord.c37)))) {
-            if (parseFloat(this.formRecord.c26) > parseFloat(this.formRecord.c25) || parseFloat(this.formRecord.c26) < parseFloat($("#27").val())) {
+          if (parseFloat(this.formRecord.c37) != null && "最冷" !== parseFloat(this.formRecord.c37)) {
+            if (parseFloat(this.formRecord.c26) > parseFloat(this.formRecord.c25) || parseFloat(this.formRecord.c26) < parseFloat(this.formRecord.c27)) {
               callback("试验期间所有M-包的平均温度数值必须在最高和最低温度之间");
             } else {
               callback()
@@ -1759,7 +1768,7 @@
         const checkc35 = (rule, value, callback) => {
           if (nxdj === 0) {
             callback("能效数据不在备案范围")
-          } else if (this.formRecord.c35 != nxdj) {
+          } else if (parseFloat(this.formRecord.c35) != nxdj) {
             callback("能效等级与额定能效指数不匹配！")
           } else {
             callback()
@@ -1871,6 +1880,10 @@
                 message: '实测值不能为空'
               },
               {
+                validator: threeDecimals,
+                trigger: 'change,blur'
+              },
+              {
                 validator: checkc6,
                 trigger: 'change,blur'
               }
@@ -1950,14 +1963,14 @@
               {
                 required: true,
                 trigger: 'change,blur',
-                message: '时钟 智能感应器或类似的自动化装置控制照明不能为空'
+                message: '不能为空 '
               }
             ],
             c23: [
               {
                 required: true,
                 trigger: 'change,blur',
-                message: '时钟 智能感应器或类似的自动化装置控制照明不能为空'
+                message: '不能为空'
               }
             ],
             c15: [
@@ -2071,7 +2084,7 @@
               {
                 required: true,
                 trigger: 'change,blur',
-                message: '气候类型 下的能效限定值不能为空'
+                message: '气候类型3下的能效限定值不能为空'
               }
             ],
             c41: [
@@ -2252,7 +2265,6 @@
             c91: [
               {
                 required: true,
-                trigger: 'change,blur',
                 message: '不能为空'
               }
             ],
@@ -2418,4 +2430,10 @@
 </script>
 <style>
   @import '../../../css/comm.css';
+  .overwrite1 /deep/ span {
+    width: auto !important;
+  }
+  .overwrite2 /deep/ .ivu-checkbox-inner{
+    width: 14px !important;
+  }
 </style>

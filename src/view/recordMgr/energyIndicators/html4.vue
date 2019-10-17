@@ -146,7 +146,7 @@
           <h3>关键部件</h3>
           <table id="table3">
             <tr>
-              <th>名称</th>
+              <th style="width: 100px">名称</th>
               <th>规格型号</th>
               <th>制冷量(W)</th>
               <th>输入功率(W)</th>
@@ -154,7 +154,7 @@
               <th>制造商</th>
             </tr>
             <tr>
-              <td><span class="red">*</span>压缩机1</td>
+              <td>压缩机1<span class="red">*</span></td>
               <td>
                 <FormItem prop="c14">
                   <Input type="text" v-model="formRecord.c14" :disabled='disabledoff'/>
@@ -284,7 +284,7 @@
             <tr>
               <td><span class="red">*</span>辅助电加热器</td>
               <td colspan="3">
-                <FormItem prop="c33">
+                <FormItem prop="c33" style="width: 18%">
                   <RadioGroup v-model="formRecord.c33">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                   </RadioGroup>
@@ -301,7 +301,7 @@
             <tr>
               <td><span class="red">*</span>油分离器</td>
               <td>
-                <FormItem prop="c34">
+                <FormItem prop="c34" style="width: 100%">
                   <RadioGroup v-model="formRecord.c34">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -310,7 +310,7 @@
               </td>
               <td><span class="red">*</span>结构形式</td>
               <td>
-                <FormItem prop="c31">
+                <FormItem prop="c31" style="width: 100%">
                   <RadioGroup v-model="formRecord.c31">
                     <Radio label="分体式" :disabled='disabledoff'>分体式</Radio>
                     <Radio label="整体式" :disabled='disabledoff'>整体式</Radio>
@@ -321,7 +321,7 @@
             <tr>
               <td><span class="red">*</span>储液器</td>
               <td>
-                <FormItem prop="c35">
+                <FormItem prop="c35" style="width: 100%">
                   <RadioGroup v-model="formRecord.c35">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -330,7 +330,7 @@
               </td>
               <td><span class="red">*</span>电热元件</td>
               <td>
-                <FormItem prop="c36">
+                <FormItem prop="c36" style="width: 100%">
                   <RadioGroup v-model="formRecord.c36">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -341,7 +341,7 @@
             <tr>
               <td><span class="red">*</span>机械温控器</td>
               <td>
-                <FormItem prop="c37">
+                <FormItem prop="c37" style="width: 100%">
                   <RadioGroup v-model="formRecord.c37">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -350,7 +350,7 @@
               </td>
               <td><span class="red">*</span>电子控制线路</td>
               <td>
-                <FormItem prop="c38">
+                <FormItem prop="c38" style="width: 100%">
                   <RadioGroup v-model="formRecord.c38">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -362,7 +362,7 @@
               <td><span class="red">*</span>不可拆线插头的电源线
               </td>
               <td>
-                <FormItem prop="c39">
+                <FormItem prop="c39" style="width: 100%">
                   <RadioGroup v-model="formRecord.c39">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -371,7 +371,7 @@
               </td>
               <td><span class="red">*</span>单独的控制面板</td>
               <td>
-                <FormItem prop="c40">
+                <FormItem prop="c40" style="width: 100%">
                   <RadioGroup v-model="formRecord.c40">
                     <Radio label="有" :disabled='disabledoff'>有</Radio>
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
@@ -396,7 +396,7 @@
             <tr>
               <td><span class="red">*</span>有无匹配形式</td>
               <td colspan="3">
-                <FormItem prop="c62">
+                <FormItem prop="c62" style="width: 18%">
                   <RadioGroup v-model="formRecord.c62">
                     <Radio label="无" :disabled='disabledoff'>无</Radio>
                   </RadioGroup>
@@ -1907,26 +1907,26 @@
             ],
             c44: [
               {
-                required: true,
+                required: !this.forbidden.c44,
                 trigger: 'change,blur',
                 message: '不能为空'
               }
             ],
             c45: [
               {
-                required: true,
+                required: !this.forbidden.c45,
                 trigger: 'change,blur',
                 message: '不能为空'
               }
             ],
             c46: [
               {
-                required: true,
+                required: !this.forbidden.c46,
                 trigger: 'change,blur',
-                message: '不能为空 至少两位小数'
+                message: '不能为空'
               },
               {
-                validator: atLeastTwoDecimals,
+                validator: !this.forbidden.c46? atLeastTwoDecimals: check,
                 trigger: 'change,blur'
               }
             ],
