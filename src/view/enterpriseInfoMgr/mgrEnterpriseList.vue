@@ -37,6 +37,7 @@
 </template>
 <script>
 import axios from 'axios'
+import { getFormatTime } from '@/libs/tools'
 export default {
   data () {
     const viewBtn = (h, params) => h('Button', {
@@ -80,12 +81,18 @@ export default {
         {
           title: '任务开始时间',
           key: 'start_time',
-          align: 'center'
+          align: 'center',
+          render: (h, params) => {
+            return h('div', getFormatTime(params.row.start_time,'year'))
+          }
         },
         {
           title: '任务结束时间',
           key: 'end_time',
-          align: 'center'
+          align: 'center',
+          render: (h, params) => {
+            return h('div', getFormatTime(params.row.end_time,'year'))
+          }
         },
         {
           title: '任务状态',
