@@ -47,7 +47,7 @@
             <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="制造单位"/>
           </FormItem>
           <FormItem prop="c29" label="备案方" style="width:100%;" :label-width="180">
-            <Input type="text" v-model="formRecord.c3" :disabled='disabledoff' placeholder="备案方"/>
+            <Input type="text" v-model="formRecord.c29" :disabled='disabledoff' placeholder="备案方"/>
           </FormItem>
           <FormItem prop="c2" label="规格型号" style="width:100%;" :label-width="180">
             <Input type="text" v-model="formRecord.c2" :disabled='!disabledoff' placeholder="规格型号"/>
@@ -185,9 +185,9 @@
           <h2>五、其他信息</h2>
           <table id="table3">
             <tr>
-              <td align="right">额定气候类型</td>
+              <td align="right"><i class="red">*</i>额定气候类型</td>
               <td>气候类型3</td>
-              <td align="right">总展示面积(㎡)(两位小数)</td>
+              <td align="right"><i class="red">*</i>总展示面积(㎡)(两位小数)</td>
               <td>
                 <FormItem prop="c18">
                   <Input type="text" v-model="formRecord.c18" :disabled='disabledoff'/>
@@ -195,13 +195,13 @@
               </td>
             </tr>
             <tr>
-              <td align="right">额定电压(V)</td>
+              <td align="right"><i class="red">*</i>额定电压(V)</td>
               <td>
                 <FormItem prop="c15">
                   <Input type="text" v-model="formRecord.c15" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td align="right">额定频率(Hz)</td>
+              <td align="right"><i class="red">*</i>额定频率(Hz)</td>
               <td>
                 <FormItem prop="c16">
                   <Input type="text" v-model="formRecord.c16" :disabled='disabledoff'/>
@@ -209,13 +209,13 @@
               </td>
             </tr>
             <tr>
-              <td align="right">额定功率(W)</td>
+              <td align="right"><i class="red">*</i>额定功率(W)</td>
               <td>
                 <FormItem prop="c17">
                   <Input type="text" v-model="formRecord.c17" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td align="right">额定能效指数(%)</td>
+              <td align="right"><i class="red">*</i>额定能效指数(%)</td>
               <td>
                 <FormItem prop="c19">
                   <Input type="text" v-model="formRecord.c19" :disabled='disabledoff'/>
@@ -223,7 +223,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right">是否附有夜盖(帘)</td>
+              <td align="right"><i class="red">*</i>是否附有夜盖(帘)</td>
               <td>
                 <FormItem prop="c20">
                   <RadioGroup v-model="formRecord.c20">
@@ -232,7 +232,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td align="right">是否有手动照明开关</td>
+              <td align="right"><i class="red">*</i>是否有手动照明开关</td>
               <td>
                 <FormItem prop="c21">
                   <RadioGroup v-model="formRecord.c21">
@@ -243,7 +243,7 @@
               </td>
             </tr>
             <tr>
-              <td width="200px" align="right">是否有时钟、智能感应器或类似的自动化装置控制照明</td>
+              <td width="200px" align="right"><i class="red">*</i>是否有时钟、智能感应器或类似的自动化装置控制照明</td>
               <td>
                 <FormItem prop="c22">
                   <RadioGroup v-model="formRecord.c22">
@@ -252,7 +252,7 @@
                   </RadioGroup>
                 </FormItem>
               </td>
-              <td align="right" width="200px">是否有时钟、智能感应器或类似的自动化装置控制防凝露加热器</td>
+              <td align="right" width="200px"><i class="red">*</i>是否有时钟、智能感应器或类似的自动化装置控制防凝露加热器</td>
               <td>
                 <FormItem prop="c23">
                   <RadioGroup v-model="formRecord.c23">
@@ -263,13 +263,13 @@
               </td>
             </tr>
             <tr>
-              <td align="right">制冷剂国际编号</td>
+              <td align="right"><i class="red">*</i>制冷剂国际编号</td>
               <td>
                 <FormItem prop="c24">
                   <Input type="text" v-model="formRecord.c24" :disabled='disabledoff'/>
                 </FormItem>
               </td>
-              <td align="right">有效容积(L)</td>
+              <td align="right"><i class="red">*</i>有效容积(L)</td>
               <td>
                 <FormItem prop="c36">
                   <Input type="text" v-model="formRecord.c36" :disabled='disabledoff'/>
@@ -277,7 +277,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right">试验期间最热M-包的最高温度(℃)(一位小数)</td>
+              <td align="right"><i class="red">*</i>试验期间最热M-包的最高温度(℃)(一位小数)</td>
               <td colspan="3">
                 <FormItem prop="c25" style="width: 80%">
                   <Input type="text" v-model="formRecord.c25" :disabled='disabledoff'/>
@@ -285,7 +285,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right">试验期间所有M-包的平均温度(℃)(一位小数)</td>
+              <td align="right"><i class="red">*</i>试验期间所有M-包的平均温度(℃)(一位小数)</td>
               <td colspan="3">
                 <FormItem prop="c26" style="width: 80%">
                   <Input type="text" v-model="formRecord.c26" :disabled='disabledoff'/>
@@ -294,8 +294,8 @@
             </tr>
             <tr>
               <td align="right">
-                <FormItem prop="c37">
-                  试验期间
+                <FormItem prop="c37" style="font-size: 14px !important;">
+                  <i class="red">*</i>试验期间
                   <Select v-model="formRecord.c37" style="width: 120px;text-align: left !important;">
                     <Option value="最冷" style="text-align: left !important;">最冷</Option>
                     <Option value="最热" style="text-align: left !important;">最热</Option>
@@ -310,7 +310,7 @@
               </td>
             </tr>
             <tr>
-              <td align="right">外形尺寸(长×宽×高)(mm×mm×mm)</td>
+              <td align="right"><i class="red">*</i>外形尺寸(长×宽×高)(mm×mm×mm)</td>
               <td colspan="3">
                 <FormItem prop="c28">
                   <Input type="text" v-model="formRecord.c28" :disabled='disabledoff'/>
@@ -1956,7 +1956,7 @@
               {
                 required: true,
                 trigger: 'change,blur',
-                message: '手动照明开关不能为空'
+                message: '不能为空'
               }
             ],
             c22: [
@@ -2431,7 +2431,7 @@
 <style>
   @import '../../../css/comm.css';
   .overwrite1 /deep/ span {
-    width: auto !important;
+    width: 14px !important;
   }
   .overwrite2 /deep/ .ivu-checkbox-inner{
     width: 14px !important;

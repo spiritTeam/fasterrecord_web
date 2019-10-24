@@ -1175,8 +1175,11 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        let c17 = parseFloat(this.formRecord.c17)
+        let c7 = parseFloat(this.formRecord.c7)
+
         const checkc17 = (rule, value, callback) => {
-          if (parseFloat(this.formRecord.c17) < parseFloat(this.formRecord.c7)) {
+          if (c17 < c7) {
             callback("初始光效（实测值）应大于等于初始光效（标称值）！");
           } else {
             callback()

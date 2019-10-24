@@ -323,7 +323,7 @@
               </td>
               <td colspan="2">
                 <FormItem prop="c33">
-                  <Input type="text" v-model="formRecord.c31" :disabled='disabledoff'/>
+                  <Input type="text" v-model="formRecord.c33" :disabled='disabledoff'/>
                 </FormItem>
               </td>
               <td>
@@ -1252,7 +1252,7 @@
         thisDateCV: "c7",
         // 当前能效等级 对应的C值
         thisLevelCV: "c20",
-        thisGZXHCV: "c4",// 当前规格型号 对应的C值
+        thisGZXHCV: "c3",// 当前规格型号 对应的C值
         modal3: false,
         modal4: false,
         modal5: false,
