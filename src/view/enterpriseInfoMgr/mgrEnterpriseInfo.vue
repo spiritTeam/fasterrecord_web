@@ -1,76 +1,94 @@
 <template>
   <div class="wrapper">
-    <div class="block">
-      <Form ref="formQuery" :model="formQuery" inline>
-        <FormItem>
-          <Input type="text" v-model.trim="formQuery.a" placeholder="登录账号"></Input>
-        </FormItem>
-        <FormItem>
-          <Button type="primary" @click="searchFun">搜索</Button>
-        </FormItem>
-      </Form>
-    </div>
-    <div v-show="searchResult">
-      <div class="block">
-        <Card :bordered="false">
-          <p slot="title">用户信息</p>
-          <div class="recordSystemInfo">
-            <div v-show="accountMsg.a" class="flex">
-              <p class="flex-left">登录用户名：</p>
-              <p class="flex-right"><b>{{accountMsg.a}}</b></p>
-            </div>
-            <div v-show="accountMsg.b" class="flex">
-              <p class="flex-left">用户类型：</p>
-              <p class="flex-right"><b>{{accountMsg.c}}</b></p>
-            </div>
-            <div v-show="accountMsg.d" class="flex">
-              <p class="flex-left">制造单位名称:</p>
-              <p class="flex-right"><b>{{accountMsg.d}}</b></p>
-            </div>
-            <div v-show="accountMsg.e" class="flex">
-              <p class="flex-left">生产者名称:</p>
-              <p class="flex-right"><b>{{accountMsg.e}}</b></p>
-            </div>
-            <div v-show="accountMsg.i" class="flex">
-              <p class="flex-left">原系统状态:</p>
-              <p class="flex-right"><b>{{accountMsg.i}}</b></p>
-            </div>
-          </div>
-        </Card>
-      </div>
-      <div class="block">
-        <Card :bordered="false">
-          <p slot="title">新系统大类信息</p>
-          <div class="recordSystemInfo">
-            <h4>可查询大类：</h4>
-            <div v-for="item in accountMsg.f" :key="item" style="padding-left:80px">
-                {{item}}
-            </div>
-            <h4>可备案大类：</h4>
-            <div class="recordSystemInfo">
-              <div v-for="item in accountMsg.g" :key="item" style="padding-left:80px">
-                  {{item}}
+    <Card :bordered="false">
+      <p slot="title">企业信息同步任务信息</p>
+      <Row style="display:flex; justify-content: space-between;">
+          <Col span="12">
+            <Card >
+              <p slot="title">
+                   新备案系统
+              </p>
+              <div v-show="nba.user_name" class="flex">
+                <p class="flex-left">用户名:</p>
+                <p class="flex-right"><b>{{nba.user_name}}</b></p>
               </div>
-            </div>
-          </div>
-        </Card>
-
-      </div>
-      <div class="block" v-show="orginMsg.length>0">
-        <Card :bordered="false">
-          <p slot="title">原系统大类信息</p>
-          <div class="recordSystemInfo">
-            <div v-for="item in orginMsg" :key="item" style="padding-left:80px;">
-                {{item}}
-            </div>
-          </div>
-          <Button style="margin-left:80px" type="primary" @click="updateHandle">将 原系统 的“可备案大类”同步到 新系统 中</Button>
-        </Card>
-      </div>
-    </div>
-    <div v-show="!searchResult" style="text-align:center; color:red;">
-      {{errMessage}}
-    </div>
+              <div v-show="nba.user_type_name" class="flex">
+                <p class="flex-left">用户类型：</p>
+                <p class="flex-right"><b>{{nba.user_type_name}}</b></p>
+              </div>
+              <div v-show="nba.producer_name" class="flex">
+                <p class="flex-left">生产者名称:</p>
+                <p class="flex-right"><b>{{nba.producer_name}}</b></p>
+              </div>
+              <div v-show="nba.sub_producer_name" class="flex">
+                <p class="flex-left">制造单位名称:</p>
+                <p class="flex-right"><b>{{nba.sub_producer_name}}</b></p>
+              </div>
+              <div v-show="nba.account_status" class="flex">
+                <p class="flex-left">账号状态:</p>
+                <p class="flex-right"><b>{{nba.account_status}}</b></p>
+              </div>
+              <div class="itemblock">
+                <h3 >
+                   可备案大类：
+                </h3>
+                <div class="unitItem" v-for="(item,idx) in nba.edit_category_names" :key="idx">
+                   {{item}}
+                </div>
+              </div>
+              <div class="itemblock">
+                <h3 >
+                   可查询大类：
+                </h3>
+                <div class="unitItem" v-for="(item,idx) in nba.search_category_names" :key="idx">
+                    {{item}}
+                </div>
+              </div>
+            </Card>
+          </Col>
+          <Col span="12">
+            <Card style="height: 100%;">
+              <p slot="title">
+                    原备案系统
+              </p>
+              <div v-show="ba.user_name" class="flex">
+                <p class="flex-left">用户名:</p>
+                <p class="flex-right"><b>{{ba.user_name}}</b></p>
+              </div>
+              <div v-show="ba.user_type_name" class="flex">
+                <p class="flex-left">用户类型：</p>
+                <p class="flex-right"><b>{{ba.user_type_name}}</b></p>
+              </div>
+              <div v-show="ba.producer_name" class="flex">
+                <p class="flex-left">生产者名称:</p>
+                <p class="flex-right"><b>{{ba.producer_name}}</b></p>
+              </div>
+              <div v-show="ba.sub_producer_name" class="flex">
+                <p class="flex-left">制造单位名称:</p>
+                <p class="flex-right"><b>{{ba.sub_producer_name}}</b></p>
+              </div>
+              <div v-show="ba.account_status" class="flex">
+                <p class="flex-left">账号状态:</p>
+                <p class="flex-right"><b>{{ba.account_status}}</b></p>
+              </div>
+              <div class="itemblock">
+                <h3>
+                   可备案大类：
+                </h3>
+                <div class="unitItem" v-for="(item,idx) in ba.edit_category_names" :key="idx">
+                   {{item}}
+                </div>
+              </div>
+            </Card>
+          </Col>
+      </Row>
+      <Row style="margin-top:10px;">
+        <Col v-show="btnState==2" span="24" style="text-align:right">
+          <Button @click="cancleHandle">取消同步</Button>
+          <Button type="primary" @click="confirmHandle">确认同步</Button>
+        </Col>
+      </Row>
+    </Card>
   </div>
 </template>
 <script>
@@ -78,69 +96,81 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      formQuery:{
-        a:'',
+      id:'',
+      btnState:0,
+      nba: {
+        user_name:'',
+        user_type_name:'',
+        producer_name:'', 
+        account_status:'',
+        sub_producer_name:'',       
+        edit_category_names:[],
+        search_category_names:[]
       },
-      accountMsg: {
-        "a": "",
-        "c": "",
-        "d": "",
-        "e": "",
-        "f": [],
-        "g": [],
-        "h": "",
-        "i": ""
-      },
-      orginMsg:[],
-      searchResult:false,
-      errMessage:'',
-      conut:0
+      ba:{
+        user_name:'',
+        user_type_name:'',
+        producer_name:'', 
+        account_status:'',
+        sub_producer_name:'',       
+        edit_category_names:[],
+      }
     }
   },
   methods: {
     getInfo () {
-      
-    },
-    searchFun(code){
-      axios.get('/mgr/enterprise/info.do?a='+this.formQuery.a).then(res => {
-        if (res.data.result) {
-          this.searchResult=true;
-          this.accountMsg = res.data.msg
-          this.delayFun(this.accountMsg.h)
-        }else{
-          this.searchResult=false;
-          this.errMessage=res.data.msg;
+      axios.get('/usersync/info.do', {
+        params: {
+          id:this.id
         }
+      }).then(res => {
+        if(res.data.result){
+          this.nba = res.data.data.nba
+          this.ba = res.data.data.ba
+        }
+        
       })
     },
-    delayFun(code){
-      //let conut=0;
-      this.conut++;
-      if(this.conut<2){
-        let timer=setTimeout(()=>{
-          axios.get('/mgr/enterprise/oldinfo.do?code='+code).then(res => {
-            if (res.data.result) {
-              this.orginMsg=res.data.msg
-              clearTimeout(timer);
-            }else{
-              this.delayFun(this.accountMsg.h)
-             // this.$Message.error(res.data.msg)
-            }
-          })
-        },5000)
-      }else{
-        this.conut=0;
-      }
-    },
-    updateHandle(){
-      axios.get('/mgr/enterprise/sync.do?code='+this.accountMsg.h).then(res => {
-        if(res.data.result){
-          this.$Message.success(res.data.msg)
-        }else{
-          this.$Message.error(res.data.msg)
+    confirmHandle(){
+      axios.get('/usersync/confirm.do', {
+        params: {
+          id:this.id
         }
-      });
+      }).then(res => {
+          if(res.data.result){
+            this.$router.push({
+              name: 'enterpriseList',
+            })
+          }
+          this.$Message.info(res.data.msg);
+      })
+    },
+    cancleHandle(){
+      axios.get('/usersync/cancle.do', {
+        params: {
+          id:this.id
+        }
+      }).then(res => {
+        if(res.data.result){
+            this.$router.push({
+              name: 'enterpriseList',
+            })
+          }
+          this.$Message.info(res.data.msg);
+      })
     }
+  },
+  created(){
+    console.log(this.$route.params)
+    if(this.$route.params){
+      this.id=this.$route.params.id;
+      this.btnState=this.$route.params.state;
+    }else{
+        this.$router.push({
+          name: 'enterpriseList',
+        })
+    }
+    
   },
   mounted () {
     this.getInfo()
@@ -153,6 +183,8 @@ export default {
   background:#eee;
   padding:15px;
 }
+.itemblock{ margin-top:20px; }
+.itemblock h3{ margin-bottom: 10px;}
 .systemInfo span{
   display:inline-block;
   font-size:16px;
