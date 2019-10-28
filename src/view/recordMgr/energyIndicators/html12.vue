@@ -64,7 +64,7 @@
               <Radio label="5" :disabled='disabledoff'>5级</Radio>
             </RadioGroup>
           </FormItem>
-          <h5 style="color:red">不能编辑的参数可以去标识样式下载列表修改</h5>
+          <!--<h5 style="color:red">不能编辑的参数可以去标识样式下载列表修改</h5>-->
           <table id="table1">
             <tr>
               <td align="center">额定制冷量(W)</td>
@@ -1929,13 +1929,6 @@
                 trigger: 'change,blur'
               }
             ],
-            c36: [
-              {
-                required: true,
-                trigger: 'change,blur',
-                message: '备注不能为空'
-              }
-            ],
             c6: [
               {
                 required: true,
@@ -1952,13 +1945,6 @@
               {
                 validator: checkc37,
                 trigger: 'change,blur'
-              }
-            ],
-            c38: [
-              {
-                required: true,
-                trigger: 'change,blur',
-                message: '备注不能为空'
               }
             ],
             c7: [
@@ -1985,13 +1971,6 @@
               {
                 validator: checkc39,
                 trigger: 'blur'
-              }
-            ],
-            c40: [
-              {
-                required: true,
-                trigger: 'change,blur',
-                message: '备注不能为空'
               }
             ],
             c9: [

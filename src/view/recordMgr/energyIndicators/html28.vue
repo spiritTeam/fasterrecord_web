@@ -99,8 +99,17 @@
               <td>
                 <FormItem prop="c10">
                   <Select v-model="formRecord.c10" style="width:100%">
-                    <Option value="非照明搁架">非照明搁架</Option>
-                    <Option value="照明搁架">照明搁架</Option>
+                    <Option v-show="species === '1'" value="非照明搁架">非照明搁架</Option>
+                    <Option v-show="species === '1'" value="照明搁架">照明搁架</Option>
+                    <Option v-show="species === '2'" value="实体门">实体门</Option>
+                    <Option v-show="species === '2'" value="玻璃门">玻璃门</Option>
+                    <Option v-show="species === '3'" value="直冷排管">直冷排管</Option>
+                    <Option v-show="species === '3'" value="风机盘管">风机盘管</Option>
+                    <Option v-show="species === '4'" value="高">高</Option>
+                    <Option v-show="species === '4'" value="中">中</Option>
+                    <Option v-show="species === '4'" value="低">低</Option>
+                    <Option v-show="species === '6'" value="带实体围护结构">带实体围护结构</Option>
+                    <Option v-show="species === '6'" value="带玻璃围护结构">带玻璃围护结构</Option>
                   </Select>
                 </FormItem>
               </td>
@@ -1627,7 +1636,9 @@
           ec_model_no: 28,
           attach_list: ''
         },
-        forbidden: {}
+        forbidden: {},
+        species: '',
+        c9: '',
       }
     },
     mounted() {
@@ -1719,6 +1730,24 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        let c9 = this.formRecord.c9;
+        if (this.c9 != this.formRecord.c9) {
+          this.formRecord.c10 = ''
+        }
+        this.c9 = this.formRecord.c9
+        if (c9 === 'RS1' || c9 === 'RS2' || c9 === 'RS3') {
+          this.species = "1"
+        }else if (c9 === 'RS4' || c9 === 'RS5' || c9 === 'RS15' || c9 === 'RS16' || c9 === 'RS17') {
+          this.species = "2"
+        }else if (c9 === 'RS6' || c9 === 'RS7' || c9 === 'RS8' || c9 === 'RS9') {
+          this.species = "3"
+        }else if (c9 === 'RS10') {
+          this.species = "4"
+        }else if (c9 === 'RS11' || c9 === 'RS12' || c9 === 'RS18' || c9 === 'RS19' || c9 === 'RS20') {
+          this.species = "5"
+        }else if (c9 === 'RS13' || c9 === 'RS14') {
+          this.species = "6"
+        }
         let c6 = this.formRecord.c6;
         let c5 = this.formRecord.c5;
         let c8 = this.formRecord.c8;
@@ -1850,7 +1879,7 @@
             ],
             c10: [
               {
-                required: true,
+                required: this.species !== "5",
                 trigger: 'change,blur',
                 message: '陈列柜类型及分级不能为空'
               }
@@ -1888,13 +1917,6 @@
                 trigger: 'change,blur'
               }
             ],
-            c30: [
-              {
-                required: true,
-                trigger: 'change,blur',
-                message: '备注不能为空'
-              }
-            ],
             c7: [
               {
                 required: true,
@@ -1919,13 +1941,6 @@
               {
                 validator: checkc8,
                 trigger: 'change,blur'
-              }
-            ],
-            c31: [
-              {
-                required: true,
-                trigger: 'change,blur',
-                message: '备注不能为空'
               }
             ],
             c11: [

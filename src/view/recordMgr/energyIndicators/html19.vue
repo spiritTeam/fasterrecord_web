@@ -2594,6 +2594,17 @@
         var yl = this.formRecord.c13;
         //机组输入比功率 标称值
         var val = this.formRecord.c5;
+        var c5 = parseFloat(this.formRecord.c5);
+        var c21 = parseFloat(this.formRecord.c21);
+
+        const checkc21 = (rule, value, callback) => {
+          if (c5 < c21) {
+            callback("标称值不得小于实测值（标称值≥实测值！");
+          } else {
+            callback()
+          }
+        }
+
 
         if ("一般用喷油滑片空气压缩机" == this.formRecord.c10) {
           if (this.formRecord.c11 <= 1500) {
@@ -2713,6 +2724,10 @@
                 required: true,
                 trigger: 'change,blur',
                 message: '标称值不能为空'
+              },
+              {
+                validator: oneDecimals,
+                trigger: 'change,blur'
               }
             ],
             c200: [
@@ -2828,6 +2843,14 @@
                 required: true,
                 trigger: 'change,blur',
                 message: '实测值不能为空'
+              },
+              {
+                validator: twoDecimals,
+                trigger: 'change,blur'
+              },
+              {
+                validator: checkc21,
+                trigger: 'change,blur'
               }
             ],
             c22: [
