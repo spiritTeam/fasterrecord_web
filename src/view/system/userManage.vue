@@ -27,10 +27,10 @@
         </Modal>
         <Modal
             v-model="resetModal"
-            title="重置密码"
+            title="重置密码："
             @on-ok="okHandle"
             @on-cancel="">
-            {{resetPassword}}
+            密码已重置为：{{resetPassword}}
         </Modal>
 
 
@@ -199,20 +199,30 @@
 
             },
             resetHandle(rowloginname){
-                axios({
-                    url:'/user/reset.do',
-                    params:{
-                        loginName:rowloginname
+                 let cont='是否确定重置<span style="color:red">'+rowloginname+'</span>密码？'
+                 this.$Modal.confirm({
+                    title: '删除',
+                    content:cont,
+                    onOk: () => {
+                        axios({
+                            url:'/user/reset.do',
+                            params:{
+                                loginName:rowloginname
+                            },
+                            methods:"get"
+                        }).then(res => {
+                            if(res.data.result){
+                                this.resetModal=true;
+                            }else{
+                                this.resetModal=false
+                            }
+                            this.resetPassword=res.data.msg;
+                        })
                     },
-                    methods:"get"
-                }).then(res => {
-                    if(res.data.result){
-                        this.resetModal=true;
-                    }else{
-                        this.resetModal=false
+                    onCancel: () => {
+                        //this.$Message.info('Clicked cancel');
                     }
-                    this.resetPassword=res.data.msg;
-                })
+                 })
             },
             roleHandle(rowid){
                 this.currId=rowid;
@@ -225,30 +235,31 @@
                 }).then(res => {
                     this.dataTree=res.data;
                 })
+
             },
             remove (index,delMsg) {
                 this.$Modal.confirm({
-                        title: '删除',
-                        content: '是否确定删除？',
-                        onOk: () => {
-                            axios({
-                                url:'/user/delete.do',
-                                params:{
-                                    id:delMsg.id,
-                                    loginName:delMsg.loginName
-                                }
-                            }).then((res)=>{
+                    title: '删除',
+                    content: '是否确定删除？',
+                    onOk: () => {
+                        axios({
+                            url:'/user/delete.do',
+                            params:{
+                                id:delMsg.id,
+                                loginName:delMsg.loginName
+                            }
+                        }).then((res)=>{
                             if(res.data.result){
                                 this.data6.splice(index, 1);
                             }else{
                                 this.$Message.warning('操作失败');
                             }
                         })
-            },
-                onCancel: () => {
-                    //this.$Message.info('Clicked cancel');
-                }
-            });
+                    },
+                    onCancel: () => {
+                        //this.$Message.info('Clicked cancel');
+                    }
+                });
 
             },
             reqData:function () {
