@@ -3209,7 +3209,7 @@
     }
   }
 </script>
-<style>
+<style scoped>
   @import '../../../css/comm.css';
 
   .overwrite1 /deep/ span {
@@ -3218,5 +3218,11 @@
 
   .overwrite2 /deep/ .ivu-checkbox-inner {
     width: 14px !important;
+  }
+
+  td span {
+    display: inline-block;
+    width: 14px !important;
+    text-align: center;
   }
 </style>
