@@ -8,15 +8,15 @@
     </p>
     <Form ref="formQuery" :model="formQuery" inline>
       <FormItem>
-        <Select v-model="formQuery.category_id" style="width:200px">
+        <Select v-model="formQuery.category_id" style="width:400px">
             <Option v-for="(item,idx) in seletVal" :key="idx" :value="item.ec_model_no">{{item.ec_model_title}}</Option>
         </Select>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model.trim="formQuery.record_no" placeholder="备案号"></Input>
+        <Input type="text" style="width:400px" v-model.trim="formQuery.record_no" placeholder="备案号"></Input>
       </FormItem>
       <FormItem>
-        <Input type="text" v-model.trim="formQuery.bar_code" placeholder="实验室报告号"></Input>
+        <Input type="text" style="width:400px" v-model.trim="formQuery.bar_code" placeholder="实验室报告号"></Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="searchFun">搜索</Button>
@@ -79,7 +79,7 @@ export default {
         },
          {
           title: '主型号',
-          key: 'p_id',
+          key: 'p_product_model',
           align: 'center'
         },
          {
