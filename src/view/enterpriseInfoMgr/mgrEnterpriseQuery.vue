@@ -59,7 +59,7 @@ export default {
         },
         {
           title: '唯一码',
-          key: 'user_name',
+          key: 'uid',
           align: 'center'
         },
         {
