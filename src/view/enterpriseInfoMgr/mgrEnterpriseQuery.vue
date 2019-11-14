@@ -8,15 +8,15 @@
     </p>
     <Form ref="formQuery" :model="formQuery" inline>
       <FormItem>
-        <Select v-model="formQuery.category_id" style="width:400px">
+        <Select v-model="formQuery.category_id" style="width:300px">
             <Option v-for="(item,idx) in seletVal" :key="idx" :value="item.ec_model_no">{{item.ec_model_title}}</Option>
         </Select>
       </FormItem>
       <FormItem>
-        <Input type="text" style="width:400px" v-model.trim="formQuery.record_no" placeholder="备案号"></Input>
+        <Input type="text" style="width:300px" v-model.trim="formQuery.record_no" placeholder="备案号"></Input>
       </FormItem>
       <FormItem>
-        <Input type="text" style="width:400px" v-model.trim="formQuery.bar_code" placeholder="实验室报告号"></Input>
+        <Input type="text" style="width:200px" v-model.trim="formQuery.bar_code" placeholder="实验室报告号"></Input>
       </FormItem>
       <FormItem>
         <Button type="primary" @click="searchFun">搜索</Button>
@@ -147,6 +147,7 @@ export default {
     console.log(this.$route.params)
     let userid = this.$route.params.el_user_id || 0
     if(userid){
+       this.formQuery.user_id=userid
        this.enterprise_name=this.$route.params.enterprise_name
        this.enterprise_desc=this.$route.params.enterprise_desc
     }
