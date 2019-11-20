@@ -28,16 +28,60 @@
       @on-change="changeList"
       style="margin-top:10px; text-align: right">
     </Page>
-    
+    <Modal
+        v-model="modalTask"
+        cancel-text="确定"
+        ok-text="同步信息"
+        :footer-hide="true"
+        :mask-closable="false">
+          <Tabs value="name1" style="margin-top:16px;">
+              <TabPane label="标识信息" name="name1" style="text-align:center">
+                 <img :src="bsUrl" width="400" /> 
+                 <Button type="primary" @click="resetPic">重新生成标识图</Button>
+              </TabPane>
+              <TabPane  label="标识模板信息" name="name2" style="text-align:center">
+                <img :src="tempUrl" width="400"/>
+              </TabPane>
+          </Tabs>
+    </Modal>
   </Card>
 </template>
 <script>
 import axios from 'axios'
 import { getFormatTime } from '@/libs/tools'
 export default {
+
   data () {
-    
+    const viewBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+      },
+      style:{
+        marginBottom:'1px'
+      },
+      on: {
+        click: () => {
+          this.viewHandle(params.row.id)
+        }
+      }
+    }, '查看备案信息')
+    const viewTempBtn = (h, params) => h('Button', {
+      props: {
+        type: 'primary',
+        size: 'small',
+      },
+      on: {
+        click: () => {
+          this.viewTempHandle(params.row.id)
+        }
+      }
+    }, '查看标识信息')
     return {
+      modalTask:false,
+      bsUrl:'',
+      tempId:0,
+      tempUrl:'',
       formQuery:{
         category_id:'',
         bar_code:'',
@@ -106,9 +150,11 @@ export default {
           title: '操作',
           key: 'action',
           align: 'center',
+          width: 120,
           render: (h, params) => {
-            return h('div', [
-            
+            return h('span', [
+              //viewBtn(h,params),
+              viewTempBtn(h,params)
             ])
           }
         }
@@ -140,6 +186,55 @@ export default {
         }
       }).then(res => {
         this.seletVal= res.data.data
+      })
+    },
+    viewHandle (id) {
+      axios.get('/marking/getInfo.do', {
+        params: {
+          id: id
+        }
+      }).then(res => {
+        if (res.data.result_code === '1') {
+          this.$router.push({
+            name: 'addRecord',
+            params: {
+              step: 3,
+              type: 'view',
+              id: id,
+              pageNum: this.formQuery.pageNum,
+              viewData: res.data
+            }
+          })
+          this.$store.commit('setModelNo', res.data.marking.ec_model_no)
+        }
+      })
+    },
+    viewTempHandle (id) {
+      this.modalTask=true;
+      axios.get('/markingmanage/getELImg.do', {
+        params: {
+           id
+        }
+      }).then(res => {
+        if (res.data.result) {
+           this.tempId=res.data.data.id
+           this.bsUrl=res.data.data.url;
+           this.tempUrl=res.data.data.tempUrl
+        }
+      })
+    },
+    resetPic(){
+      axios.get('/markingmanage/getELImg.do', {
+        params: {
+           id:this.tempId
+        }
+      }).then(res => {
+        if (res.data.result) {
+            this.$Message.success(res.data.msg)
+            this.modalTask=false;
+        }else{
+            this.$Message.error(res.data.msg)
+        }
       })
     }
   },
