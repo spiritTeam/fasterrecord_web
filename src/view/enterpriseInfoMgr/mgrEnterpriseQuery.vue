@@ -211,7 +211,7 @@ export default {
     },
     viewTempHandle (id) {
       this.modalTask=true;
-      axios.get('/markingmanage/reELImg.do', {
+      axios.get('/markingmanage/getELImg.do', {
         params: {
            id
         }
@@ -224,7 +224,7 @@ export default {
       })
     },
     resetPic(){
-      axios.get('/markingmanage/getELImg.do', {
+      axios.get('/markingmanage/reELImg.do', {
         params: {
            id:this.tempId
         }
