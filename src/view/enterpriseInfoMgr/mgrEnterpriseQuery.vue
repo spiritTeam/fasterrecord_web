@@ -211,7 +211,7 @@ export default {
     },
     viewTempHandle (id) {
       this.modalTask=true;
-      axios.get('/markingmanage/getELImg.do', {
+      axios.get('/markingmanage/reELImg.do', {
         params: {
            id
         }
