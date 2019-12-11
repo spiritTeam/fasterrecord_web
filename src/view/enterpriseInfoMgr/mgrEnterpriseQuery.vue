@@ -42,6 +42,10 @@
               <TabPane  label="标识模板信息" name="name2" style="text-align:center">
                 <img :src="tempUrl" width="400"/>
               </TabPane>
+              <TabPane  label="备案证明" name="name3" style="text-align:center">
+                <img :src="bazmUrl" width="400"/>
+                <Button type="primary" @click="resetPic">重新生成备案证明</Button>
+              </TabPane>
           </Tabs>
     </Modal>
   </Card>
@@ -82,6 +86,7 @@ export default {
       bsUrl:'',
       tempId:0,
       tempUrl:'',
+      bazmUrl:'',
       formQuery:{
         category_id:'',
         bar_code:'',
@@ -217,9 +222,10 @@ export default {
         }
       }).then(res => {
         if (res.data.result) {
-           this.tempId=res.data.data.id
+           this.tempId=res.data.data.id;
            this.bsUrl=res.data.data.url;
-           this.tempUrl=res.data.data.tempUrl
+           this.tempUrl=res.data.data.tempUrl;
+           this.bazmUrl= res.data.data.bazmUrl;
         }
       })
     },
