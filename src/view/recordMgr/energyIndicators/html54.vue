@@ -409,6 +409,380 @@
                 </FormItem>
               </td>
             </tr>
+
+            <tr v-if="formRecord.c34 * 1 > 1">
+              <td rowspan="10" class="t_label"><span class="red">*</span>间室2</td>
+              <td colspan="3">
+                <span class="red">*</span>系列代号:
+                <Select v-model="formRecord.c240" style="width:200px">
+                  <Option v-for="item in xldhOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>额定气候类型:
+                <Select v-model="formRecord.c49" style="width:200px">
+                  <Option v-for="item in qhlxOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
+                <Select v-model="formRecord.c50" style="width:200px">
+                  <Option v-for="item in wddjOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最热M-包的最高温度</td>
+              <td>
+                <FormItem prop="c51" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c51" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c52" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c52" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最冷（所有）M-包的最低温度</td>
+              <td>
+                <FormItem prop="c226" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c226" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c227" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c227" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <span class="red" style="margin-left:15px;">*</span>能效检测气候类型:
+                <Select v-model="formRecord.c53" style="width:200px">
+                  <Option v-for="item in qhlxOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
+                <Select v-model="formRecord.c54" style="width:200px">
+                  <Option v-for="item in wddjOptions2" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最热M-包的最高温度</td>
+              <td>
+                <FormItem prop="c228" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c228" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c229" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c229" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最冷（所有）M-包的最低温度</td>
+              <td>
+                <FormItem prop="c55" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c55" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c56" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c56" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>基准耗电量Ebase（kWh/24h）(用实测展示面积计算)</td>
+              <td colspan="2">
+                <FormItem prop="c75" style="width:100%">
+                  <Input type="text" v-model="formRecord.c75" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>能耗调整系数k</td>
+              <td colspan="2">
+                <FormItem prop="c80" style="width:100%">
+                  <Input type="text" v-model="formRecord.c80" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
+              <td colspan="2">
+                <FormItem prop="c244" style="width:100%">
+                  <Input type="text" v-model="formRecord.c244" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>融霜方式</td>
+              <td>
+                <FormItem prop="c101">
+                  <RadioGroup v-model="formRecord.c101">
+                    <Radio label="敞开式" :disabled='disabledoff'></Radio>
+                    <Radio label="封闭式" :disabled='disabledoff'></Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c219">
+                  <RadioGroup v-model="formRecord.c219">
+                    <Radio label="无自动融霜系统或自然化霜系统" :disabled='disabledoff||formRecord.c101!="封闭式"'></Radio>
+                    <Radio label="自动加热融霜系统" :disabled='disabledoff||formRecord.c101!="封闭式"'></Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+            </tr>
+            <tr v-if="formRecord.c34 * 1 > 2">
+              <td rowspan="10" class="t_label"><span class="red">*</span>间室3</td>
+              <td colspan="3">
+                <span class="red">*</span>系列代号:
+                <Select v-model="formRecord.c241" style="width:200px">
+                  <Option v-for="item in xldhOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>额定气候类型:
+                <Select v-model="formRecord.c57" style="width:200px">
+                  <Option v-for="item in qhlxOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
+                <Select v-model="formRecord.c58" style="width:200px">
+                  <Option v-for="item in wddjOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最热M-包的最高温度</td>
+              <td>
+                <FormItem prop="c59" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c59" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c60" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c60" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最冷（所有）M-包的最低温度</td>
+              <td>
+                <FormItem prop="c230" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c230" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c231" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c231" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <span class="red" style="margin-left:15px;">*</span>能效检测气候类型:
+                <Select v-model="formRecord.c61" style="width:200px">
+                  <Option v-for="item in qhlxOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
+                <Select v-model="formRecord.c62" style="width:200px">
+                  <Option v-for="item in wddjOptions2" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最热M-包的最高温度</td>
+              <td>
+                <FormItem prop="c232" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c232" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c233" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c233" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最冷（所有）M-包的最低温度</td>
+              <td>
+                <FormItem prop="c63" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c63" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c64" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c64" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>基准耗电量Ebase（kWh/24h）(用实测展示面积计算)</td>
+              <td colspan="2">
+                <FormItem prop="c76" style="width:100%">
+                  <Input type="text" v-model="formRecord.c76" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>能耗调整系数k</td>
+              <td colspan="2">
+                <FormItem prop="c81" style="width:100%">
+                  <Input type="text" v-model="formRecord.c81" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
+              <td colspan="2">
+                <FormItem prop="c245" style="width:100%">
+                  <Input type="text" v-model="formRecord.c245" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>融霜方式</td>
+              <td>
+                <FormItem prop="c102">
+                  <RadioGroup v-model="formRecord.c102">
+                    <Radio label="敞开式" :disabled='disabledoff'></Radio>
+                    <Radio label="封闭式" :disabled='disabledoff'></Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c220">
+                  <RadioGroup v-model="formRecord.c220">
+                    <Radio label="无自动融霜系统或自然化霜系统" :disabled='disabledoff||formRecord.c102!="封闭式"'></Radio>
+                    <Radio label="自动加热融霜系统" :disabled='disabledoff||formRecord.c102!="封闭式"'></Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+            </tr>
+            <tr v-if="formRecord.c34 * 1 > 3">
+              <td rowspan="10" class="t_label"><span class="red">*</span>间室4</td>
+              <td colspan="3">
+                <span class="red">*</span>系列代号:
+                <Select v-model="formRecord.c242" style="width:200px">
+                  <Option v-for="item in xldhOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>额定气候类型:
+                <Select v-model="formRecord.c65" style="width:200px">
+                  <Option v-for="item in qhlxOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
+                <Select v-model="formRecord.c66" style="width:200px">
+                  <Option v-for="item in wddjOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最热M-包的最高温度</td>
+              <td>
+                <FormItem prop="c67" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c67" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c68" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c68" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最冷（所有）M-包的最低温度</td>
+              <td>
+                <FormItem prop="c234" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c234" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c235" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c235" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <span class="red" style="margin-left:15px;">*</span>能效检测气候类型:
+                <Select v-model="formRecord.c69" style="width:200px">
+                  <Option v-for="item in qhlxOptions" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+                <span class="red" style="margin-left:15px;">*</span>条件下的温度等级:
+                <Select v-model="formRecord.c70" style="width:200px">
+                  <Option v-for="item in wddjOptions2" :value="item.value" :key="item.value">{{ item.value }}</Option>
+                </Select>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最热M-包的最高温度</td>
+              <td>
+                <FormItem prop="c236" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c236" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c237" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c237" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label">最冷（所有）M-包的最低温度</td>
+              <td>
+                <FormItem prop="c71" label="标准规定值:" :label-width="100" style="width:100%">
+                  <Input type="text" v-model="formRecord.c71" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c72" label="实测值:" :label-width="70" style="width:100%">
+                  <Input type="text" v-model="formRecord.c72" :disabled='disabledoff' placeholder="一位小数"/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>基准耗电量Ebase（kWh/24h）(用实测展示面积计算)</td>
+              <td colspan="2">
+                <FormItem prop="c77" style="width:100%">
+                  <Input type="text" v-model="formRecord.c77" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>能耗调整系数k</td>
+              <td colspan="2">
+                <FormItem prop="c246" style="width:100%">
+                  <Input type="text" v-model="formRecord.c246" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
+              <td colspan="2">
+                <FormItem prop="c82" style="width:100%">
+                  <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr>
+              <td class="t_label"><span class="red">*</span>融霜方式</td>
+              <td>
+                <FormItem prop="c100">
+                  <RadioGroup v-model="formRecord.c103">
+                    <Radio label="敞开式" :disabled='disabledoff'></Radio>
+                    <Radio label="封闭式" :disabled='disabledoff'></Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+              <td>
+                <FormItem prop="c221">
+                  <RadioGroup v-model="formRecord.c221">
+                    <Radio label="无自动融霜系统或自然化霜系统" :disabled='disabledoff||formRecord.c103!="封闭式"'></Radio>
+                    <Radio label="自动加热融霜系统" :disabled='disabledoff||formRecord.c103!="封闭式"'></Radio>
+                  </RadioGroup>
+                </FormItem>
+              </td>
+            </tr>
+
             <tr>
               <td class="t_label"><span class="red">*</span>额定电压（V）</td>
               <td>
@@ -1770,6 +2144,10 @@
           c9: '',
           c10: '',
           c11: '',
+          c213: '',
+          c12: '',
+          c13: '',
+          c14: '',
           c214: '（L）',
           c15: '',
           c16: '',
@@ -1812,6 +2190,60 @@
           c243: '',
           c100: '',
           c218: '',
+          c240: '',
+          c49: '',
+          c50: '',
+          c51: '',
+          c52: '',
+          c226: '',
+          c227: '',
+          c53: '',
+          c54: '',
+          c228: '',
+          c229: '',
+          c55: '',
+          c56: '',
+          c75: '',
+          c80: '',
+          c244: '',
+          c101: '',
+          c219: '',
+          c241: '',
+          c57: '',
+          c58: '',
+          c59: '',
+          c60: '',
+          c230: '',
+          c231: '',
+          c61: '',
+          c62: '',
+          c232: '',
+          c233: '',
+          c63: '',
+          c64: '',
+          c76: '',
+          c245: '',
+          c81: '',
+          c102: '',
+          c220: '',
+          c242: '',
+          c65: '',
+          c66: '',
+          c67: '',
+          c68: '',
+          c234: '',
+          c235: '',
+          c69: '',
+          c70: '',
+          c236: '',
+          c237: '',
+          c71: '',
+          c72: '',
+          c77: '',
+          c246: '',
+          c82: '',
+          c103: '',
+          c221: '',
           c83: '',
           c84: '',
           c85: '',
@@ -1839,14 +2271,14 @@
           c112: '',
           c113: '',
           c114: '',
+          c117: '',
           c115: '',
           c116: '',
-          c117: '',
           c162: '',
           c163: '',
+          c166: '',
           c164: '',
           c165: '',
-          c166: '',
           c118: '',
           c119: '',
           c120: '',
@@ -1854,19 +2286,19 @@
           c168: '',
           c169: '',
           c121: '',
-          c123: '',
-          c125: '',
           c122: '',
-          c124: '',
-          c126: '',
           c127: '',
+          c123: '',
+          c124: '',
+          c125: '',
+          c126: '',
           c170: '',
-          c172: '',
-          c174: '',
           c171: '',
-          c173: '',
-          c175: '',
           c176: '',
+          c172: '',
+          c173: '',
+          c174: '',
+          c175: '',
           c128: '',
           c129: '',
           c130: '',
@@ -1874,19 +2306,19 @@
           c178: '',
           c179: '',
           c131: '',
-          c133: '',
-          c135: '',
           c132: '',
-          c134: '',
-          c136: '',
           c137: '',
+          c133: '',
+          c134: '',
+          c135: '',
+          c136: '',
           c180: '',
-          c182: '',
-          c184: '',
           c181: '',
-          c183: '',
-          c185: '',
           c186: '',
+          c182: '',
+          c183: '',
+          c184: '',
+          c185: '',
           c138: [],
           c139: '',
           c140: '',
@@ -1907,34 +2339,34 @@
           c195: '',
           c147: '',
           c148: '',
+          c151: '',
           c149: '',
           c150: '',
-          c151: '',
           c196: '',
           c197: '',
+          c239: '',
           c198: '',
           c199: '',
-          c239: '',
           c152: '',
           c153: '',
+          c156: '',
           c154: '',
           c155: '',
-          c156: '',
           c203: '',
           c204: '',
+          c207: '',
           c205: '',
           c206: '',
-          c207: '',
           c157: '',
           c158: '',
+          c161: '',
           c159: '',
           c160: '',
-          c161: '',
           c208: '',
           c209: '',
+          c212: '',
           c210: '',
           c211: '',
-          c212: '',
           c202: '',
           ec_model_no: 54,
           attach_list: ''
@@ -2076,6 +2508,8 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
+        // var _c34 = parseFloat(formRecord.c34);
+
         let _c6 = parseFloat(this.formRecord.c6);
         let _c7 = parseFloat(this.formRecord.c7);
         let _nxzs = this.formRecord.c27;//能效指数
@@ -2366,7 +2800,142 @@
             }],
             c112: [{
               required: true, message: '请输入高', trigger: 'change,blur'
-            }]
+            }],
+
+            c51: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c52: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c226: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c227: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c228: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c229: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c55: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c56: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c75: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入基准耗电量', trigger: 'change,blur'
+            }],
+            c80: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请输入能耗调整系数k', trigger: 'change,blur'
+            }],
+            c101: [{
+              required: this.formRecord.c34 * 1 > 1, message: '请选择融霜方式', trigger: 'change'
+            }, {
+              trigger: 'change',
+              validator: this.formRecord.c100 == '敞开式' ? this.formRecord.c219 = "" : ""
+            }],
+
+            c59: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c60: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c230: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c231: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c232: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c233: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c63: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c64: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c76: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入基准耗电量', trigger: 'change,blur'
+            }],
+            c81: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请输入能耗调整系数k', trigger: 'change,blur'
+            }],
+            c102: [{
+              required: this.formRecord.c34 * 1 > 2, message: '请选择融霜方式', trigger: 'change'
+            }, {
+              trigger: 'change',
+              validator: this.formRecord.c100 == '敞开式' ? this.formRecord.c220 = "" : ""
+            }],
+
+            c67: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c68: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c234: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c235: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c236: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c237: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c71: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+            }],
+            c72: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+            }, {
+              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+            }],
+            c77: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入基准耗电量', trigger: 'change,blur'
+            }],
+            c82: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请输入能耗调整系数k', trigger: 'change,blur'
+            }],
+            c103: [{
+              required: this.formRecord.c34 * 1 > 3, message: '请选择融霜方式', trigger: 'change'
+            }, {
+              trigger: 'change',
+              validator: this.formRecord.c100 == '敞开式' ? this.formRecord.c221 = "" : ""
+            }],
           }
         }
       }
