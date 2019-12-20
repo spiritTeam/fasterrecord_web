@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>多联式空调（热泵）机组-能源效率标识备案表</h1>
+      <h1>多联式空调（热泵）机组2008版-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>

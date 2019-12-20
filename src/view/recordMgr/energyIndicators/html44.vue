@@ -6,7 +6,7 @@
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>水(地)源热泵机组-能源效率标识备案表</h1>
+      <h1>水(地)源热泵机组2014版-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>

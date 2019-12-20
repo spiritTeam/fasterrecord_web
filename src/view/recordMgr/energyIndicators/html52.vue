@@ -7,7 +7,7 @@
 <template>
   <div class="wrapper">
     <Form ref="formRecord" :model="formRecord" label-position="right" :rules="ruleRecord">
-      <h1>家用和类似用途微波炉-能源效率标识备案表</h1>
+      <h1>家用和类似用途微波炉2017版-能源效率标识备案表</h1>
       <div class="part part1">
         <Card :bordered="false">
           <h2>一、备案方声明</h2>
