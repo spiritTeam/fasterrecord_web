@@ -410,7 +410,7 @@
               </td>
             </tr>
 
-            <tr v-if="formRecord.c34 * 1 > 1">
+            <tr v-if="c34 > 1">
               <td rowspan="10" class="t_label"><span class="red">*</span>间室2</td>
               <td colspan="3">
                 <span class="red">*</span>系列代号:
@@ -427,7 +427,7 @@
                 </Select>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label">最热M-包的最高温度</td>
               <td>
                 <FormItem prop="c51" label="标准规定值:" :label-width="100" style="width:100%">
@@ -440,7 +440,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label">最冷（所有）M-包的最低温度</td>
               <td>
                 <FormItem prop="c226" label="标准规定值:" :label-width="100" style="width:100%">
@@ -453,7 +453,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td colspan="3">
                 <span class="red" style="margin-left:15px;">*</span>能效检测气候类型:
                 <Select v-model="formRecord.c53" style="width:200px">
@@ -465,7 +465,7 @@
                 </Select>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label">最热M-包的最高温度</td>
               <td>
                 <FormItem prop="c228" label="标准规定值:" :label-width="100" style="width:100%">
@@ -478,7 +478,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label">最冷（所有）M-包的最低温度</td>
               <td>
                 <FormItem prop="c55" label="标准规定值:" :label-width="100" style="width:100%">
@@ -491,7 +491,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label"><span class="red">*</span>基准耗电量Ebase（kWh/24h）(用实测展示面积计算)</td>
               <td colspan="2">
                 <FormItem prop="c75" style="width:100%">
@@ -499,7 +499,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label"><span class="red">*</span>能耗调整系数k</td>
               <td colspan="2">
                 <FormItem prop="c80" style="width:100%">
@@ -507,7 +507,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
               <td colspan="2">
                 <FormItem prop="c244" style="width:100%">
@@ -515,7 +515,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 1">
               <td class="t_label"><span class="red">*</span>融霜方式</td>
               <td>
                 <FormItem prop="c101">
@@ -526,15 +526,13 @@
                 </FormItem>
               </td>
               <td>
-                <FormItem prop="c219">
-                  <RadioGroup v-model="formRecord.c219">
-                    <Radio label="无自动融霜系统或自然化霜系统" :disabled='disabledoff||formRecord.c101!="封闭式"'></Radio>
-                    <Radio label="自动加热融霜系统" :disabled='disabledoff||formRecord.c101!="封闭式"'></Radio>
-                  </RadioGroup>
-                </FormItem>
+                <RadioGroup v-model="formRecord.c219">
+                  <Radio label="无自动融霜系统或自然化霜系统" :disabled='disabledoff||formRecord.c101!="封闭式"'></Radio>
+                  <Radio label="自动加热融霜系统" :disabled='disabledoff||formRecord.c101!="封闭式"'></Radio>
+                </RadioGroup>
               </td>
             </tr>
-            <tr v-if="formRecord.c34 * 1 > 2">
+            <tr v-if="c34 > 2">
               <td rowspan="10" class="t_label"><span class="red">*</span>间室3</td>
               <td colspan="3">
                 <span class="red">*</span>系列代号:
@@ -551,7 +549,7 @@
                 </Select>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label">最热M-包的最高温度</td>
               <td>
                 <FormItem prop="c59" label="标准规定值:" :label-width="100" style="width:100%">
@@ -564,7 +562,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label">最冷（所有）M-包的最低温度</td>
               <td>
                 <FormItem prop="c230" label="标准规定值:" :label-width="100" style="width:100%">
@@ -577,7 +575,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td colspan="3">
                 <span class="red" style="margin-left:15px;">*</span>能效检测气候类型:
                 <Select v-model="formRecord.c61" style="width:200px">
@@ -589,7 +587,7 @@
                 </Select>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label">最热M-包的最高温度</td>
               <td>
                 <FormItem prop="c232" label="标准规定值:" :label-width="100" style="width:100%">
@@ -602,7 +600,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label">最冷（所有）M-包的最低温度</td>
               <td>
                 <FormItem prop="c63" label="标准规定值:" :label-width="100" style="width:100%">
@@ -615,7 +613,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label"><span class="red">*</span>基准耗电量Ebase（kWh/24h）(用实测展示面积计算)</td>
               <td colspan="2">
                 <FormItem prop="c76" style="width:100%">
@@ -623,7 +621,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label"><span class="red">*</span>能耗调整系数k</td>
               <td colspan="2">
                 <FormItem prop="c81" style="width:100%">
@@ -631,7 +629,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
               <td colspan="2">
                 <FormItem prop="c245" style="width:100%">
@@ -639,7 +637,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 2">
               <td class="t_label"><span class="red">*</span>融霜方式</td>
               <td>
                 <FormItem prop="c102">
@@ -658,7 +656,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr v-if="formRecord.c34 * 1 > 3">
+            <tr v-if="c34 > 3">
               <td rowspan="10" class="t_label"><span class="red">*</span>间室4</td>
               <td colspan="3">
                 <span class="red">*</span>系列代号:
@@ -675,7 +673,7 @@
                 </Select>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td class="t_label">最热M-包的最高温度</td>
               <td>
                 <FormItem prop="c67" label="标准规定值:" :label-width="100" style="width:100%">
@@ -688,7 +686,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td class="t_label">最冷（所有）M-包的最低温度</td>
               <td>
                 <FormItem prop="c234" label="标准规定值:" :label-width="100" style="width:100%">
@@ -701,7 +699,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td colspan="3">
                 <span class="red" style="margin-left:15px;">*</span>能效检测气候类型:
                 <Select v-model="formRecord.c69" style="width:200px">
@@ -713,7 +711,7 @@
                 </Select>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td class="t_label">最热M-包的最高温度</td>
               <td>
                 <FormItem prop="c236" label="标准规定值:" :label-width="100" style="width:100%">
@@ -726,7 +724,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td class="t_label">最冷（所有）M-包的最低温度</td>
               <td>
                 <FormItem prop="c71" label="标准规定值:" :label-width="100" style="width:100%">
@@ -739,7 +737,7 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td class="t_label"><span class="red">*</span>基准耗电量Ebase（kWh/24h）(用实测展示面积计算)</td>
               <td colspan="2">
                 <FormItem prop="c77" style="width:100%">
@@ -747,26 +745,26 @@
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
               <td class="t_label"><span class="red">*</span>能耗调整系数k</td>
-              <td colspan="2">
-                <FormItem prop="c246" style="width:100%">
-                  <Input type="text" v-model="formRecord.c246" :disabled='disabledoff'/>
-                </FormItem>
-              </td>
-            </tr>
-            <tr>
-              <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
               <td colspan="2">
                 <FormItem prop="c82" style="width:100%">
                   <Input type="text" v-model="formRecord.c82" :disabled='disabledoff'/>
                 </FormItem>
               </td>
             </tr>
-            <tr>
+            <tr v-if="c34 > 3">
+              <td class="t_label"><span class="red">*</span>展示面积(实测值)</td>
+              <td colspan="2">
+                <FormItem prop="c246" style="width:100%">
+                  <Input type="text" v-model="formRecord.c246" :disabled='disabledoff'/>
+                </FormItem>
+              </td>
+            </tr>
+            <tr v-if="c34 > 3">
               <td class="t_label"><span class="red">*</span>融霜方式</td>
               <td>
-                <FormItem prop="c100">
+                <FormItem prop="c103">
                   <RadioGroup v-model="formRecord.c103">
                     <Radio label="敞开式" :disabled='disabledoff'></Radio>
                     <Radio label="封闭式" :disabled='disabledoff'></Radio>
@@ -2171,10 +2169,10 @@
           c31: new Date(),
           c32: '',
           c33: '',
-          c34: [],
-          c35: [],
-          c41: [],
-          c42: [],
+          c34: '',
+          c35: '',
+          c41: '',
+          c42: '',
           c43: '',
           c44: '',
           c222: '',
@@ -2416,7 +2414,8 @@
           {value: "S"},
           {value: "H3"},
           {value: "NA"}
-        ]
+        ],
+        c34: 1
       }
     },
     mounted() {
@@ -2508,7 +2507,7 @@
         return this.$store.state.app.requiredStr
       },
       ruleRecord() {
-        // var _c34 = parseFloat(formRecord.c34);
+        this.c34 = parseFloat(this.formRecord.c34);
 
         let _c6 = parseFloat(this.formRecord.c6);
         let _c7 = parseFloat(this.formRecord.c7);
@@ -2803,138 +2802,138 @@
             }],
 
             c51: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c52: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 1 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c226: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c227: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 1 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c228: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c229: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 1 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c55: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c56: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 1 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 1 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c75: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入基准耗电量', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入基准耗电量', trigger: 'change,blur'
             }],
             c80: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请输入能耗调整系数k', trigger: 'change,blur'
+              required: this.c34 > 1, message: '请输入能耗调整系数k', trigger: 'change,blur'
             }],
             c101: [{
-              required: this.formRecord.c34 * 1 > 1, message: '请选择融霜方式', trigger: 'change'
+              required: this.c34 > 1, message: '请选择融霜方式', trigger: 'change'
             }, {
               trigger: 'change',
-              validator: this.formRecord.c100 == '敞开式' ? this.formRecord.c219 = "" : ""
+              validator: this.formRecord.c101 == '敞开式' ? this.formRecord.c219 = "" : ""
             }],
 
             c59: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c60: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 2 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c230: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c231: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 2 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c232: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c233: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 2 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c63: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c64: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 2 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 2 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c76: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入基准耗电量', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入基准耗电量', trigger: 'change,blur'
             }],
             c81: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请输入能耗调整系数k', trigger: 'change,blur'
+              required: this.c34 > 2, message: '请输入能耗调整系数k', trigger: 'change,blur'
             }],
             c102: [{
-              required: this.formRecord.c34 * 1 > 2, message: '请选择融霜方式', trigger: 'change'
+              required: this.c34 > 2, message: '请选择融霜方式', trigger: 'change'
             }, {
               trigger: 'change',
-              validator: this.formRecord.c100 == '敞开式' ? this.formRecord.c220 = "" : ""
+              validator: this.formRecord.c102 == '敞开式' ? this.formRecord.c220 = "" : ""
             }],
 
             c67: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c68: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 3 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c234: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c235: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 3 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c236: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c237: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 3 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c71: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入标准规定值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入标准规定值', trigger: 'change,blur'
             }],
             c72: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入实测值', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入实测值', trigger: 'change,blur'
             }, {
-              validator: this.formRecord.c34 * 1 > 3 ? oneDecimals: check, trigger: 'change,blur'
+              validator: this.c34 > 3 ? oneDecimals: check, trigger: 'change,blur'
             }],
             c77: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入基准耗电量', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入基准耗电量', trigger: 'change,blur'
             }],
             c82: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请输入能耗调整系数k', trigger: 'change,blur'
+              required: this.c34 > 3, message: '请输入能耗调整系数k', trigger: 'change,blur'
             }],
             c103: [{
-              required: this.formRecord.c34 * 1 > 3, message: '请选择融霜方式', trigger: 'change'
+              required: this.c34 > 3, message: '请选择融霜方式', trigger: 'change'
             }, {
               trigger: 'change',
-              validator: this.formRecord.c100 == '敞开式' ? this.formRecord.c221 = "" : ""
+              validator: this.formRecord.c103 == '敞开式' ? this.formRecord.c221 = "" : ""
             }],
           }
         }
